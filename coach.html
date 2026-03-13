@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>1-on-1 Cooking Coaching — Food Jazz</title>
+  <meta name="description" content="30-day in-home cooking intensive in the Bay Area. Learn to cook intuitively — no recipes, just flow.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300;1,9..40,400&display=swap" rel="stylesheet">
+  <style>
+    /* ===== CSS VARIABLES (from Food Jazz Style Guide) ===== */
+    :root {
+      --sage: #7A8C6E;
+      --sage-light: #A8B89D;
+      --sage-muted: #D4DDD0;
+      --sage-wash: #EDF2EB;
+      --cream: #FAF7F2;
+      --warm-white: #FEFDFB;
+      --linen: #F3EDE4;
+      --wood: #B8956A;
+      --wood-dark: #8B6D47;
+      --wood-light: #D4BA96;
+      --golden: #D4A843;
+      --golden-light: #F0DBA8;
+      --terracotta: #C47A5A;
+      --charcoal: #2E2E2C;
+      --warm-gray: #5C5A56;
+      --medium-gray: #9B9892;
+      --font-display: 'Caveat', cursive;
+      --font-body: 'DM Sans', sans-serif;
+      --space-sm: 1rem;
+      --space-md: 2rem;
+      --space-lg: 4rem;
+      --space-xl: 6rem;
+      --space-2xl: 8rem;
+    }
+
+    /* ===== RESET ===== */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { font-size: 16px; -webkit-font-smoothing: antialiased; }
+    body {
+      font-family: var(--font-body);
+      background: var(--cream);
+      color: var(--warm-gray);
+      line-height: 1.65;
+    }
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; }
+
+    /* ===== TYPOGRAPHY ===== */
+    h1 {
+      font-family: var(--font-display);
+      font-size: clamp(2.8rem, 6vw, 4.5rem);
+      font-weight: 600;
+      color: var(--charcoal);
+      line-height: 1.1;
+    }
+    h2 {
+      font-family: var(--font-display);
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      font-weight: 600;
+      color: var(--charcoal);
+      line-height: 1.2;
+    }
+    h3 {
+      font-family: var(--font-display);
+      font-size: clamp(1.3rem, 2.5vw, 1.6rem);
+      font-weight: 500;
+      color: var(--wood-dark);
+    }
+    p {
+      font-size: 1rem;
+      font-weight: 300;
+      color: var(--warm-gray);
+      line-height: 1.7;
+    }
+    .label {
+      font-family: var(--font-body);
+      font-size: 0.78rem;
+      font-weight: 500;
+      color: var(--sage);
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      display: block;
+      margin-bottom: 0.75rem;
+    }
+    strong { font-weight: 500; color: var(--charcoal); }
+    em { font-style: italic; }
+
+    /* ===== LAYOUT ===== */
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 var(--space-md);
+    }
+    .container--narrow {
+      max-width: 700px;
+      margin: 0 auto;
+      padding: 0 var(--space-md);
+    }
+    section { padding: var(--space-xl) 0; }
+
+    /* ===== NAV ===== */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: var(--warm-white);
+      border-bottom: 1px solid var(--sage-muted);
+      padding: 1rem var(--space-md);
+    }
+    .nav-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .nav-logo {
+      font-family: var(--font-display);
+      font-size: 1.7rem;
+      font-weight: 700;
+      color: var(--sage);
+    }
+    .nav-links {
+      display: flex;
+      gap: var(--space-md);
+      align-items: center;
+      list-style: none;
+    }
+    .nav-links a {
+      font-size: 0.9rem;
+      color: var(--warm-gray);
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--sage); }
+    .nav-cta { font-weight: 500; color: var(--sage) !important; }
+
+    /* ===== BUTTONS ===== */
+    .btn-primary {
+      display: inline-block;
+      font-family: var(--font-display);
+      font-size: 1.2rem;
+      font-weight: 600;
+      background: var(--sage);
+      color: white;
+      padding: 14px 36px;
+      border-radius: 50px;
+      border: none;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      text-decoration: none;
+    }
+    .btn-primary:hover {
+      background: var(--wood-dark);
+      transform: translateY(-1px);
+      box-shadow: 0 4px 16px rgba(122, 140, 110, 0.3);
+    }
+
+    /* ===== WAVE DIVIDER ===== */
+    .wave {
+      width: 100%;
+      height: 40px;
+      display: block;
+      overflow: visible;
+    }
+
+    /* ===== HERO ===== */
+    .hero {
+      position: relative;
+      padding: var(--space-2xl) 0 var(--space-xl);
+      background: var(--cream);
+      overflow: hidden;
+      text-align: center;
+    }
+    .hero-bg {
+      position: absolute;
+      top: -80px;
+      right: -100px;
+      width: 550px;
+      height: 550px;
+      opacity: 0.35;
+      pointer-events: none;
+    }
+    .hero-bg-left {
+      position: absolute;
+      bottom: -40px;
+      left: -60px;
+      width: 300px;
+      height: 300px;
+      opacity: 0.2;
+      pointer-events: none;
+    }
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      max-width: 700px;
+      margin: 0 auto;
+      padding: 0 var(--space-md);
+    }
+    .hero-eyebrow {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.6rem;
+      margin-bottom: 1.25rem;
+    }
+    .hero h1 { margin-bottom: 1.25rem; }
+    .hero-sub {
+      font-size: 1.15rem;
+      font-weight: 300;
+      color: var(--warm-gray);
+      margin: 0 auto 2.5rem;
+      max-width: 540px;
+      line-height: 1.65;
+    }
+    .hero-location {
+      margin-top: 1.5rem;
+      font-size: 0.85rem;
+      font-weight: 400;
+      color: var(--medium-gray);
+      letter-spacing: 0.12em;
+    }
+
+    /* ===== ARCHETYPE / PROBLEM SECTION ===== */
+    .section-problem {
+      background: var(--sage-wash);
+      padding: var(--space-xl) 0;
+    }
+    .section-problem h2 { margin: 0.5rem 0 1.5rem; }
+    .section-problem p + p { margin-top: 1rem; }
+
+    /* ===== METHOD SECTION ===== */
+    .section-method {
+      background: var(--cream);
+      padding: var(--space-xl) 0;
+    }
+    .section-method h2 { margin: 0.5rem 0 1.5rem; }
+    .section-method p + p { margin-top: 1rem; }
+
+    /* ===== EXPERIENCE GRID ===== */
+    .section-experience {
+      background: var(--sage-wash);
+      padding: var(--space-xl) 0;
+    }
+    .experience-header {
+      text-align: center;
+      max-width: 580px;
+      margin: 0 auto 3rem;
+    }
+    .experience-header h2 { margin: 0.5rem 0 1rem; }
+    .experience-header p { margin: 0 auto; }
+    .experience-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.25rem;
+    }
+    .experience-item {
+      background: white;
+      border-radius: 16px;
+      padding: 28px 32px;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+    }
+    .experience-num {
+      font-family: var(--font-display);
+      font-size: 2.2rem;
+      font-weight: 700;
+      color: var(--sage-muted);
+      line-height: 1;
+      margin-bottom: 0.5rem;
+    }
+    .experience-item h3 { margin-bottom: 0.6rem; }
+    .experience-item p { font-size: 0.95rem; }
+
+    /* ===== OUTCOMES ===== */
+    .section-outcomes {
+      background: var(--cream);
+      padding: var(--space-xl) 0;
+    }
+    .outcomes-intro { max-width: 580px; }
+    .outcomes-intro h2 { margin: 0.5rem 0; }
+    .outcomes-list {
+      list-style: none;
+      margin-top: 2.5rem;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      column-gap: var(--space-md);
+    }
+    .outcomes-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+      padding: 1rem 0;
+      border-bottom: 1px solid var(--sage-muted);
+      font-size: 1rem;
+      font-weight: 300;
+      color: var(--warm-gray);
+      line-height: 1.5;
+    }
+    .outcomes-list li:last-child { border-bottom: none; }
+    .sparkle-sm {
+      flex-shrink: 0;
+      width: 18px;
+      height: 18px;
+      margin-top: 3px;
+    }
+
+    /* ===== ABOUT (CHARCOAL) ===== */
+    .section-about {
+      background: var(--charcoal);
+      padding: var(--space-xl) 0;
+    }
+    .section-about .label { color: var(--sage-light); }
+    .about-grid {
+      display: grid;
+      grid-template-columns: 170px 1fr;
+      gap: var(--space-lg);
+      align-items: start;
+      margin-top: 2rem;
+    }
+    .about-photo-wrap {
+      width: 160px;
+      height: 205px;
+      border-radius: 12px;
+      border: 2px solid var(--golden);
+      box-shadow: 0 6px 24px rgba(212, 168, 67, 0.18);
+      overflow: hidden;
+      flex-shrink: 0;
+    }
+    /* Replace <div class="about-photo-placeholder"> with <img src="akshay.jpg" ...> when photo is ready */
+    .about-photo-placeholder {
+      width: 100%;
+      height: 100%;
+      background: #3d3d3b;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-display);
+      font-size: 2.8rem;
+      font-weight: 700;
+      color: var(--sage-light);
+    }
+    .about-photo-placeholder img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 8%;
+      display: block;
+    }
+    .about-role {
+      font-family: var(--font-body);
+      font-size: 0.8rem;
+      font-weight: 500;
+      color: var(--sage-light);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: 0.6rem;
+    }
+    .about-name {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 3.5vw, 2.8rem);
+      font-weight: 600;
+      color: var(--sage-light);
+      line-height: 1.1;
+      margin-bottom: 1.25rem;
+    }
+    .about-bio {
+      font-size: 1rem;
+      font-weight: 300;
+      color: rgba(243, 237, 228, 0.85);
+      line-height: 1.75;
+      max-width: 600px;
+    }
+    .about-bio strong { font-weight: 500; color: var(--linen); }
+    .sparkle-inline {
+      color: var(--golden);
+      filter: drop-shadow(0 0 5px rgba(212, 168, 67, 0.6));
+      font-style: normal;
+    }
+
+    /* ===== CTA SECTION ===== */
+    .section-cta {
+      background: var(--cream);
+      padding: var(--space-2xl) 0;
+      text-align: center;
+    }
+    .section-cta h2 { margin: 0.5rem 0 1rem; }
+    .cta-sub {
+      font-size: 1.05rem;
+      color: var(--warm-gray);
+      margin: 0 auto 2.5rem;
+      max-width: 480px;
+    }
+    .cta-location {
+      margin-top: 1.25rem;
+      font-size: 0.85rem;
+      color: var(--medium-gray);
+      letter-spacing: 0.1em;
+    }
+
+    /* ===== FOOTER ===== */
+    footer {
+      background: var(--linen);
+      padding: var(--space-lg) var(--space-md);
+    }
+    .footer-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    .footer-logo {
+      font-family: var(--font-display);
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--sage);
+    }
+    .footer-links {
+      display: flex;
+      gap: var(--space-md);
+      list-style: none;
+    }
+    .footer-links a {
+      font-size: 0.85rem;
+      color: var(--warm-gray);
+      transition: color 0.2s;
+    }
+    .footer-links a:hover { color: var(--sage); }
+    .footer-copy {
+      font-size: 0.78rem;
+      color: var(--medium-gray);
+      width: 100%;
+      margin-top: 1rem;
+      padding-top: 1rem;
+      border-top: 1px solid var(--sage-muted);
+    }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 768px) {
+      .about-grid { grid-template-columns: 1fr; }
+      .about-photo-wrap { width: 130px; height: 165px; }
+      .nav-links { display: none; }
+      .experience-grid { grid-template-columns: 1fr; }
+      .outcomes-list { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <div class="nav-inner">
+      <a href="/" class="nav-logo">Food Jazz</a>
+      <ul class="nav-links">
+        <li><a href="/">Home</a></li>
+        <li><a href="#apply" class="nav-cta">Apply for Coaching →</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <!-- Background: breath circles (right, large) -->
+    <div class="hero-bg">
+      <svg viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
+        <circle cx="62" cy="58" r="48" stroke="#D4DDD0" stroke-width="0.6" opacity="0.3"/>
+        <circle cx="60" cy="60" r="30" stroke="#A8B89D" stroke-width="0.7" opacity="0.35"/>
+        <circle cx="58" cy="62" r="12" stroke="#7A8C6E" stroke-width="0.5" opacity="0.3"/>
+        <circle cx="57" cy="63" r="3" fill="#7A8C6E" opacity="0.25"/>
+      </svg>
+    </div>
+    <!-- Background: spiral (bottom left) -->
+    <div class="hero-bg-left">
+      <svg viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
+        <path d="M60 60 C60 52, 68 44, 76 44 C90 44, 98 56, 92 68 C86 82, 66 88, 54 78 C38 66, 42 42, 56 32 C74 20, 100 30, 104 52 C108 78, 84 98, 58 94 C28 90, 16 64, 24 40" stroke="#A8B89D" stroke-width="1.8" stroke-linecap="round" opacity="0.75"/>
+      </svg>
+    </div>
+
+    <div class="hero-content">
+      <!-- Eyebrow with sparkle -->
+      <div class="hero-eyebrow">
+        <svg width="24" height="24" viewBox="0 0 80 80" fill="none">
+          <path d="M35 38 L37 44 L43 45 L37 46 L35 52 L33 46 L27 45 L33 44 Z" fill="#D4A843" opacity="0.85"/>
+          <path d="M52 26 L53 29.5 L56.5 30 L53 30.5 L52 34 L51 30.5 L47.5 30 L51 29.5 Z" fill="#D4A843" opacity="0.5"/>
+        </svg>
+        <span class="label" style="margin-bottom:0;">Bay Area · 30-Day Intensive</span>
+        <svg width="24" height="24" viewBox="0 0 80 80" fill="none">
+          <path d="M35 38 L37 44 L43 45 L37 46 L35 52 L33 46 L27 45 L33 44 Z" fill="#D4A843" opacity="0.85"/>
+          <path d="M52 26 L53 29.5 L56.5 30 L53 30.5 L52 34 L51 30.5 L47.5 30 L51 29.5 Z" fill="#D4A843" opacity="0.5"/>
+        </svg>
+      </div>
+
+      <h1>What if cooking felt like flow state?</h1>
+      <p class="hero-sub">30 days to turn your kitchen from a source of stress into your favorite room in the house.</p>
+      <a href="#apply" class="btn-primary">Apply for Coaching ✦</a>
+      <p class="hero-location">San Francisco · Oakland · Berkeley</p>
+    </div>
+  </section>
+
+  <!-- WAVE DIVIDER -->
+  <div style="background: var(--cream); line-height:0;">
+    <svg class="wave" viewBox="0 0 1200 40" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M0 20 Q150 5, 300 20 Q450 35, 600 18 Q750 2, 900 20 Q1050 36, 1200 20" stroke="#A8B89D" stroke-width="1.5" stroke-linecap="round" opacity="0.45" fill="none"/>
+    </svg>
+  </div>
+
+  <!-- PROBLEM / ARCHETYPE -->
+  <section class="section-problem">
+    <div class="container--narrow">
+      <span class="label">Does this sound familiar?</span>
+      <h2>Most people cook the same five things on rotation — or don't cook at all.</h2>
+      <p>Whether you panic when you're missing one ingredient, or just eat whatever's around and call it dinner — you're not a bad cook. You just never learned to <em>think</em> like one.</p>
+      <p>Food Jazz is not another recipe app. It's a complete reset of how you relate to your kitchen.</p>
+    </div>
+  </section>
+
+  <!-- WHAT IS FOOD JAZZ -->
+  <section class="section-method">
+    <div class="container--narrow">
+      <span class="label">The Method</span>
+      <h2>Intuitive cooking, not recipe following.</h2>
+      <p>Food Jazz is a method for intuitive cooking — not following recipes, but learning to think like a cook. Like jazz musicians who improvise within a structure, you'll learn the fundamentals of flavor so you can riff freely with whatever's in your fridge.</p>
+      <p>No decision fatigue. No stress. Just flow.</p>
+    </div>
+  </section>
+
+  <!-- WAVE DIVIDER (flipped) -->
+  <div style="background: var(--cream); line-height:0;">
+    <svg class="wave" viewBox="0 0 1200 40" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" style="transform: scaleX(-1);">
+      <path d="M0 20 Q150 5, 300 20 Q450 35, 600 18 Q750 2, 900 20 Q1050 36, 1200 20" stroke="#A8B89D" stroke-width="1.5" stroke-linecap="round" opacity="0.45" fill="none"/>
+    </svg>
+  </div>
+
+  <!-- THE 30-DAY EXPERIENCE -->
+  <section class="section-experience">
+    <div class="container">
+      <div class="experience-header">
+        <span class="label">The Program</span>
+        <h2>The 30-Day Experience</h2>
+        <p>Five elements. One month. A relationship with food that lasts the rest of your life.</p>
+      </div>
+      <div class="experience-grid">
+        <div class="experience-item">
+          <div class="experience-num">01</div>
+          <h3>Weekly Kitchen Sessions</h3>
+          <p>Akshay comes to you. Your kitchen, your ingredients — we cook together and build real skills in your space.</p>
+        </div>
+        <div class="experience-item">
+          <div class="experience-num">02</div>
+          <h3>Cook Something Every Day</h3>
+          <p>One real meal a day for 30 days. Not recipes — instincts. This is how the habit gets built.</p>
+        </div>
+        <div class="experience-item">
+          <div class="experience-num">03</div>
+          <h3>Daily Challenges & Check-ins</h3>
+          <p>A new cooking challenge sent to your phone each day. Feedback, accountability, and momentum — all month.</p>
+        </div>
+        <div class="experience-item">
+          <div class="experience-num">04</div>
+          <h3>Flavor Fundamentals</h3>
+          <p>Learn how flavors actually work — not recipes to memorize, but principles that make every meal improvable.</p>
+        </div>
+        <div class="experience-item">
+          <div class="experience-num">05</div>
+          <h3>Kitchen Blueprint</h3>
+          <p>A full kitchen audit at the start — the layout, tools, and pantry staples that make cooking feel effortless every day, long after the 30 days are done.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- OUTCOMES -->
+  <section class="section-outcomes">
+    <div class="container">
+      <div class="outcomes-intro">
+        <span class="label">After 30 Days</span>
+        <h2>What you walk away with.</h2>
+      </div>
+      <ul class="outcomes-list">
+        <li>
+          <svg class="sparkle-sm" viewBox="0 0 80 80" fill="none"><path d="M35 38 L37 44 L43 45 L37 46 L35 52 L33 46 L27 45 L33 44 Z" fill="#D4A843" opacity="0.85"/></svg>
+          Cook at least one real meal a day — without a recipe
+        </li>
+        <li>
+          <svg class="sparkle-sm" viewBox="0 0 80 80" fill="none"><path d="M35 38 L37 44 L43 45 L37 46 L35 52 L33 46 L27 45 L33 44 Z" fill="#D4A843" opacity="0.85"/></svg>
+          Make dinner faster than DoorDash can deliver it
+        </li>
+        <li>
+          <svg class="sparkle-sm" viewBox="0 0 80 80" fill="none"><path d="M35 38 L37 44 L43 45 L37 46 L35 52 L33 46 L27 45 L33 44 Z" fill="#D4A843" opacity="0.85"/></svg>
+          Build a cooking habit that actually sticks this time
+        </li>
+        <li>
+          <svg class="sparkle-sm" viewBox="0 0 80 80" fill="none"><path d="M35 38 L37 44 L43 45 L37 46 L35 52 L33 46 L27 45 L33 44 Z" fill="#D4A843" opacity="0.85"/></svg>
+          Confidently host a dinner party for people you care about
+        </li>
+        <li>
+          <svg class="sparkle-sm" viewBox="0 0 80 80" fill="none"><path d="M35 38 L37 44 L43 45 L37 46 L35 52 L33 46 L27 45 L33 44 Z" fill="#D4A843" opacity="0.85"/></svg>
+          Feel calm and in flow in your kitchen instead of stressed
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ABOUT AKSHAY (dark section) -->
+  <section class="section-about">
+    <div class="container">
+      <span class="label">Your Coach</span>
+      <div class="about-grid">
+        <!-- PHOTO: Replace the placeholder div with an img tag when ready:
+             <img src="akshay.jpg" alt="Akshay Prabhu" class="about-photo-wrap" style="object-fit:cover; object-position: center 8%;"> -->
+        <div class="about-photo-wrap">
+          <div class="about-photo-placeholder">AP</div>
+        </div>
+        <div>
+          <p class="about-role">Founder · Neuroscientist · Cooking Coach</p>
+          <p class="about-name">Akshay Prabhu</p>
+          <p class="about-bio">I raised <strong>$3M</strong>, built Foodnome from the ground up, and helped <strong>500+ people</strong> transform their home kitchens. I've staged at <strong>Chez Panisse</strong>, run hundreds of pop-up dinners, and cooked whole lambs over open fire for crowds across the Bay. <em class="sparkle-inline">✦</em> This is what 20 years of obsession looks like — and I'm giving you the whole thing in 30 days.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA / APPLICATION -->
+  <section id="apply" class="section-cta">
+    <div class="container--narrow">
+      <svg width="44" height="44" viewBox="0 0 80 80" fill="none" style="margin: 0 auto 1rem;">
+        <path d="M35 38 L37 44 L43 45 L37 46 L35 52 L33 46 L27 45 L33 44 Z" fill="#D4A843" opacity="0.85"/>
+        <path d="M52 26 L53 29.5 L56.5 30 L53 30.5 L52 34 L51 30.5 L47.5 30 L51 29.5 Z" fill="#D4A843" opacity="0.5"/>
+        <path d="M48 54 L48.6 56 L51 56.5 L48.6 57 L48 59 L47.4 57 L45 56.5 L47.4 56 Z" fill="#D4A843" opacity="0.3"/>
+      </svg>
+      <span class="label">Apply</span>
+      <h2>Apply to be considered.</h2>
+      <p class="cta-sub">Spots are limited. Tell me about your relationship with food. I'll reach out if I think we're a good fit.</p>
+      <!-- TODO: Replace href with your Tally.so form URL after creating the questionnaire at tally.so -->
+      <a href="https://tally.so/r/REPLACE_THIS" class="btn-primary">Start Your Application ✦</a>
+      <p class="cta-location">San Francisco · Oakland · Berkeley</p>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <span class="footer-logo">Food Jazz</span>
+      <ul class="footer-links">
+        <li><a href="/">Home</a></li>
+        <li><a href="mailto:akshay@foodjazz.club">Contact</a></li>
+      </ul>
+      <p class="footer-copy">© 2026 Food Jazz · foodjazz.club</p>
+    </div>
+  </footer>
+
+</body>
+</html>
