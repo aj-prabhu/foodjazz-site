@@ -8,22 +8,16 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300;1,9..40,400&display=swap" rel="stylesheet">
   <style>
-    /* ===== PAGE SETUP — Letter size, print-ready ===== */
-    @page {
-      size: letter portrait;
-      margin: 0;
-    }
-    * { box-sizing: border-box; margin: 0; padding: 0; }
+    @page { size: letter portrait; margin: 0; }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { font-size: 16px; -webkit-font-smoothing: antialiased; }
 
-    /* ===== CSS VARIABLES ===== */
     :root {
       --sage: #7A8C6E;
       --sage-light: #A8B89D;
       --sage-muted: #D4DDD0;
       --sage-wash: #EDF2EB;
       --cream: #FAF7F2;
-      --warm-white: #FEFDFB;
       --linen: #F3EDE4;
       --wood-dark: #8B6D47;
       --golden: #D4A843;
@@ -34,166 +28,154 @@
       --font-body: 'DM Sans', sans-serif;
     }
 
-    /* ===== FLYER WRAPPER ===== */
     body {
-      background: #e5e5e5; /* visible only on screen, not in print */
+      background: #ddd;
       display: flex;
       justify-content: center;
       padding: 2rem;
+      font-family: var(--font-body);
     }
+    @media print {
+      body { background: none; padding: 0; }
+      .flyer { width: 100%; }
+    }
+
     .flyer {
       width: 8.5in;
       min-height: 11in;
       background: var(--cream);
-      font-family: var(--font-body);
       color: var(--warm-gray);
-      position: relative;
-      overflow: hidden;
       display: flex;
       flex-direction: column;
-    }
-    @media print {
-      body { background: none; padding: 0; }
-      .flyer { width: 100%; min-height: 100vh; }
-    }
-
-    /* ===== HEADER BAND ===== */
-    .flyer-header {
-      background: var(--charcoal);
-      padding: 0.6in 0.6in 0.5in;
       position: relative;
       overflow: hidden;
     }
-    .header-bg-spiral {
-      position: absolute;
-      top: -30px;
-      right: -40px;
-      width: 220px;
-      height: 220px;
-      opacity: 0.12;
-      pointer-events: none;
-    }
-    .header-bg-circles {
-      position: absolute;
-      bottom: -60px;
-      left: -40px;
-      width: 260px;
-      height: 260px;
-      opacity: 0.1;
-      pointer-events: none;
+
+    /* ===== HEADER ===== */
+    .flyer-header {
+      background: var(--charcoal);
+      padding: 0.55in 0.65in 0.5in;
+      position: relative;
+      overflow: hidden;
     }
     .header-label {
-      font-family: var(--font-body);
-      font-size: 0.62rem;
+      font-size: 0.6rem;
       font-weight: 500;
       color: var(--sage-light);
-      letter-spacing: 0.2em;
+      letter-spacing: 0.25em;
       text-transform: uppercase;
-      margin-bottom: 0.5rem;
       display: block;
+      margin-bottom: 0.35rem;
     }
     .header-wordmark {
       font-family: var(--font-display);
-      font-size: 2.2rem;
+      font-size: 2rem;
       font-weight: 700;
       color: var(--sage-light);
       line-height: 1;
-      margin-bottom: 0.75rem;
+      margin-bottom: 0.6rem;
+    }
+    .header-rule {
+      width: 40px;
+      height: 1px;
+      background: var(--sage);
+      margin-bottom: 0.6rem;
     }
     .header-headline {
       font-family: var(--font-display);
-      font-size: 2.55rem;
+      font-size: 3rem;
       font-weight: 600;
       color: white;
-      line-height: 1.1;
-      max-width: 5.5in;
-      margin-bottom: 0.4rem;
+      line-height: 1.05;
+      max-width: 5.8in;
+      letter-spacing: -0.01em;
     }
     .header-sub {
-      font-size: 0.9rem;
+      font-size: 0.88rem;
       font-weight: 300;
-      color: rgba(243, 237, 228, 0.8);
+      color: rgba(243, 237, 228, 0.78);
       max-width: 5in;
-      line-height: 1.55;
+      line-height: 1.6;
+      margin-top: 0.35rem;
     }
-
-    /* ===== WAVE DIVIDER ===== */
-    .wave-band {
-      background: var(--charcoal);
-      line-height: 0;
-      height: 28px;
+    /* Large decorative number in header */
+    .header-deco {
+      position: absolute;
+      right: 0.4in;
+      bottom: -0.1in;
+      font-family: var(--font-display);
+      font-size: 9rem;
+      font-weight: 700;
+      color: rgba(168, 184, 157, 0.08);
+      line-height: 1;
+      user-select: none;
     }
-    .wave-band svg { width: 100%; height: 100%; display: block; }
 
     /* ===== METHOD BAND ===== */
     .flyer-method {
       background: var(--sage-wash);
-      padding: 0.3in 0.6in;
+      padding: 0.28in 0.65in;
+      border-top: 2px solid var(--sage-muted);
     }
     .method-text {
       font-size: 0.88rem;
       font-weight: 300;
       color: var(--warm-gray);
       line-height: 1.65;
-      max-width: 6in;
-    }
-    .method-text strong {
-      font-weight: 500;
-      color: var(--charcoal);
     }
 
-    /* ===== EXPERIENCE SECTION ===== */
+    /* ===== EXPERIENCE ===== */
     .flyer-experience {
       background: var(--cream);
-      padding: 0.3in 0.6in 0.25in;
+      padding: 0.3in 0.65in 0.25in;
       flex: 1;
     }
     .section-label {
-      font-family: var(--font-body);
-      font-size: 0.6rem;
+      font-size: 0.58rem;
       font-weight: 500;
       color: var(--sage);
-      letter-spacing: 0.2em;
+      letter-spacing: 0.25em;
       text-transform: uppercase;
       display: block;
-      margin-bottom: 0.4rem;
+      margin-bottom: 0.3rem;
     }
     .section-title {
       font-family: var(--font-display);
-      font-size: 1.55rem;
+      font-size: 1.6rem;
       font-weight: 600;
       color: var(--charcoal);
-      margin-bottom: 0.3in;
-      line-height: 1.15;
+      margin-bottom: 0.22in;
+      line-height: 1.1;
+      letter-spacing: -0.01em;
     }
-    .experience-row {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 0.18in 0.25in;
+    .experience-list {
+      list-style: none;
     }
     .exp-item {
-      display: flex;
-      align-items: flex-start;
-      gap: 0.18in;
+      display: grid;
+      grid-template-columns: 0.35in 1fr;
+      gap: 0 0.18in;
+      padding: 0.1in 0;
+      border-top: 1px solid var(--sage-muted);
+    }
+    .exp-item:last-child {
+      border-bottom: 1px solid var(--sage-muted);
     }
     .exp-num {
       font-family: var(--font-display);
-      font-size: 1.5rem;
+      font-size: 1.3rem;
       font-weight: 700;
       color: var(--sage-muted);
       line-height: 1;
-      flex-shrink: 0;
-      width: 0.28in;
       padding-top: 2px;
     }
-    .exp-body {}
     .exp-title {
       font-family: var(--font-display);
       font-size: 1.05rem;
       font-weight: 500;
       color: var(--wood-dark);
-      margin-bottom: 0.08rem;
       line-height: 1.2;
+      margin-bottom: 0.05rem;
     }
     .exp-desc {
       font-size: 0.78rem;
@@ -205,42 +187,33 @@
     /* ===== AKSHAY CARD ===== */
     .flyer-akshay {
       background: var(--linen);
-      padding: 0.25in 0.6in;
+      padding: 0.22in 0.65in;
       display: flex;
       align-items: center;
       gap: 0.3in;
+      border-top: 1px solid #e0d9cf;
     }
     .akshay-photo-wrap {
-      width: 1.1in;
-      height: 1.4in;
-      border-radius: 10px;
+      width: 1.05in;
+      height: 1.35in;
+      border-radius: 3px;
       border: 1.5px solid var(--golden);
-      box-shadow: 0 3px 14px rgba(212,168,67,0.18);
       overflow: hidden;
       flex-shrink: 0;
-      background: #ccc;
     }
-    /* Replace placeholder with: <img src="akshay.jpg" style="width:100%;height:100%;object-fit:cover;object-position:center 8%;"> */
-    .akshay-photo-placeholder {
+    .akshay-photo-wrap img {
       width: 100%;
       height: 100%;
-      background: var(--warm-gray);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-family: var(--font-display);
-      font-size: 1.6rem;
-      font-weight: 700;
-      color: var(--sage-light);
+      object-fit: cover;
+      object-position: center 8%;
     }
-    .akshay-text {}
     .akshay-role {
-      font-size: 0.6rem;
+      font-size: 0.58rem;
       font-weight: 500;
       color: var(--sage);
-      letter-spacing: 0.15em;
+      letter-spacing: 0.2em;
       text-transform: uppercase;
-      margin-bottom: 0.2rem;
+      margin-bottom: 0.15rem;
     }
     .akshay-name {
       font-family: var(--font-display);
@@ -248,74 +221,58 @@
       font-weight: 600;
       color: var(--charcoal);
       line-height: 1;
-      margin-bottom: 0.3rem;
+      margin-bottom: 0.25rem;
     }
     .akshay-bio {
-      font-size: 0.78rem;
+      font-size: 0.77rem;
       font-weight: 300;
       color: var(--warm-gray);
       line-height: 1.55;
-    }
-    .akshay-bio strong { font-weight: 500; color: var(--charcoal); }
-    .sparkle-inline {
-      color: var(--golden);
-      font-style: normal;
     }
 
     /* ===== CTA BAND ===== */
     .flyer-cta {
       background: var(--sage);
-      padding: 0.25in 0.6in;
+      padding: 0.22in 0.65in;
       display: flex;
       align-items: center;
       justify-content: space-between;
       gap: 0.3in;
     }
-    .cta-left {}
     .cta-headline {
       font-family: var(--font-display);
-      font-size: 1.4rem;
+      font-size: 1.45rem;
       font-weight: 600;
       color: white;
-      line-height: 1.15;
-      margin-bottom: 0.15rem;
+      line-height: 1.1;
+      margin-bottom: 0.12rem;
     }
     .cta-sub-text {
-      font-size: 0.78rem;
+      font-size: 0.77rem;
       font-weight: 300;
       color: rgba(255,255,255,0.82);
       line-height: 1.5;
     }
-    .cta-right {
-      text-align: right;
-      flex-shrink: 0;
-    }
+    .cta-right { text-align: right; flex-shrink: 0; }
     .cta-url {
       font-family: var(--font-display);
       font-size: 1.5rem;
       font-weight: 700;
       color: white;
-      letter-spacing: -0.01em;
       display: block;
-      margin-bottom: 0.1rem;
+      margin-bottom: 0.08rem;
     }
-    .cta-sparkle-row {
-      display: flex;
-      justify-content: flex-end;
-      align-items: center;
-      gap: 0.2rem;
-    }
-    .cta-sparkle-label {
-      font-size: 0.65rem;
-      color: rgba(255,255,255,0.7);
-      letter-spacing: 0.1em;
+    .cta-apply-label {
+      font-size: 0.6rem;
+      color: rgba(255,255,255,0.65);
+      letter-spacing: 0.15em;
       text-transform: uppercase;
     }
 
     /* ===== FOOTER ===== */
     .flyer-footer {
       background: var(--charcoal);
-      padding: 0.12in 0.6in;
+      padding: 0.11in 0.65in;
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -327,10 +284,10 @@
       color: var(--sage-light);
     }
     .footer-cities {
-      font-size: 0.65rem;
+      font-size: 0.62rem;
       font-weight: 400;
       color: var(--medium-gray);
-      letter-spacing: 0.12em;
+      letter-spacing: 0.14em;
       text-transform: uppercase;
     }
   </style>
@@ -338,116 +295,89 @@
 <body>
 <div class="flyer">
 
-  <!-- ===== HEADER BAND ===== -->
+  <!-- HEADER -->
   <div class="flyer-header">
-    <!-- Background motifs -->
-    <div class="header-bg-spiral">
-      <svg viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
-        <path d="M60 60 C60 52, 68 44, 76 44 C90 44, 98 56, 92 68 C86 82, 66 88, 54 78 C38 66, 42 42, 56 32 C74 20, 100 30, 104 52 C108 78, 84 98, 58 94 C28 90, 16 64, 24 40" stroke="#A8B89D" stroke-width="1.8" stroke-linecap="round" opacity="0.75"/>
-      </svg>
-    </div>
-    <div class="header-bg-circles">
-      <svg viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
-        <circle cx="62" cy="58" r="48" stroke="#D4DDD0" stroke-width="0.6" opacity="0.3"/>
-        <circle cx="60" cy="60" r="30" stroke="#A8B89D" stroke-width="0.7" opacity="0.35"/>
-        <circle cx="58" cy="62" r="12" stroke="#7A8C6E" stroke-width="0.5" opacity="0.3"/>
-      </svg>
-    </div>
-
     <span class="header-label">30-Day Cooking Intensive · Bay Area</span>
     <div class="header-wordmark">Food Jazz</div>
+    <div class="header-rule"></div>
     <h1 class="header-headline">What if cooking felt like flow state?</h1>
     <p class="header-sub">30 days to turn your kitchen from a source of stress into your favorite room in the house.</p>
+    <div class="header-deco">30</div>
   </div>
 
-  <!-- WAVE DIVIDER -->
-  <div class="wave-band">
-    <svg viewBox="0 0 864 28" preserveAspectRatio="none" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M0 14 Q108 4, 216 14 Q324 24, 432 13 Q540 2, 648 14 Q756 24, 864 14" stroke="#A8B89D" stroke-width="1.2" stroke-linecap="round" opacity="0.4" fill="none"/>
-    </svg>
-  </div>
-
-  <!-- ===== METHOD BAND ===== -->
+  <!-- METHOD BAND -->
   <div class="flyer-method">
-    <p class="method-text">
-      Food Jazz is a method for <strong>intuitive cooking</strong> — not following recipes, but learning to think like a cook. Like jazz musicians who improvise within a structure, you'll learn the fundamentals of flavor so you can riff freely with whatever's in your fridge. <strong>No decision fatigue. No stress. Just flow.</strong>
-    </p>
+    <p class="method-text">Food Jazz is a method for intuitive cooking — not following recipes, but learning to think like a cook. Like jazz musicians who improvise within a structure, you'll learn the fundamentals of flavor so you can riff freely with whatever's in your fridge. No decision fatigue. No stress. Just flow.</p>
   </div>
 
-  <!-- ===== THE 30-DAY EXPERIENCE ===== -->
+  <!-- THE 30-DAY EXPERIENCE -->
   <div class="flyer-experience">
     <span class="section-label">The Program</span>
     <div class="section-title">The 30-Day Experience</div>
-    <div class="experience-row">
-      <div class="exp-item">
-        <div class="exp-num">01</div>
-        <div class="exp-body">
+    <ul class="experience-list">
+      <li class="exp-item">
+        <span class="exp-num">01</span>
+        <div>
           <div class="exp-title">Weekly Kitchen Sessions</div>
-          <div class="exp-desc">Akshay comes to you. Your kitchen, your ingredients — we cook together and build real skills in your space.</div>
+          <div class="exp-desc">Akshay comes to you. Your kitchen, your ingredients — real skills in your space.</div>
         </div>
-      </div>
-      <div class="exp-item">
-        <div class="exp-num">02</div>
-        <div class="exp-body">
+      </li>
+      <li class="exp-item">
+        <span class="exp-num">02</span>
+        <div>
           <div class="exp-title">Cook Something Every Day</div>
           <div class="exp-desc">One real meal a day for 30 days. Not recipes — instincts. This is how the habit gets built.</div>
         </div>
-      </div>
-      <div class="exp-item">
-        <div class="exp-num">03</div>
-        <div class="exp-body">
+      </li>
+      <li class="exp-item">
+        <span class="exp-num">03</span>
+        <div>
           <div class="exp-title">Daily Challenges & Check-ins</div>
-          <div class="exp-desc">A new cooking challenge sent to your phone each day. Feedback, accountability, and momentum — all month.</div>
+          <div class="exp-desc">A new challenge sent to your phone each day. Feedback, accountability, momentum — all month.</div>
         </div>
-      </div>
-      <div class="exp-item">
-        <div class="exp-num">04</div>
-        <div class="exp-body">
+      </li>
+      <li class="exp-item">
+        <span class="exp-num">04</span>
+        <div>
           <div class="exp-title">Flavor Fundamentals</div>
-          <div class="exp-desc">The principles that make every meal improvable — not recipes to memorize, but a framework that lasts.</div>
+          <div class="exp-desc">The principles that make every meal improvable — not recipes, but a framework that lasts.</div>
         </div>
-      </div>
-      <div class="exp-item">
-        <div class="exp-num">05</div>
-        <div class="exp-body">
+      </li>
+      <li class="exp-item">
+        <span class="exp-num">05</span>
+        <div>
           <div class="exp-title">Kitchen Blueprint</div>
-          <div class="exp-desc">A full kitchen audit at the start — layout, tools, and pantry staples that make cooking effortless every day.</div>
+          <div class="exp-desc">A full kitchen audit — layout, tools, pantry staples that make cooking effortless every day.</div>
         </div>
-      </div>
-    </div>
+      </li>
+    </ul>
   </div>
 
-  <!-- ===== AKSHAY CARD ===== -->
+  <!-- AKSHAY CARD -->
   <div class="flyer-akshay">
     <div class="akshay-photo-wrap">
-      <img src="akshay.jpg" style="width:100%;height:100%;object-fit:cover;object-position:center 8%;">
+      <img src="akshay.jpg" alt="Akshay Prabhu">
     </div>
-    <div class="akshay-text">
+    <div>
       <div class="akshay-role">Founder · Neuroscientist · Cooking Coach</div>
       <div class="akshay-name">Akshay Prabhu</div>
-      <p class="akshay-bio">Raised <strong>$3M</strong>, built Foodnome, helped <strong>500+ people</strong> transform their home kitchens. Staged at <strong>Chez Panisse</strong>, run hundreds of pop-up dinners, cooked whole lambs over open fire for crowds across the Bay. <em class="sparkle-inline">✦</em> This is 20 years of obsession — and I'm giving you the whole thing in 30 days.</p>
+      <p class="akshay-bio">Raised $3M, built Foodnome, helped 300+ people transform their home kitchens. Staged at Chez Panisse, run hundreds of pop-up dinners, cooked whole lambs over open fire across the Bay. This is 20 years of obsession — in 30 days.</p>
     </div>
   </div>
 
-  <!-- ===== CTA BAND ===== -->
+  <!-- CTA BAND -->
   <div class="flyer-cta">
-    <div class="cta-left">
+    <div>
       <div class="cta-headline">Apply to be considered.<br>Spots are limited.</div>
       <p class="cta-sub-text">Tell me about your relationship with food.<br>I'll reach out if I think we're a good fit.</p>
     </div>
     <div class="cta-right">
       <span class="cta-url">foodjazz.club/coach</span>
-      <!-- Tally form: https://tally.so/r/68kgMB -->
-      <div class="cta-sparkle-row">
-        <svg width="14" height="14" viewBox="0 0 80 80" fill="none">
-          <path d="M35 38 L37 44 L43 45 L37 46 L35 52 L33 46 L27 45 L33 44 Z" fill="white" opacity="0.7"/>
-        </svg>
-        <span class="cta-sparkle-label">Apply online</span>
-      </div>
+      <span class="cta-apply-label">Apply online ✦</span>
     </div>
   </div>
 
-  <!-- ===== FOOTER ===== -->
+  <!-- FOOTER -->
   <div class="flyer-footer">
     <span class="footer-wordmark">Food Jazz</span>
     <span class="footer-cities">San Francisco · Oakland · Berkeley</span>
