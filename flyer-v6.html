@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Food Jazz — Flyer v6</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300;1,9..40,400&display=swap" rel="stylesheet">
+  <style>
+    @page { size: letter portrait; margin: 0; }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { font-size: 16px; -webkit-font-smoothing: antialiased; }
+
+    :root {
+      --sage: #7A8C6E;
+      --sage-light: #A8B89D;
+      --sage-muted: #D4DDD0;
+      --sage-wash: #EDF2EB;
+      --cream: #FAF7F2;
+      --linen: #F3EDE4;
+      --wood-dark: #8B6D47;
+      --golden: #D4A843;
+      --terracotta: #C47A5A;
+      --charcoal: #2E2E2C;
+      --warm-gray: #5C5A56;
+      --medium-gray: #9B9892;
+      --font-display: 'Caveat', cursive;
+      --font-body: 'DM Sans', sans-serif;
+    }
+
+    body {
+      background: #ddd;
+      display: flex;
+      justify-content: center;
+      padding: 2rem;
+      font-family: var(--font-body);
+    }
+    @media print {
+      body { background: none; padding: 0; }
+      .flyer { width: 100%; }
+    }
+
+    .flyer {
+      width: 8.5in;
+      min-height: 11in;
+      background: var(--cream);
+      color: var(--warm-gray);
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* ===== HEADER ===== */
+    .flyer-header {
+      background: var(--cream);
+      padding: 0.42in 0.65in 0.28in;
+      position: relative;
+      overflow: hidden;
+    }
+    .header-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      border: 1px solid var(--sage-muted);
+      border-radius: 99px;
+      padding: 0.18rem 0.55rem;
+      margin-bottom: 0.28in;
+    }
+    .header-pill-dot {
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: var(--sage);
+      flex-shrink: 0;
+    }
+    .header-pill-text {
+      font-size: 0.58rem;
+      font-weight: 500;
+      color: var(--sage);
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+    }
+    .header-wordmark {
+      font-family: var(--font-display);
+      font-size: 1.1rem;
+      font-weight: 500;
+      color: var(--sage);
+      font-style: italic;
+      margin-bottom: 0.08in;
+    }
+    .header-headline {
+      font-family: var(--font-display);
+      font-size: 3.6rem;
+      font-weight: 700;
+      color: var(--charcoal);
+      line-height: 1.0;
+      max-width: 5.5in;
+      letter-spacing: -0.02em;
+      margin-bottom: 0.2in;
+    }
+    .header-sub {
+      font-size: 0.85rem;
+      font-weight: 300;
+      color: var(--warm-gray);
+      line-height: 1.6;
+    }
+    .header-spiral {
+      position: absolute;
+      right: -0.25in;
+      top: -0.15in;
+      opacity: 0.08;
+      pointer-events: none;
+    }
+
+    /* ===== OUTCOMES HERO ===== */
+    .outcomes-hero {
+      background: var(--sage-wash);
+      padding: 0.28in 0.65in;
+      border-top: 1px solid var(--sage-muted);
+      border-bottom: 1px solid var(--sage-muted);
+    }
+    .outcomes-eyebrow {
+      font-size: 0.56rem;
+      font-weight: 500;
+      color: var(--sage);
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      margin-bottom: 0.14in;
+    }
+    .outcomes-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0.08in;
+    }
+    .outcome-line {
+      display: flex;
+      align-items: baseline;
+      gap: 0.18in;
+    }
+    .outcome-marker {
+      color: var(--golden);
+      font-size: 0.55rem;
+      flex-shrink: 0;
+      line-height: 1;
+      margin-top: 0.05rem;
+    }
+    .outcome-text {
+      font-family: var(--font-display);
+      font-size: 1.65rem;
+      font-weight: 600;
+      color: var(--charcoal);
+      line-height: 1.15;
+    }
+
+    /* ===== WAVE DIVIDER ===== */
+    .wave-divider {
+      padding: 0.08in 0;
+      line-height: 0;
+    }
+    .wave-divider svg {
+      width: 100%;
+      height: 20px;
+      display: block;
+    }
+
+    /* ===== HOW IT WORKS ===== */
+    .flyer-how {
+      padding: 0.2in 0.65in 0.1in;
+    }
+    .section-label {
+      font-size: 0.57rem;
+      font-weight: 500;
+      color: var(--medium-gray);
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      display: block;
+      margin-bottom: 0.14in;
+      padding-bottom: 0.08in;
+      border-bottom: 1px solid var(--sage-muted);
+    }
+    .how-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+    }
+    .how-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.22in;
+      padding: 0.1in 0;
+      border-bottom: 1px solid var(--sage-muted);
+    }
+    .how-item:last-child {
+      border-bottom: none;
+    }
+    .how-num {
+      font-family: var(--font-display);
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: var(--sage-muted);
+      flex-shrink: 0;
+      width: 0.3in;
+      line-height: 1;
+      margin-top: 2px;
+    }
+    .how-title {
+      font-family: var(--font-display);
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--wood-dark);
+      line-height: 1.2;
+      margin-bottom: 0.04rem;
+    }
+    .how-desc {
+      font-size: 0.78rem;
+      font-weight: 300;
+      color: var(--warm-gray);
+      line-height: 1.55;
+    }
+
+    /* ===== AKSHAY CARD ===== */
+    .flyer-akshay {
+      background: var(--linen);
+      padding: 0.2in 0.65in;
+      display: flex;
+      align-items: center;
+      gap: 0.28in;
+      border-top: 1px solid #e0d9cf;
+      margin-top: auto;
+    }
+    .akshay-photo-wrap {
+      width: 1.0in;
+      height: 1.3in;
+      border-radius: 3px;
+      border: 1.5px solid var(--golden);
+      overflow: hidden;
+      flex-shrink: 0;
+    }
+    .akshay-photo-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 8%;
+    }
+    .akshay-text {
+      flex: 1;
+    }
+    .akshay-role {
+      font-size: 0.55rem;
+      font-weight: 500;
+      color: var(--sage);
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      margin-bottom: 0.1rem;
+    }
+    .akshay-name {
+      font-family: var(--font-display);
+      font-size: 1.45rem;
+      font-weight: 600;
+      color: var(--charcoal);
+      line-height: 1;
+      margin-bottom: 0.18rem;
+    }
+    .akshay-bio {
+      font-size: 0.75rem;
+      font-weight: 300;
+      color: var(--warm-gray);
+      line-height: 1.55;
+    }
+    .akshay-qr {
+      flex-shrink: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.15rem;
+    }
+    .akshay-qr img {
+      width: 0.95in;
+      height: 0.95in;
+    }
+    .akshay-qr-label {
+      font-size: 0.52rem;
+      font-weight: 400;
+      color: var(--medium-gray);
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+
+    /* ===== CTA BAND ===== */
+    .flyer-cta {
+      background: var(--charcoal);
+      padding: 0.22in 0.65in;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.3in;
+    }
+    .cta-left {}
+    .cta-free-badge {
+      display: inline-block;
+      background: var(--golden);
+      color: var(--charcoal);
+      font-size: 0.56rem;
+      font-weight: 500;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      padding: 0.1rem 0.4rem;
+      border-radius: 2px;
+      margin-bottom: 0.1in;
+    }
+    .cta-headline {
+      font-family: var(--font-display);
+      font-size: 1.6rem;
+      font-weight: 600;
+      color: #FAF7F2;
+      line-height: 1.1;
+      margin-bottom: 0.1rem;
+    }
+    .cta-sub-text {
+      font-size: 0.75rem;
+      font-weight: 300;
+      color: var(--sage-light);
+      line-height: 1.5;
+    }
+    .cta-right {
+      text-align: right;
+      flex-shrink: 0;
+    }
+    .cta-url {
+      font-family: var(--font-display);
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: var(--sage-light);
+      display: block;
+      margin-bottom: 0.06rem;
+    }
+    .cta-spots {
+      font-size: 0.56rem;
+      color: var(--medium-gray);
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+    }
+  </style>
+</head>
+<body>
+<div class="flyer">
+
+  <!-- HEADER -->
+  <div class="flyer-header">
+    <svg class="header-spiral" width="270" height="270" viewBox="0 0 270 270" fill="none">
+      <path d="M135 135 C135 112, 157 90, 180 90 C224 90, 246 124, 228 157 C210 192, 164 204, 132 178 C90 148, 100 98, 133 74 C173 44, 234 70, 242 120 C250 172, 208 220, 152 226 C92 232, 42 186, 52 120 C62 52, 126 12, 198 28"
+        stroke="#2E2E2C" stroke-width="1.6" stroke-linecap="round" fill="none"/>
+    </svg>
+
+    <div class="header-pill">
+      <div class="header-pill-dot"></div>
+      <span class="header-pill-text">30-Day Intensive · Bay Area</span>
+    </div>
+    <div class="header-wordmark">Food Jazz</div>
+    <h1 class="header-headline">What if cooking felt like flow state?</h1>
+    <p class="header-sub">30 days. Your kitchen. No recipes — just instinct.</p>
+  </div>
+
+  <!-- OUTCOMES HERO -->
+  <div class="outcomes-hero">
+    <div class="outcomes-eyebrow">After 30 days you will</div>
+    <div class="outcomes-list">
+      <div class="outcome-line">
+        <span class="outcome-marker">✦</span>
+        <span class="outcome-text">Cook any meal without a recipe</span>
+      </div>
+      <div class="outcome-line">
+        <span class="outcome-marker">✦</span>
+        <span class="outcome-text">Host a dinner party and mean it</span>
+      </div>
+      <div class="outcome-line">
+        <span class="outcome-marker">✦</span>
+        <span class="outcome-text">Delete DoorDash for good</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- WAVE -->
+  <div class="wave-divider">
+    <svg viewBox="0 0 816 20" preserveAspectRatio="none" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M0 10 Q60 2, 120 10 Q180 18, 240 10 Q300 2, 360 10 Q420 18, 480 10 Q540 2, 600 10 Q660 18, 720 10 Q770 4, 816 10"
+        stroke="#A8B89D" stroke-width="1.3" stroke-linecap="round" opacity="0.65"/>
+    </svg>
+  </div>
+
+  <!-- HOW IT WORKS -->
+  <div class="flyer-how">
+    <span class="section-label">How it works</span>
+    <ul class="how-list">
+
+      <li class="how-item">
+        <div class="how-num">1</div>
+        <div>
+          <div class="how-title">Akshay comes to your kitchen</div>
+          <div class="how-desc">Weekly in-person sessions in your actual space, with your actual ingredients. Real skills, not theory.</div>
+        </div>
+      </li>
+
+      <li class="how-item">
+        <div class="how-num">2</div>
+        <div>
+          <div class="how-title">You cook one real meal every day</div>
+          <div class="how-desc">Not from a recipe — from instinct. Daily challenges sent to your phone. Feedback and accountability all month.</div>
+        </div>
+      </li>
+
+      <li class="how-item">
+        <div class="how-num">3</div>
+        <div>
+          <div class="how-title">You learn the fundamentals that last</div>
+          <div class="how-desc">Ratios, flavor, intuition. The framework behind every great dish — so you never need a recipe again.</div>
+        </div>
+      </li>
+
+    </ul>
+  </div>
+
+  <!-- WAVE -->
+  <div class="wave-divider">
+    <svg viewBox="0 0 816 20" preserveAspectRatio="none" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M0 10 Q60 18, 120 10 Q180 2, 240 10 Q300 18, 360 10 Q420 2, 480 10 Q540 18, 600 10 Q660 2, 720 10 Q770 16, 816 10"
+        stroke="#A8B89D" stroke-width="1.3" stroke-linecap="round" opacity="0.65"/>
+    </svg>
+  </div>
+
+  <!-- AKSHAY CARD -->
+  <div class="flyer-akshay">
+    <div class="akshay-photo-wrap">
+      <img src="akshay.jpg" alt="Akshay Prabhu">
+    </div>
+    <div class="akshay-text">
+      <div class="akshay-role">Founder · Neuroscientist · Your Cooking Coach</div>
+      <div class="akshay-name">Akshay Prabhu</div>
+      <p class="akshay-bio">I raised $3M, built Foodnome from the ground up, and helped 300+ people transform their home kitchens. I've staged at Chez Panisse, run hundreds of pop-up dinners, and cooked whole lambs over open fire for crowds across the Bay. Now I'm bringing it all to your home.</p>
+    </div>
+    <div class="akshay-qr">
+      <img src="qr-tally.svg" alt="Scan to apply">
+      <span class="akshay-qr-label">Scan to apply</span>
+    </div>
+  </div>
+
+  <!-- CTA -->
+  <div class="flyer-cta">
+    <div class="cta-left">
+      <div class="cta-free-badge">Free for April founding clients</div>
+      <div class="cta-headline">Five spots.<br>Apply if it sounds like you.</div>
+      <p class="cta-sub-text">Tell me about your relationship with food.<br>Takes two minutes.</p>
+    </div>
+    <div class="cta-right">
+      <span class="cta-url">foodjazz.club/coach</span>
+      <span class="cta-spots">5 spots · April 2026 · Bay Area</span>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>

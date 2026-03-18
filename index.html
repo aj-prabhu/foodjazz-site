@@ -3,598 +3,957 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Food Jazz — Learn to Cook Without Recipes</title>
-  <meta name="description" content="1-on-1 culinary coaching in the Bay Area. 30 days to cook intuitively, improvise confidently, and actually enjoy your kitchen.">
+  <title>Food Jazz — Become an Effortless Cook</title>
+  <meta name="description" content="Food Jazz is an online cohort-based course designed to reduce kitchen anxiety by making you an intuitive cook.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300;1,9..40,400&display=swap" rel="stylesheet">
   <style>
-    /* ===== CSS VARIABLES ===== */
+    /* ===== TOKENS ===== */
     :root {
-      --sage: #7A8C6E;
-      --sage-light: #A8B89D;
-      --sage-muted: #D4DDD0;
-      --sage-wash: #EDF2EB;
-      --cream: #FAF7F2;
-      --warm-white: #FEFDFB;
-      --linen: #F3EDE4;
-      --wood: #B8956A;
-      --wood-dark: #8B6D47;
-      --wood-light: #D4BA96;
-      --golden: #D4A843;
-      --golden-light: #F0DBA8;
-      --terracotta: #C47A5A;
-      --charcoal: #2E2E2C;
-      --warm-gray: #5C5A56;
+      --sage:        #7A8C6E;
+      --sage-light:  #A8B89D;
+      --sage-muted:  #D4DDD0;
+      --sage-wash:   #EDF2EB;
+      --cream:       #FAF7F2;
+      --linen:       #F3EDE4;
+      --wood-dark:   #8B6D47;
+      --golden:      #D4A843;
+      --terracotta:  #C47A5A;
+      --charcoal:    #2E2E2C;
+      --warm-gray:   #5C5A56;
       --medium-gray: #9B9892;
-      --font-display: 'Caveat', cursive;
-      --font-body: 'DM Sans', sans-serif;
+      --font-display:'Caveat', cursive;
+      --font-body:   'DM Sans', sans-serif;
+      --max-w:       1100px;
+      --read-w:      680px;
     }
 
     /* ===== RESET ===== */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { font-size: 16px; -webkit-font-smoothing: antialiased; }
-    body {
-      font-family: var(--font-body);
-      background: var(--cream);
-      color: var(--warm-gray);
-      line-height: 1.65;
-      position: relative;
-    }
-
-    /* Grain overlay */
-    body::after {
-      content: '';
-      position: fixed;
-      inset: 0;
-      pointer-events: none;
-      z-index: 1000;
-      opacity: 0.028;
-      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
-      background-size: 128px 128px;
-    }
-
+    html { font-size: 16px; -webkit-font-smoothing: antialiased; scroll-behavior: smooth; }
+    body { font-family: var(--font-body); font-weight: 300; color: var(--warm-gray); background: var(--cream); line-height: 1.7; }
+    img { display: block; max-width: 100%; }
     a { color: inherit; text-decoration: none; }
-    img { max-width: 100%; display: block; }
-
-    /* ===== TYPOGRAPHY ===== */
-    h1 {
-      font-family: var(--font-display);
-      font-size: clamp(3.8rem, 9vw, 7rem);
-      font-weight: 600;
-      color: var(--charcoal);
-      line-height: 1.0;
-      letter-spacing: -0.01em;
-    }
-    h2 {
-      font-family: var(--font-display);
-      font-size: clamp(2.2rem, 5vw, 3.5rem);
-      font-weight: 600;
-      color: var(--charcoal);
-      line-height: 1.15;
-      letter-spacing: -0.01em;
-    }
-    h3 {
-      font-family: var(--font-display);
-      font-size: clamp(1.3rem, 2.5vw, 1.7rem);
-      font-weight: 500;
-      color: var(--wood-dark);
-      line-height: 1.2;
-    }
-    p {
-      font-size: 1rem;
-      font-weight: 300;
-      color: var(--warm-gray);
-      line-height: 1.75;
-    }
-    .label {
-      font-family: var(--font-body);
-      font-size: 0.72rem;
-      font-weight: 500;
-      color: var(--sage);
-      letter-spacing: 0.25em;
-      text-transform: uppercase;
-      display: block;
-      margin-bottom: 0.75rem;
-    }
     strong { font-weight: 500; color: var(--charcoal); }
 
     /* ===== LAYOUT ===== */
-    .container {
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 0 2rem;
-    }
-    .container--narrow {
-      max-width: 680px;
-      margin: 0 auto;
-      padding: 0 2rem;
-    }
-    section { padding: 8rem 0; }
+    .wrap  { max-width: var(--max-w); margin: 0 auto; padding: 0 2rem; }
+    .wrap--narrow { max-width: var(--read-w); margin: 0 auto; padding: 0 2rem; }
+    .section { padding: 5rem 0; }
 
-    /* ===== NAV ===== */
-    nav {
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      background: var(--warm-white);
+    /* ===== TYPE ===== */
+    .display { font-family: var(--font-display); font-weight: 700; color: var(--charcoal); line-height: 1.05; letter-spacing: -0.015em; }
+    .display--xl  { font-size: clamp(3rem, 6.5vw, 5.2rem); }
+    .display--lg  { font-size: clamp(2rem, 4vw, 3.2rem); }
+    .display--md  { font-size: clamp(1.5rem, 2.5vw, 2rem); }
+    .display--sm  { font-size: 1.3rem; }
+    .eyebrow { font-size: 0.6rem; font-weight: 500; letter-spacing: 0.24em; text-transform: uppercase; color: var(--medium-gray); display: block; }
+    .eyebrow--sage  { color: var(--sage); }
+    .eyebrow--light { color: rgba(255,255,255,0.5); }
+    .body-text { font-size: 1rem; font-weight: 300; color: var(--warm-gray); line-height: 1.75; }
+    .body-text + .body-text { margin-top: 1.1rem; }
+    .body-text--lg { font-size: 1.08rem; }
+
+    /* ===== RULE LABEL ===== */
+    .rule-label {
+      display: block;
+      font-size: 0.6rem;
+      font-weight: 500;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+      color: var(--medium-gray);
+      padding-bottom: 0.7rem;
       border-bottom: 1px solid var(--sage-muted);
-      padding: 1rem 2rem;
+      margin-bottom: 2rem;
     }
-    .nav-inner {
-      max-width: 1100px;
-      margin: 0 auto;
-      display: flex;
+
+    /* ===== PILL ===== */
+    .pill {
+      display: inline-flex;
       align-items: center;
-      justify-content: space-between;
+      gap: 0.4rem;
+      border: 1px solid var(--sage-muted);
+      border-radius: 99px;
+      padding: 0.22rem 0.75rem;
+      margin-bottom: 1.5rem;
     }
-    .nav-logo {
-      font-family: var(--font-display);
-      font-size: 1.7rem;
-      font-weight: 700;
-      color: var(--sage);
-    }
-    .nav-links {
-      display: flex;
-      gap: 2rem;
-      align-items: center;
-      list-style: none;
-    }
-    .nav-links a {
-      font-size: 0.88rem;
-      color: var(--warm-gray);
-      transition: color 0.2s;
-    }
-    .nav-links a:hover { color: var(--sage); }
-    .nav-cta { font-weight: 500; color: var(--sage) !important; }
+    .pill__dot { width: 5px; height: 5px; border-radius: 50%; background: var(--sage); flex-shrink: 0; }
+    .pill__text { font-size: 0.6rem; font-weight: 500; color: var(--sage); letter-spacing: 0.16em; text-transform: uppercase; }
+
+    /* ===== WAVE ===== */
+    .wave { line-height: 0; overflow: hidden; }
+    .wave svg { display: block; width: 100%; height: 22px; }
 
     /* ===== BUTTON ===== */
-    .btn-primary {
+    .btn {
       display: inline-block;
-      font-family: var(--font-display);
-      font-size: 1.25rem;
-      font-weight: 600;
-      background: var(--sage);
-      color: white;
-      padding: 14px 40px;
-      border-radius: 50px;
+      font-family: var(--font-body);
+      font-size: 0.875rem;
+      font-weight: 400;
+      padding: 0.8rem 1.75rem;
+      border-radius: 3px;
       border: none;
       cursor: pointer;
-      transition: background 0.25s ease, transform 0.2s ease;
-      text-decoration: none;
+      transition: opacity 0.15s;
+      white-space: nowrap;
     }
-    .btn-primary:hover {
-      background: var(--wood-dark);
-      transform: translateY(-1px);
+    .btn:hover { opacity: 0.85; }
+    .btn--sage  { background: var(--sage); color: var(--cream); }
+    .btn--dark  { background: var(--charcoal); color: var(--cream); }
+
+    /* ===== EMAIL FORM ===== */
+    .email-form { display: flex; gap: 0.5rem; max-width: 440px; flex-wrap: wrap; }
+    .email-form input[type="email"] {
+      flex: 1; min-width: 200px;
+      font-family: var(--font-body); font-size: 0.875rem; font-weight: 300;
+      padding: 0.8rem 1rem;
+      border: 1px solid var(--sage-muted); border-radius: 3px;
+      background: white; color: var(--charcoal); outline: none;
+      transition: border-color 0.15s;
     }
+    .email-form input[type="email"]:focus { border-color: var(--sage); }
+    .email-form input[type="email"]::placeholder { color: var(--medium-gray); }
+    .email-form--dark input[type="email"] {
+      background: rgba(255,255,255,0.08);
+      border-color: rgba(255,255,255,0.2);
+      color: white;
+    }
+    .email-form--dark input[type="email"]::placeholder { color: rgba(255,255,255,0.4); }
+    .email-disclaimer { font-size: 0.72rem; color: var(--medium-gray); margin-top: 0.6rem; }
+    .email-disclaimer--light { color: rgba(255,255,255,0.35); }
+
+    /* ===== NAV ===== */
+    .nav {
+      position: sticky; top: 0; z-index: 100;
+      background: var(--cream);
+      border-bottom: 1px solid var(--sage-muted);
+      padding: 0.9rem 0;
+    }
+    .nav__inner { display: flex; align-items: center; justify-content: space-between; }
+    .nav__wordmark { font-family: var(--font-display); font-size: 1.4rem; font-weight: 600; color: var(--charcoal); font-style: italic; }
+    .nav__wordmark span { color: var(--sage); }
+    .nav__links { display: flex; align-items: center; gap: 1.75rem; }
+    .nav__link { font-size: 0.875rem; color: var(--warm-gray); transition: color 0.15s; }
+    .nav__link:hover { color: var(--charcoal); }
+    .nav__cta { font-size: 0.82rem; background: var(--sage); color: var(--cream) !important; padding: 0.45rem 1.1rem; border-radius: 3px; transition: opacity 0.15s; }
+    .nav__cta:hover { opacity: 0.85; }
 
     /* ===== HERO ===== */
     .hero {
-      padding: 8rem 0 6rem;
-      background: var(--cream);
       position: relative;
+      min-height: 90vh;
+      display: flex;
+      align-items: center;
       overflow: hidden;
+      background: var(--cream);
+      padding: 5rem 0;
     }
-    .hero-breath {
+    /* Background media — anchored right */
+    .hero__bg {
       position: absolute;
-      right: -80px;
-      top: -60px;
-      width: 520px;
-      height: 520px;
-      opacity: 0.55;
-      pointer-events: none;
-    }
-    .hero-inner {
-      position: relative;
-      z-index: 1;
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 0 2rem;
-    }
-    .hero-eyebrow {
-      display: flex;
-      align-items: center;
-      gap: 1.5rem;
-      margin-bottom: 2rem;
-    }
-    .hero-eyebrow .label { margin-bottom: 0; }
-    .hero-rule {
-      width: 40px;
-      height: 1px;
-      background: var(--sage-muted);
-    }
-    .hero h1 {
-      max-width: 820px;
-      margin-bottom: 1.75rem;
-    }
-    .hero-sub {
-      font-size: 1.15rem;
-      font-weight: 300;
-      color: var(--warm-gray);
-      max-width: 480px;
-      line-height: 1.7;
-      margin-bottom: 2.5rem;
-    }
-    .hero-location {
-      margin-top: 1.5rem;
-      font-size: 0.78rem;
-      font-weight: 400;
-      color: var(--medium-gray);
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-    }
-
-    /* ===== PROBLEM SECTION ===== */
-    .section-problem {
-      background: var(--sage-wash);
-      padding: 7rem 0;
-    }
-    .section-problem h2 { margin: 0.5rem 0 1.75rem; }
-    .section-problem p + p { margin-top: 1.25rem; }
-
-    /* ===== WHAT IS FOOD JAZZ ===== */
-    .section-what {
-      background: var(--cream);
-      padding: 7rem 0;
-    }
-    .what-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 6rem;
-      align-items: center;
-      margin-top: 4rem;
-    }
-    .what-headline {
-      font-family: var(--font-display);
-      font-size: clamp(1.8rem, 3.5vw, 2.6rem);
-      font-weight: 600;
-      color: var(--charcoal);
-      line-height: 1.15;
-      letter-spacing: -0.01em;
-      margin-bottom: 1.5rem;
-    }
-    .what-body p + p { margin-top: 1.1rem; }
-    .what-visual {
-      display: flex;
-      flex-direction: column;
-      gap: 1.5rem;
-    }
-    .what-item {
-      padding: 1.5rem 0;
-      border-top: 1px solid var(--sage-muted);
-    }
-    .what-item:last-child { border-bottom: 1px solid var(--sage-muted); }
-    .what-item h3 { margin-bottom: 0.4rem; }
-    .what-item p { font-size: 0.95rem; }
-
-    /* ===== HOW IT WORKS ===== */
-    .section-how {
-      background: var(--sage-wash);
-      padding: 7rem 0;
-    }
-    .how-header {
-      max-width: 560px;
-      margin-bottom: 4rem;
-    }
-    .how-header h2 { margin: 0.5rem 0 1rem; }
-    .steps {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 0;
-    }
-    .step {
-      padding: 2rem 2.5rem 2rem 0;
-      border-right: 1px solid var(--sage-muted);
-    }
-    .step:last-child { border-right: none; padding-right: 0; padding-left: 2.5rem; }
-    .step:nth-child(2) { padding-left: 2.5rem; }
-    .step-num {
-      font-family: var(--font-display);
-      font-size: 3.5rem;
-      font-weight: 700;
-      color: var(--sage-muted);
-      line-height: 1;
-      margin-bottom: 1rem;
-    }
-    .step h3 { margin-bottom: 0.5rem; }
-    .step p { font-size: 0.95rem; }
-
-    /* ===== ABOUT (CHARCOAL) ===== */
-    .section-about {
-      background: var(--charcoal);
-      padding: 7rem 0;
-    }
-    .section-about .label { color: var(--sage-light); }
-    .about-grid {
-      display: grid;
-      grid-template-columns: 180px 1fr;
-      gap: 5rem;
-      align-items: start;
-      margin-top: 2.5rem;
-    }
-    .about-photo-wrap {
-      width: 170px;
-      height: 218px;
-      border-radius: 4px;
-      border: 1.5px solid var(--golden);
-      overflow: hidden;
-      flex-shrink: 0;
-      box-shadow: 4px 4px 0 rgba(212, 168, 67, 0.2);
-    }
-    .about-photo-wrap img {
-      width: 100%;
-      height: 100%;
+      inset: 0;
+      width: 100%; height: 100%;
       object-fit: cover;
-      object-position: center 8%;
+      object-position: right center;
+      z-index: 0;
     }
-    .about-role {
-      font-size: 0.72rem;
-      font-weight: 500;
-      color: var(--sage-light);
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      margin-bottom: 0.6rem;
+    /* Cream fade — left half solid, fades out by 55% */
+    .hero::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        to right,
+        rgba(250,247,242,0.98) 0%,
+        rgba(250,247,242,0.97) 35%,
+        rgba(250,247,242,0.75) 50%,
+        rgba(250,247,242,0.15) 65%,
+        rgba(250,247,242,0) 100%
+      );
+      z-index: 1;
     }
-    .about-name {
+    .hero__text {
+      position: relative;
+      z-index: 2;
+      max-width: 48%;
+    }
+    .hero__headline { margin-bottom: 0.2rem; }
+    .hero__sub-headline {
       font-family: var(--font-display);
-      font-size: clamp(2.2rem, 4vw, 3rem);
-      font-weight: 600;
-      color: var(--sage-light);
-      line-height: 1.05;
-      margin-bottom: 1.5rem;
-    }
-    .about-bio {
-      font-size: 1rem;
-      font-weight: 300;
-      color: rgba(243, 237, 228, 0.82);
-      line-height: 1.8;
-      max-width: 580px;
-    }
-    .about-bio strong { font-weight: 500; color: var(--linen); }
-    .about-bio p + p { margin-top: 1.1rem; }
-
-    /* ===== CTA ===== */
-    .section-cta {
-      background: var(--cream);
-      padding: 9rem 0;
-      text-align: center;
-    }
-    .cta-eyebrow {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 1rem;
+      font-size: clamp(1.1rem, 2vw, 1.5rem);
+      font-weight: 400;
+      color: var(--sage);
+      font-style: italic;
       margin-bottom: 1.25rem;
     }
-    .cta-eyebrow .label { margin-bottom: 0; }
-    .cta-rule {
-      width: 40px;
-      height: 1px;
-      background: var(--sage-muted);
-    }
-    .section-cta h2 { margin: 0 0 1rem; }
-    .cta-sub {
-      font-size: 1.05rem;
-      color: var(--warm-gray);
-      margin: 0 auto 2.75rem;
-      max-width: 460px;
-      line-height: 1.65;
-    }
-    .cta-fine {
-      margin-top: 1.5rem;
-      font-size: 0.78rem;
-      color: var(--medium-gray);
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-    }
-    .sparkle { color: var(--golden); }
+    .hero__body { margin-bottom: 2rem; }
+    /* Desktop: video. Mobile: image */
+    .hero__image-mobile { display: none; }
 
-    /* ===== FOOTER ===== */
-    footer {
-      background: var(--linen);
-      padding: 4rem 2rem;
+    /* ===== SECTION BACKGROUNDS ===== */
+    .bg-cream  { background: var(--cream); }
+    .bg-wash   { background: var(--sage-wash); }
+    .bg-linen  { background: var(--linen); }
+    .bg-dark   { background: var(--charcoal); }
+
+    /* ===== PROBLEM ===== */
+    .problem__intro { text-align: center; max-width: 600px; margin: 0 auto 3rem; }
+    .problem__grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; }
+    .problem__card {
+      background: white;
+      border: 1px solid var(--sage-muted);
+      border-radius: 4px;
+      padding: 1.75rem 1.5rem;
     }
-    .footer-inner {
-      max-width: 1100px;
-      margin: 0 auto;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 1rem;
+    .problem__card-icon { margin-bottom: 1rem; }
+    .problem__card-title { font-family: var(--font-display); font-size: 1.25rem; font-weight: 600; color: var(--charcoal); margin-bottom: 0.85rem; }
+    .problem__tags { display: flex; flex-direction: column; gap: 0.45rem; }
+    .problem__tag { display: flex; align-items: baseline; gap: 0.5rem; font-size: 0.875rem; font-weight: 300; color: var(--warm-gray); }
+    .problem__tag-dash { color: var(--terracotta); flex-shrink: 0; }
+
+    /* ===== MINDSET ===== */
+    .mindset__grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2.5rem; margin-top: 2.5rem; }
+    .mindset__item { display: flex; flex-direction: column; gap: 0.6rem; }
+    .mindset__icon { width: 40px; height: 40px; margin-bottom: 0.25rem; }
+    .mindset__title { font-family: var(--font-display); font-size: 1.2rem; font-weight: 600; color: var(--charcoal); line-height: 1.2; }
+    .mindset__desc { font-size: 0.9rem; font-weight: 300; color: var(--warm-gray); line-height: 1.65; }
+
+    /* ===== BACKBURNER ===== */
+    .backburner { padding: 5rem 0; }
+    .backburner__inner { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: start; }
+    .backburner__headline { margin-bottom: 1.5rem; }
+    .backburner__cta { margin-top: 2rem; }
+    .backburner__cta-text {
+      font-family: var(--font-display);
+      font-size: 1.35rem;
+      font-weight: 600;
+      color: var(--sage);
+      line-height: 1.25;
     }
-    .footer-logo {
+
+    /* ===== ACCOUNTABILITY ===== */
+    .accountability { padding: 5rem 0; text-align: center; }
+    .accountability__headline {
+      font-family: var(--font-display);
+      font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+      font-weight: 700;
+      color: var(--charcoal);
+      font-style: italic;
+      line-height: 1.1;
+      margin-bottom: 2rem;
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .accountability__key {
       font-family: var(--font-display);
       font-size: 1.5rem;
       font-weight: 700;
-      color: var(--sage);
+      color: var(--charcoal);
+      margin: 1.5rem 0 1rem;
     }
-    .footer-links {
+
+    /* ===== THREE COOKS ===== */
+    .cooks__grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; margin-top: 2.5rem; }
+    .cook__card { padding: 1.75rem; border-radius: 4px; }
+    .cook__card--plain { background: white; border: 1px solid var(--sage-muted); }
+    .cook__card--highlight { background: var(--sage); }
+    .cook__tag { display: inline-block; background: var(--golden); color: var(--charcoal); font-size: 0.55rem; font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase; padding: 0.15rem 0.45rem; border-radius: 2px; margin-bottom: 0.6rem; }
+    .cook__type { font-size: 0.6rem; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; margin-bottom: 0.5rem; }
+    .cook__type--plain  { color: var(--medium-gray); }
+    .cook__type--light  { color: rgba(255,255,255,0.65); }
+    .cook__name { font-family: var(--font-display); font-size: 1.6rem; font-weight: 700; line-height: 1.1; margin-bottom: 0.75rem; }
+    .cook__name--plain  { color: var(--charcoal); }
+    .cook__name--light  { color: white; }
+    .cook__desc { font-size: 0.875rem; font-weight: 300; line-height: 1.6; }
+    .cook__desc--plain  { color: var(--warm-gray); }
+    .cook__desc--light  { color: rgba(255,255,255,0.85); }
+
+    /* ===== BENEFIT ROW ===== */
+    .benefit-row { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; padding: 5rem 0; }
+    .benefit-row--flip { }
+    .benefit-row__stat { font-family: var(--font-display); font-size: 4rem; font-weight: 700; color: var(--golden); line-height: 1; margin-bottom: 0.5rem; }
+    .benefit-row__title { margin-bottom: 0.5rem; }
+    .benefit-row__sub { font-family: var(--font-display); font-size: 1rem; font-weight: 500; color: var(--sage); font-style: italic; margin-bottom: 1rem; }
+    .benefit-row__assertion { font-family: var(--font-display); font-size: 1.1rem; font-weight: 600; color: var(--charcoal); margin-bottom: 0.75rem; }
+    .benefit-row__visual {
       display: flex;
-      gap: 2rem;
-      list-style: none;
+      align-items: center;
+      justify-content: center;
+      height: 260px;
+      border-radius: 4px;
     }
-    .footer-links a {
-      font-size: 0.85rem;
-      color: var(--warm-gray);
-      transition: color 0.2s;
+    .benefit-row__visual--wash { background: var(--sage-wash); }
+    .benefit-row__visual--linen { background: var(--linen); }
+    .benefit-row__visual--cream { background: var(--cream); border: 1px solid var(--sage-muted); }
+    .benefit-row__visual svg { opacity: 0.9; }
+
+    /* ===== AKSHAY ===== */
+    .akshay__inner { display: grid; grid-template-columns: 200px 1fr; gap: 4rem; align-items: start; }
+    .akshay__photo { width: 100%; aspect-ratio: 3/4; object-fit: cover; object-position: center 8%; border-radius: 4px; border: 1.5px solid var(--golden); }
+    .akshay__role { font-size: 0.62rem; font-weight: 500; color: var(--sage); letter-spacing: 0.22em; text-transform: uppercase; margin-bottom: 0.5rem; }
+    .akshay__name { margin-bottom: 0.25rem; }
+    .akshay__sub { font-family: var(--font-display); font-size: 1.2rem; font-weight: 500; color: var(--sage); font-style: italic; margin-bottom: 1.25rem; }
+    .akshay__mission { font-family: var(--font-display); font-size: 1.15rem; font-weight: 600; color: var(--sage); line-height: 1.3; margin-top: 1.5rem; padding-top: 1.5rem; border-top: 1px solid #e0d9cf; }
+
+    /* ===== INCLUDED ===== */
+    .included__list { display: flex; flex-direction: column; gap: 0.65rem; margin-top: 2rem; }
+    .included__item { display: flex; align-items: flex-start; gap: 0.85rem; padding: 0.9rem 1.1rem; background: white; border: 1px solid var(--sage-muted); border-radius: 3px; }
+    .included__check { flex-shrink: 0; margin-top: 2px; }
+    .included__text { font-size: 0.9rem; font-weight: 300; color: var(--warm-gray); line-height: 1.5; }
+    .included__item--bonus { background: var(--linen); border-color: #e0d9cf; }
+    .included__item--guarantee { background: rgba(212,168,67,0.06); border-color: var(--golden); }
+    .included__form-wrap { margin-top: 3rem; padding-top: 3rem; border-top: 1px solid var(--sage-muted); }
+    .included__form-label {
+      font-family: var(--font-display);
+      font-size: 1.6rem;
+      font-weight: 600;
+      color: var(--charcoal);
+      margin-bottom: 0.25rem;
     }
-    .footer-links a:hover { color: var(--sage); }
-    .footer-copy {
-      font-size: 0.75rem;
-      color: var(--medium-gray);
-      width: 100%;
-      margin-top: 1rem;
-      padding-top: 1rem;
-      border-top: 1px solid var(--sage-muted);
+    .included__form-sub { font-size: 0.9rem; color: var(--warm-gray); margin-bottom: 1.25rem; }
+
+    /* ===== TENETS ===== */
+    .tenets__grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.25rem; margin-top: 2.5rem; }
+    .tenet {
+      padding: 1.5rem;
+      background: white;
+      border: 1px solid var(--sage-muted);
+      border-radius: 4px;
     }
+    .tenet__header { display: flex; align-items: baseline; gap: 0.75rem; margin-bottom: 0.5rem; }
+    .tenet__num { font-family: var(--font-display); font-size: 1.5rem; font-weight: 700; color: var(--sage-muted); flex-shrink: 0; line-height: 1; }
+    .tenet__title { font-family: var(--font-display); font-size: 1.15rem; font-weight: 600; color: var(--charcoal); line-height: 1.2; }
+    .tenet__desc { font-size: 0.85rem; font-weight: 300; color: var(--warm-gray); line-height: 1.6; padding-left: 2.25rem; }
+
+    /* ===== REFUND ===== */
+    .refund { padding: 5rem 0; }
+    .refund__card {
+      background: var(--linen);
+      border: 1px solid #e0d9cf;
+      border-radius: 6px;
+      padding: 3rem;
+      max-width: 780px;
+      margin: 0 auto;
+    }
+    .refund__icon { margin-bottom: 1.5rem; }
+    .refund__headline { margin-bottom: 1.25rem; font-style: italic; }
+
+    /* ===== CLOSING CTA (charcoal) ===== */
+    .cta-dark { padding: 6rem 0; text-align: center; }
+    .cta-dark .display { color: var(--cream); margin-bottom: 0.75rem; }
+    .cta-dark .body-text { color: rgba(250,247,242,0.65); max-width: 500px; margin: 0 auto 2rem; }
+    .cta-dark .email-form { margin: 0 auto; justify-content: center; }
+    .cta-dark .pill { border-color: rgba(255,255,255,0.15); margin-left: auto; margin-right: auto; }
+    .cta-dark .pill__dot { background: var(--sage-light); }
+    .cta-dark .pill__text { color: var(--sage-light); }
+
+    /* ===== ONE LAST THING ===== */
+    .one-last { padding: 5rem 0; }
+    .one-last__inner { max-width: var(--read-w); margin: 0 auto; text-align: center; }
+    .one-last__headline { font-style: italic; margin-bottom: 2rem; }
+    .one-last__final {
+      font-family: var(--font-display);
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--charcoal);
+      margin: 2rem 0 0.75rem;
+      font-style: italic;
+    }
+    .one-last__question {
+      font-family: var(--font-display);
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--sage);
+      margin-top: 1.5rem;
+    }
+
+    /* ===== FOOTER ===== */
+    .footer { background: var(--charcoal); border-top: 1px solid rgba(255,255,255,0.06); padding: 1.25rem 0; }
+    .footer__inner { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 0.5rem; }
+    .footer__wordmark { font-family: var(--font-display); font-size: 1.1rem; font-weight: 600; color: var(--sage-light); font-style: italic; }
+    .footer__links { display: flex; gap: 1.5rem; }
+    .footer__link { font-size: 0.8rem; color: var(--medium-gray); transition: color 0.15s; }
+    .footer__link:hover { color: var(--sage-light); }
+    .footer__cities { font-size: 0.6rem; color: var(--medium-gray); letter-spacing: 0.14em; text-transform: uppercase; }
 
     /* ===== RESPONSIVE ===== */
     @media (max-width: 900px) {
-      .what-grid { grid-template-columns: 1fr; gap: 3rem; }
-      .steps { grid-template-columns: 1fr; }
-      .step, .step:last-child, .step:nth-child(2) {
-        border-right: none;
-        border-bottom: 1px solid var(--sage-muted);
-        padding: 2rem 0;
+      /* Hero: hide video, show static image as background */
+      .hero__bg { display: none; }
+      .hero__image-mobile {
+        display: block;
+        position: absolute;
+        inset: 0;
+        width: 100%; height: 100%;
+        object-fit: cover;
+        object-position: center right;
+        z-index: 0;
       }
-      .step:last-child { border-bottom: none; }
+
+      /* Grids → single column */
+      .problem__grid,
+      .mindset__grid,
+      .cooks__grid,
+      .tenets__grid { grid-template-columns: 1fr; }
+
+      /* Benefit rows → stack */
+      .benefit-row { grid-template-columns: 1fr; gap: 2rem; padding: 3.5rem 0; }
+      .benefit-row__visual { height: 200px; }
+
+      /* Backburner → stack */
+      .backburner__inner { grid-template-columns: 1fr; gap: 2.5rem; }
+
+      /* Akshay → stack */
+      .akshay__inner { grid-template-columns: 1fr; gap: 2rem; }
+      .akshay__photo { max-width: 180px; }
     }
-    @media (max-width: 768px) {
-      .about-grid { grid-template-columns: 1fr; gap: 2.5rem; }
-      .nav-links { display: none; }
-      section { padding: 5rem 0; }
-      .hero { padding: 5rem 0 4rem; }
+
+    @media (max-width: 600px) {
+      .nav__links { display: none; }
+      .section { padding: 3.5rem 0; }
+      .email-form { flex-direction: column; }
+      .cta-dark .email-form { flex-direction: column; align-items: stretch; max-width: 100%; }
+      .refund__card { padding: 2rem 1.5rem; }
+      .wrap { padding: 0 1.25rem; }
+      .wrap--narrow { padding: 0 1.25rem; }
     }
   </style>
 </head>
 <body>
 
   <!-- NAV -->
-  <nav>
-    <div class="nav-inner">
-      <a href="/" class="nav-logo">Food Jazz</a>
-      <ul class="nav-links">
-        <li><a href="/coach.html">Coaching</a></li>
-        <li><a href="https://tally.so/r/68kgMB" class="nav-cta">Apply for Coaching →</a></li>
-      </ul>
+  <nav class="nav">
+    <div class="wrap">
+      <div class="nav__inner">
+        <a href="/" class="nav__wordmark">Food <span>Jazz</span></a>
+        <div class="nav__links">
+          <a href="/coach.html" class="nav__link">1-on-1 Coaching</a>
+          <a href="#waitlist" class="nav__cta">Join Waitlist</a>
+        </div>
+      </div>
     </div>
   </nav>
 
   <!-- HERO -->
   <section class="hero">
-    <!-- Breath circles motif -->
-    <svg class="hero-breath" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-      <circle cx="62" cy="58" r="48" stroke="#D4DDD0" stroke-width="0.6" opacity="0.3"/>
-      <circle cx="60" cy="60" r="30" stroke="#A8B89D" stroke-width="0.7" opacity="0.35"/>
-      <circle cx="58" cy="62" r="12" stroke="#7A8C6E" stroke-width="0.5" opacity="0.3"/>
-      <circle cx="57" cy="63" r="3" fill="#7A8C6E" opacity="0.25"/>
-    </svg>
-    <div class="hero-inner">
-      <div class="hero-eyebrow">
-        <span class="hero-rule"></span>
-        <span class="label">1-on-1 Cooking Coaching · Bay Area</span>
-        <span class="hero-rule"></span>
-      </div>
-      <h1>Your kitchen should feel like your favorite place.</h1>
-      <p class="hero-sub">Most people cook the same five things on rotation — or don't cook at all. Food Jazz changes that. 30 days to cook with confidence, without a recipe in sight.</p>
-      <a href="https://tally.so/r/68kgMB" class="btn-primary">Apply for Coaching</a>
-      <p class="hero-location">San Francisco · Oakland · Berkeley</p>
-    </div>
-  </section>
 
-  <!-- PROBLEM → TRANSFORMATION -->
-  <section class="section-problem">
-    <div class="container--narrow">
-      <span class="label">Sound familiar?</span>
-      <h2>You open the fridge, stare at it, and close it again.</h2>
-      <p>Maybe you rely on the same few dishes. Maybe you only cook when you have a recipe in hand. Maybe you've convinced yourself you're just "not a cook."</p>
-      <p>None of that is permanent. Cooking is a skill, not a talent. You just never learned to think like one.</p>
-      <p>Food Jazz isn't about techniques or recipes. It's about building a relationship with your kitchen that actually lasts.</p>
-    </div>
-  </section>
+    <!-- Desktop: video background -->
+    <video class="hero__bg" autoplay muted loop playsinline>
+      <source src="hero-loop.mp4" type="video/mp4">
+    </video>
+    <!-- Mobile: static image background -->
+    <img class="hero__image-mobile" src="hero.png" alt="">
 
-  <!-- WHAT IS FOOD JAZZ -->
-  <section class="section-what">
-    <div class="container">
-      <span class="label">The Approach</span>
-      <div class="what-grid">
-        <div class="what-body">
-          <p class="what-headline">Intuition over recipes. Principles over rules.</p>
-          <p>Food Jazz is named after the way jazz musicians play — not reading notes, but improvising freely within a structure they understand deeply. That's what cooking should feel like.</p>
-          <p>Once you understand how flavors work and why ratios matter, you can walk into any kitchen with any ingredients and make something worth eating. No app, no recipe, no stress.</p>
-          <p>It's a complete reset of how you relate to food.</p>
+    <div class="wrap">
+      <div class="hero__text">
+        <div class="pill">
+          <div class="pill__dot"></div>
+          <span class="pill__text">Online Cohort · Open Enrollment</span>
         </div>
-        <div class="what-visual">
-          <div class="what-item">
-            <h3>Not a class. A coaching relationship.</h3>
-            <p>Akshay comes to your kitchen, works with your actual ingredients, and builds skills that stick.</p>
+        <h1 class="display display--xl hero__headline">Become an Effortless Cook</h1>
+        <p class="hero__sub-headline">in just 7 weeks</p>
+        <p class="body-text body-text--lg hero__body">Food Jazz is an online cohort-based course designed to reduce kitchen anxiety by making you an intuitive cook. You have good taste — Food Jazz will help you unlock it so you can more easily translate what's in your mind to your plate. Unlike other cooking classes, you won't learn passively. You'll cook for yourself every day, host dinner parties, build lifelong friendships, and leave with a new perspective on creative self-sufficiency.</p>
+        <div id="waitlist">
+          <p style="font-size:0.72rem; font-weight:500; letter-spacing:0.18em; text-transform:uppercase; color:var(--medium-gray); margin-bottom:0.5rem;">Join the waitlist for our next cohort</p>
+          <p style="font-size:0.875rem; color:var(--warm-gray); margin-bottom:1rem;">And be the first to know when we open enrollment.</p>
+          <form class="email-form" onsubmit="return false;">
+            <input type="email" placeholder="Email address">
+            <button type="submit" class="btn btn--sage">Join Waitlist</button>
+          </form>
+          <p class="email-disclaimer">I will never spam or sell your info. Ever.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WAVE -->
+  <div class="wave bg-cream"><svg viewBox="0 0 1200 22" preserveAspectRatio="none" fill="none"><path d="M0 11 Q150 3, 300 11 Q450 19, 600 11 Q750 3, 900 11 Q1050 19, 1200 11" stroke="#A8B89D" stroke-width="1.4" stroke-linecap="round" opacity="0.55"/></svg></div>
+
+  <!-- PROBLEM -->
+  <section class="section bg-wash">
+    <div class="wrap">
+      <div class="problem__intro">
+        <span class="rule-label" style="max-width:220px; margin:0 auto 0.75rem;">The Problem</span>
+        <h2 class="display display--lg" style="margin-bottom:0.6rem;">Are you dissatisfied with your current food options?</h2>
+        <p class="body-text">You are not alone.</p>
+      </div>
+      <div class="problem__grid">
+
+        <div class="problem__card">
+          <div class="problem__card-icon">
+            <svg width="38" height="38" viewBox="0 0 38 38" fill="none">
+              <rect x="7" y="11" width="24" height="20" rx="2" stroke="#7A8C6E" stroke-width="1.4" fill="rgba(168,184,157,0.1)"/>
+              <path d="M13 11 V8 Q19 4, 25 8 V11" stroke="#D4A843" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+              <line x1="7" y1="18" x2="31" y2="18" stroke="#7A8C6E" stroke-width="1.2" opacity="0.5"/>
+              <circle cx="19" cy="24" r="3" stroke="#C47A5A" stroke-width="1.2" fill="none"/>
+            </svg>
           </div>
-          <div class="what-item">
-            <h3>30 days of real cooking.</h3>
-            <p>One meal a day, every day. That's how habits form. Not once a week on the weekend.</p>
+          <div class="problem__card-title">Meal kits are</div>
+          <div class="problem__tags">
+            <div class="problem__tag"><span class="problem__tag-dash">—</span>Too specific</div>
+            <div class="problem__tag"><span class="problem__tag-dash">—</span>Wasteful packaging</div>
+            <div class="problem__tag"><span class="problem__tag-dash">—</span>Don't really teach you much</div>
           </div>
-          <div class="what-item">
-            <h3>The results outlast the program.</h3>
-            <p>You don't need Akshay after 30 days. That's the point.</p>
+        </div>
+
+        <div class="problem__card">
+          <div class="problem__card-icon">
+            <svg width="38" height="38" viewBox="0 0 38 38" fill="none">
+              <rect x="4" y="15" width="22" height="14" rx="2" stroke="#7A8C6E" stroke-width="1.4" fill="rgba(168,184,157,0.1)"/>
+              <path d="M26 19 L32 19 L34 23 L34 29 L26 29" stroke="#7A8C6E" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+              <circle cx="11" cy="30" r="2.5" stroke="#D4A843" stroke-width="1.3" fill="none"/>
+              <circle cx="29" cy="30" r="2.5" stroke="#D4A843" stroke-width="1.3" fill="none"/>
+              <path d="M9 15 L9 11 Q9 9, 11 9 L21 9 Q23 9, 23 11 L23 15" stroke="#C47A5A" stroke-width="1.2" fill="none" stroke-linecap="round"/>
+            </svg>
           </div>
+          <div class="problem__card-title">Restaurant Delivery is</div>
+          <div class="problem__tags">
+            <div class="problem__tag"><span class="problem__tag-dash">—</span>Expensive</div>
+            <div class="problem__tag"><span class="problem__tag-dash">—</span>Impersonal</div>
+            <div class="problem__tag"><span class="problem__tag-dash">—</span>Food is cold most of the time</div>
+          </div>
+        </div>
+
+        <div class="problem__card">
+          <div class="problem__card-icon">
+            <svg width="38" height="38" viewBox="0 0 38 38" fill="none">
+              <path d="M10 30 Q10 21, 19 17 Q28 21, 28 30" stroke="#7A8C6E" stroke-width="1.4" stroke-linecap="round" fill="rgba(168,184,157,0.08)"/>
+              <line x1="8" y1="30" x2="30" y2="30" stroke="#7A8C6E" stroke-width="1.4" stroke-linecap="round"/>
+              <path d="M19 17 L19 10" stroke="#D4A843" stroke-width="1.4" stroke-linecap="round"/>
+              <path d="M15 12 Q19 9, 23 12" stroke="#D4A843" stroke-width="1.2" stroke-linecap="round" fill="none"/>
+              <circle cx="24" cy="22" r="1.5" fill="#C47A5A" opacity="0.7"/>
+              <circle cx="14" cy="24" r="1" fill="#C47A5A" opacity="0.5"/>
+            </svg>
+          </div>
+          <div class="problem__card-title">Home Cooking is</div>
+          <div class="problem__tags">
+            <div class="problem__tag"><span class="problem__tag-dash">—</span>Overwhelming</div>
+            <div class="problem__tag"><span class="problem__tag-dash">—</span>Time consuming</div>
+            <div class="problem__tag"><span class="problem__tag-dash">—</span>Planning for recipes is stressful</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- WAVE -->
+  <div class="wave bg-wash"><svg viewBox="0 0 1200 22" preserveAspectRatio="none" fill="none"><path d="M0 11 Q150 19, 300 11 Q450 3, 600 11 Q750 19, 900 11 Q1050 3, 1200 11" stroke="#A8B89D" stroke-width="1.4" stroke-linecap="round" opacity="0.55"/></svg></div>
+
+  <!-- MINDSET -->
+  <section class="section bg-cream">
+    <div class="wrap">
+      <span class="rule-label">The Solution</span>
+      <h2 class="display display--lg" style="max-width:540px; margin-bottom:0.5rem;">There is a better way.</h2>
+      <p class="body-text" style="max-width:560px; margin-bottom:0;">The Food Jazz Mindset</p>
+      <div class="mindset__grid">
+        <div class="mindset__item">
+          <svg class="mindset__icon" width="40" height="40" viewBox="0 0 40 40" fill="none">
+            <path d="M20 20 C20 16.5, 23 13, 26.5 13 C31.5 13, 33.5 17.5, 32 22 C30.5 26.5, 26 28, 23 25 C19 21.5, 20 16.5, 23 14 C27 11, 33 13.5, 34 19" stroke="#7A8C6E" stroke-width="1.9" stroke-linecap="round" fill="none"/>
+          </svg>
+          <div class="mindset__title">You can cook meals faster than DoorDash delivers</div>
+          <p class="mindset__desc">When you know your kitchen, a real meal takes 20 minutes. No waiting, no tracking, no cold food.</p>
+        </div>
+        <div class="mindset__item">
+          <svg class="mindset__icon" width="40" height="40" viewBox="0 0 40 40" fill="none">
+            <path d="M20 37 C14 37, 8 31, 8 24 C8 17, 13.5 13, 16.5 10 C18 8, 16.5 5.5, 20 5.5 C23.5 5.5, 22 8, 23.5 10 C26.5 13, 32 17, 32 24 C32 31, 26 37, 20 37Z" fill="rgba(212,168,67,0.12)" stroke="#D4A843" stroke-width="1.5" stroke-linejoin="round"/>
+            <path d="M20 31 C17.5 31, 15.5 28.5, 15.5 25 C15.5 22, 17.5 20, 20 18 C22.5 20, 24.5 22, 24.5 25 C24.5 28.5, 22.5 31, 20 31Z" fill="rgba(196,122,90,0.3)" stroke="#C47A5A" stroke-width="1.2"/>
+          </svg>
+          <div class="mindset__title">Cooking is relaxing and empowering</div>
+          <p class="mindset__desc">When you stop following instructions and start improvising, the kitchen stops being stressful and starts being yours.</p>
+        </div>
+        <div class="mindset__item">
+          <svg class="mindset__icon" width="40" height="40" viewBox="0 0 40 40" fill="none">
+            <circle cx="20" cy="20" r="14" stroke="#7A8C6E" stroke-width="1.3" fill="rgba(168,184,157,0.08)"/>
+            <path d="M13 20 L18 25 L27 14" stroke="#7A8C6E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <div class="mindset__title">You are a Kitchen Magician — impressing your community and even yourself</div>
+          <p class="mindset__desc">Open the fridge, see what's there, make something great. That's the goal — and it's completely learnable.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- HOW IT WORKS -->
-  <section class="section-how">
-    <div class="container">
-      <div class="how-header">
-        <span class="label">How It Works</span>
-        <h2>Simple. Intensive. In your kitchen.</h2>
-        <p>No commute, no classroom. We work in your actual space, with your actual stuff.</p>
-      </div>
-      <div class="steps">
-        <div class="step">
-          <div class="step-num">01</div>
-          <h3>Apply &amp; connect</h3>
-          <p>Fill out a short questionnaire about your relationship with food. If it seems like a good fit, Akshay reaches out.</p>
-        </div>
-        <div class="step">
-          <div class="step-num">02</div>
-          <h3>30 days of cooking</h3>
-          <p>Weekly in-person sessions at your place. Daily challenges sent to your phone. Feedback and accountability all month.</p>
-        </div>
-        <div class="step">
-          <div class="step-num">03</div>
-          <h3>Cook without a net</h3>
-          <p>By the end of the month, you cook one real meal a day — from scratch, without looking anything up.</p>
-        </div>
-      </div>
-    </div>
-  </section>
+  <!-- WAVE -->
+  <div class="wave bg-cream"><svg viewBox="0 0 1200 22" preserveAspectRatio="none" fill="none"><path d="M0 11 Q150 3, 300 11 Q450 19, 600 11 Q750 3, 900 11 Q1050 19, 1200 11" stroke="#A8B89D" stroke-width="1.4" stroke-linecap="round" opacity="0.55"/></svg></div>
 
-  <!-- ABOUT AKSHAY -->
-  <section class="section-about">
-    <div class="container">
-      <span class="label">Your Coach</span>
-      <div class="about-grid">
-        <div class="about-photo-wrap">
-          <img src="akshay.jpg" alt="Akshay Prabhu">
+  <!-- BACKBURNER -->
+  <section class="backburner bg-wash">
+    <div class="wrap">
+      <div class="backburner__inner">
+        <div>
+          <span class="rule-label">The Reality</span>
+          <h2 class="display display--lg backburner__headline">Take Cooking off the Back-burner</h2>
+          <p class="body-text">You are probably here because you haven't found a way to fit cooking into your busy schedule. Maybe you've even convinced yourself that cooking isn't important. (Hint: it will transform your life in all the good ways.)</p>
+          <p class="body-text">Guess what? It's not your fault. Modern society makes it almost impossible to get your bearings in the kitchen. And before you know it you feel like you are in too deep to ever learn.</p>
+          <p class="body-text">Not everyone can go to culinary school. Not everyone has a grandma Yoda to teach them the ways of the kitchen. In a world filled with more cookbooks, TikTok recipe tutorials and dumpling workshops than stars in the Milky Way, it's natural that you would give up.</p>
         </div>
         <div>
-          <p class="about-role">Founder · Neuroscientist · Cooking Coach</p>
-          <p class="about-name">Akshay Prabhu</p>
-          <div class="about-bio">
-            <p>I'm the founder of <strong>Foodnome</strong>, which helped pass California's home restaurant law and put hundreds of home cooks in business. I've staged at <strong>Chez Panisse</strong>, run pop-up dinners across the Bay, and cooked whole lambs over open fire.</p>
-            <p>Food has been my research subject for 20 years — how it works, what it means to people, why some people feel at home in a kitchen and others don't. Food Jazz is where all of that lands.</p>
+          <p class="body-text">There is a better way. Food Jazz is the fundamental cooking education everyone needs. It is the easiest way to systematically make sense of the madness and take back control of your diet.</p>
+          <p class="body-text">You deserve to eat well. And it doesn't need to be hard, stressful, or time consuming.</p>
+          <div class="backburner__cta">
+            <p class="backburner__cta-text">Let's take cooking off your plate.</p>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- CTA -->
-  <section id="apply" class="section-cta">
-    <div class="container--narrow">
-      <div class="cta-eyebrow">
-        <span class="cta-rule"></span>
-        <span class="label">April 2026 · Limited Spots</span>
-        <span class="cta-rule"></span>
+  <!-- WAVE -->
+  <div class="wave bg-wash"><svg viewBox="0 0 1200 22" preserveAspectRatio="none" fill="none"><path d="M0 11 Q150 19, 300 11 Q450 3, 600 11 Q750 19, 900 11 Q1050 3, 1200 11" stroke="#A8B89D" stroke-width="1.4" stroke-linecap="round" opacity="0.55"/></svg></div>
+
+  <!-- ACCOUNTABILITY -->
+  <section class="accountability bg-cream">
+    <div class="wrap--narrow">
+      <h2 class="accountability__headline">The accountability you've been missing.</h2>
+      <p class="body-text">Maybe you've tried cooking before. But time and time again, you fall off. Something comes up. What starts off exciting becomes too difficult. And before you know it, you're back to eating instant ramen and DoorDash.</p>
+      <p class="accountability__key">But this is because there was no accountability.</p>
+      <p class="body-text">You tried to start cooking on your own — almost doomed from the beginning. Food Jazz solves that problem. You learn alongside hundreds of other cooks, all with the same goal: to start cooking consistently. This creates accountability unlike anything you've ever experienced.</p>
+    </div>
+  </section>
+
+  <!-- WAVE -->
+  <div class="wave bg-cream"><svg viewBox="0 0 1200 22" preserveAspectRatio="none" fill="none"><path d="M0 11 Q150 3, 300 11 Q450 19, 600 11 Q750 3, 900 11 Q1050 19, 1200 11" stroke="#A8B89D" stroke-width="1.4" stroke-linecap="round" opacity="0.55"/></svg></div>
+
+  <!-- THREE COOKS -->
+  <section class="section bg-wash">
+    <div class="wrap">
+      <span class="rule-label">Which cook are you?</span>
+      <h2 class="display display--lg">Three types of cooks</h2>
+      <div class="cooks__grid">
+        <div class="cook__card cook__card--plain">
+          <div class="cook__type cook__type--plain">Type one</div>
+          <div class="cook__name cook__name--plain">The Planner</div>
+          <p class="cook__desc cook__desc--plain">You can make a tasty meal, but it takes hours of planning — and if something is slightly off or you're missing an ingredient, you have a panic attack.</p>
+        </div>
+        <div class="cook__card cook__card--plain">
+          <div class="cook__type cook__type--plain">Type two</div>
+          <div class="cook__name cook__name--plain">The Opportunist</div>
+          <p class="cook__desc cook__desc--plain">You find things to eat, but it's never really what you want. Sometimes you come up with combinations that are just plain bad.</p>
+        </div>
+        <div class="cook__card cook__card--highlight">
+          <div class="cook__tag">Future you</div>
+          <div class="cook__type cook__type--light">Type three</div>
+          <div class="cook__name cook__name--light">Intuitive</div>
+          <p class="cook__desc cook__desc--light">You are in flow. You can make complicated dishes in a breeze. Stress-free, quick substitutions, any dish works out. This is where you're going.</p>
+        </div>
       </div>
-      <h2>Apply to be considered.</h2>
-      <p class="cta-sub">Spots are limited. Tell me about your relationship with food. I'll reach out if I think we're a good fit.</p>
-      <a href="https://tally.so/r/68kgMB" class="btn-primary">Start Your Application <span class="sparkle">✦</span></a>
-      <p class="cta-fine">Free for founding clients · Bay Area only</p>
+    </div>
+  </section>
+
+  <!-- WAVE -->
+  <div class="wave bg-wash"><svg viewBox="0 0 1200 22" preserveAspectRatio="none" fill="none"><path d="M0 11 Q150 19, 300 11 Q450 3, 600 11 Q750 19, 900 11 Q1050 3, 1200 11" stroke="#A8B89D" stroke-width="1.4" stroke-linecap="round" opacity="0.55"/></svg></div>
+
+  <!-- BENEFIT: SAVE TIME + MONEY -->
+  <section class="bg-cream">
+    <div class="wrap">
+      <div class="benefit-row">
+        <div>
+          <span class="rule-label">Benefit one</span>
+          <div class="benefit-row__stat">$4k+</div>
+          <h2 class="display display--md benefit-row__title">Save Time and Money</h2>
+          <p class="benefit-row__sub">Maybe finances are tight or you are trying to save up for something important to you.</p>
+          <p class="benefit-row__assertion">It's true.</p>
+          <p class="body-text">Studies have shown that the potential annual savings from increased home cooking can be upwards of $4,000+ a year for many individuals. You could buy a trained riding pony with that kind of spare cash.</p>
+        </div>
+        <div class="benefit-row__visual benefit-row__visual--wash">
+          <svg width="140" height="140" viewBox="0 0 140 140" fill="none">
+            <circle cx="70" cy="70" r="55" stroke="#D4A843" stroke-width="1.5" fill="rgba(212,168,67,0.06)"/>
+            <circle cx="70" cy="70" r="38" stroke="#D4A843" stroke-width="1" fill="rgba(212,168,67,0.04)" opacity="0.6"/>
+            <path d="M70 44 L70 96 M52 56 L70 44 L88 56" stroke="#D4A843" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M58 70 Q70 78, 82 70" stroke="#7A8C6E" stroke-width="1.8" stroke-linecap="round" fill="none"/>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WAVE -->
+  <div class="wave bg-cream"><svg viewBox="0 0 1200 22" preserveAspectRatio="none" fill="none"><path d="M0 11 Q150 3, 300 11 Q450 19, 600 11 Q750 3, 900 11 Q1050 19, 1200 11" stroke="#A8B89D" stroke-width="1.4" stroke-linecap="round" opacity="0.55"/></svg></div>
+
+  <!-- BENEFIT: IMPRESS -->
+  <section class="bg-wash">
+    <div class="wrap">
+      <div class="benefit-row">
+        <div class="benefit-row__visual benefit-row__visual--cream">
+          <svg width="140" height="140" viewBox="0 0 140 140" fill="none">
+            <circle cx="70" cy="50" r="18" stroke="#7A8C6E" stroke-width="1.5" fill="rgba(168,184,157,0.1)"/>
+            <circle cx="35" cy="95" r="14" stroke="#7A8C6E" stroke-width="1.3" fill="rgba(168,184,157,0.08)"/>
+            <circle cx="105" cy="95" r="14" stroke="#7A8C6E" stroke-width="1.3" fill="rgba(168,184,157,0.08)"/>
+            <path d="M50 95 Q70 80, 90 95" stroke="#D4A843" stroke-width="1.8" stroke-linecap="round" fill="none"/>
+            <path d="M22 112 Q35 104, 48 108" stroke="#7A8C6E" stroke-width="1.3" stroke-linecap="round" fill="none" opacity="0.6"/>
+            <path d="M92 108 Q105 104, 118 112" stroke="#7A8C6E" stroke-width="1.3" stroke-linecap="round" fill="none" opacity="0.6"/>
+          </svg>
+        </div>
+        <div>
+          <span class="rule-label">Benefit two</span>
+          <h2 class="display display--md benefit-row__title">Impress Your Community</h2>
+          <p class="body-text">Let's face it — being a great cook is genuinely impressive. Maybe you're looking for connection, trying to relate to your friends, or wanting to take something off your partner's plate.</p>
+          <p class="body-text">Cooking can serve as the glue that holds relationships together. A 2020 study published in the Journal of Positive Psychology found that families who cooked and ate together more often reported greater feelings of closeness and better family functioning.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WAVE -->
+  <div class="wave bg-wash"><svg viewBox="0 0 1200 22" preserveAspectRatio="none" fill="none"><path d="M0 11 Q150 19, 300 11 Q450 3, 600 11 Q750 19, 900 11 Q1050 3, 1200 11" stroke="#A8B89D" stroke-width="1.4" stroke-linecap="round" opacity="0.55"/></svg></div>
+
+  <!-- BENEFIT: EAT WELL -->
+  <section class="bg-cream">
+    <div class="wrap">
+      <div class="benefit-row">
+        <div>
+          <span class="rule-label">Benefit three</span>
+          <h2 class="display display--md benefit-row__title">Eat Exactly What Your Body Needs</h2>
+          <p class="body-text">Maybe you can't find options to cater to your exact diet and feel like you have to settle often. Having the skills to efficiently cook a meal you actually want will unlock a greater sense of wellbeing and somatic connection.</p>
+          <p class="body-text">Research from a comprehensive study from the University of Washington in 2015 found that people who cooked at home 3 times per week showed meaningful reductions in body fat and improved insulin metrics compared to those who cooked less.</p>
+        </div>
+        <div class="benefit-row__visual benefit-row__visual--linen">
+          <svg width="140" height="140" viewBox="0 0 140 140" fill="none">
+            <path d="M40 110 Q40 78, 70 64 Q100 78, 100 110" stroke="#7A8C6E" stroke-width="1.6" stroke-linecap="round" fill="rgba(168,184,157,0.08)"/>
+            <line x1="32" y1="110" x2="108" y2="110" stroke="#7A8C6E" stroke-width="1.6" stroke-linecap="round"/>
+            <circle cx="70" cy="42" r="10" stroke="#D4A843" stroke-width="1.4" fill="rgba(212,168,67,0.12)"/>
+            <path d="M70 52 L70 64" stroke="#D4A843" stroke-width="1.4" stroke-linecap="round"/>
+            <circle cx="85" cy="82" r="5" fill="#C47A5A" opacity="0.4"/>
+            <circle cx="55" cy="88" r="3.5" fill="#C47A5A" opacity="0.3"/>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- AKSHAY -->
+  <section class="section bg-linen">
+    <div class="wrap">
+      <span class="rule-label">Your instructor</span>
+      <div class="akshay__inner">
+        <img class="akshay__photo" src="akshay.jpg" alt="Akshay Prabhu">
+        <div>
+          <p class="akshay__role">Founder · Neuroscientist · Cooking Coach</p>
+          <h2 class="display display--lg akshay__name">Hey, I'm Akshay.</h2>
+          <p class="akshay__sub">Your Personal Cooking Mentor</p>
+          <p class="body-text">I'm excited to meet you and share with you what feels like my life's work. I was the founder and CEO of Foodnome, an online marketplace for home-cooked food. I have helped over 500 people refine their home kitchen businesses, optimize their recipes, and live their dream.</p>
+          <p class="body-text">I've hosted hundreds of pop-up dinners, catered for events and weddings with 500+ guests, and even hosted several food and music festivals. Cooking has been a part of my life since I was a child. For me, food is symbolic of love when words are inadequate. Memories are created over the warmth and aroma of a homemade meal.</p>
+          <p class="akshay__mission">Now I hope to help you carve your culinary identity. I'm on a mission to help 20,000 people finally learn to cook by 2030.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WAVE -->
+  <div class="wave bg-linen"><svg viewBox="0 0 1200 22" preserveAspectRatio="none" fill="none"><path d="M0 11 Q150 3, 300 11 Q450 19, 600 11 Q750 3, 900 11 Q1050 19, 1200 11" stroke="#A8B89D" stroke-width="1.4" stroke-linecap="round" opacity="0.5"/></svg></div>
+
+  <!-- WHAT'S INCLUDED -->
+  <section class="section bg-wash">
+    <div class="wrap">
+      <span class="rule-label">What's included</span>
+      <h2 class="display display--lg" style="max-width:540px; margin-bottom:0.5rem;">What is in store</h2>
+      <p class="body-text" style="max-width:560px;">Everything you need to build a lasting cooking habit — not just for 7 weeks, but for life.</p>
+
+      <div class="included__list">
+        <div class="included__item">
+          <svg class="included__check" width="18" height="18" viewBox="0 0 18 18" fill="none"><circle cx="9" cy="9" r="8" stroke="#7A8C6E" stroke-width="1.2" fill="rgba(168,184,157,0.1)"/><path d="M5.5 9 L8 11.5 L12.5 6.5" stroke="#7A8C6E" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <span class="included__text"><strong>7 live 60-minute virtual dinner party sessions</strong> with curriculum review, Q&amp;A, and personalized feedback with fellow students.</span>
+        </div>
+        <div class="included__item">
+          <svg class="included__check" width="18" height="18" viewBox="0 0 18 18" fill="none"><circle cx="9" cy="9" r="8" stroke="#7A8C6E" stroke-width="1.2" fill="rgba(168,184,157,0.1)"/><path d="M5.5 9 L8 11.5 L12.5 6.5" stroke="#7A8C6E" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <span class="included__text"><strong>Guided walkthrough</strong> to help you build a daily cooking habit and learn mastery of fundamental cooking methods and common flavor patterns.</span>
+        </div>
+        <div class="included__item">
+          <svg class="included__check" width="18" height="18" viewBox="0 0 18 18" fill="none"><circle cx="9" cy="9" r="8" stroke="#7A8C6E" stroke-width="1.2" fill="rgba(168,184,157,0.1)"/><path d="M5.5 9 L8 11.5 L12.5 6.5" stroke="#7A8C6E" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <span class="included__text"><strong>14-module audio curriculum</strong> for learning at your own pace without taking time out of your busy day, with lifetime access to all recordings.</span>
+        </div>
+        <div class="included__item">
+          <svg class="included__check" width="18" height="18" viewBox="0 0 18 18" fill="none"><circle cx="9" cy="9" r="8" stroke="#7A8C6E" stroke-width="1.2" fill="rgba(168,184,157,0.1)"/><path d="M5.5 9 L8 11.5 L12.5 6.5" stroke="#7A8C6E" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <span class="included__text"><strong>Templates and frameworks</strong> to help you stock your kitchen for success, quickly come up with ideas, and become more effortless in the kitchen.</span>
+        </div>
+        <div class="included__item">
+          <svg class="included__check" width="18" height="18" viewBox="0 0 18 18" fill="none"><circle cx="9" cy="9" r="8" stroke="#7A8C6E" stroke-width="1.2" fill="rgba(168,184,157,0.1)"/><path d="M5.5 9 L8 11.5 L12.5 6.5" stroke="#7A8C6E" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <span class="included__text"><strong>Private community</strong> of fellow food jazzers — online channels for different topics, platforms, and geographies, plus access to invite-only local jazz dinner parties.</span>
+        </div>
+        <div class="included__item">
+          <svg class="included__check" width="18" height="18" viewBox="0 0 18 18" fill="none"><circle cx="9" cy="9" r="8" stroke="#7A8C6E" stroke-width="1.2" fill="rgba(168,184,157,0.1)"/><path d="M5.5 9 L8 11.5 L12.5 6.5" stroke="#7A8C6E" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <span class="included__text">Leave with <strong>a consistent cooking habit, confidence in the kitchen, a healthy lifestyle</strong>, and a stronger grasp of the fundamentals of intuitive cooking.</span>
+        </div>
+        <div class="included__item">
+          <svg class="included__check" width="18" height="18" viewBox="0 0 18 18" fill="none"><circle cx="9" cy="9" r="8" stroke="#7A8C6E" stroke-width="1.2" fill="rgba(168,184,157,0.1)"/><path d="M5.5 9 L8 11.5 L12.5 6.5" stroke="#7A8C6E" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <span class="included__text"><strong>Lifetime access</strong> to session recordings with detailed show notes, resources, and transcripts.</span>
+        </div>
+        <div class="included__item included__item--bonus">
+          <svg class="included__check" width="18" height="18" viewBox="0 0 18 18" fill="none"><circle cx="9" cy="9" r="8" stroke="#D4A843" stroke-width="1.2" fill="rgba(212,168,67,0.1)"/><path d="M5.5 9 L8 11.5 L12.5 6.5" stroke="#D4A843" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <span class="included__text"><strong>Bonus:</strong> Free access to recordings from all previous Food Jazz cohorts.</span>
+        </div>
+        <div class="included__item included__item--bonus">
+          <svg class="included__check" width="18" height="18" viewBox="0 0 18 18" fill="none"><circle cx="9" cy="9" r="8" stroke="#D4A843" stroke-width="1.2" fill="rgba(212,168,67,0.1)"/><path d="M5.5 9 L8 11.5 L12.5 6.5" stroke="#D4A843" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <span class="included__text"><strong>Bonus:</strong> Free Food Jazz AI cooking idea generator, Ratio Cheatsheet, and Kitchen Stocking Blueprint.</span>
+        </div>
+        <div class="included__item included__item--bonus">
+          <svg class="included__check" width="18" height="18" viewBox="0 0 18 18" fill="none"><circle cx="9" cy="9" r="8" stroke="#D4A843" stroke-width="1.2" fill="rgba(212,168,67,0.1)"/><path d="M5.5 9 L8 11.5 L12.5 6.5" stroke="#D4A843" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <span class="included__text"><strong>Bonus:</strong> Free copy of <em>The Fake Cook</em> — the last cookbook you will ever need. When it is released.</span>
+        </div>
+        <div class="included__item included__item--guarantee">
+          <svg class="included__check" width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M9 2 L3 4.5 L3 9 C3 13, 5.5 16.5, 9 17.5 C12.5 16.5, 15 13, 15 9 L15 4.5 Z" stroke="#D4A843" stroke-width="1.3" fill="rgba(212,168,67,0.08)" stroke-linejoin="round"/><path d="M6 9 L8 11 L12 7" stroke="#D4A843" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <span class="included__text"><strong>Guarantee:</strong> 100%, no-questions-asked refund &amp; rollover policy if you complete the course materials and find the course isn't for you within 14 days of starting.</span>
+        </div>
+      </div>
+
+      <!-- Mid-page waitlist form -->
+      <div class="included__form-wrap">
+        <p class="included__form-label">Join the waitlist for our next cohort</p>
+        <p class="included__form-sub">And be the first to know when we open enrollment.</p>
+        <form class="email-form" onsubmit="return false;">
+          <input type="email" placeholder="Email address">
+          <button type="submit" class="btn btn--sage">Join Waitlist</button>
+        </form>
+        <p class="email-disclaimer">I will never spam or sell your info. Ever.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- WAVE -->
+  <div class="wave bg-wash"><svg viewBox="0 0 1200 22" preserveAspectRatio="none" fill="none"><path d="M0 11 Q150 19, 300 11 Q450 3, 600 11 Q750 19, 900 11 Q1050 3, 1200 11" stroke="#A8B89D" stroke-width="1.4" stroke-linecap="round" opacity="0.55"/></svg></div>
+
+  <!-- SEVEN TENETS -->
+  <section class="section bg-cream">
+    <div class="wrap">
+      <span class="rule-label">The Philosophy</span>
+      <h2 class="display display--lg" style="margin-bottom:0.5rem;">Seven Tenets of Food Jazz</h2>
+      <p class="body-text" style="max-width:560px; margin-bottom:0;">These aren't rules. They're the mental shifts that make everything else click.</p>
+      <div class="tenets__grid">
+
+        <div class="tenet">
+          <div class="tenet__header">
+            <div class="tenet__num">1</div>
+            <div class="tenet__title">You Are Having Fun</div>
+          </div>
+          <p class="tenet__desc">Food is meant to be shared. Cooking is a means of connection, therapy, self care, and love. Your mindset is the first step to liberation through easeful intuitive cooking.</p>
+        </div>
+
+        <div class="tenet">
+          <div class="tenet__header">
+            <div class="tenet__num">2</div>
+            <div class="tenet__title">Think Flavor, Not Procedure</div>
+          </div>
+          <p class="tenet__desc">Recipes are not prescriptive. It's more important to recreate the flavors than the precise procedures or ingredients.</p>
+        </div>
+
+        <div class="tenet">
+          <div class="tenet__header">
+            <div class="tenet__num">3</div>
+            <div class="tenet__title">Use What You Have</div>
+          </div>
+          <p class="tenet__desc">Resourcefulness and adaptability are key. This may involve using leftovers, incorporating seasonal produce, or finding creative uses for ingredients that might otherwise go to waste.</p>
+        </div>
+
+        <div class="tenet">
+          <div class="tenet__header">
+            <div class="tenet__num">4</div>
+            <div class="tenet__title">Stock for Success</div>
+          </div>
+          <p class="tenet__desc">Surround yourself with inspiration. Spices, sauces, and toppings to transform your raw ingredients — this provides the framework for you to improvise within.</p>
+        </div>
+
+        <div class="tenet">
+          <div class="tenet__header">
+            <div class="tenet__num">5</div>
+            <div class="tenet__title">Taste the World</div>
+          </div>
+          <p class="tenet__desc">Navigate the world with your tongue. The best way to learn is with your own senses — practice active tasting when you eat out, watch people cook, especially your grandma.</p>
+        </div>
+
+        <div class="tenet">
+          <div class="tenet__header">
+            <div class="tenet__num">6</div>
+            <div class="tenet__title">Your Opinion Matters</div>
+          </div>
+          <p class="tenet__desc">There is no right answer, just your answers. Cook what you and your people think tastes good.</p>
+        </div>
+
+        <div class="tenet" style="grid-column: 1 / -1;">
+          <div class="tenet__header">
+            <div class="tenet__num">7</div>
+            <div class="tenet__title">Build a Flavor Pyramid</div>
+          </div>
+          <p class="tenet__desc">The perfect meal creates a balance of flavors throughout.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- WAVE -->
+  <div class="wave bg-cream"><svg viewBox="0 0 1200 22" preserveAspectRatio="none" fill="none"><path d="M0 11 Q150 3, 300 11 Q450 19, 600 11 Q750 3, 900 11 Q1050 19, 1200 11" stroke="#A8B89D" stroke-width="1.4" stroke-linecap="round" opacity="0.55"/></svg></div>
+
+  <!-- REFUND POLICY -->
+  <section class="refund bg-wash">
+    <div class="wrap">
+      <div class="refund__card">
+        <svg class="refund__icon" width="40" height="40" viewBox="0 0 40 40" fill="none">
+          <path d="M20 4 L6 10 L6 20 C6 29.5, 12 37, 20 39 C28 37, 34 29.5, 34 20 L34 10 Z" stroke="#D4A843" stroke-width="1.5" fill="rgba(212,168,67,0.08)" stroke-linejoin="round"/>
+          <path d="M13.5 20 L17.5 24 L26.5 15" stroke="#D4A843" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <h2 class="display display--md refund__headline">100% Refund and Rollover Policy</h2>
+        <p class="body-text">I want your Food Jazz investment to be 100% risk free. If you complete the course materials and find the course isn't for you within 14 days of starting, I will refund 100% of your investment.</p>
+        <p class="body-text" style="margin-top:1rem;">And if you find after enrolling that your schedule is busier than you thought, we will roll you forward into a future cohort at zero additional cost.</p>
+        <p class="body-text" style="margin-top:1rem;">However, part of what makes Food Jazz work is the financial accountability. If you do not engage with the course materials or fail to take action during the course, this does not qualify for a refund.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- WAVE -->
+  <div class="wave bg-wash"><svg viewBox="0 0 1200 22" preserveAspectRatio="none" fill="none"><path d="M0 11 Q150 19, 300 11 Q450 3, 600 11 Q750 19, 900 11 Q1050 3, 1200 11" stroke="#A8B89D" stroke-width="1.4" stroke-linecap="round" opacity="0.55"/></svg></div>
+
+  <!-- FINAL CTA (dark) -->
+  <section class="cta-dark bg-dark">
+    <div class="wrap">
+      <div class="pill">
+        <div class="pill__dot"></div>
+        <span class="pill__text">Enrollment Opening Soon</span>
+      </div>
+      <h2 class="display display--lg" style="color:var(--cream); margin-bottom:0.75rem;">7 weeks to a new perspective on life.</h2>
+      <p class="body-text" style="color:rgba(250,247,242,0.65); max-width:500px; margin:0 auto 2rem;">Be the first to know when we open enrollment. No spam, no pressure — just an email when the next cohort is ready.</p>
+      <form class="email-form email-form--dark" style="max-width:440px; margin:0 auto;" onsubmit="return false;">
+        <input type="email" placeholder="Email address">
+        <button type="submit" class="btn btn--sage">Join Waitlist</button>
+      </form>
+      <p class="email-disclaimer email-disclaimer--light" style="text-align:center;">I will never spam or sell your info. Ever.</p>
+    </div>
+  </section>
+
+  <!-- ONE LAST THING -->
+  <section class="one-last bg-cream">
+    <div class="one-last__inner">
+      <span class="rule-label" style="text-align:center;">One last thing</span>
+      <h2 class="display display--lg one-last__headline">One last thing...</h2>
+      <p class="body-text">If you're down here, you might be thinking — is this really worth it? And sure, you could go and stitch together all of the glorious free content across the vast internet. And eventually you will learn to cook and begin to understand the fundamentals.</p>
+      <p class="body-text" style="margin-top:1.1rem;">But I'm guessing that if you're on this page, and you've read this far, you've tried something like this before. And the results... well... they're not what you've been hoping for.</p>
+      <p class="body-text" style="margin-top:1.1rem;">I've been in your shoes. It's taken me two decades to get to where I am. I'm here before you after years of musing and consolidating my thinking to say — there is a better way.</p>
+      <p class="one-last__final">You are 7 weeks away from creative culinary independence.</p>
+      <p class="body-text">Let this be the year for new connections, friendships, and dinner parties. A year where you finally take control of your diet and get to feel great eating exactly what you want, all the time. Cooking will be the simple habit that changes the trajectory of your life. And it can all start right here, right now.</p>
+      <p class="one-last__question">So, what do you say?</p>
+      <div style="margin-top:2rem;">
+        <form class="email-form" style="justify-content:center;" onsubmit="return false;">
+          <input type="email" placeholder="Email address">
+          <button type="submit" class="btn btn--sage">Join Waitlist</button>
+        </form>
+        <p class="email-disclaimer" style="text-align:center;">I will never spam or sell your info. Ever.</p>
+      </div>
     </div>
   </section>
 
   <!-- FOOTER -->
-  <footer>
-    <div class="footer-inner">
-      <span class="footer-logo">Food Jazz</span>
-      <ul class="footer-links">
-        <li><a href="/coach.html">Coaching</a></li>
-        <li><a href="mailto:akshay@foodjazz.club">Contact</a></li>
-      </ul>
-      <p class="footer-copy">© 2026 Food Jazz · foodjazz.club</p>
+  <footer class="footer">
+    <div class="wrap">
+      <div class="footer__inner">
+        <span class="footer__wordmark">Food Jazz</span>
+        <div class="footer__links">
+          <a href="/coach.html" class="footer__link">1-on-1 Coaching</a>
+          <a href="mailto:akshay@foodjazz.club" class="footer__link">Contact</a>
+        </div>
+        <span class="footer__cities">San Francisco · Oakland · Berkeley</span>
+      </div>
     </div>
   </footer>
 

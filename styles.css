@@ -1,0 +1,307 @@
+/* ============================================================
+   Food Jazz — Shared Design System
+   Import this in every page.
+   ============================================================ */
+
+/* ===== RESET ===== */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { font-size: 16px; -webkit-font-smoothing: antialiased; scroll-behavior: smooth; }
+
+/* ===== TOKENS ===== */
+:root {
+  --sage:         #7A8C6E;
+  --sage-light:   #A8B89D;
+  --sage-muted:   #D4DDD0;
+  --sage-wash:    #EDF2EB;
+  --cream:        #FAF7F2;
+  --linen:        #F3EDE4;
+  --wood-dark:    #8B6D47;
+  --golden:       #D4A843;
+  --terracotta:   #C47A5A;
+  --charcoal:     #2E2E2C;
+  --warm-gray:    #5C5A56;
+  --medium-gray:  #9B9892;
+
+  --font-display: 'Caveat', cursive;
+  --font-body:    'DM Sans', sans-serif;
+
+  --space-xs:  0.5rem;
+  --space-sm:  1rem;
+  --space-md:  2rem;
+  --space-lg:  4rem;
+  --space-xl:  6rem;
+
+  --max-width: 1100px;
+  --reading-width: 680px;
+}
+
+/* ===== BASE ===== */
+body {
+  font-family: var(--font-body);
+  font-weight: 300;
+  color: var(--warm-gray);
+  background: var(--cream);
+  line-height: 1.6;
+}
+
+img { display: block; max-width: 100%; }
+a { color: inherit; text-decoration: none; }
+
+/* ===== TYPOGRAPHY SCALE ===== */
+.display-xl {
+  font-family: var(--font-display);
+  font-size: clamp(2.8rem, 6vw, 5rem);
+  font-weight: 700;
+  color: var(--charcoal);
+  line-height: 1.0;
+  letter-spacing: -0.02em;
+}
+.display-lg {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 4vw, 3.2rem);
+  font-weight: 700;
+  color: var(--charcoal);
+  line-height: 1.05;
+  letter-spacing: -0.01em;
+}
+.display-md {
+  font-family: var(--font-display);
+  font-size: clamp(1.4rem, 2.5vw, 2rem);
+  font-weight: 600;
+  color: var(--charcoal);
+  line-height: 1.15;
+}
+.display-sm {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--wood-dark);
+  line-height: 1.2;
+}
+.body-lg {
+  font-size: 1.05rem;
+  font-weight: 300;
+  line-height: 1.7;
+  color: var(--warm-gray);
+}
+.body-sm {
+  font-size: 0.875rem;
+  font-weight: 300;
+  line-height: 1.6;
+  color: var(--warm-gray);
+}
+.label {
+  font-size: 0.6rem;
+  font-weight: 500;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--medium-gray);
+}
+.label-sage {
+  font-size: 0.6rem;
+  font-weight: 500;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--sage);
+}
+
+/* ===== LAYOUT ===== */
+.container {
+  width: 100%;
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 var(--space-md);
+}
+.section {
+  padding: var(--space-lg) 0;
+}
+.section-cream  { background: var(--cream); }
+.section-wash   { background: var(--sage-wash); }
+.section-linen  { background: var(--linen); }
+.section-dark   { background: var(--charcoal); }
+
+/* ===== PILL BADGE ===== */
+.pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  border: 1px solid var(--sage-muted);
+  border-radius: 99px;
+  padding: 0.2rem 0.7rem;
+}
+.pill-dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--sage);
+  flex-shrink: 0;
+}
+.pill-text {
+  font-size: 0.6rem;
+  font-weight: 500;
+  color: var(--sage);
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+/* ===== SECTION RULE ===== */
+.section-rule {
+  display: block;
+  font-size: 0.6rem;
+  font-weight: 500;
+  color: var(--medium-gray);
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid var(--sage-muted);
+  margin-bottom: 2rem;
+}
+
+/* ===== WAVE DIVIDER ===== */
+.wave {
+  line-height: 0;
+  overflow: hidden;
+}
+.wave svg {
+  display: block;
+  width: 100%;
+  height: 24px;
+}
+
+/* ===== BUTTON ===== */
+.btn {
+  display: inline-block;
+  font-family: var(--font-body);
+  font-size: 0.875rem;
+  font-weight: 400;
+  padding: 0.75rem 1.75rem;
+  border-radius: 3px;
+  cursor: pointer;
+  transition: opacity 0.15s ease;
+  border: none;
+  letter-spacing: 0.02em;
+}
+.btn:hover { opacity: 0.85; }
+.btn-primary {
+  background: var(--sage);
+  color: var(--cream);
+}
+.btn-dark {
+  background: var(--charcoal);
+  color: var(--cream);
+}
+.btn-outline {
+  background: transparent;
+  border: 1px solid var(--sage);
+  color: var(--sage);
+}
+
+/* ===== EMAIL FORM ===== */
+.email-form {
+  display: flex;
+  gap: 0.5rem;
+  max-width: 440px;
+}
+.email-form input[type="email"] {
+  flex: 1;
+  font-family: var(--font-body);
+  font-size: 0.875rem;
+  font-weight: 300;
+  padding: 0.75rem 1rem;
+  border: 1px solid var(--sage-muted);
+  border-radius: 3px;
+  background: white;
+  color: var(--charcoal);
+  outline: none;
+  transition: border-color 0.15s;
+}
+.email-form input[type="email"]:focus {
+  border-color: var(--sage);
+}
+.email-form input[type="email"]::placeholder {
+  color: var(--medium-gray);
+}
+.email-disclaimer {
+  font-size: 0.72rem;
+  color: var(--medium-gray);
+  margin-top: 0.5rem;
+}
+
+/* ===== NAV ===== */
+.site-nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: var(--cream);
+  border-bottom: 1px solid var(--sage-muted);
+  padding: 0.875rem 0;
+}
+.nav-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.nav-wordmark {
+  font-family: var(--font-display);
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: var(--charcoal);
+  font-style: italic;
+}
+.nav-wordmark span {
+  color: var(--sage);
+}
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+.nav-link {
+  font-size: 0.85rem;
+  font-weight: 400;
+  color: var(--warm-gray);
+  transition: color 0.15s;
+}
+.nav-link:hover { color: var(--charcoal); }
+.nav-cta {
+  font-size: 0.8rem;
+  font-weight: 400;
+  background: var(--sage);
+  color: var(--cream);
+  padding: 0.45rem 1rem;
+  border-radius: 3px;
+  transition: opacity 0.15s;
+}
+.nav-cta:hover { opacity: 0.85; }
+
+/* ===== SPARKLE MOTIF ===== */
+.sparkle {
+  color: var(--golden);
+  font-size: 0.6rem;
+  line-height: 1;
+}
+
+/* ===== FOOTER ===== */
+.site-footer {
+  background: var(--charcoal);
+  padding: 1.5rem 0;
+}
+.footer-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.footer-wordmark {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--sage-light);
+  font-style: italic;
+}
+.footer-cities {
+  font-size: 0.6rem;
+  font-weight: 400;
+  color: var(--medium-gray);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
