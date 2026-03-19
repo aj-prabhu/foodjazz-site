@@ -9,7 +9,6 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300;1,9..40,400&display=swap" rel="stylesheet">
   <style>
-    /* ===== CSS VARIABLES ===== */
     :root {
       --sage: #7A8C6E;
       --sage-light: #A8B89D;
@@ -20,7 +19,6 @@
       --linen: #F3EDE4;
       --wood: #B8956A;
       --wood-dark: #8B6D47;
-      --wood-light: #D4BA96;
       --golden: #D4A843;
       --charcoal: #2E2E2C;
       --warm-gray: #5C5A56;
@@ -29,7 +27,6 @@
       --font-body: 'DM Sans', sans-serif;
     }
 
-    /* ===== RESET ===== */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { font-size: 16px; -webkit-font-smoothing: antialiased; }
     body {
@@ -37,10 +34,7 @@
       background: var(--cream);
       color: var(--warm-gray);
       line-height: 1.65;
-      position: relative;
     }
-
-    /* Grain overlay for warmth */
     body::after {
       content: '';
       position: fixed;
@@ -51,14 +45,13 @@
       background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
       background-size: 128px 128px;
     }
-
     a { color: inherit; text-decoration: none; }
     img { max-width: 100%; display: block; }
 
-    /* ===== TYPOGRAPHY ===== */
+    /* ===== TYPE ===== */
     h1 {
       font-family: var(--font-display);
-      font-size: clamp(3.8rem, 9vw, 7.5rem);
+      font-size: clamp(3.2rem, 8vw, 7rem);
       font-weight: 600;
       color: var(--charcoal);
       line-height: 1.0;
@@ -66,27 +59,20 @@
     }
     h2 {
       font-family: var(--font-display);
-      font-size: clamp(2.2rem, 5vw, 3.5rem);
+      font-size: clamp(2rem, 5vw, 3.2rem);
       font-weight: 600;
       color: var(--charcoal);
       line-height: 1.15;
-      letter-spacing: -0.01em;
     }
     h3 {
       font-family: var(--font-display);
-      font-size: clamp(1.3rem, 2.5vw, 1.7rem);
+      font-size: clamp(1.2rem, 2.5vw, 1.6rem);
       font-weight: 500;
       color: var(--wood-dark);
       line-height: 1.2;
     }
-    p {
-      font-size: 1rem;
-      font-weight: 300;
-      color: var(--warm-gray);
-      line-height: 1.75;
-    }
+    p { font-size: 1rem; font-weight: 300; color: var(--warm-gray); line-height: 1.75; }
     .label {
-      font-family: var(--font-body);
       font-size: 0.72rem;
       font-weight: 500;
       color: var(--sage);
@@ -96,73 +82,100 @@
       margin-bottom: 0.75rem;
     }
     strong { font-weight: 500; color: var(--charcoal); }
-    em { font-style: italic; }
 
     /* ===== LAYOUT ===== */
-    .container {
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 0 2rem;
-    }
-    .container--narrow {
-      max-width: 680px;
-      margin: 0 auto;
-      padding: 0 2rem;
-    }
-    section { padding: 8rem 0; }
+    .container { max-width: 1100px; margin: 0 auto; padding: 0 2rem; }
+    .container--narrow { max-width: 680px; margin: 0 auto; padding: 0 2rem; }
+    section { padding: 7rem 0; }
 
     /* ===== NAV ===== */
     nav {
-      position: sticky;
-      top: 0;
-      z-index: 100;
+      position: sticky; top: 0; z-index: 100;
       background: var(--warm-white);
       border-bottom: 1px solid var(--sage-muted);
       padding: 1rem 2rem;
     }
     .nav-inner {
-      max-width: 1100px;
-      margin: 0 auto;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
+      max-width: 1100px; margin: 0 auto;
+      display: flex; align-items: center; justify-content: space-between;
     }
-    .nav-logo {
-      font-family: var(--font-display);
-      font-size: 1.7rem;
-      font-weight: 700;
-      color: var(--sage);
-    }
-    .nav-links {
-      display: flex;
-      gap: 2rem;
-      align-items: center;
-      list-style: none;
-    }
-    .nav-links a {
-      font-size: 0.88rem;
-      color: var(--warm-gray);
-    }
+    .nav-logo { font-family: var(--font-display); font-size: 1.7rem; font-weight: 700; color: var(--sage); }
+    .nav-links { display: flex; gap: 2rem; align-items: center; list-style: none; }
+    .nav-links a { font-size: 0.88rem; color: var(--warm-gray); }
     .nav-cta { font-weight: 500; color: var(--sage) !important; }
 
-    /* ===== BUTTON ===== */
+    /* ===== GLOW BUTTON ===== */
+    .btn-wrap {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .btn-glow {
+      position: absolute;
+      inset: -2px;
+      background: linear-gradient(135deg, var(--golden), var(--wood), var(--sage));
+      border-radius: 50px;
+      filter: blur(14px);
+      opacity: 0.45;
+      transition: opacity 0.3s ease;
+    }
+    .btn-wrap:hover .btn-glow { opacity: 0.8; }
     .btn-primary {
-      display: inline-block;
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
       font-family: var(--font-display);
       font-size: 1.25rem;
       font-weight: 600;
       background: var(--sage);
       color: white;
-      padding: 14px 40px;
+      padding: 16px 48px;
       border-radius: 50px;
       border: none;
       cursor: pointer;
-      transition: background 0.25s ease, transform 0.2s ease;
       text-decoration: none;
+      transition: background 0.2s ease, transform 0.15s ease;
     }
-    .btn-primary:hover {
-      background: var(--wood-dark);
-      transform: translateY(-1px);
+    .btn-primary:hover { background: #6a7a60; transform: translateY(-2px); }
+    .btn-primary:active { transform: translateY(0); }
+    .btn-arrow {
+      display: inline-block;
+      width: 10px;
+      height: 10px;
+      overflow: visible;
+      transition: transform 0.2s ease;
+    }
+    .btn-wrap:hover .btn-arrow { transform: translateX(3px); }
+
+    /* ===== GOOEY MORPH ===== */
+    .morph-block { margin-bottom: 2rem; }
+    .morph-static {
+      font-family: var(--font-display);
+      font-size: clamp(2.4rem, 6vw, 5rem);
+      font-weight: 600;
+      color: var(--charcoal);
+      line-height: 1.1;
+      display: block;
+      margin-bottom: 0.05em;
+    }
+    .morph-container {
+      position: relative;
+      height: clamp(3.2rem, 7vw, 5.8rem);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      filter: url(#threshold);
+    }
+    .morph-text {
+      font-family: var(--font-display);
+      font-size: clamp(2.4rem, 6vw, 5rem);
+      font-weight: 600;
+      color: var(--sage);
+      position: absolute;
+      user-select: none;
+      white-space: nowrap;
     }
 
     /* ===== HERO ===== */
@@ -174,273 +187,317 @@
       overflow: hidden;
     }
     .hero-eyebrow {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 1.5rem;
-      margin-bottom: 2rem;
+      display: flex; align-items: center; justify-content: center;
+      gap: 1.5rem; margin-bottom: 2rem;
     }
     .hero-eyebrow .label { margin-bottom: 0; }
-    .hero-eyebrow-rule {
-      width: 40px;
-      height: 1px;
-      background: var(--sage-muted);
-      display: inline-block;
-    }
-    .hero h1 {
-      max-width: 900px;
-      margin: 0 auto 1.75rem;
-    }
+    .hero-eyebrow-rule { width: 40px; height: 1px; background: var(--sage-muted); display: inline-block; }
     .hero-sub {
-      font-size: 1.15rem;
-      font-weight: 300;
-      color: var(--warm-gray);
-      max-width: 500px;
-      margin: 0 auto 2.5rem;
-      line-height: 1.65;
+      font-size: 1.1rem; font-weight: 300; color: var(--warm-gray);
+      max-width: 520px; margin: 0 auto 2.5rem; line-height: 1.65;
     }
     .hero-location {
-      margin-top: 1.5rem;
-      font-size: 0.8rem;
-      font-weight: 400;
-      color: var(--medium-gray);
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
+      margin-top: 1.5rem; font-size: 0.78rem; font-weight: 400;
+      color: var(--medium-gray); letter-spacing: 0.18em; text-transform: uppercase;
     }
 
-    /* ===== THIN DIVIDER ===== */
-    .section-rule {
-      width: 100%;
-      height: 1px;
-      background: var(--sage-muted);
-      opacity: 0.5;
+    /* ===== VALUE PROPS ===== */
+    .section-values { background: var(--sage-wash); padding: 6rem 0; }
+    .values-header { text-align: center; margin-bottom: 4rem; }
+    .values-header h2 { margin: 0.5rem 0 1rem; }
+    .values-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2.5rem; }
+    .value-card { padding: 1.75rem 0; border-top: 2px solid var(--sage-muted); }
+    .value-title {
+      font-family: var(--font-display); font-size: 1.4rem; font-weight: 500;
+      color: var(--wood-dark); margin-bottom: 0.6rem; line-height: 1.2;
     }
+    .value-desc { font-size: 0.95rem; font-weight: 300; color: var(--warm-gray); line-height: 1.75; }
 
-    /* ===== PROBLEM SECTION ===== */
-    .section-problem {
-      background: var(--sage-wash);
-      padding: 7rem 0;
-    }
+    /* ===== PROBLEM ===== */
+    .section-problem { background: var(--cream); padding: 7rem 0; }
     .section-problem h2 { margin: 0.5rem 0 1.75rem; }
     .section-problem p + p { margin-top: 1.1rem; }
 
-    /* ===== METHOD SECTION ===== */
-    .section-method {
-      background: var(--cream);
-      padding: 7rem 0;
-    }
+    /* ===== METHOD ===== */
+    .section-method { background: var(--sage-wash); padding: 7rem 0; }
     .section-method h2 { margin: 0.5rem 0 1.75rem; }
     .section-method p + p { margin-top: 1.1rem; }
 
-    /* ===== EXPERIENCE — EDITORIAL LIST ===== */
-    .section-experience {
-      background: var(--sage-wash);
-      padding: 7rem 0;
-    }
-    .experience-header {
-      max-width: 580px;
-      margin: 0 auto 4rem;
-      text-align: center;
-    }
+    /* ===== PROGRAM ===== */
+    .section-experience { background: var(--cream); padding: 7rem 0; }
+    .experience-header { max-width: 580px; margin: 0 auto 4rem; text-align: center; }
     .experience-header h2 { margin: 0.5rem 0 1rem; }
-    .experience-list {
-      list-style: none;
-      display: flex;
-      flex-direction: column;
-    }
+    .experience-list { list-style: none; }
     .experience-item {
-      display: grid;
-      grid-template-columns: 80px 1fr;
-      gap: 0 2rem;
-      padding: 2.5rem 0;
-      border-top: 1px solid var(--sage-muted);
-      align-items: start;
+      display: grid; grid-template-columns: 80px 1fr;
+      gap: 0 2rem; padding: 2.2rem 0;
+      border-top: 1px solid var(--sage-muted); align-items: start;
     }
-    .experience-item:last-child {
-      border-bottom: 1px solid var(--sage-muted);
-    }
+    .experience-item:last-child { border-bottom: 1px solid var(--sage-muted); }
     .experience-num {
-      font-family: var(--font-display);
-      font-size: 3.5rem;
-      font-weight: 700;
-      color: var(--sage-muted);
-      line-height: 1;
-      padding-top: 4px;
+      font-family: var(--font-display); font-size: 3.2rem; font-weight: 700;
+      color: var(--sage-muted); line-height: 1; padding-top: 4px;
     }
-    .experience-item h3 { margin-bottom: 0.5rem; }
+    .experience-item h3 { margin-bottom: 0.45rem; }
     .experience-item p { font-size: 0.95rem; }
 
-    /* ===== OUTCOMES — TYPOGRAPHIC MENU ===== */
-    .section-outcomes {
-      background: var(--cream);
-      padding: 7rem 0;
-    }
+    /* ===== OUTCOMES ===== */
+    .section-outcomes { background: var(--sage-wash); padding: 7rem 0; }
     .outcomes-intro { max-width: 580px; }
     .outcomes-intro h2 { margin: 0.5rem 0; }
-    .outcomes-list {
-      list-style: none;
-      margin-top: 3rem;
-    }
+    .outcomes-list { list-style: none; margin-top: 3rem; }
     .outcomes-list li {
-      display: flex;
-      align-items: baseline;
-      gap: 1rem;
-      padding: 1rem 0;
-      border-bottom: 1px solid var(--sage-muted);
-      font-size: 1.05rem;
-      font-weight: 300;
-      color: var(--warm-gray);
-      line-height: 1.5;
+      display: flex; align-items: baseline; gap: 1rem;
+      padding: 1rem 0; border-bottom: 1px solid var(--sage-muted);
+      font-size: 1.05rem; font-weight: 300; color: var(--warm-gray); line-height: 1.5;
     }
-    .outcomes-list li:first-child {
-      border-top: 1px solid var(--sage-muted);
-    }
-    .outcome-dash {
-      font-family: var(--font-display);
-      font-size: 1.4rem;
-      color: var(--golden);
-      flex-shrink: 0;
-      line-height: 1;
-    }
+    .outcomes-list li:first-child { border-top: 1px solid var(--sage-muted); }
+    .outcome-dash { font-family: var(--font-display); font-size: 1.4rem; color: var(--golden); flex-shrink: 0; line-height: 1; }
 
-    /* ===== ABOUT (CHARCOAL) ===== */
-    .section-about {
-      background: var(--charcoal);
-      padding: 7rem 0;
-    }
-    .section-about .label { color: var(--sage-light); }
-    .about-grid {
-      display: grid;
-      grid-template-columns: 180px 1fr;
-      gap: 5rem;
-      align-items: start;
-      margin-top: 2.5rem;
+    /* ===== ABOUT ===== */
+    .section-about { background: var(--charcoal); padding: 7rem 0; }
+    .about-top {
+      display: grid; grid-template-columns: 200px 1fr 1fr;
+      gap: 4rem; align-items: start; margin-bottom: 4rem;
     }
     .about-photo-wrap {
-      width: 170px;
-      height: 218px;
-      border-radius: 4px;
-      border: 1.5px solid var(--golden);
-      overflow: hidden;
-      flex-shrink: 0;
-      box-shadow: 4px 4px 0 rgba(212, 168, 67, 0.2);
+      width: 185px; height: 238px; border-radius: 4px;
+      border: 1.5px solid var(--golden); overflow: hidden;
+      box-shadow: 4px 4px 0 rgba(212,168,67,0.2);
     }
     .about-photo-wrap img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: center 8%;
-      display: block;
+      width: 100%; height: 100%; object-fit: cover;
+      object-position: center 8%; display: block;
     }
     .about-role {
-      font-family: var(--font-body);
-      font-size: 0.72rem;
-      font-weight: 500;
-      color: var(--sage-light);
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      margin-bottom: 0.6rem;
+      display: inline-flex; align-items: center;
+      border: 1px solid rgba(168,184,157,0.4); border-radius: 99px;
+      padding: 0.18rem 0.65rem; font-size: 0.62rem; font-weight: 500;
+      color: var(--sage-light); letter-spacing: 0.18em;
+      text-transform: uppercase; margin-bottom: 0.6rem;
     }
     .about-name {
-      font-family: var(--font-display);
-      font-size: clamp(2.2rem, 4vw, 3rem);
-      font-weight: 600;
-      color: var(--sage-light);
-      line-height: 1.05;
-      margin-bottom: 1.5rem;
+      font-family: var(--font-display); font-size: clamp(2rem, 4vw, 2.8rem);
+      font-weight: 600; color: var(--sage-light); line-height: 1.05; margin-bottom: 1.25rem;
     }
     .about-bio {
-      font-size: 1rem;
-      font-weight: 300;
-      color: rgba(243, 237, 228, 0.82);
-      line-height: 1.8;
-      max-width: 580px;
+      font-size: 1rem; font-weight: 300;
+      color: rgba(243,237,228,0.82); line-height: 1.8;
     }
+    .about-bio + .about-bio { margin-top: 1rem; }
     .about-bio strong { font-weight: 500; color: var(--linen); }
 
-    /* ===== CTA SECTION ===== */
-    .section-cta {
-      background: var(--cream);
-      padding: 9rem 0;
-      text-align: center;
+    /* About bottom: David Chang photo + press */
+    .about-bottom {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 3rem; align-items: start;
+      border-top: 1px solid rgba(168,184,157,0.2);
+      padding-top: 3.5rem;
     }
+    .about-david {
+      position: relative; border-radius: 4px; overflow: hidden;
+    }
+    .about-david img {
+      width: 100%; height: 380px; object-fit: cover;
+      object-position: center top; border-radius: 4px; display: block;
+    }
+    .about-david-caption {
+      position: absolute; bottom: 0; left: 0; right: 0;
+      background: linear-gradient(transparent, rgba(46,46,44,0.88));
+      color: rgba(243,237,228,0.9); font-size: 0.78rem; font-weight: 300;
+      padding: 2.5rem 1.2rem 1rem; border-radius: 0 0 4px 4px;
+    }
+    .about-david-caption strong { color: var(--linen); font-weight: 500; }
+    .about-press-col { display: flex; flex-direction: column; justify-content: flex-start; gap: 2rem; }
+    .about-press-label {
+      font-size: 0.65rem; font-weight: 500; color: var(--sage-light);
+      letter-spacing: 0.25em; text-transform: uppercase; margin-bottom: 1.5rem;
+      display: block;
+    }
+    .about-press-logos {
+      display: flex; flex-wrap: wrap; gap: 1.5rem 2rem; align-items: center;
+    }
+    .about-press-img {
+      height: 28px; width: auto; object-fit: contain;
+      filter: grayscale(100%) brightness(1.8) invert(0.1); opacity: 0.65;
+    }
+    .about-press-img.invert {
+      filter: grayscale(100%) brightness(10); opacity: 0.55;
+    }
+    .about-hulu-note {
+      font-size: 0.88rem; font-weight: 300;
+      color: rgba(243,237,228,0.7); line-height: 1.65; margin-top: 0.5rem;
+    }
+    .about-hulu-note strong { color: var(--linen); font-weight: 400; }
+
+    /* ===== FAQ ACCORDION ===== */
+    .section-faq { background: var(--cream); padding: 7rem 0; }
+    .section-faq h2 { margin: 0.5rem 0 3rem; }
+    .faq-list { list-style: none; }
+    .faq-item { border-top: 1px solid var(--sage-muted); }
+    .faq-item:last-child { border-bottom: 1px solid var(--sage-muted); }
+    .faq-trigger {
+      width: 100%; display: flex; align-items: center; justify-content: space-between;
+      gap: 1rem; padding: 1.4rem 0; background: none; border: none; cursor: pointer;
+      text-align: left;
+    }
+    .faq-q {
+      font-family: var(--font-display); font-size: 1.3rem; font-weight: 500;
+      color: var(--charcoal); line-height: 1.2;
+    }
+    .faq-chevron {
+      flex-shrink: 0; width: 20px; height: 20px; color: var(--sage);
+      transition: transform 0.3s ease;
+    }
+    .faq-item.open .faq-chevron { transform: rotate(180deg); }
+    .faq-body {
+      display: grid; grid-template-rows: 0fr;
+      transition: grid-template-rows 0.3s ease;
+    }
+    .faq-item.open .faq-body { grid-template-rows: 1fr; }
+    .faq-body-inner { overflow: hidden; }
+    .faq-a {
+      font-size: 0.95rem; font-weight: 300; color: var(--warm-gray);
+      line-height: 1.75; max-width: 620px; padding-bottom: 1.5rem;
+    }
+
+    /* ===== CTA ===== */
+    .section-cta { background: var(--sage-wash); padding: 9rem 0; text-align: center; }
     .cta-eyebrow {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 1rem;
-      margin-bottom: 1.25rem;
+      display: flex; align-items: center; justify-content: center;
+      gap: 1rem; margin-bottom: 1.25rem;
     }
     .cta-eyebrow .label { margin-bottom: 0; }
     .section-cta h2 { margin: 0 0 1rem; }
     .cta-sub {
-      font-size: 1.05rem;
-      color: var(--warm-gray);
-      margin: 0 auto 2.75rem;
-      max-width: 460px;
-      line-height: 1.65;
+      font-size: 1.05rem; color: var(--warm-gray);
+      margin: 0 auto 0.75rem; max-width: 460px; line-height: 1.65;
+    }
+    .cta-tagline {
+      font-family: var(--font-display); font-size: 1.2rem; font-weight: 500;
+      color: var(--charcoal); margin: 0 auto 2.75rem;
     }
     .cta-location {
-      margin-top: 1.5rem;
-      font-size: 0.78rem;
-      color: var(--medium-gray);
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-    }
-    .cta-golden {
-      color: var(--golden);
+      margin-top: 1.5rem; font-size: 0.78rem;
+      color: var(--medium-gray); letter-spacing: 0.18em; text-transform: uppercase;
     }
 
     /* ===== FOOTER ===== */
-    footer {
-      background: var(--linen);
-      padding: 4rem 2rem;
-    }
+    footer { background: var(--linen); padding: 4rem 2rem; }
     .footer-inner {
-      max-width: 1100px;
-      margin: 0 auto;
+      max-width: 1100px; margin: 0 auto;
+      display: flex; align-items: center; justify-content: space-between;
+      flex-wrap: wrap; gap: 1rem;
+    }
+    .footer-logo { font-family: var(--font-display); font-size: 1.5rem; font-weight: 700; color: var(--sage); }
+    .footer-links { display: flex; gap: 2rem; list-style: none; }
+    .footer-links a { font-size: 0.85rem; color: var(--warm-gray); }
+    .footer-links a:hover { color: var(--sage); }
+    .footer-copy {
+      font-size: 0.75rem; color: var(--medium-gray); width: 100%;
+      margin-top: 1rem; padding-top: 1rem; border-top: 1px solid var(--sage-muted);
+    }
+
+    /* ===== LOGO MARQUEE ===== */
+    .section-press {
+      background: var(--linen);
+      border-top: 1px solid #e0d9cf;
+      border-bottom: 1px solid #e0d9cf;
+      padding: 2rem 0;
+      overflow: hidden;
+    }
+    .press-marquee-label {
+      text-align: center;
+      font-size: 0.62rem;
+      font-weight: 500;
+      color: var(--medium-gray);
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      margin-bottom: 1.25rem;
+    }
+    .marquee-track {
+      display: flex;
+      width: max-content;
+      animation: marquee 28s linear infinite;
+    }
+    .marquee-track:hover { animation-play-state: paused; }
+    @keyframes marquee {
+      from { transform: translateX(0); }
+      to { transform: translateX(-50%); }
+    }
+    .marquee-set {
       display: flex;
       align-items: center;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 1rem;
+      gap: 3.5rem;
+      padding-right: 3.5rem;
     }
-    .footer-logo {
-      font-family: var(--font-display);
-      font-size: 1.5rem;
-      font-weight: 700;
-      color: var(--sage);
+    .marquee-img {
+      height: 28px;
+      width: auto;
+      object-fit: contain;
+      opacity: 0.5;
+      filter: grayscale(100%);
+      flex-shrink: 0;
     }
-    .footer-links {
-      display: flex;
-      gap: 2rem;
-      list-style: none;
+    .marquee-img.invert {
+      filter: grayscale(100%) invert(1) brightness(0.4);
     }
-    .footer-links a {
-      font-size: 0.85rem;
-      color: var(--warm-gray);
+    .about-marquee-wrap {
+      overflow: hidden;
+      margin-bottom: 1.5rem;
     }
-    .footer-copy {
-      font-size: 0.75rem;
-      color: var(--medium-gray);
-      width: 100%;
-      margin-top: 1rem;
-      padding-top: 1rem;
-      border-top: 1px solid var(--sage-muted);
+    .about-marquee-wrap .marquee-img {
+      filter: grayscale(100%) brightness(1.8);
+      opacity: 0.5;
     }
+    .about-marquee-wrap .marquee-img.invert {
+      filter: grayscale(100%) brightness(6);
+      opacity: 0.45;
+    }
+
+    /* ===== STICKY MOBILE CTA ===== */
+    .mobile-cta-bar {
+      display: none;
+      position: fixed; bottom: 0; left: 0; right: 0; z-index: 200;
+      background: var(--cream); border-top: 1px solid var(--sage-muted);
+      padding: 0.75rem 1.5rem; box-shadow: 0 -4px 20px rgba(0,0,0,0.08);
+      transform: translateY(100%);
+      transition: transform 0.3s ease;
+    }
+    .mobile-cta-bar.visible { transform: translateY(0); }
+    .mobile-cta-bar .btn-wrap { width: 100%; }
+    .mobile-cta-bar .btn-primary { width: 100%; justify-content: center; font-size: 1.1rem; padding: 14px 32px; }
 
     /* ===== RESPONSIVE ===== */
     @media (max-width: 768px) {
-      .about-grid { grid-template-columns: 1fr; gap: 2.5rem; }
-      .nav-links { display: none; }
       section { padding: 5rem 0; }
       .hero { padding: 5rem 0 4rem; }
+      .nav-links { display: none; }
+      .values-grid { grid-template-columns: 1fr; gap: 1.5rem; }
       .experience-item { grid-template-columns: 56px 1fr; }
       .experience-num { font-size: 2.5rem; }
+      .about-top { grid-template-columns: 1fr; gap: 2rem; }
+      .about-bottom { grid-template-columns: 1fr; gap: 2rem; }
+      .about-david img { height: 280px; }
+      .mobile-cta-bar { display: block; }
+      body { padding-bottom: 80px; }
     }
   </style>
 </head>
 <body>
+
+  <!-- SVG gooey filter -->
+  <svg style="position:absolute;height:0;width:0;" aria-hidden="true">
+    <defs>
+      <filter id="threshold">
+        <feColorMatrix in="SourceGraphic" type="matrix"
+          values="1 0 0 0 0
+                  0 1 0 0 0
+                  0 0 1 0 0
+                  0 0 0 255 -140"/>
+      </filter>
+    </defs>
+  </svg>
 
   <!-- NAV -->
   <nav>
@@ -457,22 +514,61 @@
   <section class="hero">
     <div class="hero-eyebrow">
       <span class="hero-eyebrow-rule"></span>
-      <span class="label">Bay Area · 30-Day Intensive</span>
+      <span class="label">1-on-1 · In Your Kitchen · Bay Area</span>
       <span class="hero-eyebrow-rule"></span>
     </div>
-    <h1>What if cooking felt like flow state?</h1>
-    <p class="hero-sub">30 days to turn your kitchen from a source of stress into your favorite room in the house.</p>
-    <a href="#apply" class="btn-primary">Apply for Coaching</a>
+    <div class="morph-block">
+      <span class="morph-static">Cooking should feel</span>
+      <div class="morph-container">
+        <span id="morph-text1" class="morph-text"></span>
+        <span id="morph-text2" class="morph-text"></span>
+      </div>
+    </div>
+    <p class="hero-sub">A 30-day cooking intensive designed to make you an intuitive, effortless cook — forever.</p>
+    <div class="btn-wrap">
+      <div class="btn-glow"></div>
+      <a href="#apply" class="btn-primary">
+        Apply for Coaching
+        <svg class="btn-arrow" viewBox="0 0 10 10" fill="none" stroke="white" stroke-width="2">
+          <path d="M0 5h7" class="btn-arrow-line"/>
+          <path d="M4 1l4 4-4 4"/>
+        </svg>
+      </a>
+    </div>
     <p class="hero-location">San Francisco · Oakland · Berkeley</p>
   </section>
 
-  <!-- PROBLEM / ARCHETYPE -->
+  <!-- VALUE PROPS -->
+  <section class="section-values">
+    <div class="container">
+      <div class="values-header">
+        <span class="label">What you'll unlock</span>
+        <h2>Cooking, simplified.</h2>
+      </div>
+      <div class="values-grid">
+        <div class="value-card">
+          <p class="value-title">Faster than delivery</p>
+          <p class="value-desc">Once you know what you're doing, cooking a real meal takes less time than waiting for DoorDash — and tastes exactly like what you actually wanted.</p>
+        </div>
+        <div class="value-card">
+          <p class="value-title">Eat what your body wants</p>
+          <p class="value-desc">You can't outsource your workout. You can't fully outsource your diet either. Cooking is how you stay in tune with what your body actually needs — no one else can do that for you.</p>
+        </div>
+        <div class="value-card">
+          <p class="value-title">A creative practice</p>
+          <p class="value-desc">Three times a day, you have a chance to do something meditative and satisfying. A flow state in the kitchen can set the tone for everything else.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROBLEM -->
   <section class="section-problem">
     <div class="container--narrow">
       <span class="label">Does this sound familiar?</span>
       <h2>Most people cook the same five things on rotation — or don't cook at all.</h2>
-      <p>Whether you panic when you're missing one ingredient, or just eat whatever's around and call it dinner — you're not a bad cook. You just never learned to <em>think</em> like one.</p>
-      <p>Food Jazz is not another recipe app. It's a complete reset of how you relate to your kitchen.</p>
+      <p>Whether you panic when you're missing one ingredient, or just order delivery and call it dinner — you're not a bad cook. You just never learned to <em>think</em> like one.</p>
+      <p>You have good taste. Food Jazz helps you translate it from your mind to your plate.</p>
     </div>
   </section>
 
@@ -481,12 +577,12 @@
     <div class="container--narrow">
       <span class="label">The Method</span>
       <h2>Intuitive cooking, not recipe following.</h2>
-      <p>Food Jazz is a method for intuitive cooking — not following recipes, but learning to think like a cook. Like jazz musicians who improvise within a structure, you'll learn the fundamentals of flavor so you can riff freely with whatever's in your fridge.</p>
+      <p>Food Jazz is built around one idea: reduce kitchen anxiety by making you an intuitive cook. You'll learn the fundamentals of flavor — ratios, heat, technique — so you can cook freely with whatever's in your fridge.</p>
       <p>No decision fatigue. No stress. Just flow.</p>
     </div>
   </section>
 
-  <!-- THE 30-DAY EXPERIENCE -->
+  <!-- PROGRAM -->
   <section class="section-experience">
     <div class="container">
       <div class="experience-header">
@@ -499,35 +595,35 @@
           <span class="experience-num">01</span>
           <div>
             <h3>Weekly Kitchen Sessions</h3>
-            <p>Akshay comes to you. Your kitchen, your ingredients — we cook together and build real skills in your space.</p>
+            <p>Akshay comes to your kitchen and helps you build your intuition in the place where you actually cook.</p>
           </div>
         </li>
         <li class="experience-item">
           <span class="experience-num">02</span>
           <div>
             <h3>Cook Something Every Day</h3>
-            <p>One real meal a day for 30 days. Not recipes — instincts. This is how the habit gets built.</p>
+            <p>One real meal a day, not from a recipe — that's how the habit forms.</p>
           </div>
         </li>
         <li class="experience-item">
           <span class="experience-num">03</span>
           <div>
-            <h3>Daily Challenges & Check-ins</h3>
-            <p>A new cooking challenge sent to your phone each day. Feedback, accountability, and momentum — all month.</p>
+            <h3>Daily Practice & Accountability</h3>
+            <p>Structured practice to lock in what you learn between sessions.</p>
           </div>
         </li>
         <li class="experience-item">
           <span class="experience-num">04</span>
           <div>
             <h3>Flavor Fundamentals</h3>
-            <p>Learn how flavors actually work — not recipes to memorize, but principles that make every meal improvable.</p>
+            <p>A way of thinking about food that replaces recipes and stays with you forever.</p>
           </div>
         </li>
         <li class="experience-item">
           <span class="experience-num">05</span>
           <div>
             <h3>Kitchen Blueprint</h3>
-            <p>A full kitchen audit at the start — the layout, tools, and pantry staples that make cooking feel effortless every day, long after the 30 days are done.</p>
+            <p>Turn your kitchen into a creative space where everything's in reach and cooking flows effortlessly.</p>
           </div>
         </li>
       </ul>
@@ -543,32 +639,127 @@
       </div>
       <ul class="outcomes-list">
         <li><span class="outcome-dash">✦</span> Cook at least one real meal a day — without a recipe</li>
-        <li><span class="outcome-dash">✦</span> Make dinner faster than DoorDash can deliver it</li>
-        <li><span class="outcome-dash">✦</span> Build a cooking habit that actually sticks this time</li>
+        <li><span class="outcome-dash">✦</span> Freedom from DoorDash, HelloFresh, and the anxiety of not knowing how to cook well</li>
+        <li><span class="outcome-dash">✦</span> A cooking habit built on accountability that actually sticks</li>
         <li><span class="outcome-dash">✦</span> Confidently host a dinner party for people you care about</li>
         <li><span class="outcome-dash">✦</span> Feel calm and in flow in your kitchen instead of stressed</li>
       </ul>
     </div>
   </section>
 
-  <!-- ABOUT AKSHAY -->
+  <!-- ABOUT -->
   <section class="section-about">
     <div class="container">
-      <span class="label">Your Coach</span>
-      <div class="about-grid">
+      <span class="label" style="color: var(--sage-light);">Your Mentor</span>
+
+      <div class="about-top">
         <div class="about-photo-wrap">
           <img src="akshay.jpg" alt="Akshay Prabhu">
         </div>
         <div>
-          <p class="about-role">Founder · Neuroscientist · Cooking Coach</p>
+          <p class="about-role">Startup Founder · Neuroscientist · Your Personal Cooking Mentor</p>
           <p class="about-name">Akshay Prabhu</p>
-          <p class="about-bio">I raised <strong>$3M</strong>, built Foodnome from the ground up, and helped <strong>300+ people</strong> transform their home kitchens. I've staged at <strong>Chez Panisse</strong>, run hundreds of pop-up dinners, and cooked whole lambs over open fire for crowds across the Bay. This is what 20 years of obsession looks like — and I'm giving you the whole thing in 30 days.</p>
+          <p class="about-bio">I raised <strong>$3M</strong> to build Foodnome, the first online marketplace for home-based restaurants — helping <strong>250+ home cooks</strong> launch businesses and passing legislation to legalize home cooking across California and beyond. I've staged at <strong>Chez Panisse</strong>, hosted hundreds of pop-up dinners, catered events for <strong>500+ guests</strong>, and cooked whole lambs over open fire for crowds across the Bay.</p>
+          <p class="about-bio" style="margin-top: 1rem;">And now I want to bring that same joy and fun into your kitchen.</p>
+        </div>
+        <div>
+          <p class="about-bio">Food has been at the center of my life for as long as I can remember. For me it's always been about more than fuel — it's how I connect with people, how I show love, how I've built community.</p>
+          <p class="about-bio" style="margin-top: 1rem;">Helping people find that same relationship with their own kitchen is what feels like my life's work.</p>
         </div>
       </div>
+
+      <div class="about-bottom">
+        <div class="about-david">
+          <img src="photo-david-chang.jpeg" alt="Akshay Prabhu with David Chang">
+          <div class="about-david-caption">
+            <strong>With David Chang</strong> — featured on Hulu's <em>The Next Thing You Eat</em>
+          </div>
+        </div>
+        <div class="about-press-col">
+          <span class="about-press-label">Akshay's work featured in</span>
+          <div class="about-marquee-wrap">
+            <div class="marquee-track">
+              <div class="marquee-set">
+                <img class="marquee-img" src="press-npr.png" alt="NPR">
+                <img class="marquee-img invert" src="press-nyt.png" alt="New York Times">
+                <img class="marquee-img" src="press-eater.png" alt="Eater">
+                <img class="marquee-img" src="press-hulu.png" alt="Hulu">
+                <img class="marquee-img" src="press-abc7.png" alt="ABC7">
+                <img class="marquee-img" src="press-spectrum.png" alt="Spectrum News">
+              </div>
+              <div class="marquee-set" aria-hidden="true">
+                <img class="marquee-img" src="press-npr.png" alt="">
+                <img class="marquee-img invert" src="press-nyt.png" alt="">
+                <img class="marquee-img" src="press-eater.png" alt="">
+                <img class="marquee-img" src="press-hulu.png" alt="">
+                <img class="marquee-img" src="press-abc7.png" alt="">
+                <img class="marquee-img" src="press-spectrum.png" alt="">
+              </div>
+            </div>
+          </div>
+          <p class="about-hulu-note">Akshay was featured alongside <strong>David Chang</strong> on Hulu's <em>The Next Thing You Eat</em> and in a PBS documentary on the home restaurant movement — work that helped reshape how America thinks about home cooking.</p>
+        </div>
+      </div>
+
     </div>
   </section>
 
-  <!-- CTA / APPLICATION -->
+  <!-- FAQ -->
+  <section class="section-faq">
+    <div class="container--narrow">
+      <span class="label">Questions</span>
+      <h2>Things people ask.</h2>
+      <ul class="faq-list">
+        <li class="faq-item">
+          <button class="faq-trigger" aria-expanded="false">
+            <span class="faq-q">What if I don't know how to cook at all?</span>
+            <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <div class="faq-body"><div class="faq-body-inner">
+            <p class="faq-a">That's exactly who this is for. We start with your kitchen, your ingredients, and where you actually are — not some assumed baseline. Complete beginners are welcome.</p>
+          </div></div>
+        </li>
+        <li class="faq-item">
+          <button class="faq-trigger" aria-expanded="false">
+            <span class="faq-q">How much time does it take?</span>
+            <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <div class="faq-body"><div class="faq-body-inner">
+            <p class="faq-a">One in-person session per week, plus cooking one real meal a day on your own. If you're already eating, you're already most of the way there.</p>
+          </div></div>
+        </li>
+        <li class="faq-item">
+          <button class="faq-trigger" aria-expanded="false">
+            <span class="faq-q">What if I don't have the right ingredients?</span>
+            <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <div class="faq-body"><div class="faq-body-inner">
+            <p class="faq-a">That's the whole point. You'll learn to cook with what you have — not from a shopping list someone else wrote for you.</p>
+          </div></div>
+        </li>
+        <li class="faq-item">
+          <button class="faq-trigger" aria-expanded="false">
+            <span class="faq-q">What does it cost?</span>
+            <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <div class="faq-body"><div class="faq-body-inner">
+            <p class="faq-a">The full program is $1,000. The first 5 spots are available at an early access rate of $500 — half off, because your experience and feedback help shape what comes next.</p>
+          </div></div>
+        </li>
+        <li class="faq-item">
+          <button class="faq-trigger" aria-expanded="false">
+            <span class="faq-q">Is this only in the Bay Area?</span>
+            <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <div class="faq-body"><div class="faq-body-inner">
+            <p class="faq-a">Yes — this is 1-on-1, in-person coaching in your kitchen. San Francisco, Oakland, and Berkeley only for now. An online program is coming. <a href="/" style="color: var(--sage); text-decoration: underline;">Join the waitlist →</a></p>
+          </div></div>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- CTA -->
   <section id="apply" class="section-cta">
     <div class="container--narrow">
       <div class="cta-eyebrow">
@@ -576,10 +767,20 @@
         <span class="label">Apply</span>
         <span class="hero-eyebrow-rule"></span>
       </div>
-      <h2>Apply to be considered.</h2>
-      <p class="cta-sub">Spots are limited. Tell me about your relationship with food. I'll reach out if I think we're a good fit.</p>
-      <a href="https://tally.so/r/68kgMB" class="btn-primary">Start Your Application <span class="cta-golden">✦</span></a>
-      <p class="cta-location">San Francisco · Oakland · Berkeley</p>
+      <h2>Let's take cooking off the back burner.</h2>
+      <p class="cta-sub">Tell me about your relationship with food. I'll reach out if it's a good fit.</p>
+      <p class="cta-tagline">You have good taste. Food Jazz will help you unlock it.</p>
+      <div class="btn-wrap">
+        <div class="btn-glow"></div>
+        <a href="https://tally.so/r/68kgMB" class="btn-primary">
+          Start Your Application
+          <svg class="btn-arrow" viewBox="0 0 10 10" fill="none" stroke="white" stroke-width="2">
+            <path d="M0 5h7"/>
+            <path d="M4 1l4 4-4 4"/>
+          </svg>
+        </a>
+      </div>
+      <p class="cta-location">San Francisco · Oakland · Berkeley · Spring 2026</p>
     </div>
   </section>
 
@@ -589,11 +790,93 @@
       <span class="footer-logo">Food Jazz</span>
       <ul class="footer-links">
         <li><a href="/">Home</a></li>
-        <li><a href="mailto:akshay@foodjazz.club">Contact</a></li>
+        <li><a href="mailto:akshay@foodjazz.club">Email</a></li>
+        <li><a href="https://www.linkedin.com/in/ajprabhu/" target="_blank" rel="noopener">LinkedIn</a></li>
       </ul>
       <p class="footer-copy">© 2026 Food Jazz · foodjazz.club</p>
     </div>
   </footer>
 
+  <!-- MOBILE STICKY CTA -->
+  <div class="mobile-cta-bar">
+    <div class="btn-wrap">
+      <div class="btn-glow"></div>
+      <a href="https://tally.so/r/68kgMB" class="btn-primary">Apply for Coaching</a>
+    </div>
+  </div>
+
+  <script>
+    // ===== GOOEY MORPH =====
+    const texts = ["effortless", "intuitive", "calm", "joyful", "creative", "yours"];
+    const text1 = document.getElementById("morph-text1");
+    const text2 = document.getElementById("morph-text2");
+    const morphTime = 1.5, cooldownTime = 2.5;
+    let textIndex = 0, time = new Date(), morph = 0, cooldown = cooldownTime;
+    text1.textContent = texts[0];
+    text2.textContent = texts[1];
+
+    function setMorph(f) {
+      text2.style.filter = `blur(${Math.min(8/f - 8, 100)}px)`;
+      text2.style.opacity = `${Math.pow(f, 0.4) * 100}%`;
+      f = 1 - f;
+      text1.style.filter = `blur(${Math.min(8/f - 8, 100)}px)`;
+      text1.style.opacity = `${Math.pow(f, 0.4) * 100}%`;
+    }
+    function doCooldown() {
+      morph = 0;
+      text2.style.filter = ""; text2.style.opacity = "100%";
+      text1.style.filter = ""; text1.style.opacity = "0%";
+    }
+    function doMorph() {
+      morph -= cooldown; cooldown = 0;
+      let f = morph / morphTime;
+      if (f > 1) { cooldown = cooldownTime; f = 1; }
+      setMorph(f);
+    }
+    function animateMorph() {
+      requestAnimationFrame(animateMorph);
+      const now = new Date();
+      const shouldIncrement = cooldown > 0;
+      const dt = (now - time) / 1000;
+      time = now; cooldown -= dt;
+      if (cooldown <= 0) {
+        if (shouldIncrement) {
+          textIndex = (textIndex + 1) % texts.length;
+          text1.textContent = texts[textIndex % texts.length];
+          text2.textContent = texts[(textIndex + 1) % texts.length];
+        }
+        doMorph();
+      } else { doCooldown(); }
+    }
+    animateMorph();
+
+    // ===== STICKY BAR — show after first hero CTA scrolls out =====
+    const heroBtn = document.querySelector('.hero .btn-wrap');
+    const stickyBar = document.querySelector('.mobile-cta-bar');
+    if (heroBtn && stickyBar) {
+      const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if (!entry.isIntersecting) {
+            stickyBar.classList.add('visible');
+          } else {
+            stickyBar.classList.remove('visible');
+          }
+        });
+      }, { threshold: 0 });
+      observer.observe(heroBtn);
+    }
+
+    // ===== FAQ ACCORDION =====
+    document.querySelectorAll('.faq-trigger').forEach(trigger => {
+      trigger.addEventListener('click', () => {
+        const item = trigger.closest('.faq-item');
+        const isOpen = item.classList.contains('open');
+        // Close all
+        document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+        // Open clicked if it was closed
+        if (!isOpen) item.classList.add('open');
+      });
+    });
+  </script>
 </body>
 </html>

@@ -10,7 +10,7 @@
   <style>
     @page { size: letter portrait; margin: 0; }
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { font-size: 16px; -webkit-font-smoothing: antialiased; }
+    html { font-size: 14px; -webkit-font-smoothing: antialiased; }
 
     :root {
       --sage: #7A8C6E;
@@ -55,7 +55,7 @@
     /* ===== HEADER ===== */
     .flyer-header {
       background: var(--cream);
-      padding: 0.48in 0.65in 0.3in;
+      padding: 0.32in 0.65in 0.2in;
       position: relative;
       overflow: hidden;
     }
@@ -66,7 +66,7 @@
       border: 1px solid var(--sage-muted);
       border-radius: 99px;
       padding: 0.18rem 0.55rem;
-      margin-bottom: 0.32in;
+      margin-bottom: 0.18in;
     }
     .header-pill-dot {
       width: 5px;
@@ -88,7 +88,7 @@
       font-weight: 500;
       color: var(--sage);
       font-style: italic;
-      margin-bottom: 0.1in;
+      margin-bottom: 0.06in;
     }
     .header-headline {
       font-family: var(--font-display);
@@ -98,10 +98,10 @@
       line-height: 1.0;
       max-width: 5.5in;
       letter-spacing: -0.02em;
-      margin-bottom: 0.15in;
+      margin-bottom: 0.08in;
     }
     .header-sub {
-      font-size: 0.85rem;
+      font-size: 0.95rem;
       font-weight: 300;
       color: var(--warm-gray);
       max-width: 4in;
@@ -117,7 +117,7 @@
 
     /* ===== WAVE DIVIDER ===== */
     .wave-divider {
-      padding: 0.1in 0;
+      padding: 0.05in 0;
       line-height: 0;
     }
     .wave-divider svg {
@@ -128,11 +128,11 @@
 
     /* ===== PROGRAM SECTION ===== */
     .flyer-program {
-      padding: 0.22in 0.65in 0.08in;
+      padding: 0.15in 0.65in 0.06in;
     }
     .section-label {
-      font-size: 0.57rem;
-      font-weight: 500;
+      font-size: 0.7rem;
+      font-weight: 400;
       color: var(--medium-gray);
       letter-spacing: 0.22em;
       text-transform: uppercase;
@@ -148,7 +148,7 @@
       display: flex;
       align-items: flex-start;
       gap: 0.2in;
-      padding: 0.1in 0;
+      padding: 0.065in 0;
       border-bottom: 1px solid var(--sage-muted);
     }
     .prog-icon {
@@ -165,7 +165,7 @@
       margin-bottom: 0.04rem;
     }
     .prog-desc {
-      font-size: 0.77rem;
+      font-size: 1rem;
       font-weight: 300;
       color: var(--warm-gray);
       line-height: 1.5;
@@ -176,13 +176,13 @@
       display: flex;
       align-items: center;
       gap: 0.5rem;
-      padding: 0.13in 0.65in 0.1in;
+      padding: 0.08in 0.65in 0.08in;
       flex-wrap: wrap;
     }
     .outcomes-label {
-      font-size: 0.54rem;
-      font-weight: 500;
-      color: var(--medium-gray);
+      font-size: 0.7rem;
+      font-weight: 400;
+      color: var(--sage);
       letter-spacing: 0.2em;
       text-transform: uppercase;
       margin-right: 0.08rem;
@@ -198,16 +198,16 @@
       line-height: 1;
     }
     .outcomes-statement {
-      font-size: 0.8rem;
+      font-size: 1rem;
       font-weight: 300;
-      color: var(--charcoal);
+      color: var(--warm-gray);
       line-height: 1.6;
     }
 
     /* ===== AKSHAY CARD ===== */
     .flyer-akshay {
       background: var(--linen);
-      padding: 0.2in 0.65in;
+      padding: 0.14in 0.65in;
       display: flex;
       align-items: center;
       gap: 0.28in;
@@ -231,12 +231,18 @@
       flex: 1;
     }
     .akshay-role {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      border: 1px solid var(--sage-muted);
+      border-radius: 99px;
+      padding: 0.18rem 0.55rem;
       font-size: 0.55rem;
       font-weight: 500;
       color: var(--sage);
-      letter-spacing: 0.2em;
+      letter-spacing: 0.18em;
       text-transform: uppercase;
-      margin-bottom: 0.1rem;
+      margin-bottom: 0.3rem;
     }
     .akshay-name {
       font-family: var(--font-display);
@@ -247,7 +253,7 @@
       margin-bottom: 0.18rem;
     }
     .akshay-bio {
-      font-size: 0.75rem;
+      font-size: 0.95rem;
       font-weight: 300;
       color: var(--warm-gray);
       line-height: 1.55;
@@ -275,7 +281,7 @@
     .flyer-cta {
       background: var(--cream);
       border-top: 2px solid var(--sage);
-      padding: 0.2in 0.65in;
+      padding: 0.14in 0.65in;
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -290,7 +296,7 @@
       margin-bottom: 0.1rem;
     }
     .cta-sub-text {
-      font-size: 0.75rem;
+      font-size: 0.95rem;
       font-weight: 300;
       color: var(--warm-gray);
       line-height: 1.5;
@@ -348,11 +354,12 @@
 
     <div class="header-pill">
       <div class="header-pill-dot"></div>
-      <span class="header-pill-text">30-Day Intensive · Bay Area</span>
+      <span class="header-pill-text">1-on-1 · In Your Kitchen · Bay Area</span>
     </div>
     <div class="header-wordmark">Food Jazz</div>
-    <h1 class="header-headline">What if cooking felt like flow state?</h1>
-    <p class="header-sub">30 days to cook exactly what you're craving, any night of the week.</p>
+    <h1 class="header-headline">What if cooking felt like a flow state?</h1>
+    <p class="header-sub">A 30-day cooking intensive designed to make you an intuitive, effortless cook — forever.</p>
+
   </div>
 
   <!-- WAVE DIVIDER -->
@@ -379,7 +386,7 @@
         </div>
         <div>
           <div class="prog-title">Weekly Kitchen Sessions</div>
-          <div class="prog-desc">Akshay comes to your kitchen. We cook with what you've got and build real instincts in the place where you actually eat.</div>
+          <div class="prog-desc">Akshay comes to your kitchen and helps you build your intuition in the place where you actually cook.</div>
         </div>
       </li>
 
@@ -395,7 +402,7 @@
         </div>
         <div>
           <div class="prog-title">Cook Something Every Day</div>
-          <div class="prog-desc">One real meal a day. Every day. Not from a recipe but from instinct. That's how the habit actually forms.</div>
+          <div class="prog-desc">One real meal a day, not from a recipe — that's how the habit forms.</div>
         </div>
       </li>
 
@@ -416,7 +423,7 @@
         </div>
         <div>
           <div class="prog-title">Daily Challenges & Check-ins</div>
-          <div class="prog-desc">Something new hits your phone each morning. You cook it, send a photo, get feedback. All month.</div>
+          <div class="prog-desc">Structured practice to lock in what you learn between sessions.</div>
         </div>
       </li>
 
@@ -435,7 +442,7 @@
         </div>
         <div>
           <div class="prog-title">Flavor Fundamentals</div>
-          <div class="prog-desc">The principles behind every good dish. Not recipes to memorize but a way of thinking about food that stays with you.</div>
+          <div class="prog-desc">A way of thinking about food that replaces recipes and stays with you forever.</div>
         </div>
       </li>
 
@@ -454,7 +461,7 @@
         </div>
         <div>
           <div class="prog-title">Kitchen Blueprint</div>
-          <div class="prog-desc">A deep look at your setup — layout, tools, pantry. What's getting in your way and how to clear it for good.</div>
+          <div class="prog-desc">Turn your kitchen into a creative space where everything's in reach and cooking flows effortlessly.</div>
         </div>
       </li>
 
@@ -464,7 +471,7 @@
   <!-- OUTCOMES ROW -->
   <div class="outcomes-row">
     <span class="outcomes-label">You'll leave with</span>
-    <span class="outcomes-statement">A cooking habit that sticks. The confidence to throw a real dinner party. Freedom from DoorDash and meal kits.</span>
+    <span class="outcomes-statement">Freedom from DoorDash, HelloFresh, and the anxiety of not knowing how to cook well.</span>
   </div>
 
   <!-- WAVE DIVIDER -->
@@ -481,9 +488,9 @@
       <img src="akshay.jpg" alt="Akshay Prabhu">
     </div>
     <div class="akshay-text">
-      <div class="akshay-role">Startup Founder · Neuroscientist · Your Cooking Coach</div>
+      <div class="akshay-role">Startup Founder · Neuroscientist · Your Personal Cooking Mentor</div>
       <div class="akshay-name">Akshay Prabhu</div>
-      <p class="akshay-bio">Food has been my whole life. I raised $3M to build a marketplace for home-based restaurants, and helped 300+ people transform how they cook. I've staged at Chez Panisse, run hundreds of pop-up dinners, and cooked whole lambs over open fire for crowds across the Bay. I can't wait to bring this to your kitchen.</p>
+      <p class="akshay-bio">I raised $3M to build a marketplace for home-based restaurants and helped 300+ people transform their home kitchens into businesses. I've staged at Chez Panisse, run hundreds of pop-up dinners, and cooked whole lambs over open fire for crowds across the Bay. And now I want to bring that same joy and fun into your kitchen.</p>
     </div>
     <div class="akshay-qr">
       <img src="qr-tally.svg" alt="Scan to apply">
@@ -494,13 +501,18 @@
   <!-- CTA -->
   <div class="flyer-cta">
     <div>
-      <div class="cta-headline">Apply to be considered.<br>Spots are limited.</div>
+      <div class="cta-headline">Apply.</div>
       <p class="cta-sub-text">Tell me about your relationship with food.<br>I'll reach out if it's a fit.</p>
     </div>
     <div class="cta-right">
-      <span class="cta-url">foodjazz.club/coach</span>
-      <span class="cta-apply-label">Free for April founding clients ✦</span>
+      <span class="cta-url">foodjazz<span style="letter-spacing: 0.05em;">&#8202;.</span>club/coach</span>
+      <span class="cta-apply-label">Bay Area · Spring 2026 ✦</span>
     </div>
+  </div>
+
+  <!-- CLOSING STATEMENT -->
+  <div style="padding: 0.18in 0.65in; text-align: center;">
+    <p style="font-family: var(--font-display); font-size: 1.2rem; font-weight: 600; color: var(--charcoal); line-height: 1.4;">You have good taste. Food Jazz will help you unlock it.</p>
   </div>
 
   <!-- FOOTER -->
