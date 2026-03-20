@@ -186,6 +186,30 @@
       position: relative;
       overflow: hidden;
     }
+    .hero-spiral {
+      position: absolute;
+      top: -80px;
+      right: -100px;
+      opacity: 0.055;
+      pointer-events: none;
+      user-select: none;
+    }
+    .hero-breath {
+      position: absolute;
+      bottom: -60px;
+      left: -60px;
+      opacity: 0.045;
+      pointer-events: none;
+      user-select: none;
+    }
+    /* ===== VEG DECORATIONS ===== */
+    .deco-veg {
+      position: absolute;
+      pointer-events: none;
+      user-select: none;
+      opacity: 0.28;
+      filter: saturate(0.8);
+    }
     .hero-eyebrow {
       display: flex; align-items: center; justify-content: center;
       gap: 1.5rem; margin-bottom: 2rem;
@@ -206,7 +230,51 @@
     .values-header { text-align: center; margin-bottom: 4rem; }
     .values-header h2 { margin: 0.5rem 0 1rem; }
     .values-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2.5rem; }
-    .value-card { padding: 1.75rem 0; border-top: 2px solid var(--sage-muted); }
+    .value-card {
+      padding: 1.75rem 1.5rem;
+      border: 1px solid var(--sage-muted);
+      border-radius: 12px;
+      background: var(--cream);
+      position: relative;
+      overflow: hidden;
+      transition: border-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+      cursor: default;
+    }
+    .value-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+      transition: opacity 0.4s ease;
+      background: radial-gradient(
+        300px circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
+        rgba(122, 140, 110, 0.10),
+        transparent 65%
+      );
+      pointer-events: none;
+      border-radius: inherit;
+    }
+    .value-card::after {
+      content: '';
+      position: absolute;
+      inset: -1px;
+      border-radius: 12px;
+      padding: 1px;
+      background: radial-gradient(
+        200px circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
+        rgba(212, 168, 67, 0.55),
+        transparent 70%
+      );
+      opacity: 0;
+      transition: opacity 0.4s ease;
+      pointer-events: none;
+      -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
+    }
+    .value-card:hover::before,
+    .value-card:hover::after { opacity: 1; }
+    .value-icon { width: 36px; height: 36px; margin-bottom: 1rem; display: block; }
     .value-title {
       font-family: var(--font-display); font-size: 1.4rem; font-weight: 500;
       color: var(--wood-dark); margin-bottom: 0.6rem; line-height: 1.2;
@@ -229,7 +297,7 @@
     .experience-header h2 { margin: 0.5rem 0 1rem; }
     .experience-list { list-style: none; }
     .experience-item {
-      display: grid; grid-template-columns: 80px 1fr;
+      display: grid; grid-template-columns: 40px 1fr;
       gap: 0 2rem; padding: 2.2rem 0;
       border-top: 1px solid var(--sage-muted); align-items: start;
     }
@@ -237,6 +305,9 @@
     .experience-num {
       font-family: var(--font-display); font-size: 3.2rem; font-weight: 700;
       color: var(--sage-muted); line-height: 1; padding-top: 4px;
+    }
+    .experience-icon {
+      width: 28px; height: 28px; flex-shrink: 0; margin-top: 2px;
     }
     .experience-item h3 { margin-bottom: 0.45rem; }
     .experience-item p { font-size: 0.95rem; }
@@ -287,12 +358,21 @@
     .about-bio + .about-bio { margin-top: 1rem; }
     .about-bio strong { font-weight: 500; color: var(--linen); }
 
-    /* About bottom: David Chang photo + press */
+    /* Press banner — full width above bio */
+    .about-press-banner {
+      margin-bottom: 3.5rem;
+      overflow: hidden;
+    }
+    .about-press-banner .about-press-label {
+      display: block;
+      margin-bottom: 1rem;
+    }
+
+    /* About bottom: David Chang photo only */
     .about-bottom {
-      display: grid; grid-template-columns: 1fr 1fr;
-      gap: 3rem; align-items: start;
       border-top: 1px solid rgba(168,184,157,0.2);
       padding-top: 3.5rem;
+      max-width: 560px;
     }
     .about-david {
       position: relative; border-radius: 4px; overflow: hidden;
@@ -420,7 +500,6 @@
       width: max-content;
       animation: marquee 28s linear infinite;
     }
-    .marquee-track:hover { animation-play-state: paused; }
     @keyframes marquee {
       from { transform: translateX(0); }
       to { transform: translateX(-50%); }
@@ -446,13 +525,10 @@
       overflow: hidden;
       margin-bottom: 1.5rem;
     }
-    .about-marquee-wrap .marquee-img {
-      filter: grayscale(100%) brightness(1.8);
-      opacity: 0.5;
-    }
+    .about-marquee-wrap .marquee-img,
     .about-marquee-wrap .marquee-img.invert {
-      filter: grayscale(100%) brightness(6);
-      opacity: 0.45;
+      filter: grayscale(100%) invert(1) brightness(0.82);
+      opacity: 0.52;
     }
 
     /* ===== STICKY MOBILE CTA ===== */
@@ -472,13 +548,17 @@
     @media (max-width: 768px) {
       section { padding: 5rem 0; }
       .hero { padding: 5rem 0 4rem; }
+      .hero-spiral, .hero-breath { display: none; }
+      .deco-veg { display: none; }
       .nav-links { display: none; }
       .values-grid { grid-template-columns: 1fr; gap: 1.5rem; }
       .experience-item { grid-template-columns: 56px 1fr; }
       .experience-num { font-size: 2.5rem; }
-      .about-top { grid-template-columns: 1fr; gap: 2rem; }
-      .about-bottom { grid-template-columns: 1fr; gap: 2rem; }
-      .about-david img { height: 280px; }
+      .about-top { grid-template-columns: 1fr; gap: 1.75rem; }
+      .about-photo-wrap { margin: 0 auto; }
+      .about-name { font-size: 2rem; }
+      .about-bottom { max-width: 100%; }
+      .about-david img { height: 260px; }
       .mobile-cta-bar { display: block; }
       body { padding-bottom: 80px; }
     }
@@ -505,13 +585,28 @@
       <a href="/" class="nav-logo">Food Jazz</a>
       <ul class="nav-links">
         <li><a href="/">Home</a></li>
-        <li><a href="#apply" class="nav-cta">Apply for Coaching →</a></li>
+        <li><a href="#apply" class="nav-cta">Claim Your Spot →</a></li>
       </ul>
     </div>
   </nav>
 
   <!-- HERO -->
   <section class="hero">
+
+    <!-- Spiral — top right, bleeds off edge -->
+    <svg class="hero-spiral" width="520" height="520" viewBox="0 0 270 270" fill="none" aria-hidden="true">
+      <path d="M135 135 C135 112, 157 90, 180 90 C224 90, 246 124, 228 157 C210 192, 164 204, 132 178 C90 148, 100 98, 133 74 C173 44, 234 70, 242 120 C250 172, 208 220, 152 226 C92 232, 42 186, 52 120 C62 52, 126 12, 198 28"
+        stroke="#2E2E2C" stroke-width="1.2" stroke-linecap="round" fill="none"/>
+    </svg>
+
+    <!-- Breath circles — bottom left -->
+    <svg class="hero-breath" width="340" height="340" viewBox="0 0 200 200" fill="none" aria-hidden="true">
+      <circle cx="100" cy="100" r="30" stroke="#2E2E2C" stroke-width="1"/>
+      <circle cx="100" cy="100" r="52" stroke="#2E2E2C" stroke-width="0.9"/>
+      <circle cx="100" cy="100" r="74" stroke="#2E2E2C" stroke-width="0.8"/>
+      <circle cx="100" cy="100" r="96" stroke="#2E2E2C" stroke-width="0.7"/>
+    </svg>
+
     <div class="hero-eyebrow">
       <span class="hero-eyebrow-rule"></span>
       <span class="label">1-on-1 · In Your Kitchen · Bay Area</span>
@@ -528,7 +623,7 @@
     <div class="btn-wrap">
       <div class="btn-glow"></div>
       <a href="#apply" class="btn-primary">
-        Apply for Coaching
+        Claim Your Spot
         <svg class="btn-arrow" viewBox="0 0 10 10" fill="none" stroke="white" stroke-width="2">
           <path d="M0 5h7" class="btn-arrow-line"/>
           <path d="M4 1l4 4-4 4"/>
@@ -547,14 +642,44 @@
       </div>
       <div class="values-grid">
         <div class="value-card">
+          <!-- Rocket (speed) -->
+          <svg class="value-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M12 3 Q16.5 7 16.5 13 L12 15.5 L7.5 13 Q7.5 7 12 3Z" stroke="#7A8C6E" stroke-width="1.4" fill="rgba(168,184,157,0.10)" stroke-linejoin="round"/>
+            <circle cx="12" cy="9.5" r="2" stroke="#D4A843" stroke-width="1.2" fill="rgba(212,168,67,0.12)"/>
+            <path d="M7.5 13 L5 17.5 L8.5 16" stroke="#7A8C6E" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" fill="rgba(168,184,157,0.08)"/>
+            <path d="M16.5 13 L19 17.5 L15.5 16" stroke="#7A8C6E" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" fill="rgba(168,184,157,0.08)"/>
+            <path d="M9.5 16.5 Q12 20.5 14.5 16.5" stroke="#D4A843" stroke-width="1.2" stroke-linecap="round" fill="rgba(212,168,67,0.10)"/>
+            <path d="M10.8 17 Q12 19.5 13.2 17" stroke="#C47A5A" stroke-width="1.0" stroke-linecap="round" fill="none"/>
+          </svg>
           <p class="value-title">Faster than delivery</p>
           <p class="value-desc">Once you know what you're doing, cooking a real meal takes less time than waiting for DoorDash — and tastes exactly like what you actually wanted.</p>
         </div>
         <div class="value-card">
+          <!-- Figure with radiating rings (mind-body) -->
+          <svg class="value-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <circle cx="12" cy="4.5" r="2.2" stroke="#7A8C6E" stroke-width="1.3" fill="rgba(168,184,157,0.08)"/>
+            <path d="M8 8.5 Q10 7 12 7 Q14 7 16 8.5 L15.5 15 Q14.5 17 12 17 Q9.5 17 8.5 15Z" stroke="#7A8C6E" stroke-width="1.3" fill="rgba(168,184,157,0.07)" stroke-linejoin="round"/>
+            <circle cx="12" cy="12" r="3" stroke="#D4A843" stroke-width="0.9" fill="none" opacity="0.7"/>
+            <circle cx="12" cy="12" r="5.5" stroke="#D4A843" stroke-width="0.7" fill="none" opacity="0.35"/>
+            <circle cx="12" cy="12" r="1.3" fill="rgba(212,168,67,0.75)" stroke="#D4A843" stroke-width="0.7"/>
+          </svg>
           <p class="value-title">Eat what your body wants</p>
           <p class="value-desc">You can't outsource your workout. You can't fully outsource your diet either. Cooking is how you stay in tune with what your body actually needs — no one else can do that for you.</p>
         </div>
         <div class="value-card">
+          <!-- Starburst (creativity) -->
+          <svg class="value-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <circle cx="12" cy="12" r="2.2" fill="rgba(212,168,67,0.2)" stroke="#D4A843" stroke-width="1.2"/>
+            <line x1="12" y1="3" x2="12" y2="7.5" stroke="#D4A843" stroke-width="1.3" stroke-linecap="round"/>
+            <line x1="12" y1="16.5" x2="12" y2="21" stroke="#D4A843" stroke-width="1.3" stroke-linecap="round"/>
+            <line x1="3" y1="12" x2="7.5" y2="12" stroke="#D4A843" stroke-width="1.3" stroke-linecap="round"/>
+            <line x1="16.5" y1="12" x2="21" y2="12" stroke="#D4A843" stroke-width="1.3" stroke-linecap="round"/>
+            <line x1="5.6" y1="5.6" x2="8.8" y2="8.8" stroke="#7A8C6E" stroke-width="1.2" stroke-linecap="round"/>
+            <line x1="15.2" y1="15.2" x2="18.4" y2="18.4" stroke="#7A8C6E" stroke-width="1.2" stroke-linecap="round"/>
+            <line x1="18.4" y1="5.6" x2="15.2" y2="8.8" stroke="#7A8C6E" stroke-width="1.2" stroke-linecap="round"/>
+            <line x1="8.8" y1="15.2" x2="5.6" y2="18.4" stroke="#7A8C6E" stroke-width="1.2" stroke-linecap="round"/>
+            <circle cx="12" cy="12" r="0.9" fill="#D4A843"/>
+          </svg>
           <p class="value-title">A creative practice</p>
           <p class="value-desc">Three times a day, you have a chance to do something meditative and satisfying. A flow state in the kitchen can set the tone for everything else.</p>
         </div>
@@ -573,7 +698,9 @@
   </section>
 
   <!-- METHOD -->
-  <section class="section-method">
+  <section class="section-method" style="position:relative; overflow:hidden;">
+    <img class="deco-veg" src="deco-cucumber.png" alt=""
+      style="width:190px; bottom:-20px; right:-45px; transform:rotate(-15deg);">
     <div class="container--narrow">
       <span class="label">The Method</span>
       <h2>Intuitive cooking, not recipe following.</h2>
@@ -592,35 +719,70 @@
       </div>
       <ul class="experience-list">
         <li class="experience-item">
-          <span class="experience-num">01</span>
+          <svg class="experience-icon" viewBox="0 0 24 24" fill="none">
+            <path d="M3 11 L12 3 L21 11" stroke="#D4A843" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M5 10 L5 20 L19 20 L19 10" stroke="#7A8C6E" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" fill="rgba(168,184,157,0.12)"/>
+            <rect x="9" y="14" width="6" height="6" rx="0.5" stroke="#D4A843" stroke-width="1.2" fill="rgba(212,168,67,0.12)"/>
+          </svg>
           <div>
             <h3>Weekly Kitchen Sessions</h3>
             <p>Akshay comes to your kitchen and helps you build your intuition in the place where you actually cook.</p>
           </div>
         </li>
         <li class="experience-item">
-          <span class="experience-num">02</span>
+          <svg class="experience-icon" viewBox="0 0 24 24" fill="none">
+            <path d="M12 22 C7 22, 4 18, 4 14 C4 10, 6.5 7.5, 9 6 C9.5 8.5, 10.5 10, 12 9 C13.5 8, 14.5 5.5, 15 4 C17 6.5, 20 9.5, 20 14 C20 18, 17 22, 12 22Z"
+              fill="rgba(212,168,67,0.18)" stroke="#D4A843" stroke-width="1.5" stroke-linejoin="round"/>
+            <path d="M12 18 C10.5 18, 9.5 16.5, 9.5 15 C9.5 13, 11 12, 12 10.5 C13 12, 14.5 13, 14.5 15 C14.5 16.5, 13.5 18, 12 18Z"
+              fill="rgba(196,122,90,0.38)" stroke="#C47A5A" stroke-width="1.1" stroke-linejoin="round"/>
+          </svg>
           <div>
             <h3>Cook Something Every Day</h3>
             <p>One real meal a day, not from a recipe — that's how the habit forms.</p>
           </div>
         </li>
         <li class="experience-item">
-          <span class="experience-num">03</span>
+          <svg class="experience-icon" viewBox="0 0 24 24" fill="none">
+            <rect x="3" y="5" width="18" height="16" rx="2" stroke="#7A8C6E" stroke-width="1.4" fill="rgba(168,184,157,0.1)"/>
+            <line x1="3" y1="10" x2="21" y2="10" stroke="#7A8C6E" stroke-width="1.3"/>
+            <line x1="8" y1="3" x2="8" y2="7" stroke="#D4A843" stroke-width="1.6" stroke-linecap="round"/>
+            <line x1="16" y1="3" x2="16" y2="7" stroke="#D4A843" stroke-width="1.6" stroke-linecap="round"/>
+            <circle cx="8" cy="14" r="1" fill="#7A8C6E"/>
+            <circle cx="12" cy="14" r="1" fill="#7A8C6E"/>
+            <circle cx="16" cy="14" r="1" fill="#D4A843"/>
+            <circle cx="8" cy="18" r="1" fill="#7A8C6E"/>
+            <circle cx="12" cy="18" r="1" fill="#C47A5A"/>
+          </svg>
           <div>
             <h3>Daily Practice & Accountability</h3>
             <p>Structured practice to lock in what you learn between sessions.</p>
           </div>
         </li>
         <li class="experience-item">
-          <span class="experience-num">04</span>
+          <svg class="experience-icon" viewBox="0 0 24 24" fill="none">
+            <circle cx="12" cy="12" r="9" stroke="#7A8C6E" stroke-width="1.4" fill="rgba(168,184,157,0.08)"/>
+            <circle cx="12" cy="4.5" r="1.5" fill="#D4A843"/>
+            <circle cx="18" cy="8" r="1.5" fill="#C47A5A"/>
+            <circle cx="18" cy="16" r="1.5" fill="#7A8C6E"/>
+            <circle cx="12" cy="19.5" r="1.5" fill="#8B6D47"/>
+            <circle cx="6" cy="16" r="1.5" fill="#A8B89D"/>
+            <circle cx="6" cy="8" r="1.5" fill="#D4A843"/>
+          </svg>
           <div>
             <h3>Flavor Fundamentals</h3>
             <p>A way of thinking about food that replaces recipes and stays with you forever.</p>
           </div>
         </li>
         <li class="experience-item">
-          <span class="experience-num">05</span>
+          <svg class="experience-icon" viewBox="0 0 24 24" fill="none">
+            <circle cx="12" cy="12" r="9" stroke="#7A8C6E" stroke-width="1.4" fill="rgba(168,184,157,0.08)"/>
+            <line x1="12" y1="3.5" x2="12" y2="6.5" stroke="#7A8C6E" stroke-width="1.2" stroke-linecap="round"/>
+            <line x1="12" y1="17.5" x2="12" y2="20.5" stroke="#7A8C6E" stroke-width="1.2" stroke-linecap="round"/>
+            <line x1="3.5" y1="12" x2="6.5" y2="12" stroke="#7A8C6E" stroke-width="1.2" stroke-linecap="round"/>
+            <line x1="17.5" y1="12" x2="20.5" y2="12" stroke="#7A8C6E" stroke-width="1.2" stroke-linecap="round"/>
+            <path d="M12 7.5 L14 12 L12 16.5 L10 12Z" stroke="#C47A5A" stroke-width="1" fill="rgba(196,122,90,0.22)" stroke-linejoin="round"/>
+            <circle cx="12" cy="12" r="1.2" fill="#C47A5A"/>
+          </svg>
           <div>
             <h3>Kitchen Blueprint</h3>
             <p>Turn your kitchen into a creative space where everything's in reach and cooking flows effortlessly.</p>
@@ -631,7 +793,9 @@
   </section>
 
   <!-- OUTCOMES -->
-  <section class="section-outcomes">
+  <section class="section-outcomes" style="position:relative; overflow:hidden;">
+    <img class="deco-veg" src="deco-tomato.png" alt=""
+      style="width:200px; top:-20px; right:-50px; transform:rotate(12deg);">
     <div class="container">
       <div class="outcomes-intro">
         <span class="label">After 30 Days</span>
@@ -650,14 +814,39 @@
   <!-- ABOUT -->
   <section class="section-about">
     <div class="container">
-      <span class="label" style="color: var(--sage-light);">Your Mentor</span>
+
+      <!-- Press marquee — above bio -->
+      <div class="about-press-banner">
+        <span class="about-press-label">As seen on</span>
+        <div class="about-marquee-wrap">
+          <div class="marquee-track">
+            <div class="marquee-set">
+              <img class="marquee-img" src="press-npr.png" alt="NPR">
+              <img class="marquee-img invert" src="press-nyt.png" alt="New York Times">
+              <img class="marquee-img" src="press-eater.png" alt="Eater">
+              <img class="marquee-img" src="press-hulu.png" alt="Hulu">
+              <img class="marquee-img" src="press-abc7.png" alt="ABC7">
+              <img class="marquee-img" src="press-spectrum.png" alt="Spectrum News">
+            </div>
+            <div class="marquee-set" aria-hidden="true">
+              <img class="marquee-img" src="press-npr.png" alt="">
+              <img class="marquee-img invert" src="press-nyt.png" alt="">
+              <img class="marquee-img" src="press-eater.png" alt="">
+              <img class="marquee-img" src="press-hulu.png" alt="">
+              <img class="marquee-img" src="press-abc7.png" alt="">
+              <img class="marquee-img" src="press-spectrum.png" alt="">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <span class="label" style="color: var(--sage-light);">Your Cooking Mentor</span>
 
       <div class="about-top">
         <div class="about-photo-wrap">
           <img src="akshay.jpg" alt="Akshay Prabhu">
         </div>
         <div>
-          <p class="about-role">Startup Founder · Neuroscientist · Your Personal Cooking Mentor</p>
           <p class="about-name">Akshay Prabhu</p>
           <p class="about-bio">I raised <strong>$3M</strong> to build Foodnome, the first online marketplace for home-based restaurants — helping <strong>250+ home cooks</strong> launch businesses and passing legislation to legalize home cooking across California and beyond. I've staged at <strong>Chez Panisse</strong>, hosted hundreds of pop-up dinners, catered events for <strong>500+ guests</strong>, and cooked whole lambs over open fire for crowds across the Bay.</p>
           <p class="about-bio" style="margin-top: 1rem;">And now I want to bring that same joy and fun into your kitchen.</p>
@@ -672,32 +861,8 @@
         <div class="about-david">
           <img src="photo-david-chang.jpeg" alt="Akshay Prabhu with David Chang">
           <div class="about-david-caption">
-            <strong>With David Chang</strong> — featured on Hulu's <em>The Next Thing You Eat</em>
+            Hanging out with David Chang during filming of <em>The Next Thing You Eat</em> — Hulu, Ep. 3
           </div>
-        </div>
-        <div class="about-press-col">
-          <span class="about-press-label">Akshay's work featured in</span>
-          <div class="about-marquee-wrap">
-            <div class="marquee-track">
-              <div class="marquee-set">
-                <img class="marquee-img" src="press-npr.png" alt="NPR">
-                <img class="marquee-img invert" src="press-nyt.png" alt="New York Times">
-                <img class="marquee-img" src="press-eater.png" alt="Eater">
-                <img class="marquee-img" src="press-hulu.png" alt="Hulu">
-                <img class="marquee-img" src="press-abc7.png" alt="ABC7">
-                <img class="marquee-img" src="press-spectrum.png" alt="Spectrum News">
-              </div>
-              <div class="marquee-set" aria-hidden="true">
-                <img class="marquee-img" src="press-npr.png" alt="">
-                <img class="marquee-img invert" src="press-nyt.png" alt="">
-                <img class="marquee-img" src="press-eater.png" alt="">
-                <img class="marquee-img" src="press-hulu.png" alt="">
-                <img class="marquee-img" src="press-abc7.png" alt="">
-                <img class="marquee-img" src="press-spectrum.png" alt="">
-              </div>
-            </div>
-          </div>
-          <p class="about-hulu-note">Akshay was featured alongside <strong>David Chang</strong> on Hulu's <em>The Next Thing You Eat</em> and in a PBS documentary on the home restaurant movement — work that helped reshape how America thinks about home cooking.</p>
         </div>
       </div>
 
@@ -707,7 +872,6 @@
   <!-- FAQ -->
   <section class="section-faq">
     <div class="container--narrow">
-      <span class="label">Questions</span>
       <h2>Things people ask.</h2>
       <ul class="faq-list">
         <li class="faq-item">
@@ -801,13 +965,13 @@
   <div class="mobile-cta-bar">
     <div class="btn-wrap">
       <div class="btn-glow"></div>
-      <a href="https://tally.so/r/68kgMB" class="btn-primary">Apply for Coaching</a>
+      <a href="https://tally.so/r/68kgMB" class="btn-primary">Claim Your Spot</a>
     </div>
   </div>
 
   <script>
     // ===== GOOEY MORPH =====
-    const texts = ["effortless", "intuitive", "calm", "joyful", "creative", "yours"];
+    const texts = ["effortless", "intuitive", "calm", "joyful", "creative", "satisfying"];
     const text1 = document.getElementById("morph-text1");
     const text2 = document.getElementById("morph-text2");
     const morphTime = 1.5, cooldownTime = 2.5;
@@ -865,6 +1029,17 @@
       }, { threshold: 0 });
       observer.observe(heroBtn);
     }
+
+    // ===== SPOTLIGHT CARDS =====
+    document.querySelectorAll('.value-card').forEach(card => {
+      card.addEventListener('mousemove', (e) => {
+        const rect = card.getBoundingClientRect();
+        const x = ((e.clientX - rect.left) / rect.width) * 100;
+        const y = ((e.clientY - rect.top) / rect.height) * 100;
+        card.style.setProperty('--mouse-x', `${x}%`);
+        card.style.setProperty('--mouse-y', `${y}%`);
+      });
+    });
 
     // ===== FAQ ACCORDION =====
     document.querySelectorAll('.faq-trigger').forEach(trigger => {
