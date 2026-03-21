@@ -644,10 +644,11 @@
         <div id="waitlist">
           <p style="font-size:0.72rem; font-weight:500; letter-spacing:0.18em; text-transform:uppercase; color:var(--medium-gray); margin-bottom:0.5rem;">Join the waitlist for our next cohort</p>
           <p style="font-size:0.875rem; color:var(--warm-gray); margin-bottom:1rem;">And be the first to know when we open enrollment.</p>
-          <form class="email-form" onsubmit="return false;">
-            <input type="email" placeholder="Email address">
+          <form class="email-form kit-form" data-success="hero-success">
+            <input type="email" name="email_address" placeholder="Email address" required>
             <button type="submit" class="btn btn--sage btn--glow">Join Waitlist</button>
           </form>
+          <p id="hero-success" class="kit-success" style="display:none;">You're on the list. Talk soon.</p>
           <p class="email-disclaimer">I will never spam or sell your info. Ever.</p>
         </div>
       </div>
@@ -1084,10 +1085,11 @@
       <div class="included__form-wrap">
         <p class="included__form-label">Join the waitlist for our next cohort</p>
         <p class="included__form-sub">And be the first to know when we open enrollment.</p>
-        <form class="email-form" onsubmit="return false;">
-          <input type="email" placeholder="Email address">
+        <form class="email-form kit-form" data-success="mid-success">
+          <input type="email" name="email_address" placeholder="Email address" required>
           <button type="submit" class="btn btn--sage">Join Waitlist</button>
         </form>
+        <p id="mid-success" class="kit-success" style="display:none;">You're on the list. Talk soon.</p>
         <p class="email-disclaimer">I will never spam or sell your info. Ever.</p>
       </div>
     </div>
@@ -1243,10 +1245,11 @@
       </div>
       <h2 class="display display--lg" style="color:var(--cream); margin-bottom:0.75rem;">7 weeks to a new perspective on life.</h2>
       <p class="body-text" style="color:rgba(250,247,242,0.65); max-width:500px; margin:0 auto 2rem;">Be the first to know when we open enrollment. No spam, no pressure — just an email when the next cohort is ready.</p>
-      <form class="email-form email-form--dark" style="max-width:440px; margin:0 auto;" onsubmit="return false;">
-        <input type="email" placeholder="Email address">
+      <form class="email-form email-form--dark kit-form" style="max-width:440px; margin:0 auto;" data-success="cta-success">
+        <input type="email" name="email_address" placeholder="Email address" required>
         <button type="submit" class="btn btn--sage">Join Waitlist</button>
       </form>
+      <p id="cta-success" class="kit-success" style="display:none; color:rgba(250,247,242,0.8); text-align:center; margin-top:1rem;">You're on the list. Talk soon.</p>
       <p class="email-disclaimer email-disclaimer--light" style="text-align:center;">I will never spam or sell your info. Ever.</p>
     </div>
   </section>
@@ -1263,10 +1266,11 @@
       <p class="body-text">Let this be the year for new connections, friendships, and dinner parties. A year where you finally take control of your diet and get to feel great eating exactly what you want, all the time. Cooking will be the simple habit that changes the trajectory of your life. And it can all start right here, right now.</p>
       <p class="one-last__question">So, what do you say?</p>
       <div style="margin-top:2rem;">
-        <form class="email-form" style="justify-content:center;" onsubmit="return false;">
-          <input type="email" placeholder="Email address">
+        <form class="email-form kit-form" style="justify-content:center;" data-success="last-success">
+          <input type="email" name="email_address" placeholder="Email address" required>
           <button type="submit" class="btn btn--sage">Join Waitlist</button>
         </form>
+        <p id="last-success" class="kit-success" style="display:none; text-align:center; margin-top:1rem;">You're on the list. Talk soon.</p>
         <p class="email-disclaimer" style="text-align:center;">I will never spam or sell your info. Ever.</p>
       </div>
     </div>
@@ -1299,10 +1303,11 @@
       <span class="waitlist-modal__label">Food Jazz Online</span>
       <h2 class="waitlist-modal__title" id="modalTitle">Join the Waitlist</h2>
       <p class="waitlist-modal__body">Be first to know when the next cohort opens. No spam, ever.</p>
-      <form class="email-form waitlist-modal__form" onsubmit="return false;">
-        <input type="email" placeholder="Your email address" style="width:100%; margin-bottom:0.75rem;">
+      <form class="email-form waitlist-modal__form kit-form" data-success="modal-success">
+        <input type="email" name="email_address" placeholder="Your email address" style="width:100%; margin-bottom:0.75rem;" required>
         <button type="submit" class="btn btn--sage" style="width:100%;">Count Me In</button>
       </form>
+      <p id="modal-success" class="kit-success" style="display:none; color:var(--sage); text-align:center; margin-top:1rem;">You're on the list. Talk soon.</p>
     </div>
   </div>
 
@@ -1392,6 +1397,36 @@
     if (closeBtn) closeBtn.addEventListener('click', closeModal);
     if (backdrop) backdrop.addEventListener('click', closeModal);
     document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+
+    // ===== KIT FORM SUBMISSION =====
+    const KIT_ACTION = 'https://app.kit.com/forms/6328376/subscriptions';
+    document.querySelectorAll('.kit-form').forEach(form => {
+      form.addEventListener('submit', async e => {
+        e.preventDefault();
+        const input = form.querySelector('input[type="email"]');
+        const btn = form.querySelector('button[type="submit"]');
+        const successId = form.dataset.success;
+        const successEl = successId ? document.getElementById(successId) : null;
+
+        btn.disabled = true;
+        btn.textContent = '...';
+
+        try {
+          await fetch(KIT_ACTION, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+            body: new URLSearchParams({ email_address: input.value }),
+            mode: 'no-cors'
+          });
+          // no-cors means we can't read the response — treat as success
+          form.style.display = 'none';
+          if (successEl) successEl.style.display = 'block';
+        } catch {
+          btn.disabled = false;
+          btn.textContent = 'Join Waitlist';
+        }
+      });
+    });
   </script>
 </body>
 </html>
