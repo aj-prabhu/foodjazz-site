@@ -104,8 +104,10 @@
     .nav-logo .logo-food { font-weight: 700; }
     .nav-logo .logo-jazz { font-weight: 400; }
     .nav-links { display: flex; gap: 2rem; align-items: center; list-style: none; }
-    .nav-links a { font-size: 0.88rem; color: var(--warm-gray); }
-    .nav-cta { font-weight: 500; color: var(--sage) !important; }
+    .nav-links a { font-size: 0.88rem; color: var(--warm-gray); transition: color 0.15s; }
+    .nav-links a:hover { color: var(--charcoal); }
+    .nav-cta { font-size: 0.82rem; background: var(--sage); color: var(--cream) !important; padding: 0.45rem 1.1rem; border-radius: 3px; transition: opacity 0.15s; font-weight: 400; }
+    .nav-cta:hover { opacity: 0.85; }
 
     /* ===== GLOW BUTTON ===== */
     .btn-wrap {
@@ -629,12 +631,12 @@
   </svg>
 
   <!-- NAV -->
-  <nav style="position: relative;">
+  <nav>
     <div class="nav-inner">
       <a href="/" class="nav-logo"><span class="logo-food">Food</span> <span class="logo-jazz">Jazz</span></a>
       <ul class="nav-links">
-        <li><a href="/">Home</a></li>
-        <li><a href="#apply" class="nav-cta">Claim Your Spot →</a></li>
+        <li><a href="/">Online Course</a></li>
+        <li><a href="#apply" class="nav-cta">Claim Your Spot</a></li>
       </ul>
       <button class="nav-hamburger" aria-label="Open menu" aria-expanded="false">
         <span class="hamburger-bar"></span>
@@ -643,8 +645,8 @@
       </button>
     </div>
     <ul class="mobile-nav">
-      <li><a href="/">Home</a></li>
-      <li><a href="#apply" class="nav-cta">Claim Your Spot →</a></li>
+      <li><a href="/">Online Course</a></li>
+      <li><a href="#apply" class="nav-cta">Claim Your Spot</a></li>
     </ul>
   </nav>
 
