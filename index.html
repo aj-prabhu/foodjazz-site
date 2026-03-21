@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Food Jazz — Become an Effortless Cook</title>
   <meta name="description" content="Food Jazz is an online cohort-based course designed to reduce kitchen anxiety by making you an intuitive cook.">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300;1,9..40,400&display=swap" rel="stylesheet">
@@ -131,8 +132,9 @@
       padding: 0.9rem 0;
     }
     .nav__inner { display: flex; align-items: center; justify-content: space-between; }
-    .nav__wordmark { font-family: var(--font-display); font-size: 1.4rem; font-weight: 600; color: var(--charcoal); font-style: italic; }
-    .nav__wordmark span { color: var(--sage); }
+    .nav__wordmark { font-family: var(--font-display); font-size: 1.4rem; color: var(--sage); }
+    .nav__wordmark .logo-food { font-weight: 700; }
+    .nav__wordmark .logo-jazz { font-weight: 400; }
     .nav__links { display: flex; align-items: center; gap: 1.75rem; }
     .nav__link { font-size: 0.875rem; color: var(--warm-gray); transition: color 0.15s; }
     .nav__link:hover { color: var(--charcoal); }
@@ -372,7 +374,9 @@
     /* ===== FOOTER ===== */
     .footer { background: var(--charcoal); border-top: 1px solid rgba(255,255,255,0.06); padding: 1.25rem 0; }
     .footer__inner { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 0.5rem; }
-    .footer__wordmark { font-family: var(--font-display); font-size: 1.1rem; font-weight: 600; color: var(--sage-light); font-style: italic; }
+    .footer__wordmark { font-family: var(--font-display); font-size: 1.1rem; color: var(--sage-light); }
+    .footer__wordmark .logo-food { font-weight: 700; }
+    .footer__wordmark .logo-jazz { font-weight: 400; }
     .footer__links { display: flex; gap: 1.5rem; }
     .footer__link { font-size: 0.8rem; color: var(--medium-gray); transition: color 0.15s; }
     .footer__link:hover { color: var(--sage-light); }
@@ -506,7 +510,7 @@
   <nav class="nav" style="position: relative;">
     <div class="wrap">
       <div class="nav__inner">
-        <a href="/" class="nav__wordmark">Food <span>Jazz</span></a>
+        <a href="/" class="nav__wordmark"><span class="logo-food">Food</span> <span class="logo-jazz">Jazz</span></a>
         <div class="nav__links">
           <a href="/coach.html" class="nav__link">1-on-1 Coaching</a>
           <a href="#waitlist" class="nav__cta">Join Waitlist</a>
@@ -1084,7 +1088,7 @@
   <footer class="footer">
     <div class="wrap">
       <div class="footer__inner">
-        <span class="footer__wordmark">Food Jazz</span>
+        <span class="footer__wordmark"><span class="logo-food">Food</span> <span class="logo-jazz">Jazz</span></span>
         <div class="footer__links">
           <a href="/coach.html" class="footer__link">1-on-1 Coaching</a>
           <a href="mailto:akshay@foodjazz.club" class="footer__link">Contact</a>

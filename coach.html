@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>1-on-1 Cooking Coaching — Food Jazz</title>
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
   <meta name="description" content="30-day in-home cooking intensive in the Bay Area. Learn to cook intuitively — no recipes, just flow.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -99,7 +100,9 @@
       max-width: 1100px; margin: 0 auto;
       display: flex; align-items: center; justify-content: space-between;
     }
-    .nav-logo { font-family: var(--font-display); font-size: 1.7rem; font-weight: 700; color: var(--sage); }
+    .nav-logo { font-family: var(--font-display); font-size: 1.7rem; color: var(--sage); }
+    .nav-logo .logo-food { font-weight: 700; }
+    .nav-logo .logo-jazz { font-weight: 400; }
     .nav-links { display: flex; gap: 2rem; align-items: center; list-style: none; }
     .nav-links a { font-size: 0.88rem; color: var(--warm-gray); }
     .nav-cta { font-weight: 500; color: var(--sage) !important; }
@@ -469,7 +472,9 @@
       display: flex; align-items: center; justify-content: space-between;
       flex-wrap: wrap; gap: 1rem;
     }
-    .footer-logo { font-family: var(--font-display); font-size: 1.5rem; font-weight: 700; color: var(--sage); }
+    .footer-logo { font-family: var(--font-display); font-size: 1.5rem; color: var(--sage); }
+    .footer-logo .logo-food { font-weight: 700; }
+    .footer-logo .logo-jazz { font-weight: 400; }
     .footer-links { display: flex; gap: 2rem; list-style: none; }
     .footer-links a { font-size: 0.85rem; color: var(--warm-gray); }
     .footer-links a:hover { color: var(--sage); }
@@ -626,7 +631,7 @@
   <!-- NAV -->
   <nav style="position: relative;">
     <div class="nav-inner">
-      <a href="/" class="nav-logo">Food Jazz</a>
+      <a href="/" class="nav-logo"><span class="logo-food">Food</span> <span class="logo-jazz">Jazz</span></a>
       <ul class="nav-links">
         <li><a href="/">Home</a></li>
         <li><a href="#apply" class="nav-cta">Claim Your Spot →</a></li>
@@ -1021,7 +1026,7 @@
   <!-- FOOTER -->
   <footer>
     <div class="footer-inner">
-      <span class="footer-logo">Food Jazz</span>
+      <span class="footer-logo"><span class="logo-food">Food</span> <span class="logo-jazz">Jazz</span></span>
       <ul class="footer-links">
         <li><a href="/">Home</a></li>
         <li><a href="mailto:akshay@foodjazz.club">Email</a></li>
