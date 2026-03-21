@@ -1291,6 +1291,21 @@
     <a href="#waitlist" class="btn btn--sage">Join Waitlist</a>
   </div>
 
+  <!-- WAITLIST MODAL -->
+  <div class="waitlist-modal" id="waitlistModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <div class="waitlist-modal__backdrop" id="modalBackdrop"></div>
+    <div class="waitlist-modal__box">
+      <button class="waitlist-modal__close" id="closeWaitlistModal" aria-label="Close">✕</button>
+      <span class="waitlist-modal__label">Food Jazz Online</span>
+      <h2 class="waitlist-modal__title" id="modalTitle">Join the Waitlist</h2>
+      <p class="waitlist-modal__body">Be first to know when the next cohort opens. No spam, ever.</p>
+      <form class="email-form waitlist-modal__form" onsubmit="return false;">
+        <input type="email" placeholder="Your email address" style="width:100%; margin-bottom:0.75rem;">
+        <button type="submit" class="btn btn--sage" style="width:100%;">Count Me In</button>
+      </form>
+    </div>
+  </div>
+
   <script>
     // ===== INTUITIVE CIRCLE =====
     const circlePath = document.querySelector('.circle-path');
@@ -1353,6 +1368,30 @@
         hamburger.setAttribute('aria-expanded', 'false');
       });
     });
+
+    // ===== WAITLIST MODAL =====
+    const waitlistModal = document.getElementById('waitlistModal');
+    const openBtn = document.getElementById('openWaitlistModal');
+    const closeBtn = document.getElementById('closeWaitlistModal');
+    const backdrop = document.getElementById('modalBackdrop');
+
+    function openModal() {
+      waitlistModal.classList.add('open');
+      document.body.style.overflow = 'hidden';
+      // close hamburger if open
+      hamburger.classList.remove('open');
+      mobileNav.classList.remove('open');
+      hamburger.setAttribute('aria-expanded', 'false');
+    }
+    function closeModal() {
+      waitlistModal.classList.remove('open');
+      document.body.style.overflow = '';
+    }
+
+    if (openBtn) openBtn.addEventListener('click', openModal);
+    if (closeBtn) closeBtn.addEventListener('click', closeModal);
+    if (backdrop) backdrop.addEventListener('click', closeModal);
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
   </script>
 </body>
 </html>
