@@ -409,50 +409,39 @@
       /* Backburner → stack */
       .backburner__inner { grid-template-columns: 1fr; gap: 2.5rem; }
 
-      /* Akshay → stack */
-      .akshay__inner { grid-template-columns: 1fr; gap: 2rem; }
-      .akshay__photo { max-width: 180px; }
+      /* About → stack */
+      .about-top { grid-template-columns: 1fr; gap: 1.75rem; }
+      .about-photo-wrap { margin: 0 auto; }
+      .about-name { font-size: 2rem; }
+      .about-bottom { max-width: 100%; }
+      .about-david img { height: 260px; }
     }
 
-    /* ===== PRESS SECTION ===== */
-    .section-press { background: var(--charcoal); padding: 5rem 0; }
-    .press-label {
-      font-size: 0.65rem; font-weight: 500; color: var(--sage-light);
-      letter-spacing: 0.25em; text-transform: uppercase;
-      display: block; margin-bottom: 1.5rem;
-    }
-    .press-marquee-wrap {
-      overflow: hidden;
-      margin-bottom: 3.5rem;
+    /* ===== ABOUT ===== */
+    .section-about { background: var(--charcoal); padding: 7rem 0; }
+    .about-top { display: grid; grid-template-columns: 200px 1fr 1fr; gap: 4rem; align-items: start; margin-bottom: 4rem; }
+    .about-photo-wrap { width: 185px; height: 238px; border-radius: 4px; border: 1.5px solid var(--golden); overflow: hidden; box-shadow: 4px 4px 0 rgba(212,168,67,0.2); }
+    .about-photo-wrap img { width: 100%; height: 100%; object-fit: cover; object-position: center 8%; display: block; }
+    .about-role { display: inline-flex; align-items: center; border: 1px solid rgba(168,184,157,0.4); border-radius: 99px; padding: 0.18rem 0.65rem; font-size: 0.62rem; font-weight: 500; color: var(--sage-light); letter-spacing: 0.18em; text-transform: uppercase; margin-bottom: 0.6rem; }
+    .about-name { font-family: var(--font-display); font-size: clamp(2rem, 4vw, 2.8rem); font-weight: 600; color: var(--sage-light); line-height: 1.05; margin-bottom: 1.25rem; }
+    .about-bio { font-size: 1rem; font-weight: 300; color: rgba(243,237,228,0.82); line-height: 1.8; }
+    .about-bio strong { font-weight: 500; color: var(--linen); }
+    .about-press-banner { margin-bottom: 3.5rem; overflow: hidden; }
+    .about-press-label { font-size: 0.65rem; font-weight: 500; color: var(--sage-light); letter-spacing: 0.25em; text-transform: uppercase; display: block; margin-bottom: 1rem; }
+    .about-marquee-wrap {
+      overflow: hidden; margin-bottom: 1.5rem;
       -webkit-mask-image: linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%);
       mask-image: linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%);
     }
-    .marquee-track {
-      display: flex;
-      width: max-content;
-      animation: marquee 50s linear infinite;
-    }
-    @keyframes marquee {
-      from { transform: translateX(0); }
-      to { transform: translateX(-50%); }
-    }
+    .marquee-track { display: flex; width: max-content; animation: marquee 50s linear infinite; }
+    @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
     .marquee-set { display: flex; align-items: center; gap: 5rem; padding-right: 5rem; }
-    .marquee-img {
-      height: 26px; width: auto; object-fit: contain; flex-shrink: 0;
-      filter: brightness(0) invert(1); opacity: 0.78;
-    }
-    .david-wrap { max-width: 560px; border-top: 1px solid rgba(168,184,157,0.2); padding-top: 3.5rem; }
-    .david-inner { position: relative; border-radius: 4px; overflow: hidden; }
-    .david-inner img { width: 100%; height: 380px; object-fit: cover; object-position: center top; display: block; }
-    .david-caption {
-      position: absolute; bottom: 0; left: 0; right: 0;
-      background: linear-gradient(transparent, rgba(46,46,44,0.88));
-      color: rgba(243,237,228,0.9); font-size: 0.78rem; font-weight: 300;
-      padding: 2.5rem 1.2rem 1rem; border-radius: 0 0 4px 4px;
-    }
-    @media (max-width: 600px) {
-      .david-inner img { height: 260px; }
-    }
+    .marquee-img { height: 26px; width: auto; object-fit: contain; flex-shrink: 0; opacity: 0.5; filter: grayscale(100%); }
+    .about-marquee-wrap .marquee-img { filter: brightness(0) invert(1); opacity: 0.78; }
+    .about-bottom { border-top: 1px solid rgba(168,184,157,0.2); padding-top: 3.5rem; max-width: 560px; }
+    .about-david { position: relative; border-radius: 4px; overflow: hidden; }
+    .about-david img { width: 100%; height: 380px; object-fit: cover; object-position: center top; border-radius: 4px; display: block; }
+    .about-david-caption { position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(transparent, rgba(46,46,44,0.88)); color: rgba(243,237,228,0.9); font-size: 0.78rem; font-weight: 300; padding: 2.5rem 1.2rem 1rem; border-radius: 0 0 4px 4px; }
 
     /* ===== HAMBURGER ===== */
     .nav__hamburger {
@@ -816,73 +805,78 @@
     </div>
   </section>
 
-  <!-- AKSHAY -->
-  <section class="section bg-linen">
+  <!-- ABOUT -->
+  <section class="section-about">
     <div class="wrap">
-      <span class="rule-label">Your instructor</span>
-      <div class="akshay__inner">
-        <img class="akshay__photo" src="akshay.jpg" alt="Akshay Prabhu">
-        <div>
-          <p class="akshay__role">Founder · Neuroscientist · Cooking Coach</p>
-          <h2 class="display display--lg akshay__name">Hey, I'm Akshay.</h2>
-          <p class="akshay__sub">Your Personal Cooking Mentor</p>
-          <p class="body-text">I'm excited to meet you — this is what feels like my life's work.</p>
-          <p class="body-text" style="margin-top:1rem;">I built Foodnome — the first online marketplace for home-cooked food — helping <strong>250+ home cooks</strong> build businesses and passing legislation to legalize home cooking across California. I've staged at <strong>Chez Panisse</strong>, hosted hundreds of pop-up dinners, catered for <strong>500+ guests</strong>, and cooked whole lambs over open fire for crowds across the Bay.</p>
-          <p class="body-text" style="margin-top:1rem;">Cooking has been a part of my life since I was a child. For me, food is symbolic of love when words are inadequate. Memories are created over the warmth and aroma of a homemade meal.</p>
-          <p class="akshay__mission">Now I hope to help you carve your culinary identity. I'm on a mission to help 20,000 people finally learn to cook by 2030.</p>
-        </div>
-      </div>
-    </div>
-  </section>
 
-  <!-- PRESS + DAVID CHANG -->
-  <section class="section-press">
-    <div class="wrap">
-      <span class="press-label">As seen on</span>
-      <div class="press-marquee-wrap">
-        <div class="marquee-track">
-          <div class="marquee-set">
-            <img class="marquee-img" src="press-npr.png" alt="NPR">
-            <img class="marquee-img" src="press-nyt.svg" alt="New York Times">
-            <img class="marquee-img" src="press-eater.png" alt="Eater">
-            <img class="marquee-img" src="press-hulu.png" alt="Hulu">
-            <img class="marquee-img" src="press-abc7.png" alt="ABC7">
-            <img class="marquee-img" src="press-kqed.png" alt="KQED">
-          </div>
-          <div class="marquee-set" aria-hidden="true">
-            <img class="marquee-img" src="press-hulu.png" alt="">
-            <img class="marquee-img" src="press-cbs.svg" alt="">
-            <img class="marquee-img" src="press-civileats.svg" alt="">
-            <img class="marquee-img" src="press-nyt.svg" alt="">
-            <img class="marquee-img" src="press-eater.png" alt="">
-            <img class="marquee-img" src="press-abc7.png" alt="">
-          </div>
-          <div class="marquee-set" aria-hidden="true">
-            <img class="marquee-img" src="press-abc7.png" alt="">
-            <img class="marquee-img" src="press-eater.png" alt="">
-            <img class="marquee-img" src="press-kqed.png" alt="">
-            <img class="marquee-img" src="press-civileats.svg" alt="">
-            <img class="marquee-img" src="press-npr.png" alt="">
-            <img class="marquee-img" src="press-hulu.png" alt="">
-          </div>
-          <div class="marquee-set" aria-hidden="true">
-            <img class="marquee-img" src="press-cbs.svg" alt="">
-            <img class="marquee-img" src="press-abc7.png" alt="">
-            <img class="marquee-img" src="press-hulu.png" alt="">
-            <img class="marquee-img" src="press-npr.png" alt="">
-            <img class="marquee-img" src="press-nyt.svg" alt="">
-            <img class="marquee-img" src="press-civileats.svg" alt="">
+      <div class="about-press-banner">
+        <span class="about-press-label">As seen on</span>
+        <div class="about-marquee-wrap">
+          <div class="marquee-track">
+            <div class="marquee-set">
+              <img class="marquee-img" src="press-npr.png" alt="NPR">
+              <img class="marquee-img" src="press-nyt.svg" alt="New York Times">
+              <img class="marquee-img" src="press-eater.png" alt="Eater">
+              <img class="marquee-img" src="press-hulu.png" alt="Hulu">
+              <img class="marquee-img" src="press-abc7.png" alt="ABC7">
+              <img class="marquee-img" src="press-kqed.png" alt="KQED">
+            </div>
+            <div class="marquee-set" aria-hidden="true">
+              <img class="marquee-img" src="press-hulu.png" alt="">
+              <img class="marquee-img" src="press-cbs.svg" alt="">
+              <img class="marquee-img" src="press-civileats.svg" alt="">
+              <img class="marquee-img" src="press-nyt.svg" alt="">
+              <img class="marquee-img" src="press-eater.png" alt="">
+              <img class="marquee-img" src="press-abc7.png" alt="">
+            </div>
+            <div class="marquee-set" aria-hidden="true">
+              <img class="marquee-img" src="press-abc7.png" alt="">
+              <img class="marquee-img" src="press-eater.png" alt="">
+              <img class="marquee-img" src="press-kqed.png" alt="">
+              <img class="marquee-img" src="press-civileats.svg" alt="">
+              <img class="marquee-img" src="press-npr.png" alt="">
+              <img class="marquee-img" src="press-hulu.png" alt="">
+            </div>
+            <div class="marquee-set" aria-hidden="true">
+              <img class="marquee-img" src="press-cbs.svg" alt="">
+              <img class="marquee-img" src="press-abc7.png" alt="">
+              <img class="marquee-img" src="press-hulu.png" alt="">
+              <img class="marquee-img" src="press-npr.png" alt="">
+              <img class="marquee-img" src="press-nyt.svg" alt="">
+              <img class="marquee-img" src="press-civileats.svg" alt="">
+            </div>
           </div>
         </div>
       </div>
-      <div class="david-wrap">
-        <div class="david-inner">
+
+      <span class="label" style="color: var(--sage-light);">Your Cooking Mentor</span>
+
+      <div class="about-top">
+        <div class="about-photo-wrap">
+          <img src="akshay.jpg" alt="Akshay Prabhu">
+        </div>
+        <div>
+          <span class="about-role">Founder · Neuroscientist · Cooking Coach</span>
+          <p class="about-name">Hey, I'm Akshay.</p>
+          <p class="about-bio" style="font-style:italic; color:var(--sage-light); margin-bottom:1rem;">Your Personal Cooking Mentor</p>
+          <p class="about-bio">I'm excited to meet you — this is what feels like my life's work.</p>
+          <p class="about-bio" style="margin-top:1rem;">I built Foodnome — the first online marketplace for home-cooked food — helping <strong>250+ home cooks</strong> build businesses and passing legislation to legalize home cooking across California. I've staged at <strong>Chez Panisse</strong>, hosted hundreds of pop-up dinners, catered for <strong>500+ guests</strong>, and cooked whole lambs over open fire for crowds across the Bay.</p>
+        </div>
+        <div>
+          <p class="about-bio">Cooking has been a part of my life since I was a child. For me, food is symbolic of love when words are inadequate. Memories are created over the warmth and aroma of a homemade meal.</p>
+          <p class="about-bio" style="margin-top:1rem;">Now I hope to help you carve your culinary identity. I'm on a mission to help 20,000 people finally learn to cook by 2030.</p>
+        </div>
+      </div>
+
+      <div class="about-bottom">
+        <div class="about-david">
           <img src="photo-david-chang.jpeg" alt="Akshay with David Chang">
-          <div class="david-caption">
+          <div class="about-david-caption">
             Hanging out with David Chang talking about the future of home cooking — <em>The Next Thing You Eat</em>, Ep. 3, Hulu
           </div>
         </div>
       </div>
+
     </div>
   </section>
 
