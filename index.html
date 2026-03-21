@@ -432,13 +432,28 @@
       /* Backburner → stack */
       .backburner__inner { grid-template-columns: 1fr; gap: 2.5rem; }
 
-      /* About → stack */
-      .about-top { grid-template-columns: 1fr; gap: 1.75rem; }
-      .about-photo-wrap { margin: 0 auto; }
-      .about-name { font-size: 2rem; }
+      /* About → photo left, text right */
+      .about-top { grid-template-columns: 90px 1fr; gap: 1.25rem; }
+      .about-photo-wrap { width: 90px; height: 116px; }
+      .about-top > *:nth-child(3) { grid-column: 2; }
+      .about-name { font-size: 1.6rem; margin-bottom: 0.6rem; }
       .about-bottom { max-width: 100%; }
       .about-david img { height: 260px; }
     }
+
+    /* ===== TENET ICONS ===== */
+    .tenet__icon { width: 26px; height: 26px; flex-shrink: 0; }
+
+    /* ===== WAITLIST MODAL ===== */
+    .waitlist-modal { display: none; position: fixed; inset: 0; z-index: 500; align-items: center; justify-content: center; }
+    .waitlist-modal.open { display: flex; }
+    .waitlist-modal__backdrop { position: absolute; inset: 0; background: rgba(46,46,44,0.6); backdrop-filter: blur(4px); }
+    .waitlist-modal__box { position: relative; z-index: 1; background: var(--cream); border-radius: 12px; padding: 2.5rem 2rem; width: min(420px, calc(100vw - 3rem)); box-shadow: 0 24px 64px rgba(0,0,0,0.18); }
+    .waitlist-modal__close { position: absolute; top: 1rem; right: 1rem; background: none; border: none; font-size: 1.1rem; color: var(--medium-gray); cursor: pointer; padding: 0.25rem 0.5rem; line-height: 1; }
+    .waitlist-modal__label { font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--sage); font-weight: 500; margin-bottom: 0.4rem; display: block; }
+    .waitlist-modal__title { font-family: var(--font-display); font-size: 2rem; color: var(--charcoal); margin-bottom: 0.4rem; }
+    .waitlist-modal__body { font-size: 0.9rem; color: var(--warm-gray); margin-bottom: 1.5rem; line-height: 1.6; }
+    .waitlist-modal__form { flex-direction: column; }
 
     /* ===== ABOUT ===== */
     .section-about { background: var(--charcoal); padding: 7rem 0; }
@@ -503,6 +518,7 @@
     .mobile-nav li { border-top: 1px solid var(--sage-muted); }
     .mobile-nav a { display: block; padding: 0.9rem 0; font-size: 1rem; color: var(--warm-gray); }
     .mobile-nav__cta { color: var(--sage) !important; font-weight: 500; }
+    .mobile-nav__waitlist-btn { background: none; border: none; cursor: pointer; width: 100%; text-align: left; font-family: inherit; font-size: 1rem; padding: 0.9rem 0; }
 
     @media (max-width: 600px) {
       .nav__links { display: none; }
@@ -514,6 +530,71 @@
       .refund__card { padding: 2rem 1.5rem; }
       .wrap { padding: 0 1.25rem; }
       .wrap--narrow { padding: 0 1.25rem; }
+      /* Hero: center text, scale image, stronger overlay */
+      .hero { min-height: 65vh; padding: 4rem 0; }
+      .hero__text { max-width: 100%; text-align: center; }
+      .hero__image-mobile { object-position: center center; transform: scale(0.85); transform-origin: center center; }
+      .hero::after { background: rgba(250,247,242,0.85) !important; }
+      #waitlist { text-align: center; }
+      .hero__body { display: none; }
+    }
+
+    /* ===== FILM GRAIN ===== */
+    body::after {
+      content: '';
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 1000;
+      opacity: 0.028;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+      background-size: 128px 128px;
+    }
+
+    /* ===== PILL DOT PULSE ===== */
+    @keyframes dot-pulse {
+      0%, 100% { transform: scale(1); opacity: 1; }
+      50% { transform: scale(1.55); opacity: 0.5; }
+    }
+    .pill__dot { animation: dot-pulse 2.8s ease-in-out infinite; }
+
+    /* ===== SCROLL REVEAL ===== */
+    .reveal {
+      opacity: 0;
+      transform: translateY(18px);
+      transition: opacity 0.5s ease, transform 0.5s ease;
+    }
+    .reveal.is-visible { opacity: 1; transform: translateY(0); }
+
+    /* ===== TAP FLASH (mobile active state) ===== */
+    .problem__card:active { background: rgba(122,140,110,0.07); transition: background 0.15s ease; }
+    .cook__card--plain:active { background: rgba(122,140,110,0.07); transition: background 0.15s ease; }
+    .tenet:active { background: rgba(122,140,110,0.07); transition: background 0.15s ease; }
+
+    /* ===== WAITLIST BUTTON GLOW PULSE ===== */
+    @keyframes btn-pulse {
+      0%, 100% { box-shadow: 0 0 0 0 rgba(122,140,110,0.38); }
+      50% { box-shadow: 0 0 0 8px rgba(122,140,110,0); }
+    }
+    .btn--glow { animation: btn-pulse 2.6s ease-in-out infinite; }
+
+    /* ===== MOBILE STICKY CTA ===== */
+    .sticky-cta {
+      display: none;
+      position: fixed; bottom: 0; left: 0; right: 0;
+      z-index: 200;
+      background: var(--cream);
+      border-top: 1px solid var(--sage-muted);
+      padding: 0.75rem 1.25rem;
+      box-shadow: 0 -4px 20px rgba(0,0,0,0.07);
+      transform: translateY(100%);
+      transition: transform 0.3s ease;
+    }
+    .sticky-cta.visible { transform: translateY(0); }
+    .sticky-cta .btn { width: 100%; text-align: center; font-size: 1rem; padding: 0.85rem; }
+    @media (max-width: 600px) {
+      .sticky-cta { display: block; }
+      body { padding-bottom: 72px; }
     }
   </style>
 </head>
@@ -537,7 +618,7 @@
     </div>
     <ul class="mobile-nav">
       <li><a href="/coach.html">1-on-1 Coaching</a></li>
-      <li><a href="#waitlist" class="mobile-nav__cta">Join Waitlist</a></li>
+      <li><button class="mobile-nav__cta mobile-nav__waitlist-btn" id="openWaitlistModal">Join Waitlist</button></li>
     </ul>
   </nav>
 
@@ -565,7 +646,7 @@
           <p style="font-size:0.875rem; color:var(--warm-gray); margin-bottom:1rem;">And be the first to know when we open enrollment.</p>
           <form class="email-form" onsubmit="return false;">
             <input type="email" placeholder="Email address">
-            <button type="submit" class="btn btn--sage">Join Waitlist</button>
+            <button type="submit" class="btn btn--sage btn--glow">Join Waitlist</button>
           </form>
           <p class="email-disclaimer">I will never spam or sell your info. Ever.</p>
         </div>
@@ -776,7 +857,7 @@
         <div class="cook__card cook__card--highlight">
           <!-- Spiral: Intuitive -->
           <svg class="cook__icon" viewBox="0 0 40 40" fill="none" aria-hidden="true">
-            <path d="M20 20 C20 17, 23 14, 26 14 C30 14, 33 18, 30.5 21.5 C28 25, 22.5 25.5, 19 22.5 C14.5 19, 15 12.5, 20 10 C25 7.5, 31 11, 31.5 17"
+            <path d="M20 20 C22 20, 23 18.5, 22 17 C21 15.5, 18.5 15, 16.5 16.5 C14.5 18, 14 21, 15.5 23.5 C17 26, 20.5 27, 24 25.5 C27.5 24, 29 20, 27.5 16.5 C26 13, 22 11, 18 11.5 C14 12, 11 15.5, 11 19.5"
               stroke="rgba(255,255,255,0.88)" stroke-width="2" stroke-linecap="round" fill="none"/>
           </svg>
           <div class="cook__tag">Future you</div>
@@ -800,7 +881,6 @@
     <div class="wrap">
       <div class="benefit-row">
         <div>
-          <span class="rule-label">Benefit one</span>
           <div class="benefit-row__stat">$4k+</div>
           <h2 class="display display--md benefit-row__title">Save Time and Money</h2>
           <p class="benefit-row__sub">Maybe finances are tight or you are trying to save up for something important to you.</p>
@@ -837,7 +917,6 @@
           </svg>
         </div>
         <div>
-          <span class="rule-label">Benefit two</span>
           <h2 class="display display--md benefit-row__title">Impress Your Community</h2>
           <p class="body-text">Let's face it — being a great cook is genuinely impressive. Maybe you're looking for connection, trying to relate to your friends, or wanting to take something off your partner's plate.</p>
           <p class="body-text">Cooking can serve as the glue that holds relationships together. A 2020 study published in the Journal of Positive Psychology found that families who cooked and ate together more often reported greater feelings of closeness and better family functioning.</p>
@@ -854,7 +933,6 @@
     <div class="wrap">
       <div class="benefit-row">
         <div>
-          <span class="rule-label">Benefit three</span>
           <h2 class="display display--md benefit-row__title">Eat Exactly What Your Body Needs</h2>
           <p class="body-text">Maybe you can't find options to cater to your exact diet and feel like you have to settle often. Having the skills to efficiently cook a meal you actually want will unlock a greater sense of wellbeing and somatic connection.</p>
           <p class="body-text">Research from a comprehensive study from the University of Washington in 2015 found that people who cooked at home 3 times per week showed meaningful reductions in body fat and improved insulin metrics compared to those who cooked less.</p>
@@ -1028,7 +1106,19 @@
 
         <div class="tenet">
           <div class="tenet__header">
-            <div class="tenet__num">1</div>
+            <!-- 🎉 Fun / sun -->
+            <svg class="tenet__icon" viewBox="0 0 26 26" fill="none" aria-hidden="true">
+              <circle cx="13" cy="13" r="4.5" stroke="#D4A843" stroke-width="1.3" fill="rgba(212,168,67,0.12)"/>
+              <line x1="13" y1="2.5" x2="13" y2="5.5" stroke="#D4A843" stroke-width="1.3" stroke-linecap="round"/>
+              <line x1="13" y1="20.5" x2="13" y2="23.5" stroke="#D4A843" stroke-width="1.3" stroke-linecap="round"/>
+              <line x1="2.5" y1="13" x2="5.5" y2="13" stroke="#D4A843" stroke-width="1.3" stroke-linecap="round"/>
+              <line x1="20.5" y1="13" x2="23.5" y2="13" stroke="#D4A843" stroke-width="1.3" stroke-linecap="round"/>
+              <line x1="5.3" y1="5.3" x2="7.4" y2="7.4" stroke="#D4A843" stroke-width="1.1" stroke-linecap="round"/>
+              <line x1="18.6" y1="18.6" x2="20.7" y2="20.7" stroke="#D4A843" stroke-width="1.1" stroke-linecap="round"/>
+              <line x1="20.7" y1="5.3" x2="18.6" y2="7.4" stroke="#D4A843" stroke-width="1.1" stroke-linecap="round"/>
+              <line x1="7.4" y1="18.6" x2="5.3" y2="20.7" stroke="#D4A843" stroke-width="1.1" stroke-linecap="round"/>
+              <path d="M11 14.5 Q13 16 15 14.5" stroke="#D4A843" stroke-width="1" stroke-linecap="round" fill="none"/>
+            </svg>
             <div class="tenet__title">You Are Having Fun</div>
           </div>
           <p class="tenet__desc">Food is meant to be shared. Cooking is a means of connection, therapy, self care, and love. Your mindset is the first step to liberation through easeful intuitive cooking.</p>
@@ -1036,7 +1126,11 @@
 
         <div class="tenet">
           <div class="tenet__header">
-            <div class="tenet__num">2</div>
+            <!-- 🧠 Think / brain waves -->
+            <svg class="tenet__icon" viewBox="0 0 26 26" fill="none" aria-hidden="true">
+              <path d="M8 17 C5 17, 4 14, 6 12 C5 10, 7 7.5, 9.5 8.5 C10.5 6.5, 13 5.5, 15 7 C17 6, 19.5 7, 20 9.5 C22 10, 23 13, 21 15 C21 17, 19 18, 17 17 C15 19, 11 19, 8 17Z" stroke="#7A8C6E" stroke-width="1.3" fill="rgba(122,140,110,0.1)"/>
+              <path d="M13 8 Q12 11, 13 14 Q14 17, 13 18" stroke="#7A8C6E" stroke-width="0.8" stroke-linecap="round" fill="none" opacity="0.5"/>
+            </svg>
             <div class="tenet__title">Think Flavor, Not Procedure</div>
           </div>
           <p class="tenet__desc">Recipes are not prescriptive. It's more important to recreate the flavors than the precise procedures or ingredients.</p>
@@ -1044,7 +1138,14 @@
 
         <div class="tenet">
           <div class="tenet__header">
-            <div class="tenet__num">3</div>
+            <!-- 🌿 Leaf / use what you have -->
+            <svg class="tenet__icon" viewBox="0 0 26 26" fill="none" aria-hidden="true">
+              <path d="M13 23 C13 23, 5 17, 4.5 11 C4 6, 9 3.5, 13 4.5 C17 3.5, 22 6, 21.5 11 C21 17, 13 23, 13 23Z" stroke="#7A8C6E" stroke-width="1.3" fill="rgba(122,140,110,0.12)"/>
+              <path d="M13 6 L13 21" stroke="#7A8C6E" stroke-width="0.8" stroke-linecap="round" opacity="0.45"/>
+              <path d="M13 10 L9.5 13.5" stroke="#7A8C6E" stroke-width="0.8" stroke-linecap="round" opacity="0.4"/>
+              <path d="M13 10 L16.5 13.5" stroke="#7A8C6E" stroke-width="0.8" stroke-linecap="round" opacity="0.4"/>
+              <path d="M13 23 L13 25" stroke="#7A8C6E" stroke-width="1.3" stroke-linecap="round"/>
+            </svg>
             <div class="tenet__title">Use What You Have</div>
           </div>
           <p class="tenet__desc">Resourcefulness and adaptability are key. This may involve using leftovers, incorporating seasonal produce, or finding creative uses for ingredients that might otherwise go to waste.</p>
@@ -1052,7 +1153,14 @@
 
         <div class="tenet">
           <div class="tenet__header">
-            <div class="tenet__num">4</div>
+            <!-- 🧂 Spice jar -->
+            <svg class="tenet__icon" viewBox="0 0 26 26" fill="none" aria-hidden="true">
+              <rect x="7" y="9" width="12" height="14" rx="2" stroke="#D4A843" stroke-width="1.3" fill="rgba(212,168,67,0.1)"/>
+              <rect x="5" y="6" width="16" height="4" rx="1.5" stroke="#D4A843" stroke-width="1.2" fill="rgba(212,168,67,0.15)"/>
+              <circle cx="11" cy="15" r="1.1" fill="#D4A843" opacity="0.7"/>
+              <circle cx="15" cy="14" r="0.9" fill="#C47A5A" opacity="0.7"/>
+              <circle cx="13" cy="18" r="0.9" fill="#7A8C6E" opacity="0.7"/>
+            </svg>
             <div class="tenet__title">Stock for Success</div>
           </div>
           <p class="tenet__desc">Surround yourself with inspiration. Spices, sauces, and toppings to transform your raw ingredients — this provides the framework for you to improvise within.</p>
@@ -1060,7 +1168,15 @@
 
         <div class="tenet">
           <div class="tenet__header">
-            <div class="tenet__num">5</div>
+            <!-- 🌍 Globe -->
+            <svg class="tenet__icon" viewBox="0 0 26 26" fill="none" aria-hidden="true">
+              <circle cx="13" cy="13" r="9.5" stroke="#7A8C6E" stroke-width="1.3" fill="rgba(122,140,110,0.08)"/>
+              <path d="M3.5 13 Q13 10.5, 22.5 13" stroke="#7A8C6E" stroke-width="0.9" fill="none" opacity="0.55"/>
+              <path d="M5 9 Q13 7, 21 9" stroke="#7A8C6E" stroke-width="0.8" fill="none" opacity="0.4"/>
+              <path d="M5 17 Q13 19, 21 17" stroke="#7A8C6E" stroke-width="0.8" fill="none" opacity="0.4"/>
+              <path d="M13 3.5 Q15.5 8, 15.5 13 Q15.5 18, 13 22.5" stroke="#7A8C6E" stroke-width="0.9" fill="none" opacity="0.5"/>
+              <path d="M13 3.5 Q10.5 8, 10.5 13 Q10.5 18, 13 22.5" stroke="#7A8C6E" stroke-width="0.8" fill="none" opacity="0.35"/>
+            </svg>
             <div class="tenet__title">Taste the World</div>
           </div>
           <p class="tenet__desc">Navigate the world with your tongue. The best way to learn is with your own senses — practice active tasting when you eat out, watch people cook, especially your grandma.</p>
@@ -1068,7 +1184,11 @@
 
         <div class="tenet">
           <div class="tenet__header">
-            <div class="tenet__num">6</div>
+            <!-- ⭐ Your opinion / speech bubble + star -->
+            <svg class="tenet__icon" viewBox="0 0 26 26" fill="none" aria-hidden="true">
+              <path d="M5 5.5 Q5 4, 6.5 4 L19.5 4 Q21 4, 21 5.5 L21 15 Q21 16.5, 19.5 16.5 L11 16.5 L7 21 L8 16.5 L6.5 16.5 Q5 16.5, 5 15 Z" stroke="#7A8C6E" stroke-width="1.3" fill="rgba(122,140,110,0.1)"/>
+              <path d="M13 7 L14 10 L17.5 10 L14.8 12 L15.8 15.5 L13 13.5 L10.2 15.5 L11.2 12 L8.5 10 L12 10 Z" stroke="#D4A843" stroke-width="0.8" fill="rgba(212,168,67,0.25)"/>
+            </svg>
             <div class="tenet__title">Your Opinion Matters</div>
           </div>
           <p class="tenet__desc">There is no right answer, just your answers. Cook what you and your people think tastes good.</p>
@@ -1076,7 +1196,13 @@
 
         <div class="tenet" style="grid-column: 1 / -1;">
           <div class="tenet__header">
-            <div class="tenet__num">7</div>
+            <!-- 🔺 Flavor pyramid -->
+            <svg class="tenet__icon" viewBox="0 0 26 26" fill="none" aria-hidden="true">
+              <path d="M13 4 L23.5 22 L2.5 22 Z" stroke="#C47A5A" stroke-width="1.3" fill="rgba(196,122,90,0.1)" stroke-linejoin="round"/>
+              <line x1="7.5" y1="15" x2="18.5" y2="15" stroke="#C47A5A" stroke-width="0.9" opacity="0.5"/>
+              <line x1="10" y1="10" x2="16" y2="10" stroke="#C47A5A" stroke-width="0.8" opacity="0.4"/>
+              <circle cx="13" cy="4" r="1.3" fill="rgba(212,168,67,0.8)" stroke="#D4A843" stroke-width="0.8"/>
+            </svg>
             <div class="tenet__title">Build a Flavor Pyramid</div>
           </div>
           <p class="tenet__desc">The perfect meal creates a balance of flavors throughout.</p>
@@ -1160,6 +1286,11 @@
     </div>
   </footer>
 
+  <!-- MOBILE STICKY CTA -->
+  <div class="sticky-cta">
+    <a href="#waitlist" class="btn btn--sage">Join Waitlist</a>
+  </div>
+
   <script>
     // ===== INTUITIVE CIRCLE =====
     const circlePath = document.querySelector('.circle-path');
@@ -1172,6 +1303,39 @@
         }
       }, { threshold: 0.6 });
       observer.observe(highlightCard);
+    }
+
+    // ===== SCROLL REVEAL =====
+    const revealObs = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) { e.target.classList.add('is-visible'); revealObs.unobserve(e.target); }
+      });
+    }, { threshold: 0.12 });
+
+    function observeStaggered(selector) {
+      document.querySelectorAll(selector).forEach((el) => {
+        const siblings = Array.from(el.parentElement.children);
+        el.style.transitionDelay = `${siblings.indexOf(el) * 80}ms`;
+        el.classList.add('reveal');
+        revealObs.observe(el);
+      });
+    }
+    observeStaggered('.problem__card');
+    observeStaggered('.mindset__item');
+    observeStaggered('.cook__card');
+    observeStaggered('.tenet');
+    observeStaggered('.included__item');
+    document.querySelectorAll('.benefit-row').forEach(el => {
+      el.classList.add('reveal'); revealObs.observe(el);
+    });
+
+    // ===== STICKY CTA =====
+    const heroWaitlist = document.querySelector('.hero #waitlist');
+    const stickyCta = document.querySelector('.sticky-cta');
+    if (heroWaitlist && stickyCta) {
+      new IntersectionObserver(entries => {
+        stickyCta.classList.toggle('visible', !entries[0].isIntersecting);
+      }).observe(heroWaitlist);
     }
 
     // ===== HAMBURGER MENU =====
