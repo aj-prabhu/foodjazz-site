@@ -410,8 +410,47 @@
       .akshay__photo { max-width: 180px; }
     }
 
+    /* ===== HAMBURGER ===== */
+    .nav__hamburger {
+      display: none;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 4px;
+      color: var(--warm-gray);
+      flex-direction: column;
+      gap: 5px;
+    }
+    .hamburger-bar {
+      display: block;
+      width: 22px;
+      height: 1.5px;
+      background: currentColor;
+      transition: transform 0.25s ease, opacity 0.2s ease;
+    }
+    .nav__hamburger.open .hamburger-bar:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+    .nav__hamburger.open .hamburger-bar:nth-child(2) { opacity: 0; }
+    .nav__hamburger.open .hamburger-bar:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+    .mobile-nav {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      background: var(--cream);
+      border-bottom: 1px solid var(--sage-muted);
+      padding: 0.5rem 2rem 1.25rem;
+      list-style: none;
+      flex-direction: column;
+    }
+    .mobile-nav.open { display: flex; }
+    .mobile-nav li { border-top: 1px solid var(--sage-muted); }
+    .mobile-nav a { display: block; padding: 0.9rem 0; font-size: 1rem; color: var(--warm-gray); }
+    .mobile-nav__cta { color: var(--sage) !important; font-weight: 500; }
+
     @media (max-width: 600px) {
       .nav__links { display: none; }
+      .nav__hamburger { display: flex; }
       .section { padding: 3.5rem 0; }
       .email-form { flex-direction: column; }
       .cta-dark .email-form { flex-direction: column; align-items: stretch; max-width: 100%; }
@@ -424,7 +463,7 @@
 <body>
 
   <!-- NAV -->
-  <nav class="nav">
+  <nav class="nav" style="position: relative;">
     <div class="wrap">
       <div class="nav__inner">
         <a href="/" class="nav__wordmark">Food <span>Jazz</span></a>
@@ -432,8 +471,17 @@
           <a href="/coach.html" class="nav__link">1-on-1 Coaching</a>
           <a href="#waitlist" class="nav__cta">Join Waitlist</a>
         </div>
+        <button class="nav__hamburger" aria-label="Open menu" aria-expanded="false">
+          <span class="hamburger-bar"></span>
+          <span class="hamburger-bar"></span>
+          <span class="hamburger-bar"></span>
+        </button>
       </div>
     </div>
+    <ul class="mobile-nav">
+      <li><a href="/coach.html">1-on-1 Coaching</a></li>
+      <li><a href="#waitlist" class="mobile-nav__cta">Join Waitlist</a></li>
+    </ul>
   </nav>
 
   <!-- HERO -->
@@ -957,5 +1005,22 @@
     </div>
   </footer>
 
+  <script>
+    // ===== HAMBURGER MENU =====
+    const hamburger = document.querySelector('.nav__hamburger');
+    const mobileNav = document.querySelector('.mobile-nav');
+    hamburger.addEventListener('click', () => {
+      const isOpen = hamburger.classList.toggle('open');
+      mobileNav.classList.toggle('open', isOpen);
+      hamburger.setAttribute('aria-expanded', isOpen);
+    });
+    mobileNav.querySelectorAll('a').forEach(a => {
+      a.addEventListener('click', () => {
+        hamburger.classList.remove('open');
+        mobileNav.classList.remove('open');
+        hamburger.setAttribute('aria-expanded', 'false');
+      });
+    });
+  </script>
 </body>
 </html>

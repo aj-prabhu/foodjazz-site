@@ -547,12 +547,51 @@
     .mobile-cta-bar .btn-primary { width: 100%; justify-content: center; font-size: 1.1rem; padding: 14px 32px; }
 
     /* ===== RESPONSIVE ===== */
+    /* ===== HAMBURGER ===== */
+    .nav-hamburger {
+      display: none;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 4px;
+      color: var(--warm-gray);
+      flex-direction: column;
+      gap: 5px;
+    }
+    .hamburger-bar {
+      display: block;
+      width: 22px;
+      height: 1.5px;
+      background: currentColor;
+      transition: transform 0.25s ease, opacity 0.2s ease;
+    }
+    .nav-hamburger.open .hamburger-bar:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+    .nav-hamburger.open .hamburger-bar:nth-child(2) { opacity: 0; }
+    .nav-hamburger.open .hamburger-bar:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+    .mobile-nav {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      background: var(--warm-white);
+      border-bottom: 1px solid var(--sage-muted);
+      padding: 0.5rem 2rem 1.25rem;
+      list-style: none;
+      flex-direction: column;
+    }
+    .mobile-nav.open { display: flex; }
+    .mobile-nav li { border-top: 1px solid var(--sage-muted); }
+    .mobile-nav a { display: block; padding: 0.9rem 0; font-size: 1rem; color: var(--warm-gray); }
+    .mobile-nav .nav-cta { color: var(--sage) !important; font-weight: 500; }
+
     @media (max-width: 768px) {
       section { padding: 5rem 0; }
       .hero { padding: 5rem 0 4rem; }
       .hero-spiral, .hero-breath { display: none; }
       .deco-veg { display: none; }
       .nav-links { display: none; }
+      .nav-hamburger { display: flex; }
       .values-grid { grid-template-columns: 1fr; gap: 1.5rem; }
       .experience-item { grid-template-columns: 56px 1fr; }
       .experience-num { font-size: 2.5rem; }
@@ -582,14 +621,23 @@
   </svg>
 
   <!-- NAV -->
-  <nav>
+  <nav style="position: relative;">
     <div class="nav-inner">
       <a href="/" class="nav-logo">Food Jazz</a>
       <ul class="nav-links">
         <li><a href="/">Home</a></li>
         <li><a href="#apply" class="nav-cta">Claim Your Spot →</a></li>
       </ul>
+      <button class="nav-hamburger" aria-label="Open menu" aria-expanded="false">
+        <span class="hamburger-bar"></span>
+        <span class="hamburger-bar"></span>
+        <span class="hamburger-bar"></span>
+      </button>
     </div>
+    <ul class="mobile-nav">
+      <li><a href="/">Home</a></li>
+      <li><a href="#apply" class="nav-cta">Claim Your Spot →</a></li>
+    </ul>
   </nav>
 
   <!-- HERO -->
@@ -1056,6 +1104,22 @@
         const y = ((e.clientY - rect.top) / rect.height) * 100;
         card.style.setProperty('--mouse-x', `${x}%`);
         card.style.setProperty('--mouse-y', `${y}%`);
+      });
+    });
+
+    // ===== HAMBURGER MENU =====
+    const hamburger = document.querySelector('.nav-hamburger');
+    const mobileNav = document.querySelector('.mobile-nav');
+    hamburger.addEventListener('click', () => {
+      const isOpen = hamburger.classList.toggle('open');
+      mobileNav.classList.toggle('open', isOpen);
+      hamburger.setAttribute('aria-expanded', isOpen);
+    });
+    mobileNav.querySelectorAll('a').forEach(a => {
+      a.addEventListener('click', () => {
+        hamburger.classList.remove('open');
+        mobileNav.classList.remove('open');
+        hamburger.setAttribute('aria-expanded', 'false');
       });
     });
 
