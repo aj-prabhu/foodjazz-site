@@ -1,0 +1,804 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Food Jazz — Spring 2026</title>
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.6.1/dist/reveal.min.css">
+
+  <style>
+    /* ===== BRAND TOKENS ===== */
+    :root {
+      --sage:        #7A8C6E;
+      --sage-light:  #A8B89D;
+      --sage-muted:  #D4DDD0;
+      --sage-wash:   #EDF2EB;
+      --cream:       #FAF7F2;
+      --linen:       #F3EDE4;
+      --wood-dark:   #8B6D47;
+      --golden:      #D4A843;
+      --charcoal:    #2E2E2C;
+      --warm-gray:   #5C5A56;
+      --medium-gray: #9B9892;
+      --font-display: 'Caveat', cursive;
+      --font-body:    'DM Sans', sans-serif;
+    }
+
+    /* ===== REVEAL OVERRIDES ===== */
+    .reveal {
+      font-family: var(--font-body);
+      font-weight: 300;
+      color: var(--warm-gray);
+      background: var(--cream);
+    }
+    .reveal .slides { text-align: left; }
+    .reveal .slides section {
+      height: 100%;
+      padding: 56px 80px 80px;
+      box-sizing: border-box;
+      overflow: hidden;
+    }
+    .reveal .progress span { background: var(--sage); }
+    .reveal .controls { display: none; }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    /* ===== SLIDE VARIANTS ===== */
+    .slide-cream { background: var(--cream) !important; }
+    .slide-wash  { background: var(--sage-wash) !important; }
+    .slide-dark  { background: var(--charcoal) !important; }
+
+    /* ===== TYPOGRAPHY ===== */
+    .disp-xl {
+      font-family: var(--font-display);
+      font-size: 4.8rem; font-weight: 700;
+      color: var(--charcoal); line-height: 0.95;
+      letter-spacing: -0.02em;
+    }
+    .disp-lg {
+      font-family: var(--font-display);
+      font-size: 3rem; font-weight: 600;
+      color: var(--charcoal); line-height: 1.05;
+    }
+    .disp-md {
+      font-family: var(--font-display);
+      font-size: 2rem; font-weight: 600;
+      color: var(--charcoal); line-height: 1.1;
+    }
+    .body { font-size: 0.92rem; font-weight: 300; color: var(--warm-gray); line-height: 1.7; }
+    .label {
+      font-size: 0.6rem; font-weight: 500;
+      letter-spacing: 0.22em; text-transform: uppercase;
+      color: var(--medium-gray); display: block; margin-bottom: 1rem;
+    }
+    .label-sage { color: var(--sage); }
+    strong { font-weight: 500; color: var(--charcoal); }
+
+    /* ===== SLIDE FOOTER ===== */
+    .foot {
+      position: absolute; bottom: 32px; left: 80px; right: 80px;
+      display: flex; justify-content: space-between; align-items: center;
+    }
+    .foot-wm { font-family: var(--font-display); font-size: 0.9rem; color: var(--medium-gray); }
+    .foot-wm-light { color: var(--sage-light); }
+    .foot-n { font-size: 0.6rem; color: var(--medium-gray); letter-spacing: 0.1em; }
+
+    /* ===== SPIRAL ===== */
+    .spiral {
+      position: absolute; top: -60px; right: -60px;
+      width: 460px; height: 460px;
+      opacity: 0.06; pointer-events: none;
+    }
+
+    /* ===== WAVE ===== */
+    .wave {
+      position: absolute; bottom: 0; left: 0; right: 0;
+      opacity: 0.1; pointer-events: none; line-height: 0;
+    }
+
+    /* ===== CALLOUT ===== */
+    .callout {
+      background: var(--sage-wash);
+      border-left: 3px solid var(--sage);
+      padding: 1.1rem 1.5rem;
+      border-radius: 0 4px 4px 0;
+    }
+    .callout-gold {
+      background: #FBF6E9;
+      border-left: 3px solid var(--golden);
+      padding: 1.1rem 1.5rem;
+      border-radius: 0 4px 4px 0;
+    }
+
+    /* ===== PILL ===== */
+    .pill {
+      display: inline-flex; align-items: center;
+      border: 1px solid var(--sage-muted); border-radius: 99px;
+      padding: 0.2rem 0.75rem;
+      font-size: 0.72rem; font-weight: 400; color: var(--warm-gray);
+    }
+
+    /* ===== 2x2 DIAGRAM ===== */
+    .quadrant-wrap {
+      display: grid;
+      grid-template-columns: 28px 1fr;
+      grid-template-rows: 1fr 28px;
+      height: 336px; gap: 0;
+    }
+    .y-label {
+      grid-row: 1; grid-column: 1;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .quads {
+      grid-row: 1; grid-column: 2;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: 1fr 1fr;
+      gap: 3px;
+    }
+    .x-label {
+      grid-row: 2; grid-column: 2;
+      display: flex; align-items: center; justify-content: flex-end;
+      padding-top: 6px;
+    }
+    .axis-lbl {
+      font-size: 0.56rem; font-weight: 500;
+      letter-spacing: 0.2em; text-transform: uppercase; color: var(--medium-gray);
+    }
+    .q {
+      padding: 1rem 1.1rem;
+      display: flex; flex-direction: column; justify-content: center;
+    }
+    .q-tl { background: var(--sage-wash); border-radius: 4px 0 0 0; }
+    .q-tr {
+      background: #FBF6E9; border-radius: 0 4px 0 0;
+      border: 1.5px dashed var(--golden);
+      align-items: center;
+    }
+    .q-bl { background: var(--linen); border-radius: 0 0 0 4px; align-items: center; }
+    .q-br { background: var(--cream); border-radius: 0 0 4px 0; border: 1px solid var(--sage-muted); justify-content: flex-end; }
+
+    /* ===== COMPARISON TABLE ===== */
+    .comp { width: 100%; border-collapse: collapse; font-size: 0.85rem; }
+    .comp th {
+      font-size: 0.58rem; font-weight: 500; letter-spacing: 0.18em;
+      text-transform: uppercase; color: var(--medium-gray);
+      border-bottom: 1px solid var(--sage-muted);
+      padding: 0.4rem 0.9rem 0.65rem; text-align: left;
+    }
+    .comp td {
+      padding: 0.55rem 0.9rem;
+      border-bottom: 1px solid var(--sage-muted);
+      font-weight: 300; color: var(--warm-gray);
+    }
+    .comp tr:last-child td { border-bottom: none; }
+    .comp .hl td { color: var(--charcoal); font-weight: 400; background: var(--sage-wash); }
+    .comp .hl td:first-child { border-left: 3px solid var(--sage); }
+
+    /* ===== THREE COLS ===== */
+    .three-col { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1.25rem; margin-top: 1.5rem; }
+    .col-box { background: var(--sage-wash); padding: 1.2rem 1.4rem; border-radius: 4px; }
+    .col-box.linen { background: var(--linen); }
+    .col-num {
+      font-family: var(--font-display); font-size: 2.2rem; font-weight: 700;
+      color: var(--sage-muted); line-height: 1; margin-bottom: 0.4rem;
+    }
+    .col-h {
+      font-family: var(--font-display); font-size: 1.15rem; font-weight: 600;
+      color: var(--charcoal); margin-bottom: 0.4rem;
+    }
+
+    /* ===== FOUR GRID ===== */
+    .four-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 1.25rem; }
+    .four-item { padding: 1.1rem 1.3rem; border-radius: 4px; }
+    .four-item h3 {
+      font-family: var(--font-display); font-size: 1.2rem; font-weight: 600;
+      color: var(--charcoal); margin-bottom: 0.35rem;
+    }
+    .four-item p { font-size: 0.82rem; font-weight: 300; color: var(--warm-gray); line-height: 1.6; }
+    .four-item .stat { font-size: 0.65rem; font-weight: 500; color: var(--sage); letter-spacing: 0.1em; margin-top: 0.35rem; }
+    .bg-wash { background: var(--sage-wash); }
+    .bg-linen { background: var(--linen); }
+
+    /* ===== STAT BOX ===== */
+    .stat-box { padding: 1.1rem 1.3rem; border-radius: 4px; text-align: center; }
+    .stat-num {
+      font-family: var(--font-display); font-size: 2.6rem; font-weight: 700;
+      color: var(--sage); line-height: 1;
+    }
+    .stat-label { font-size: 0.65rem; font-weight: 500; color: var(--medium-gray); letter-spacing: 0.12em; text-transform: uppercase; margin-top: 0.25rem; }
+
+    /* ===== TWO COL ===== */
+    .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 2.5rem; }
+    .two-col-6040 { display: grid; grid-template-columns: 1.45fr 1fr; gap: 2.5rem; }
+
+    /* ===== TIMELINE ===== */
+    .timeline { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 0; margin-top: 1.25rem; }
+    .phase { padding: 1.1rem 1.3rem; border-left: 2px solid var(--sage-muted); position: relative; }
+    .phase:first-child { border-color: var(--sage); }
+    .phase-dot {
+      position: absolute; left: -6px; top: 1.4rem;
+      width: 10px; height: 10px; border-radius: 50%; background: var(--sage);
+    }
+    .phase:not(:first-child) .phase-dot { background: var(--sage-muted); }
+    .phase-lbl { font-size: 0.56rem; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: var(--sage); margin-bottom: 0.5rem; }
+    .phase h3 {
+      font-family: var(--font-display); font-size: 1.15rem; font-weight: 600;
+      color: var(--charcoal); margin-bottom: 0.4rem;
+    }
+    .phase p { font-size: 0.8rem; font-weight: 300; color: var(--warm-gray); line-height: 1.6; }
+
+    /* ===== FLYWHEEL ===== */
+    .flywheel { display: flex; align-items: center; gap: 0.4rem; flex-wrap: wrap; margin-top: 0.75rem; }
+    .fw-step {
+      text-align: center; padding: 0.55rem 0.8rem;
+      background: var(--sage-wash); border-radius: 3px;
+    }
+    .fw-step span { font-family: var(--font-display); font-weight: 600; color: var(--charcoal); font-size: 0.88rem; }
+    .fw-arr { color: var(--sage-muted); font-size: 1rem; }
+    .fw-last { background: var(--golden) !important; }
+    .fw-last span { color: white; }
+
+    /* ===== CRED ITEMS ===== */
+    .cred { display: grid; grid-template-columns: 1fr 1fr; gap: 0.9rem 2.5rem; margin-top: 0.5rem; }
+    .cred-item { padding-left: 1rem; border-left: 2px solid var(--sage-muted); }
+    .cred-item h3 {
+      font-family: var(--font-display); font-size: 1.1rem; font-weight: 600;
+      color: var(--charcoal); margin-bottom: 0.2rem;
+    }
+    .cred-item p { font-size: 0.8rem; font-weight: 300; color: var(--warm-gray); line-height: 1.6; }
+
+    /* ===== PRESS BAR ===== */
+    .press-bar {
+      display: flex; align-items: center; gap: 1.75rem;
+      margin-top: 1.25rem; padding-top: 1.25rem;
+      border-top: 1px solid var(--sage-muted);
+    }
+    .press-wrd {
+      font-family: var(--font-display); font-size: 0.95rem; font-weight: 600;
+      color: var(--medium-gray); letter-spacing: 0.04em;
+    }
+
+    /* ===== ASK ITEMS ===== */
+    .ask-list { margin-top: 1rem; }
+    .ask-item { display: flex; align-items: flex-start; gap: 1.25rem; margin-bottom: 1.25rem; }
+    .ask-n {
+      font-family: var(--font-display); font-size: 2.8rem; font-weight: 700;
+      color: var(--sage); line-height: 1; flex-shrink: 0; width: 52px;
+    }
+    .ask-item h3 {
+      font-family: var(--font-display); font-size: 1.35rem; font-weight: 600;
+      color: var(--cream); margin-bottom: 0.25rem;
+    }
+    .ask-item p { font-size: 0.875rem; font-weight: 300; color: var(--sage-light); line-height: 1.6; }
+
+    /* ===== DARK SLIDE OVERRIDES ===== */
+    .slide-dark .disp-xl,
+    .slide-dark .disp-lg,
+    .slide-dark .disp-md { color: var(--cream); }
+    .slide-dark .body { color: var(--sage-light); }
+    .slide-dark .label { color: var(--sage-light); }
+
+    /* dark card */
+    .dark-card {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(168,184,157,0.2);
+      padding: 1.1rem 1.3rem; border-radius: 4px;
+    }
+    .dark-card .card-lbl { font-size: 0.58rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--sage-light); margin-bottom: 0.5rem; }
+    .dark-card .card-h { font-family: var(--font-display); font-size: 1.15rem; font-weight: 600; color: var(--cream); margin-bottom: 0.35rem; }
+    .dark-card p { font-size: 0.8rem; color: var(--sage-light); font-weight: 300; line-height: 1.6; }
+  </style>
+</head>
+<body>
+<div class="reveal">
+<div class="slides">
+
+
+<!-- ============================================================
+     01 — TITLE
+     ============================================================ -->
+<section class="slide-cream" style="padding:0; overflow:hidden;">
+  <div style="position:relative; width:100%; height:100%; display:flex; align-items:center; justify-content:center; overflow:hidden;">
+
+    <!-- spiral -->
+    <svg class="spiral" viewBox="0 0 400 400" fill="none">
+      <path d="M200,200 C200,155 238,118 280,130 C322,142 348,185 335,225 C322,265 278,288 238,272 C198,256 176,212 195,175 C214,138 258,118 292,138 C326,158 342,202 322,232 C302,262 258,270 228,252" stroke="#7A8C6E" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+      <path d="M200,200 C200,120 258,64 324,86 C390,108 422,178 392,240 C362,302 290,326 228,296 C166,266 142,190 174,130 C206,70 278,50 338,82 C398,114 420,192 382,248 C344,304 270,320 210,292" stroke="#7A8C6E" stroke-width="1.2" fill="none" stroke-linecap="round" opacity="0.55"/>
+      <path d="M200,200 C200,100 268,40 344,68 C420,96 452,178 416,252 C380,326 298,352 222,316 C146,280 120,192 158,118 C196,44 284,22 356,60" stroke="#7A8C6E" stroke-width="0.8" fill="none" stroke-linecap="round" opacity="0.3"/>
+    </svg>
+
+    <!-- wave -->
+    <div class="wave">
+      <svg viewBox="0 0 1280 40" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" style="width:100%;height:40px;">
+        <path d="M0,20 C160,4 320,36 480,20 C640,4 800,36 960,20 C1120,4 1240,36 1280,20 L1280,40 L0,40 Z" fill="#7A8C6E"/>
+      </svg>
+    </div>
+
+    <!-- content -->
+    <div style="text-align:center; position:relative; z-index:1;">
+      <span class="label" style="text-align:center; display:block; margin-bottom:2rem;">Spring 2026 · Confidential</span>
+      <div style="font-family:var(--font-display); font-size:7.5rem; font-weight:700; color:var(--charcoal); line-height:0.9; letter-spacing:-0.02em;">Food Jazz</div>
+      <div style="font-size:1.3rem; font-weight:300; color:var(--warm-gray); margin-top:1.75rem; font-family:var(--font-body); letter-spacing:0.01em;">Learning to cook will make you rich.</div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ============================================================
+     02 — FOOD TECH HAS FAILED US
+     ============================================================ -->
+<section class="slide-cream">
+  <span class="label label-sage">The Problem</span>
+
+  <div class="two-col-6040" style="align-items:start;">
+    <div>
+      <h2 class="disp-lg" style="margin-bottom:1.25rem;">Food Tech<br>Has Failed Us</h2>
+      <p class="body" style="margin-bottom:0.9rem;">Everyone wants to eat exactly what they crave — fresh, personalized, at home, without the stress.</p>
+      <p class="body" style="margin-bottom:1.25rem;">The industry has thrown billions at this problem. Every solution added a logistics layer on top of a 3–9% margin business.</p>
+      <div class="callout">
+        <p class="body" style="font-size:0.86rem;">The food is still cold. You still don't know what's for dinner. And you're spending <strong>$400/month</strong> on a problem that hasn't been solved.</p>
+      </div>
+    </div>
+
+    <div style="display:flex; align-items:center; justify-content:center; height:100%;">
+      <div style="text-align:center; padding:2.5rem 2rem; background:var(--linen); border-radius:6px; border:1px solid var(--sage-muted);">
+        <span class="label" style="text-align:center;">What everyone wants</span>
+        <div style="font-family:var(--font-display); font-size:2.2rem; font-weight:600; color:var(--sage); line-height:1.2; font-style:italic;">Eating exactly<br>what you crave.</div>
+        <div style="font-size:0.78rem; color:var(--medium-gray); font-weight:300; margin-top:0.75rem;">Every single day.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="foot"><span class="foot-wm">Food Jazz</span><span class="foot-n">02</span></div>
+</section>
+
+
+<!-- ============================================================
+     03 — THE 2x2
+     ============================================================ -->
+<section class="slide-cream">
+  <span class="label label-sage">The Landscape</span>
+  <h2 class="disp-md" style="margin-bottom:1.25rem; max-width:640px;">Everyone is solving for convenience.<br>Nobody is solving for you.</h2>
+
+  <div class="quadrant-wrap">
+    <div class="y-label">
+      <span class="axis-lbl" style="writing-mode:vertical-rl; text-orientation:mixed; transform:rotate(180deg);">← Convenience</span>
+    </div>
+
+    <div class="quads">
+      <!-- TL: high convenience, low custom -->
+      <div class="q q-tl">
+        <div style="font-size:0.56rem; font-weight:500; letter-spacing:0.14em; text-transform:uppercase; color:var(--medium-gray); margin-bottom:0.65rem;">High convenience · low customization</div>
+        <div style="display:flex; flex-wrap:wrap; gap:0.35rem;">
+          <span class="pill">DoorDash</span>
+          <span class="pill">Uber Eats</span>
+          <span class="pill">Ghost Kitchens</span>
+        </div>
+      </div>
+
+      <!-- TR: THE GAP -->
+      <div class="q q-tr" style="display:flex; flex-direction:column; align-items:center; justify-content:center;">
+        <div style="font-family:var(--font-display); font-size:1.9rem; font-weight:600; color:var(--golden); text-align:center; line-height:1.1;">The gap.</div>
+        <div style="font-size:0.72rem; color:var(--medium-gray); text-align:center; margin-top:0.5rem; font-weight:300;">High convenience<br>+ high customization</div>
+        <div style="font-size:0.62rem; color:var(--golden); text-align:center; margin-top:0.4rem; letter-spacing:0.12em; text-transform:uppercase; font-weight:500;">Unsolved.</div>
+      </div>
+
+      <!-- BL: meal kits -->
+      <div class="q q-bl" style="display:flex; flex-direction:column; align-items:center; justify-content:center;">
+        <div style="display:flex; flex-wrap:wrap; gap:0.35rem; justify-content:center;">
+          <span class="pill">HelloFresh</span>
+          <span class="pill">Blue Apron</span>
+          <span class="pill">Factor</span>
+        </div>
+        <div style="font-size:0.68rem; color:var(--medium-gray); margin-top:0.65rem; font-weight:300; text-align:center; line-height:1.5;">Tried to bridge the gap.<br>90% churn in a year.</div>
+      </div>
+
+      <!-- BR: home kitchen -->
+      <div class="q q-br" style="justify-content:flex-end; padding-bottom:1.1rem;">
+        <div style="font-family:var(--font-display); font-size:1.05rem; font-weight:600; color:var(--charcoal); margin-bottom:0.25rem;">Your Home Kitchen</div>
+        <div style="font-size:0.72rem; color:var(--warm-gray); font-weight:300; line-height:1.5;">Already paid for. Perfectly customizable.<br>Just sitting there, unused.</div>
+      </div>
+    </div>
+
+    <div class="x-label">
+      <span class="axis-lbl">Customization →</span>
+    </div>
+  </div>
+
+  <div class="foot"><span class="foot-wm">Food Jazz</span><span class="foot-n">03</span></div>
+</section>
+
+
+<!-- ============================================================
+     04 — THE HOME KITCHEN
+     ============================================================ -->
+<section class="slide-wash" style="position:relative; overflow:hidden;">
+
+  <svg class="spiral" style="opacity:0.08; top:-80px; right:-80px;" viewBox="0 0 400 400" fill="none">
+    <path d="M200,200 C200,155 238,118 280,130 C322,142 348,185 335,225 C322,265 278,288 238,272 C198,256 176,212 195,175 C214,138 258,118 292,138 C326,158 342,202 322,232 C302,262 258,270 228,252" stroke="#7A8C6E" stroke-width="2" fill="none" stroke-linecap="round"/>
+    <path d="M200,200 C200,120 258,64 324,86 C390,108 422,178 392,240 C362,302 290,326 228,296 C166,266 142,190 174,130 C206,70 278,50 338,82 C398,114 420,192 382,248 C344,304 270,320 210,292" stroke="#7A8C6E" stroke-width="1.5" fill="none" stroke-linecap="round" opacity="0.5"/>
+  </svg>
+
+  <span class="label label-sage" style="position:relative;">The Insight</span>
+  <h2 class="disp-lg" style="max-width:680px; margin-bottom:1.75rem; position:relative;">The home kitchen is the most underutilized asset in America.</h2>
+
+  <div class="three-col" style="position:relative;">
+    <div style="background:white; padding:1.4rem; border-radius:4px;">
+      <div class="col-h">Already paid for.</div>
+      <p class="body" style="font-size:0.84rem;">Every home has one. No subscription, no delivery fee, no markup. The factory is already there.</p>
+    </div>
+    <div style="background:white; padding:1.4rem; border-radius:4px;">
+      <div class="col-h">Perfectly customizable.</div>
+      <p class="body" style="font-size:0.84rem;">It runs on your preferences, your pantry, your taste. Only your kitchen produces exactly what you want.</p>
+    </div>
+    <div style="background:white; padding:1.4rem; border-radius:4px;">
+      <div class="col-h">Nobody taught you.</div>
+      <p class="body" style="font-size:0.84rem;">That's the only reason it's sitting dark. In 2026 there is still no scalable solution to teach intuitive cooking.</p>
+    </div>
+  </div>
+
+  <div class="callout-gold" style="margin-top:1.5rem; position:relative;">
+    <p class="body" style="font-size:0.9rem;"><strong>The problem was never logistics.</strong> It was always education. And the education hasn't changed in decades.</p>
+  </div>
+
+  <div class="foot"><span class="foot-wm">Food Jazz</span><span class="foot-n">04</span></div>
+</section>
+
+
+<!-- ============================================================
+     05 — WHY NOW
+     ============================================================ -->
+<section class="slide-cream">
+  <span class="label label-sage">The Moment</span>
+  <h2 class="disp-lg" style="margin-bottom:1.25rem;">Why now.</h2>
+
+  <div class="four-grid">
+    <div class="four-item bg-wash">
+      <h3>The WFH shift</h3>
+      <p>32M Americans work from home. Their kitchen is 10 feet away at lunch. The barrier to cooking has never been lower — and they're still ordering DoorDash.</p>
+      <div class="stat">22% of US workforce · fully or hybrid remote</div>
+    </div>
+    <div class="four-item bg-wash">
+      <h3>AI is everywhere</h3>
+      <p>People are hungry for real skills, real connection, real human experience. Learning to cook is the antidote to algorithmic everything. You can't outsource your workout. You can't outsource your diet.</p>
+    </div>
+    <div class="four-item bg-linen">
+      <h3>The gender gap</h3>
+      <p>60% of couples both work. Men are expected to contribute in the kitchen. Most don't know how. That's a massive untapped market nobody is talking to.</p>
+      <div class="stat">50% of millennials rely on meal shortcuts weekly</div>
+    </div>
+    <div class="four-item bg-linen">
+      <h3>Food tech is in freefall</h3>
+      <p>Ghost kitchen funding down 95% YoY. Blue Apron sold for a fraction of its peak. HelloFresh shares dropped 42% in a single day. The outsourcing model has proven it doesn't work.</p>
+    </div>
+  </div>
+
+  <div class="foot"><span class="foot-wm">Food Jazz</span><span class="foot-n">05</span></div>
+</section>
+
+
+<!-- ============================================================
+     06 — THE SOLUTION
+     ============================================================ -->
+<section class="slide-dark" style="position:relative; overflow:hidden;">
+
+  <svg class="spiral" style="opacity:0.07;" viewBox="0 0 400 400" fill="none">
+    <path d="M200,200 C200,155 238,118 280,130 C322,142 348,185 335,225 C322,265 278,288 238,272 C198,256 176,212 195,175 C214,138 258,118 292,138 C326,158 342,202 322,232 C302,262 258,270 228,252" stroke="#A8B89D" stroke-width="2" fill="none" stroke-linecap="round"/>
+  </svg>
+
+  <span class="label" style="color:var(--sage-light);">The Solution</span>
+  <h2 style="font-family:var(--font-display); font-size:3rem; font-weight:700; color:var(--cream); line-height:1.0; margin-bottom:0.9rem;">Food Jazz is culinary school<br>for the modern everyday person.</h2>
+  <p style="font-size:0.95rem; font-weight:300; color:var(--sage-light); margin-bottom:1.75rem; max-width:560px;">Not recipes — ratios. Not technique for technique's sake — intuition. A 30-day intensive that changes how you think in the kitchen.</p>
+
+  <div class="three-col">
+    <div class="dark-card">
+      <div class="card-lbl">Format</div>
+      <div class="card-h">30-day intensive</div>
+      <p>In-home, 1-on-1. You cook every day. Coach shows up in your kitchen.</p>
+    </div>
+    <div class="dark-card">
+      <div class="card-lbl">The method</div>
+      <div class="card-h">Ratios, not recipes</div>
+      <p>See the pattern behind every dish. Cook intuitively from day one.</p>
+    </div>
+    <div class="dark-card">
+      <div class="card-lbl">Outcome</div>
+      <div class="card-h">Walk into any kitchen</div>
+      <p>Any ingredients. Any equipment. Cook something great.</p>
+    </div>
+  </div>
+
+  <div style="margin-top:1.25rem; padding:0.7rem 1.2rem; background:rgba(212,168,67,0.12); border-left:2px solid var(--golden); border-radius:0 3px 3px 0; display:inline-block;">
+    <span style="font-size:0.88rem; color:var(--golden); font-weight:300;">Early access: <strong style="font-weight:500;">$500</strong> &nbsp;·&nbsp; Anchored to $1,000 &nbsp;·&nbsp; April 2026</span>
+  </div>
+
+  <div class="foot">
+    <span class="foot-wm foot-wm-light">Food Jazz</span>
+    <span class="foot-n">06</span>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     07 — THE METHOD
+     ============================================================ -->
+<section class="slide-cream">
+  <span class="label label-sage">The Method</span>
+  <h2 class="disp-md" style="margin-bottom:0.4rem;">Three things stand between you<br>and cooking intuitively.</h2>
+
+  <div class="three-col">
+    <div class="col-box">
+      <div class="col-num">01</div>
+      <div class="col-h">Kitchen as Maker Space</div>
+      <p class="body" style="font-size:0.84rem;">Your kitchen is a tool, not a recipe holder. Stock it to improvise. Right pantry, right setup, zero friction between idea and plate.</p>
+    </div>
+    <div class="col-box">
+      <div class="col-num">02</div>
+      <div class="col-h">Active Tasting</div>
+      <p class="body" style="font-size:0.84rem;">Most people eat. They don't taste. Building a flavor vocabulary is the skill that makes everything else click. Sour, fat, heat, texture — you learn to read them.</p>
+    </div>
+    <div class="col-box">
+      <div class="col-num">03</div>
+      <div class="col-h">Recipe Reading</div>
+      <p class="body" style="font-size:0.84rem;">Recipes are ratios, not instructions. Once you see the pattern — fat to acid, protein to veg, heat to time — you stop needing them.</p>
+    </div>
+  </div>
+
+  <div style="margin-top:1.75rem; padding:1rem 1.5rem; background:var(--linen); border-radius:4px; display:flex; align-items:center; justify-content:space-between;">
+    <p class="body" style="font-size:0.9rem;"><strong>The outcome:</strong> You can walk into any kitchen, with any ingredients, and cook something good.</p>
+    <span style="font-family:var(--font-display); font-size:1.1rem; color:var(--sage); font-weight:500; white-space:nowrap; margin-left:2rem;">Every time.</span>
+  </div>
+
+  <div class="foot"><span class="foot-wm">Food Jazz</span><span class="foot-n">07</span></div>
+</section>
+
+
+<!-- ============================================================
+     08 — SHIP 30 FOR HOME COOKING
+     ============================================================ -->
+<section class="slide-cream">
+  <span class="label label-sage">The Scale</span>
+  <h2 class="disp-lg" style="margin-bottom:1.25rem;">Ship 30 for home cooking.</h2>
+
+  <div class="two-col-6040" style="align-items:start;">
+    <div>
+      <p class="body" style="margin-bottom:1rem;">Ship 30 for 30 built a $1M+/year business teaching people to write online. 30-day cohort. $800/person. 10,000+ students. Two founders, no VC.</p>
+      <p class="body" style="margin-bottom:1.5rem;">Same model. Bigger problem. Everyone eats three times a day.</p>
+
+      <table class="comp">
+        <thead>
+          <tr>
+            <th></th>
+            <th>Ship 30 for 30</th>
+            <th>Food Jazz</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Teaches</td><td>Online writing</td><td>Intuitive cooking</td></tr>
+          <tr><td>Format</td><td>30-day cohort</td><td>30-day cohort</td></tr>
+          <tr><td>Price</td><td>$800 / person</td><td>$800 / person</td></tr>
+          <tr><td>Phase 1</td><td>Live cohorts</td><td>1-on-1 in-home</td></tr>
+          <tr class="hl"><td>Market</td><td>People who want to write</td><td>Everyone who eats</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div style="display:flex; flex-direction:column; gap:0.85rem; justify-content:center;">
+      <div class="stat-box bg-wash">
+        <div class="stat-num">$1M+</div>
+        <div class="stat-label">Ship 30 annual revenue</div>
+      </div>
+      <div class="stat-box bg-linen">
+        <div class="stat-num">10K+</div>
+        <div class="stat-label">Students taught</div>
+      </div>
+      <div class="stat-box bg-wash">
+        <div class="stat-num">$0</div>
+        <div class="stat-label">Outside capital raised</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="foot"><span class="foot-wm">Food Jazz</span><span class="foot-n">08</span></div>
+</section>
+
+
+<!-- ============================================================
+     09 — GO-TO-MARKET
+     ============================================================ -->
+<section class="slide-cream">
+  <span class="label label-sage">Go-to-Market</span>
+  <h2 class="disp-md" style="margin-bottom:1.25rem; max-width:680px;">There is no cooking influencer for working professionals on LinkedIn. That lane is empty.</h2>
+
+  <div class="two-col" style="align-items:start; gap:2rem;">
+    <div>
+      <div class="callout" style="margin-bottom:1.1rem;">
+        <div style="font-size:0.6rem; letter-spacing:0.2em; text-transform:uppercase; color:var(--sage); margin-bottom:0.5rem; font-weight:500;">The model: Dan Go for food</div>
+        <p class="body" style="font-size:0.84rem;">Dan Go built a fitness brand for founders and executives — 1.2M followers, $2–8K coaching packages, started from zero in 2019. No gym. No VC. Daily content for one specific audience.</p>
+      </div>
+      <p class="body" style="font-size:0.84rem; margin-bottom:0.75rem;">Every post makes the same argument: you don't have a time problem. You have a skill problem. The skill is learnable in a month.</p>
+      <p class="body" style="font-size:0.84rem;">The target is the person spending $400/month on Factor who thinks he doesn't have time to cook. He doesn't have a time problem.</p>
+    </div>
+
+    <div>
+      <div style="font-size:0.6rem; letter-spacing:0.2em; text-transform:uppercase; color:var(--medium-gray); margin-bottom:0.9rem; font-weight:500;">Acquisition path</div>
+      <div style="border-left:2px solid var(--sage-muted); padding-left:1.2rem;">
+        <div style="margin-bottom:0.9rem; position:relative;">
+          <div style="position:absolute; left:-1.5rem; top:0.3rem; width:8px; height:8px; border-radius:50%; background:var(--sage);"></div>
+          <div style="font-family:var(--font-display); font-size:1rem; font-weight:600; color:var(--charcoal);">Phase 1 — Network</div>
+          <p style="font-size:0.78rem; color:var(--warm-gray); font-weight:300; line-height:1.5;">Personal outreach → beta → referrals from dinner parties</p>
+        </div>
+        <div style="margin-bottom:0.9rem; position:relative;">
+          <div style="position:absolute; left:-1.5rem; top:0.3rem; width:8px; height:8px; border-radius:50%; background:var(--sage-muted);"></div>
+          <div style="font-family:var(--font-display); font-size:1rem; font-weight:600; color:var(--charcoal);">Phase 2 — Content</div>
+          <p style="font-size:0.78rem; color:var(--warm-gray); font-weight:300; line-height:1.5;">LinkedIn engine → email list → cohort waitlist</p>
+        </div>
+        <div style="position:relative;">
+          <div style="position:absolute; left:-1.5rem; top:0.3rem; width:8px; height:8px; border-radius:50%; background:var(--sage-muted);"></div>
+          <div style="font-family:var(--font-display); font-size:1rem; font-weight:600; color:var(--charcoal);">Phase 3 — Alumni</div>
+          <p style="font-size:0.78rem; color:var(--warm-gray); font-weight:300; line-height:1.5;">Cohort graduates become the next round of content and referrals</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="foot"><span class="foot-wm">Food Jazz</span><span class="foot-n">09</span></div>
+</section>
+
+
+<!-- ============================================================
+     10 — ROADMAP + FLYWHEEL
+     ============================================================ -->
+<section class="slide-wash">
+  <span class="label label-sage">The Roadmap</span>
+  <h2 class="disp-md" style="margin-bottom:1.25rem;">The flywheel starts in April.</h2>
+
+  <div class="timeline">
+    <div class="phase">
+      <div class="phase-dot"></div>
+      <div class="phase-lbl">Phase 1 · Now → Sept 2026</div>
+      <h3>In-home 1-on-1</h3>
+      <p>Bay Area. 5 beta clients, no charge. Build the method, collect proof, understand what people need to learn to cook intuitively.</p>
+    </div>
+    <div class="phase">
+      <div class="phase-dot"></div>
+      <div class="phase-lbl">Phase 2 · 2026–2027</div>
+      <h3>Online Cohorts</h3>
+      <p>Same curriculum, group format, no geography. 50–300 people per cohort. $800/person. Runs repeatedly, low marginal cost.</p>
+    </div>
+    <div class="phase">
+      <div class="phase-dot"></div>
+      <div class="phase-lbl">Phase 3 · 2027+</div>
+      <h3>Platform + Events</h3>
+      <p>Member portal, ratio library, community. Food festivals. The cultural layer around Food Jazz.</p>
+    </div>
+  </div>
+
+  <div style="margin-top:1.5rem; padding:1.1rem 1.4rem; background:white; border-radius:4px;">
+    <div style="font-size:0.6rem; letter-spacing:0.2em; text-transform:uppercase; color:var(--sage); margin-bottom:0.65rem; font-weight:500;">The Dinner Party Flywheel</div>
+    <div class="flywheel">
+      <div class="fw-step"><span>Client learns</span></div>
+      <span class="fw-arr">→</span>
+      <div class="fw-step"><span>Hosts dinner party</span></div>
+      <span class="fw-arr">→</span>
+      <div class="fw-step"><span>Guests see it live</span></div>
+      <span class="fw-arr">→</span>
+      <div class="fw-step"><span>"I did this in 30 days"</span></div>
+      <span class="fw-arr">→</span>
+      <div class="fw-step fw-last"><span>New client</span></div>
+    </div>
+  </div>
+
+  <div class="foot"><span class="foot-wm">Food Jazz</span><span class="foot-n">10</span></div>
+</section>
+
+
+<!-- ============================================================
+     11 — WHY ME
+     ============================================================ -->
+<section class="slide-cream">
+  <span class="label label-sage">The Founder</span>
+  <h2 class="disp-md" style="margin-bottom:1.25rem;">I've been inside this problem<br>my whole career.</h2>
+
+  <div class="cred">
+    <div class="cred-item">
+      <h3>I legalized home cooking.</h3>
+      <p>Passed California's home restaurant law — first of its kind in the world. The person who legalized the sale of home-cooked food.</p>
+    </div>
+    <div class="cred-item">
+      <h3>I built Foodnome.</h3>
+      <p>$3M raised, 200+ home cooks. Front-row seat to why scaling the home kitchen to serve others fails — and why it should be serving you.</p>
+    </div>
+    <div class="cred-item">
+      <h3>I've been in hundreds of home kitchens.</h3>
+      <p>I know the disorganized pantry, the unused knife, the person who buys groceries and orders DoorDash anyway.</p>
+    </div>
+    <div class="cred-item">
+      <h3>I speak both languages.</h3>
+      <p>Not a chef who stumbled into tech. Not a tech person who took a cooking class. I'm the bridge. I can bring the working professional along in a way a chef never could.</p>
+    </div>
+  </div>
+
+  <div class="press-bar">
+    <span class="label" style="margin:0; white-space:nowrap;">As seen in</span>
+    <img src="press-nyt.svg" alt="New York Times" style="height:17px; opacity:0.4; filter:grayscale(100%);">
+    <img src="press-cbs.svg" alt="CBS" style="height:17px; opacity:0.4; filter:grayscale(100%);">
+    <img src="press-civileats.svg" alt="Civil Eats" style="height:17px; opacity:0.4; filter:grayscale(100%);">
+    <span class="press-wrd">NPR</span>
+    <span class="press-wrd">WSJ</span>
+    <span class="press-wrd">Hulu</span>
+  </div>
+
+  <div class="foot"><span class="foot-wm">Food Jazz</span><span class="foot-n">11</span></div>
+</section>
+
+
+<!-- ============================================================
+     12 — THE ASK
+     ============================================================ -->
+<section class="slide-dark" style="position:relative; overflow:hidden;">
+
+  <div class="wave" style="opacity:0.07;">
+    <svg viewBox="0 0 1280 40" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" style="width:100%;height:40px;">
+      <path d="M0,20 C160,4 320,36 480,20 C640,4 800,36 960,20 C1120,4 1240,36 1280,20 L1280,40 L0,40 Z" fill="#A8B89D"/>
+    </svg>
+  </div>
+
+  <span class="label" style="color:var(--sage-light);">The Ask</span>
+  <h2 style="font-family:var(--font-display); font-size:2.8rem; font-weight:700; color:var(--cream); line-height:1.0; margin-bottom:1.75rem;">I'm not asking for money.<br>I'm asking for three things.</h2>
+
+  <div class="ask-list">
+    <div class="ask-item">
+      <div class="ask-n">1</div>
+      <div>
+        <h3>Join the beta.</h3>
+        <p>If you've ever wanted to learn to cook, April is your month. Five spots, no charge. You cook every day, I show up in your kitchen.</p>
+      </div>
+    </div>
+    <div class="ask-item">
+      <div class="ask-n">2</div>
+      <div>
+        <h3>Make an introduction.</h3>
+        <p>If you know someone who's scaled an education business, built an online community, or is buying Factor every week — I want to talk to them.</p>
+      </div>
+    </div>
+    <div class="ask-item">
+      <div class="ask-n">3</div>
+      <div>
+        <h3>Push back.</h3>
+        <p>If you see a hole in this, tell me. The smartest thing you can do for this business is tell me where I'm wrong.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="foot">
+    <span style="font-family:var(--font-display); font-size:0.9rem; color:var(--sage-light);">foodjazz.club</span>
+    <span class="foot-n">12</span>
+  </div>
+</section>
+
+
+</div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@4.6.1/dist/reveal.min.js"></script>
+<script>
+  Reveal.initialize({
+    width: 1280,
+    height: 720,
+    margin: 0,
+    controls: false,
+    progress: true,
+    hash: true,
+    transition: 'fade',
+    transitionSpeed: 'fast',
+    center: false
+  });
+</script>
+</body>
+</html>
