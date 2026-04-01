@@ -289,7 +289,25 @@
     /* ===== PROBLEM ===== */
     .section-problem { background: var(--cream); padding: 7rem 0; }
     .section-problem h2 { margin: 0.5rem 0 1.75rem; }
-    .section-problem p + p { margin-top: 1.1rem; }
+    .section-problem p {
+      font-size: 1.2rem;
+      line-height: 1.85;
+      color: var(--warm-gray);
+      font-weight: 300;
+    }
+    .section-problem p + p { margin-top: 1.5rem; }
+    .section-problem strong { font-weight: 500; color: var(--charcoal); }
+
+    /* Scroll reveal for problem paragraphs */
+    .reveal-up {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+    .reveal-up.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
 
     /* ===== METHOD ===== */
     .section-method { background: var(--sage-wash); padding: 7rem 0; }
@@ -446,6 +464,66 @@
       font-size: 0.95rem; font-weight: 300; color: var(--warm-gray);
       line-height: 1.75; max-width: 620px; padding-bottom: 1.5rem;
     }
+
+    /* ===== MID CTA ===== */
+    .section-mid-cta { background: var(--sage-wash); padding: 6rem 0; text-align: center; }
+    .mid-cta-sub {
+      font-size: 1.05rem; color: var(--warm-gray);
+      margin: 0 auto 0.5rem; max-width: 460px; line-height: 1.65;
+    }
+    .mid-cta-contact {
+      margin-top: 1.5rem; font-size: 0.88rem; color: var(--warm-gray);
+    }
+    .mid-cta-contact a { color: var(--sage); text-decoration: underline; }
+
+    /* ===== THREE COOKS ===== */
+    .section-cooks { background: var(--cream); padding: 7rem 0; }
+    .cooks-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2.5rem; margin-top: 3rem; }
+    .cook-card {
+      padding: 2rem 1.5rem;
+      border: 1px solid var(--sage-muted);
+      border-radius: 12px;
+      background: var(--cream);
+    }
+    .cook-card--highlight {
+      border-color: var(--golden);
+      background: rgba(212,168,67,0.04);
+    }
+    .cook-emoji { font-size: 2rem; margin-bottom: 0.75rem; display: block; }
+    .cook-type {
+      font-family: var(--font-display); font-size: 1.4rem; font-weight: 500;
+      color: var(--wood-dark); margin-bottom: 0.6rem; line-height: 1.2;
+    }
+    .cook-desc { font-size: 0.95rem; font-weight: 300; color: var(--warm-gray); line-height: 1.75; }
+
+    /* ===== AFTER 30 DAYS (outcomes restyle) ===== */
+    .outcomes-tagline {
+      font-size: 1.1rem; font-weight: 400; color: var(--charcoal);
+      text-align: center; margin-bottom: 3rem; line-height: 1.6;
+    }
+    .outcomes-tagline .sparkle { color: var(--golden); }
+    .outcomes-closing {
+      font-size: 1rem; font-weight: 300; color: var(--warm-gray);
+      max-width: 580px; margin: 2.5rem auto 0; text-align: center; line-height: 1.75;
+    }
+
+    /* ===== CLOSING SECTION ===== */
+    .section-closing {
+      background: var(--cream); padding: 5rem 0; text-align: center;
+    }
+    .closing-text {
+      font-size: 1rem; font-weight: 300; color: var(--warm-gray);
+      max-width: 540px; margin: 0 auto 2rem; line-height: 1.75;
+    }
+    .closing-text + .closing-text { margin-top: 1rem; }
+    .closing-tagline {
+      font-family: var(--font-display); font-size: clamp(1.6rem, 3vw, 2.2rem);
+      font-weight: 600; color: var(--charcoal); margin: 2rem auto 2.5rem;
+    }
+    .closing-contact {
+      margin-top: 1.5rem; font-size: 0.88rem; color: var(--warm-gray);
+    }
+    .closing-contact a { color: var(--sage); text-decoration: underline; }
 
     /* ===== CTA ===== */
     .section-cta { background: var(--sage-wash); padding: 9rem 0; text-align: center; }
@@ -604,6 +682,7 @@
       .nav-hamburger { display: flex; }
       .cta-location { font-size: 0.7rem; }
       .values-grid { grid-template-columns: 1fr; gap: 1.5rem; }
+      .cooks-grid { grid-template-columns: 1fr; gap: 1.5rem; }
       .experience-item { grid-template-columns: 56px 1fr; }
       .experience-num { font-size: 2.5rem; }
       .about-top { grid-template-columns: 1fr; gap: 1.75rem; }
@@ -698,7 +777,6 @@
   <section class="section-values">
     <div class="container">
       <div class="values-header">
-        <span class="label">What you'll unlock</span>
         <h2>Cooking, simplified.</h2>
       </div>
       <div class="values-grid">
@@ -751,124 +829,11 @@
   <!-- PROBLEM -->
   <section class="section-problem">
     <div class="container--narrow">
-      <span class="label">Does this sound familiar?</span>
-      <h2>Most people cook the same five things on rotation — or don't cook at all.</h2>
-      <p>Whether you panic when you're missing one ingredient, or just order delivery and call it dinner — you're not a bad cook. You just never learned to <em>think</em> like one.</p>
-      <p>You have good taste. Food Jazz helps you translate it from your mind to your plate.</p>
-    </div>
-  </section>
-
-  <!-- METHOD -->
-  <section class="section-method" style="position:relative; overflow:hidden;">
-    <img class="deco-veg" src="deco-cucumber.png" alt=""
-      style="width:190px; bottom:-20px; right:-45px; transform:rotate(-15deg);">
-    <div class="container--narrow">
-      <span class="label">The Method</span>
-      <h2>Intuitive cooking, not recipe following.</h2>
-      <p>Food Jazz is built around one idea: reduce kitchen anxiety by making you an intuitive cook. You'll learn the fundamentals of flavor — ratios, heat, technique — so you can cook freely with whatever's in your fridge.</p>
-      <p>No decision fatigue. No stress. Just flow.</p>
-    </div>
-  </section>
-
-  <!-- PROGRAM -->
-  <section class="section-experience">
-    <div class="container">
-      <div class="experience-header">
-        <span class="label">The Program</span>
-        <h2>The 30-Day Experience</h2>
-        <p>Five elements. One month. A relationship with food that lasts the rest of your life.</p>
-      </div>
-      <ul class="experience-list">
-        <li class="experience-item">
-          <svg class="experience-icon" viewBox="0 0 24 24" fill="none">
-            <path d="M3 11 L12 3 L21 11" stroke="#D4A843" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
-            <path d="M5 10 L5 20 L19 20 L19 10" stroke="#7A8C6E" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" fill="rgba(168,184,157,0.12)"/>
-            <rect x="9" y="14" width="6" height="6" rx="0.5" stroke="#D4A843" stroke-width="1.2" fill="rgba(212,168,67,0.12)"/>
-          </svg>
-          <div>
-            <h3>Weekly Kitchen Sessions</h3>
-            <p>Akshay comes to your kitchen and helps you build your intuition in the place where you actually cook.</p>
-          </div>
-        </li>
-        <li class="experience-item">
-          <svg class="experience-icon" viewBox="0 0 24 24" fill="none">
-            <path d="M12 22 C7 22, 4 18, 4 14 C4 10, 6.5 7.5, 9 6 C9.5 8.5, 10.5 10, 12 9 C13.5 8, 14.5 5.5, 15 4 C17 6.5, 20 9.5, 20 14 C20 18, 17 22, 12 22Z"
-              fill="rgba(212,168,67,0.18)" stroke="#D4A843" stroke-width="1.5" stroke-linejoin="round"/>
-            <path d="M12 18 C10.5 18, 9.5 16.5, 9.5 15 C9.5 13, 11 12, 12 10.5 C13 12, 14.5 13, 14.5 15 C14.5 16.5, 13.5 18, 12 18Z"
-              fill="rgba(196,122,90,0.38)" stroke="#C47A5A" stroke-width="1.1" stroke-linejoin="round"/>
-          </svg>
-          <div>
-            <h3>Cook Something Every Day</h3>
-            <p>One real meal a day, not from a recipe — that's how the habit forms.</p>
-          </div>
-        </li>
-        <li class="experience-item">
-          <svg class="experience-icon" viewBox="0 0 24 24" fill="none">
-            <rect x="3" y="5" width="18" height="16" rx="2" stroke="#7A8C6E" stroke-width="1.4" fill="rgba(168,184,157,0.1)"/>
-            <line x1="3" y1="10" x2="21" y2="10" stroke="#7A8C6E" stroke-width="1.3"/>
-            <line x1="8" y1="3" x2="8" y2="7" stroke="#D4A843" stroke-width="1.6" stroke-linecap="round"/>
-            <line x1="16" y1="3" x2="16" y2="7" stroke="#D4A843" stroke-width="1.6" stroke-linecap="round"/>
-            <circle cx="8" cy="14" r="1" fill="#7A8C6E"/>
-            <circle cx="12" cy="14" r="1" fill="#7A8C6E"/>
-            <circle cx="16" cy="14" r="1" fill="#D4A843"/>
-            <circle cx="8" cy="18" r="1" fill="#7A8C6E"/>
-            <circle cx="12" cy="18" r="1" fill="#C47A5A"/>
-          </svg>
-          <div>
-            <h3>Daily Practice & Accountability</h3>
-            <p>Structured practice to lock in what you learn between sessions.</p>
-          </div>
-        </li>
-        <li class="experience-item">
-          <svg class="experience-icon" viewBox="0 0 24 24" fill="none">
-            <circle cx="12" cy="12" r="9" stroke="#7A8C6E" stroke-width="1.4" fill="rgba(168,184,157,0.08)"/>
-            <circle cx="12" cy="4.5" r="1.5" fill="#D4A843"/>
-            <circle cx="18" cy="8" r="1.5" fill="#C47A5A"/>
-            <circle cx="18" cy="16" r="1.5" fill="#7A8C6E"/>
-            <circle cx="12" cy="19.5" r="1.5" fill="#8B6D47"/>
-            <circle cx="6" cy="16" r="1.5" fill="#A8B89D"/>
-            <circle cx="6" cy="8" r="1.5" fill="#D4A843"/>
-          </svg>
-          <div>
-            <h3>Flavor Fundamentals</h3>
-            <p>A way of thinking about food that replaces recipes and stays with you forever.</p>
-          </div>
-        </li>
-        <li class="experience-item">
-          <svg class="experience-icon" viewBox="0 0 24 24" fill="none">
-            <circle cx="12" cy="12" r="9" stroke="#7A8C6E" stroke-width="1.4" fill="rgba(168,184,157,0.08)"/>
-            <line x1="12" y1="3.5" x2="12" y2="6.5" stroke="#7A8C6E" stroke-width="1.2" stroke-linecap="round"/>
-            <line x1="12" y1="17.5" x2="12" y2="20.5" stroke="#7A8C6E" stroke-width="1.2" stroke-linecap="round"/>
-            <line x1="3.5" y1="12" x2="6.5" y2="12" stroke="#7A8C6E" stroke-width="1.2" stroke-linecap="round"/>
-            <line x1="17.5" y1="12" x2="20.5" y2="12" stroke="#7A8C6E" stroke-width="1.2" stroke-linecap="round"/>
-            <path d="M12 7.5 L14 12 L12 16.5 L10 12Z" stroke="#C47A5A" stroke-width="1" fill="rgba(196,122,90,0.22)" stroke-linejoin="round"/>
-            <circle cx="12" cy="12" r="1.2" fill="#C47A5A"/>
-          </svg>
-          <div>
-            <h3>Kitchen Blueprint</h3>
-            <p>Turn your kitchen into a creative space where everything's in reach and cooking flows effortlessly.</p>
-          </div>
-        </li>
-      </ul>
-    </div>
-  </section>
-
-  <!-- OUTCOMES -->
-  <section class="section-outcomes" style="position:relative; overflow:hidden;">
-    <img class="deco-veg" src="deco-tomato.png" alt=""
-      style="width:200px; top:-20px; right:-50px; transform:rotate(12deg);">
-    <div class="container">
-      <div class="outcomes-intro">
-        <span class="label">After 30 Days</span>
-        <h2>What you walk away with.</h2>
-      </div>
-      <ul class="outcomes-list">
-        <li><span class="outcome-dash">✦</span> Cook at least one real meal a day — without a recipe</li>
-        <li><span class="outcome-dash">✦</span> Freedom from DoorDash, HelloFresh, and the anxiety of not knowing how to cook well</li>
-        <li><span class="outcome-dash">✦</span> A cooking habit built on accountability that actually sticks</li>
-        <li><span class="outcome-dash">✦</span> Confidently host a dinner party for people you care about</li>
-        <li><span class="outcome-dash">✦</span> Feel calm and in flow in your kitchen instead of stressed</li>
-      </ul>
+      <p class="reveal-up">You're probably here because you haven't found a way to fit cooking into your busy schedule. Maybe you've even convinced yourself that cooking isn't important. (Hint: it will transform your life in all the good ways.)</p>
+      <p class="reveal-up"><strong>It's not your fault.</strong> Modern society makes it almost impossible to get your bearings in the kitchen. And before you know it, you feel like you're in too deep to ever learn.</p>
+      <p class="reveal-up">Like you don't have a grandma Yoda to teach you the ways of the kitchen. In a world filled with more cookbooks, TikTok recipe tutorials, and dumpling workshops than stars in the Milky Way, it's natural that you'd give up and just order delivery again.</p>
+      <p class="reveal-up">But it was never a time problem. You just never had someone in your corner showing you how to <em>think</em> in the kitchen.</p>
+      <p class="reveal-up">There is a better way. Food Jazz is the fundamental cooking education everyone needs — the easiest way to make sense of the madness and take back control of your diet. You deserve to eat well. And it doesn't need to be hard, stressful, or time consuming.</p>
     </div>
   </section>
 
@@ -912,14 +877,14 @@
           <img src="akshay.jpg" alt="Akshay Prabhu">
         </div>
         <div>
-          <span class="about-role">Founder · Neuroscientist · Cooking Coach</span>
+          <span class="about-role">Startup Founder · Neuroscientist · Cooking Coach</span>
           <p class="about-name">Hey, I'm Akshay.</p>
-          <p class="about-bio">I'm excited to meet you — this is what feels like my life's work.</p>
-          <p class="about-bio" style="margin-top: 1rem;">I built Foodnome — the first marketplace for home-cooked food — where I raised <strong>$3M</strong> and helped <strong>250+ home cooks</strong> build businesses. I've staged at <strong>Chez Panisse</strong>, hosted hundreds of pop-up dinners, catered for <strong>500+ guests</strong>, and cooked whole lambs over open fire for crowds across the Bay.</p>
+          <p class="about-bio">I'm stoked to meet you — this is what feels like my life's work.</p>
+          <p class="about-bio" style="margin-top: 1rem;">I built Foodnome — the first marketplace for home-cooked food — where I raised <strong>$3M</strong> and helped <strong>250+ home cooks</strong> build businesses out of their kitchens. I've staged at <strong>Chez Panisse</strong>, hosted hundreds of pop-up dinners, catered for <strong>500+ guests</strong>, and cooked whole lambs over open fire for crowds across the Bay.</p>
         </div>
         <div>
-          <p class="about-bio">Cooking has been a part of my life since I was a child. For me, food is symbolic of love when words are inadequate. Memories are created over the warmth and aroma of a homemade meal.</p>
-          <p class="about-bio" style="margin-top: 1rem;">Now I hope to help you carve your culinary identity. I'm on a mission to help 20,000 people finally learn to cook by 2030.</p>
+          <p class="about-bio">Cooking has been a part of my life since I was a child. For me, food is more than fuel. Memories are created over the warmth and aroma of a homemade meal.</p>
+          <p class="about-bio" style="margin-top: 1rem;">Now I want to bring that same joy into your kitchen. I'm on a mission to help 20,000 people finally learn to cook by 2030.</p>
         </div>
       </div>
 
@@ -935,6 +900,190 @@
     </div>
   </section>
 
+  <!-- HOW IT WORKS -->
+  <section class="section-method" style="position:relative; overflow:hidden;">
+    <img class="deco-veg" src="deco-cucumber.png" alt=""
+      style="width:190px; bottom:-20px; right:-45px; transform:rotate(-15deg);">
+    <div class="container">
+      <h2 style="text-align:center; margin-bottom:3rem;">How it works.</h2>
+      <ul class="experience-list">
+        <li class="experience-item">
+          <svg class="experience-icon" viewBox="0 0 24 24" fill="none">
+            <path d="M3 11 L12 3 L21 11" stroke="#D4A843" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M5 10 L5 20 L19 20 L19 10" stroke="#7A8C6E" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" fill="rgba(168,184,157,0.12)"/>
+            <rect x="9" y="14" width="6" height="6" rx="0.5" stroke="#D4A843" stroke-width="1.2" fill="rgba(212,168,67,0.12)"/>
+          </svg>
+          <div>
+            <h3>Weekly Kitchen Sessions</h3>
+            <p>I come to your kitchen and help you build intuition in the place where you actually cook.</p>
+          </div>
+        </li>
+        <li class="experience-item">
+          <svg class="experience-icon" viewBox="0 0 24 24" fill="none">
+            <path d="M12 22 C7 22, 4 18, 4 14 C4 10, 6.5 7.5, 9 6 C9.5 8.5, 10.5 10, 12 9 C13.5 8, 14.5 5.5, 15 4 C17 6.5, 20 9.5, 20 14 C20 18, 17 22, 12 22Z"
+              fill="rgba(212,168,67,0.18)" stroke="#D4A843" stroke-width="1.5" stroke-linejoin="round"/>
+            <path d="M12 18 C10.5 18, 9.5 16.5, 9.5 15 C9.5 13, 11 12, 12 10.5 C13 12, 14.5 13, 14.5 15 C14.5 16.5, 13.5 18, 12 18Z"
+              fill="rgba(196,122,90,0.38)" stroke="#C47A5A" stroke-width="1.1" stroke-linejoin="round"/>
+          </svg>
+          <div>
+            <h3>Cook Something Every Day</h3>
+            <p>One real meal a day, not from a recipe. That's how the habit actually forms.</p>
+          </div>
+        </li>
+        <li class="experience-item">
+          <svg class="experience-icon" viewBox="0 0 24 24" fill="none">
+            <rect x="3" y="5" width="18" height="16" rx="2" stroke="#7A8C6E" stroke-width="1.4" fill="rgba(168,184,157,0.1)"/>
+            <line x1="3" y1="10" x2="21" y2="10" stroke="#7A8C6E" stroke-width="1.3"/>
+            <line x1="8" y1="3" x2="8" y2="7" stroke="#D4A843" stroke-width="1.6" stroke-linecap="round"/>
+            <line x1="16" y1="3" x2="16" y2="7" stroke="#D4A843" stroke-width="1.6" stroke-linecap="round"/>
+            <circle cx="8" cy="14" r="1" fill="#7A8C6E"/>
+            <circle cx="12" cy="14" r="1" fill="#7A8C6E"/>
+            <circle cx="16" cy="14" r="1" fill="#D4A843"/>
+            <circle cx="8" cy="18" r="1" fill="#7A8C6E"/>
+            <circle cx="12" cy="18" r="1" fill="#C47A5A"/>
+          </svg>
+          <div>
+            <h3>Daily Challenges & Check-ins</h3>
+            <p>Structured practice and accountability to lock in what you learn between sessions.</p>
+          </div>
+        </li>
+        <li class="experience-item">
+          <svg class="experience-icon" viewBox="0 0 24 24" fill="none">
+            <circle cx="12" cy="12" r="9" stroke="#D4A843" stroke-width="1.4" fill="rgba(212,168,67,0.08)"/>
+            <path d="M8 10 Q10 7 12 7 Q14 7 16 10" stroke="#7A8C6E" stroke-width="1.3" stroke-linecap="round" fill="none"/>
+            <circle cx="9" cy="12" r="1" fill="#C47A5A"/>
+            <circle cx="15" cy="12" r="1" fill="#C47A5A"/>
+            <path d="M8.5 15.5 Q12 18 15.5 15.5" stroke="#D4A843" stroke-width="1.3" stroke-linecap="round" fill="none"/>
+          </svg>
+          <div>
+            <h3>Final challenge: host a dinner party</h3>
+            <p>After 30 days, your friends and family come over and you cook them a real meal from scratch. A coming out party for the cook you've become.</p>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- WHAT YOU'LL LEARN -->
+  <section class="section-experience">
+    <div class="container">
+      <h2 style="text-align:center; margin-bottom:3rem;">What you'll learn.</h2>
+      <div class="values-grid">
+        <div class="value-card">
+          <svg class="value-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M7 4 C7 4, 5 12, 5 15 C5 19, 8 22, 12 22 C16 22, 19 19, 19 15 C19 12, 17 4, 17 4"
+              stroke="#7A8C6E" stroke-width="1.4" fill="rgba(196,122,90,0.18)" stroke-linejoin="round"/>
+            <path d="M12 4 L12 14" stroke="#C47A5A" stroke-width="1.2" stroke-linecap="round"/>
+            <circle cx="9" cy="8" r="1" fill="#D4A843"/>
+            <circle cx="15" cy="8" r="1" fill="#D4A843"/>
+            <circle cx="12" cy="11" r="1" fill="#D4A843"/>
+          </svg>
+          <p class="value-title">Active Tasting</p>
+          <p class="value-desc">Navigate the world with your tongue. Practice tasting when you eat out, watch people cook, and build your flavor vocabulary.</p>
+        </div>
+        <div class="value-card">
+          <svg class="value-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M12 4 L20 20 L4 20Z" stroke="#7A8C6E" stroke-width="1.4" fill="rgba(168,184,157,0.08)" stroke-linejoin="round"/>
+            <line x1="8" y1="14" x2="16" y2="14" stroke="#D4A843" stroke-width="1.2" stroke-linecap="round" opacity="0.6"/>
+            <line x1="10" y1="9" x2="14" y2="9" stroke="#C47A5A" stroke-width="1.2" stroke-linecap="round" opacity="0.6"/>
+            <circle cx="12" cy="6" r="1" fill="#D4A843"/>
+          </svg>
+          <p class="value-title">Flavor Pyramid</p>
+          <p class="value-desc">Learn to compose a meal that feels intentional. Not just a dish, but an experience.</p>
+        </div>
+        <div class="value-card">
+          <svg class="value-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <circle cx="12" cy="12" r="9" stroke="#7A8C6E" stroke-width="1.4" fill="rgba(168,184,157,0.08)"/>
+            <line x1="12" y1="3.5" x2="12" y2="6.5" stroke="#7A8C6E" stroke-width="1.2" stroke-linecap="round"/>
+            <line x1="12" y1="17.5" x2="12" y2="20.5" stroke="#7A8C6E" stroke-width="1.2" stroke-linecap="round"/>
+            <line x1="3.5" y1="12" x2="6.5" y2="12" stroke="#7A8C6E" stroke-width="1.2" stroke-linecap="round"/>
+            <line x1="17.5" y1="12" x2="20.5" y2="12" stroke="#7A8C6E" stroke-width="1.2" stroke-linecap="round"/>
+            <path d="M12 7.5 L14 12 L12 16.5 L10 12Z" stroke="#C47A5A" stroke-width="1" fill="rgba(196,122,90,0.22)" stroke-linejoin="round"/>
+            <circle cx="12" cy="12" r="1.2" fill="#C47A5A"/>
+          </svg>
+          <p class="value-title">Your Kitchen → Creative Makerspace</p>
+          <p class="value-desc">Stock your pantry with spices, sauces, and toppings that inspire. Set up a space you'll actually want to cook in.</p>
+        </div>
+      </div>
+      <div style="max-width:360px; margin:2.5rem auto 0; text-align:center;">
+        <div class="value-card" style="border-color: var(--golden);">
+          <svg class="value-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <circle cx="12" cy="12" r="9" stroke="#7A8C6E" stroke-width="1.4" fill="rgba(168,184,157,0.08)"/>
+            <circle cx="12" cy="4.5" r="1.5" fill="#D4A843"/>
+            <circle cx="18" cy="8" r="1.5" fill="#C47A5A"/>
+            <circle cx="18" cy="16" r="1.5" fill="#7A8C6E"/>
+            <circle cx="12" cy="19.5" r="1.5" fill="#8B6D47"/>
+            <circle cx="6" cy="16" r="1.5" fill="#A8B89D"/>
+            <circle cx="6" cy="8" r="1.5" fill="#D4A843"/>
+          </svg>
+          <p class="value-title">Think Flavor, Not Procedure</p>
+          <p class="value-desc">Recipes aren't prescriptive. Learn to recreate flavors, not follow steps. Use what you have and cook what your people think tastes good.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MID-PAGE CTA -->
+  <section class="section-mid-cta">
+    <div class="container--narrow">
+      <h2>Apply.</h2>
+      <p class="mid-cta-sub">Tell me about your relationship with food. Takes two minutes. I'll reach out personally.</p>
+      <div class="btn-wrap" style="margin-top:2rem;">
+        <div class="btn-glow"></div>
+        <a href="https://tally.so/r/68kgMB" class="btn-primary">
+          Claim Your Spot
+          <svg class="btn-arrow" viewBox="0 0 10 10" fill="none" stroke="white" stroke-width="2">
+            <path d="M0 5h7"/>
+            <path d="M4 1l4 4-4 4"/>
+          </svg>
+        </a>
+      </div>
+      <p class="mid-cta-contact">Questions? Call or text <a href="tel:+19252574291">(925) 257-4291</a> · <a href="mailto:akshay@foodjazz.club">akshay@foodjazz.club</a></p>
+    </div>
+  </section>
+
+  <!-- THREE TYPES OF COOKS -->
+  <section class="section-cooks">
+    <div class="container">
+      <h2 style="text-align:center;">Three types of cooks.</h2>
+      <div class="cooks-grid">
+        <div class="cook-card">
+          <span class="cook-emoji">📚</span>
+          <p class="cook-type">The Planner</p>
+          <p class="cook-desc">You can make a tasty meal, but it takes hours of planning and if something is slightly off or you're missing an ingredient, you have a panic attack.</p>
+        </div>
+        <div class="cook-card">
+          <span class="cook-emoji">🦝</span>
+          <p class="cook-type">The Opportunist</p>
+          <p class="cook-desc">You find things to eat, but it's never really what you want. Sometimes you come up with combinations that are... disgusting.</p>
+        </div>
+        <div class="cook-card cook-card--highlight">
+          <span class="cook-emoji">🔮</span>
+          <p class="cook-type">Intuitive (future you)</p>
+          <p class="cook-desc">You're in flow. You can make complicated dishes in a breeze. Stress-free, quick substitutions, and every dish works out. Open the fridge, see what's there, make something great.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- OUTCOMES -->
+  <section class="section-outcomes" style="position:relative; overflow:hidden;">
+    <img class="deco-veg" src="deco-tomato.png" alt=""
+      style="width:200px; top:-20px; right:-50px; transform:rotate(12deg);">
+    <div class="container">
+      <p class="outcomes-tagline"><span class="sparkle">✦</span> No more DoorDash. No more HelloFresh or CookUnity. Just the zen of creative self-sufficiency. <span class="sparkle">✦</span></p>
+      <ul class="outcomes-list">
+        <li><span class="outcome-dash">✦</span> Host a dinner party without breaking a sweat</li>
+        <li><span class="outcome-dash">✦</span> Open the fridge and know what to make</li>
+        <li><span class="outcome-dash">✦</span> Navigate any grocery store or farmers market with confidence</li>
+        <li><span class="outcome-dash">✦</span> Cook faster than delivery arrives</li>
+        <li><span class="outcome-dash">✦</span> Feel calm and in flow in your kitchen instead of stressed</li>
+        <li><span class="outcome-dash">✦</span> Translate what's in your mind to your plate</li>
+      </ul>
+      <p class="outcomes-closing">Let's face it — being a great cook is sexy. Whether you're looking for love, trying to relate to your cool friends, or trying to take something off your spouse's plate, cooking can serve as the glue that holds together your relationships.</p>
+    </div>
+  </section>
+
   <!-- FAQ -->
   <section class="section-faq">
     <div class="container--narrow">
@@ -942,29 +1091,20 @@
       <ul class="faq-list">
         <li class="faq-item">
           <button class="faq-trigger" aria-expanded="false">
-            <span class="faq-q">What if I don't know how to cook at all?</span>
+            <span class="faq-q">What if I literally don't know how to cook?</span>
             <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
           </button>
           <div class="faq-body"><div class="faq-body-inner">
-            <p class="faq-a">That's exactly who this is for. We start with your kitchen, your ingredients, and where you actually are — not some assumed baseline. Complete beginners are welcome.</p>
+            <p class="faq-a">That's exactly who this is for. We start from wherever you are — even if that's boiling water.</p>
           </div></div>
         </li>
         <li class="faq-item">
           <button class="faq-trigger" aria-expanded="false">
-            <span class="faq-q">How much time does it take?</span>
+            <span class="faq-q">How much time does this take per day?</span>
             <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
           </button>
           <div class="faq-body"><div class="faq-body-inner">
-            <p class="faq-a">One in-person session per week, plus cooking one real meal a day on your own. If you're already eating, you're already most of the way there.</p>
-          </div></div>
-        </li>
-        <li class="faq-item">
-          <button class="faq-trigger" aria-expanded="false">
-            <span class="faq-q">What if I don't have the right ingredients?</span>
-            <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
-          </button>
-          <div class="faq-body"><div class="faq-body-inner">
-            <p class="faq-a">That's the whole point. You'll learn to cook with what you have — not from a shopping list someone else wrote for you.</p>
+            <p class="faq-a">The in-home sessions are about 2 hours each week. Between sessions, you're cooking meals you'd be eating anyway — just with more intention. Most people spend 20-30 minutes.</p>
           </div></div>
         </li>
         <li class="faq-item">
@@ -973,44 +1113,85 @@
             <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
           </button>
           <div class="faq-body"><div class="faq-body-inner">
-            <p class="faq-a">The full program is $1,000. The first 5 spots are available at an early access rate of $500 — half off, because your experience and feedback help shape what comes next.</p>
+            <p class="faq-a">The early access rate is $500 for the full 30 days — normally $1,000. I'm keeping it lower for the first cohort because your feedback shapes the program. For context, that's about what most people spend on delivery in a single month, except this actually teaches you something.</p>
           </div></div>
         </li>
         <li class="faq-item">
           <button class="faq-trigger" aria-expanded="false">
-            <span class="faq-q">Is this only in the Bay Area?</span>
+            <span class="faq-q">I've tried cooking classes before. Why is this different?</span>
             <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
           </button>
           <div class="faq-body"><div class="faq-body-inner">
-            <p class="faq-a">Yes — this is 1-on-1, in-person coaching in your kitchen. San Francisco, Oakland, and Berkeley only for now. An online program is coming. <a href="/" style="color: var(--sage); text-decoration: underline;">Join the waitlist →</a></p>
+            <p class="faq-a">A cooking class teaches you one dish and sends you home. This teaches you how to think. The difference is accountability — I'm in your corner every single day, not just for a two-hour workshop. You tried to start cooking on your own before, almost doomed from the beginning. Food Jazz solves that.</p>
+          </div></div>
+        </li>
+        <li class="faq-item">
+          <button class="faq-trigger" aria-expanded="false">
+            <span class="faq-q">What happens after the 30 days?</span>
+            <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <div class="faq-body"><div class="faq-body-inner">
+            <p class="faq-a">You keep cooking. The whole point is to build a skill and a habit that don't expire. You'll also have ongoing access to me for questions.</p>
+          </div></div>
+        </li>
+        <li class="faq-item">
+          <button class="faq-trigger" aria-expanded="false">
+            <span class="faq-q">Do I need to buy a bunch of stuff?</span>
+            <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <div class="faq-body"><div class="faq-body-inner">
+            <p class="faq-a">Part of the onboarding is a kitchen audit. We'll figure out what you already have that works and fill in a few gaps. Nothing I recommend is expensive or exotic — just solid, simple tools that make cooking feel good. The right pan, a sharp knife, the basics done right.</p>
+          </div></div>
+        </li>
+        <li class="faq-item">
+          <button class="faq-trigger" aria-expanded="false">
+            <span class="faq-q">Can you work with dietary restrictions?</span>
+            <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <div class="faq-body"><div class="faq-body-inner">
+            <p class="faq-a">The whole method is about cooking to your body and your preferences. Vegan, gluten-free, whatever. The framework adapts because you're learning to think in flavors, not follow someone else's recipe.</p>
+          </div></div>
+        </li>
+        <li class="faq-item">
+          <button class="faq-trigger" aria-expanded="false">
+            <span class="faq-q">I don't live in the Bay Area.</span>
+            <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <div class="faq-body"><div class="faq-body-inner">
+            <p class="faq-a">The 1-on-1 is Bay Area only for now. An online cohort is coming — drop your email on the <a href="/" style="color: var(--sage); text-decoration: underline;">waitlist</a> and you'll be first to know.</p>
+          </div></div>
+        </li>
+        <li class="faq-item">
+          <button class="faq-trigger" aria-expanded="false">
+            <span class="faq-q">Is this a cooking class?</span>
+            <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <div class="faq-body"><div class="faq-body-inner">
+            <p class="faq-a">No. This is a cooking <em>practice</em>. You're not watching me demo a recipe. You're building a daily habit with structured support, real accountability, and someone who's been doing this for 20 years in your corner.</p>
           </div></div>
         </li>
       </ul>
     </div>
   </section>
 
-  <!-- CTA -->
-  <section id="apply" class="section-cta">
+  <!-- CLOSING -->
+  <section id="apply" class="section-closing">
     <div class="container--narrow">
-      <div class="cta-eyebrow">
-        <span class="hero-eyebrow-rule"></span>
-        <span class="label">Apply</span>
-        <span class="hero-eyebrow-rule"></span>
-      </div>
-      <h2>Let's take cooking off the back burner.</h2>
-      <p class="cta-sub">Tell me about your relationship with food. I'll reach out if it's a good fit.</p>
-      <p class="cta-tagline">You have good taste. Food Jazz will help you unlock it.</p>
+      <p class="closing-text">Sure — you could stitch together all the glorious free content across the vast interwebs. Eventually you'd learn to cook and begin to understand the fundamentals.</p>
+      <p class="closing-text">But if you're on this page and you've read this far, you've probably tried something like that before. And the results... well... they're not what you've been hoping for.</p>
+      <p class="closing-tagline">You have good taste. Let's unlock it.</p>
       <div class="btn-wrap">
         <div class="btn-glow"></div>
         <a href="https://tally.so/r/68kgMB" class="btn-primary">
-          Start Your Application
+          Apply Now
           <svg class="btn-arrow" viewBox="0 0 10 10" fill="none" stroke="white" stroke-width="2">
             <path d="M0 5h7"/>
             <path d="M4 1l4 4-4 4"/>
           </svg>
         </a>
       </div>
-      <p class="cta-location">San Francisco · Oakland · Berkeley · Spring 2026</p>
+      <p class="cta-location">Bay Area · Spring 2026</p>
+      <p class="closing-contact">Questions? Call or text <a href="tel:+19252574291">(925) 257-4291</a> · <a href="mailto:akshay@foodjazz.club">akshay@foodjazz.club</a></p>
     </div>
   </section>
 
@@ -1020,7 +1201,8 @@
       <span class="footer-logo"><span class="logo-food">Food</span> <span class="logo-jazz">Jazz</span></span>
       <ul class="footer-links">
         <li><a href="/">Home</a></li>
-        <li><a href="mailto:akshay@foodjazz.club">Email</a></li>
+        <li><a href="mailto:akshay@foodjazz.club">akshay@foodjazz.club</a></li>
+        <li><a href="tel:+19252574291">(925) 257-4291</a></li>
         <li><a href="https://www.linkedin.com/in/ajprabhu/" target="_blank" rel="noopener">LinkedIn</a></li>
       </ul>
       <p class="footer-copy">© 2026 Food Jazz · foodjazz.club</p>
@@ -1037,7 +1219,7 @@
 
   <script>
     // ===== GOOEY MORPH =====
-    const texts = ["effortless", "intuitive", "calm", "joyful", "creative", "satisfying"];
+    const texts = ["intuitive", "calm", "joyful", "creative", "satisfying", "effortless"];
     const text1 = document.getElementById("morph-text1");
     const text2 = document.getElementById("morph-text2");
     const morphTime = 1.5, cooldownTime = 2.5;
@@ -1121,6 +1303,20 @@
         mobileNav.classList.remove('open');
         hamburger.setAttribute('aria-expanded', 'false');
       });
+    });
+
+    // ===== SCROLL REVEAL =====
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15, rootMargin: '0px 0px -50px 0px' });
+    document.querySelectorAll('.reveal-up').forEach((el, i) => {
+      el.style.transitionDelay = `${i * 0.15}s`;
+      revealObserver.observe(el);
     });
 
     // ===== FAQ ACCORDION =====
