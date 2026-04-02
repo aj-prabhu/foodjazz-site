@@ -6,6 +6,8 @@
   <title>1-on-1 Cooking Coaching — Food Jazz</title>
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
   <meta name="description" content="30-day in-home cooking intensive in the Bay Area. Learn to cook intuitively — no recipes, just flow.">
+  <meta name="format-detection" content="telephone=no">
+  <meta name="theme-color" content="#FAF7F2">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300;1,9..40,400&display=swap" rel="stylesheet">
@@ -29,12 +31,17 @@
     }
 
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { font-size: 20px; -webkit-font-smoothing: antialiased; }
+    html { font-size: 20px; -webkit-font-smoothing: antialiased; scroll-behavior: smooth; }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; scroll-behavior: auto; }
+    }
     body {
       font-family: var(--font-body);
       background: var(--cream);
       color: var(--warm-gray);
       line-height: 1.65;
+      overflow-x: hidden;
+      -webkit-tap-highlight-color: transparent;
     }
     body::after {
       content: '';
@@ -106,6 +113,7 @@
     .nav-links { display: flex; gap: 2rem; align-items: center; list-style: none; }
     .nav-links a { font-size: 0.92rem; color: var(--warm-gray); transition: color 0.15s; }
     .nav-links a:hover { color: var(--charcoal); }
+    .nav-phone { font-weight: 400; letter-spacing: 0.02em; }
     .nav-right { display: flex; align-items: center; gap: 1rem; }
     .nav-cta { font-size: 0.88rem; background: var(--sage); color: var(--cream) !important; padding: 0.5rem 1.2rem; border-radius: 50px; transition: opacity 0.15s; font-weight: 400; }
     .nav-cta:hover { opacity: 0.85; }
@@ -307,8 +315,7 @@
     .section-problem p + p { margin-top: 2.5rem; }
     .section-problem strong { font-weight: 500; color: var(--linen); }
     .section-problem em { color: inherit; }
-    .problem-hint { font-size: 0.82rem; font-style: italic; color: rgba(243,237,228,0.2); transition: color 0.6s ease; }
-    .problem-hint.highlight { color: rgba(243,237,228,0.5); }
+    .problem-hint { font-size: 0.78rem; font-style: italic; }
     .problem-callout {
       font-family: var(--font-display);
       font-size: clamp(1.8rem, 4vw, 2.4rem);
@@ -334,12 +341,12 @@
     }
 
     /* ===== METHOD ===== */
-    .section-method { background: var(--sage-wash); padding: 9rem 0; }
+    .section-method { background: var(--cream); padding: 9rem 0; }
     .section-method h2 { margin: 0.5rem 0 1.75rem; }
     .section-method p + p { margin-top: 1.1rem; }
 
     /* ===== PROGRAM ===== */
-    .section-experience { background: var(--cream); padding: 7rem 0; }
+    .section-experience { background: var(--sage-wash); padding: 7rem 0; }
     .experience-header { max-width: 580px; margin: 0 auto 4rem; text-align: center; }
     .experience-header h2 { margin: 0.5rem 0 1rem; }
     .experience-list { list-style: none; }
@@ -358,10 +365,18 @@
     }
     .experience-item h3 { margin-bottom: 0.45rem; }
     .experience-item p { font-size: 0.95rem; }
+    .experience-item--finale {
+      background: rgba(212,168,67,0.08);
+      border: 1px solid rgba(212,168,67,0.25);
+      border-radius: 4px;
+      padding: 2.2rem 1.5rem;
+      margin-top: 1.5rem;
+    }
+    .experience-item--finale h3 { color: var(--charcoal); }
 
     /* ===== OUTCOMES ===== */
-    .section-outcomes { background: var(--sage-wash); padding: 10rem 0; }
-    .outcomes-hero { text-align: center; margin-bottom: 5rem; }
+    .section-outcomes { background: var(--cream); padding: 10rem 0; }
+    .outcomes-hero { text-align: center; margin-bottom: 7rem; }
     .outcomes-headline {
       font-family: var(--font-display);
       font-size: clamp(2.2rem, 5vw, 3.4rem);
@@ -372,12 +387,14 @@
       transition: opacity 0.9s ease, transform 0.9s ease;
     }
     .outcomes-headline.visible { opacity: 1; transform: translateY(0); }
-    .outcomes-headline + .outcomes-headline { margin-top: 1.25rem; }
+    .outcomes-headline + .outcomes-headline { margin-top: 2.5rem; }
+    .outcomes-headline .no-more { color: var(--sage); }
     .outcomes-exhale {
-      font-size: 1.15rem; font-weight: 300; color: var(--warm-gray);
-      margin-top: 2rem; line-height: 1.6;
+      font-family: var(--font-display);
+      font-size: clamp(1.4rem, 3vw, 1.8rem); font-weight: 500; color: var(--sage);
+      margin-top: 3.5rem; line-height: 1.4;
       opacity: 0; transform: translateY(24px);
-      transition: opacity 0.9s ease, transform 0.9s ease;
+      transition: opacity 1.2s ease, transform 1.2s ease;
     }
     .outcomes-exhale.visible { opacity: 1; transform: translateY(0); }
     .outcomes-checklist { list-style: none; max-width: 600px; margin: 0 auto; }
@@ -402,23 +419,25 @@
     }
     .outcome-check .check-circle {
       stroke: var(--sage-muted);
-      transition: stroke 0.4s ease;
+      opacity: 0.4;
+      transition: stroke 0.4s ease, opacity 0.4s ease;
     }
     .outcome-check .check-mark {
       stroke: var(--sage);
-      stroke-width: 2.4;
-      stroke-dasharray: 20; stroke-dashoffset: 20;
-      transition: stroke-dashoffset 0.45s cubic-bezier(0.4, 0, 0.2, 1);
+      stroke-width: 3.2;
+      stroke-dasharray: 50; stroke-dashoffset: 50;
+      transition: stroke-dashoffset 0.55s cubic-bezier(0.4, 0, 0.2, 1);
     }
     .outcomes-checklist li.checked .check-circle {
       stroke: var(--sage);
+      opacity: 0.6;
     }
     .outcomes-checklist li.checked .check-mark {
       stroke-dashoffset: 0;
     }
 
     /* ===== ABOUT ===== */
-    .section-about { background: var(--cream); padding: 6rem 0; }
+    .section-about { background: var(--sage-wash); padding: 6rem 0; }
     .about-top {
       display: grid; grid-template-columns: 200px 1fr 1fr;
       gap: 4rem; align-items: start; margin-bottom: 4rem;
@@ -448,6 +467,10 @@
       color: var(--warm-gray); line-height: 1.8;
     }
     .about-bio + .about-bio { margin-top: 1rem; }
+    .about-bio--lead {
+      font-size: 1.25rem; font-weight: 400; color: var(--sage);
+      line-height: 1.6; font-style: italic;
+    }
     .about-bio strong { font-weight: 500; color: var(--charcoal); }
 
     /* Press banner — full width above bio */
@@ -505,7 +528,7 @@
     .about-hulu-note strong { color: var(--linen); font-weight: 400; }
 
     /* ===== FAQ ACCORDION ===== */
-    .section-faq { background: var(--cream); padding: 7rem 0; }
+    .section-faq { background: var(--sage-wash); padding: 7rem 0; }
     .section-faq h2 { margin: 0.5rem 0 3rem; }
     .faq-list { list-style: none; }
     .faq-item { border-top: 1px solid var(--sage-muted); }
@@ -534,9 +557,11 @@
       font-size: 0.95rem; font-weight: 300; color: var(--warm-gray);
       line-height: 1.75; max-width: 620px; padding-bottom: 1.5rem;
     }
+    .faq-cta { text-align: center; margin-top: 4rem; padding-top: 3rem; border-top: 1px solid var(--sage-muted); }
+    .faq-cta-sub { font-size: 0.85rem; font-weight: 300; color: var(--warm-gray); margin-top: 1.25rem; }
 
     /* ===== MID CTA ===== */
-    .section-mid-cta { background: var(--sage-wash); padding: 6rem 0; text-align: center; }
+    .section-mid-cta { background: var(--cream); padding: 6rem 0; text-align: center; }
     .mid-cta-sub {
       font-size: 0.9rem; color: var(--medium-gray); font-weight: 300;
       margin: 1.25rem auto 0; max-width: 460px; line-height: 1.65;
@@ -547,7 +572,7 @@
     .mid-cta-contact a { color: var(--sage); text-decoration: underline; }
 
     /* ===== THREE COOKS ===== */
-    .section-cooks { background: var(--cream); padding: 9rem 0; }
+    .section-cooks { background: var(--sage-wash); padding: 9rem 0; }
     .cooks-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2.5rem; margin-top: 3rem; }
     .cook-card {
       padding: 2rem 1.5rem;
@@ -561,6 +586,7 @@
       background: var(--sage);
     }
     .cook-icon { width: 40px; height: 40px; display: block; margin-bottom: 0.9rem; }
+    .cook-icon--spiral { width: 52px; height: 52px; }
     .cook-tag { position: absolute; top: 1rem; right: 1rem; background: var(--golden); color: var(--charcoal); font-size: 0.65rem; font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase; padding: 0.18rem 0.5rem; border-radius: 2px; }
     .cook-type {
       font-family: var(--font-display); font-size: 1.4rem; font-weight: 700;
@@ -629,8 +655,12 @@
     }
     .closing-contact a { color: var(--sage); text-decoration: underline; }
 
+    /* ===== WAVE DIVIDER ===== */
+    .wave-divider { line-height: 0; padding: 0; }
+    .wave-divider svg { display: block; width: 100%; height: 20px; }
+
     /* ===== CTA ===== */
-    .section-cta { background: var(--sage-wash); padding: 9rem 0; text-align: center; }
+    .section-cta { background: var(--cream); padding: 9rem 0; text-align: center; }
     .cta-eyebrow {
       display: flex; align-items: center; justify-content: center;
       gap: 1rem; margin-bottom: 1.25rem;
@@ -719,8 +749,8 @@
     }
     .about-marquee-wrap .marquee-img,
     .about-marquee-wrap .marquee-img.invert {
-      filter: grayscale(100%);
-      opacity: 0.45;
+      filter: brightness(0) saturate(100%) invert(56%) sepia(10%) saturate(700%) hue-rotate(70deg) brightness(92%);
+      opacity: 0.5;
     }
 
     /* ===== NAV CTA SCROLL REVEAL ===== */
@@ -778,28 +808,107 @@
     .mobile-nav .nav-cta { background: var(--sage); color: var(--cream) !important; font-weight: 500; display: inline-block; padding: 0.6rem 1.2rem; border-radius: 4px; margin-top: 0.5rem; font-size: 0.95rem; }
 
     @media (max-width: 768px) {
-      section { padding: 6rem 0; }
-      .hero { padding: 5rem 1.5rem 4rem; }
-      .hero-eyebrow-rule { display: none; }
-      .hero-eyebrow .label { white-space: nowrap; }
-      .hero-spiral, .hero-breath { display: none; }
-      .deco-veg { display: none; }
+      /* Layout */
+      section { padding: 5rem 0; }
+      .container, .container--narrow { padding: 0 1.25rem; }
+
+      /* Nav */
       .nav-links { display: none; }
       .nav-hamburger { display: flex; }
-      .cta-location { font-size: 0.7rem; }
+
+      /* Hero */
+      .hero { padding: 4rem 1.25rem 3.5rem; }
+      .hero-eyebrow-rule { display: none; }
+      .hero-eyebrow .label { white-space: nowrap; font-size: 0.65rem; }
+      .hero-spiral, .hero-breath { display: none; }
+      .hero-sub { font-size: 1rem; margin-bottom: 2rem; }
+      .morph-static { font-size: clamp(2rem, 8vw, 3.2rem); }
+      .hero-location { font-size: 0.65rem; }
+      .cta-location { font-size: 0.65rem; }
+
+      /* Buttons — bigger touch targets on mobile */
+      .btn-primary { padding: 14px 36px; font-size: 1.15rem; }
+
+      /* Decorative elements */
+      .deco-veg { display: none; }
+      .wave-divider svg { height: 14px; }
+
+      /* Values grid */
       .values-grid { grid-template-columns: 1fr; gap: 1.5rem; }
-      .learn-grid { grid-template-columns: 1fr; gap: 1.5rem; }
-      .cooks-grid { grid-template-columns: 1fr; gap: 1.5rem; }
-      .experience-item { grid-template-columns: 56px 1fr; }
-      .experience-num { font-size: 2.5rem; }
+      .values-header { margin-bottom: 2.5rem; }
+
+      /* Problem section */
+      .section-problem { padding: 6rem 0 5rem; }
+      .section-problem h2 { font-size: clamp(1.8rem, 6vw, 2.4rem); margin-bottom: 2.5rem; }
+      .section-problem p { font-size: 1.05rem; }
+      .section-problem p + p { margin-top: 1.75rem; }
+
+      /* About / Bio */
       .about-top { grid-template-columns: 1fr; gap: 1.75rem; }
       .about-photo-wrap { margin: 0 auto; }
       .about-name { font-size: 2rem; }
       .section-about .label { text-align: center; }
       .about-role { display: block; text-align: center; width: fit-content; margin: 0 auto 0.6rem; font-size: 0.58rem; padding: 0.2rem 0.6rem; white-space: nowrap; color: var(--sage); }
       .section-about .about-top > div { text-align: center; }
+      .about-bio--lead { font-size: 1.1rem; }
       .about-bottom { max-width: 100%; }
       .about-david img { height: 260px; }
+      .about-press-banner { margin-bottom: 1.5rem; }
+
+      /* How It Works */
+      .section-method h2 { margin-bottom: 0.5rem; }
+      .experience-item { grid-template-columns: 32px 1fr; gap: 0 1.25rem; padding: 1.75rem 0; }
+      .experience-icon { width: 24px; height: 24px; }
+      .experience-item h3 { font-size: clamp(1.1rem, 3vw, 1.4rem); }
+      .experience-item p { font-size: 0.9rem; }
+      .experience-item--finale { padding: 1.75rem 1.25rem; }
+
+      /* What You'll Learn */
+      .learn-grid { grid-template-columns: 1fr; gap: 1.5rem; }
+
+      /* Mid CTA */
+      .mid-cta-sub { font-size: 0.85rem; }
+
+      /* Three Types of Cooks */
+      .cooks-grid { grid-template-columns: 1fr; gap: 1.5rem; }
+      .cook-card { padding: 1.75rem 1.25rem; }
+
+      /* Outcomes */
+      .section-outcomes { padding: 7rem 0; }
+      .outcomes-hero { margin-bottom: 5rem; }
+      .outcomes-headline { font-size: clamp(1.8rem, 6vw, 2.8rem); }
+      .outcomes-headline + .outcomes-headline { margin-top: 2rem; }
+      .outcomes-exhale { font-size: clamp(1.2rem, 3.5vw, 1.5rem); margin-top: 2.5rem; }
+      .outcomes-checklist li { font-size: 1rem; padding: 1.25rem 0; gap: 1rem; }
+      .outcome-check { width: 24px; height: 24px; }
+      .outcome-check svg { width: 24px; height: 24px; }
+      .outcomes-closing { font-size: 0.95rem; margin-top: 2.5rem; }
+
+      /* FAQ */
+      .section-faq { padding: 5rem 0; }
+      .section-faq h2 { margin-bottom: 2rem; }
+      .faq-q { font-size: 1.15rem; }
+      .faq-a { font-size: 0.9rem; }
+      .faq-cta { margin-top: 3rem; padding-top: 2rem; }
+
+      /* Closing */
+      .section-closing { padding: 4rem 0; }
+      .closing-text { font-size: 0.95rem; }
+      .closing-tagline { font-size: clamp(1.6rem, 5vw, 2.2rem); }
+      .closing-contact { font-size: 0.8rem; }
+      .closing-contact a { display: inline; }
+    }
+
+    /* Small phones (375px and below) */
+    @media (max-width: 390px) {
+      .container, .container--narrow { padding: 0 1rem; }
+      .hero { padding: 3.5rem 1rem 3rem; }
+      .morph-static { font-size: 2rem; }
+      .btn-primary { padding: 13px 28px; font-size: 1.05rem; width: 100%; justify-content: center; }
+      .faq-q { font-size: 1.05rem; }
+      .outcomes-headline { font-size: 1.8rem; }
+      .cook-card { padding: 1.5rem 1rem; }
+      .experience-item--finale { padding: 1.5rem 1rem; }
     }
   </style>
 </head>
@@ -822,9 +931,7 @@
   <nav>
     <div class="nav-inner">
       <a href="/" class="nav-logo"><span class="logo-food">Food</span> <span class="logo-jazz">Jazz</span></a>
-      <ul class="nav-links">
-        <li><a href="/">Online Course</a></li>
-      </ul>
+      <ul class="nav-links"></ul>
       <div class="nav-right">
         <a href="#apply" class="nav-cta nav-cta-scroll">Apply Now</a>
         <button class="nav-hamburger" aria-label="Open menu" aria-expanded="false">
@@ -835,7 +942,7 @@
       </div>
     </div>
     <ul class="mobile-nav">
-      <li><a href="/">Online Course</a></li>
+      <li><a href="tel:+19252574291">Call or Text: (925) 257-4291</a></li>
       <li><a href="#apply" class="nav-cta">Apply Now</a></li>
     </ul>
   </nav>
@@ -940,9 +1047,7 @@
   <section class="section-problem">
     <div class="container--narrow">
       <h2>Take cooking off the back burner.</h2>
-      <p class="problem-line">You're probably here because you haven't found a way to fit cooking into your busy schedule. Maybe you've even convinced yourself that cooking isn't important.</p>
-
-      <p class="problem-line problem-hint">(Hint: it will transform your life in all the good ways.)</p>
+      <p class="problem-line">You're probably here because you haven't found a way to fit cooking into your busy schedule. Maybe you've even convinced yourself that cooking isn't important. <span class="problem-hint">(Hint: it will transform your life in all the good ways.)</span></p>
 
       <span class="problem-callout problem-line">It's not your fault.</span>
 
@@ -1000,12 +1105,12 @@
         <div>
           <span class="about-role">Startup Founder · Neuroscientist · Cooking Coach</span>
           <p class="about-name">Hey, I'm Akshay.</p>
-          <p class="about-bio">I help busy professionals learn to cook effortlessly and intuitively.</p>
-          <p class="about-bio" style="margin-top: 1rem;">I built Foodnome — the first marketplace for home-cooked food — where I raised <strong>$3M</strong> and helped <strong>250+ home cooks</strong> build businesses out of their kitchens. I've staged at <strong>Chez Panisse</strong>, hosted hundreds of pop-up dinners, catered for <strong>500+ guests</strong>, and cooked whole lambs over open fire for crowds across the Bay.</p>
+          <p class="about-bio about-bio--lead reveal-up">I help busy professionals learn to cook effortlessly and intuitively.</p>
+          <p class="about-bio reveal-up" style="margin-top: 1rem;">I raised <strong>$3M</strong> and helped <strong>250+ home cooks</strong> build businesses out of their kitchens. I've staged at <strong>Chez Panisse</strong>, hosted hundreds of pop-up dinners, catered for <strong>500+ guests</strong>, and cooked whole lambs over open fire for crowds across the Bay.</p>
         </div>
         <div>
-          <p class="about-bio">Cooking has been a part of my life since I was a child. For me, food is more than fuel. Memories are created over the warmth and aroma of a homemade meal.</p>
-          <p class="about-bio" style="margin-top: 1rem;">Now I want to bring that same joy into your kitchen. I'm on a mission to help 20,000 people finally learn to cook by 2030.</p>
+          <p class="about-bio reveal-up">Cooking has been a part of my life since I was a child. For me, food is more than fuel. Memories are created over the warmth and aroma of a homemade meal.</p>
+          <p class="about-bio reveal-up" style="margin-top: 1rem;">Now I want to bring that same joy into your kitchen. I'm on a mission to help 20,000 people finally learn to cook by 2030.</p>
         </div>
       </div>
 
@@ -1071,13 +1176,10 @@
             <p>Structured practice and accountability to lock in what you learn between sessions.</p>
           </div>
         </li>
-        <li class="experience-item">
+        <li class="experience-item experience-item--finale">
           <svg class="experience-icon" viewBox="0 0 24 24" fill="none">
-            <circle cx="12" cy="12" r="9" stroke="#D4A843" stroke-width="1.4" fill="rgba(212,168,67,0.08)"/>
-            <path d="M8 10 Q10 7 12 7 Q14 7 16 10" stroke="#7A8C6E" stroke-width="1.3" stroke-linecap="round" fill="none"/>
-            <circle cx="9" cy="12" r="1" fill="#C47A5A"/>
-            <circle cx="15" cy="12" r="1" fill="#C47A5A"/>
-            <path d="M8.5 15.5 Q12 18 15.5 15.5" stroke="#D4A843" stroke-width="1.3" stroke-linecap="round" fill="none"/>
+            <path d="M12 2 L14.5 8.5 L21.5 9.5 L16.5 14 L17.8 21 L12 17.5 L6.2 21 L7.5 14 L2.5 9.5 L9.5 8.5Z"
+              stroke="#D4A843" stroke-width="1.4" fill="rgba(212,168,67,0.18)" stroke-linejoin="round"/>
           </svg>
           <div>
             <h3>Final challenge: host a dinner party</h3>
@@ -1087,6 +1189,14 @@
       </ul>
     </div>
   </section>
+
+  <!-- WAVE DIVIDER -->
+  <div class="wave-divider">
+    <svg viewBox="0 0 1200 20" preserveAspectRatio="none" fill="none">
+      <path d="M0 10 Q75 18, 150 10 Q225 2, 300 10 Q375 18, 450 10 Q525 2, 600 10 Q675 18, 750 10 Q825 2, 900 10 Q975 18, 1050 10 Q1125 2, 1200 10"
+        stroke="#A8B89D" stroke-width="1.3" stroke-linecap="round" opacity="0.55"/>
+    </svg>
+  </div>
 
   <!-- WHAT YOU'LL LEARN -->
   <section class="section-experience">
@@ -1184,29 +1294,44 @@
         <div class="cook-card">
           <!-- Raccoon: The Opportunist -->
           <svg class="cook-icon" viewBox="0 0 40 40" fill="none" aria-hidden="true">
-            <ellipse cx="20" cy="22" rx="13" ry="11" fill="rgba(184,149,106,0.14)" stroke="#B8956A" stroke-width="1.3"/>
-            <circle cx="10" cy="13" r="4.5" fill="rgba(184,149,106,0.14)" stroke="#B8956A" stroke-width="1.2"/>
-            <circle cx="10" cy="13" r="2.2" fill="rgba(196,122,90,0.22)"/>
-            <circle cx="30" cy="13" r="4.5" fill="rgba(184,149,106,0.14)" stroke="#B8956A" stroke-width="1.2"/>
-            <circle cx="30" cy="13" r="2.2" fill="rgba(196,122,90,0.22)"/>
-            <path d="M7 20 C7 16, 12 14, 16 15.5 C17.5 14.5, 19 14, 20 14 C21 14, 22.5 14.5, 24 15.5 C28 14, 33 16, 33 20 C33 23, 29 24.5, 25 23.5 C23 24.5, 21 25, 20 25 C19 25, 17 24.5, 15 23.5 C11 24.5, 7 23, 7 20Z" fill="rgba(46,46,44,0.3)" stroke="#2E2E2C" stroke-width="0.7"/>
-            <circle cx="14.5" cy="20" r="3" fill="rgba(255,255,255,0.92)"/>
-            <circle cx="25.5" cy="20" r="3" fill="rgba(255,255,255,0.92)"/>
-            <circle cx="15" cy="20" r="1.6" fill="#1a1a1a"/>
-            <circle cx="26" cy="20" r="1.6" fill="#1a1a1a"/>
-            <circle cx="15.6" cy="19.3" r="0.5" fill="white"/>
-            <circle cx="26.6" cy="19.3" r="0.5" fill="white"/>
-            <ellipse cx="20" cy="28" rx="5.5" ry="4" fill="rgba(232,215,185,0.45)" stroke="#B8956A" stroke-width="0.9"/>
-            <ellipse cx="20" cy="26.5" rx="2.2" ry="1.4" fill="#5C5A56"/>
-            <path d="M17.5 29 Q20 30.5 22.5 29" stroke="#8B6D47" stroke-width="1" stroke-linecap="round" fill="none"/>
+            <!-- Ears -->
+            <path d="M8 12 L6 5 L13 10" fill="rgba(184,149,106,0.2)" stroke="#B8956A" stroke-width="1.1" stroke-linejoin="round"/>
+            <path d="M32 12 L34 5 L27 10" fill="rgba(184,149,106,0.2)" stroke="#B8956A" stroke-width="1.1" stroke-linejoin="round"/>
+            <!-- Head -->
+            <ellipse cx="20" cy="20" rx="13" ry="11" fill="rgba(184,149,106,0.14)" stroke="#B8956A" stroke-width="1.3"/>
+            <!-- Ruffled fur tufts along cheeks -->
+            <path d="M7.5 18 C6 17, 5.5 19, 7 20" stroke="#B8956A" stroke-width="0.8" stroke-linecap="round" fill="none"/>
+            <path d="M7 21 C5.5 21.5, 6 23, 7.5 23" stroke="#B8956A" stroke-width="0.8" stroke-linecap="round" fill="none"/>
+            <path d="M32.5 18 C34 17, 34.5 19, 33 20" stroke="#B8956A" stroke-width="0.8" stroke-linecap="round" fill="none"/>
+            <path d="M33 21 C34.5 21.5, 34 23, 32.5 23" stroke="#B8956A" stroke-width="0.8" stroke-linecap="round" fill="none"/>
+            <!-- Dark mask -->
+            <path d="M8 17 C8 14, 13 13, 16 15 C17.5 14, 19 13.5, 20 13.5 C21 13.5, 22.5 14, 24 15 C27 13, 32 14, 32 17 C32 20, 28 21.5, 25 20.5 C23 21.5, 21 22, 20 22 C19 22, 17 21.5, 15 20.5 C12 21.5, 8 20, 8 17Z" fill="rgba(46,46,44,0.35)" stroke="#2E2E2C" stroke-width="0.6"/>
+            <!-- Eyes -->
+            <circle cx="14.5" cy="17.5" r="2.8" fill="rgba(255,255,255,0.92)"/>
+            <circle cx="25.5" cy="17.5" r="2.8" fill="rgba(255,255,255,0.92)"/>
+            <circle cx="15" cy="17.5" r="1.5" fill="#1a1a1a"/>
+            <circle cx="26" cy="17.5" r="1.5" fill="#1a1a1a"/>
+            <circle cx="15.5" cy="16.8" r="0.5" fill="white"/>
+            <circle cx="26.5" cy="16.8" r="0.5" fill="white"/>
+            <!-- Nose + snout -->
+            <ellipse cx="20" cy="24" rx="4" ry="3" fill="rgba(232,215,185,0.45)" stroke="#B8956A" stroke-width="0.8"/>
+            <ellipse cx="20" cy="23" rx="2" ry="1.2" fill="#5C5A56"/>
+            <path d="M18 25.5 Q20 27 22 25.5" stroke="#8B6D47" stroke-width="0.9" stroke-linecap="round" fill="none"/>
+            <!-- Whiskers -->
+            <line x1="14" y1="24" x2="6" y2="22.5" stroke="#B8956A" stroke-width="0.7" stroke-linecap="round"/>
+            <line x1="14" y1="25" x2="5.5" y2="25.5" stroke="#B8956A" stroke-width="0.7" stroke-linecap="round"/>
+            <line x1="14" y1="26" x2="6.5" y2="28" stroke="#B8956A" stroke-width="0.7" stroke-linecap="round"/>
+            <line x1="26" y1="24" x2="34" y2="22.5" stroke="#B8956A" stroke-width="0.7" stroke-linecap="round"/>
+            <line x1="26" y1="25" x2="34.5" y2="25.5" stroke="#B8956A" stroke-width="0.7" stroke-linecap="round"/>
+            <line x1="26" y1="26" x2="33.5" y2="28" stroke="#B8956A" stroke-width="0.7" stroke-linecap="round"/>
           </svg>
           <p class="cook-type">The Opportunist</p>
           <p class="cook-desc">You find things to eat, but it's never really what you want. Sometimes you come up with combinations that are... disgusting.</p>
         </div>
         <div class="cook-card cook-card--highlight">
           <!-- Spiral: Intuitive -->
-          <svg class="cook-icon" viewBox="0 0 40 40" fill="none" aria-hidden="true">
-            <path d="M20 20 C22 20, 23 18.5, 22 17 C21 15.5, 18.5 15, 16.5 16.5 C14.5 18, 14 21, 15.5 23.5 C17 26, 20.5 27, 24 25.5 C27.5 24, 29 20, 27.5 16.5 C26 13, 22 11, 18 11.5 C14 12, 11 15.5, 11 19.5"
+          <svg class="cook-icon cook-icon--spiral" viewBox="0 0 40 40" fill="none" aria-hidden="true">
+            <path d="M20 20 C22 20, 23 18.5, 22 17 C21 15.5, 18.5 15, 16.5 16.5 C14.5 18, 14 21, 15.5 23.5 C17 26, 20.5 27, 24 25.5 C27.5 24, 29 20, 27.5 16.5 C26 13, 22 11, 18 11.5 C14 12, 11 15.5, 11 19.5 C11 24, 14 28.5, 19 29.5 C24 30.5, 30 27, 31 22 C32 17, 29 11, 23 9"
               stroke="rgba(255,255,255,0.88)" stroke-width="2" stroke-linecap="round" fill="none"/>
           </svg>
           <div class="cook-tag">Future you</div>
@@ -1228,20 +1353,20 @@
       style="width:200px; top:-20px; right:-50px; transform:rotate(12deg);">
     <div class="container">
       <div class="outcomes-hero">
-        <p class="outcomes-headline">No more DoorDash.</p>
-        <p class="outcomes-headline">No more HelloFresh.</p>
-        <p class="outcomes-headline">No more CookUnity.</p>
+        <p class="outcomes-headline"><span class="no-more">No more</span> DoorDash.</p>
+        <p class="outcomes-headline"><span class="no-more">No more</span> HelloFresh.</p>
+        <p class="outcomes-headline"><span class="no-more">No more</span> CookUnity.</p>
         <p class="outcomes-exhale">Just the zen of creative self-sufficiency.</p>
       </div>
       <ul class="outcomes-checklist">
-        <li><span class="outcome-check"><svg viewBox="0 0 30 30"><path class="check-circle" d="M15 2.5 C22 2, 27.5 7, 27.5 14 C28 21, 23 27.5, 15 27.5 C7 28, 2 22, 2.5 15 C2 8, 7 2.5, 15 2.5"/><path class="check-mark" d="M8 15 C9.5 17, 11 19.5, 12.5 20.5 C14.5 16, 18 11, 22 8"/></svg></span> Host a dinner party without breaking a sweat</li>
-        <li><span class="outcome-check"><svg viewBox="0 0 30 30"><path class="check-circle" d="M14 2 C21.5 1.5, 28 7.5, 27.5 15 C27.5 22, 22 28, 14.5 27.5 C7.5 27.5, 2 22, 2.5 14.5 C2.5 7.5, 7 2.5, 14 2"/><path class="check-mark" d="M7.5 14.5 C9 17.5, 11.5 20, 13 21 C15 16.5, 18.5 11.5, 23 8.5"/></svg></span> Open the fridge and make something great</li>
-        <li><span class="outcome-check"><svg viewBox="0 0 30 30"><path class="check-circle" d="M15.5 2 C22.5 2.5, 28 8, 27.5 15.5 C27 22.5, 21.5 28, 14.5 27.5 C7 27, 2 21.5, 2.5 14.5 C3 7.5, 8.5 2, 15.5 2"/><path class="check-mark" d="M8.5 15.5 C10 17, 11 19, 12 20.5 C14 16, 17.5 11, 22.5 7.5"/></svg></span> Walk through any grocery store with a plan in your head</li>
-        <li><span class="outcome-check"><svg viewBox="0 0 30 30"><path class="check-circle" d="M14.5 2.5 C21 2, 27 7, 28 14.5 C28.5 22, 22.5 27.5, 15 27.5 C8 28, 2.5 22.5, 2.5 15 C2 8, 7.5 2.5, 14.5 2.5"/><path class="check-mark" d="M7 14 C9 17, 11 20, 13 21.5 C15.5 17, 19 12, 23 8"/></svg></span> Cook dinner faster than delivery arrives</li>
-        <li><span class="outcome-check"><svg viewBox="0 0 30 30"><path class="check-circle" d="M15 2 C22 1.5, 27.5 7.5, 28 15 C28 22.5, 22 28, 15 28 C7.5 27.5, 2 22, 2 15 C2.5 7.5, 8 2.5, 15 2"/><path class="check-mark" d="M8 15 C9.5 17.5, 11.5 20, 12.5 21 C14.5 16, 18 10.5, 22 7.5"/></svg></span> Taste something at a restaurant and recreate it at home</li>
-        <li><span class="outcome-check"><svg viewBox="0 0 30 30"><path class="check-circle" d="M15 2.5 C22.5 2, 28 7, 27.5 14.5 C27.5 22, 22 27.5, 14.5 28 C7.5 28, 2 22.5, 2.5 15.5 C2.5 8, 7.5 2.5, 15 2.5"/><path class="check-mark" d="M7.5 15 C9.5 17.5, 11 19.5, 13 21 C15 16.5, 18.5 11, 22.5 8"/></svg></span> Feed your people something you're proud of</li>
+        <li><span class="outcome-check"><svg viewBox="-4 -4 38 38"><path class="check-circle" d="M15 2.5 C22 2, 27.5 7, 27.5 14 C28 21, 23 27.5, 15 27.5 C7 28, 2 22, 2.5 15 C2 8, 7 2.5, 15 2.5"/><path class="check-mark" d="M5.5 16 L13 19 L29 2"/></svg></span> Host a dinner party without breaking a sweat</li>
+        <li><span class="outcome-check"><svg viewBox="-4 -4 38 38"><path class="check-circle" d="M14 2 C21.5 1.5, 28 7.5, 27.5 15 C27.5 22, 22 28, 14.5 27.5 C7.5 27.5, 2 22, 2.5 14.5 C2.5 7.5, 7 2.5, 14 2"/><path class="check-mark" d="M5 15.5 L12.5 19.5 L29.5 1.5"/></svg></span> Open the fridge and make something great</li>
+        <li><span class="outcome-check"><svg viewBox="-4 -4 38 38"><path class="check-circle" d="M15.5 2 C22.5 2.5, 28 8, 27.5 15.5 C27 22.5, 21.5 28, 14.5 27.5 C7 27, 2 21.5, 2.5 14.5 C3 7.5, 8.5 2, 15.5 2"/><path class="check-mark" d="M6 16.5 L13.5 20 L30 1"/></svg></span> Walk through any grocery store with a plan in your head</li>
+        <li><span class="outcome-check"><svg viewBox="-4 -4 38 38"><path class="check-circle" d="M14.5 2.5 C21 2, 27 7, 28 14.5 C28.5 22, 22.5 27.5, 15 27.5 C8 28, 2.5 22.5, 2.5 15 C2 8, 7.5 2.5, 14.5 2.5"/><path class="check-mark" d="M5 15 L12.5 19.5 L29 2"/></svg></span> Cook dinner faster than delivery arrives</li>
+        <li><span class="outcome-check"><svg viewBox="-4 -4 38 38"><path class="check-circle" d="M15 2 C22 1.5, 27.5 7.5, 28 15 C28 22.5, 22 28, 15 28 C7.5 27.5, 2 22, 2 15 C2.5 7.5, 8 2.5, 15 2"/><path class="check-mark" d="M5.5 15.5 L13 19.5 L29.5 1"/></svg></span> Taste something at a restaurant and recreate it at home</li>
+        <li><span class="outcome-check"><svg viewBox="-4 -4 38 38"><path class="check-circle" d="M15 2.5 C22.5 2, 28 7, 27.5 14.5 C27.5 22, 22 27.5, 14.5 28 C7.5 28, 2 22.5, 2.5 15.5 C2.5 8, 7.5 2.5, 15 2.5"/><path class="check-mark" d="M5 16 L13 19.5 L30 1.5"/></svg></span> Feed your people something you're proud of</li>
       </ul>
-      <p class="outcomes-closing">Being a great cook is magnetic. Whether you're looking for love, bonding with friends, or taking something off your partner's plate — cooking is the glue.</p>
+      <p class="outcomes-closing">Take learning to cook off your plate in 2026. New connections, new confidence, new dinner parties. The simple habit that changes the trajectory of your life.</p>
     </div>
   </section>
 
@@ -1332,6 +1457,18 @@
           </div></div>
         </li>
       </ul>
+      <div class="faq-cta">
+        <div class="btn-wrap">
+          <a href="https://tally.so/r/68kgMB" class="btn-primary">
+            Apply Now
+            <svg class="btn-arrow" viewBox="0 0 10 10" fill="none" stroke="white" stroke-width="2">
+              <path d="M0 5h7"/>
+              <path d="M4 1l4 4-4 4"/>
+            </svg>
+          </a>
+        </div>
+        <p class="faq-cta-sub">Or just <a href="tel:+19252574291" style="color:var(--sage); text-decoration:underline;">call or text me</a>.</p>
+      </div>
     </div>
   </section>
 
@@ -1417,20 +1554,31 @@
     }
     animateMorph();
 
-    // ===== NAV CTA — show after hero CTA scrolls out =====
+    // ===== NAV CTA — show after hero, hide at closing =====
     const heroBtn = document.querySelector('.hero .btn-wrap');
     const navCta = document.querySelector('.nav-cta-scroll');
+    const closingSection = document.querySelector('.section-closing');
     if (heroBtn && navCta) {
-      const observer = new IntersectionObserver(entries => {
-        entries.forEach(entry => {
-          if (!entry.isIntersecting) {
-            navCta.classList.add('visible');
-          } else {
-            navCta.classList.remove('visible');
-          }
-        });
-      }, { threshold: 0 });
-      observer.observe(heroBtn);
+      let heroPast = false;
+      let closingVisible = false;
+      function updateNavCta() {
+        if (heroPast && !closingVisible) {
+          navCta.classList.add('visible');
+        } else {
+          navCta.classList.remove('visible');
+        }
+      }
+      new IntersectionObserver(entries => {
+        heroPast = !entries[0].isIntersecting;
+        updateNavCta();
+      }, { threshold: 0 }).observe(heroBtn);
+
+      if (closingSection) {
+        new IntersectionObserver(entries => {
+          closingVisible = entries[0].isIntersecting;
+          updateNavCta();
+        }, { threshold: 0.1 }).observe(closingSection);
+      }
     }
 
     // ===== PROBLEM — scroll highlight =====
@@ -1451,7 +1599,7 @@
       const heroObs = new IntersectionObserver(entries => {
         if (entries[0].isIntersecting) {
           headlines.forEach((el, i) => {
-            setTimeout(() => el.classList.add('visible'), i * 650);
+            setTimeout(() => el.classList.add('visible'), i * 1200);
           });
           heroObs.disconnect();
         }
@@ -1467,7 +1615,7 @@
           setTimeout(() => li.classList.add('checked'), 500);
           checkObs.disconnect();
         }
-      }, { threshold: 0.6, rootMargin: '0px 0px -10% 0px' });
+      }, { threshold: 1.0, rootMargin: '0px 0px -50% 0px' });
       checkObs.observe(li);
     });
 
