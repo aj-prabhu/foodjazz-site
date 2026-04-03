@@ -1725,8 +1725,11 @@
   <!-- Submission confirmation modal -->
   <div class="submit-modal-overlay" id="submitModal">
     <div class="submit-modal">
-      <p class="submit-modal-text">Looking forward to meeting you.<br>I'll be in touch soon.</p>
-      <button class="submit-modal-close" onclick="document.getElementById('submitModal').classList.remove('active')">Back to the page</button>
+      <button class="submit-modal-x" onclick="document.getElementById('submitModal').classList.remove('active')" aria-label="Close">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M5 5l10 10M15 5L5 15" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+      </button>
+      <p class="submit-modal-text">You just took the first step toward creative self-sufficiency.</p>
+      <p class="submit-modal-sub">I'll be in touch soon.</p>
     </div>
   </div>
   <style>
@@ -1741,57 +1744,89 @@
     }
     .submit-modal-overlay.active { display: flex; }
     .submit-modal {
+      position: relative;
       background: var(--cream);
       border-radius: 8px;
-      padding: 3rem 2.5rem;
+      padding: 3rem 2.5rem 2rem;
       max-width: 420px;
       text-align: center;
       box-shadow: 0 8px 30px rgba(0,0,0,0.12);
     }
+    .submit-modal-x {
+      position: absolute;
+      top: 0.75rem;
+      right: 0.75rem;
+      background: none;
+      border: none;
+      color: var(--medium-gray);
+      cursor: pointer;
+      padding: 0.25rem;
+      transition: color 0.15s;
+    }
+    .submit-modal-x:hover { color: var(--charcoal); }
     .submit-modal-text {
       font-family: var(--font-display);
       font-size: 1.8rem;
       font-weight: 600;
       color: var(--charcoal);
       line-height: 1.25;
-      margin-bottom: 1.5rem;
+      margin-bottom: 0.75rem;
     }
-    .submit-modal-close {
+    .submit-modal-sub {
       font-family: var(--font-body);
-      font-size: 0.85rem;
-      font-weight: 400;
-      background: var(--sage);
-      color: var(--cream);
-      border: none;
-      padding: 0.65rem 1.5rem;
-      border-radius: 3px;
-      cursor: pointer;
-      transition: opacity 0.15s;
+      font-size: 0.9rem;
+      font-weight: 300;
+      color: var(--warm-gray);
     }
-    .submit-modal-close:hover { opacity: 0.85; }
   </style>
-  <script src="https://cdn.jsdelivr.net/npm/balloons-js/dist/balloons.umd.min.js"></script>
+  <style>
+    @keyframes balloon-rise {
+      0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+      100% { transform: translateY(-110vh) rotate(15deg); opacity: 0; }
+    }
+    .balloon {
+      position: fixed;
+      bottom: -60px;
+      font-size: 2.5rem;
+      z-index: 10000;
+      pointer-events: none;
+      animation: balloon-rise 3.5s ease-out forwards;
+    }
+  </style>
   <script>
     (function() {
       var modal = document.getElementById('submitModal');
+
+      function launchBalloons() {
+        var emojis = ['🎈','🎉','🥳','🎊','🍳','🥘','🫕','🥗'];
+        for (var i = 0; i < 12; i++) {
+          var b = document.createElement('div');
+          b.className = 'balloon';
+          b.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+          b.style.left = (5 + Math.random() * 90) + '%';
+          b.style.animationDelay = (Math.random() * 1.5) + 's';
+          b.style.animationDuration = (2.5 + Math.random() * 2) + 's';
+          document.body.appendChild(b);
+          b.addEventListener('animationend', function() { this.remove(); });
+        }
+      }
+
+      function closeModal() {
+        modal.classList.remove('active');
+        window.removeEventListener('scroll', closeModal);
+        window.removeEventListener('touchmove', closeModal);
+      }
+
       if (new URLSearchParams(window.location.search).has('submitted')) {
         modal.classList.add('active');
         history.replaceState(null, '', window.location.pathname);
-        if (window.balloons) window.balloons();
-
-        // Close on scroll (mobile)
-        var scrollClose = function() {
-          modal.classList.remove('active');
-          window.removeEventListener('scroll', scrollClose);
-          window.removeEventListener('touchmove', scrollClose);
-        };
-        window.addEventListener('scroll', scrollClose, { passive: true });
-        window.addEventListener('touchmove', scrollClose, { passive: true });
+        launchBalloons();
+        window.addEventListener('scroll', closeModal, { passive: true });
+        window.addEventListener('touchmove', closeModal, { passive: true });
       }
 
-      // Close on overlay click
       modal.addEventListener('click', function(e) {
-        if (e.target === modal) modal.classList.remove('active');
+        if (e.target === modal) closeModal();
       });
     })();
   </script>
