@@ -1721,5 +1721,79 @@
   }
   </script>
   <script src="https://www.videoask.com/embed/embed.js"></script>
+
+  <!-- Submission confirmation modal -->
+  <div class="submit-modal-overlay" id="submitModal">
+    <div class="submit-modal">
+      <p class="submit-modal-text">Looking forward to meeting you.<br>I'll be in touch soon.</p>
+      <button class="submit-modal-close" onclick="document.getElementById('submitModal').classList.remove('active')">Back to the page</button>
+    </div>
+  </div>
+  <style>
+    .submit-modal-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(46,46,44,0.45);
+      z-index: 9999;
+      align-items: center;
+      justify-content: center;
+    }
+    .submit-modal-overlay.active { display: flex; }
+    .submit-modal {
+      background: var(--cream);
+      border-radius: 8px;
+      padding: 3rem 2.5rem;
+      max-width: 420px;
+      text-align: center;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.12);
+    }
+    .submit-modal-text {
+      font-family: var(--font-display);
+      font-size: 1.8rem;
+      font-weight: 600;
+      color: var(--charcoal);
+      line-height: 1.25;
+      margin-bottom: 1.5rem;
+    }
+    .submit-modal-close {
+      font-family: var(--font-body);
+      font-size: 0.85rem;
+      font-weight: 400;
+      background: var(--sage);
+      color: var(--cream);
+      border: none;
+      padding: 0.65rem 1.5rem;
+      border-radius: 3px;
+      cursor: pointer;
+      transition: opacity 0.15s;
+    }
+    .submit-modal-close:hover { opacity: 0.85; }
+  </style>
+  <script src="https://cdn.jsdelivr.net/npm/balloons-js/dist/balloons.umd.min.js"></script>
+  <script>
+    (function() {
+      var modal = document.getElementById('submitModal');
+      if (new URLSearchParams(window.location.search).has('submitted')) {
+        modal.classList.add('active');
+        history.replaceState(null, '', window.location.pathname);
+        if (window.balloons) window.balloons();
+
+        // Close on scroll (mobile)
+        var scrollClose = function() {
+          modal.classList.remove('active');
+          window.removeEventListener('scroll', scrollClose);
+          window.removeEventListener('touchmove', scrollClose);
+        };
+        window.addEventListener('scroll', scrollClose, { passive: true });
+        window.addEventListener('touchmove', scrollClose, { passive: true });
+      }
+
+      // Close on overlay click
+      modal.addEventListener('click', function(e) {
+        if (e.target === modal) modal.classList.remove('active');
+      });
+    })();
+  </script>
 </body>
 </html>
