@@ -31,7 +31,7 @@
     }
 
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { font-size: 20px; -webkit-font-smoothing: antialiased; scroll-behavior: smooth; }
+    html { font-size: 20px; -webkit-font-smoothing: antialiased; scroll-behavior: smooth; overflow-x: clip; }
     @media (prefers-reduced-motion: reduce) {
       *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; scroll-behavior: auto; }
     }
@@ -40,7 +40,7 @@
       background: var(--cream);
       color: var(--warm-gray);
       line-height: 1.65;
-      overflow-x: hidden;
+      overflow-x: clip;
       -webkit-tap-highlight-color: transparent;
     }
     body::after {
@@ -189,16 +189,15 @@
       color: var(--sage);
       position: absolute;
       user-select: none;
-      white-space: nowrap;
     }
 
     /* ===== HERO ===== */
     .hero {
-      padding: 7rem 0 6rem;
+      padding: 7rem 2rem 6rem;
       background: var(--cream);
       text-align: center;
       position: relative;
-      overflow: hidden;
+      overflow: clip;
     }
     .hero-spiral {
       position: absolute;
@@ -476,7 +475,7 @@
     /* Press banner — full width above bio */
     .about-press-banner {
       margin-bottom: 2rem;
-      overflow: hidden;
+      overflow: clip;
     }
     .about-press-banner .about-press-label {
       display: block;
@@ -704,7 +703,7 @@
       border-top: 1px solid #e0d9cf;
       border-bottom: 1px solid #e0d9cf;
       padding: 2rem 0;
-      overflow: hidden;
+      overflow: clip;
     }
     .press-marquee-label {
       text-align: center;
@@ -742,7 +741,7 @@
       filter: grayscale(100%) invert(1) brightness(0.4);
     }
     .about-marquee-wrap {
-      overflow: hidden;
+      overflow: clip;
       margin-bottom: 1.5rem;
       -webkit-mask-image: linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%);
       mask-image: linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%);
@@ -813,13 +812,14 @@
       .container, .container--narrow { padding: 0 1.25rem; }
 
       /* Nav */
+      .nav-inner { padding: 0 1.25rem; }
       .nav-links { display: none; }
       .nav-hamburger { display: flex; }
 
       /* Hero */
-      .hero { padding: 4rem 1.25rem 3.5rem; }
+      .hero { padding: 4rem 1.25rem 3.5rem; overflow: clip; }
       .hero-eyebrow-rule { display: none; }
-      .hero-eyebrow .label { white-space: nowrap; font-size: 0.65rem; }
+      .hero-eyebrow .label { font-size: 0.65rem; }
       .hero-spiral, .hero-breath { display: none; }
       .hero-sub { font-size: 1rem; margin-bottom: 2rem; }
       .morph-static { font-size: clamp(2rem, 8vw, 3.2rem); }
@@ -848,7 +848,7 @@
       .about-photo-wrap { margin: 0 auto; }
       .about-name { font-size: 2rem; }
       .section-about .label { text-align: center; }
-      .about-role { display: block; text-align: center; width: fit-content; margin: 0 auto 0.6rem; font-size: 0.58rem; padding: 0.2rem 0.6rem; white-space: nowrap; color: var(--sage); }
+      .about-role { display: block; text-align: center; width: fit-content; margin: 0 auto 0.6rem; font-size: 0.58rem; padding: 0.2rem 0.6rem; color: var(--sage); }
       .section-about .about-top > div { text-align: center; }
       .about-bio--lead { font-size: 1.1rem; }
       .about-bottom { max-width: 100%; }
@@ -897,6 +897,11 @@
       .closing-tagline { font-size: clamp(1.6rem, 5vw, 2.2rem); }
       .closing-contact { font-size: 0.8rem; }
       .closing-contact a { display: inline; }
+
+      /* Footer */
+      footer { padding: 3rem 1.25rem; }
+      .footer-links { gap: 1.25rem; flex-wrap: wrap; }
+      .footer-links a { font-size: 0.8rem; }
     }
 
     /* Small phones (375px and below) */
@@ -1127,7 +1132,7 @@
   </section>
 
   <!-- HOW IT WORKS -->
-  <section class="section-method" style="position:relative; overflow:hidden;">
+  <section class="section-method" style="position:relative; overflow:clip;">
     <img class="deco-veg" src="deco-cucumber.png" alt=""
       style="width:190px; bottom:-20px; right:-45px; transform:rotate(-15deg);">
     <div class="container">
@@ -1348,7 +1353,7 @@
   </section>
 
   <!-- OUTCOMES -->
-  <section class="section-outcomes" style="position:relative; overflow:hidden;">
+  <section class="section-outcomes" style="position:relative; overflow:clip;">
     <img class="deco-veg" src="deco-tomato.png" alt=""
       style="width:200px; top:-20px; right:-50px; transform:rotate(12deg);">
     <div class="container">
