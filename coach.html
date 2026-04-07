@@ -390,7 +390,7 @@
     .outcomes-headline .no-more { color: var(--sage); }
     .outcomes-exhale {
       font-family: var(--font-display);
-      font-size: clamp(1.4rem, 3vw, 1.8rem); font-weight: 500; color: var(--sage);
+      font-size: clamp(1.6rem, 3.5vw, 2.2rem); font-weight: 500; color: var(--sage);
       margin-top: 3.5rem; line-height: 1.4;
       opacity: 0; transform: translateY(24px);
       transition: opacity 1.2s ease, transform 1.2s ease;
@@ -616,9 +616,14 @@
     .cook-desc--light { color: rgba(255,255,255,0.85); }
 
     /* ===== OUTCOMES CLOSING ===== */
+    .outcomes-closing-headline {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 4vw, 3rem); font-weight: 700; color: var(--charcoal);
+      max-width: 580px; margin: 3rem auto 0; text-align: center; line-height: 1.15;
+    }
     .outcomes-closing {
       font-size: 1rem; font-weight: 300; color: var(--warm-gray);
-      max-width: 580px; margin: 3rem auto 0; text-align: center; line-height: 1.75;
+      max-width: 580px; margin: 1rem auto 0; text-align: center; line-height: 1.75;
     }
 
     /* ===== CLOSING SECTION ===== */
@@ -878,11 +883,12 @@
       .outcomes-hero { margin-bottom: 5rem; }
       .outcomes-headline { font-size: clamp(1.8rem, 6vw, 2.8rem); }
       .outcomes-headline + .outcomes-headline { margin-top: 2rem; }
-      .outcomes-exhale { font-size: clamp(1.2rem, 3.5vw, 1.5rem); margin-top: 2.5rem; }
+      .outcomes-exhale { font-size: clamp(1.4rem, 3.5vw, 1.8rem); margin-top: 2.5rem; }
       .outcomes-checklist li { font-size: 1rem; padding: 1.25rem 0; gap: 1rem; }
       .outcome-check { width: 24px; height: 24px; }
       .outcome-check svg { width: 24px; height: 24px; }
-      .outcomes-closing { font-size: 0.95rem; margin-top: 2.5rem; }
+      .outcomes-closing-headline { font-size: clamp(1.6rem, 4vw, 2.2rem); margin-top: 2rem; }
+      .outcomes-closing { font-size: 0.95rem; margin-top: 0.75rem; }
 
       /* FAQ */
       .section-faq { padding: 5rem 0; }
@@ -1025,7 +1031,7 @@
             <circle cx="12" cy="12" r="1.3" fill="rgba(212,168,67,0.75)" stroke="#D4A843" stroke-width="0.7"/>
           </svg>
           <p class="value-title">Eat what your body wants</p>
-          <p class="value-desc">You can't outsource your workout. You can't fully outsource your diet either. Cooking is how you stay in tune with what your body actually needs — no one else can do that for you.</p>
+          <p class="value-desc">You're the only one who knows exactly what you want to eat. Cooking is how you translate that vision to your plate.</p>
         </div>
         <div class="value-card">
           <!-- Starburst (creativity) -->
@@ -1052,7 +1058,7 @@
   <section class="section-problem">
     <div class="container--narrow">
       <h2>Take cooking off the back burner.</h2>
-      <p class="problem-line">You're probably here because you haven't found a way to fit cooking into your busy schedule. Maybe you've even convinced yourself that cooking isn't important. <span class="problem-hint">(Hint: it will transform your life in all the good ways.)</span></p>
+      <p class="problem-line">You're probably here because you haven't found a way to fit cooking into your busy schedule. Maybe you've even convinced yourself that cooking isn't important.</p>
 
       <span class="problem-callout problem-line">It's not your fault.</span>
 
@@ -1115,7 +1121,7 @@
         </div>
         <div>
           <p class="about-bio reveal-up">Cooking has been a part of my life since I was a child. For me, food is more than fuel. Memories are created over the warmth and aroma of a homemade meal.</p>
-          <p class="about-bio reveal-up" style="margin-top: 1rem;">Now I want to bring that same joy into your kitchen. I'm on a mission to help 20,000 people finally learn to cook by 2030.</p>
+          <p class="about-bio about-bio--lead reveal-up" style="margin-top: 1rem;">Now I want to bring that same joy into your kitchen. I'm on a mission to help 20,000 people finally learn to cook by 2030.</p>
         </div>
       </div>
 
@@ -1371,7 +1377,8 @@
         <li><span class="outcome-check"><svg viewBox="-4 -4 38 38"><path class="check-circle" d="M15 2 C22 1.5, 27.5 7.5, 28 15 C28 22.5, 22 28, 15 28 C7.5 27.5, 2 22, 2 15 C2.5 7.5, 8 2.5, 15 2"/><path class="check-mark" d="M5.5 15.5 L13 19.5 L29.5 1"/></svg></span> Taste something at a restaurant and recreate it at home</li>
         <li><span class="outcome-check"><svg viewBox="-4 -4 38 38"><path class="check-circle" d="M15 2.5 C22.5 2, 28 7, 27.5 14.5 C27.5 22, 22 27.5, 14.5 28 C7.5 28, 2 22.5, 2.5 15.5 C2.5 8, 7.5 2.5, 15 2.5"/><path class="check-mark" d="M5 16 L13 19.5 L30 1.5"/></svg></span> Feed your people something you're proud of</li>
       </ul>
-      <p class="outcomes-closing">Take learning to cook off your plate in 2026. New connections, new confidence, new dinner parties. The simple habit that changes the trajectory of your life.</p>
+      <p class="outcomes-closing-headline">Take learning to cook off your plate.</p>
+      <p class="outcomes-closing">New connections, new confidence, new dinner parties. The simple habit that changes the trajectory of your life.</p>
     </div>
   </section>
 
