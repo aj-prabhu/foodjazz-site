@@ -944,7 +944,7 @@
       <a href="/" class="nav-logo"><span class="logo-food">Food</span> <span class="logo-jazz">Jazz</span></a>
       <ul class="nav-links"></ul>
       <div class="nav-right">
-        <a href="#apply" class="nav-cta nav-cta-scroll">Apply Now</a>
+        <a href="https://tally.so/r/68kgMB" class="nav-cta nav-cta-scroll">Apply Now</a>
         <button class="nav-hamburger" aria-label="Open menu" aria-expanded="false">
           <span class="hamburger-bar"></span>
           <span class="hamburger-bar"></span>
@@ -954,7 +954,7 @@
     </div>
     <ul class="mobile-nav">
       <li><a href="tel:+19252574291">Call or Text: (925) 257-4291</a></li>
-      <li><a href="#apply" class="nav-cta">Apply Now</a></li>
+      <li><a href="https://tally.so/r/68kgMB" class="nav-cta">Apply Now</a></li>
     </ul>
   </nav>
 
@@ -990,7 +990,7 @@
     <p class="hero-sub">A 30-day cooking intensive designed to make you an intuitive, effortless cook — forever.</p>
     <div class="btn-wrap">
       <div class="btn-glow"></div>
-      <a href="#apply" class="btn-primary">
+      <a href="https://tally.so/r/68kgMB" class="btn-primary">
         Apply Now
         <svg class="btn-arrow" viewBox="0 0 10 10" fill="none" stroke="white" stroke-width="2">
           <path d="M0 5h7" class="btn-arrow-line"/>
@@ -1117,7 +1117,7 @@
           <span class="about-role">Startup Founder · Neuroscientist · Cooking Coach</span>
           <p class="about-name">Hey, I'm Akshay.</p>
           <p class="about-bio about-bio--lead reveal-up">I help busy professionals learn to cook effortlessly and intuitively.</p>
-          <p class="about-bio reveal-up" style="margin-top: 1rem;">I raised <strong>$3M</strong> and helped <strong>250+ home cooks</strong> build businesses out of their kitchens. I've staged at <strong>Chez Panisse</strong>, hosted hundreds of pop-up dinners, catered for <strong>500+ guests</strong>, and cooked whole lambs over open fire for crowds across the Bay.</p>
+          <p class="about-bio reveal-up" style="margin-top: 1rem;">I raised <strong>$3M</strong> to build a marketplace for home-based restaurants and helped <strong>300+ people</strong> transform their home kitchens into businesses. I've staged at <strong>Chez Panisse</strong>, hosted hundreds of pop-up dinners, and cooked whole lambs over open fire for crowds across the Bay.</p>
         </div>
         <div>
           <p class="about-bio reveal-up">Cooking has been a part of my life since I was a child. For me, food is more than fuel. Memories are created over the warmth and aroma of a homemade meal.</p>
@@ -1670,6 +1670,13 @@
         hamburger.setAttribute('aria-expanded', 'false');
       });
     });
+    window.addEventListener('scroll', () => {
+      if (mobileNav.classList.contains('open')) {
+        hamburger.classList.remove('open');
+        mobileNav.classList.remove('open');
+        hamburger.setAttribute('aria-expanded', 'false');
+      }
+    }, { passive: true });
 
     // ===== SCROLL REVEAL =====
     const revealObserver = new IntersectionObserver((entries) => {
