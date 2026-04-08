@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Food Jazz — Flyer v4</title>
+  <title>Food Jazz — Flyer v5</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300;1,9..40,400&display=swap" rel="stylesheet">
@@ -56,14 +56,14 @@
     /* ===== HEADER (sage bg) ===== */
     .flyer-header {
       background: var(--sage);
-      padding: 0.3in 0.65in 0.22in;
+      padding: 0.5in 0.65in 0.45in;
       position: relative;
       overflow: hidden;
     }
     .header-logo {
       position: absolute;
       right: 0.6in;
-      top: 0.12in;
+      top: 0.14in;
       text-align: right;
       z-index: 1;
       line-height: 1;
@@ -72,7 +72,7 @@
     .logo-jazz {
       display: block;
       font-family: var(--font-display);
-      font-size: 2.4rem;
+      font-size: 2.6rem;
       font-weight: 600;
       color: var(--cream);
       letter-spacing: 0.02em;
@@ -120,16 +120,16 @@
     }
     .header-headline {
       font-family: var(--font-display);
-      font-size: 4rem;
+      font-size: 5.5rem;
       font-weight: 700;
       color: var(--cream);
       line-height: 1.0;
       letter-spacing: -0.02em;
       margin-bottom: 0.2in;
-      max-width: 5.5in;
+      max-width: 5.8in;
     }
     .header-sub {
-      font-size: 1rem;
+      font-size: 1.05rem;
       font-weight: 300;
       color: rgba(250,247,242,0.85);
       line-height: 1.6;
@@ -276,6 +276,7 @@
       align-items: center;
       gap: 0.24in;
       border-top: 1px solid #e0d9cf;
+      margin-top: auto;
     }
     .akshay-photo-wrap {
       width: 0.9in;
@@ -345,7 +346,7 @@
     .flyer-cta {
       background: var(--cream);
       border-top: 2px solid var(--sage);
-      padding: 0.18in 0.55in 0.12in;
+      padding: 0.16in 0.55in;
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -365,49 +366,34 @@
       color: var(--warm-gray);
       line-height: 1.5;
     }
-    .cta-right { text-align: center; flex-shrink: 0; }
-    .cta-url {
-      font-family: var(--font-display);
-      font-size: 2.6rem;
-      font-weight: 700;
-      color: var(--sage);
-      display: block;
-      margin-bottom: 0.06rem;
+    .cta-options {
+      display: flex;
+      align-items: stretch;
+      gap: 0;
+      flex-shrink: 0;
     }
-    .cta-apply-label {
+    .cta-option {
+      text-align: center;
+      padding: 0 0.28in;
+    }
+    .cta-option + .cta-option {
+      border-left: 1px solid var(--sage-muted);
+    }
+    .cta-option-label {
       font-size: 0.6rem;
       color: var(--medium-gray);
       letter-spacing: 0.15em;
       text-transform: uppercase;
+      display: block;
+      margin-bottom: 0.1rem;
     }
-
-    /* ===== FOOTER ===== */
-    .flyer-footer {
-      background: var(--cream);
-      border-top: 1px solid var(--sage-muted);
-      padding: 0.05in 0.55in;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      margin-top: auto;
-    }
-    .footer-wordmark {
+    .cta-option-value {
       font-family: var(--font-display);
-      font-size: 1rem;
+      font-size: 1.9rem;
       font-weight: 700;
       color: var(--sage);
-    }
-    .footer-contact {
-      font-size: 0.6rem;
-      color: var(--medium-gray);
-      letter-spacing: 0.06em;
-    }
-    .footer-cities {
-      font-size: 0.6rem;
-      font-weight: 400;
-      color: var(--medium-gray);
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
+      display: block;
+      line-height: 1.1;
     }
   </style>
 </head>
@@ -426,7 +412,7 @@
       <span class="logo-jazz">Jazz</span>
     </div>
 
-    <h1 class="header-headline">What if cooking felt like<br>a flow state?</h1>
+    <h1 class="header-headline">What if cooking<br>felt like a flow state?</h1>
 
     <div class="header-sub-row">
       <p class="header-sub">A 30-day cooking intensive designed to make<br>you an intuitive, effortless cook — forever.</p>
@@ -477,7 +463,6 @@
 
       <div class="learn-item">
         <div class="learn-icon">
-          <!-- Active Tasting: tongue -->
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
             <path d="M7 4 C7 4, 5 12, 5 15 C5 19, 8 22, 12 22 C16 22, 19 19, 19 15 C19 12, 17 4, 17 4"
               stroke="#7A8C6E" stroke-width="1.4" fill="rgba(196,122,90,0.18)" stroke-linejoin="round"/>
@@ -495,7 +480,6 @@
 
       <div class="learn-item">
         <div class="learn-icon">
-          <!-- Flavor Pyramid: balanced scale -->
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
             <path d="M12 4 L20 20 L4 20Z" stroke="#7A8C6E" stroke-width="1.4" fill="rgba(168,184,157,0.08)" stroke-linejoin="round"/>
             <line x1="8" y1="14" x2="16" y2="14" stroke="#D4A843" stroke-width="1.2" stroke-linecap="round" opacity="0.6"/>
@@ -511,7 +495,6 @@
 
       <div class="learn-item">
         <div class="learn-icon">
-          <!-- Kitchen Makerspace: compass -->
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
             <circle cx="12" cy="12" r="9" stroke="#7A8C6E" stroke-width="1.4" fill="rgba(168,184,157,0.08)"/>
             <line x1="12" y1="3.5" x2="12" y2="6.5" stroke="#7A8C6E" stroke-width="1.2" stroke-linecap="round"/>
@@ -530,7 +513,6 @@
 
       <div class="learn-item">
         <div class="learn-icon">
-          <!-- Flavor Fundamentals: flavor palette -->
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
             <circle cx="12" cy="12" r="9" stroke="#7A8C6E" stroke-width="1.4" fill="rgba(168,184,157,0.08)"/>
             <circle cx="12" cy="4.5" r="1.5" fill="#D4A843"/>
@@ -577,22 +559,16 @@
       <div class="cta-headline">Apply.</div>
       <p class="cta-sub-text">Tell me about your relationship with food.<br>Takes two minutes. I'll reach out personally.</p>
     </div>
-    <div class="cta-right">
-      <div class="cta-apply-label" style="margin-bottom: 0.1rem;">learn more at</div>
-      <span class="cta-url">foodjazz<span style="letter-spacing: 0.05em;">&#8202;.</span>club/coach</span>
+    <div class="cta-options">
+      <div class="cta-option">
+        <span class="cta-option-label">learn more at</span>
+        <span class="cta-option-value">foodjazz<span style="padding: 0 0.09em;">.</span>club/coach</span>
+      </div>
+      <div class="cta-option">
+        <span class="cta-option-label">call or text</span>
+        <span class="cta-option-value">(925) 257-4291</span>
+      </div>
     </div>
-  </div>
-
-  <!-- CLOSING -->
-  <div style="padding: 0.14in 0.55in; text-align: center;">
-    <p style="font-family: var(--font-display); font-size: 1.15rem; font-weight: 600; color: var(--charcoal); line-height: 1.4;">You have good taste. Food Jazz will help you unlock it.</p>
-  </div>
-
-  <!-- FOOTER -->
-  <div class="flyer-footer">
-    <span class="footer-wordmark">Food Jazz</span>
-    <span class="footer-contact">Questions? Just call or text me (925) 257-4291</span>
-    <span class="footer-cities">San Francisco &middot; Oakland &middot; Berkeley</span>
   </div>
 
 </div>
