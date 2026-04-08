@@ -1744,15 +1744,15 @@
         <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M4 4l10 10M14 4L4 14" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>
       </button>
       <div class="submit-modal-check">
-        <svg width="44" height="44" viewBox="0 0 44 44" fill="none">
-          <circle cx="22" cy="22" r="20" stroke="var(--sage)" stroke-width="1.5" fill="var(--sage-wash)"/>
-          <path d="M13 22.5L19.5 28.5L31 16" stroke="var(--sage)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="check-draw"/>
+        <svg width="52" height="52" viewBox="0 0 52 52" fill="none">
+          <circle cx="26" cy="26" r="24" stroke="var(--sage)" stroke-width="1.5" fill="var(--sage-wash)" class="check-circle"/>
+          <path d="M15 27L22.5 34L37 18" stroke="var(--sage)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="check-draw"/>
         </svg>
       </div>
-      <p class="submit-modal-text">I'm stoked to cook with you.</p>
-      <div class="submit-modal-divider"></div>
-      <p class="submit-modal-sub">I'll be in touch shortly.</p>
-      <p class="submit-modal-sig">— Akshay</p>
+      <p class="submit-modal-text modal-stagger">I'm stoked to cook with you.</p>
+      <div class="submit-modal-divider modal-stagger"></div>
+      <p class="submit-modal-sub modal-stagger">I'll be in touch shortly.</p>
+      <p class="submit-modal-sig modal-stagger">— Akshay</p>
     </div>
   </div>
   <style>
@@ -1760,40 +1760,70 @@
       display: none;
       position: fixed;
       inset: 0;
-      background: rgba(46,46,44,0.35);
-      backdrop-filter: blur(6px);
-      -webkit-backdrop-filter: blur(6px);
+      background: rgba(46,46,44,0);
+      backdrop-filter: blur(0px);
+      -webkit-backdrop-filter: blur(0px);
       z-index: 9999;
       align-items: center;
       justify-content: center;
+      transition: background 0.4s ease, backdrop-filter 0.4s ease, -webkit-backdrop-filter 0.4s ease;
     }
-    .submit-modal-overlay.active { display: flex; }
+    .submit-modal-overlay.active {
+      display: flex;
+      background: rgba(46,46,44,0.35);
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+    }
     .submit-modal {
       position: relative;
       background: var(--cream);
-      border-radius: 16px;
-      padding: 2.8rem 3rem 2.2rem;
+      border-radius: 18px;
+      padding: 3rem 3rem 2.4rem;
       max-width: 420px;
       margin: 0 1.5rem;
       text-align: center;
-      box-shadow: 0 8px 50px rgba(0,0,0,0.12), 0 0 0 1px var(--sage-muted);
-      animation: modal-in 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+      box-shadow: 0 12px 60px rgba(0,0,0,0.14), 0 0 0 1px var(--sage-muted);
+      animation: modal-in 0.55s cubic-bezier(0.34, 1.56, 0.64, 1);
     }
     @keyframes modal-in {
-      from { opacity: 0; transform: scale(0.9) translateY(16px); }
+      from { opacity: 0; transform: scale(0.85) translateY(24px); }
+      40% { opacity: 1; }
       to { opacity: 1; transform: scale(1) translateY(0); }
     }
     .submit-modal-check {
-      margin-bottom: 1.4rem;
+      margin-bottom: 1.6rem;
+    }
+    .check-circle {
+      transform-origin: center;
+      animation: circle-pop 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) 0.2s both;
+    }
+    @keyframes circle-pop {
+      from { transform: scale(0.6); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
     }
     .check-draw {
-      stroke-dasharray: 30;
-      stroke-dashoffset: 30;
-      animation: draw-check 0.5s ease-out 0.3s forwards;
+      stroke-dasharray: 36;
+      stroke-dashoffset: 36;
+      animation: draw-check 0.45s cubic-bezier(0.65, 0, 0.35, 1) 0.5s forwards;
     }
     @keyframes draw-check {
       to { stroke-dashoffset: 0; }
     }
+
+    /* Staggered content reveal */
+    .modal-stagger {
+      opacity: 0;
+      transform: translateY(8px);
+      animation: stagger-in 0.4s ease-out forwards;
+    }
+    .modal-stagger:nth-child(3) { animation-delay: 0.65s; }
+    .modal-stagger:nth-child(4) { animation-delay: 0.78s; }
+    .modal-stagger:nth-child(5) { animation-delay: 0.88s; }
+    .modal-stagger:nth-child(6) { animation-delay: 0.96s; }
+    @keyframes stagger-in {
+      to { opacity: 1; transform: translateY(0); }
+    }
+
     .submit-modal-x {
       position: absolute;
       top: 0.85rem;
@@ -1803,9 +1833,9 @@
       color: var(--medium-gray);
       cursor: pointer;
       padding: 0.25rem;
-      transition: color 0.15s;
+      transition: color 0.15s, transform 0.15s;
     }
-    .submit-modal-x:hover { color: var(--charcoal); }
+    .submit-modal-x:hover { color: var(--charcoal); transform: scale(1.1); }
     .submit-modal-text {
       font-family: var(--font-display);
       font-size: 2rem;
@@ -1855,8 +1885,17 @@
     }
     @keyframes confetti-fall {
       0% { transform: translateY(0) rotate(0deg) scale(1); opacity: 1; }
-      75% { opacity: 1; }
-      100% { transform: translateY(100vh) rotate(720deg) scale(0.4); opacity: 0; }
+      70% { opacity: 1; }
+      100% { transform: translateY(100vh) rotate(var(--rot, 720deg)) scale(0.3); opacity: 0; }
+    }
+
+    /* Reduced motion: skip animations, show content immediately */
+    @media (prefers-reduced-motion: reduce) {
+      .submit-modal { animation: none; }
+      .check-circle { animation: none; }
+      .check-draw { animation: none; stroke-dashoffset: 0; }
+      .modal-stagger { animation: none; opacity: 1; transform: none; }
+      .confetti-piece { animation: none; display: none; }
     }
   </style>
   <script>
@@ -1864,17 +1903,21 @@
       var modal = document.getElementById('submitModal');
 
       function launchConfetti() {
+        if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
         var container = document.getElementById('confettiContainer');
         var colors = ['#7A8C6E','#A8B89D','#D4A843','#EDF2EB','#B8956A','#D4DDD0'];
-        for (var i = 0; i < 60; i++) {
+        for (var i = 0; i < 45; i++) {
           var p = document.createElement('div');
           p.className = 'confetti-piece';
-          p.style.left = Math.random() * 100 + '%';
+          var x = 30 + Math.random() * 40;
+          p.style.left = x + '%';
           p.style.background = colors[Math.floor(Math.random() * colors.length)];
-          p.style.animationDuration = (2 + Math.random() * 2.5) + 's';
-          p.style.animationDelay = (Math.random() * 1.2) + 's';
-          p.style.width = (5 + Math.random() * 8) + 'px';
+          p.style.animationDuration = (2.5 + Math.random() * 2) + 's';
+          p.style.animationDelay = (Math.random() * 0.8) + 's';
+          p.style.width = (5 + Math.random() * 7) + 'px';
           p.style.height = (8 + Math.random() * 10) + 'px';
+          p.style.setProperty('--rot', (400 + Math.random() * 600) + 'deg');
+          p.style.opacity = (0.7 + Math.random() * 0.3);
           if (Math.random() > 0.5) p.style.borderRadius = '50%';
           container.appendChild(p);
           p.addEventListener('animationend', function() { this.remove(); });
