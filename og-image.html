@@ -2,6 +2,7 @@
 <html>
 <head>
   <meta charset="UTF-8">
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=DM+Sans:wght@300;400&display=swap" rel="stylesheet">
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
 
@@ -13,7 +14,7 @@
       align-items: center;
       justify-content: center;
       overflow: hidden;
-      font-family: 'Helvetica Neue', Arial, sans-serif;
+      font-family: 'DM Sans', Arial, sans-serif;
     }
 
     .card {
@@ -38,25 +39,35 @@
     .logo-row {
       display: flex;
       align-items: center;
-      gap: 18px;
+      gap: 14px;
       margin-bottom: 52px;
     }
 
+    /* Wrapper enforces clip bounds and gives spiral breathing room */
+    .logo-svg-wrap {
+      width: 44px;
+      height: 44px;
+      flex-shrink: 0;
+      overflow: hidden;
+    }
+
     .logo-svg {
-      width: 52px;
-      height: 52px;
+      width: 44px;
+      height: 44px;
+      display: block;
     }
 
     .logo-name {
-      font-family: 'Helvetica Neue', Arial, sans-serif;
-      font-size: 38px;
+      font-family: 'Caveat', cursive;
+      font-size: 40px;
       font-weight: 700;
       color: #E8E0D5;
       letter-spacing: 0.01em;
+      line-height: 1;
     }
 
     .headline {
-      font-family: 'Helvetica Neue', Arial, sans-serif;
+      font-family: 'DM Sans', Arial, sans-serif;
       font-size: 68px;
       font-weight: 700;
       color: #E8E0D5;
@@ -91,9 +102,13 @@
 <body>
   <div class="card">
     <div class="logo-row">
-      <svg class="logo-svg" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M 78,18 C 98,36 92,70 66,82 C 40,94 12,74 10,50 C 8,26 28,8 54,12 C 76,16 88,34 78,52 C 70,68 52,74 38,62 C 26,52 28,38 40,34 C 50,31 60,36 58,46 C 56,53 48,56 42,52" stroke="#7A8C6E" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/>
-      </svg>
+      <!-- viewBox expanded to -10 -10 120 120 adds 10-unit buffer on all sides,
+           keeping the spiral well clear of the SVG edge and the "Food Jazz" text -->
+      <div class="logo-svg-wrap">
+        <svg class="logo-svg" viewBox="-10 -10 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M 78,18 C 98,36 92,70 66,82 C 40,94 12,74 10,50 C 8,26 28,8 54,12 C 76,16 88,34 78,52 C 70,68 52,74 38,62 C 26,52 28,38 40,34 C 50,31 60,36 58,46 C 56,53 48,56 42,52" stroke="#7A8C6E" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
       <span class="logo-name">Food Jazz</span>
     </div>
 
