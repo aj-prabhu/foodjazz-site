@@ -736,6 +736,140 @@
       .benefit-n { grid-template-columns: 48px 1fr; gap: 1.5rem; padding: 2.5rem 0; }
       .benefit-n__visual { display: none; }
     }
+
+    /* ===== TRANSFERRED FROM COACH.HTML ===== */
+
+    .label {
+      font-size: 0.78rem; font-weight: 500; color: var(--sage);
+      letter-spacing: 0.22em; text-transform: uppercase;
+      display: block; margin-bottom: 0.75rem;
+    }
+
+    /* --- Problem scroll section --- */
+    .section-problem { background: var(--charcoal); padding: 9rem 0 7rem; }
+    .section-problem h2 {
+      font-size: clamp(2.4rem, 6vw, 3.8rem);
+      font-weight: 700; color: var(--linen);
+      font-family: var(--font-display); margin-bottom: 3rem; line-height: 1.1;
+    }
+    .section-problem p {
+      font-size: 1.15rem; font-weight: 300;
+      color: rgba(243,237,228,0.45); line-height: 1.8;
+      transition: color 0.6s ease;
+    }
+    .section-problem p.highlight { color: rgba(243,237,228,0.82); }
+    .section-problem p + p { margin-top: 2.5rem; }
+    .section-problem strong { font-weight: 500; color: var(--linen); }
+    .section-problem em { color: inherit; }
+    .problem-callout {
+      font-family: var(--font-display);
+      font-size: clamp(1.8rem, 4vw, 2.4rem); font-weight: 600;
+      color: rgba(168,184,157,0.25); line-height: 1.2;
+      display: block; margin: 3.5rem 0;
+      transition: color 0.6s ease;
+    }
+    .problem-callout.highlight { color: var(--sage-light); }
+    .problem-callout--warm.highlight { color: var(--golden); }
+    .reveal-up {
+      opacity: 0; transform: translateY(30px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+    .reveal-up.visible { opacity: 1; transform: translateY(0); }
+
+    /* --- Three cooks (coach style) --- */
+    .section-cooks { background: var(--sage-wash); padding: 9rem 0; }
+    .cooks-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2.5rem; margin-top: 3rem; }
+    .cook-card {
+      padding: 2rem 1.5rem; border: 1px solid var(--sage-muted);
+      border-radius: 4px; background: white; position: relative;
+    }
+    .cook-card--highlight { border-color: transparent; background: var(--sage); }
+    .cook-icon { width: 40px; height: 40px; display: block; margin-bottom: 0.9rem; }
+    .cook-icon--spiral { width: 52px; height: 52px; }
+    .cook-tag { position: absolute; top: 1rem; right: 1rem; background: var(--golden); color: var(--charcoal); font-size: 0.65rem; font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase; padding: 0.18rem 0.5rem; border-radius: 2px; }
+    .cook-type { font-family: var(--font-display); font-size: 1.4rem; font-weight: 700; color: var(--charcoal); margin-bottom: 0.6rem; line-height: 1.1; }
+    .cook-type--light { color: white; }
+    .cook-type--circled { position: relative; display: inline-block; }
+    .intuitive-circle {
+      position: absolute; top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      width: calc(100% + 36px); height: calc(100% + 24px);
+      pointer-events: none; overflow: visible;
+    }
+    .circle-path {
+      stroke: white; stroke-width: 2.5; fill: none; stroke-linecap: round;
+      stroke-dasharray: 600; stroke-dashoffset: 600;
+      transition: stroke-dashoffset 1.8s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .circle-path.drawn { stroke-dashoffset: 0; }
+    .cook-desc { font-size: 0.95rem; font-weight: 300; color: var(--warm-gray); line-height: 1.75; }
+    .cook-desc--light { color: rgba(255,255,255,0.85); }
+
+    /* --- Outcomes / No More DoorDash --- */
+    .section-outcomes { background: var(--cream); padding: 10rem 0; position: relative; overflow: clip; }
+    .deco-veg { position: absolute; pointer-events: none; }
+    .outcomes-hero { text-align: center; margin-bottom: 7rem; }
+    .outcomes-headline {
+      font-family: var(--font-display); font-size: clamp(2.2rem, 5vw, 3.4rem);
+      font-weight: 700; color: var(--charcoal); line-height: 1.15;
+      opacity: 0; transform: translateY(24px);
+      transition: opacity 0.9s ease, transform 0.9s ease;
+    }
+    .outcomes-headline.visible { opacity: 1; transform: translateY(0); }
+    .outcomes-headline + .outcomes-headline { margin-top: 2.5rem; }
+    .outcomes-headline .no-more { color: var(--sage); }
+    .outcomes-exhale {
+      font-family: var(--font-display); font-size: clamp(1.6rem, 3.5vw, 2.2rem);
+      font-weight: 500; color: var(--sage); margin-top: 3.5rem; line-height: 1.4;
+      opacity: 0; transform: translateY(24px);
+      transition: opacity 1.2s ease, transform 1.2s ease;
+    }
+    .outcomes-exhale.visible { opacity: 1; transform: translateY(0); }
+    .outcomes-checklist { list-style: none; max-width: 600px; margin: 0 auto; }
+    .outcomes-checklist li {
+      display: flex; align-items: center; gap: 1.25rem;
+      padding: 1.5rem 0; border-bottom: 1px solid rgba(122,140,110,0.18);
+      font-size: 1.1rem; font-weight: 400; line-height: 1.4;
+      color: var(--sage-muted); transition: color 0.6s ease;
+    }
+    .outcomes-checklist li:first-child { border-top: 1px solid rgba(122,140,110,0.18); }
+    .outcomes-checklist li.highlight { color: var(--charcoal); }
+    .outcome-check { width: 28px; height: 28px; flex-shrink: 0; position: relative; }
+    .outcome-check svg { width: 28px; height: 28px; stroke: var(--sage-muted); stroke-width: 1.6; fill: none; stroke-linecap: round; stroke-linejoin: round; overflow: visible; }
+    .outcome-check .check-circle { stroke: var(--sage-muted); opacity: 0.4; transition: stroke 0.4s ease, opacity 0.4s ease; }
+    .outcome-check .check-mark { stroke: var(--sage); stroke-width: 3.2; stroke-dasharray: 50; stroke-dashoffset: 50; transition: stroke-dashoffset 0.55s cubic-bezier(0.4, 0, 0.2, 1); }
+    .outcomes-checklist li.checked .check-circle { stroke: var(--sage); opacity: 0.6; }
+    .outcomes-checklist li.checked .check-mark { stroke-dashoffset: 0; }
+    .outcomes-closing-headline {
+      font-family: var(--font-display); font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 700; color: var(--charcoal);
+      max-width: 580px; margin: 3rem auto 0; text-align: center; line-height: 1.15;
+    }
+    .outcomes-closing {
+      font-size: 1rem; font-weight: 300; color: var(--warm-gray);
+      max-width: 580px; margin: 1rem auto 0; text-align: center; line-height: 1.75;
+    }
+
+    /* --- Responsive for transferred sections --- */
+    @media (max-width: 900px) {
+      .section-problem { padding: 6rem 0 5rem; }
+      .section-problem h2 { font-size: clamp(1.8rem, 6vw, 2.4rem); margin-bottom: 2.5rem; }
+      .section-problem p { font-size: 1.05rem; }
+      .section-problem p + p { margin-top: 1.75rem; }
+      .cooks-grid { grid-template-columns: 1fr; gap: 1.5rem; }
+      .cook-card { padding: 1.75rem 1.25rem; }
+      .section-cooks { padding: 6rem 0; }
+      .section-outcomes { padding: 7rem 0; }
+      .outcomes-hero { margin-bottom: 5rem; }
+      .outcomes-headline { font-size: clamp(1.8rem, 6vw, 2.8rem); }
+      .outcomes-headline + .outcomes-headline { margin-top: 2rem; }
+      .outcomes-exhale { font-size: clamp(1.4rem, 3.5vw, 1.8rem); margin-top: 2.5rem; }
+      .outcomes-checklist li { font-size: 1rem; padding: 1.25rem 0; gap: 1rem; }
+      .outcome-check { width: 24px; height: 24px; }
+      .outcome-check svg { width: 24px; height: 24px; }
+      .outcomes-closing-headline { font-size: clamp(1.6rem, 4vw, 2.2rem); margin-top: 2rem; }
+      .deco-veg { display: none; }
+    }
   </style>
 </head>
 <body>
@@ -776,11 +910,11 @@
       <div class="hero__text">
         <div class="pill">
           <div class="pill__dot"></div>
-          <span class="pill__text">Online Cohort · Open Enrollment</span>
+          <span class="pill__text">Online Cohort · Waitlist Open</span>
         </div>
         <h1 class="display display--xl hero__headline">Become an Effortless Cook</h1>
-        <p class="hero__sub-headline">in just 7 weeks</p>
-        <p class="body-text body-text--lg hero__body">Food Jazz is an online cohort-based course designed to reduce kitchen anxiety by making you an intuitive cook. You have good taste — Food Jazz will help you unlock it so you can more easily translate what's in your mind to your plate. Unlike other cooking classes, you won't learn passively. You'll cook for yourself every day, host dinner parties, build lifelong friendships, and leave with a new perspective on creative self-sufficiency.</p>
+        <p class="hero__sub-headline">in just 30 days</p>
+        <p class="body-text body-text--lg hero__body">Food Jazz is a 30-day cooking intensive designed to make you an intuitive, effortless cook — forever. You have good taste. Food Jazz will help you unlock it so you can translate what's in your mind to your plate, without a recipe.</p>
         <div id="waitlist">
           <div class="btn-wrap">
             <div class="btn-glow"></div>
@@ -797,258 +931,34 @@
     </div>
   </section>
 
-  <!-- WAVE -->
-  <div class="wave bg-cream"><svg viewBox="0 0 1200 22" preserveAspectRatio="none" fill="none"><path d="M0 11 Q150 3, 300 11 Q450 19, 600 11 Q750 3, 900 11 Q1050 19, 1200 11" stroke="#A8B89D" stroke-width="1.4" stroke-linecap="round" opacity="0.55"/></svg></div>
-
   <!-- PROBLEM -->
-  <section class="section bg-wash">
-    <div class="wrap">
-      <div class="problem__intro">
-        <h2 class="display display--lg" style="margin-bottom:0.6rem;">Are you dissatisfied with your current food options?</h2>
-        <p class="body-text">You are not alone.</p>
-      </div>
-      <div class="problem__grid">
-
-        <div class="problem__card">
-          <div class="problem__card-title">Meal kits are</div>
-          <div class="problem__tags">
-            <div class="problem__tag">
-              <!-- Target / bullseye: too specific -->
-              <svg class="problem__tag-icon" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-                <circle cx="8" cy="8" r="6.5" stroke="#C47A5A" stroke-width="1.2"/>
-                <circle cx="8" cy="8" r="3.5" stroke="#C47A5A" stroke-width="1.1"/>
-                <circle cx="8" cy="8" r="1.2" fill="#C47A5A"/>
-              </svg>
-              Too specific
-            </div>
-            <div class="problem__tag">
-              <!-- Box with tape: wasteful packaging -->
-              <svg class="problem__tag-icon" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-                <rect x="2" y="5" width="12" height="9" rx="1" stroke="#C47A5A" stroke-width="1.2"/>
-                <path d="M2 8.5 L14 8.5" stroke="#C47A5A" stroke-width="0.9" opacity="0.5"/>
-                <path d="M6 5 L6 8.5" stroke="#C47A5A" stroke-width="1.1"/>
-                <path d="M10 5 L10 8.5" stroke="#C47A5A" stroke-width="1.1"/>
-                <path d="M5 2.5 Q8 1.5, 11 2.5" stroke="#C47A5A" stroke-width="1.1" stroke-linecap="round" fill="none"/>
-                <path d="M6.5 2.5 L6.5 5 M9.5 2.5 L9.5 5" stroke="#C47A5A" stroke-width="1" stroke-linecap="round"/>
-              </svg>
-              Wasteful packaging
-            </div>
-            <div class="problem__tag">
-              <!-- Shrug figure: doesn't teach -->
-              <svg class="problem__tag-icon" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-                <circle cx="8" cy="3.5" r="1.8" stroke="#C47A5A" stroke-width="1.1"/>
-                <path d="M8 5.3 L8 10" stroke="#C47A5A" stroke-width="1.2" stroke-linecap="round"/>
-                <path d="M8 10 L6 14 M8 10 L10 14" stroke="#C47A5A" stroke-width="1.1" stroke-linecap="round"/>
-                <path d="M3.5 8 Q5.5 9, 8 8 Q10.5 9, 12.5 8" stroke="#C47A5A" stroke-width="1.2" stroke-linecap="round" fill="none"/>
-                <path d="M3.5 8 L2.5 6.5" stroke="#C47A5A" stroke-width="1" stroke-linecap="round"/>
-                <path d="M12.5 8 L13.5 6.5" stroke="#C47A5A" stroke-width="1" stroke-linecap="round"/>
-              </svg>
-              Don't really teach you much
-            </div>
-          </div>
-        </div>
-
-        <div class="problem__card">
-          <div class="problem__card-title">Restaurant delivery is</div>
-          <div class="problem__tags">
-            <div class="problem__tag">
-              <!-- Dollar sign / money: expensive -->
-              <svg class="problem__tag-icon" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-                <path d="M8 1.5 L8 14.5" stroke="#C47A5A" stroke-width="1.2" stroke-linecap="round"/>
-                <path d="M5.5 4.5 Q5.5 3, 8 3 Q10.5 3, 10.5 5 Q10.5 7, 8 7 Q10.5 7, 10.5 9.5 Q10.5 11.5, 8 11.5 Q5.5 11.5, 5.5 10" stroke="#C47A5A" stroke-width="1.2" stroke-linecap="round" fill="none"/>
-              </svg>
-              Expensive
-            </div>
-            <div class="problem__tag">
-              <!-- Blank face: impersonal -->
-              <svg class="problem__tag-icon" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-                <circle cx="8" cy="8" r="6.5" stroke="#C47A5A" stroke-width="1.2"/>
-                <circle cx="5.5" cy="7" r="0.9" fill="#C47A5A"/>
-                <circle cx="10.5" cy="7" r="0.9" fill="#C47A5A"/>
-                <line x1="5.5" y1="11" x2="10.5" y2="11" stroke="#C47A5A" stroke-width="1.2" stroke-linecap="round"/>
-              </svg>
-              Impersonal
-            </div>
-            <div class="problem__tag">
-              <!-- Snowflake: food is cold -->
-              <svg class="problem__tag-icon" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-                <line x1="8" y1="1.5" x2="8" y2="14.5" stroke="#C47A5A" stroke-width="1.2" stroke-linecap="round"/>
-                <line x1="1.5" y1="8" x2="14.5" y2="8" stroke="#C47A5A" stroke-width="1.2" stroke-linecap="round"/>
-                <line x1="3.5" y1="3.5" x2="12.5" y2="12.5" stroke="#C47A5A" stroke-width="1.2" stroke-linecap="round"/>
-                <line x1="12.5" y1="3.5" x2="3.5" y2="12.5" stroke="#C47A5A" stroke-width="1.2" stroke-linecap="round"/>
-                <circle cx="8" cy="8" r="1.5" fill="#C47A5A"/>
-              </svg>
-              Food is cold most of the time
-            </div>
-          </div>
-        </div>
-
-        <div class="problem__card">
-          <div class="problem__card-title">Home cooking is</div>
-          <div class="problem__tags">
-            <div class="problem__tag">
-              <!-- Dizzy face: overwhelming -->
-              <svg class="problem__tag-icon" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-                <circle cx="8" cy="8" r="6.5" stroke="#C47A5A" stroke-width="1.2"/>
-                <path d="M5 5.5 L6.5 7 M6.5 5.5 L5 7" stroke="#C47A5A" stroke-width="1.1" stroke-linecap="round"/>
-                <path d="M9.5 5.5 L11 7 M11 5.5 L9.5 7" stroke="#C47A5A" stroke-width="1.1" stroke-linecap="round"/>
-                <path d="M5.5 11 Q8 9.5, 10.5 11" stroke="#C47A5A" stroke-width="1.1" stroke-linecap="round" fill="none"/>
-              </svg>
-              Overwhelming
-            </div>
-            <div class="problem__tag">
-              <!-- Alarm clock: time consuming -->
-              <svg class="problem__tag-icon" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-                <circle cx="8" cy="9" r="5.5" stroke="#C47A5A" stroke-width="1.2"/>
-                <path d="M8 5.5 L8 9 L11 10.5" stroke="#C47A5A" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
-                <path d="M4 3.5 L5.5 5" stroke="#C47A5A" stroke-width="1.1" stroke-linecap="round"/>
-                <path d="M12 3.5 L10.5 5" stroke="#C47A5A" stroke-width="1.1" stroke-linecap="round"/>
-              </svg>
-              Time consuming
-            </div>
-            <div class="problem__tag">
-              <!-- Worried face: stressful planning -->
-              <svg class="problem__tag-icon" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-                <circle cx="8" cy="8" r="6.5" stroke="#C47A5A" stroke-width="1.2"/>
-                <circle cx="5.5" cy="8" r="0.9" fill="#C47A5A"/>
-                <circle cx="10.5" cy="8" r="0.9" fill="#C47A5A"/>
-                <path d="M5.5 12 Q8 10.5, 10.5 12" stroke="#C47A5A" stroke-width="1.1" stroke-linecap="round" fill="none"/>
-                <path d="M4.5 6 Q5.5 5, 7 6" stroke="#C47A5A" stroke-width="0.9" stroke-linecap="round" fill="none"/>
-                <path d="M9 6 Q10.5 5, 11.5 6" stroke="#C47A5A" stroke-width="0.9" stroke-linecap="round" fill="none"/>
-              </svg>
-              Planning recipes is stressful
-            </div>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- WAVE -->
-  <div class="wave bg-wash"><svg viewBox="0 0 1200 22" preserveAspectRatio="none" fill="none"><path d="M0 11 Q150 19, 300 11 Q450 3, 600 11 Q750 19, 900 11 Q1050 3, 1200 11" stroke="#A8B89D" stroke-width="1.4" stroke-linecap="round" opacity="0.55"/></svg></div>
-
-  <!-- MINDSET -->
-  <section class="section bg-cream">
-    <div class="wrap">
-      <h2 class="display display--lg" style="max-width:540px; margin-bottom:0.5rem;">There is a better way.</h2>
-      <p class="body-text" style="max-width:560px; margin-bottom:0;">The Food Jazz Mindset</p>
-      <div class="mindset__grid">
-        <div class="mindset__item">
-          <svg class="mindset__icon" width="40" height="40" viewBox="0 0 40 40" fill="none">
-            <!-- pan body -->
-            <path d="M8 26 Q8 20, 20 20 Q32 20, 32 26 Q32 31, 20 31 Q8 31, 8 26Z" fill="rgba(168,184,157,0.12)" stroke="#7A8C6E" stroke-width="1.4" stroke-linejoin="round"/>
-            <!-- handle -->
-            <line x1="32" y1="23" x2="38" y2="19" stroke="#8B6D47" stroke-width="2.2" stroke-linecap="round"/>
-            <!-- sizzling items -->
-            <circle cx="15" cy="25" r="2.2" fill="rgba(212,168,67,0.35)" stroke="#D4A843" stroke-width="1"/>
-            <circle cx="22" cy="24" r="1.8" fill="rgba(196,122,90,0.35)" stroke="#C47A5A" stroke-width="0.9"/>
-            <circle cx="27" cy="26" r="1.5" fill="rgba(212,168,67,0.25)" stroke="#D4A843" stroke-width="0.8"/>
-            <!-- steam wisps -->
-            <path d="M14 18 Q12.5 15.5, 14 13" stroke="#7A8C6E" stroke-width="1.2" stroke-linecap="round" fill="none" opacity="0.55"/>
-            <path d="M20 17 Q18.5 14.5, 20 12" stroke="#7A8C6E" stroke-width="1.2" stroke-linecap="round" fill="none" opacity="0.45"/>
-            <path d="M26 18 Q24.5 15.5, 26 13" stroke="#7A8C6E" stroke-width="1.2" stroke-linecap="round" fill="none" opacity="0.35"/>
-          </svg>
-          <div class="mindset__title">You can cook meals faster than DoorDash delivers</div>
-          <p class="mindset__desc">When you know your kitchen, a real meal takes 20 minutes. No waiting, no tracking, no cold food.</p>
-        </div>
-        <div class="mindset__item">
-          <svg class="mindset__icon" width="40" height="40" viewBox="0 0 40 40" fill="none">
-            <!-- outer flame -->
-            <path d="M20 37 C14 37, 8 31, 8 24 C8 17, 13.5 13, 16.5 10 C18 8, 16.5 5.5, 20 5.5 C23.5 5.5, 22 8, 23.5 10 C26.5 13, 32 17, 32 24 C32 31, 26 37, 20 37Z" fill="rgba(212,168,67,0.12)" stroke="#D4A843" stroke-width="1.5" stroke-linejoin="round"/>
-            <!-- middle flame -->
-            <path d="M20 31 C17.5 31, 15.5 28.5, 15.5 25 C15.5 22, 17.5 20, 20 18 C22.5 20, 24.5 22, 24.5 25 C24.5 28.5, 22.5 31, 20 31Z" fill="rgba(196,122,90,0.3)" stroke="#C47A5A" stroke-width="1.2"/>
-            <!-- inner core glow -->
-            <path d="M20 28 C18.8 28, 18 27, 18 25.5 C18 24.2, 19 23.4, 20 22.5 C21 23.4, 22 24.2, 22 25.5 C22 27, 21.2 28, 20 28Z" fill="rgba(255,220,100,0.45)" stroke="#D4A843" stroke-width="0.8"/>
-            <!-- floating sparks -->
-            <circle cx="10" cy="15" r="1.2" fill="#D4A843" opacity="0.55"/>
-            <circle cx="29" cy="11" r="0.9" fill="#D4A843" opacity="0.45"/>
-            <circle cx="9" cy="9" r="0.7" fill="#C47A5A" opacity="0.5"/>
-            <circle cx="31" cy="19" r="1" fill="#C47A5A" opacity="0.4"/>
-            <circle cx="26" cy="7" r="0.8" fill="#D4A843" opacity="0.4"/>
-          </svg>
-          <div class="mindset__title">Cooking is relaxing and empowering</div>
-          <p class="mindset__desc">When you stop following instructions and start improvising, the kitchen stops being stressful and starts being yours.</p>
-        </div>
-        <div class="mindset__item">
-          <svg class="mindset__icon" width="40" height="40" viewBox="0 0 40 40" fill="none">
-            <!-- wand stick -->
-            <line x1="30" y1="30" x2="16" y2="16" stroke="#8B6D47" stroke-width="2.2" stroke-linecap="round"/>
-            <!-- starburst tip: cardinal rays golden -->
-            <line x1="16" y1="16" x2="16" y2="10" stroke="#D4A843" stroke-width="1.4" stroke-linecap="round"/>
-            <line x1="16" y1="16" x2="16" y2="22" stroke="#D4A843" stroke-width="1.4" stroke-linecap="round"/>
-            <line x1="16" y1="16" x2="10" y2="16" stroke="#D4A843" stroke-width="1.4" stroke-linecap="round"/>
-            <line x1="16" y1="16" x2="22" y2="16" stroke="#D4A843" stroke-width="1.4" stroke-linecap="round"/>
-            <!-- diagonal rays sage -->
-            <line x1="16" y1="16" x2="11.8" y2="11.8" stroke="#7A8C6E" stroke-width="1.2" stroke-linecap="round"/>
-            <line x1="16" y1="16" x2="20.2" y2="11.8" stroke="#7A8C6E" stroke-width="1.2" stroke-linecap="round"/>
-            <line x1="16" y1="16" x2="11.8" y2="20.2" stroke="#7A8C6E" stroke-width="1.2" stroke-linecap="round"/>
-            <line x1="16" y1="16" x2="20.2" y2="20.2" stroke="#7A8C6E" stroke-width="1.2" stroke-linecap="round"/>
-            <!-- center dot -->
-            <circle cx="16" cy="16" r="2.2" fill="rgba(212,168,67,0.25)" stroke="#D4A843" stroke-width="1.1"/>
-            <!-- scattered sparkles -->
-            <line x1="31" y1="12" x2="31" y2="9" stroke="#D4A843" stroke-width="1.1" stroke-linecap="round" opacity="0.6"/>
-            <line x1="29.5" y1="10.5" x2="32.5" y2="10.5" stroke="#D4A843" stroke-width="1.1" stroke-linecap="round" opacity="0.6"/>
-            <circle cx="9" cy="28" r="1" fill="#C47A5A" opacity="0.5"/>
-            <circle cx="28" cy="9" r="0.8" fill="#7A8C6E" opacity="0.5"/>
-            <circle cx="11" cy="10" r="0.7" fill="#D4A843" opacity="0.45"/>
-          </svg>
-          <div class="mindset__title">You are a Kitchen Magician — impressing your community and even yourself</div>
-          <p class="mindset__desc">Open the fridge, see what's there, make something great. That's the goal — and it's completely learnable.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- WAVE -->
-  <div class="wave bg-cream"><svg viewBox="0 0 1200 22" preserveAspectRatio="none" fill="none"><path d="M0 11 Q150 3, 300 11 Q450 19, 600 11 Q750 3, 900 11 Q1050 19, 1200 11" stroke="#A8B89D" stroke-width="1.4" stroke-linecap="round" opacity="0.55"/></svg></div>
-
-  <!-- BACKBURNER -->
-  <section class="backburner bg-wash">
-    <div class="wrap">
-      <div class="backburner__inner">
-        <div>
-          <h2 class="display display--lg backburner__headline">Let's take cooking off your plate in 2026</h2>
-          <p class="body-text">You are probably here because you haven't found a way to fit cooking into your busy schedule. Maybe you've even convinced yourself that cooking isn't important. (Hint: it will transform your life in all the good ways.)</p>
-          <p class="body-text">Guess what? It's not your fault. Modern society makes it almost impossible to get your bearings in the kitchen. And before you know it you feel like you are in too deep to ever learn.</p>
-          <p class="body-text">Not everyone can go to culinary school. Not everyone has a grandma Yoda to teach them the ways of the kitchen. In a world filled with more cookbooks, TikTok recipe tutorials and dumpling workshops than stars in the Milky Way, it's natural that you would give up.</p>
-        </div>
-        <div>
-          <p class="body-text">There is a better way. Food Jazz is the fundamental cooking education everyone needs. It is the easiest way to systematically make sense of the madness and take back control of your diet.</p>
-          <p class="body-text">You deserve to eat well. And it doesn't need to be hard, stressful, or time consuming.</p>
-          <div class="backburner__cta">
-            <p class="backburner__cta-text">Let's take cooking off your plate.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- WAVE -->
-  <div class="wave bg-wash"><svg viewBox="0 0 1200 22" preserveAspectRatio="none" fill="none"><path d="M0 11 Q150 19, 300 11 Q450 3, 600 11 Q750 19, 900 11 Q1050 3, 1200 11" stroke="#A8B89D" stroke-width="1.4" stroke-linecap="round" opacity="0.55"/></svg></div>
-
-  <!-- ACCOUNTABILITY -->
-  <section class="accountability bg-cream">
+  <section class="section-problem">
     <div class="wrap--narrow">
-      <h2 class="accountability__headline">The accountability you've been missing.</h2>
-      <p class="body-text">Maybe you've tried cooking before. But time and time again, you fall off. Something comes up. What starts off exciting becomes too difficult. And before you know it, you're back to eating instant ramen and DoorDash.</p>
-      <p class="accountability__key">But this is because there was no accountability.</p>
-      <p class="body-text">You tried to start cooking on your own — almost doomed from the beginning. Food Jazz solves that problem. You learn alongside hundreds of other cooks, all with the same goal: to start cooking consistently. This creates accountability unlike anything you've ever experienced.</p>
+      <h2>Take cooking off the back burner.</h2>
+      <p class="problem-line">You're probably here because you haven't found a way to fit cooking into your busy schedule. Maybe you've even convinced yourself that cooking isn't important.</p>
+
+      <span class="problem-callout problem-line">It's not your fault.</span>
+
+      <p class="problem-line">Modern society makes it almost impossible to get your bearings in the kitchen. And before you know it, you feel like you're in too deep to ever learn.</p>
+
+      <p class="problem-line">You don't have a grandma Yoda to teach you the ways of the kitchen. In a world filled with more cookbooks, TikTok recipe tutorials, and dumpling workshops than stars in the Milky Way, it's natural that you'd give up and just order delivery again.</p>
+
+      <p class="problem-line">But it was never a time problem. You just never had someone in your corner showing you how to <em>think</em> in the kitchen.</p>
+
+      <span class="problem-callout problem-callout--warm problem-line">There is a better way.</span>
+
+      <p class="problem-line">Food Jazz is the fundamental cooking education everyone needs — the easiest way to make sense of the madness and take back control of your diet. You deserve to eat well. And it doesn't need to be hard, stressful, or time consuming.</p>
     </div>
   </section>
 
-  <!-- WAVE -->
-  <div class="wave bg-cream"><svg viewBox="0 0 1200 22" preserveAspectRatio="none" fill="none"><path d="M0 11 Q150 3, 300 11 Q450 19, 600 11 Q750 3, 900 11 Q1050 19, 1200 11" stroke="#A8B89D" stroke-width="1.4" stroke-linecap="round" opacity="0.55"/></svg></div>
 
   <!-- THREE COOKS -->
-  <section class="section bg-wash">
+  <section class="section-cooks">
     <div class="wrap">
-      <span class="rule-label">Which cook are you?</span>
-      <h2 class="display display--lg">Three types of cooks</h2>
-      <div class="cooks__grid">
-        <div class="cook__card cook__card--plain">
-          <!-- Books: The Planner -->
-          <svg class="cook__icon" viewBox="0 0 40 40" fill="none" aria-hidden="true">
+      <h2 style="text-align:center;">Three types of cooks.</h2>
+      <div class="cooks-grid">
+        <div class="cook-card">
+          <svg class="cook-icon" viewBox="0 0 40 40" fill="none" aria-hidden="true">
             <rect x="4" y="25" width="32" height="7" rx="2" stroke="#7A8C6E" stroke-width="1.4" fill="rgba(168,184,157,0.12)"/>
             <line x1="9" y1="25" x2="9" y2="32" stroke="#7A8C6E" stroke-width="1.8" stroke-linecap="round"/>
             <rect x="8" y="16" width="24" height="7" rx="2" stroke="#D4A843" stroke-width="1.3" fill="rgba(212,168,67,0.1)"/>
@@ -1056,62 +966,79 @@
             <rect x="12" y="8" width="16" height="7" rx="2" stroke="#C47A5A" stroke-width="1.3" fill="rgba(196,122,90,0.1)"/>
             <line x1="17" y1="8" x2="17" y2="15" stroke="#C47A5A" stroke-width="1.8" stroke-linecap="round"/>
           </svg>
-          <div class="cook__name cook__name--plain">The Planner</div>
-          <p class="cook__desc cook__desc--plain">You can make a tasty meal, but it takes hours of planning — and if something is slightly off or you're missing an ingredient, you have a panic attack.</p>
+          <p class="cook-type">The Planner</p>
+          <p class="cook-desc">You can make a tasty meal, but it takes hours of planning and if something is slightly off or you're missing an ingredient, you have a panic attack.</p>
         </div>
-        <div class="cook__card cook__card--plain">
-          <!-- Raccoon: The Opportunist -->
-          <svg class="cook__icon" viewBox="0 0 40 40" fill="none" aria-hidden="true">
-            <!-- Head -->
-            <ellipse cx="20" cy="22" rx="13" ry="11" fill="rgba(184,149,106,0.14)" stroke="#B8956A" stroke-width="1.3"/>
-            <!-- Round ears with inner pink -->
-            <circle cx="10" cy="13" r="4.5" fill="rgba(184,149,106,0.14)" stroke="#B8956A" stroke-width="1.2"/>
-            <circle cx="10" cy="13" r="2.2" fill="rgba(196,122,90,0.22)"/>
-            <circle cx="30" cy="13" r="4.5" fill="rgba(184,149,106,0.14)" stroke="#B8956A" stroke-width="1.2"/>
-            <circle cx="30" cy="13" r="2.2" fill="rgba(196,122,90,0.22)"/>
-            <!-- Bandit mask — one connected shape across both eyes -->
-            <path d="M7 20 C7 16, 12 14, 16 15.5 C17.5 14.5, 19 14, 20 14 C21 14, 22.5 14.5, 24 15.5 C28 14, 33 16, 33 20 C33 23, 29 24.5, 25 23.5 C23 24.5, 21 25, 20 25 C19 25, 17 24.5, 15 23.5 C11 24.5, 7 23, 7 20Z" fill="rgba(46,46,44,0.3)" stroke="#2E2E2C" stroke-width="0.7"/>
-            <!-- Eyes — white with dark pupil inside mask -->
-            <circle cx="14.5" cy="20" r="3" fill="rgba(255,255,255,0.92)"/>
-            <circle cx="25.5" cy="20" r="3" fill="rgba(255,255,255,0.92)"/>
-            <circle cx="15" cy="20" r="1.6" fill="#1a1a1a"/>
-            <circle cx="26" cy="20" r="1.6" fill="#1a1a1a"/>
-            <circle cx="15.6" cy="19.3" r="0.5" fill="white"/>
-            <circle cx="26.6" cy="19.3" r="0.5" fill="white"/>
-            <!-- Lighter muzzle area -->
-            <ellipse cx="20" cy="28" rx="5.5" ry="4" fill="rgba(232,215,185,0.45)" stroke="#B8956A" stroke-width="0.9"/>
-            <!-- Nose -->
-            <ellipse cx="20" cy="26.5" rx="2.2" ry="1.4" fill="#5C5A56"/>
-            <!-- Mouth -->
-            <path d="M17.5 29 Q20 30.5 22.5 29" stroke="#8B6D47" stroke-width="1" stroke-linecap="round" fill="none"/>
-            <!-- Tail stripes at bottom hint -->
-            <path d="M9 34 Q20 37 31 34" stroke="#B8956A" stroke-width="1.2" stroke-linecap="round" opacity="0.3" fill="none"/>
-            <path d="M11 36 Q20 38 29 36" stroke="#5C5A56" stroke-width="0.8" stroke-linecap="round" opacity="0.2" fill="none"/>
+        <div class="cook-card">
+          <svg class="cook-icon" viewBox="0 0 40 40" fill="none" aria-hidden="true">
+            <path d="M8 12 L6 5 L13 10" fill="rgba(184,149,106,0.2)" stroke="#B8956A" stroke-width="1.1" stroke-linejoin="round"/>
+            <path d="M32 12 L34 5 L27 10" fill="rgba(184,149,106,0.2)" stroke="#B8956A" stroke-width="1.1" stroke-linejoin="round"/>
+            <ellipse cx="20" cy="20" rx="13" ry="11" fill="rgba(184,149,106,0.14)" stroke="#B8956A" stroke-width="1.3"/>
+            <path d="M7.5 18 C6 17, 5.5 19, 7 20" stroke="#B8956A" stroke-width="0.8" stroke-linecap="round" fill="none"/>
+            <path d="M7 21 C5.5 21.5, 6 23, 7.5 23" stroke="#B8956A" stroke-width="0.8" stroke-linecap="round" fill="none"/>
+            <path d="M32.5 18 C34 17, 34.5 19, 33 20" stroke="#B8956A" stroke-width="0.8" stroke-linecap="round" fill="none"/>
+            <path d="M33 21 C34.5 21.5, 34 23, 32.5 23" stroke="#B8956A" stroke-width="0.8" stroke-linecap="round" fill="none"/>
+            <path d="M8 17 C8 14, 13 13, 16 15 C17.5 14, 19 13.5, 20 13.5 C21 13.5, 22.5 14, 24 15 C27 13, 32 14, 32 17 C32 20, 28 21.5, 25 20.5 C23 21.5, 21 22, 20 22 C19 22, 17 21.5, 15 20.5 C12 21.5, 8 20, 8 17Z" fill="rgba(46,46,44,0.35)" stroke="#2E2E2C" stroke-width="0.6"/>
+            <circle cx="14.5" cy="17.5" r="2.8" fill="rgba(255,255,255,0.92)"/>
+            <circle cx="25.5" cy="17.5" r="2.8" fill="rgba(255,255,255,0.92)"/>
+            <circle cx="15" cy="17.5" r="1.5" fill="#1a1a1a"/>
+            <circle cx="26" cy="17.5" r="1.5" fill="#1a1a1a"/>
+            <circle cx="15.5" cy="16.8" r="0.5" fill="white"/>
+            <circle cx="26.5" cy="16.8" r="0.5" fill="white"/>
+            <ellipse cx="20" cy="24" rx="4" ry="3" fill="rgba(232,215,185,0.45)" stroke="#B8956A" stroke-width="0.8"/>
+            <ellipse cx="20" cy="23" rx="2" ry="1.2" fill="#5C5A56"/>
+            <path d="M18 25.5 Q20 27 22 25.5" stroke="#8B6D47" stroke-width="0.9" stroke-linecap="round" fill="none"/>
+            <line x1="14" y1="24" x2="6" y2="22.5" stroke="#B8956A" stroke-width="0.7" stroke-linecap="round"/>
+            <line x1="14" y1="25" x2="5.5" y2="25.5" stroke="#B8956A" stroke-width="0.7" stroke-linecap="round"/>
+            <line x1="14" y1="26" x2="6.5" y2="28" stroke="#B8956A" stroke-width="0.7" stroke-linecap="round"/>
+            <line x1="26" y1="24" x2="34" y2="22.5" stroke="#B8956A" stroke-width="0.7" stroke-linecap="round"/>
+            <line x1="26" y1="25" x2="34.5" y2="25.5" stroke="#B8956A" stroke-width="0.7" stroke-linecap="round"/>
+            <line x1="26" y1="26" x2="33.5" y2="28" stroke="#B8956A" stroke-width="0.7" stroke-linecap="round"/>
           </svg>
-          <div class="cook__name cook__name--plain">The Opportunist</div>
-          <p class="cook__desc cook__desc--plain">You find things to eat, but it's never really what you want. Sometimes you come up with combinations that are just plain bad.</p>
+          <p class="cook-type">The Opportunist</p>
+          <p class="cook-desc">You find things to eat, but it's never really what you want. Sometimes you come up with combinations that are... disgusting.</p>
         </div>
-        <div class="cook__card cook__card--highlight">
-          <!-- Spiral: Intuitive -->
-          <svg class="cook__icon" viewBox="0 0 40 40" fill="none" aria-hidden="true">
-            <path d="M20 20 C22 20, 23 18.5, 22 17 C21 15.5, 18.5 15, 16.5 16.5 C14.5 18, 14 21, 15.5 23.5 C17 26, 20.5 27, 24 25.5 C27.5 24, 29 20, 27.5 16.5 C26 13, 22 11, 18 11.5 C14 12, 11 15.5, 11 19.5"
+        <div class="cook-card cook-card--highlight">
+          <svg class="cook-icon cook-icon--spiral" viewBox="0 0 40 40" fill="none" aria-hidden="true">
+            <path d="M20 20 C22 20, 23 18.5, 22 17 C21 15.5, 18.5 15, 16.5 16.5 C14.5 18, 14 21, 15.5 23.5 C17 26, 20.5 27, 24 25.5 C27.5 24, 29 20, 27.5 16.5 C26 13, 22 11, 18 11.5 C14 12, 11 15.5, 11 19.5 C11 24, 14 28.5, 19 29.5 C24 30.5, 30 27, 31 22 C32 17, 29 11, 23 9"
               stroke="rgba(255,255,255,0.88)" stroke-width="2" stroke-linecap="round" fill="none"/>
           </svg>
-          <div class="cook__tag">Future you</div>
-          <div class="cook__name cook__name--light cook__name--circled">
+          <div class="cook-tag">Future you</div>
+          <p class="cook-type cook-type--light cook-type--circled">
             Intuitive
             <svg class="intuitive-circle" viewBox="0 0 165 58" fill="none" aria-hidden="true">
               <path class="circle-path" d="M 152 13 C 163 30, 140 52, 82 54 C 24 56, -2 37, 6 20 C 14 4, 50 -1, 85 2 C 120 5, 155 20, 152 13"/>
             </svg>
-          </div>
-          <p class="cook__desc cook__desc--light">You are in flow. You can make complicated dishes in a breeze. Stress-free, quick substitutions, any dish works out. This is where you're going.</p>
+          </p>
+          <p class="cook-desc cook-desc--light">You're in flow. You can make complicated dishes in a breeze. Stress-free, quick substitutions, and every dish works out. Open the fridge, see what's there, make something great.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- WAVE -->
-  <div class="wave bg-wash"><svg viewBox="0 0 1200 22" preserveAspectRatio="none" fill="none"><path d="M0 11 Q150 19, 300 11 Q450 3, 600 11 Q750 19, 900 11 Q1050 3, 1200 11" stroke="#A8B89D" stroke-width="1.4" stroke-linecap="round" opacity="0.55"/></svg></div>
+  <!-- OUTCOMES -->
+  <section class="section-outcomes">
+    <img class="deco-veg" src="deco-tomato.png" alt=""
+      style="width:200px; top:-20px; right:-50px; transform:rotate(12deg);">
+    <div class="wrap">
+      <div class="outcomes-hero">
+        <p class="outcomes-headline"><span class="no-more">No more</span> DoorDash.</p>
+        <p class="outcomes-headline"><span class="no-more">No more</span> HelloFresh.</p>
+        <p class="outcomes-headline"><span class="no-more">No more</span> CookUnity.</p>
+        <p class="outcomes-exhale">Just the zen of creative self-sufficiency.</p>
+      </div>
+      <ul class="outcomes-checklist">
+        <li><span class="outcome-check"><svg viewBox="-4 -4 38 38"><path class="check-circle" d="M15 2.5 C22 2, 27.5 7, 27.5 14 C28 21, 23 27.5, 15 27.5 C7 28, 2 22, 2.5 15 C2 8, 7 2.5, 15 2.5"/><path class="check-mark" d="M5.5 16 L13 19 L29 2"/></svg></span> Host a dinner party without breaking a sweat</li>
+        <li><span class="outcome-check"><svg viewBox="-4 -4 38 38"><path class="check-circle" d="M14 2 C21.5 1.5, 28 7.5, 27.5 15 C27.5 22, 22 28, 14.5 27.5 C7.5 27.5, 2 22, 2.5 14.5 C2.5 7.5, 7 2.5, 14 2"/><path class="check-mark" d="M5 15.5 L12.5 19.5 L29.5 1.5"/></svg></span> Open the fridge and make something great</li>
+        <li><span class="outcome-check"><svg viewBox="-4 -4 38 38"><path class="check-circle" d="M15.5 2 C22.5 2.5, 28 8, 27.5 15.5 C27 22.5, 21.5 28, 14.5 27.5 C7 27, 2 21.5, 2.5 14.5 C3 7.5, 8.5 2, 15.5 2"/><path class="check-mark" d="M6 16.5 L13.5 20 L30 1"/></svg></span> Walk through any grocery store with a plan in your head</li>
+        <li><span class="outcome-check"><svg viewBox="-4 -4 38 38"><path class="check-circle" d="M14.5 2.5 C21 2, 27 7, 28 14.5 C28.5 22, 22.5 27.5, 15 27.5 C8 28, 2.5 22.5, 2.5 15 C2 8, 7.5 2.5, 14.5 2.5"/><path class="check-mark" d="M5 15 L12.5 19.5 L29 2"/></svg></span> Cook dinner faster than delivery arrives</li>
+        <li><span class="outcome-check"><svg viewBox="-4 -4 38 38"><path class="check-circle" d="M15 2 C22 1.5, 27.5 7.5, 28 15 C28 22.5, 22 28, 15 28 C7.5 27.5, 2 22, 2 15 C2.5 7.5, 8 2.5, 15 2"/><path class="check-mark" d="M5.5 15.5 L13 19.5 L29.5 1"/></svg></span> Taste something at a restaurant and recreate it at home</li>
+        <li><span class="outcome-check"><svg viewBox="-4 -4 38 38"><path class="check-circle" d="M15 2.5 C22.5 2, 28 7, 27.5 14.5 C27.5 22, 22 27.5, 14.5 28 C7.5 28, 2 22.5, 2.5 15.5 C2.5 8, 7.5 2.5, 15 2.5"/><path class="check-mark" d="M5 16 L13 19.5 L30 1.5"/></svg></span> Feed your people something you're proud of</li>
+      </ul>
+      <p class="outcomes-closing-headline">Take learning to cook off your plate.</p>
+      <p class="outcomes-closing">New connections, new confidence, new dinner parties. The simple habit that changes the trajectory of your life.</p>
+    </div>
+  </section>
 
   <!-- BENEFITS -->
   <section class="section bg-cream">
@@ -1266,7 +1193,7 @@
           <span class="about-role">Startup Founder · Neuroscientist · Cooking Coach</span>
           <p class="about-name">Hey, I'm Akshay.</p>
           <p class="about-bio about-bio--lead reveal-up">I help busy professionals learn to cook effortlessly and intuitively.</p>
-          <p class="about-bio reveal-up">I raised <strong>$3M</strong> and helped <strong>250+ home cooks</strong> build businesses out of their kitchens. I've staged at <strong>Chez Panisse</strong>, hosted hundreds of pop-up dinners, catered for <strong>500+ guests</strong>, and cooked whole lambs over open fire for crowds across the Bay.</p>
+          <p class="about-bio reveal-up">I raised <strong>$3M</strong> to build a marketplace for home-based restaurants and helped <strong>300+ people</strong> transform their home kitchens into businesses. I've staged at <strong>Chez Panisse</strong>, hosted hundreds of pop-up dinners, and cooked whole lambs over open fire for crowds across the Bay.</p>
         </div>
         <div>
           <p class="about-bio reveal-up">Cooking has been a part of my life since I was a child. For me, food is more than fuel. Memories are created over the warmth and aroma of a homemade meal.</p>
@@ -1291,7 +1218,7 @@
     <div class="wrap">
       <span class="rule-label">What's included</span>
       <h2 class="display display--lg" style="max-width:540px; margin-bottom:0.5rem;">What is in store</h2>
-      <p class="body-text" style="max-width:560px;">Everything you need to build a lasting cooking habit — not just for 7 weeks, but for life.</p>
+      <p class="body-text" style="max-width:560px;">Everything you need to build a lasting cooking habit — not just for 30 days, but for life.</p>
 
       <div class="included__list">
         <div class="included__item">
@@ -1502,7 +1429,7 @@
         <div class="pill__dot"></div>
         <span class="pill__text">Enrollment Opening Soon</span>
       </div>
-      <h2 class="display display--lg" style="color:var(--cream); margin-bottom:0.75rem;">7 weeks to a new perspective on life.</h2>
+      <h2 class="display display--lg" style="color:var(--cream); margin-bottom:0.75rem;">30 days to a new perspective on life.</h2>
       <p class="body-text" style="color:rgba(250,247,242,0.65); max-width:500px; margin:0 auto 2rem;">Be the first to know when we open enrollment. No spam, no pressure — just an email when the next cohort is ready.</p>
       <div class="btn-wrap" style="display:flex; justify-content:center;">
         <div class="btn-glow"></div>
@@ -1525,7 +1452,7 @@
       <p class="body-text">If you're down here, you might be thinking — is this really worth it? And sure, you could go and stitch together all of the glorious free content across the vast internet. And eventually you will learn to cook and begin to understand the fundamentals.</p>
       <p class="body-text" style="margin-top:1.1rem;">But I'm guessing that if you're on this page, and you've read this far, you've tried something like this before. And the results... well... they're not what you've been hoping for.</p>
       <p class="body-text" style="margin-top:1.1rem;">I've been in your shoes. It's taken me two decades to get to where I am. I'm here before you after years of musing and consolidating my thinking to say — there is a better way.</p>
-      <p class="one-last__final">You are 7 weeks away from creative culinary independence.</p>
+      <p class="one-last__final">You are 30 days away from creative culinary independence.</p>
       <p class="body-text">Let this be the year for new connections, friendships, and dinner parties. A year where you finally take control of your diet and get to feel great eating exactly what you want, all the time. Cooking will be the simple habit that changes the trajectory of your life. And it can all start right here, right now.</p>
       <p class="one-last__question">So, what do you say?</p>
       <div style="margin-top:2rem; text-align:center;">
@@ -1581,16 +1508,54 @@
   <script>
     // ===== INTUITIVE CIRCLE =====
     const circlePath = document.querySelector('.circle-path');
-    const highlightCard = document.querySelector('.cook__card--highlight');
+    const highlightCard = document.querySelector('.cook-card--highlight');
     if (circlePath && highlightCard) {
-      const observer = new IntersectionObserver(entries => {
+      const circleObs = new IntersectionObserver(entries => {
         if (entries[0].isIntersecting) {
           circlePath.classList.add('drawn');
-          observer.disconnect();
+          circleObs.disconnect();
         }
       }, { threshold: 0.6 });
-      observer.observe(highlightCard);
+      circleObs.observe(highlightCard);
     }
+
+    // ===== PROBLEM — scroll highlight =====
+    document.querySelectorAll('.problem-line').forEach(el => {
+      const hlObs = new IntersectionObserver(entries => {
+        if (entries[0].isIntersecting) {
+          el.classList.add('highlight');
+          hlObs.disconnect();
+        }
+      }, { threshold: 0.6, rootMargin: '0px 0px -15% 0px' });
+      hlObs.observe(el);
+    });
+
+    // ===== OUTCOMES — headlines fade in =====
+    const outcomesHero = document.querySelector('.outcomes-hero');
+    if (outcomesHero) {
+      const headlines = outcomesHero.querySelectorAll('.outcomes-headline, .outcomes-exhale');
+      const heroObs = new IntersectionObserver(entries => {
+        if (entries[0].isIntersecting) {
+          headlines.forEach((el, i) => {
+            setTimeout(() => el.classList.add('visible'), i * 1200);
+          });
+          heroObs.disconnect();
+        }
+      }, { threshold: 0.2, rootMargin: '0px 0px -10% 0px' });
+      heroObs.observe(outcomesHero);
+    }
+
+    // ===== OUTCOMES — checklist scroll highlight + check =====
+    document.querySelectorAll('.outcomes-checklist li').forEach(li => {
+      const checkObs = new IntersectionObserver(entries => {
+        if (entries[0].isIntersecting) {
+          li.classList.add('highlight');
+          setTimeout(() => li.classList.add('checked'), 500);
+          checkObs.disconnect();
+        }
+      }, { threshold: 1.0, rootMargin: '0px 0px -50% 0px' });
+      checkObs.observe(li);
+    });
 
     // ===== NAV CTA — show after hero, hide at closing =====
     const heroBtn = document.querySelector('.hero .btn-wrap');
