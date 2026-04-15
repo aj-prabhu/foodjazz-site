@@ -916,16 +916,12 @@
         <p class="hero__sub-headline">in just 30 days</p>
         <p class="body-text body-text--lg hero__body">Food Jazz is a 30-day cooking intensive designed to make you an intuitive, effortless cook — forever. You have good taste. Food Jazz will help you unlock it so you can translate what's in your mind to your plate, without a recipe.</p>
         <div id="waitlist">
-          <div class="btn-wrap">
-            <div class="btn-glow"></div>
-            <a href="#waitlist-form" class="btn-primary">
-              Join Waitlist
-              <svg class="btn-arrow" viewBox="0 0 10 10" fill="none" stroke="white" stroke-width="2">
-                <path d="M0 5h7" class="btn-arrow-line"/>
-                <path d="M4 1l4 4-4 4"/>
-              </svg>
-            </a>
-          </div>
+          <form class="email-form kit-form" data-success="hero-success">
+            <input type="email" name="email_address" placeholder="Email address" required>
+            <button type="submit" class="btn btn--sage">Join Waitlist</button>
+          </form>
+          <p id="hero-success" class="kit-success" style="display:none;">You're on the list. Talk soon.</p>
+          <p class="email-disclaimer">No spam. Ever.</p>
         </div>
       </div>
     </div>
@@ -1016,30 +1012,6 @@
     </div>
   </section>
 
-  <!-- OUTCOMES -->
-  <section class="section-outcomes">
-    <img class="deco-veg" src="deco-tomato.png" alt=""
-      style="width:200px; top:-20px; right:-50px; transform:rotate(12deg);">
-    <div class="wrap">
-      <div class="outcomes-hero">
-        <p class="outcomes-headline"><span class="no-more">No more</span> DoorDash.</p>
-        <p class="outcomes-headline"><span class="no-more">No more</span> HelloFresh.</p>
-        <p class="outcomes-headline"><span class="no-more">No more</span> CookUnity.</p>
-        <p class="outcomes-exhale">Just the zen of creative self-sufficiency.</p>
-      </div>
-      <ul class="outcomes-checklist">
-        <li><span class="outcome-check"><svg viewBox="-4 -4 38 38"><path class="check-circle" d="M15 2.5 C22 2, 27.5 7, 27.5 14 C28 21, 23 27.5, 15 27.5 C7 28, 2 22, 2.5 15 C2 8, 7 2.5, 15 2.5"/><path class="check-mark" d="M5.5 16 L13 19 L29 2"/></svg></span> Host a dinner party without breaking a sweat</li>
-        <li><span class="outcome-check"><svg viewBox="-4 -4 38 38"><path class="check-circle" d="M14 2 C21.5 1.5, 28 7.5, 27.5 15 C27.5 22, 22 28, 14.5 27.5 C7.5 27.5, 2 22, 2.5 14.5 C2.5 7.5, 7 2.5, 14 2"/><path class="check-mark" d="M5 15.5 L12.5 19.5 L29.5 1.5"/></svg></span> Open the fridge and make something great</li>
-        <li><span class="outcome-check"><svg viewBox="-4 -4 38 38"><path class="check-circle" d="M15.5 2 C22.5 2.5, 28 8, 27.5 15.5 C27 22.5, 21.5 28, 14.5 27.5 C7 27, 2 21.5, 2.5 14.5 C3 7.5, 8.5 2, 15.5 2"/><path class="check-mark" d="M6 16.5 L13.5 20 L30 1"/></svg></span> Walk through any grocery store with a plan in your head</li>
-        <li><span class="outcome-check"><svg viewBox="-4 -4 38 38"><path class="check-circle" d="M14.5 2.5 C21 2, 27 7, 28 14.5 C28.5 22, 22.5 27.5, 15 27.5 C8 28, 2.5 22.5, 2.5 15 C2 8, 7.5 2.5, 14.5 2.5"/><path class="check-mark" d="M5 15 L12.5 19.5 L29 2"/></svg></span> Cook dinner faster than delivery arrives</li>
-        <li><span class="outcome-check"><svg viewBox="-4 -4 38 38"><path class="check-circle" d="M15 2 C22 1.5, 27.5 7.5, 28 15 C28 22.5, 22 28, 15 28 C7.5 27.5, 2 22, 2 15 C2.5 7.5, 8 2.5, 15 2"/><path class="check-mark" d="M5.5 15.5 L13 19.5 L29.5 1"/></svg></span> Taste something at a restaurant and recreate it at home</li>
-        <li><span class="outcome-check"><svg viewBox="-4 -4 38 38"><path class="check-circle" d="M15 2.5 C22.5 2, 28 7, 27.5 14.5 C27.5 22, 22 27.5, 14.5 28 C7.5 28, 2 22.5, 2.5 15.5 C2.5 8, 7.5 2.5, 15 2.5"/><path class="check-mark" d="M5 16 L13 19.5 L30 1.5"/></svg></span> Feed your people something you're proud of</li>
-      </ul>
-      <p class="outcomes-closing-headline">Take learning to cook off your plate.</p>
-      <p class="outcomes-closing">New connections, new confidence, new dinner parties. The simple habit that changes the trajectory of your life.</p>
-    </div>
-  </section>
-
   <!-- BENEFITS -->
   <section class="section bg-cream">
     <div class="wrap">
@@ -1050,7 +1022,7 @@
           <div class="benefit-n__num">01</div>
           <div>
             <h2 class="display display--md benefit-n__title">Save Time and Money</h2>
-            <p class="body-text" style="margin-top:0.6rem;">Increased home cooking saves $4,000+ a year. Once you know your kitchen, a real meal takes 20 minutes — no tracking, no waiting, no cold food at the door.</p>
+            <p class="body-text" style="margin-top:0.6rem;">Maybe finances are tight or you're trying to save up for something important to you. Studies have shown that the potential annual savings from increased home cooking can be upwards of $4,000+ a year for many individuals. You could buy a trained riding pony with that kinda spare cash!</p>
           </div>
           <div class="benefit-n__visual">
             <svg width="130" height="130" viewBox="0 0 130 130" fill="none">
@@ -1081,7 +1053,7 @@
           <div class="benefit-n__num">02</div>
           <div>
             <h2 class="display display--md benefit-n__title">Impress Your Community</h2>
-            <p class="body-text" style="margin-top:0.6rem;">A 2020 study in the Journal of Positive Psychology found that people who cook together report greater closeness and better relationships. Food is the glue. Being the person who can cook is a superpower.</p>
+            <p class="body-text" style="margin-top:0.6rem;">Let's face it, we all know being a great cook is sexy. Maybe you're looking for love or trying to relate to your cool friends or trying to take something off your spouse's plate. Cooking can serve as the glue that holds together your relationships. A 2020 study published in the Journal of Positive Psychology found that families who cooked and ate together more often reported greater feelings of closeness and better family functioning.</p>
           </div>
           <div class="benefit-n__visual">
             <svg width="130" height="130" viewBox="0 0 130 130" fill="none">
@@ -1118,7 +1090,7 @@
           <div class="benefit-n__num">03</div>
           <div>
             <h2 class="display display--md benefit-n__title">Eat Exactly What Your Body Needs</h2>
-            <p class="body-text" style="margin-top:0.6rem;">When you can cook anything, you stop settling. A 2015 University of Washington study found people who cooked at home 3x a week showed meaningful reductions in body fat and improved metabolic markers.</p>
+            <p class="body-text" style="margin-top:0.6rem;">Maybe you can't find options to cater your exact diet and feel like you have to settle often. Having the skills to efficiently cook a meal you want will unlock a greater sense of wellbeing and somatic connection. Research from a comprehensive study from the University of Washington in 2015 found that people who cooked at home 3 times per week showed meaningful reductions in body fat and improved insulin metrics compared to those who cooked less.</p>
           </div>
           <div class="benefit-n__visual">
             <svg width="130" height="130" viewBox="0 0 130 130" fill="none">
@@ -1210,6 +1182,30 @@
         </div>
       </div>
 
+    </div>
+  </section>
+
+  <!-- OUTCOMES -->
+  <section class="section-outcomes">
+    <img class="deco-veg" src="deco-tomato.png" alt=""
+      style="width:200px; top:-20px; right:-50px; transform:rotate(12deg);">
+    <div class="wrap">
+      <div class="outcomes-hero">
+        <p class="outcomes-headline"><span class="no-more">No more</span> DoorDash.</p>
+        <p class="outcomes-headline"><span class="no-more">No more</span> HelloFresh.</p>
+        <p class="outcomes-headline"><span class="no-more">No more</span> CookUnity.</p>
+        <p class="outcomes-exhale">Just the zen of creative self-sufficiency.</p>
+      </div>
+      <ul class="outcomes-checklist">
+        <li><span class="outcome-check"><svg viewBox="-4 -4 38 38"><path class="check-circle" d="M15 2.5 C22 2, 27.5 7, 27.5 14 C28 21, 23 27.5, 15 27.5 C7 28, 2 22, 2.5 15 C2 8, 7 2.5, 15 2.5"/><path class="check-mark" d="M5.5 16 L13 19 L29 2"/></svg></span> Host a dinner party without breaking a sweat</li>
+        <li><span class="outcome-check"><svg viewBox="-4 -4 38 38"><path class="check-circle" d="M14 2 C21.5 1.5, 28 7.5, 27.5 15 C27.5 22, 22 28, 14.5 27.5 C7.5 27.5, 2 22, 2.5 14.5 C2.5 7.5, 7 2.5, 14 2"/><path class="check-mark" d="M5 15.5 L12.5 19.5 L29.5 1.5"/></svg></span> Open the fridge and make something great</li>
+        <li><span class="outcome-check"><svg viewBox="-4 -4 38 38"><path class="check-circle" d="M15.5 2 C22.5 2.5, 28 8, 27.5 15.5 C27 22.5, 21.5 28, 14.5 27.5 C7 27, 2 21.5, 2.5 14.5 C3 7.5, 8.5 2, 15.5 2"/><path class="check-mark" d="M6 16.5 L13.5 20 L30 1"/></svg></span> Walk through any grocery store with a plan in your head</li>
+        <li><span class="outcome-check"><svg viewBox="-4 -4 38 38"><path class="check-circle" d="M14.5 2.5 C21 2, 27 7, 28 14.5 C28.5 22, 22.5 27.5, 15 27.5 C8 28, 2.5 22.5, 2.5 15 C2 8, 7.5 2.5, 14.5 2.5"/><path class="check-mark" d="M5 15 L12.5 19.5 L29 2"/></svg></span> Cook dinner faster than delivery arrives</li>
+        <li><span class="outcome-check"><svg viewBox="-4 -4 38 38"><path class="check-circle" d="M15 2 C22 1.5, 27.5 7.5, 28 15 C28 22.5, 22 28, 15 28 C7.5 27.5, 2 22, 2 15 C2.5 7.5, 8 2.5, 15 2"/><path class="check-mark" d="M5.5 15.5 L13 19.5 L29.5 1"/></svg></span> Taste something at a restaurant and recreate it at home</li>
+        <li><span class="outcome-check"><svg viewBox="-4 -4 38 38"><path class="check-circle" d="M15 2.5 C22.5 2, 28 7, 27.5 14.5 C27.5 22, 22 27.5, 14.5 28 C7.5 28, 2 22.5, 2.5 15.5 C2.5 8, 7.5 2.5, 15 2.5"/><path class="check-mark" d="M5 16 L13 19.5 L30 1.5"/></svg></span> Feed your people something you're proud of</li>
+      </ul>
+      <p class="outcomes-closing-headline">Take learning to cook off your plate.</p>
+      <p class="outcomes-closing">New connections, new confidence, new dinner parties. The simple habit that changes the trajectory of your life.</p>
     </div>
   </section>
 
@@ -1682,7 +1678,7 @@
     document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
 
     // ===== KIT FORM SUBMISSION =====
-    const KIT_ACTION = 'https://app.kit.com/forms/6328376/subscriptions';
+    const KIT_ACTION = 'https://app.kit.com/forms/9652111f06/subscriptions';
     document.querySelectorAll('.kit-form').forEach(form => {
       form.addEventListener('submit', async e => {
         e.preventDefault();
