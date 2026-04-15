@@ -18,6 +18,7 @@
       --sage-wash:   #EDF2EB;
       --cream:       #FAF7F2;
       --linen:       #F3EDE4;
+      --wood:        #B8956A;
       --wood-dark:   #8B6D47;
       --golden:      #D4A843;
       --terracotta:  #C47A5A;
@@ -116,7 +117,7 @@
     .btn-glow {
       position: absolute;
       inset: -2px;
-      background: linear-gradient(135deg, var(--golden), var(--wood-dark), var(--sage));
+      background: linear-gradient(135deg, var(--golden), var(--wood), var(--sage));
       border-radius: 50px;
       filter: blur(14px);
       opacity: 0.45;
@@ -294,6 +295,31 @@
       line-height: 1.25;
     }
 
+    /* ===== DISSATISFIED ===== */
+    .dissatisfied { background: var(--cream); padding: 7rem 0; }
+    .dissatisfied__intro { text-align: center; margin-bottom: 4rem; }
+    .dissatisfied__grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; }
+    .dissatisfied__card {
+      background: white;
+      border: 1px solid var(--sage-muted);
+      border-radius: 6px;
+      padding: 2rem 1.75rem;
+    }
+    .dissatisfied__card-title {
+      font-family: var(--font-display);
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--charcoal);
+      margin-bottom: 1.25rem;
+      line-height: 1.2;
+    }
+    .dissatisfied__items { list-style: none; display: flex; flex-direction: column; gap: 0.85rem; }
+    .dissatisfied__item { font-size: 0.95rem; font-weight: 300; color: var(--warm-gray); line-height: 1.5; display: flex; gap: 0.6rem; }
+    .dissatisfied__emoji { flex-shrink: 0; }
+    @media (max-width: 900px) {
+      .dissatisfied__grid { grid-template-columns: 1fr; }
+    }
+
     /* ===== ACCOUNTABILITY ===== */
     .accountability { padding: 7rem 0; background: var(--linen); }
     .accountability__inner {
@@ -462,15 +488,15 @@
     }
 
     /* ===== FOOTER ===== */
-    .footer { background: var(--charcoal); border-top: 1px solid rgba(255,255,255,0.06); padding: 1.25rem 0; }
-    .footer__inner { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 0.5rem; }
-    .footer__wordmark { font-family: var(--font-display); font-size: 1.1rem; color: var(--sage-light); }
-    .footer__wordmark .logo-food { font-weight: 700; }
-    .footer__wordmark .logo-jazz { font-weight: 400; }
-    .footer__links { display: flex; gap: 1.5rem; }
-    .footer__link { font-size: 0.8rem; color: var(--medium-gray); transition: color 0.15s; }
-    .footer__link:hover { color: var(--sage-light); }
-    .footer__cities { font-size: 0.6rem; color: var(--medium-gray); letter-spacing: 0.14em; text-transform: uppercase; }
+    footer { background: var(--linen); padding: 4rem 2rem; }
+    .footer-inner { max-width: 1100px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; }
+    .footer-logo { font-family: var(--font-display); font-size: 1.5rem; color: var(--sage); }
+    .footer-logo .logo-food { font-weight: 700; }
+    .footer-logo .logo-jazz { font-weight: 400; }
+    .footer-links { display: flex; gap: 2rem; list-style: none; }
+    .footer-links a { font-size: 0.85rem; color: var(--warm-gray); text-decoration: none; }
+    .footer-links a:hover { color: var(--sage); }
+    .footer-copy { font-size: 0.75rem; color: var(--medium-gray); width: 100%; margin-top: 1rem; padding-top: 1rem; border-top: 1px solid var(--sage-muted); }
 
     /* ===== RESPONSIVE ===== */
     @media (max-width: 900px) {
@@ -929,6 +955,43 @@
           </form>
           <p id="hero-success" class="kit-success" style="display:none;">You're on the list. Talk soon.</p>
           <p class="email-disclaimer">No spam. Ever.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DISSATISFIED -->
+  <section class="dissatisfied">
+    <div class="wrap">
+      <div class="dissatisfied__intro">
+        <span class="eyebrow eyebrow--sage" style="margin-bottom:1rem;">Sound familiar?</span>
+        <h2 class="display display--lg" style="margin-bottom:0;">Are you dissatisfied with your current food options?</h2>
+        <p class="body-text" style="max-width:520px; margin:1rem auto 0;">You are not alone.</p>
+      </div>
+      <div class="dissatisfied__grid">
+        <div class="dissatisfied__card">
+          <p class="dissatisfied__card-title">Meal Kits are...</p>
+          <ul class="dissatisfied__items">
+            <li class="dissatisfied__item"><span class="dissatisfied__emoji">📜</span> Too specific</li>
+            <li class="dissatisfied__item"><span class="dissatisfied__emoji">🗑️</span> Waste packaging</li>
+            <li class="dissatisfied__item"><span class="dissatisfied__emoji">😕</span> Don't really teach you much</li>
+          </ul>
+        </div>
+        <div class="dissatisfied__card">
+          <p class="dissatisfied__card-title">Restaurant Delivery is...</p>
+          <ul class="dissatisfied__items">
+            <li class="dissatisfied__item"><span class="dissatisfied__emoji">💰</span> Expensive</li>
+            <li class="dissatisfied__item"><span class="dissatisfied__emoji">👤</span> Impersonal</li>
+            <li class="dissatisfied__item"><span class="dissatisfied__emoji">🥶</span> Food is cold most of the time</li>
+          </ul>
+        </div>
+        <div class="dissatisfied__card">
+          <p class="dissatisfied__card-title">Home Cooking is...</p>
+          <ul class="dissatisfied__items">
+            <li class="dissatisfied__item"><span class="dissatisfied__emoji">😡</span> Overwhelming</li>
+            <li class="dissatisfied__item"><span class="dissatisfied__emoji">⌛</span> Time consuming</li>
+            <li class="dissatisfied__item"><span class="dissatisfied__emoji">🚨</span> Planning for recipes is stressful</li>
+          </ul>
         </div>
       </div>
     </div>
@@ -1471,16 +1534,16 @@
   </section>
 
   <!-- FOOTER -->
-  <footer class="footer">
-    <div class="wrap">
-      <div class="footer__inner">
-        <span class="footer__wordmark"><span class="logo-food">Food</span> <span class="logo-jazz">Jazz</span></span>
-        <div class="footer__links">
-          <a href="/coach.html" class="footer__link">1-on-1 Coaching</a>
-          <a href="mailto:akshay@foodjazz.club" class="footer__link">Contact</a>
-        </div>
-        <span class="footer__cities">San Francisco · Oakland · Berkeley</span>
-      </div>
+  <footer>
+    <div class="footer-inner">
+      <span class="footer-logo"><span class="logo-food">Food</span> <span class="logo-jazz">Jazz</span></span>
+      <ul class="footer-links">
+        <li><a href="/coach">1-on-1 Coaching</a></li>
+        <li><a href="mailto:akshay@foodjazz.club">akshay@foodjazz.club</a></li>
+        <li><a href="tel:+19252574291">(925) 257-4291</a></li>
+        <li><a href="https://www.linkedin.com/in/ajprabhu/" target="_blank" rel="noopener">LinkedIn</a></li>
+      </ul>
+      <p class="footer-copy">© 2026 Food Jazz · foodjazz.club</p>
     </div>
   </footer>
 
