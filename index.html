@@ -33,7 +33,7 @@
 
     /* ===== RESET ===== */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { font-size: 16px; -webkit-font-smoothing: antialiased; scroll-behavior: smooth; overflow-x: clip; }
+    html { font-size: 20px; -webkit-font-smoothing: antialiased; scroll-behavior: smooth; overflow-x: clip; }
     @media (prefers-reduced-motion: reduce) {
       *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; scroll-behavior: auto; }
     }
@@ -204,42 +204,11 @@
 
     /* ===== HERO ===== */
     .hero {
-      position: relative;
-      min-height: 90vh;
-      display: flex;
-      align-items: center;
-      overflow: hidden;
       background: var(--cream);
-      padding: 5rem 0;
-    }
-    /* Background media — anchored right */
-    .hero__bg {
-      position: absolute;
-      inset: 0;
-      width: 100%; height: 100%;
-      object-fit: cover;
-      object-position: right center;
-      z-index: 0;
-    }
-    /* Cream fade — left half solid, fades out by 55% */
-    .hero::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(
-        to right,
-        rgba(250,247,242,0.98) 0%,
-        rgba(250,247,242,0.97) 35%,
-        rgba(250,247,242,0.75) 50%,
-        rgba(250,247,242,0.15) 65%,
-        rgba(250,247,242,0) 100%
-      );
-      z-index: 1;
+      padding: 8rem 0 7rem;
     }
     .hero__text {
-      position: relative;
-      z-index: 2;
-      max-width: 48%;
+      max-width: 680px;
     }
     .hero__headline { margin-bottom: 0.2rem; }
     .hero__sub-headline {
@@ -251,8 +220,6 @@
       margin-bottom: 1.25rem;
     }
     .hero__body { margin-bottom: 2rem; }
-    /* Desktop: video. Mobile: image */
-    .hero__image-mobile { display: none; }
 
     /* ===== SECTION BACKGROUNDS ===== */
     .bg-cream  { background: var(--cream); }
@@ -500,18 +467,6 @@
 
     /* ===== RESPONSIVE ===== */
     @media (max-width: 900px) {
-      /* Hero: hide video, show static image as background */
-      .hero__bg { display: none; }
-      .hero__image-mobile {
-        display: block;
-        position: absolute;
-        inset: 0;
-        width: 100%; height: 100%;
-        object-fit: cover;
-        object-position: center right;
-        z-index: 0;
-      }
-
       /* Grids → single column */
       .problem__grid,
       .mindset__grid,
@@ -931,13 +886,6 @@
 
   <!-- HERO -->
   <section class="hero">
-
-    <!-- Desktop: video background -->
-    <video class="hero__bg" autoplay muted loop playsinline>
-      <source src="hero-loop.mp4" type="video/mp4">
-    </video>
-    <!-- Mobile: static image background -->
-    <img class="hero__image-mobile" src="hero.png" alt="">
 
     <div class="wrap">
       <div class="hero__text">
