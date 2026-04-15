@@ -596,11 +596,12 @@
     .mobile-nav li { border-top: 1px solid var(--sage-muted); }
     .mobile-nav a { display: block; padding: 0.9rem 0; font-size: 1rem; color: var(--warm-gray); }
     .mobile-nav__cta { color: var(--sage) !important; font-weight: 500; }
-    .mobile-nav__waitlist-btn { background: none; border: none; cursor: pointer; width: 100%; text-align: left; font-family: inherit; font-size: 1rem; padding: 0.9rem 0; }
 
     @media (max-width: 600px) {
       .nav__links { display: none; }
       .nav__hamburger { display: flex; }
+      /* Hide large decorative SVGs that bleed off-screen on mobile */
+      .hero-spiral, .hero-breath { display: none; }
       .cooks__grid { grid-template-columns: 1fr; }
       .section { padding: 3.5rem 0; }
       .email-form { flex-direction: column; }
@@ -714,24 +715,8 @@
       50% { opacity: 0.65; filter: blur(18px); }
     }
 
-    /* ===== MOBILE STICKY CTA ===== */
-    .sticky-cta {
-      display: none;
-      position: fixed; bottom: 0; left: 0; right: 0;
-      z-index: 200;
-      background: var(--cream);
-      border-top: 1px solid var(--sage-muted);
-      padding: 0.75rem 1.25rem;
-      box-shadow: 0 -4px 20px rgba(0,0,0,0.07);
-      transform: translateY(100%);
-      transition: transform 0.3s ease;
-    }
-    .sticky-cta.visible { transform: translateY(0); }
-    .sticky-cta .btn { width: 100%; text-align: center; font-size: 1rem; padding: 0.85rem; }
-    @media (max-width: 600px) {
-      .sticky-cta { display: block; }
-      body { padding-bottom: 72px; }
-    }
+    /* ===== SCROLL MARGIN (for anchor nav links) ===== */
+    [id] { scroll-margin-top: 5rem; }
 
     /* ===== BENEFITS NUMBERED ===== */
     .benefits-numbered { display: flex; flex-direction: column; margin-top: 2.5rem; }
@@ -888,7 +873,9 @@
       <div class="nav__inner">
         <a href="/" class="nav__wordmark"><span class="logo-food">Food</span> <span class="logo-jazz">Jazz</span></a>
         <div class="nav__links">
-          <a href="/coach.html" class="nav__link">1-on-1 Coaching</a>
+          <a href="#included" class="nav__link">What's Included</a>
+          <a href="#about" class="nav__link">About</a>
+          <a href="/coach" class="nav__link">1-on-1 Coaching</a>
           <a href="#waitlist" class="nav__cta nav__cta--scroll">Join Waitlist</a>
         </div>
         <button class="nav__hamburger" aria-label="Open menu" aria-expanded="false">
@@ -899,8 +886,10 @@
       </div>
     </div>
     <ul class="mobile-nav">
-      <li><a href="/coach.html">1-on-1 Coaching</a></li>
-      <li><button class="mobile-nav__cta mobile-nav__waitlist-btn" id="openWaitlistModal">Join Waitlist</button></li>
+      <li><a href="#included">What's Included</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="/coach">1-on-1 Coaching</a></li>
+      <li><a href="#waitlist" class="mobile-nav__cta">Join Waitlist</a></li>
     </ul>
   </nav>
 
@@ -1202,7 +1191,7 @@
   </section>
 
   <!-- ABOUT -->
-  <section class="section-about">
+  <section id="about" class="section-about">
     <div class="wrap">
 
       <div class="about-press-banner">
@@ -1288,7 +1277,7 @@
   </section>
 
   <!-- WHAT'S INCLUDED -->
-  <section class="section bg-wash">
+  <section id="included" class="section bg-wash">
     <div class="wrap">
       <h2 class="display display--lg" style="max-width:540px; margin-bottom:0.5rem;">What is in store</h2>
       <p class="body-text" style="max-width:560px;">Everything you need to build a lasting cooking habit — not just for 30 days, but for life.</p>
@@ -1549,11 +1538,6 @@
     </div>
   </footer>
 
-  <!-- MOBILE STICKY CTA -->
-  <div class="sticky-cta">
-    <a href="#waitlist" class="btn btn--sage">Join Waitlist</a>
-  </div>
-
   <!-- WAITLIST MODAL -->
   <div class="waitlist-modal" id="waitlistModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
     <div class="waitlist-modal__backdrop" id="modalBackdrop"></div>
@@ -1696,15 +1680,6 @@
         card.style.setProperty('--mouse-y', `${y}%`);
       });
     });
-
-    // ===== STICKY CTA =====
-    const heroWaitlist = document.querySelector('.hero #waitlist');
-    const stickyCta = document.querySelector('.sticky-cta');
-    if (heroWaitlist && stickyCta) {
-      new IntersectionObserver(entries => {
-        stickyCta.classList.toggle('visible', !entries[0].isIntersecting);
-      }).observe(heroWaitlist);
-    }
 
     // ===== HAMBURGER MENU =====
     const hamburger = document.querySelector('.nav__hamburger');
