@@ -51,14 +51,14 @@
     .display { font-family: var(--font-display); font-weight: 600; color: var(--charcoal); line-height: 1.05; letter-spacing: -0.01em; }
     .display--xl  { font-size: clamp(3.2rem, 8vw, 7rem); line-height: 1.0; }
     .display--lg  { font-size: clamp(2rem, 5vw, 3.2rem); line-height: 1.15; }
-    .display--md  { font-size: clamp(1.2rem, 2.5vw, 1.6rem); }
-    .display--sm  { font-size: 1.2rem; }
-    .eyebrow { font-size: 0.6rem; font-weight: 500; letter-spacing: 0.24em; text-transform: uppercase; color: var(--medium-gray); display: block; }
+    .display--md  { font-size: clamp(1.4rem, 2.5vw, 1.8rem); line-height: 1.2; }
+    .display--sm  { font-size: 1.15rem; line-height: 1.3; }
+    .eyebrow { font-size: 0.75rem; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; color: var(--medium-gray); display: block; }
     .eyebrow--sage  { color: var(--sage); }
     .eyebrow--light { color: rgba(255,255,255,0.5); }
     .body-text { font-size: 1rem; font-weight: 300; color: var(--warm-gray); line-height: 1.75; }
     .body-text + .body-text { margin-top: 1.1rem; }
-    .body-text--lg { font-size: 1.08rem; }
+    .body-text--lg { font-size: 1.15rem; line-height: 1.7; }
 
 
     /* ===== PILL ===== */
@@ -72,7 +72,7 @@
       margin-bottom: 1.5rem;
     }
     .pill__dot { width: 5px; height: 5px; border-radius: 50%; background: var(--sage); flex-shrink: 0; }
-    .pill__text { font-size: 0.6rem; font-weight: 500; color: var(--sage); letter-spacing: 0.16em; text-transform: uppercase; }
+    .pill__text { font-size: 0.75rem; font-weight: 500; color: var(--sage); letter-spacing: 0.16em; text-transform: uppercase; }
 
     /* ===== WAVE ===== */
     .wave { line-height: 0; overflow: hidden; }
@@ -286,7 +286,7 @@
       line-height: 1.2;
     }
     .dissatisfied__items { list-style: none; display: flex; flex-direction: column; gap: 0.85rem; }
-    .dissatisfied__item { font-size: 0.95rem; font-weight: 300; color: var(--warm-gray); line-height: 1.5; display: flex; gap: 0.6rem; }
+    .dissatisfied__item { font-size: 0.95rem; font-weight: 300; color: var(--warm-gray); line-height: 1.65; display: flex; gap: 0.6rem; }
     .dissatisfied__emoji { flex-shrink: 0; }
     @media (max-width: 900px) {
       .dissatisfied__grid { grid-template-columns: 1fr; }
@@ -326,8 +326,8 @@
     .cook__card { padding: 2rem 1.5rem; border-radius: 4px; position: relative; }
     .cook__card--plain { background: white; border: 1px solid var(--sage-muted); }
     .cook__card--highlight { background: var(--sage); border-color: transparent; }
-    .cook__tag { position: absolute; top: 1rem; right: 1rem; background: var(--golden); color: var(--charcoal); font-size: 0.65rem; font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase; padding: 0.18rem 0.5rem; border-radius: 2px; }
-    .cook__type { font-size: 0.6rem; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; margin-bottom: 0.5rem; }
+    .cook__tag { position: absolute; top: 1rem; right: 1rem; background: var(--golden); color: var(--charcoal); font-size: 0.72rem; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; padding: 0.18rem 0.5rem; border-radius: 2px; }
+    .cook__type { font-size: 0.75rem; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; margin-bottom: 0.5rem; }
     .cook__type--plain  { color: var(--medium-gray); }
     .cook__type--light  { color: rgba(255,255,255,0.65); }
     .cook__name { font-family: var(--font-display); font-size: 1.4rem; font-weight: 700; line-height: 1.1; margin-bottom: 0.6rem; }
@@ -382,7 +382,7 @@
     /* ===== AKSHAY ===== */
     .akshay__inner { display: grid; grid-template-columns: 200px 1fr; gap: 4rem; align-items: start; }
     .akshay__photo { width: 100%; aspect-ratio: 3/4; object-fit: cover; object-position: center 8%; border-radius: 4px; border: 1.5px solid var(--golden); }
-    .akshay__role { font-size: 0.62rem; font-weight: 500; color: var(--sage); letter-spacing: 0.22em; text-transform: uppercase; margin-bottom: 0.5rem; }
+    .akshay__role { font-size: 0.75rem; font-weight: 500; color: var(--sage); letter-spacing: 0.18em; text-transform: uppercase; margin-bottom: 0.5rem; }
     .akshay__name { margin-bottom: 0.25rem; }
     .akshay__sub { font-family: var(--font-display); font-size: 1.2rem; font-weight: 500; color: var(--sage); font-style: italic; margin-bottom: 1.25rem; }
     .akshay__mission { font-family: var(--font-display); font-size: 1.15rem; font-weight: 600; color: var(--sage); line-height: 1.3; margin-top: 1.5rem; padding-top: 1.5rem; border-top: 1px solid #e0d9cf; }
@@ -415,7 +415,7 @@
     .tenet__header { display: flex; align-items: baseline; gap: 0.75rem; margin-bottom: 0.5rem; }
     .tenet__num { font-family: var(--font-display); font-size: 1.5rem; font-weight: 700; color: var(--sage-muted); flex-shrink: 0; line-height: 1; }
     .tenet__title { font-family: var(--font-display); font-size: 1.15rem; font-weight: 600; color: var(--charcoal); line-height: 1.2; }
-    .tenet__desc { font-size: 0.85rem; font-weight: 300; color: var(--warm-gray); line-height: 1.6; padding-left: 2.25rem; }
+    .tenet__desc { font-size: 0.9rem; font-weight: 300; color: var(--warm-gray); line-height: 1.7; padding-left: 2.25rem; }
 
     /* ===== REFUND ===== */
     .refund { padding: 7rem 0; }
@@ -490,7 +490,7 @@
       .about-photo-wrap { margin: 0 auto; }
       .about-name { font-size: 2rem; }
       .section-about .label { text-align: center; }
-      .about-role { display: block; text-align: center; width: fit-content; margin: 0 auto 0.6rem; font-size: 0.58rem; padding: 0.2rem 0.6rem; }
+      .about-role { display: block; text-align: center; width: fit-content; margin: 0 auto 0.6rem; font-size: 0.72rem; padding: 0.2rem 0.6rem; }
       .section-about .about-top > div { text-align: center; }
       .about-bio--lead { font-size: 1.1rem; }
       .about-bottom { max-width: 100%; }
@@ -507,7 +507,7 @@
     .waitlist-modal__backdrop { position: absolute; inset: 0; background: rgba(46,46,44,0.6); backdrop-filter: blur(4px); }
     .waitlist-modal__box { position: relative; z-index: 1; background: var(--cream); border-radius: 12px; padding: 2.5rem 2rem; width: min(420px, calc(100vw - 3rem)); box-shadow: 0 24px 64px rgba(0,0,0,0.18); }
     .waitlist-modal__close { position: absolute; top: 1rem; right: 1rem; background: none; border: none; font-size: 1.1rem; color: var(--medium-gray); cursor: pointer; padding: 0.25rem 0.5rem; line-height: 1; }
-    .waitlist-modal__label { font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--sage); font-weight: 500; margin-bottom: 0.4rem; display: block; }
+    .waitlist-modal__label { font-size: 0.75rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--sage); font-weight: 500; margin-bottom: 0.4rem; display: block; }
     .waitlist-modal__title { font-family: var(--font-display); font-size: 2rem; color: var(--charcoal); margin-bottom: 0.4rem; }
     .waitlist-modal__body { font-size: 0.9rem; color: var(--warm-gray); margin-bottom: 1.5rem; line-height: 1.6; }
     .waitlist-modal__form { flex-direction: column; }
@@ -524,7 +524,7 @@
     .about-bio--lead { font-size: 1.25rem; font-weight: 400; color: var(--sage); line-height: 1.6; font-style: italic; }
     .about-bio strong { font-weight: 500; color: var(--charcoal); }
     .about-press-banner { margin-bottom: 2rem; overflow: clip; }
-    .about-press-label { font-size: 0.6rem; font-weight: 500; color: var(--medium-gray); letter-spacing: 0.25em; text-transform: uppercase; display: block; margin-bottom: 0.75rem; }
+    .about-press-label { font-size: 0.75rem; font-weight: 500; color: var(--medium-gray); letter-spacing: 0.2em; text-transform: uppercase; display: block; margin-bottom: 0.75rem; }
     .about-marquee-wrap {
       -webkit-mask-image: linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%);
       mask-image: linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%);
@@ -780,7 +780,7 @@
     .cook-icon { width: 40px; height: 40px; display: block; margin-bottom: 0.9rem; }
     .cook-icon--spiral { width: 52px; height: 52px; }
     .cook-tag { position: absolute; top: 1rem; right: 1rem; background: var(--golden); color: var(--charcoal); font-size: 0.65rem; font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase; padding: 0.18rem 0.5rem; border-radius: 2px; }
-    .cook-type { font-family: var(--font-display); font-size: 1.4rem; font-weight: 700; color: var(--charcoal); margin-bottom: 0.6rem; line-height: 1.1; }
+    .cook-type { font-family: var(--font-display); font-size: 1.5rem; font-weight: 700; color: var(--charcoal); margin-bottom: 0.6rem; line-height: 1.1; }
     .cook-type--light { color: white; }
     .cook-type--circled { position: relative; display: inline-block; }
     .intuitive-circle {
