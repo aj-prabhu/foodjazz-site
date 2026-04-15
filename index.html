@@ -51,7 +51,7 @@
     @media (prefers-reduced-motion: reduce) {
       *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; scroll-behavior: auto; }
     }
-    body { font-family: var(--font-body); font-weight: 300; color: var(--warm-gray); background: var(--cream); line-height: 1.7; }
+    body { font-family: var(--font-body); font-weight: 300; color: var(--warm-gray); background: var(--cream); line-height: 1.7; overflow-x: hidden; }
     img { display: block; max-width: 100%; }
     a { color: inherit; text-decoration: none; }
     strong { font-weight: 500; color: var(--charcoal); }
@@ -338,25 +338,7 @@
       .accountability__zoom { transform: none; }
     }
 
-    /* ===== THREE COOKS ===== */
-    .cooks__grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2.5rem; margin-top: 3rem; }
-    .cook__card { padding: 2rem 1.5rem; border-radius: 4px; position: relative; }
-    .cook__card--plain { background: white; border: 1px solid var(--sage-muted); }
-    .cook__card--highlight { background: var(--sage); border-color: transparent; }
-    .cook__tag { position: absolute; top: 1rem; right: 1rem; background: var(--golden); color: var(--charcoal); font-size: 0.72rem; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; padding: 0.18rem 0.5rem; border-radius: 2px; }
-    .cook__type { font-size: 0.75rem; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; margin-bottom: 0.5rem; }
-    .cook__type--plain  { color: var(--medium-gray); }
-    .cook__type--light  { color: rgba(255,255,255,0.65); }
-    .cook__name { font-family: var(--font-display); font-size: 1.4rem; font-weight: 700; line-height: 1.1; margin-bottom: 0.6rem; }
-    .cook__name--plain  { color: var(--charcoal); }
-    .cook__name--light  { color: white; }
-    .cook__desc { font-size: 0.95rem; font-weight: 300; line-height: 1.75; }
-    .cook__desc--plain  { color: var(--warm-gray); }
-    .cook__desc--light  { color: rgba(255,255,255,0.85); }
-    .cook__icon { width: 40px; height: 40px; display: block; margin-bottom: 0.9rem; }
-
     /* ===== INTUITIVE CIRCLE ===== */
-    .cook__name--circled { position: relative; display: inline-block; }
     .intuitive-circle {
       position: absolute;
       top: 50%; left: 50%;
@@ -612,6 +594,7 @@
       /* Hero: center text on mobile */
       .hero { min-height: 65vh; padding: 4rem 0; }
       .hero__text { max-width: 100%; text-align: center; }
+      .hero__form { justify-content: center; }
       #waitlist { text-align: center; }
       .hero__body { font-size: 1rem; }
     }
@@ -780,7 +763,7 @@
     .cook-icon { width: 40px; height: 40px; display: block; margin-bottom: 0.9rem; }
     .cook-icon--spiral { width: 52px; height: 52px; }
     .cook-tag { position: absolute; top: 1rem; right: 1rem; background: var(--golden); color: var(--charcoal); font-size: 0.65rem; font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase; padding: 0.18rem 0.5rem; border-radius: 2px; }
-    .cook-type { font-family: var(--font-display); font-size: 1.5rem; font-weight: 700; color: var(--charcoal); margin-bottom: 0.6rem; line-height: 1.1; }
+    .cook-type { font-family: var(--font-display); font-size: 1.4rem; font-weight: 700; color: var(--charcoal); margin-bottom: 0.6rem; line-height: 1.1; }
     .cook-type--light { color: white; }
     .cook-type--circled { position: relative; display: inline-block; }
     .intuitive-circle {
@@ -935,7 +918,7 @@
             </div>
           </form>
           <p id="hero-success" class="kit-success" style="display:none;">You're on the list. Talk soon.</p>
-          <p class="email-disclaimer" style="margin-top:0.75rem;">No spam. Ever.</p>
+          <p class="email-disclaimer" style="margin-top:0.75rem;">I will never spam or sell your info. Ever.</p>
         </div>
       </div>
     </div>
