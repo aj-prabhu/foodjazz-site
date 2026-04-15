@@ -4,7 +4,18 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Food Jazz — Become an Effortless Cook</title>
-  <meta name="description" content="Food Jazz is an online cohort-based course designed to reduce kitchen anxiety by making you an intuitive cook.">
+  <meta name="description" content="Food Jazz is a 30-day cooking intensive that teaches you to cook intuitively — no recipes, just flow. Join the waitlist for the next cohort.">
+  <meta name="format-detection" content="telephone=no">
+  <meta name="theme-color" content="#FAF7F2">
+  <meta property="og:title" content="Food Jazz — Become an Effortless Cook">
+  <meta property="og:description" content="A 30-day cooking intensive designed to make you an intuitive, effortless cook — forever.">
+  <meta property="og:image" content="https://foodjazz.club/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:url" content="https://foodjazz.club">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://foodjazz.club/og-image.png">
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -29,6 +40,8 @@
       --font-body:   'DM Sans', sans-serif;
       --max-w:       1100px;
       --read-w:      680px;
+      --sage-deep:   #6a7a60;
+      --linen-border:#e0d9cf;
     }
 
     /* ===== RESET ===== */
@@ -129,7 +142,7 @@
       text-decoration: none;
       transition: background 0.2s ease, transform 0.15s ease;
     }
-    .btn-primary:hover { background: #6a7a60; transform: translateY(-2px); }
+    .btn-primary:hover { background: var(--sage-deep); transform: translateY(-2px); }
     .btn-primary:active { transform: translateY(0); }
     .btn-arrow {
       display: inline-block;
@@ -150,8 +163,11 @@
       background: white; color: var(--charcoal); outline: none;
       transition: border-color 0.15s;
     }
-    .email-form input[type="email"]:focus { border-color: var(--sage); }
+    .email-form input[type="email"]:focus { border-color: var(--sage); outline: none; box-shadow: 0 0 0 3px rgba(122, 140, 110, 0.18); }
     .email-form input[type="email"]::placeholder { color: var(--medium-gray); }
+    /* Focus ring for all kit-form and modal email inputs */
+    .kit-form input[type="email"]:focus,
+    .waitlist-modal__form input[type="email"]:focus { outline: none; border-color: var(--sage); box-shadow: 0 0 0 3px rgba(122, 140, 110, 0.18); }
     .email-form--dark input[type="email"] {
       background: rgba(255,255,255,0.08);
       border-color: rgba(255,255,255,0.2);
@@ -385,14 +401,14 @@
     .akshay__role { font-size: 0.75rem; font-weight: 500; color: var(--sage); letter-spacing: 0.18em; text-transform: uppercase; margin-bottom: 0.5rem; }
     .akshay__name { margin-bottom: 0.25rem; }
     .akshay__sub { font-family: var(--font-display); font-size: 1.2rem; font-weight: 500; color: var(--sage); font-style: italic; margin-bottom: 1.25rem; }
-    .akshay__mission { font-family: var(--font-display); font-size: 1.15rem; font-weight: 600; color: var(--sage); line-height: 1.3; margin-top: 1.5rem; padding-top: 1.5rem; border-top: 1px solid #e0d9cf; }
+    .akshay__mission { font-family: var(--font-display); font-size: 1.15rem; font-weight: 600; color: var(--sage); line-height: 1.3; margin-top: 1.5rem; padding-top: 1.5rem; border-top: 1px solid var(--linen-border); }
 
     /* ===== INCLUDED ===== */
     .included__list { display: flex; flex-direction: column; gap: 1rem; margin-top: 2rem; }
     .included__item { display: flex; align-items: flex-start; gap: 0.85rem; padding: 0.9rem 1.1rem; background: white; border: 1px solid var(--sage-muted); border-radius: 3px; }
     .included__check { flex-shrink: 0; margin-top: 2px; }
     .included__text { font-size: 0.9rem; font-weight: 300; color: var(--warm-gray); line-height: 1.5; }
-    .included__item--bonus { background: var(--linen); border-color: #e0d9cf; }
+    .included__item--bonus { background: var(--linen); border-color: var(--linen-border); }
     .included__item--guarantee { background: rgba(212,168,67,0.06); border-color: var(--golden); }
     .included__form-wrap { margin-top: 3rem; padding-top: 3rem; border-top: 1px solid var(--sage-muted); }
     .included__form-label {
@@ -421,7 +437,7 @@
     .refund { padding: 7rem 0; }
     .refund__card {
       background: var(--linen);
-      border: 1px solid #e0d9cf;
+      border: 1px solid var(--linen-border);
       border-radius: 6px;
       padding: 3rem;
       max-width: 780px;
@@ -591,11 +607,9 @@
       .refund__card { padding: 2rem 1.5rem; }
       .wrap { padding: 0 1.25rem; }
       .wrap--narrow { padding: 0 1.25rem; }
-      /* Hero: center text, scale image, stronger overlay */
+      /* Hero: center text on mobile */
       .hero { min-height: 65vh; padding: 4rem 0; }
       .hero__text { max-width: 100%; text-align: center; }
-      .hero__image-mobile { object-position: center center; transform: scale(0.85); transform-origin: center center; }
-      .hero::after { background: rgba(250,247,242,0.85) !important; }
       #waitlist { text-align: center; }
       .hero__body { display: none; }
     }
@@ -917,7 +931,7 @@
         <p class="body-text body-text--lg hero__body">Food Jazz is a 30-day cooking intensive designed to make you an intuitive, effortless cook — forever. You have good taste. Food Jazz will help you unlock it so you can translate what's in your mind to your plate, without a recipe.</p>
         <div id="waitlist">
           <form class="hero__form kit-form" data-success="hero-success">
-            <input type="email" name="email_address" placeholder="Email address" required
+            <input type="email" name="email_address" placeholder="Email address" aria-label="Email address" required
               style="flex:1; min-width:200px; font-family:var(--font-body); font-size:0.875rem; font-weight:300; padding:0.8rem 1rem; border:1px solid var(--sage-muted); border-radius:3px; background:white; color:var(--charcoal); outline:none;">
             <div class="btn-wrap">
               <div class="btn-glow"></div>
@@ -1070,7 +1084,7 @@
           <p class="body-text" style="margin-top:1.1rem;">Food Jazz solves that problem. You learn alongside hundreds of other cooks all with the same goal as you: to start cooking consistently. This creates accountability unlike anything you've ever experienced.</p>
         </div>
         <div>
-          <img class="accountability__zoom" src="zoom-cohort.png" alt="Food Jazz cohort cooking together on Zoom">
+          <img class="accountability__zoom" src="zoom-cohort.png" alt="Food Jazz cohort cooking together on Zoom" loading="lazy">
         </div>
       </div>
     </div>
@@ -1195,14 +1209,14 @@
         <div class="about-marquee-wrap">
           <div class="marquee-track">
             <div class="marquee-set">
-              <img class="marquee-img" src="press-npr.png" alt="NPR">
-              <img class="marquee-img" src="press-nyt.svg" alt="New York Times">
-              <img class="marquee-img" src="press-eater.png" alt="Eater">
-              <img class="marquee-img" src="press-hulu.png" alt="Hulu">
-              <img class="marquee-img" src="press-abc7.png" alt="ABC7">
-              <img class="marquee-img" src="press-kqed.png" alt="KQED">
-              <img class="marquee-img" src="press-cbs.svg" alt="CBS">
-              <img class="marquee-img" src="press-civileats.svg" alt="Civil Eats">
+              <img class="marquee-img" src="press-npr.png" alt="NPR" loading="lazy">
+              <img class="marquee-img" src="press-nyt.svg" alt="New York Times" loading="lazy">
+              <img class="marquee-img" src="press-eater.png" alt="Eater" loading="lazy">
+              <img class="marquee-img" src="press-hulu.png" alt="Hulu" loading="lazy">
+              <img class="marquee-img" src="press-abc7.png" alt="ABC7" loading="lazy">
+              <img class="marquee-img" src="press-kqed.png" alt="KQED" loading="lazy">
+              <img class="marquee-img" src="press-cbs.svg" alt="CBS" loading="lazy">
+              <img class="marquee-img" src="press-civileats.svg" alt="Civil Eats" loading="lazy">
             </div>
             <div class="marquee-set" aria-hidden="true">
               <img class="marquee-img" src="press-npr.png" alt="">
@@ -1222,7 +1236,7 @@
 
       <div class="about-top">
         <div class="about-photo-wrap">
-          <img src="akshay.jpg" alt="Akshay Prabhu">
+          <img src="akshay.jpg" alt="Akshay Prabhu" loading="lazy">
         </div>
         <div>
           <span class="about-role">Startup Founder · Neuroscientist · Cooking Coach</span>
@@ -1238,7 +1252,7 @@
 
       <div class="about-bottom">
         <div class="about-david">
-          <img src="photo-david-chang.jpeg" alt="Akshay with David Chang">
+          <img src="photo-david-chang.jpeg" alt="Akshay with David Chang" loading="lazy">
           <div class="about-david-caption">
             Hanging out with David Chang talking about the future of home cooking — <em>The Next Thing You Eat</em>, Ep. 3, Hulu
           </div>
@@ -1250,7 +1264,7 @@
 
   <!-- OUTCOMES -->
   <section class="section-outcomes">
-    <img class="deco-veg" src="deco-tomato.png" alt=""
+    <img class="deco-veg" src="deco-tomato.png" alt="" loading="lazy"
       style="width:200px; top:-20px; right:-50px; transform:rotate(12deg);">
     <div class="wrap">
       <div class="outcomes-hero">
@@ -1330,7 +1344,7 @@
         <p class="included__form-label">Join the waitlist for our next cohort</p>
         <p class="included__form-sub">And be the first to know when we open enrollment.</p>
         <form class="hero__form kit-form" data-success="mid-success">
-          <input type="email" name="email_address" placeholder="Email address" required
+          <input type="email" name="email_address" placeholder="Email address" aria-label="Email address" required
             style="flex:1; min-width:200px; font-family:var(--font-body); font-size:0.875rem; font-weight:300; padding:0.8rem 1rem; border:1px solid var(--sage-muted); border-radius:3px; background:white; color:var(--charcoal); outline:none;">
           <div class="btn-wrap">
             <div class="btn-glow"></div>
@@ -1503,7 +1517,7 @@
       <h2 class="display display--lg" style="color:var(--cream); margin-bottom:0.75rem;">30 days to a new perspective on life.</h2>
       <p class="body-text" style="color:rgba(250,247,242,0.65); max-width:500px; margin:0 auto 2rem;">Be the first to know when we open enrollment. No spam, no pressure — just an email when the next cohort is ready.</p>
       <form class="hero__form kit-form" style="justify-content:center;" data-success="cta-success">
-        <input type="email" name="email_address" placeholder="Email address" required
+        <input type="email" name="email_address" placeholder="Email address" aria-label="Email address" required
           style="flex:1; max-width:280px; min-width:180px; font-family:var(--font-body); font-size:0.875rem; font-weight:300; padding:0.8rem 1rem; border:1px solid rgba(255,255,255,0.2); border-radius:3px; background:rgba(255,255,255,0.08); color:white; outline:none;">
         <div class="btn-wrap">
           <div class="btn-glow"></div>
@@ -1712,24 +1726,45 @@
     const openBtn = document.getElementById('openWaitlistModal');
     const closeBtn = document.getElementById('closeWaitlistModal');
     const backdrop = document.getElementById('modalBackdrop');
+    let modalTrigger = null;
 
-    function openModal() {
+    function openModal(triggerEl) {
+      modalTrigger = triggerEl || null;
       waitlistModal.classList.add('open');
       document.body.style.overflow = 'hidden';
-      // close hamburger if open
       hamburger.classList.remove('open');
       mobileNav.classList.remove('open');
       hamburger.setAttribute('aria-expanded', 'false');
+      // move focus into modal
+      const firstInput = waitlistModal.querySelector('input[type="email"]');
+      if (firstInput) firstInput.focus();
     }
     function closeModal() {
       waitlistModal.classList.remove('open');
       document.body.style.overflow = '';
+      if (modalTrigger) modalTrigger.focus();
     }
 
-    if (openBtn) openBtn.addEventListener('click', openModal);
+    // Trap Tab inside modal
+    waitlistModal.addEventListener('keydown', e => {
+      if (e.key !== 'Tab') return;
+      const focusable = Array.from(waitlistModal.querySelectorAll(
+        'input, button, a[href], select, textarea, [tabindex]:not([tabindex="-1"])'
+      )).filter(el => !el.disabled);
+      if (!focusable.length) return;
+      const first = focusable[0];
+      const last = focusable[focusable.length - 1];
+      if (e.shiftKey) {
+        if (document.activeElement === first) { e.preventDefault(); last.focus(); }
+      } else {
+        if (document.activeElement === last) { e.preventDefault(); first.focus(); }
+      }
+    });
+
+    if (openBtn) openBtn.addEventListener('click', () => openModal(openBtn));
     if (closeBtn) closeBtn.addEventListener('click', closeModal);
     if (backdrop) backdrop.addEventListener('click', closeModal);
-    document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+    document.addEventListener('keydown', e => { if (e.key === 'Escape' && waitlistModal.classList.contains('open')) closeModal(); });
 
     // ===== KIT FORM SUBMISSION =====
     const KIT_ACTION = 'https://app.kit.com/forms/9652111f06/subscriptions';

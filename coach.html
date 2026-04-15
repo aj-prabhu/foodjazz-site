@@ -37,6 +37,8 @@
       --medium-gray: #9B9892;
       --font-display: 'Caveat', cursive;
       --font-body: 'DM Sans', sans-serif;
+      --sage-deep:   #6a7a60;
+      --linen-border:#e0d9cf;
     }
 
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -162,7 +164,7 @@
       text-decoration: none;
       transition: background 0.2s ease, transform 0.15s ease;
     }
-    .btn-primary:hover { background: #6a7a60; transform: translateY(-2px); }
+    .btn-primary:hover { background: var(--sage-deep); transform: translateY(-2px); }
     .btn-primary:active { transform: translateY(0); }
     .btn-arrow {
       display: inline-block;
@@ -715,8 +717,8 @@
     /* ===== LOGO MARQUEE ===== */
     .section-press {
       background: var(--linen);
-      border-top: 1px solid #e0d9cf;
-      border-bottom: 1px solid #e0d9cf;
+      border-top: 1px solid var(--linen-border);
+      border-bottom: 1px solid var(--linen-border);
       padding: 2rem 0;
       overflow: clip;
     }
@@ -1101,14 +1103,14 @@
         <div class="about-marquee-wrap">
           <div class="marquee-track">
             <div class="marquee-set">
-              <img class="marquee-img" src="press-npr.png" alt="NPR">
-              <img class="marquee-img" src="press-nyt.svg" alt="New York Times">
-              <img class="marquee-img" src="press-eater.png" alt="Eater">
-              <img class="marquee-img" src="press-hulu.png" alt="Hulu">
-              <img class="marquee-img" src="press-abc7.png" alt="ABC7">
-              <img class="marquee-img" src="press-kqed.png" alt="KQED">
-              <img class="marquee-img" src="press-cbs.svg" alt="CBS">
-              <img class="marquee-img" src="press-civileats.svg" alt="Civil Eats">
+              <img class="marquee-img" src="press-npr.png" alt="NPR" loading="lazy">
+              <img class="marquee-img" src="press-nyt.svg" alt="New York Times" loading="lazy">
+              <img class="marquee-img" src="press-eater.png" alt="Eater" loading="lazy">
+              <img class="marquee-img" src="press-hulu.png" alt="Hulu" loading="lazy">
+              <img class="marquee-img" src="press-abc7.png" alt="ABC7" loading="lazy">
+              <img class="marquee-img" src="press-kqed.png" alt="KQED" loading="lazy">
+              <img class="marquee-img" src="press-cbs.svg" alt="CBS" loading="lazy">
+              <img class="marquee-img" src="press-civileats.svg" alt="Civil Eats" loading="lazy">
             </div>
             <div class="marquee-set" aria-hidden="true">
               <img class="marquee-img" src="press-npr.png" alt="">
@@ -1128,7 +1130,7 @@
 
       <div class="about-top">
         <div class="about-photo-wrap">
-          <img src="akshay.jpg" alt="Akshay Prabhu">
+          <img src="akshay.jpg" alt="Akshay Prabhu" loading="lazy">
         </div>
         <div>
           <span class="about-role">Startup Founder · Neuroscientist · Cooking Coach</span>
@@ -1144,7 +1146,7 @@
 
       <div class="about-bottom">
         <div class="about-david">
-          <img src="photo-david-chang.jpeg" alt="Akshay Prabhu with David Chang">
+          <img src="photo-david-chang.jpeg" alt="Akshay Prabhu with David Chang" loading="lazy">
           <div class="about-david-caption">
             Hanging out with David Chang talking about the future of home cooking — <em>The Next Thing You Eat</em>, Ep. 3, Hulu
           </div>
@@ -1156,7 +1158,7 @@
 
   <!-- HOW IT WORKS -->
   <section id="method" class="section-method" style="position:relative; overflow:clip;">
-    <img class="deco-veg" src="deco-cucumber.png" alt=""
+    <img class="deco-veg" src="deco-cucumber.png" alt="" loading="lazy"
       style="width:190px; bottom:-20px; right:-45px; transform:rotate(-15deg);">
     <div class="container">
       <h2 style="text-align:center; margin-bottom:0.75rem;">How it works.</h2>
@@ -1377,7 +1379,7 @@
 
   <!-- OUTCOMES -->
   <section class="section-outcomes" style="position:relative; overflow:clip;">
-    <img class="deco-veg" src="deco-tomato.png" alt=""
+    <img class="deco-veg" src="deco-tomato.png" alt="" loading="lazy"
       style="width:200px; top:-20px; right:-50px; transform:rotate(12deg);">
     <div class="container">
       <div class="outcomes-hero">
