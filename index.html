@@ -48,11 +48,11 @@
     .section { padding: 7.5rem 0; }
 
     /* ===== TYPE ===== */
-    .display { font-family: var(--font-display); font-weight: 700; color: var(--charcoal); line-height: 1.05; letter-spacing: -0.015em; }
-    .display--xl  { font-size: clamp(3rem, 6.5vw, 5.2rem); }
-    .display--lg  { font-size: clamp(2rem, 4vw, 3.2rem); }
-    .display--md  { font-size: clamp(1.5rem, 2.5vw, 2rem); }
-    .display--sm  { font-size: 1.3rem; }
+    .display { font-family: var(--font-display); font-weight: 600; color: var(--charcoal); line-height: 1.05; letter-spacing: -0.01em; }
+    .display--xl  { font-size: clamp(3.2rem, 8vw, 7rem); line-height: 1.0; }
+    .display--lg  { font-size: clamp(2rem, 5vw, 3.2rem); line-height: 1.15; }
+    .display--md  { font-size: clamp(1.2rem, 2.5vw, 1.6rem); }
+    .display--sm  { font-size: 1.2rem; }
     .eyebrow { font-size: 0.6rem; font-weight: 500; letter-spacing: 0.24em; text-transform: uppercase; color: var(--medium-gray); display: block; }
     .eyebrow--sage  { color: var(--sage); }
     .eyebrow--light { color: rgba(255,255,255,0.5); }
@@ -60,18 +60,6 @@
     .body-text + .body-text { margin-top: 1.1rem; }
     .body-text--lg { font-size: 1.08rem; }
 
-    /* ===== RULE LABEL ===== */
-    .rule-label {
-      display: block;
-      font-size: 0.6rem;
-      font-weight: 500;
-      letter-spacing: 0.24em;
-      text-transform: uppercase;
-      color: var(--medium-gray);
-      padding-bottom: 0.7rem;
-      border-bottom: 1px solid var(--sage-muted);
-      margin-bottom: 2rem;
-    }
 
     /* ===== PILL ===== */
     .pill {
@@ -1076,7 +1064,6 @@
     <div class="wrap">
       <div class="accountability__inner">
         <div>
-          <span class="rule-label">Why you've fallen off before</span>
           <h2 class="accountability__headline">The accountability you've been missing.</h2>
           <p class="body-text">Maybe you've tried cooking before. But, time and time again, you fall off. Something comes up. What starts off exciting becomes too difficult. And before you know it, you're back to eating instant ramen and DoorDash.</p>
           <p class="body-text" style="margin-top:1.1rem;">But this is because there was no accountability. You tried to start cooking on your own, almost doomed from the beginning.</p>
@@ -1092,7 +1079,6 @@
   <!-- BENEFITS -->
   <section class="section bg-cream">
     <div class="wrap">
-      <span class="rule-label">Why it changes everything</span>
       <div class="benefits-numbered">
 
         <div class="benefit-n">
@@ -1289,7 +1275,6 @@
   <!-- WHAT'S INCLUDED -->
   <section class="section bg-wash">
     <div class="wrap">
-      <span class="rule-label">What's included</span>
       <h2 class="display display--lg" style="max-width:540px; margin-bottom:0.5rem;">What is in store</h2>
       <p class="body-text" style="max-width:560px;">Everything you need to build a lasting cooking habit — not just for 30 days, but for life.</p>
 
@@ -1344,9 +1329,19 @@
       <div class="included__form-wrap" id="waitlist-form">
         <p class="included__form-label">Join the waitlist for our next cohort</p>
         <p class="included__form-sub">And be the first to know when we open enrollment.</p>
-        <form class="email-form kit-form" data-success="mid-success">
-          <input type="email" name="email_address" placeholder="Email address" required>
-          <button type="submit" class="btn btn--sage">Join Waitlist</button>
+        <form class="hero__form kit-form" data-success="mid-success">
+          <input type="email" name="email_address" placeholder="Email address" required
+            style="flex:1; min-width:200px; font-family:var(--font-body); font-size:0.875rem; font-weight:300; padding:0.8rem 1rem; border:1px solid var(--sage-muted); border-radius:3px; background:white; color:var(--charcoal); outline:none;">
+          <div class="btn-wrap">
+            <div class="btn-glow"></div>
+            <button type="submit" class="btn-primary">
+              Join Waitlist
+              <svg class="btn-arrow" viewBox="0 0 10 10" fill="none" stroke="white" stroke-width="2">
+                <path d="M0 5h7" class="btn-arrow-line"/>
+                <path d="M4 1l4 4-4 4"/>
+              </svg>
+            </button>
+          </div>
         </form>
         <p id="mid-success" class="kit-success" style="display:none;">You're on the list. Talk soon.</p>
         <p class="email-disclaimer">I will never spam or sell your info. Ever.</p>
@@ -1357,7 +1352,6 @@
   <!-- SEVEN TENETS -->
   <section class="section bg-cream">
     <div class="wrap">
-      <span class="rule-label">The Philosophy</span>
       <h2 class="display display--lg" style="margin-bottom:0.5rem;">Seven Tenets of Food Jazz</h2>
       <p class="body-text" style="max-width:560px; margin-bottom:0;">These aren't rules. They're the mental shifts that make everything else click.</p>
       <div class="tenets__grid">
@@ -1489,7 +1483,6 @@
   <!-- ONE LAST THING -->
   <section class="one-last bg-cream">
     <div class="one-last__inner">
-      <span class="rule-label" style="text-align:center;">One last thing</span>
       <h2 class="display display--lg one-last__headline">One last thing...</h2>
       <p class="body-text">If you're down here, you might be thinking — is this really worth it? And sure, you could go and stitch together all of the glorious free content across the vast internet. And eventually you will learn to cook and begin to understand the fundamentals.</p>
       <p class="body-text" style="margin-top:1.1rem;">But I'm guessing that if you're on this page, and you've read this far, you've tried something like this before. And the results... well... they're not what you've been hoping for.</p>
