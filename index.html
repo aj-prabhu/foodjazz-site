@@ -204,12 +204,29 @@
 
     /* ===== HERO ===== */
     .hero {
+      position: relative;
+      overflow: clip;
       background: var(--cream);
       padding: 8rem 0 7rem;
     }
     .hero__text {
+      position: relative;
+      z-index: 2;
       max-width: 680px;
     }
+    .hero-spiral {
+      position: absolute;
+      top: -80px; right: -100px;
+      opacity: 0.055;
+      pointer-events: none;
+    }
+    .hero-breath {
+      position: absolute;
+      bottom: -60px; left: -60px;
+      opacity: 0.045;
+      pointer-events: none;
+    }
+    .hero__form { display: flex; align-items: center; gap: 0.75rem; flex-wrap: wrap; }
     .hero__headline { margin-bottom: 0.2rem; }
     .hero__sub-headline {
       font-family: var(--font-display);
@@ -887,6 +904,20 @@
   <!-- HERO -->
   <section class="hero">
 
+    <!-- Spiral — top right -->
+    <svg class="hero-spiral" width="520" height="520" viewBox="0 0 270 270" fill="none" aria-hidden="true">
+      <path d="M135 135 C135 112, 157 90, 180 90 C224 90, 246 124, 228 157 C210 192, 164 204, 132 178 C90 148, 100 98, 133 74 C173 44, 234 70, 242 120 C250 172, 208 220, 152 226 C92 232, 42 186, 52 120 C62 52, 126 12, 198 28"
+        stroke="#2E2E2C" stroke-width="1.2" stroke-linecap="round" fill="none"/>
+    </svg>
+
+    <!-- Breath circles — bottom left -->
+    <svg class="hero-breath" width="340" height="340" viewBox="0 0 200 200" fill="none" aria-hidden="true">
+      <circle cx="100" cy="100" r="30" stroke="#2E2E2C" stroke-width="1"/>
+      <circle cx="100" cy="100" r="52" stroke="#2E2E2C" stroke-width="0.9"/>
+      <circle cx="100" cy="100" r="74" stroke="#2E2E2C" stroke-width="0.8"/>
+      <circle cx="100" cy="100" r="96" stroke="#2E2E2C" stroke-width="0.7"/>
+    </svg>
+
     <div class="wrap">
       <div class="hero__text">
         <div class="pill">
@@ -897,12 +928,22 @@
         <p class="hero__sub-headline">in just 30 days</p>
         <p class="body-text body-text--lg hero__body">Food Jazz is a 30-day cooking intensive designed to make you an intuitive, effortless cook — forever. You have good taste. Food Jazz will help you unlock it so you can translate what's in your mind to your plate, without a recipe.</p>
         <div id="waitlist">
-          <form class="email-form kit-form" data-success="hero-success">
-            <input type="email" name="email_address" placeholder="Email address" required>
-            <button type="submit" class="btn btn--sage">Join Waitlist</button>
+          <form class="hero__form kit-form" data-success="hero-success">
+            <input type="email" name="email_address" placeholder="Email address" required
+              style="flex:1; min-width:200px; font-family:var(--font-body); font-size:0.875rem; font-weight:300; padding:0.8rem 1rem; border:1px solid var(--sage-muted); border-radius:3px; background:white; color:var(--charcoal); outline:none;">
+            <div class="btn-wrap">
+              <div class="btn-glow"></div>
+              <button type="submit" class="btn-primary">
+                Join Waitlist
+                <svg class="btn-arrow" viewBox="0 0 10 10" fill="none" stroke="white" stroke-width="2">
+                  <path d="M0 5h7" class="btn-arrow-line"/>
+                  <path d="M4 1l4 4-4 4"/>
+                </svg>
+              </button>
+            </div>
           </form>
           <p id="hero-success" class="kit-success" style="display:none;">You're on the list. Talk soon.</p>
-          <p class="email-disclaimer">No spam. Ever.</p>
+          <p class="email-disclaimer" style="margin-top:0.75rem;">No spam. Ever.</p>
         </div>
       </div>
     </div>
@@ -1468,16 +1509,21 @@
       </div>
       <h2 class="display display--lg" style="color:var(--cream); margin-bottom:0.75rem;">30 days to a new perspective on life.</h2>
       <p class="body-text" style="color:rgba(250,247,242,0.65); max-width:500px; margin:0 auto 2rem;">Be the first to know when we open enrollment. No spam, no pressure — just an email when the next cohort is ready.</p>
-      <div class="btn-wrap" style="display:flex; justify-content:center;">
-        <div class="btn-glow"></div>
-        <a href="#waitlist-form" class="btn-primary">
-          Join Waitlist
-          <svg class="btn-arrow" viewBox="0 0 10 10" fill="none" stroke="white" stroke-width="2">
-            <path d="M0 5h7" class="btn-arrow-line"/>
-            <path d="M4 1l4 4-4 4"/>
-          </svg>
-        </a>
-      </div>
+      <form class="hero__form kit-form" style="justify-content:center;" data-success="cta-success">
+        <input type="email" name="email_address" placeholder="Email address" required
+          style="flex:1; max-width:280px; min-width:180px; font-family:var(--font-body); font-size:0.875rem; font-weight:300; padding:0.8rem 1rem; border:1px solid rgba(255,255,255,0.2); border-radius:3px; background:rgba(255,255,255,0.08); color:white; outline:none;">
+        <div class="btn-wrap">
+          <div class="btn-glow"></div>
+          <button type="submit" class="btn-primary">
+            Join Waitlist
+            <svg class="btn-arrow" viewBox="0 0 10 10" fill="none" stroke="white" stroke-width="2">
+              <path d="M0 5h7" class="btn-arrow-line"/>
+              <path d="M4 1l4 4-4 4"/>
+            </svg>
+          </button>
+        </div>
+      </form>
+      <p id="cta-success" class="kit-success" style="display:none; color:var(--sage-light); margin-top:1rem;">You're on the list. Talk soon.</p>
     </div>
   </section>
 
