@@ -488,7 +488,7 @@
     /* Press banner — full width above bio */
     .about-press-banner {
       margin-bottom: 2rem;
-      overflow: clip;
+      overflow: hidden;
     }
     .about-press-banner .about-press-label {
       display: block;
@@ -759,7 +759,7 @@
       filter: grayscale(100%) invert(1) brightness(0.4);
     }
     .about-marquee-wrap {
-      overflow: clip;
+      overflow: hidden;
       margin-bottom: 1.5rem;
       -webkit-mask-image: linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%);
       mask-image: linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%);
@@ -870,7 +870,7 @@
       .section-about .about-top > div { text-align: center; }
       .about-bio--lead { font-size: 1.1rem; }
       .about-bottom { max-width: 100%; }
-      .about-david img { height: 260px; }
+      .about-david img { height: auto; max-height: 320px; object-position: center 20%; }
       .about-press-banner { margin-bottom: 1.5rem; }
 
       /* How It Works */

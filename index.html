@@ -493,7 +493,7 @@
       .section-about .about-top > div { text-align: center; }
       .about-bio--lead { font-size: 1.1rem; }
       .about-bottom { max-width: 100%; }
-      .about-david img { height: 260px; }
+      .about-david img { height: auto; max-height: 320px; object-position: center 20%; }
       .about-press-banner { margin-bottom: 1.5rem; }
     }
 
@@ -522,12 +522,12 @@
     .about-bio + .about-bio { margin-top: 1rem; }
     .about-bio--lead { font-size: 1.25rem; font-weight: 400; color: var(--sage); line-height: 1.6; font-style: italic; }
     .about-bio strong { font-weight: 500; color: var(--charcoal); }
-    .about-press-banner { margin-bottom: 2rem; overflow: clip; }
+    .about-press-banner { margin-bottom: 2rem; overflow: hidden; }
     .about-press-label { font-size: 0.75rem; font-weight: 500; color: var(--medium-gray); letter-spacing: 0.2em; text-transform: uppercase; display: block; margin-bottom: 0.75rem; }
     .about-marquee-wrap {
       -webkit-mask-image: linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%);
       mask-image: linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%);
-      overflow: clip; margin-bottom: 1.5rem;
+      overflow: hidden; margin-bottom: 1.5rem;
     }
     .marquee-track { display: flex; width: max-content; animation: marquee 50s linear infinite; }
     @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
@@ -834,6 +834,7 @@
       .section-problem p + p { margin-top: 1.75rem; }
       .cooks-grid { grid-template-columns: 1fr; gap: 1.5rem; }
       .cook-card { padding: 1.75rem 1.25rem; }
+      .cook-type { font-size: 1.4rem; font-weight: 700; }
       .section-cooks { padding: 6rem 0; }
       .section-outcomes { padding: 7rem 0; }
       .outcomes-hero { margin-bottom: 5rem; }
