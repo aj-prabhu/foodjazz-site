@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Commitment Contract — Food Jazz</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300;1,9..40,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="print-base.css">
+  <style>
+    .page {
+      padding: 0.4in 0.45in 0.7in;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .contract-frame {
+      flex: 1;
+      border: 1.5px solid var(--sage);
+      border-radius: 4px;
+      padding: 0.45in 0.55in 0.5in;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      box-shadow: inset 0 0 0 4px var(--cream), inset 0 0 0 4.75px var(--sage-muted);
+    }
+
+    .contract-eyebrow {
+      text-align: center;
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.36em;
+      text-transform: uppercase;
+      color: var(--sage);
+      margin-bottom: 0.5rem;
+    }
+
+    .contract-title {
+      font-family: var(--font-display);
+      font-size: 3.4rem;
+      font-weight: 700;
+      color: var(--charcoal);
+      line-height: 0.95;
+      text-align: center;
+      letter-spacing: -0.005em;
+      margin-bottom: 0.4rem;
+    }
+
+    .contract-subtitle {
+      text-align: center;
+      font-size: 0.9rem;
+      font-style: italic;
+      color: var(--medium-gray);
+      max-width: 4.7in;
+      margin: 0 auto;
+      line-height: 1.55;
+    }
+
+    .ornament-rule {
+      text-align: center;
+      margin: 0.75rem 0 0.6rem;
+      color: var(--sage-muted);
+      letter-spacing: 0.6em;
+      font-size: 0.75rem;
+    }
+
+    .contract-preamble {
+      font-family: var(--font-display);
+      font-size: 1.45rem;
+      font-weight: 500;
+      color: var(--charcoal);
+      line-height: 1.45;
+      text-align: center;
+      margin-bottom: 0.55rem;
+    }
+
+    .contract-preamble .fill {
+      border-bottom: 1.5px solid var(--charcoal);
+      display: inline-block;
+      min-width: 1.8in;
+      height: 1.5rem;
+      margin: 0 0.1rem;
+      vertical-align: bottom;
+    }
+
+    .clauses {
+      list-style: none;
+      counter-reset: clause;
+      padding: 0;
+      margin: 0.3rem 0 0.4rem;
+    }
+
+    .clause {
+      counter-increment: clause;
+      display: grid;
+      grid-template-columns: 40px 1fr;
+      gap: 0.55rem;
+      padding: 0.5rem 0;
+      border-bottom: 1px dotted var(--sage-muted);
+      font-size: 0.93rem;
+      line-height: 1.58;
+      color: var(--warm-gray);
+    }
+
+    .clause:last-child { border-bottom: none; padding-bottom: 0.3rem; }
+
+    .clause::before {
+      content: counter(clause) ".";
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 1.7rem;
+      color: var(--sage);
+      line-height: 1.05;
+    }
+
+    .clause strong {
+      font-weight: 500;
+      color: var(--charcoal);
+    }
+
+    .reward-blank {
+      border-bottom: 1.5px solid var(--charcoal);
+      display: block;
+      width: 100%;
+      height: 2rem;
+      margin-top: 0.4rem;
+    }
+
+    .reward-hint {
+      font-size: 0.78rem;
+      color: var(--medium-gray);
+      letter-spacing: 0.02em;
+      margin-top: 0.28rem;
+      font-style: italic;
+      line-height: 1.45;
+    }
+
+    .signed-line {
+      font-family: var(--font-display);
+      font-size: 1.4rem;
+      font-weight: 500;
+      color: var(--sage);
+      text-align: center;
+      margin: 0.7rem 0 0.4rem;
+    }
+
+    .sig-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.4rem;
+      align-items: end;
+      margin-top: 0.1rem;
+    }
+
+    .sig-col .sig-line {
+      border-bottom: 2px solid var(--charcoal);
+      height: 2.6rem;
+    }
+
+    .sig-col .sig-name {
+      text-align: center;
+      font-size: 0.84rem;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      color: var(--charcoal);
+      margin-top: 0.25rem;
+    }
+
+    .sig-col .sig-role {
+      text-align: center;
+      font-size: 0.66rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--medium-gray);
+      margin-top: 0.08rem;
+    }
+
+    .signed-on {
+      text-align: center;
+      margin-top: 0.7rem;
+      font-size: 0.94rem;
+      color: var(--warm-gray);
+      font-style: italic;
+    }
+
+    .signed-on .fill {
+      border-bottom: 1.5px solid var(--charcoal);
+      display: inline-block;
+      min-width: 1.1in;
+      height: 1.2rem;
+      margin: 0 0.1rem;
+      vertical-align: bottom;
+      font-style: normal;
+    }
+
+    .seal-area {
+      margin-top: auto;
+      padding-top: 0.5rem;
+      display: flex;
+      justify-content: flex-end;
+      align-items: flex-end;
+    }
+
+    .seal {
+      width: 1.3in;
+      height: 1.3in;
+      transform: rotate(-7deg);
+      opacity: 0.88;
+      flex-shrink: 0;
+    }
+
+  </style>
+</head>
+<body>
+
+  <div class="page">
+    <div class="doc-header">
+      <div class="doc-wordmark"><span class="wm-food">food</span> <span class="wm-jazz">jazz</span></div>
+      <div class="doc-label">Commitment Contract</div>
+    </div>
+
+    <div class="contract-frame">
+
+      <div class="contract-eyebrow">— The Thirty-Day Practice —</div>
+      <h1 class="contract-title">A Promise to the Kitchen.</h1>
+      <p class="contract-subtitle">
+        This is not a legal document. No court will enforce it, no clause is binding. It carries only the weight of having been signed, which, as it happens, is most of the weight there is.
+      </p>
+
+      <div class="ornament-rule">· · ·</div>
+
+      <p class="contract-preamble">
+        I, <span class="fill"></span>, hereby commit to the following for the next thirty days.
+      </p>
+
+      <ol class="clauses">
+        <li class="clause">
+          <div><strong>Cook every day.</strong> Even when I'm tired and even when it's something small. Keeping the rhythm going matters more than making anything impressive.</div>
+        </li>
+        <li class="clause">
+          <div><strong>Eat the bad ones.</strong> When a meal doesn't work, I'll figure out what went wrong and try again. Bad food is part of the process, not a sign to stop.</div>
+        </li>
+        <li class="clause">
+          <div><strong>Try things I'd normally skip.</strong> Unfamiliar ingredients, techniques I've avoided, dishes I've been told are too hard. This is one of the few times I'll get to be a beginner on purpose.</div>
+        </li>
+        <li class="clause">
+          <div><strong>Be honest.</strong> If something tastes bad, I'll say so. If I miss a day, I'll be upfront about it. If I'm confused, I'll ask instead of guessing.</div>
+        </li>
+        <li class="clause">
+          <div>
+            <strong>Reward myself when it's done.</strong> Something specific I'll actually look forward to:
+            <div class="reward-blank"></div>
+            <div class="reward-hint">(a long massage, dinner at the place I've been saving, that knife I've been eyeing — or whatever else.)</div>
+          </div>
+        </li>
+      </ol>
+
+      <div class="signed-line">Signed in good faith and hunger for change,</div>
+
+      <div class="sig-row">
+        <div class="sig-col">
+          <div class="sig-line"></div>
+          <div class="sig-name">The Cook</div>
+          <div class="sig-role">Client &middot; Signatory</div>
+        </div>
+        <div class="sig-col">
+          <div class="sig-line"></div>
+          <div class="sig-name">Akshay Prabhu</div>
+          <div class="sig-role">Coach &middot; Witness</div>
+        </div>
+      </div>
+
+      <div class="signed-on">
+        Signed this <span class="fill"></span> day of <span class="fill"></span>, two thousand and twenty-six.
+      </div>
+
+      <!-- SEAL -->
+      <div class="seal-area">
+      <svg class="seal" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <defs>
+          <path id="seal-top" d="M 28 100 A 72 72 0 0 1 172 100" fill="none"/>
+          <path id="seal-bot" d="M 28 100 A 72 72 0 0 0 172 100" fill="none"/>
+        </defs>
+        <circle cx="100" cy="100" r="92" fill="none" stroke="#7A8C6E" stroke-width="1.6"/>
+        <circle cx="100" cy="100" r="86" fill="none" stroke="#7A8C6E" stroke-width="0.6"/>
+        <circle cx="100" cy="100" r="58" fill="none" stroke="#7A8C6E" stroke-width="0.6"/>
+        <text font-family="DM Sans" font-size="12" font-weight="500" letter-spacing="3" fill="#7A8C6E">
+          <textPath href="#seal-top" startOffset="50%" text-anchor="middle">FOOD JAZZ · COMMITMENT</textPath>
+        </text>
+        <text font-family="DM Sans" font-size="11" font-weight="500" letter-spacing="6" fill="#7A8C6E">
+          <textPath href="#seal-bot" startOffset="50%" text-anchor="middle">EST. MMXXVI</textPath>
+        </text>
+        <!-- separator dots between top and bottom text -->
+        <circle cx="28" cy="100" r="1.8" fill="#7A8C6E"/>
+        <circle cx="172" cy="100" r="1.8" fill="#7A8C6E"/>
+        <!-- spiral motif (same as coach.html / welcome packet), centered and scaled -->
+        <g transform="translate(100,100) scale(0.42) translate(-146, -122)">
+          <path d="M135 135 C135 112, 157 90, 180 90 C224 90, 246 124, 228 157 C210 192, 164 204, 132 178 C90 148, 100 98, 133 74 C173 44, 234 70, 242 120 C250 172, 208 220, 152 226 C92 232, 42 186, 52 120 C62 52, 126 12, 198 28"
+            stroke="#7A8C6E" stroke-width="6" stroke-linecap="round" fill="none"/>
+        </g>
+      </svg>
+      </div>
+
+    </div>
+
+    <div class="doc-footer">
+      <div class="doc-footer-text">Food Jazz &middot; Bay Area</div>
+      <div class="doc-footer-url">foodjazz.club</div>
+    </div>
+  </div>
+
+</body>
+</html>
