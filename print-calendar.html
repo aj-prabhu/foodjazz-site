@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>30 Days of Cooking — Food Jazz</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300;1,9..40,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="print-base.css">
+  <style>
+    :root {
+      --w1-bg:   #E8EFE5;
+      --w1-text: #3d5c34;
+      --w1-edge: oklch(0.84 0.05 135);
+
+      --w2-bg:   #FAF0E8;
+      --w2-text: #8C4820;
+      --w2-edge: oklch(0.86 0.05 55);
+
+      --w3-bg:   #F1EBF7;
+      --w3-text: #5C3D70;
+      --w3-edge: oklch(0.86 0.045 305);
+
+      --w4-bg:   #FBF5E2;
+      --w4-text: #7A5A0A;
+      --w4-edge: oklch(0.86 0.07 95);
+
+      --wa-bg:   #2E2E2C;
+      --wa-text: #FAF7F2;
+      --wa-accent: #A8B89D;
+    }
+
+    /* ===== LANDSCAPE PAGE OVERRIDE ===== */
+    @page {
+      size: letter landscape;
+      margin: 0;
+    }
+    .page {
+      width: 11in;
+      min-height: 8.5in;
+      max-height: 8.5in;
+      padding: 0.4in 0.5in 0.45in;
+    }
+
+    /* ===== TITLE BLOCK (compact) ===== */
+    .cal-head {
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      align-items: baseline;
+      margin-bottom: 0.45rem;
+    }
+    .cal-mark {
+      font-family: var(--font-display);
+      font-size: 1.3rem;
+      color: var(--sage);
+      line-height: 1;
+      justify-self: start;
+    }
+    .cal-mark .wm-food { font-weight: 700; }
+    .cal-mark .wm-jazz { font-weight: 400; }
+    .cal-title {
+      font-family: var(--font-display);
+      font-size: 2.1rem;
+      font-weight: 700;
+      color: var(--charcoal);
+      line-height: 1;
+      letter-spacing: -0.005em;
+      text-align: center;
+    }
+
+    /* ===== HABIT-TRACKER GRID ===== */
+    .cal-grid {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      gap: 6px;
+    }
+    .cal-day {
+      border: 1.5px solid var(--sage-muted);
+      border-radius: 5px;
+      padding: 0.34rem 0.45rem 0.36rem;
+      min-height: 1.18in;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      background: white;
+    }
+    .cal-day-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 0.5rem;
+    }
+    .cal-day-date {
+      border-bottom: 1.5px solid var(--charcoal);
+      flex: 1;
+      height: 1.15rem;
+      display: block;
+    }
+    .cal-day-check {
+      width: 18px;
+      height: 18px;
+      border: 1.8px solid var(--sage);
+      border-radius: 4px;
+      flex-shrink: 0;
+      display: block;
+      margin-top: 1px;
+    }
+    .cal-day-num {
+      font-family: var(--font-display);
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--sage);
+      line-height: 1;
+    }
+
+    /* ===== IMPORTANT DATES ===== */
+    .cal-dates {
+      margin-top: 0.45rem;
+      border-top: 1px solid var(--sage-muted);
+      padding-top: 0.35rem;
+    }
+    .cal-dates-head {
+      display: flex;
+      align-items: baseline;
+      gap: 0.5rem;
+      margin-bottom: 0.3rem;
+    }
+    .cal-dates-title {
+      font-family: var(--font-display);
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--charcoal);
+      line-height: 1;
+    }
+    .cal-dates-sub {
+      font-size: 0.7rem;
+      color: var(--medium-gray);
+      letter-spacing: 0.04em;
+    }
+
+    .cal-dates-row {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      gap: 0.45rem;
+    }
+
+    .date-cell {
+      border: 1.5px solid var(--sage-muted);
+      border-radius: 5px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      background: white;
+    }
+    .date-cell-head {
+      padding: 0.28rem 0.5rem 0.32rem;
+      border-bottom: 1px solid var(--sage-muted);
+      background: var(--sage-wash);
+      color: var(--sage-deep);
+    }
+    .date-cell-label {
+      font-size: 0.56rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      font-weight: 500;
+      line-height: 1.2;
+      opacity: 0.85;
+    }
+    .date-cell-theme {
+      font-family: var(--font-display);
+      font-size: 1rem;
+      font-weight: 700;
+      line-height: 1.05;
+      margin-top: 0.04rem;
+    }
+    .date-cell-write {
+      padding: 0.26rem 0.5rem 0.3rem;
+      flex: 1;
+      display: flex;
+      align-items: flex-end;
+    }
+    .date-cell-blank {
+      border-bottom: 2px solid var(--charcoal);
+      height: 1.1rem;
+      width: 100%;
+    }
+
+    /* Week-themed session cells */
+    .date-cell.w1 { border-color: var(--w1-edge); }
+    .date-cell.w1 .date-cell-head { background: var(--w1-bg); color: var(--w1-text); border-bottom-color: var(--w1-edge); }
+    .date-cell.w2 { border-color: var(--w2-edge); }
+    .date-cell.w2 .date-cell-head { background: var(--w2-bg); color: var(--w2-text); border-bottom-color: var(--w2-edge); }
+    .date-cell.w3 { border-color: var(--w3-edge); }
+    .date-cell.w3 .date-cell-head { background: var(--w3-bg); color: var(--w3-text); border-bottom-color: var(--w3-edge); }
+    .date-cell.w4 { border-color: var(--w4-edge); }
+    .date-cell.w4 .date-cell-head { background: var(--w4-bg); color: var(--w4-text); border-bottom-color: var(--w4-edge); }
+
+    /* Grocery — neutral linen */
+    .date-cell.is-grocery { border-color: oklch(0.85 0.03 70); }
+    .date-cell.is-grocery .date-cell-head { background: var(--linen); color: var(--wood-dark); border-bottom-color: oklch(0.85 0.03 70); }
+
+    /* Dinner party — dark "after" treatment */
+    .date-cell.is-after { border-color: var(--wa-bg); }
+    .date-cell.is-after .date-cell-head { background: var(--wa-bg); color: var(--wa-text); border-bottom-color: var(--wa-bg); }
+    .date-cell.is-after .date-cell-label { color: var(--wa-accent); opacity: 1; }
+    .date-cell.is-after .date-cell-theme { color: var(--wa-text); }
+
+    /* ===== TAGLINE ===== */
+    .cal-foot {
+      margin-top: 0.4rem;
+      text-align: center;
+    }
+    .cal-foot-tag {
+      font-family: var(--font-display);
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: var(--sage);
+      line-height: 1;
+    }
+    .cal-foot-sub {
+      font-size: 0.6rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--medium-gray);
+      margin-top: 0.2rem;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="page">
+
+    <div class="cal-head">
+      <div class="cal-mark"><span class="wm-food">food</span> <span class="wm-jazz">jazz</span></div>
+      <h1 class="cal-title">Cook Every Day</h1>
+      <span></span>
+    </div>
+
+    <div class="cal-grid">
+      <div class="cal-day"><div class="cal-day-top"><span class="cal-day-date"></span><span class="cal-day-check"></span></div><span class="cal-day-num">1</span></div>
+      <div class="cal-day"><div class="cal-day-top"><span class="cal-day-date"></span><span class="cal-day-check"></span></div><span class="cal-day-num">2</span></div>
+      <div class="cal-day"><div class="cal-day-top"><span class="cal-day-date"></span><span class="cal-day-check"></span></div><span class="cal-day-num">3</span></div>
+      <div class="cal-day"><div class="cal-day-top"><span class="cal-day-date"></span><span class="cal-day-check"></span></div><span class="cal-day-num">4</span></div>
+      <div class="cal-day"><div class="cal-day-top"><span class="cal-day-date"></span><span class="cal-day-check"></span></div><span class="cal-day-num">5</span></div>
+      <div class="cal-day"><div class="cal-day-top"><span class="cal-day-date"></span><span class="cal-day-check"></span></div><span class="cal-day-num">6</span></div>
+
+      <div class="cal-day"><div class="cal-day-top"><span class="cal-day-date"></span><span class="cal-day-check"></span></div><span class="cal-day-num">7</span></div>
+      <div class="cal-day"><div class="cal-day-top"><span class="cal-day-date"></span><span class="cal-day-check"></span></div><span class="cal-day-num">8</span></div>
+      <div class="cal-day"><div class="cal-day-top"><span class="cal-day-date"></span><span class="cal-day-check"></span></div><span class="cal-day-num">9</span></div>
+      <div class="cal-day"><div class="cal-day-top"><span class="cal-day-date"></span><span class="cal-day-check"></span></div><span class="cal-day-num">10</span></div>
+      <div class="cal-day"><div class="cal-day-top"><span class="cal-day-date"></span><span class="cal-day-check"></span></div><span class="cal-day-num">11</span></div>
+      <div class="cal-day"><div class="cal-day-top"><span class="cal-day-date"></span><span class="cal-day-check"></span></div><span class="cal-day-num">12</span></div>
+
+      <div class="cal-day"><div class="cal-day-top"><span class="cal-day-date"></span><span class="cal-day-check"></span></div><span class="cal-day-num">13</span></div>
+      <div class="cal-day"><div class="cal-day-top"><span class="cal-day-date"></span><span class="cal-day-check"></span></div><span class="cal-day-num">14</span></div>
+      <div class="cal-day"><div class="cal-day-top"><span class="cal-day-date"></span><span class="cal-day-check"></span></div><span class="cal-day-num">15</span></div>
+      <div class="cal-day"><div class="cal-day-top"><span class="cal-day-date"></span><span class="cal-day-check"></span></div><span class="cal-day-num">16</span></div>
+      <div class="cal-day"><div class="cal-day-top"><span class="cal-day-date"></span><span class="cal-day-check"></span></div><span class="cal-day-num">17</span></div>
+      <div class="cal-day"><div class="cal-day-top"><span class="cal-day-date"></span><span class="cal-day-check"></span></div><span class="cal-day-num">18</span></div>
+
+      <div class="cal-day"><div class="cal-day-top"><span class="cal-day-date"></span><span class="cal-day-check"></span></div><span class="cal-day-num">19</span></div>
+      <div class="cal-day"><div class="cal-day-top"><span class="cal-day-date"></span><span class="cal-day-check"></span></div><span class="cal-day-num">20</span></div>
+      <div class="cal-day"><div class="cal-day-top"><span class="cal-day-date"></span><span class="cal-day-check"></span></div><span class="cal-day-num">21</span></div>
+      <div class="cal-day"><div class="cal-day-top"><span class="cal-day-date"></span><span class="cal-day-check"></span></div><span class="cal-day-num">22</span></div>
+      <div class="cal-day"><div class="cal-day-top"><span class="cal-day-date"></span><span class="cal-day-check"></span></div><span class="cal-day-num">23</span></div>
+      <div class="cal-day"><div class="cal-day-top"><span class="cal-day-date"></span><span class="cal-day-check"></span></div><span class="cal-day-num">24</span></div>
+
+      <div class="cal-day"><div class="cal-day-top"><span class="cal-day-date"></span><span class="cal-day-check"></span></div><span class="cal-day-num">25</span></div>
+      <div class="cal-day"><div class="cal-day-top"><span class="cal-day-date"></span><span class="cal-day-check"></span></div><span class="cal-day-num">26</span></div>
+      <div class="cal-day"><div class="cal-day-top"><span class="cal-day-date"></span><span class="cal-day-check"></span></div><span class="cal-day-num">27</span></div>
+      <div class="cal-day"><div class="cal-day-top"><span class="cal-day-date"></span><span class="cal-day-check"></span></div><span class="cal-day-num">28</span></div>
+      <div class="cal-day"><div class="cal-day-top"><span class="cal-day-date"></span><span class="cal-day-check"></span></div><span class="cal-day-num">29</span></div>
+      <div class="cal-day"><div class="cal-day-top"><span class="cal-day-date"></span><span class="cal-day-check"></span></div><span class="cal-day-num">30</span></div>
+    </div>
+
+    <div class="cal-dates">
+      <div class="cal-dates-head">
+        <div class="cal-dates-title">Important dates</div>
+        <div class="cal-dates-sub">— we'll write these in together.</div>
+      </div>
+
+      <div class="cal-dates-row">
+        <div class="date-cell w1">
+          <div class="date-cell-head">
+            <div class="date-cell-label">Session 1</div>
+            <div class="date-cell-theme">Mixtures</div>
+          </div>
+          <div class="date-cell-write"><div class="date-cell-blank"></div></div>
+        </div>
+        <div class="date-cell w2">
+          <div class="date-cell-head">
+            <div class="date-cell-label">Session 2</div>
+            <div class="date-cell-theme">High heat</div>
+          </div>
+          <div class="date-cell-write"><div class="date-cell-blank"></div></div>
+        </div>
+        <div class="date-cell w3">
+          <div class="date-cell-head">
+            <div class="date-cell-label">Session 3</div>
+            <div class="date-cell-theme">Low &amp; slow</div>
+          </div>
+          <div class="date-cell-write"><div class="date-cell-blank"></div></div>
+        </div>
+        <div class="date-cell w4">
+          <div class="date-cell-head">
+            <div class="date-cell-label">Session 4</div>
+            <div class="date-cell-theme">Composition</div>
+          </div>
+          <div class="date-cell-write"><div class="date-cell-blank"></div></div>
+        </div>
+        <div class="date-cell is-grocery">
+          <div class="date-cell-head">
+            <div class="date-cell-label">Grocery trip</div>
+            <div class="date-cell-theme">Shopping together</div>
+          </div>
+          <div class="date-cell-write"><div class="date-cell-blank"></div></div>
+        </div>
+        <div class="date-cell is-after">
+          <div class="date-cell-head">
+            <div class="date-cell-label">Dinner party</div>
+            <div class="date-cell-theme">After the month</div>
+          </div>
+          <div class="date-cell-write"><div class="date-cell-blank"></div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="cal-foot">
+      <div class="cal-foot-tag">Don't break the streak.</div>
+      <div class="cal-foot-sub">Cross off every day. Note what you cooked.</div>
+    </div>
+
+  </div>
+
+</body>
+</html>
