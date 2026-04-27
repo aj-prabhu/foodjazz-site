@@ -1,0 +1,802 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Welcome — Food Jazz</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300;1,9..40,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="print-base.css">
+  <style>
+    :root {
+      --w0-bg:   #EEECE8;
+      --w0-text: #4a4845;
+
+      --w1-bg:   #E8EFE5;
+      --w1-text: #3d5c34;
+
+      --w2-bg:   #FAF0E8;
+      --w2-text: #8C4820;
+
+      --w3-bg:   #F1EBF7;
+      --w3-text: #5C3D70;
+
+      --w4-bg:   #FBF5E2;
+      --w4-text: #7A5A0A;
+
+      --wa-bg:   #2E2E2C;
+      --wa-text: #FAF7F2;
+      --wa-accent: #A8B89D;
+    }
+
+    /* ===================== SHARED ===================== */
+    .page-eyebrow {
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--sage);
+      margin-bottom: 0.18in;
+    }
+
+    .page-title {
+      font-family: var(--font-display);
+      font-weight: 700;
+      color: var(--charcoal);
+      font-size: 3.2rem;
+      line-height: 0.95;
+      margin: 0 0 0.06in;
+    }
+
+    .page-title .accent {
+      font-weight: 400;
+      color: var(--sage);
+    }
+
+    .page-deck {
+      font-size: 0.95rem;
+      color: var(--medium-gray);
+      max-width: 5.4in;
+      line-height: 1.55;
+      margin-bottom: 0.28in;
+    }
+
+    .body-copy {
+      font-size: 0.97rem;
+      line-height: 1.68;
+      color: var(--warm-gray);
+    }
+
+    .body-copy + .body-copy {
+      margin-top: 0.5rem;
+    }
+
+    .pull-quote {
+      font-family: var(--font-display);
+      font-size: 1.7rem;
+      font-weight: 600;
+      color: var(--sage);
+      line-height: 1.18;
+      text-align: center;
+      padding: 0.45rem 0.5rem;
+      margin: 0.16in 0 0;
+      border-top: 1px solid var(--sage-muted);
+      border-bottom: 1px solid var(--sage-muted);
+    }
+
+    /* ===================== PAGE 1 — LETTER ===================== */
+    .letter-wrap {
+      max-width: 5.4in;
+      margin: 0 auto;
+    }
+
+    .letter-meta {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 1.2rem;
+      align-items: end;
+      padding: 0 0 0.22in;
+      margin-bottom: 0.32in;
+      border-bottom: 1px solid var(--sage-muted);
+    }
+
+    .letter-meta-label {
+      font-size: 0.66rem;
+      font-weight: 500;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--sage);
+      margin-bottom: 0.32rem;
+    }
+
+    .letter-meta-line {
+      border-bottom: 1px solid var(--charcoal);
+      height: 1.05rem;
+      width: 100%;
+    }
+
+    .letter-meta-value {
+      font-family: var(--font-body);
+      font-size: 0.95rem;
+      font-weight: 400;
+      color: var(--charcoal);
+      letter-spacing: 0.04em;
+      text-align: right;
+      line-height: 1;
+      padding-bottom: 0.1rem;
+    }
+
+    .letter-meta-value .meta-sub {
+      display: block;
+      font-size: 0.66rem;
+      font-weight: 500;
+      letter-spacing: 0.22em;
+      color: var(--sage);
+      margin-top: 0.34rem;
+    }
+
+    .letter-eyebrow {
+      font-family: var(--font-display);
+      font-size: 1.5rem;
+      color: var(--sage);
+      font-weight: 600;
+      margin-bottom: 0.04in;
+    }
+
+    .letter-greeting {
+      font-family: var(--font-display);
+      font-size: 2.6rem;
+      font-weight: 700;
+      color: var(--charcoal);
+      line-height: 1;
+      margin-bottom: 0.22in;
+    }
+
+    .letter-body p {
+      font-size: 1rem;
+      line-height: 1.78;
+      color: var(--warm-gray);
+      margin-bottom: 0.78rem;
+    }
+
+    .letter-body p:last-child {
+      margin-bottom: 0;
+    }
+
+    .letter-body em {
+      font-style: italic;
+      color: var(--charcoal);
+    }
+
+    .letter-signoff {
+      margin-top: 0.34in;
+      font-size: 1rem;
+      line-height: 1.6;
+      color: var(--warm-gray);
+    }
+
+    .letter-sig-image {
+      display: block;
+      width: 1.5in;
+      height: auto;
+      margin: 0.1in 0 0.04in;
+      mix-blend-mode: multiply;
+    }
+
+    .letter-name {
+      font-family: var(--font-body);
+      font-size: 0.78rem;
+      font-weight: 500;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--charcoal);
+      line-height: 1.3;
+    }
+
+    .letter-deco {
+      position: absolute;
+      right: 0.5in;
+      top: 0.85in;
+      opacity: 0.28;
+    }
+
+    /* ===================== PAGE 2 — WHAT FOOD JAZZ IS ===================== */
+    .two-ways {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.5rem;
+      margin: 0.18in 0 0.22in;
+    }
+
+    .way-card {
+      padding: 0.7rem 0.85rem;
+      background: var(--cream);
+      border: 1.5px solid var(--sage-muted);
+      border-radius: 6px;
+    }
+
+    .way-card.highlighted {
+      background: var(--sage-wash);
+      border-color: var(--sage);
+    }
+
+    .way-label {
+      font-size: 0.68rem;
+      font-weight: 500;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--sage);
+      margin-bottom: 0.18rem;
+    }
+
+    .way-title {
+      font-family: var(--font-display);
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: var(--charcoal);
+      line-height: 1.05;
+      margin-bottom: 0.3rem;
+    }
+
+    .way-body {
+      font-size: 0.86rem;
+      line-height: 1.55;
+      color: var(--warm-gray);
+    }
+
+    .myth-list {
+      list-style: none;
+      counter-reset: myth;
+      padding: 0;
+      margin-top: 0.1in;
+    }
+
+    .myth-item {
+      counter-increment: myth;
+      display: grid;
+      grid-template-columns: 28px 1fr;
+      gap: 0 0.5rem;
+      padding: 0.5rem 0;
+      border-bottom: 1px solid oklch(0.92 0.005 80);
+      font-size: 0.92rem;
+      line-height: 1.6;
+    }
+
+    .myth-item:last-child { border-bottom: none; }
+
+    .myth-item::before {
+      content: counter(myth);
+      font-family: var(--font-display);
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--sage);
+      line-height: 1;
+      grid-column: 1;
+      align-self: start;
+      margin-top: 0.05rem;
+    }
+
+    .myth-text strong {
+      color: var(--charcoal);
+      font-weight: 500;
+    }
+
+    .section-eyebrow {
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--sage);
+      margin-bottom: 0.45rem;
+    }
+
+    /* ===================== PAGE 3 — THE MONTH ===================== */
+    .week-bands { margin: 0.05in 0 0.18in; }
+
+    .week-band {
+      display: grid;
+      grid-template-columns: 110px 1fr;
+      border-radius: 5px;
+      overflow: hidden;
+      margin-bottom: 0.24rem;
+    }
+
+    .band-left {
+      padding: 0.55rem 0.75rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .band-week-name {
+      font-family: var(--font-display);
+      font-size: 1.1rem;
+      font-weight: 700;
+      line-height: 1.1;
+    }
+
+    .band-week-sub {
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      margin-top: 0.12rem;
+      opacity: 0.75;
+    }
+
+    .band-right {
+      padding: 0.5rem 0.8rem 0.5rem 0.85rem;
+      background: var(--cream);
+      border-top: 1.5px solid transparent;
+      border-bottom: 1.5px solid transparent;
+      border-right: 1.5px solid transparent;
+      border-radius: 0 5px 5px 0;
+      display: flex;
+      align-items: center;
+      font-size: 0.875rem;
+      line-height: 1.52;
+    }
+
+    .w0 .band-left  { background: var(--w0-bg); color: var(--w0-text); }
+    .w0 .band-right { border-color: var(--w0-bg); }
+
+    .w1 .band-left  { background: var(--w1-bg); color: var(--w1-text); }
+    .w1 .band-right { border-color: var(--w1-bg); }
+
+    .w2 .band-left  { background: var(--w2-bg); color: var(--w2-text); }
+    .w2 .band-right { border-color: var(--w2-bg); }
+
+    .w3 .band-left  { background: var(--w3-bg); color: var(--w3-text); }
+    .w3 .band-right { border-color: var(--w3-bg); }
+
+    .w4 .band-left  { background: var(--w4-bg); color: var(--w4-text); }
+    .w4 .band-right { border-color: var(--w4-bg); }
+
+    .wa .band-left  { background: var(--wa-bg); color: var(--wa-text); }
+    .wa .band-right { border-color: var(--wa-bg); }
+
+    /* Daily Rhythm */
+    .rhythm-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.45rem 1rem;
+    }
+
+    .rhythm-cell {
+      padding: 0.5rem 0.65rem;
+      background: oklch(0.97 0.004 100);
+      border-radius: 5px;
+      border-left: 3px solid var(--sage-muted);
+    }
+
+    .rhythm-cell-time {
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--sage);
+      margin-bottom: 0.18rem;
+    }
+
+    .rhythm-cell-desc {
+      font-size: 0.86rem;
+      line-height: 1.52;
+    }
+
+    /* ===================== PAGE 4 — SHOWING UP + END STATE ===================== */
+    .expect-item {
+      display: grid;
+      grid-template-columns: 22px 1fr;
+      gap: 0 0.55rem;
+      padding: 0.4rem 0;
+      border-bottom: 1px solid oklch(0.92 0.005 80);
+      align-items: start;
+      font-size: 0.9rem;
+      line-height: 1.55;
+    }
+    .expect-item:last-child { border-bottom: none; }
+
+    .expect-num {
+      font-family: var(--font-display);
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: var(--sage);
+      line-height: 1.15;
+    }
+
+    .expect-text strong {
+      color: var(--charcoal);
+      font-weight: 500;
+    }
+
+    .p4-callouts {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.6rem;
+      margin-top: 0.18in;
+    }
+
+    .p4-callout {
+      padding: 0.62rem 0.8rem;
+      border-radius: 5px;
+      font-size: 0.84rem;
+      line-height: 1.58;
+    }
+
+    .p4-callout-linen {
+      background: var(--linen);
+      color: var(--charcoal);
+    }
+
+    .p4-callout-sage {
+      background: var(--sage-wash);
+      color: var(--charcoal);
+    }
+
+    .p4-callout strong {
+      font-weight: 500;
+    }
+
+    .endstate {
+      margin-top: 0.22in;
+    }
+
+    .endstate-list {
+      list-style: none;
+      padding: 0;
+      margin: 0.1in 0;
+    }
+
+    .endstate-list li {
+      position: relative;
+      padding: 0.32rem 0 0.32rem 1.4rem;
+      font-size: 0.93rem;
+      line-height: 1.55;
+      color: var(--warm-gray);
+      border-bottom: 1px dotted oklch(0.88 0.01 80);
+    }
+
+    .endstate-list li:last-child { border-bottom: none; }
+
+    .endstate-list li::before {
+      content: "→";
+      position: absolute;
+      left: 0;
+      top: 0.32rem;
+      color: var(--sage);
+      font-weight: 500;
+    }
+
+    .endstate-list li strong {
+      color: var(--charcoal);
+      font-weight: 500;
+    }
+
+    .closing-mark {
+      margin-top: 0.18in;
+      padding-top: 0.5rem;
+      border-top: 1px solid var(--sage-muted);
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+    }
+
+    .closing-line {
+      font-family: var(--font-display);
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: var(--sage);
+    }
+
+    .closing-sig {
+      font-family: var(--font-display);
+      font-size: 1.3rem;
+      font-weight: 600;
+      color: var(--charcoal);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ===================== PAGE 1 — THE LETTER ===================== -->
+  <div class="page">
+
+    <div class="doc-header">
+      <div class="doc-wordmark"><span class="wm-food">food</span> <span class="wm-jazz">jazz</span></div>
+      <div class="doc-label">Welcome Packet</div>
+    </div>
+
+    <!-- Spiral decoration, top-right -->
+    <svg class="letter-deco" width="105" height="105" viewBox="0 0 270 270" fill="none" aria-hidden="true">
+      <path d="M135 135 C135 112, 157 90, 180 90 C224 90, 246 124, 228 157 C210 192, 164 204, 132 178 C90 148, 100 98, 133 74 C173 44, 234 70, 242 120 C250 172, 208 220, 152 226 C92 232, 42 186, 52 120 C62 52, 126 12, 198 28"
+        stroke="#7A8C6E" stroke-width="5" stroke-linecap="round" fill="none" opacity="0.55"/>
+    </svg>
+
+    <div class="letter-wrap">
+
+      <div class="letter-meta">
+        <div>
+          <div class="letter-meta-label">Prepared for</div>
+          <div class="letter-meta-line"></div>
+        </div>
+        <div class="letter-meta-value">
+          Spring 2026
+          <span class="meta-sub">Founding Class</span>
+        </div>
+      </div>
+
+      <div class="letter-eyebrow">From Akshay</div>
+      <div class="letter-greeting">Hey,</div>
+
+      <div class="letter-body">
+        <p>Welcome to Food Jazz. I'm stoked you said yes.</p>
+
+        <p>A quick word before we start. The kitchen, for most of my life, has been the most generous teacher I've had. It taught me patience by burning a few onions, restraint by oversalting a few stews, and how to feed people I love before I knew what to call any of it. It also taught me that almost everyone I meet thinks they "can't cook" — and almost every one of them is wrong.</p>
+
+        <p>You probably came in thinking you have a time problem. Or a confidence problem. Or that you just need the right list of recipes. I don't think any of that is true. My bet, and the whole point of this month, is that you already have good taste. You just haven't had a way to translate it into a meal yet. That's what we're going to fix.</p>
+
+        <p>What you're holding is your welcome packet. It's not a syllabus, and it's not homework. Think of it as the first conversation we have before we cook together. It tells you what Food Jazz actually is, what the next thirty days look like, and how to get the most out of them. Read it slowly. Underline the things you push back on. Bring those to our first session.</p>
+
+        <p>One last thing. I take this seriously, and I take you seriously, and I'm going to ask you to do the same. Cooking isn't a side project for me — it's life's work. Food is the one art form everyone has to participate in, three times a day, whether they want to or not. We might as well love it.</p>
+      </div>
+
+      <div class="letter-signoff">
+        Can't wait to cook with you,
+        <img src="assets/signature-akshay.png" alt="Akshay Prabhu" class="letter-sig-image">
+        <div class="letter-name">Akshay Prabhu</div>
+      </div>
+
+    </div>
+
+    <div class="doc-footer">
+      <div class="doc-footer-text">Food Jazz &middot; Bay Area</div>
+      <div class="doc-footer-url">foodjazz.club</div>
+    </div>
+  </div>
+
+  <!-- ===================== PAGE 2 — WHAT FOOD JAZZ IS ===================== -->
+  <div class="page">
+
+    <div class="doc-header">
+      <div class="doc-wordmark"><span class="wm-food">food</span> <span class="wm-jazz">jazz</span></div>
+      <div class="doc-label">The Idea</div>
+    </div>
+
+    <h2 class="page-title">
+      What Food Jazz <span class="accent">actually is.</span>
+    </h2>
+
+    <p class="body-copy">
+      Food Jazz is a way of cooking that starts with what you already know. Here's the bet: you've been eating your whole life. You have strong opinions. You can walk into a restaurant and tell within three bites whether the chef is paying attention. You have, by any reasonable definition, taste. The only thing missing is a translation layer between what you know you want to eat and what ends up on your plate. That translation is what we're going to build.
+    </p>
+
+    <hr class="doc-rule">
+
+    <div class="section-eyebrow">There Are Two Ways To Cook</div>
+    <p class="body-copy" style="margin-bottom: 0.05in;">
+      Most people learn the first way and assume it's the only one. It's not.
+    </p>
+
+    <div class="two-ways">
+      <div class="way-card">
+        <div class="way-label">Path One</div>
+        <div class="way-title">By recipe</div>
+        <div class="way-body">
+          You collect dishes you can repeat. You buy ingredients for those specific dishes. If something is missing, you don't cook. If you have an extra hour, you make the same thing slower. It works, but it never compounds — your fortieth dish takes as much effort as your tenth.
+        </div>
+      </div>
+
+      <div class="way-card highlighted">
+        <div class="way-label">Path Two &middot; The Food Jazz Way</div>
+        <div class="way-title">By feel</div>
+        <div class="way-body">
+          You learn the underlying patterns: what fat does, what acid does, how heat changes texture. You build dishes from those. You walk into a kitchen, look at what's there, and make something. If an ingredient is missing, you swap it. If you have an extra hour, the food gets better, not just longer.
+        </div>
+      </div>
+    </div>
+
+    <p class="body-copy" style="margin-bottom: 0.18in;">
+      The second way is what every grandmother and every working chef does on a Tuesday night. It isn't talent. It's a different mental model, learned in a different kind of classroom. That's what we're after.
+    </p>
+
+    <hr class="doc-rule">
+
+    <div class="section-eyebrow">Three Things That Have Been In Your Way</div>
+
+    <ul class="myth-list">
+      <li class="myth-item">
+        <div class="myth-text"><strong>You were taught there's a "right" way.</strong> That if you mess up the bolognese, you ruined it. That's a grease fire waiting to happen. There is no Platonic stir fry you're supposed to replicate. There's a hot pan, some ingredients, and your own sense of what tastes good. We start there.</div>
+      </li>
+      <li class="myth-item">
+        <div class="myth-text"><strong>You learned alone, in fragments.</strong> Cookbooks, TikTok videos, a $300 weekend dumpling class. Cooking has been taught in community for most of human history — by a parent, a grandparent, a roommate, a coworker. That part isn't optional. It's how the skill actually transfers.</div>
+      </li>
+      <li class="myth-item">
+        <div class="myth-text"><strong>Your kitchen isn't built for you.</strong> Most people have a kitchen stocked from forgotten experiments — a half jar of harissa, three different vinegars, a spice rack of one-recipe purchases. We're going to rebuild the whole setup around the food you actually want to eat.</div>
+      </li>
+    </ul>
+
+    <p class="pull-quote">
+      Because you have good taste,<br>and you deserve to eat well.
+    </p>
+
+    <div class="doc-footer">
+      <div class="doc-footer-text">Food Jazz &middot; Bay Area</div>
+      <div class="doc-footer-url">foodjazz.club</div>
+    </div>
+  </div>
+
+  <!-- ===================== PAGE 3 — THE SHAPE OF THE MONTH ===================== -->
+  <div class="page">
+
+    <div class="doc-header">
+      <div class="doc-wordmark"><span class="wm-food">food</span> <span class="wm-jazz">jazz</span></div>
+      <div class="doc-label">The Plan</div>
+    </div>
+
+    <h2 class="page-title">
+      The shape of <span class="accent">the month.</span>
+    </h2>
+
+    <p class="body-copy" style="margin-bottom: 0.18in;">
+      A pre-week to observe how you actually eat, then four weeks built around heat: what's possible without it, what high heat does, what slow heat does, and how to put it all together. The same handful of ingredients reappears across the month at different temperatures, so you can feel firsthand how the same garlic, the same tomato, the same onion becomes four entirely different ingredients depending on what you do to it. By the end, you're hosting a dinner party.
+    </p>
+
+    <div class="week-bands">
+      <div class="week-band w0">
+        <div class="band-left">
+          <div class="band-week-name">Pre-Week</div>
+          <div class="band-week-sub">Observation</div>
+        </div>
+        <div class="band-right">You eat how you normally eat — delivery, restaurants, what you reach for at night. Text me each day. Everything that comes next gets built around your taste, not around recipes. Even the grocery run starts looking the same every week, because you're shopping for what you actually like.</div>
+      </div>
+
+      <div class="week-band w1">
+        <div class="band-left">
+          <div class="band-week-name">Week 1</div>
+          <div class="band-week-sub">Mixtures</div>
+        </div>
+        <div class="band-right">Cold food, no stove. Dressings, grain bowls, pickles, a full spice tasting session. We build your palate before anything gets hot.</div>
+      </div>
+
+      <div class="week-band w2">
+        <div class="band-left">
+          <div class="band-week-name">Week 2</div>
+          <div class="band-week-sub">High Heat</div>
+        </div>
+        <div class="band-right">Wok, cast iron, stir fry. We go to the grocery store together and I show you how to shop without a recipe list. Things get loud and fast.</div>
+      </div>
+
+      <div class="week-band w3">
+        <div class="band-left">
+          <div class="band-week-name">Week 3</div>
+          <div class="band-week-sub">Low &amp; Slow</div>
+        </div>
+        <div class="band-right">Braising, baking, cooking for other people. You learn that patience is a technique, and that leftovers improve overnight.</div>
+      </div>
+
+      <div class="week-band w4">
+        <div class="band-left">
+          <div class="band-week-name">Week 4</div>
+          <div class="band-week-sub">Composition</div>
+        </div>
+        <div class="band-right">Full meals, not just dishes. You plan the plate, balance the table, execute it, and feed people. Your most independent week.</div>
+      </div>
+
+      <div class="week-band wa">
+        <div class="band-left">
+          <div class="band-week-name">After</div>
+          <div class="band-week-sub">Dinner Party</div>
+        </div>
+        <div class="band-right" style="color: var(--warm-gray);">You host. I show up as a guest. Your food, your people, no recipes in sight. This is what you've been building toward.</div>
+      </div>
+    </div>
+
+    <hr class="doc-rule">
+
+    <div class="section-eyebrow">The Daily Rhythm</div>
+    <p class="body-copy" style="margin-bottom: 0.14in;">
+      The weekly sessions are where we cook together and the big lessons land. Between sessions, a small daily loop keeps you in motion.
+    </p>
+
+    <div class="rhythm-grid">
+      <div class="rhythm-cell">
+        <div class="rhythm-cell-time">Morning</div>
+        <div class="rhythm-cell-desc">A prompt arrives in your texts — specific in Week 1, increasingly open-ended as the month goes on.</div>
+      </div>
+      <div class="rhythm-cell">
+        <div class="rhythm-cell-time">Your Day</div>
+        <div class="rhythm-cell-desc">Cook it. Set a timer when you start so you actually see how long things take. Send me a photo or quick video.</div>
+      </div>
+      <div class="rhythm-cell">
+        <div class="rhythm-cell-time">My Response</div>
+        <div class="rhythm-cell-desc">Specific feedback within a few hours — voice memo or text. Not "looks great." Something you can use.</div>
+      </div>
+      <div class="rhythm-cell">
+        <div class="rhythm-cell-time">Weekly</div>
+        <div class="rhythm-cell-desc">In-person session at your place: we cook together, debrief the week, and I hand off reference materials as we go.</div>
+      </div>
+    </div>
+
+    <div class="doc-footer">
+      <div class="doc-footer-text">Food Jazz &middot; Bay Area</div>
+      <div class="doc-footer-url">foodjazz.club</div>
+    </div>
+  </div>
+
+  <!-- ===================== PAGE 4 — HOW TO SHOW UP + END STATE ===================== -->
+  <div class="page">
+
+    <div class="doc-header">
+      <div class="doc-wordmark"><span class="wm-food">food</span> <span class="wm-jazz">jazz</span></div>
+      <div class="doc-label">The Mindset</div>
+    </div>
+
+    <h2 class="page-title">
+      How to show up, <span class="accent">and where this leaves you.</span>
+    </h2>
+
+    <p class="body-copy" style="margin-bottom: 0.18in;">
+      The whole month rests on a few small commitments. None of them are heavy on their own. Together they make the difference between a course you took and a habit you keep.
+    </p>
+
+    <div class="doc-section" style="margin-bottom: 0;">
+      <div class="expect-item">
+        <div class="expect-num">1</div>
+        <div class="expect-text"><strong>Cook every day,</strong> even when it's small, even when it's bad. Especially when it's bad. A meal that doesn't work teaches you more than one that does, because you actually have to figure out why.</div>
+      </div>
+      <div class="expect-item">
+        <div class="expect-num">2</div>
+        <div class="expect-text"><strong>Set a timer when you start cooking.</strong> Not to race — to know. Most weeknight meals take under twenty minutes once you stop second-guessing yourself. You'll be surprised.</div>
+      </div>
+      <div class="expect-item">
+        <div class="expect-num">3</div>
+        <div class="expect-text"><strong>Send me photos. Every day.</strong> This is how I track where you are and tailor what comes next. If I don't hear from you, I'll follow up. Consider yourself warned.</div>
+      </div>
+      <div class="expect-item">
+        <div class="expect-num">4</div>
+        <div class="expect-text"><strong>Be honest.</strong> If something tastes bad, say so. If you skipped a day, tell me. If you're confused, ask. There's no judgment here, ever.</div>
+      </div>
+      <div class="expect-item">
+        <div class="expect-num">5</div>
+        <div class="expect-text"><strong>Let yourself be a beginner.</strong> Cooking feels vulnerable — you're making something from scratch and asking someone to eat it. That's real. Confidence comes from doing it anyway, and you're going to do it a lot this month.</div>
+      </div>
+    </div>
+
+    <div class="p4-callouts">
+      <div class="p4-callout p4-callout-linen">
+        <strong>A heads-up.</strong> Around day twelve or fifteen, this will stop feeling exciting and start feeling like routine. That isn't failure — that's where the real skill-building lives. Most people quit right there. Text me when it hits and we'll talk about it.
+      </div>
+      <div class="p4-callout p4-callout-sage">
+        <strong>Happy little accidents.</strong> Some of what you make this month won't taste good. That's not failure, that's data. You learn more from a bad vinaigrette than a good one because you have to figure out what went wrong. I'll probably be eating it with you.
+      </div>
+    </div>
+
+    <hr class="doc-rule" style="margin-top: 0.22in;">
+
+    <div class="endstate">
+      <div class="section-eyebrow">Where this leaves you</div>
+      <p class="body-copy" style="margin-bottom: 0.06in;">
+        By day thirty, the way you think about food has changed. Not because of a magic recipe, but because the gap between what you crave and what ends up on your plate has closed.
+      </p>
+
+      <ul class="endstate-list">
+        <li>You <strong>open the fridge and see options,</strong> not obstacles.</li>
+        <li>You <strong>taste mid-cook and know what's missing</strong> — too acidic, needs fat, almost there.</li>
+        <li>You <strong>shop for the week,</strong> not for a recipe you'll make once and forget.</li>
+        <li>You <strong>cook for the people you love</strong> without asking them to wait while you check your phone.</li>
+      </ul>
+    </div>
+
+    <div class="closing-mark">
+      <div class="closing-line">See you in the kitchen.</div>
+    </div>
+
+    <div class="doc-footer">
+      <div class="doc-footer-text">Food Jazz &middot; Bay Area</div>
+      <div class="doc-footer-url">foodjazz.club</div>
+    </div>
+  </div>
+
+</body>
+</html>
