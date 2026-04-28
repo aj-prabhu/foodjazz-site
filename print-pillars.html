@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The 7 Pillars · Food Jazz</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300;1,9..40,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="print-base.css">
+  <style>
+    .page {
+      padding: 0.4in 0.5in 0.5in;
+      display: flex;
+      flex-direction: column;
+    }
+    .pillars-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 0.45rem;
+      margin-top: 0.6rem;
+      flex: 1;
+    }
+    .pillar-row {
+      display: grid;
+      grid-template-columns: 44px 1fr;
+      gap: 0.85rem;
+      align-items: start;
+      padding: 0.55rem 0.85rem;
+      background: white;
+      border: 1px solid var(--sage-muted);
+      border-radius: 8px;
+    }
+    .pillar-icon {
+      width: 44px;
+      height: 44px;
+      background: var(--sage-wash);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .pillar-icon img {
+      width: 24px;
+      height: 24px;
+      display: block;
+    }
+    .pillar-name {
+      margin-bottom: 0.1rem;
+    }
+    .pillar-text {
+      font-size: 0.86rem;
+      line-height: 1.5;
+    }
+    .pillar-reminder {
+      margin-top: 0.2rem;
+    }
+    .closer {
+      text-align: center;
+      font-family: var(--font-display);
+      font-size: 1.25rem;
+      color: var(--sage);
+      margin-top: 0.7rem;
+      line-height: 1.3;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="page">
+    <div class="doc-header">
+      <div class="doc-wordmark"><span class="wm-food">Food</span> <span class="wm-jazz">Jazz</span></div>
+      <div class="doc-label">The 7 Pillars</div>
+    </div>
+
+    <div class="doc-title" style="font-size: 2.2rem; text-align: center;">The Food Jazz Philosophy</div>
+    <div class="doc-subtitle" style="text-align: center;">Seven ideas at the core of Food Jazz.</div>
+
+    <div class="pillars-grid">
+
+      <div class="pillar-row">
+        <div class="pillar-icon"><img src="icons/bottles-row.svg" alt=""></div>
+        <div class="pillar-content">
+          <div class="pillar-name">Stock for Success</div>
+          <div class="pillar-text">A stocked kitchen is half the cooking already done. The spices, oils, sauces, and tools you keep around decide what you reach for at 7pm on a Tuesday. Restocking is its own creative act, shaping what you'll be able to make for the next month.</div>
+          <div class="pillar-reminder">What's in the pantry shapes what gets made.</div>
+        </div>
+      </div>
+
+      <div class="pillar-row">
+        <div class="pillar-icon"><img src="icons/active-tasting.svg" alt=""></div>
+        <div class="pillar-content">
+          <div class="pillar-name">Taste the World</div>
+          <div class="pillar-text">Navigate the world with your tongue. Active tasting is the most important habit you can build, whether you're eating out, cooking at home, or cooking alongside someone else. The more flavors you can identify, the more you can recreate from scratch.</div>
+          <div class="pillar-reminder">You can't adjust what you can't taste.</div>
+        </div>
+      </div>
+
+      <div class="pillar-row">
+        <div class="pillar-icon"><img src="icons/takeout-pail.svg" alt=""></div>
+        <div class="pillar-content">
+          <div class="pillar-name">Use What You Have</div>
+          <div class="pillar-text">Resourcefulness is the foundation of intuitive cooking. The most memorable meals come from working with what's around: leftovers, seasonal produce, the half-onion you forgot about.</div>
+          <div class="pillar-reminder">The most memorable meals come from what you already have.</div>
+        </div>
+      </div>
+
+      <div class="pillar-row">
+        <div class="pillar-icon"><img src="icons/heart.svg" alt=""></div>
+        <div class="pillar-content">
+          <div class="pillar-name">You're Having Fun</div>
+          <div class="pillar-text">Food is meant to be shared. Cooking is connection, therapy, self-care, and love all at once. When the act of feeding yourself and the people around you feels good, everything else gets easier.</div>
+          <div class="pillar-reminder">Cooking gets fun when it's for someone else.</div>
+        </div>
+      </div>
+
+      <div class="pillar-row">
+        <div class="pillar-icon"><img src="icons/flavor-fundamentals.svg" alt=""></div>
+        <div class="pillar-content">
+          <div class="pillar-name">Flavor, Not Procedure</div>
+          <div class="pillar-text">Every dish is a ratio: salt to fat, acid to sweet, heat to cold. Once you know the ratios, you can swap an ingredient or skip a step and still hit the target. Recipes are one solution to a ratio problem. The real skill is solving the problem yourself.</div>
+          <div class="pillar-reminder">Learn the ratio. Forget the recipe.</div>
+        </div>
+      </div>
+
+      <div class="pillar-row">
+        <div class="pillar-icon"><img src="icons/lightbulb.svg" alt=""></div>
+        <div class="pillar-content">
+          <div class="pillar-name">Your Opinion Matters</div>
+          <div class="pillar-text">There is no platonic ideal of a dish. No chef whose version is the right version. If you imagined a meal and it landed on the plate the way you pictured it, you cooked well, whether that's a five-course tasting menu or a peanut butter sandwich. That's the only test.</div>
+          <div class="pillar-reminder">If it tastes the way you pictured it, you nailed it.</div>
+        </div>
+      </div>
+
+      <div class="pillar-row">
+        <div class="pillar-icon"><img src="icons/flavor-pyramid.svg" alt=""></div>
+        <div class="pillar-content">
+          <div class="pillar-name">Build a Flavor Pyramid</div>
+          <div class="pillar-text">Cooking is composition. A dish needs contrast: something rich next to something bright, something soft next to something crunchy. A meal needs the same: a heavy main wants a sharp side, a rich dish wants something acidic to cut through. You're not just making food, you're arranging tension between flavors and textures.</div>
+          <div class="pillar-reminder">A good meal finds balance.</div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="doc-footer">
+      <div class="doc-footer-text">Food Jazz &middot; Bay Area</div>
+      <div class="doc-footer-url">foodjazz.club</div>
+    </div>
+  </div>
+
+</body>
+</html>

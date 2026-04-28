@@ -97,7 +97,7 @@
       gap: 1.2rem;
       align-items: end;
       padding: 0 0 0.22in;
-      margin-bottom: 0.32in;
+      margin-bottom: 0.34in;
       border-bottom: 1px solid var(--sage-muted);
     }
 
@@ -107,57 +107,43 @@
       letter-spacing: 0.22em;
       text-transform: uppercase;
       color: var(--sage);
-      margin-bottom: 0.32rem;
+      margin-bottom: 0.22rem;
     }
 
-    .letter-meta-line {
-      border-bottom: 1px solid var(--charcoal);
-      height: 1.05rem;
-      width: 100%;
-    }
-
-    .letter-meta-value {
+    .letter-meta-name {
       font-family: var(--font-body);
-      font-size: 0.95rem;
+      font-size: 1.08rem;
+      font-weight: 500;
+      color: var(--charcoal);
+      letter-spacing: 0.01em;
+      line-height: 1.1;
+    }
+
+    .letter-meta-date {
+      font-family: var(--font-body);
+      font-size: 0.92rem;
       font-weight: 400;
       color: var(--charcoal);
-      letter-spacing: 0.04em;
+      letter-spacing: 0.02em;
       text-align: right;
       line-height: 1;
-      padding-bottom: 0.1rem;
-    }
-
-    .letter-meta-value .meta-sub {
-      display: block;
-      font-size: 0.66rem;
-      font-weight: 500;
-      letter-spacing: 0.22em;
-      color: var(--sage);
-      margin-top: 0.34rem;
-    }
-
-    .letter-eyebrow {
-      font-family: var(--font-display);
-      font-size: 1.5rem;
-      color: var(--sage);
-      font-weight: 600;
-      margin-bottom: 0.04in;
+      padding-bottom: 0.06rem;
     }
 
     .letter-greeting {
       font-family: var(--font-display);
-      font-size: 2.6rem;
+      font-size: 2.5rem;
       font-weight: 700;
       color: var(--charcoal);
-      line-height: 1;
-      margin-bottom: 0.22in;
+      line-height: 1.02;
+      margin-bottom: 0.26in;
     }
 
     .letter-body p {
       font-size: 1rem;
-      line-height: 1.78;
+      line-height: 1.74;
       color: var(--warm-gray);
-      margin-bottom: 0.78rem;
+      margin-bottom: 0.62rem;
     }
 
     .letter-body p:last-child {
@@ -178,9 +164,9 @@
 
     .letter-sig-image {
       display: block;
-      width: 1.5in;
+      width: 1.05in;
       height: auto;
-      margin: 0.1in 0 0.04in;
+      margin: 0.06in 0 0.04in;
       mix-blend-mode: multiply;
     }
 
@@ -196,9 +182,10 @@
 
     .letter-deco {
       position: absolute;
-      right: 0.5in;
-      top: 0.85in;
-      opacity: 0.28;
+      right: -0.4in;
+      bottom: 0.6in;
+      opacity: 0.18;
+      transform: rotate(-12deg);
     }
 
     /* ===================== PAGE 2 — WHAT FOOD JAZZ IS ===================== */
@@ -418,6 +405,9 @@
     }
 
     .p4-callout {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.55rem;
       padding: 0.62rem 0.8rem;
       border-radius: 5px;
       font-size: 0.84rem;
@@ -436,6 +426,24 @@
 
     .p4-callout strong {
       font-weight: 500;
+    }
+
+    .p4-callout-icon {
+      flex-shrink: 0;
+      width: 44px;
+      height: 44px;
+      margin-top: 0.06rem;
+    }
+
+    .doc-wave {
+      display: block;
+      width: 100%;
+      height: 22px;
+      margin: 0.9rem 0;
+    }
+
+    .p4-callout-body {
+      flex: 1;
     }
 
     .endstate {
@@ -474,26 +482,28 @@
     }
 
     .closing-mark {
-      margin-top: 0.18in;
-      padding-top: 0.5rem;
+      margin-top: 0.28in;
+      padding-top: 0.32in;
       border-top: 1px solid var(--sage-muted);
-      display: flex;
-      justify-content: space-between;
-      align-items: baseline;
+      text-align: center;
+      position: relative;
     }
 
     .closing-line {
       font-family: var(--font-display);
-      font-size: 1.5rem;
-      font-weight: 600;
+      font-size: 2.6rem;
+      font-weight: 700;
       color: var(--sage);
+      line-height: 1.05;
+      letter-spacing: 0.005em;
     }
 
-    .closing-sig {
-      font-family: var(--font-display);
-      font-size: 1.3rem;
-      font-weight: 600;
-      color: var(--charcoal);
+    .closing-flourish {
+      display: block;
+      width: 28px;
+      height: 6px;
+      margin: 0.28rem auto 0;
+      opacity: 0.55;
     }
   </style>
 </head>
@@ -503,42 +513,39 @@
   <div class="page">
 
     <div class="doc-header">
-      <div class="doc-wordmark"><span class="wm-food">food</span> <span class="wm-jazz">jazz</span></div>
+      <div class="doc-wordmark"><span class="wm-food">Food</span> <span class="wm-jazz">Jazz</span></div>
       <div class="doc-label">Welcome Packet</div>
     </div>
 
-    <!-- Spiral decoration, top-right -->
-    <svg class="letter-deco" width="105" height="105" viewBox="0 0 270 270" fill="none" aria-hidden="true">
+    <!-- Spiral decoration, bottom-right watermark -->
+    <svg class="letter-deco" width="240" height="240" viewBox="0 0 270 270" fill="none" aria-hidden="true">
       <path d="M135 135 C135 112, 157 90, 180 90 C224 90, 246 124, 228 157 C210 192, 164 204, 132 178 C90 148, 100 98, 133 74 C173 44, 234 70, 242 120 C250 172, 208 220, 152 226 C92 232, 42 186, 52 120 C62 52, 126 12, 198 28"
-        stroke="#7A8C6E" stroke-width="5" stroke-linecap="round" fill="none" opacity="0.55"/>
+        stroke="#7A8C6E" stroke-width="4" stroke-linecap="round" fill="none" opacity="0.7"/>
     </svg>
 
     <div class="letter-wrap">
 
+      <!-- Per-client edits: change name, date, and the personalization line in paragraph 1 below. -->
       <div class="letter-meta">
         <div>
           <div class="letter-meta-label">Prepared for</div>
-          <div class="letter-meta-line"></div>
+          <div class="letter-meta-name">Davis Clute</div>
         </div>
-        <div class="letter-meta-value">
-          Spring 2026
-          <span class="meta-sub">Founding Class</span>
+        <div class="letter-meta-date">
+          April 27, 2026
         </div>
       </div>
 
-      <div class="letter-eyebrow">From Akshay</div>
-      <div class="letter-greeting">Hey,</div>
+      <div class="letter-greeting">Welcome to Food Jazz!</div>
 
       <div class="letter-body">
-        <p>Welcome to Food Jazz. I'm stoked you said yes.</p>
+        <p>The curriculum is going to bend around what you actually want to cook. Every meal you make this month is something I'll see and respond to. In your case that means high-protein, low-carb meals you can pull together without thinking about them.</p>
 
-        <p>A quick word before we start. The kitchen, for most of my life, has been the most generous teacher I've had. It taught me patience by burning a few onions, restraint by oversalting a few stews, and how to feed people I love before I knew what to call any of it. It also taught me that almost everyone I meet thinks they "can't cook" — and almost every one of them is wrong.</p>
+        <p>Cooking has been the most steady thing in my life through some unsteady years. I spent close to a decade running Foodnome, and the kitchen was where I'd go when payroll was tight, when we were pivoting the whole business through the pandemic, when nothing else felt steady. An hour at the stove and I'd have at least one thing that came out right. I want you to have that.</p>
 
-        <p>You probably came in thinking you have a time problem. Or a confidence problem. Or that you just need the right list of recipes. I don't think any of that is true. My bet, and the whole point of this month, is that you already have good taste. You just haven't had a way to translate it into a meal yet. That's what we're going to fix.</p>
+        <p>The rest of this packet covers what Food Jazz actually is, what the next thirty days look like, and how to show up. Give it a good read. Underline whatever you push back on. Bring those to our first session.</p>
 
-        <p>What you're holding is your welcome packet. It's not a syllabus, and it's not homework. Think of it as the first conversation we have before we cook together. It tells you what Food Jazz actually is, what the next thirty days look like, and how to get the most out of them. Read it slowly. Underline the things you push back on. Bring those to our first session.</p>
-
-        <p>One last thing. I take this seriously, and I take you seriously, and I'm going to ask you to do the same. Cooking isn't a side project for me — it's life's work. Food is the one art form everyone has to participate in, three times a day, whether they want to or not. We might as well love it.</p>
+        <p>After our audit, the first week is observation. Eat the way you normally eat — don't do anything extra. Send me photos when you can. That helps me build the month around what you actually like, instead of guessing.</p>
       </div>
 
       <div class="letter-signoff">
@@ -559,7 +566,7 @@
   <div class="page">
 
     <div class="doc-header">
-      <div class="doc-wordmark"><span class="wm-food">food</span> <span class="wm-jazz">jazz</span></div>
+      <div class="doc-wordmark"><span class="wm-food">Food</span> <span class="wm-jazz">Jazz</span></div>
       <div class="doc-label">The Idea</div>
     </div>
 
@@ -568,7 +575,7 @@
     </h2>
 
     <p class="body-copy">
-      Food Jazz is a way of cooking that starts with what you already know. Here's the bet: you've been eating your whole life. You have strong opinions. You can walk into a restaurant and tell within three bites whether the chef is paying attention. You have, by any reasonable definition, taste. The only thing missing is a translation layer between what you know you want to eat and what ends up on your plate. That translation is what we're going to build.
+      Food Jazz is a way of cooking that starts with what you already know. You've been eating your whole life. You have strong opinions. You can walk into a restaurant and tell within three bites whether the chef is paying attention. You have taste. What's missing is a way to translate what's in your head onto your plate. That's what we're going to build.
     </p>
 
     <hr class="doc-rule">
@@ -583,7 +590,7 @@
         <div class="way-label">Path One</div>
         <div class="way-title">By recipe</div>
         <div class="way-body">
-          You collect dishes you can repeat. You buy ingredients for those specific dishes. If something is missing, you don't cook. If you have an extra hour, you make the same thing slower. It works, but it never compounds — your fortieth dish takes as much effort as your tenth.
+          You collect dishes you can repeat. Cooking takes hours of planning, and if you're missing an ingredient, you panic or order in. Other nights you open the fridge and assemble whatever's there, but it's never quite what you wanted. Forty dishes in, you're at the same level you started. Every meal is a fresh production.
         </div>
       </div>
 
@@ -591,28 +598,26 @@
         <div class="way-label">Path Two &middot; The Food Jazz Way</div>
         <div class="way-title">By feel</div>
         <div class="way-body">
-          You learn the underlying patterns: what fat does, what acid does, how heat changes texture. You build dishes from those. You walk into a kitchen, look at what's there, and make something. If an ingredient is missing, you swap it. If you have an extra hour, the food gets better, not just longer.
+          You're in flow. You learn how flavors actually work: what fat does, what acid does, how heat changes texture. Walk into any kitchen, see what's there, make something. Missing an ingredient, you swap it. Stress-free, quick substitutions, every dish lands.
         </div>
       </div>
     </div>
 
-    <p class="body-copy" style="margin-bottom: 0.18in;">
-      The second way is what every grandmother and every working chef does on a Tuesday night. It isn't talent. It's a different mental model, learned in a different kind of classroom. That's what we're after.
-    </p>
+    <svg class="doc-wave" viewBox="0 0 600 50" fill="none" preserveAspectRatio="none" aria-hidden="true">
+      <path d="M0 25 Q70 5, 140 25 Q210 45, 280 22 Q350 0, 420 25 Q490 48, 560 22 Q590 12, 600 25" stroke="#A8B89D" stroke-width="1.5" stroke-linecap="round" opacity="0.5"/>
+    </svg>
 
-    <hr class="doc-rule">
-
-    <div class="section-eyebrow">Three Things That Have Been In Your Way</div>
+    <div class="section-eyebrow">Three Things That Might Have Been In Your Way</div>
 
     <ul class="myth-list">
       <li class="myth-item">
-        <div class="myth-text"><strong>You were taught there's a "right" way.</strong> That if you mess up the bolognese, you ruined it. That's a grease fire waiting to happen. There is no Platonic stir fry you're supposed to replicate. There's a hot pan, some ingredients, and your own sense of what tastes good. We start there.</div>
+        <div class="myth-text"><strong>You were taught there's a "right" way.</strong> That if your bolognese isn't your grandmother's, it's wrong. There is no Platonic version of any dish. There's a hot pan, ingredients, and your sense of what tastes good. We start there.</div>
       </li>
       <li class="myth-item">
-        <div class="myth-text"><strong>You learned alone, in fragments.</strong> Cookbooks, TikTok videos, a $300 weekend dumpling class. Cooking has been taught in community for most of human history — by a parent, a grandparent, a roommate, a coworker. That part isn't optional. It's how the skill actually transfers.</div>
+        <div class="myth-text"><strong>You learned alone, in fragments.</strong> Cookbooks, TikTok videos, a $300 weekend dumpling class. Cooking has been taught in community for most of human history. A parent, a grandparent, a roommate, a coworker. That part isn't optional. It's how the skill actually transfers.</div>
       </li>
       <li class="myth-item">
-        <div class="myth-text"><strong>Your kitchen isn't built for you.</strong> Most people have a kitchen stocked from forgotten experiments — a half jar of harissa, three different vinegars, a spice rack of one-recipe purchases. We're going to rebuild the whole setup around the food you actually want to eat.</div>
+        <div class="myth-text"><strong>Your kitchen isn't built for you.</strong> Most people have a kitchen stocked from forgotten experiments. A half jar of harissa, three different vinegars, a spice rack of one-recipe purchases. We're going to rebuild the whole setup around the food you actually want to eat.</div>
       </li>
     </ul>
 
@@ -630,7 +635,7 @@
   <div class="page">
 
     <div class="doc-header">
-      <div class="doc-wordmark"><span class="wm-food">food</span> <span class="wm-jazz">jazz</span></div>
+      <div class="doc-wordmark"><span class="wm-food">Food</span> <span class="wm-jazz">Jazz</span></div>
       <div class="doc-label">The Plan</div>
     </div>
 
@@ -639,7 +644,7 @@
     </h2>
 
     <p class="body-copy" style="margin-bottom: 0.18in;">
-      A pre-week to observe how you actually eat, then four weeks built around heat: what's possible without it, what high heat does, what slow heat does, and how to put it all together. The same handful of ingredients reappears across the month at different temperatures, so you can feel firsthand how the same garlic, the same tomato, the same onion becomes four entirely different ingredients depending on what you do to it. By the end, you're hosting a dinner party.
+      A pre-week to observe how you actually eat, then four weeks built around heat: what's possible without it, what high heat does, what slow heat does, and how to put it all together. The shopping philosophy is simple. We buy the ingredients you already like eating, then spend the month combining and transforming them every way we can. The same handful of ingredients turns into four entirely different things depending on what you do to it. By the end, you're hosting a dinner party.
     </p>
 
     <div class="week-bands">
@@ -648,7 +653,7 @@
           <div class="band-week-name">Pre-Week</div>
           <div class="band-week-sub">Observation</div>
         </div>
-        <div class="band-right">You eat how you normally eat — delivery, restaurants, what you reach for at night. Text me each day. Everything that comes next gets built around your taste, not around recipes. Even the grocery run starts looking the same every week, because you're shopping for what you actually like.</div>
+        <div class="band-right">You eat how you normally eat. Delivery, restaurants, what you reach for at night. Text me each day. Everything that comes next gets built around your taste, not around recipes. Even the grocery run starts looking the same every week, because you're shopping for what you actually like.</div>
       </div>
 
       <div class="week-band w1">
@@ -656,7 +661,7 @@
           <div class="band-week-name">Week 1</div>
           <div class="band-week-sub">Mixtures</div>
         </div>
-        <div class="band-right">Cold food, no stove. Dressings, grain bowls, pickles, a full spice tasting session. We build your palate before anything gets hot.</div>
+        <div class="band-right">Cold food, no stove. Dressings, grain bowls, pickles, a full spice tasting session. We shop together and build your palate before anything gets hot.</div>
       </div>
 
       <div class="week-band w2">
@@ -664,7 +669,7 @@
           <div class="band-week-name">Week 2</div>
           <div class="band-week-sub">High Heat</div>
         </div>
-        <div class="band-right">Wok, cast iron, stir fry. We go to the grocery store together and I show you how to shop without a recipe list. Things get loud and fast.</div>
+        <div class="band-right">Blazing cast iron, screaming wok, quick reflexes. High heat is the secret to a great meal in fifteen minutes after a workday. Things get hot and smoky.</div>
       </div>
 
       <div class="week-band w3">
@@ -702,15 +707,15 @@
     <div class="rhythm-grid">
       <div class="rhythm-cell">
         <div class="rhythm-cell-time">Morning</div>
-        <div class="rhythm-cell-desc">A prompt arrives in your texts — specific in Week 1, increasingly open-ended as the month goes on.</div>
+        <div class="rhythm-cell-desc">A prompt arrives in your texts.</div>
       </div>
       <div class="rhythm-cell">
         <div class="rhythm-cell-time">Your Day</div>
-        <div class="rhythm-cell-desc">Cook it. Set a timer when you start so you actually see how long things take. Send me a photo or quick video.</div>
+        <div class="rhythm-cell-desc">Cook it. Note when you start and finish so you build a sense of flow. Send me a photo or quick video.</div>
       </div>
       <div class="rhythm-cell">
         <div class="rhythm-cell-time">My Response</div>
-        <div class="rhythm-cell-desc">Specific feedback within a few hours — voice memo or text. Not "looks great." Something you can use.</div>
+        <div class="rhythm-cell-desc">Specific feedback within a few hours, voice memo or text. Not "looks great." Something you can use.</div>
       </div>
       <div class="rhythm-cell">
         <div class="rhythm-cell-time">Weekly</div>
@@ -728,12 +733,12 @@
   <div class="page">
 
     <div class="doc-header">
-      <div class="doc-wordmark"><span class="wm-food">food</span> <span class="wm-jazz">jazz</span></div>
+      <div class="doc-wordmark"><span class="wm-food">Food</span> <span class="wm-jazz">Jazz</span></div>
       <div class="doc-label">The Mindset</div>
     </div>
 
     <h2 class="page-title">
-      How to show up, <span class="accent">and where this leaves you.</span>
+      How to <span class="accent">show up.</span>
     </h2>
 
     <p class="body-copy" style="margin-bottom: 0.18in;">
@@ -747,11 +752,11 @@
       </div>
       <div class="expect-item">
         <div class="expect-num">2</div>
-        <div class="expect-text"><strong>Set a timer when you start cooking.</strong> Not to race — to know. Most weeknight meals take under twenty minutes once you stop second-guessing yourself. You'll be surprised.</div>
+        <div class="expect-text"><strong>Set a timer when you start cooking.</strong> Not to make you faster, just so you can see how fast you already are. Most weeknight meals take under twenty minutes once you stop second-guessing yourself. You'll be surprised.</div>
       </div>
       <div class="expect-item">
         <div class="expect-num">3</div>
-        <div class="expect-text"><strong>Send me photos. Every day.</strong> This is how I track where you are and tailor what comes next. If I don't hear from you, I'll follow up. Consider yourself warned.</div>
+        <div class="expect-text"><strong>Check in every day.</strong> A photo, a quick video, a voice note, or just a text. Whatever's easiest. This is how I track where you are and tailor what comes next. If I don't hear from you, I'll follow up. Consider yourself warned.</div>
       </div>
       <div class="expect-item">
         <div class="expect-num">4</div>
@@ -759,16 +764,22 @@
       </div>
       <div class="expect-item">
         <div class="expect-num">5</div>
-        <div class="expect-text"><strong>Let yourself be a beginner.</strong> Cooking feels vulnerable — you're making something from scratch and asking someone to eat it. That's real. Confidence comes from doing it anyway, and you're going to do it a lot this month.</div>
+        <div class="expect-text"><strong>Let yourself be a beginner.</strong> Cooking feels vulnerable. You're making something from scratch and asking someone to eat it. That's real. The only fix is doing it anyway, and you're going to do it a lot this month.</div>
       </div>
     </div>
 
     <div class="p4-callouts">
       <div class="p4-callout p4-callout-linen">
-        <strong>A heads-up.</strong> Around day twelve or fifteen, this will stop feeling exciting and start feeling like routine. That isn't failure — that's where the real skill-building lives. Most people quit right there. Text me when it hits and we'll talk about it.
+        <img class="p4-callout-icon" src="icons/marathon.svg" alt="">
+        <div class="p4-callout-body">
+          <strong>A marathon, not a sprint.</strong> Around day twelve or fifteen, this will stop feeling exciting and start feeling like routine. That isn't failure. That's where the real skill-building lives. Most people quit right there. Text me when it hits and we'll talk about it.
+        </div>
       </div>
       <div class="p4-callout p4-callout-sage">
-        <strong>Happy little accidents.</strong> Some of what you make this month won't taste good. That's not failure, that's data. You learn more from a bad vinaigrette than a good one because you have to figure out what went wrong. I'll probably be eating it with you.
+        <img class="p4-callout-icon" src="icons/palette.svg" alt="">
+        <div class="p4-callout-body">
+          <strong>Happy little accidents.</strong> Some of what you make this month won't taste good. That's not failure, that's data. You learn more from a bad vinaigrette than a good one because you have to figure out what went wrong. I'll probably be eating it with you.
+        </div>
       </div>
     </div>
 
@@ -777,19 +788,24 @@
     <div class="endstate">
       <div class="section-eyebrow">Where this leaves you</div>
       <p class="body-copy" style="margin-bottom: 0.06in;">
-        By day thirty, the way you think about food has changed. Not because of a magic recipe, but because the gap between what you crave and what ends up on your plate has closed.
+        By day thirty, the way you think about food has shifted. Here's what tends to happen.
       </p>
 
       <ul class="endstate-list">
         <li>You <strong>open the fridge and see options,</strong> not obstacles.</li>
-        <li>You <strong>taste mid-cook and know what's missing</strong> — too acidic, needs fat, almost there.</li>
+        <li>You <strong>taste mid-cook and know what's missing.</strong> Too acidic, needs fat, almost there.</li>
         <li>You <strong>shop for the week,</strong> not for a recipe you'll make once and forget.</li>
         <li>You <strong>cook for the people you love</strong> without asking them to wait while you check your phone.</li>
       </ul>
     </div>
 
     <div class="closing-mark">
-      <div class="closing-line">See you in the kitchen.</div>
+      <div class="closing-line">Excited to see<br>the cook you become!</div>
+      <svg class="closing-flourish" viewBox="0 0 28 6" fill="none" aria-hidden="true">
+        <circle cx="3" cy="3" r="2" fill="#7A8C6E"/>
+        <circle cx="14" cy="3" r="2.4" fill="#7A8C6E"/>
+        <circle cx="25" cy="3" r="2" fill="#7A8C6E"/>
+      </svg>
     </div>
 
     <div class="doc-footer">

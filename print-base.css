@@ -1,0 +1,345 @@
+/* ============================================================
+   Food Jazz — Print Documents Base Styles
+   Shared CSS for all printable internal + client documents.
+
+   Base font: 14px. At this base:
+     1rem    = 14px   (body text)
+     0.72rem = ~10px  (smallest label, fine for print)
+     1.14rem = 16px   (large body)
+     2rem    = 28px   (titles)
+   ============================================================ */
+
+@page {
+  size: letter portrait;
+  margin: 0;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { font-size: 14px; -webkit-font-smoothing: antialiased; print-color-adjust: exact; -webkit-print-color-adjust: exact; }
+
+:root {
+  --sage:         #7A8C6E;
+  --sage-deep:    #5e7052;
+  --sage-light:   #A8B89D;
+  --sage-muted:   #c4cfc0;
+  --sage-wash:    #EDF2EB;
+  --cream:        #FAF7F2;
+  --linen:        #F3EDE4;
+  --wood-dark:    #8B6D47;
+  --golden:       #D4A843;
+  --terracotta:   #C47A5A;
+  --charcoal:     #2E2E2C;
+  --warm-gray:    #4a4845;
+  --medium-gray:  #7d7a76;
+  --font-display: 'Caveat', cursive;
+  --font-body:    'DM Sans', sans-serif;
+}
+
+body {
+  background: #e8e5e0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+  padding: 2rem;
+  font-family: var(--font-body);
+}
+@media print {
+  body { background: none; padding: 0; gap: 0; }
+  .page { width: 100%; box-shadow: none; }
+  .page + .page { page-break-before: always; }
+}
+
+.page {
+  width: 8.5in;
+  min-height: 11in;
+  max-height: 11in;
+  background: var(--cream);
+  color: var(--warm-gray);
+  font-weight: 300;
+  line-height: 1.6;
+  position: relative;
+  overflow: hidden;
+  padding: 0.4in 0.5in 0.55in;
+}
+
+/* ===== HEADER BAR ===== */
+.doc-header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid var(--sage);
+  margin-bottom: 1.2rem;
+}
+.doc-wordmark {
+  font-family: var(--font-display);
+  font-size: 1.6rem;
+  color: var(--sage);
+  line-height: 1;
+}
+.doc-wordmark .wm-food { font-weight: 700; }
+.doc-wordmark .wm-jazz { font-weight: 400; }
+.doc-label {
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--sage);
+}
+
+/* ===== TITLES ===== */
+.doc-title {
+  font-family: var(--font-display);
+  font-size: 2.6rem;
+  font-weight: 700;
+  color: var(--charcoal);
+  line-height: 1.05;
+  margin-bottom: 0.25rem;
+}
+.doc-subtitle {
+  font-size: 1rem;
+  color: var(--medium-gray);
+  margin-bottom: 1.2rem;
+  line-height: 1.5;
+}
+
+/* ===== SECTIONS ===== */
+.doc-section {
+  margin-bottom: 1.1rem;
+}
+.doc-section-title {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--charcoal);
+  margin-bottom: 0.35rem;
+}
+.doc-section-label {
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--sage);
+  margin-bottom: 0.45rem;
+}
+.doc-section p {
+  margin-bottom: 0.45rem;
+  line-height: 1.55;
+}
+
+/* ===== DIVIDERS ===== */
+.doc-rule {
+  border: none;
+  border-top: 1px solid var(--sage-muted);
+  margin: 0.9rem 0;
+}
+
+/* ===== CHECKLISTS ===== */
+.checklist {
+  list-style: none;
+  padding: 0;
+}
+.checklist li {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.28rem 0;
+  border-bottom: 1px solid oklch(0.92 0.005 80);
+  font-size: 0.93rem;
+}
+.checklist li:last-child { border-bottom: none; }
+.check-box {
+  width: 16px;
+  height: 16px;
+  border: 2px solid var(--sage);
+  border-radius: 3px;
+  flex-shrink: 0;
+}
+.checklist .tier-label {
+  font-size: 0.64rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 2px 7px;
+  border-radius: 3px;
+  margin-left: auto;
+  flex-shrink: 0;
+  white-space: nowrap;
+}
+.tier-essential {
+  color: var(--sage-deep);
+  background: var(--sage-wash);
+}
+.tier-nice {
+  color: var(--wood-dark);
+  background: var(--linen);
+}
+.tier-wait {
+  color: var(--medium-gray);
+  background: oklch(0.95 0.005 80);
+}
+
+/* ===== NOTE LINES ===== */
+.notes-area {
+  margin-top: 0.5rem;
+}
+.note-line {
+  border-bottom: 1px solid var(--sage-muted);
+  height: 2rem;
+}
+.notes-label {
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--medium-gray);
+  margin-bottom: 0.15rem;
+}
+
+/* ===== FILL-IN BLANKS ===== */
+.fill-blank {
+  border-bottom: 2px solid var(--charcoal);
+  display: inline-block;
+  min-width: 200px;
+  height: 1.5rem;
+  vertical-align: bottom;
+}
+.fill-blank-wide {
+  border-bottom: 2px solid var(--charcoal);
+  display: block;
+  width: 100%;
+  height: 2rem;
+  margin: 0.3rem 0;
+}
+
+/* ===== SIGNATURE ===== */
+.sig-area {
+  margin-top: 1.5rem;
+}
+.sig-block {
+  flex: 1;
+}
+.sig-line {
+  border-bottom: 2px solid var(--charcoal);
+  height: 2.8rem;
+}
+.sig-label {
+  font-size: 0.72rem;
+  font-weight: 400;
+  color: var(--medium-gray);
+  margin-top: 0.3rem;
+}
+
+/* ===== TABLES ===== */
+.doc-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 1rem;
+}
+.doc-table th {
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--sage);
+  text-align: left;
+  padding: 0.4rem 0.5rem;
+  border-bottom: 2px solid var(--sage);
+}
+.doc-table td {
+  padding: 0.35rem 0.5rem;
+  border-bottom: 1px solid oklch(0.92 0.005 80);
+  font-size: 0.93rem;
+}
+
+/* ===== GRID LAYOUTS ===== */
+.two-col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.4rem;
+}
+.three-col {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 1rem;
+}
+
+/* ===== ACCENT BOXES ===== */
+.callout-sage {
+  background: var(--sage-wash);
+  padding: 0.75rem 1rem;
+  border-radius: 6px;
+  margin-bottom: 0.9rem;
+}
+.callout-sage p {
+  font-size: 0.95rem;
+  color: var(--charcoal);
+  line-height: 1.55;
+}
+.callout-linen {
+  background: var(--linen);
+  padding: 0.75rem 1rem;
+  border-radius: 6px;
+  margin-bottom: 0.9rem;
+}
+
+/* ===== FOOTER ===== */
+.doc-footer {
+  position: absolute;
+  bottom: 0.35in;
+  left: 0.5in;
+  right: 0.5in;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 0.45rem;
+  border-top: 1px solid var(--sage-muted);
+}
+.doc-footer-text {
+  font-size: 0.72rem;
+  color: var(--medium-gray);
+}
+.doc-footer-url {
+  font-family: var(--font-display);
+  font-size: 0.9rem;
+  color: var(--sage);
+  font-weight: 600;
+}
+
+/* ===== PILLAR ROWS ===== */
+.pillar-row {
+  display: grid;
+  grid-template-columns: 48px 1fr;
+  gap: 0.6rem;
+  align-items: start;
+  padding: 0.6rem 0.8rem;
+  background: white;
+  border: 1.5px solid var(--sage-muted);
+  border-radius: 6px;
+}
+.pillar-num {
+  font-family: var(--font-display);
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: var(--sage);
+  line-height: 1;
+}
+.pillar-name {
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+  font-weight: 600;
+  color: var(--charcoal);
+  line-height: 1.1;
+}
+.pillar-text {
+  font-size: 0.86rem;
+  line-height: 1.5;
+  margin-top: 0.1rem;
+}
+.pillar-reminder {
+  font-size: 0.78rem;
+  color: var(--sage);
+  font-style: italic;
+  margin-top: 0.2rem;
+}
