@@ -1962,7 +1962,12 @@
         window.removeEventListener('touchmove', closeModal);
       }
 
-      if (new URLSearchParams(window.location.search).has('submitted')) {
+      var params = new URLSearchParams(window.location.search);
+      if (params.has('paid')) {
+        modal.querySelector('.submit-modal-text').textContent = "You're in.";
+        modal.querySelector('.submit-modal-sub').textContent = "Stoked to be cooking with you!";
+      }
+      if (params.has('submitted') || params.has('paid')) {
         modal.classList.add('active');
         history.replaceState(null, '', window.location.pathname);
         launchConfetti();
