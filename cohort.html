@@ -1,0 +1,1762 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Food Jazz — Become an Effortless Cook</title>
+  <meta name="description" content="Food Jazz is a 30-day cooking intensive that teaches you to cook intuitively — no recipes, just flow. Join the waitlist for the next cohort.">
+  <meta name="format-detection" content="telephone=no">
+  <meta name="theme-color" content="#FAF7F2">
+  <meta property="og:title" content="Food Jazz — Become an Effortless Cook">
+  <meta property="og:description" content="A 30-day cooking intensive designed to make you an intuitive, effortless cook — forever.">
+  <meta property="og:image" content="https://foodjazz.club/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:url" content="https://foodjazz.club/cohort">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://foodjazz.club/og-image.png">
+  <link rel="canonical" href="https://foodjazz.club/cohort">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300;1,9..40,400&display=swap" rel="stylesheet">
+  <style>
+    /* ===== TOKENS ===== */
+    :root {
+      --sage:        #7A8C6E;
+      --sage-light:  #A8B89D;
+      --sage-muted:  #D4DDD0;
+      --sage-wash:   #EDF2EB;
+      --cream:       #FAF7F2;
+      --linen:       #F3EDE4;
+      --wood:        #B8956A;
+      --wood-dark:   #8B6D47;
+      --golden:      #D4A843;
+      --terracotta:  #C47A5A;
+      --charcoal:    #2E2E2C;
+      --warm-gray:   #5C5A56;
+      --medium-gray: #9B9892;
+      --font-display:'Caveat', cursive;
+      --font-body:   'DM Sans', sans-serif;
+      --max-w:       1100px;
+      --read-w:      680px;
+      --sage-deep:   #6a7a60;
+      --linen-border:#e0d9cf;
+    }
+
+    /* ===== RESET ===== */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { font-size: 20px; -webkit-font-smoothing: antialiased; scroll-behavior: smooth; overflow-x: clip; }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; scroll-behavior: auto; }
+    }
+    body { font-family: var(--font-body); font-weight: 300; color: var(--warm-gray); background: var(--cream); line-height: 1.7; overflow-x: hidden; }
+    img { display: block; max-width: 100%; }
+    a { color: inherit; text-decoration: none; }
+    strong { font-weight: 500; color: var(--charcoal); }
+
+    /* ===== LAYOUT ===== */
+    .wrap  { max-width: var(--max-w); margin: 0 auto; padding: 0 2rem; }
+    .wrap--narrow { max-width: var(--read-w); margin: 0 auto; padding: 0 2rem; }
+    .section { padding: 7.5rem 0; }
+
+    /* ===== TYPE ===== */
+    .display { font-family: var(--font-display); font-weight: 600; color: var(--charcoal); line-height: 1.05; letter-spacing: -0.01em; }
+    .display--xl  { font-size: clamp(3.2rem, 8vw, 7rem); line-height: 1.0; }
+    .display--lg  { font-size: clamp(2rem, 5vw, 3.2rem); line-height: 1.15; }
+    .display--md  { font-size: clamp(1.4rem, 2.5vw, 1.8rem); line-height: 1.2; }
+    .display--sm  { font-size: 1.15rem; line-height: 1.3; }
+    .eyebrow { font-size: 0.75rem; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; color: var(--medium-gray); display: block; }
+    .eyebrow--sage  { color: var(--sage); }
+    .eyebrow--light { color: rgba(255,255,255,0.5); }
+    .body-text { font-size: 1rem; font-weight: 300; color: var(--warm-gray); line-height: 1.75; }
+    .body-text + .body-text { margin-top: 1.1rem; }
+    .body-text--lg { font-size: 1.15rem; line-height: 1.7; }
+
+
+    /* ===== PILL ===== */
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      border: 1px solid var(--sage-muted);
+      border-radius: 99px;
+      padding: 0.22rem 0.75rem;
+      margin-bottom: 1.5rem;
+    }
+    .pill__dot { width: 5px; height: 5px; border-radius: 50%; background: var(--sage); flex-shrink: 0; }
+    .pill__text { font-size: 0.75rem; font-weight: 500; color: var(--sage); letter-spacing: 0.16em; text-transform: uppercase; }
+
+    /* ===== WAVE ===== */
+    .wave { line-height: 0; overflow: hidden; }
+    .wave svg { display: block; width: 100%; height: 22px; }
+
+    /* ===== BUTTON ===== */
+    .btn {
+      display: inline-block;
+      font-family: var(--font-body);
+      font-size: 0.875rem;
+      font-weight: 400;
+      padding: 0.8rem 1.75rem;
+      border-radius: 3px;
+      border: none;
+      cursor: pointer;
+      transition: opacity 0.15s;
+      white-space: nowrap;
+    }
+    .btn:hover { opacity: 0.85; }
+    .btn--sage  { background: var(--sage); color: var(--cream); }
+    .btn--dark  { background: var(--charcoal); color: var(--cream); }
+
+    /* ===== GLOW BUTTON ===== */
+    .btn-wrap {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .btn-glow {
+      position: absolute;
+      inset: -2px;
+      background: linear-gradient(135deg, var(--golden), var(--wood), var(--sage));
+      border-radius: 50px;
+      filter: blur(14px);
+      opacity: 0.45;
+      transition: opacity 0.3s ease;
+    }
+    .btn-wrap:hover .btn-glow { opacity: 0.8; }
+    .btn-primary {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-family: var(--font-display);
+      font-size: 1.25rem;
+      font-weight: 600;
+      background: var(--sage);
+      color: white;
+      padding: 16px 48px;
+      border-radius: 50px;
+      border: none;
+      cursor: pointer;
+      text-decoration: none;
+      transition: background 0.2s ease, transform 0.15s ease;
+    }
+    .btn-primary:hover { background: var(--sage-deep); transform: translateY(-2px); }
+    .btn-primary:active { transform: translateY(0); }
+    .btn-arrow {
+      display: inline-block;
+      width: 10px;
+      height: 10px;
+      overflow: visible;
+      transition: transform 0.2s ease;
+    }
+    .btn-wrap:hover .btn-arrow { transform: translateX(3px); }
+
+    /* ===== EMAIL FORM ===== */
+    .email-form { display: flex; gap: 0.5rem; max-width: 440px; flex-wrap: wrap; }
+    .email-form input[type="email"] {
+      flex: 1; min-width: 200px;
+      font-family: var(--font-body); font-size: 0.875rem; font-weight: 300;
+      padding: 0.8rem 1rem;
+      border: 1px solid var(--sage-muted); border-radius: 3px;
+      background: white; color: var(--charcoal); outline: none;
+      transition: border-color 0.15s;
+    }
+    .email-form input[type="email"]:focus { border-color: var(--sage); outline: none; box-shadow: 0 0 0 3px rgba(122, 140, 110, 0.18); }
+    .email-form input[type="email"]::placeholder { color: var(--medium-gray); }
+    /* Focus ring for all kit-form and modal email inputs */
+    .kit-form input[type="email"]:focus,
+    .waitlist-modal__form input[type="email"]:focus { outline: none; border-color: var(--sage); box-shadow: 0 0 0 3px rgba(122, 140, 110, 0.18); }
+    .email-form--dark input[type="email"] {
+      background: rgba(255,255,255,0.08);
+      border-color: rgba(255,255,255,0.2);
+      color: white;
+    }
+    .email-form--dark input[type="email"]::placeholder { color: rgba(255,255,255,0.4); }
+    .email-disclaimer { font-size: 0.72rem; color: var(--medium-gray); margin-top: 0.6rem; }
+    .email-disclaimer--light { color: rgba(255,255,255,0.35); }
+
+    /* ===== NAV ===== */
+    .nav {
+      position: sticky; top: 0; z-index: 100;
+      background: var(--cream);
+      border-bottom: 1px solid var(--sage-muted);
+      padding: 1rem 0;
+    }
+    .nav__inner { display: flex; align-items: center; justify-content: space-between; }
+    .nav__wordmark { font-family: var(--font-display); font-size: 1.7rem; color: var(--sage); }
+    .nav__wordmark .logo-food { font-weight: 700; }
+    .nav__wordmark .logo-jazz { font-weight: 400; }
+    .nav__links { display: flex; align-items: center; gap: 1.75rem; }
+    .nav__link { font-size: 0.875rem; color: var(--warm-gray); transition: color 0.15s; }
+    .nav__link:hover { color: var(--charcoal); }
+    .nav__cta { font-size: 0.82rem; background: var(--sage); color: var(--cream) !important; padding: 0.5rem 1.2rem; border-radius: 50px; transition: opacity 0.15s; font-weight: 400; }
+    .nav__cta:hover { opacity: 0.85; }
+    .nav__cta--scroll {
+      opacity: 0;
+      transform: translateY(-6px);
+      pointer-events: none;
+      transition: opacity 0.8s ease, transform 0.8s ease;
+      box-shadow: 0 0 12px rgba(212,168,67,0.35), 0 0 4px rgba(212,168,67,0.2);
+    }
+    .nav__cta--scroll.visible {
+      opacity: 1;
+      transform: translateY(0);
+      pointer-events: auto;
+    }
+
+    /* ===== HERO ===== */
+    .hero {
+      position: relative;
+      overflow: clip;
+      background: var(--cream);
+      padding: 8rem 0 7rem;
+    }
+    .hero__text {
+      position: relative;
+      z-index: 2;
+      max-width: 680px;
+    }
+    .hero-spiral {
+      position: absolute;
+      top: -80px; right: -100px;
+      opacity: 0.055;
+      pointer-events: none;
+    }
+    .hero-breath {
+      position: absolute;
+      bottom: -60px; left: -60px;
+      opacity: 0.045;
+      pointer-events: none;
+    }
+    .hero__form { display: flex; align-items: center; gap: 0.75rem; flex-wrap: wrap; }
+    .hero__headline { margin-bottom: 0.2rem; }
+    .hero__sub-headline {
+      font-family: var(--font-display);
+      font-size: clamp(1.1rem, 2vw, 1.5rem);
+      font-weight: 400;
+      color: var(--sage);
+      font-style: italic;
+      margin-bottom: 1.25rem;
+    }
+    .hero__body { margin-bottom: 2rem; }
+
+    /* ===== SECTION BACKGROUNDS ===== */
+    .bg-cream  { background: var(--cream); }
+    .bg-wash   { background: var(--sage-wash); }
+    .bg-linen  { background: var(--linen); }
+    .bg-dark   { background: var(--charcoal); }
+
+    /* ===== PROBLEM ===== */
+    .problem__intro { text-align: center; max-width: 600px; margin: 0 auto 3rem; }
+    .problem__grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; }
+    .problem__card {
+      background: white;
+      border: 1px solid var(--sage-muted);
+      border-radius: 4px;
+      padding: 1.75rem 1.5rem;
+    }
+    .problem__card-icon { margin-bottom: 1rem; }
+    .problem__card-title { font-family: var(--font-display); font-size: 1.6rem; font-weight: 600; color: var(--charcoal); margin-bottom: 0.85rem; }
+    .problem__tags { display: flex; flex-direction: column; gap: 0.5rem; }
+    .problem__tag { display: flex; align-items: center; gap: 0.6rem; font-size: 0.875rem; font-weight: 300; color: var(--warm-gray); }
+    .problem__tag-icon { width: 16px; height: 16px; flex-shrink: 0; }
+
+    /* ===== MINDSET ===== */
+    .mindset__grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2.5rem; margin-top: 2.5rem; }
+    .mindset__item { display: flex; flex-direction: column; gap: 0.6rem; }
+    .mindset__icon { width: 40px; height: 40px; margin-bottom: 0.25rem; }
+    .mindset__title { font-family: var(--font-display); font-size: 1.2rem; font-weight: 600; color: var(--charcoal); line-height: 1.2; }
+    .mindset__desc { font-size: 0.9rem; font-weight: 300; color: var(--warm-gray); line-height: 1.65; }
+
+    /* ===== BACKBURNER ===== */
+    .backburner { padding: 5rem 0; }
+    .backburner__inner { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: start; }
+    .backburner__headline { margin-bottom: 1.5rem; }
+    .backburner__cta { margin-top: 2rem; }
+    .backburner__cta-text {
+      font-family: var(--font-display);
+      font-size: 1.35rem;
+      font-weight: 600;
+      color: var(--sage);
+      line-height: 1.25;
+    }
+
+    /* ===== DISSATISFIED ===== */
+    .dissatisfied { background: var(--sage-wash); padding: 7rem 0; }
+    .dissatisfied__intro { text-align: center; margin-bottom: 4rem; }
+    .dissatisfied__grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; }
+    .dissatisfied__card {
+      background: white;
+      border: 1px solid var(--sage-muted);
+      border-radius: 6px;
+      padding: 2rem 1.75rem;
+    }
+    .dissatisfied__card-title {
+      font-family: var(--font-display);
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--charcoal);
+      margin-bottom: 1.25rem;
+      line-height: 1.2;
+    }
+    .dissatisfied__items { list-style: none; display: flex; flex-direction: column; gap: 0.85rem; }
+    .dissatisfied__item { font-size: 0.95rem; font-weight: 300; color: var(--warm-gray); line-height: 1.65; display: flex; gap: 0.6rem; }
+    .dissatisfied__emoji { flex-shrink: 0; }
+    @media (max-width: 900px) {
+      .dissatisfied__grid { grid-template-columns: 1fr; }
+    }
+
+    /* ===== ACCOUNTABILITY ===== */
+    .accountability { padding: 7.5rem 0; background: var(--linen); }
+    .accountability__inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: center;
+    }
+    .accountability__headline {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 3.5vw, 2.8rem);
+      font-weight: 700;
+      color: var(--charcoal);
+      font-style: italic;
+      line-height: 1.1;
+      margin-bottom: 1.5rem;
+    }
+    .accountability__zoom {
+      width: 100%;
+      border-radius: 8px;
+      box-shadow: 0 24px 60px rgba(46,46,44,0.18), 0 4px 16px rgba(46,46,44,0.1);
+      transform: rotate(-1.5deg);
+      display: block;
+    }
+    @media (max-width: 900px) {
+      .accountability__inner { grid-template-columns: 1fr; gap: 2.5rem; }
+      .accountability__zoom { transform: none; }
+    }
+
+    /* ===== INTUITIVE CIRCLE ===== */
+    .intuitive-circle {
+      position: absolute;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      width: calc(100% + 36px);
+      height: calc(100% + 24px);
+      pointer-events: none;
+      overflow: visible;
+    }
+    .circle-path {
+      stroke: white;
+      stroke-width: 2.5;
+      fill: none;
+      stroke-linecap: round;
+      stroke-dasharray: 600;
+      stroke-dashoffset: 600;
+      transition: stroke-dashoffset 1.8s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .circle-path.drawn { stroke-dashoffset: 0; }
+
+    /* ===== BENEFIT ROW ===== */
+    .benefit-row { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; padding: 5rem 0; }
+    .benefit-row--flip { }
+    .benefit-row__stat { font-family: var(--font-display); font-size: 4rem; font-weight: 700; color: var(--golden); line-height: 1; margin-bottom: 0.5rem; }
+    .benefit-row__title { margin-bottom: 0.5rem; }
+    .benefit-row__sub { font-family: var(--font-display); font-size: 1rem; font-weight: 500; color: var(--sage); font-style: italic; margin-bottom: 1rem; }
+    .benefit-row__assertion { font-family: var(--font-display); font-size: 1.1rem; font-weight: 600; color: var(--charcoal); margin-bottom: 0.75rem; }
+    .benefit-row__visual {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 260px;
+      border-radius: 4px;
+    }
+    .benefit-row__visual--wash { background: var(--sage-wash); }
+    .benefit-row__visual--linen { background: var(--linen); }
+    .benefit-row__visual--cream { background: var(--cream); border: 1px solid var(--sage-muted); }
+    .benefit-row__visual svg { opacity: 0.9; }
+
+    /* ===== AKSHAY ===== */
+    .akshay__inner { display: grid; grid-template-columns: 200px 1fr; gap: 4rem; align-items: start; }
+    .akshay__photo { width: 100%; aspect-ratio: 3/4; object-fit: cover; object-position: center 8%; border-radius: 4px; border: 1.5px solid var(--golden); }
+    .akshay__role { font-size: 0.75rem; font-weight: 500; color: var(--sage); letter-spacing: 0.18em; text-transform: uppercase; margin-bottom: 0.5rem; }
+    .akshay__name { margin-bottom: 0.25rem; }
+    .akshay__sub { font-family: var(--font-display); font-size: 1.2rem; font-weight: 500; color: var(--sage); font-style: italic; margin-bottom: 1.25rem; }
+    .akshay__mission { font-family: var(--font-display); font-size: 1.15rem; font-weight: 600; color: var(--sage); line-height: 1.3; margin-top: 1.5rem; padding-top: 1.5rem; border-top: 1px solid var(--linen-border); }
+
+    /* ===== INCLUDED ===== */
+    .included__list { display: flex; flex-direction: column; gap: 1rem; margin-top: 2rem; }
+    .included__item { display: flex; align-items: flex-start; gap: 0.85rem; padding: 0.9rem 1.1rem; background: white; border: 1px solid var(--sage-muted); border-radius: 3px; }
+    .included__check { flex-shrink: 0; margin-top: 2px; }
+    .included__text { font-size: 0.9rem; font-weight: 300; color: var(--warm-gray); line-height: 1.5; }
+    .included__item--bonus { background: var(--linen); border-color: var(--linen-border); }
+    .included__item--guarantee { background: rgba(212,168,67,0.06); border-color: var(--golden); }
+    .included__form-wrap { margin-top: 3rem; padding-top: 3rem; border-top: 1px solid var(--sage-muted); }
+    .included__form-label {
+      font-family: var(--font-display);
+      font-size: 1.6rem;
+      font-weight: 600;
+      color: var(--charcoal);
+      margin-bottom: 0.25rem;
+    }
+    .included__form-sub { font-size: 0.9rem; color: var(--warm-gray); margin-bottom: 1.25rem; }
+
+    /* ===== TENETS ===== */
+    .tenets__grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.25rem; margin-top: 2.5rem; }
+    .tenet {
+      padding: 1.5rem;
+      background: white;
+      border: 1px solid var(--sage-muted);
+      border-radius: 4px;
+    }
+    .tenet__header { display: flex; align-items: baseline; gap: 0.75rem; margin-bottom: 0.5rem; }
+    .tenet__num { font-family: var(--font-display); font-size: 1.5rem; font-weight: 700; color: var(--sage-muted); flex-shrink: 0; line-height: 1; }
+    .tenet__title { font-family: var(--font-display); font-size: 1.15rem; font-weight: 600; color: var(--charcoal); line-height: 1.2; }
+    .tenet__desc { font-size: 0.9rem; font-weight: 300; color: var(--warm-gray); line-height: 1.7; padding-left: 2.25rem; }
+
+    /* ===== REFUND ===== */
+    .refund { padding: 7rem 0; }
+    .refund__card {
+      background: var(--linen);
+      border: 1px solid var(--linen-border);
+      border-radius: 6px;
+      padding: 3rem;
+      max-width: 780px;
+      margin: 0 auto;
+    }
+    .refund__icon { margin-bottom: 1.5rem; }
+    .refund__headline { margin-bottom: 1.25rem; font-style: italic; }
+
+    /* ===== CLOSING CTA (charcoal) ===== */
+    .cta-dark { padding: 8rem 0; text-align: center; }
+    .cta-dark .display { color: var(--cream); margin-bottom: 0.75rem; }
+    .cta-dark .body-text { color: rgba(250,247,242,0.65); max-width: 500px; margin: 0 auto 2rem; }
+    .cta-dark .email-form { margin: 0 auto; justify-content: center; }
+    .cta-dark .pill { border-color: rgba(255,255,255,0.15); margin-left: auto; margin-right: auto; }
+    .cta-dark .pill__dot { background: var(--sage-light); }
+    .cta-dark .pill__text { color: var(--sage-light); }
+
+    /* ===== ONE LAST THING ===== */
+    .one-last { padding: 8rem 0; }
+    .one-last__inner { max-width: var(--read-w); margin: 0 auto; text-align: center; }
+    .one-last__headline { font-style: italic; margin-bottom: 2rem; }
+    .one-last__final {
+      font-family: var(--font-display);
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--charcoal);
+      margin: 2rem 0 0.75rem;
+      font-style: italic;
+    }
+    .one-last__question {
+      font-family: var(--font-display);
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--sage);
+      margin-top: 1.5rem;
+    }
+
+    /* ===== FOOTER ===== */
+    footer { background: var(--linen); padding: 4rem 2rem; }
+    .footer-inner { max-width: 1100px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; }
+    .footer-logo { font-family: var(--font-display); font-size: 1.5rem; color: var(--sage); }
+    .footer-logo .logo-food { font-weight: 700; }
+    .footer-logo .logo-jazz { font-weight: 400; }
+    .footer-links { display: flex; gap: 2rem; list-style: none; }
+    .footer-links a { font-size: 0.85rem; color: var(--warm-gray); text-decoration: none; }
+    .footer-links a:hover { color: var(--sage); }
+    .footer-copy { font-size: 0.75rem; color: var(--medium-gray); width: 100%; margin-top: 1rem; padding-top: 1rem; border-top: 1px solid var(--sage-muted); }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 900px) {
+      /* Grids → single column */
+      .problem__grid,
+      .mindset__grid,
+      .cooks__grid,
+      .tenets__grid { grid-template-columns: 1fr; }
+
+      /* Benefit rows → stack */
+      .benefit-row { grid-template-columns: 1fr; gap: 2rem; padding: 3.5rem 0; }
+      .benefit-row__visual { height: 200px; }
+
+      /* Backburner → stack */
+      .backburner__inner { grid-template-columns: 1fr; gap: 2.5rem; }
+
+      /* About */
+      .about-top { grid-template-columns: 1fr; gap: 1.75rem; }
+      .about-photo-wrap { margin: 0 auto; }
+      .about-name { font-size: 2rem; }
+      .section-about .label { text-align: center; }
+      .about-role { display: block; text-align: center; width: fit-content; margin: 0 auto 0.6rem; font-size: 0.72rem; padding: 0.2rem 0.6rem; }
+      .section-about .about-top > div { text-align: center; }
+      .about-bio--lead { font-size: 1.1rem; }
+      .about-bottom { max-width: 100%; }
+      .about-david img { height: auto; max-height: 320px; object-position: center 20%; }
+      .about-press-banner { margin-bottom: 1.5rem; }
+    }
+
+    /* ===== TENET ICONS ===== */
+    .tenet__icon { width: 26px; height: 26px; flex-shrink: 0; }
+
+    /* ===== WAITLIST MODAL ===== */
+    .waitlist-modal { display: none; position: fixed; inset: 0; z-index: 500; align-items: center; justify-content: center; }
+    .waitlist-modal.open { display: flex; }
+    .waitlist-modal__backdrop { position: absolute; inset: 0; background: rgba(46,46,44,0.6); backdrop-filter: blur(4px); }
+    .waitlist-modal__box { position: relative; z-index: 1; background: var(--cream); border-radius: 12px; padding: 2.5rem 2rem; width: min(420px, calc(100vw - 3rem)); box-shadow: 0 24px 64px rgba(0,0,0,0.18); }
+    .waitlist-modal__close { position: absolute; top: 1rem; right: 1rem; background: none; border: none; font-size: 1.1rem; color: var(--medium-gray); cursor: pointer; padding: 0.25rem 0.5rem; line-height: 1; }
+    .waitlist-modal__label { font-size: 0.75rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--sage); font-weight: 500; margin-bottom: 0.4rem; display: block; }
+    .waitlist-modal__title { font-family: var(--font-display); font-size: 2rem; color: var(--charcoal); margin-bottom: 0.4rem; }
+    .waitlist-modal__body { font-size: 0.9rem; color: var(--warm-gray); margin-bottom: 1.5rem; line-height: 1.6; }
+    .waitlist-modal__form { flex-direction: column; }
+
+    /* ===== ABOUT ===== */
+    .section-about { background: var(--sage-wash); padding: 7.5rem 0; }
+    .about-top { display: grid; grid-template-columns: 200px 1fr 1fr; gap: 4rem; align-items: start; margin-bottom: 4rem; }
+    .about-photo-wrap { width: 185px; height: 238px; border-radius: 4px; border: 1.5px solid var(--golden); overflow: hidden; box-shadow: 4px 4px 0 rgba(212,168,67,0.2); }
+    .about-photo-wrap img { width: 100%; height: 100%; object-fit: cover; object-position: center 8%; display: block; }
+    .about-role { display: inline-flex; align-items: center; border: 1px solid var(--sage-muted); border-radius: 99px; padding: 0.25rem 0.75rem; font-size: 0.72rem; font-weight: 500; color: var(--sage); letter-spacing: 0.18em; text-transform: uppercase; margin-bottom: 0.6rem; }
+    .about-name { font-family: var(--font-display); font-size: clamp(2rem, 4vw, 2.8rem); font-weight: 600; color: var(--charcoal); line-height: 1.05; margin-bottom: 1.25rem; }
+    .about-bio { font-size: 1rem; font-weight: 300; color: var(--warm-gray); line-height: 1.8; }
+    .about-bio + .about-bio { margin-top: 1rem; }
+    .about-bio--lead { font-size: 1.25rem; font-weight: 400; color: var(--sage); line-height: 1.6; font-style: italic; }
+    .about-bio strong { font-weight: 500; color: var(--charcoal); }
+    .about-press-banner { margin-bottom: 2rem; overflow: hidden; }
+    .about-press-label { font-size: 0.75rem; font-weight: 500; color: var(--medium-gray); letter-spacing: 0.2em; text-transform: uppercase; display: block; margin-bottom: 0.75rem; }
+    .about-marquee-wrap {
+      -webkit-mask-image: linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%);
+      mask-image: linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%);
+      overflow: hidden; margin-bottom: 1.5rem;
+    }
+    .marquee-track { display: flex; width: max-content; animation: marquee 50s linear infinite; }
+    @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+    .marquee-set { display: flex; align-items: center; gap: 5rem; padding-right: 5rem; }
+    .marquee-img { height: 26px; width: auto; object-fit: contain; flex-shrink: 0; opacity: 0.5; filter: grayscale(100%); }
+    .about-marquee-wrap .marquee-img,
+    .about-marquee-wrap .marquee-img.invert { filter: brightness(0) saturate(100%) invert(56%) sepia(10%) saturate(700%) hue-rotate(70deg) brightness(92%); opacity: 0.5; }
+    .about-bottom { border-top: 1px solid var(--sage-muted); padding-top: 3.5rem; max-width: 820px; margin: 0 auto; }
+    .about-david { position: relative; border-radius: 4px; overflow: hidden; }
+    .about-david img { width: 100%; height: 500px; object-fit: cover; object-position: center top; border-radius: 4px; display: block; }
+    .about-david-caption { position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(transparent, rgba(46,46,44,0.88)); color: rgba(243,237,228,0.9); font-size: 0.78rem; font-weight: 300; padding: 2.5rem 1.2rem 1rem; border-radius: 0 0 4px 4px; }
+    .about-david-caption strong { color: var(--linen); font-weight: 500; }
+
+    /* ===== HAMBURGER ===== */
+    .nav__hamburger {
+      display: none;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 4px;
+      color: var(--warm-gray);
+      flex-direction: column;
+      gap: 5px;
+    }
+    .hamburger-bar {
+      display: block;
+      width: 22px;
+      height: 1.5px;
+      background: currentColor;
+      transition: transform 0.25s ease, opacity 0.2s ease;
+    }
+    .nav__hamburger.open .hamburger-bar:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+    .nav__hamburger.open .hamburger-bar:nth-child(2) { opacity: 0; }
+    .nav__hamburger.open .hamburger-bar:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+    .mobile-nav {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      background: var(--cream);
+      border-bottom: 1px solid var(--sage-muted);
+      padding: 0.5rem 2rem 1.25rem;
+      list-style: none;
+      flex-direction: column;
+    }
+    .mobile-nav.open { display: flex; }
+    .mobile-nav li { border-top: 1px solid var(--sage-muted); }
+    .mobile-nav a { display: block; padding: 0.9rem 0; font-size: 1rem; color: var(--warm-gray); }
+    .mobile-nav__cta { color: var(--sage) !important; font-weight: 500; }
+
+    @media (max-width: 600px) {
+      .nav__links { display: none; }
+      .nav__hamburger { display: flex; }
+      /* Hide large decorative SVGs that bleed off-screen on mobile */
+      .hero-spiral, .hero-breath { display: none; }
+      .cooks__grid { grid-template-columns: 1fr; }
+      .section { padding: 3.5rem 0; }
+      .email-form { flex-direction: column; }
+      .cta-dark .email-form { flex-direction: column; align-items: stretch; max-width: 100%; }
+      .refund__card { padding: 2rem 1.5rem; }
+      .wrap { padding: 0 1.25rem; }
+      .wrap--narrow { padding: 0 1.25rem; }
+      /* Hero: center text on mobile */
+      .hero { min-height: 65vh; padding: 4rem 0; }
+      .hero__text { max-width: 100%; text-align: center; }
+      .hero__form { justify-content: center; }
+      #waitlist { text-align: center; }
+      .hero__body { font-size: 1rem; }
+    }
+
+    /* ===== FILM GRAIN ===== */
+    body::after {
+      content: '';
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 1000;
+      opacity: 0.028;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+      background-size: 128px 128px;
+    }
+
+    /* ===== PILL DOT PULSE ===== */
+    @keyframes dot-pulse {
+      0%, 100% { transform: scale(1); opacity: 1; }
+      50% { transform: scale(1.55); opacity: 0.5; }
+    }
+    .pill__dot { animation: dot-pulse 2.8s ease-in-out infinite; }
+
+    /* ===== SCROLL REVEAL ===== */
+    .reveal {
+      opacity: 0;
+      transform: translateY(18px);
+      transition: opacity 0.5s ease, transform 0.5s ease;
+    }
+    .reveal.is-visible { opacity: 1; transform: translateY(0); }
+    .reveal-up {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+    .reveal-up.visible { opacity: 1; transform: translateY(0); }
+
+    /* ===== SPOTLIGHT HOVER ===== */
+    .problem__card,
+    .cook__card--plain,
+    .tenet {
+      position: relative;
+      overflow: hidden;
+      transition: border-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+      cursor: default;
+    }
+    .problem__card::before,
+    .cook__card--plain::before,
+    .tenet::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+      transition: opacity 0.4s ease;
+      background: radial-gradient(
+        300px circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
+        rgba(122, 140, 110, 0.10),
+        transparent 65%
+      );
+      pointer-events: none;
+      border-radius: inherit;
+    }
+    .problem__card::after,
+    .cook__card--plain::after,
+    .tenet::after {
+      content: '';
+      position: absolute;
+      inset: -1px;
+      border-radius: inherit;
+      padding: 1px;
+      background: radial-gradient(
+        200px circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
+        rgba(212, 168, 67, 0.55),
+        transparent 70%
+      );
+      opacity: 0;
+      transition: opacity 0.4s ease;
+      pointer-events: none;
+      -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
+    }
+    .problem__card:hover::before,
+    .problem__card:hover::after,
+    .cook__card--plain:hover::before,
+    .cook__card--plain:hover::after,
+    .tenet:hover::before,
+    .tenet:hover::after { opacity: 1; }
+
+    /* ===== TAP FLASH (mobile active state) ===== */
+    .problem__card:active { background: rgba(122,140,110,0.07); transition: background 0.15s ease; }
+    .cook__card--plain:active { background: rgba(122,140,110,0.07); transition: background 0.15s ease; }
+    .tenet:active { background: rgba(122,140,110,0.07); transition: background 0.15s ease; }
+
+    /* ===== GLOW PULSE ===== */
+    .cta-dark .btn-glow {
+      animation: closing-pulse 3s ease-in-out infinite;
+    }
+    @keyframes closing-pulse {
+      0%, 100% { opacity: 0.35; filter: blur(14px); }
+      50% { opacity: 0.65; filter: blur(18px); }
+    }
+
+    /* ===== SCROLL MARGIN (for anchor nav links) ===== */
+    [id] { scroll-margin-top: 5rem; }
+
+    /* ===== BENEFITS NUMBERED ===== */
+    .benefits-numbered { display: flex; flex-direction: column; margin-top: 2.5rem; }
+    .benefit-n { display: grid; grid-template-columns: 72px 1fr 140px; gap: 3rem; align-items: center; padding: 3.5rem 0; border-bottom: 1px solid var(--sage-muted); }
+    .benefit-n:first-child { border-top: 1px solid var(--sage-muted); }
+    .benefit-n__num { font-family: var(--font-display); font-size: 3.5rem; font-weight: 700; color: var(--sage-muted); line-height: 1; letter-spacing: -0.02em; }
+    .benefit-n__title { margin-bottom: 0.6rem; }
+    .benefit-n__visual { display: flex; align-items: center; justify-content: center; }
+    @media (max-width: 900px) {
+      .benefit-n { grid-template-columns: 48px 1fr; gap: 1.5rem; padding: 2.5rem 0; }
+      .benefit-n__visual { display: none; }
+    }
+
+    /* ===== TRANSFERRED FROM COACH.HTML ===== */
+
+    .label {
+      font-size: 0.78rem; font-weight: 500; color: var(--sage);
+      letter-spacing: 0.22em; text-transform: uppercase;
+      display: block; margin-bottom: 0.75rem;
+    }
+
+    /* --- Problem scroll section --- */
+    .section-problem { background: var(--charcoal); padding: 9rem 0 7rem; }
+    .section-problem h2 {
+      font-size: clamp(2.4rem, 6vw, 3.8rem);
+      font-weight: 700; color: var(--linen);
+      font-family: var(--font-display); margin-bottom: 3rem; line-height: 1.1;
+    }
+    .section-problem p {
+      font-size: 1.15rem; font-weight: 300;
+      color: rgba(243,237,228,0.45); line-height: 1.8;
+      transition: color 0.6s ease;
+    }
+    .section-problem p.highlight { color: rgba(243,237,228,0.82); }
+    .section-problem p + p { margin-top: 2.5rem; }
+    .section-problem strong { font-weight: 500; color: var(--linen); }
+    .section-problem em { color: inherit; }
+    .problem-callout {
+      font-family: var(--font-display);
+      font-size: clamp(1.8rem, 4vw, 2.4rem); font-weight: 600;
+      color: rgba(168,184,157,0.25); line-height: 1.2;
+      display: block; margin: 3.5rem 0;
+      transition: color 0.6s ease;
+    }
+    .problem-callout.highlight { color: var(--sage-light); }
+    .problem-callout--warm.highlight { color: var(--golden); }
+    .reveal-up {
+      opacity: 0; transform: translateY(30px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+    .reveal-up.visible { opacity: 1; transform: translateY(0); }
+
+    /* --- Three cooks (coach style) --- */
+    .section-cooks { background: var(--sage-wash); padding: 9rem 0; }
+    .cooks-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2.5rem; margin-top: 3rem; }
+    .cook-card {
+      padding: 2rem 1.5rem; border: 1px solid var(--sage-muted);
+      border-radius: 4px; background: white; position: relative;
+    }
+    .cook-card--highlight { border-color: transparent; background: var(--sage); }
+    .cook-icon { width: 40px; height: 40px; display: block; margin-bottom: 0.9rem; }
+    .cook-icon--spiral { width: 52px; height: 52px; }
+    .cook-tag { position: absolute; top: 1rem; right: 1rem; background: var(--golden); color: var(--charcoal); font-size: 0.65rem; font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase; padding: 0.18rem 0.5rem; border-radius: 2px; }
+    .cook-type { font-family: var(--font-display); font-size: 1.4rem; font-weight: 700; color: var(--charcoal); margin-bottom: 0.6rem; line-height: 1.1; }
+    .cook-type--light { color: white; }
+    .cook-type--circled { position: relative; display: inline-block; }
+    .intuitive-circle {
+      position: absolute; top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      width: calc(100% + 36px); height: calc(100% + 24px);
+      pointer-events: none; overflow: visible;
+    }
+    .circle-path {
+      stroke: white; stroke-width: 2.5; fill: none; stroke-linecap: round;
+      stroke-dasharray: 600; stroke-dashoffset: 600;
+      transition: stroke-dashoffset 1.8s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .circle-path.drawn { stroke-dashoffset: 0; }
+    .cook-desc { font-size: 0.95rem; font-weight: 300; color: var(--warm-gray); line-height: 1.75; }
+    .cook-desc--light { color: rgba(255,255,255,0.85); }
+
+    /* --- Outcomes / No More DoorDash --- */
+    .section-outcomes { background: var(--cream); padding: 10rem 0; position: relative; overflow: clip; }
+    .deco-veg { position: absolute; pointer-events: none; }
+    .outcomes-hero { text-align: center; margin-bottom: 7rem; }
+    .outcomes-headline {
+      font-family: var(--font-display); font-size: clamp(2.2rem, 5vw, 3.4rem);
+      font-weight: 700; color: var(--charcoal); line-height: 1.15;
+      opacity: 0; transform: translateY(24px);
+      transition: opacity 0.9s ease, transform 0.9s ease;
+    }
+    .outcomes-headline.visible { opacity: 1; transform: translateY(0); }
+    .outcomes-headline + .outcomes-headline { margin-top: 2.5rem; }
+    .outcomes-headline .no-more { color: var(--sage); }
+    .outcomes-exhale {
+      font-family: var(--font-display); font-size: clamp(1.6rem, 3.5vw, 2.2rem);
+      font-weight: 500; color: var(--sage); margin-top: 3.5rem; line-height: 1.4;
+      opacity: 0; transform: translateY(24px);
+      transition: opacity 1.2s ease, transform 1.2s ease;
+    }
+    .outcomes-exhale.visible { opacity: 1; transform: translateY(0); }
+    .outcomes-checklist { list-style: none; max-width: 600px; margin: 0 auto; }
+    .outcomes-checklist li {
+      display: flex; align-items: center; gap: 1.25rem;
+      padding: 1.5rem 0; border-bottom: 1px solid rgba(122,140,110,0.18);
+      font-size: 1.1rem; font-weight: 400; line-height: 1.4;
+      color: var(--sage-muted); transition: color 0.6s ease;
+    }
+    .outcomes-checklist li:first-child { border-top: 1px solid rgba(122,140,110,0.18); }
+    .outcomes-checklist li.highlight { color: var(--charcoal); }
+    .outcome-check { width: 28px; height: 28px; flex-shrink: 0; position: relative; }
+    .outcome-check svg { width: 28px; height: 28px; stroke: var(--sage-muted); stroke-width: 1.6; fill: none; stroke-linecap: round; stroke-linejoin: round; overflow: visible; }
+    .outcome-check .check-circle { stroke: var(--sage-muted); opacity: 0.4; transition: stroke 0.4s ease, opacity 0.4s ease; }
+    .outcome-check .check-mark { stroke: var(--sage); stroke-width: 3.2; stroke-dasharray: 50; stroke-dashoffset: 50; transition: stroke-dashoffset 0.55s cubic-bezier(0.4, 0, 0.2, 1); }
+    .outcomes-checklist li.checked .check-circle { stroke: var(--sage); opacity: 0.6; }
+    .outcomes-checklist li.checked .check-mark { stroke-dashoffset: 0; }
+    .outcomes-closing-headline {
+      font-family: var(--font-display); font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 700; color: var(--charcoal);
+      max-width: 580px; margin: 3rem auto 0; text-align: center; line-height: 1.15;
+    }
+    .outcomes-closing {
+      font-size: 1rem; font-weight: 300; color: var(--warm-gray);
+      max-width: 580px; margin: 1rem auto 0; text-align: center; line-height: 1.75;
+    }
+
+    /* --- Responsive for transferred sections --- */
+    @media (max-width: 900px) {
+      .section-problem { padding: 6rem 0 5rem; }
+      .section-problem h2 { font-size: clamp(1.8rem, 6vw, 2.4rem); margin-bottom: 2.5rem; }
+      .section-problem p { font-size: 1.05rem; }
+      .section-problem p + p { margin-top: 1.75rem; }
+      .cooks-grid { grid-template-columns: 1fr; gap: 1.5rem; }
+      .cook-card { padding: 1.75rem 1.25rem; }
+      .cook-type { font-size: 1.4rem; font-weight: 700; }
+      .section-cooks { padding: 6rem 0; }
+      .section-outcomes { padding: 7rem 0; }
+      .outcomes-hero { margin-bottom: 5rem; }
+      .outcomes-headline { font-size: clamp(1.8rem, 6vw, 2.8rem); }
+      .outcomes-headline + .outcomes-headline { margin-top: 2rem; }
+      .outcomes-exhale { font-size: clamp(1.4rem, 3.5vw, 1.8rem); margin-top: 2.5rem; }
+      .outcomes-checklist li { font-size: 1rem; padding: 1.25rem 0; gap: 1rem; }
+      .outcome-check { width: 24px; height: 24px; }
+      .outcome-check svg { width: 24px; height: 24px; }
+      .outcomes-closing-headline { font-size: clamp(1.6rem, 4vw, 2.2rem); margin-top: 2rem; }
+      .deco-veg { display: none; }
+    }
+  </style>
+
+  <!-- ===== JSON-LD: Person + Organization + WebSite =====
+       Lightweight schema for the cohort waitlist page. Full schema (Service, FAQPage)
+       lives on /coach. Source of truth: Obsidian Vault → Food Jazz/GEO Copy Bank.md ===== -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Person",
+        "@id": "https://foodjazz.club/#akshay",
+        "name": "Akshay Prabhu",
+        "jobTitle": "Founder, Food Jazz",
+        "url": "https://foodjazz.club/",
+        "sameAs": [
+          "https://www.linkedin.com/in/akshayprabhu",
+          "https://akshayprabhu.net"
+        ],
+        "description": "Akshay Prabhu founded Food Jazz after a decade in food. He raised $3M for Foodnome, helped legalize home restaurants in California, and ran Wefunder's food and beverage portfolio.",
+        "knowsAbout": [
+          "Cooking instruction",
+          "Intuitive cooking",
+          "Pantry stocking",
+          "Active tasting",
+          "Ratio-based cooking"
+        ]
+      },
+      {
+        "@type": "Organization",
+        "@id": "https://foodjazz.club/#org",
+        "name": "Food Jazz",
+        "url": "https://foodjazz.club",
+        "logo": "https://foodjazz.club/og-image.png",
+        "founder": { "@id": "https://foodjazz.club/#akshay" },
+        "description": "Food Jazz is a 30-day cooking intensive that teaches intuitive cooking without recipes. The 1-on-1 in-home program runs in the San Francisco Bay Area; an online cohort is in development.",
+        "sameAs": [
+          "https://www.linkedin.com/company/food-jazz"
+        ]
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://foodjazz.club/#website",
+        "url": "https://foodjazz.club",
+        "name": "Food Jazz",
+        "publisher": { "@id": "https://foodjazz.club/#org" },
+        "inLanguage": "en-US"
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="nav">
+    <div class="wrap">
+      <div class="nav__inner">
+        <a href="/" class="nav__wordmark"><span class="logo-food">Food</span> <span class="logo-jazz">Jazz</span></a>
+        <div class="nav__links">
+          <a href="#included" class="nav__link">What's Included</a>
+          <a href="#about" class="nav__link">About</a>
+          <a href="/" class="nav__link">1-on-1 Coaching</a>
+          <a href="#waitlist" class="nav__cta nav__cta--scroll">Join Waitlist</a>
+        </div>
+        <button class="nav__hamburger" aria-label="Open menu" aria-expanded="false">
+          <span class="hamburger-bar"></span>
+          <span class="hamburger-bar"></span>
+          <span class="hamburger-bar"></span>
+        </button>
+      </div>
+    </div>
+    <ul class="mobile-nav">
+      <li><a href="#included">What's Included</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="/">1-on-1 Coaching</a></li>
+      <li><a href="#waitlist" class="mobile-nav__cta">Join Waitlist</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+
+    <!-- Spiral — top right -->
+    <svg class="hero-spiral" width="520" height="520" viewBox="0 0 270 270" fill="none" aria-hidden="true">
+      <path d="M135 135 C135 112, 157 90, 180 90 C224 90, 246 124, 228 157 C210 192, 164 204, 132 178 C90 148, 100 98, 133 74 C173 44, 234 70, 242 120 C250 172, 208 220, 152 226 C92 232, 42 186, 52 120 C62 52, 126 12, 198 28"
+        stroke="#2E2E2C" stroke-width="1.2" stroke-linecap="round" fill="none"/>
+    </svg>
+
+    <!-- Breath circles — bottom left -->
+    <svg class="hero-breath" width="340" height="340" viewBox="0 0 200 200" fill="none" aria-hidden="true">
+      <circle cx="100" cy="100" r="30" stroke="#2E2E2C" stroke-width="1"/>
+      <circle cx="100" cy="100" r="52" stroke="#2E2E2C" stroke-width="0.9"/>
+      <circle cx="100" cy="100" r="74" stroke="#2E2E2C" stroke-width="0.8"/>
+      <circle cx="100" cy="100" r="96" stroke="#2E2E2C" stroke-width="0.7"/>
+    </svg>
+
+    <div class="wrap">
+      <div class="hero__text">
+        <div class="pill">
+          <div class="pill__dot"></div>
+          <span class="pill__text">Online Cohort · Waitlist Open</span>
+        </div>
+        <h1 class="display display--xl hero__headline">Become an Effortless Cook</h1>
+        <p class="hero__sub-headline">in just 30 days</p>
+        <p class="body-text body-text--lg hero__body">Food Jazz is a 30-day cooking intensive designed to make you an intuitive, effortless cook — forever. You have good taste. Food Jazz will help you unlock it so you can translate what's in your mind to your plate, without a recipe.</p>
+        <div id="waitlist">
+          <form class="hero__form kit-form" data-success="hero-success">
+            <input type="email" name="email_address" placeholder="Email address" aria-label="Email address" required
+              style="flex:1; min-width:200px; font-family:var(--font-body); font-size:0.875rem; font-weight:300; padding:0.8rem 1rem; border:1px solid var(--sage-muted); border-radius:3px; background:white; color:var(--charcoal); outline:none;">
+            <div class="btn-wrap">
+              <div class="btn-glow"></div>
+              <button type="submit" class="btn-primary">
+                Join Waitlist
+                <svg class="btn-arrow" viewBox="0 0 10 10" fill="none" stroke="white" stroke-width="2">
+                  <path d="M0 5h7" class="btn-arrow-line"/>
+                  <path d="M4 1l4 4-4 4"/>
+                </svg>
+              </button>
+            </div>
+          </form>
+          <p id="hero-success" class="kit-success" style="display:none;">You're on the list. Talk soon.</p>
+          <p class="email-disclaimer" style="margin-top:0.75rem;">I will never spam or sell your info. Ever.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DISSATISFIED -->
+  <section class="dissatisfied">
+    <div class="wrap">
+      <div class="dissatisfied__intro">
+        <span class="eyebrow eyebrow--sage" style="margin-bottom:1rem;">Sound familiar?</span>
+        <h2 class="display display--lg" style="margin-bottom:0;">Are you dissatisfied with your current food options?</h2>
+        <p class="body-text" style="max-width:520px; margin:1rem auto 0;">You are not alone.</p>
+      </div>
+      <div class="dissatisfied__grid">
+        <div class="dissatisfied__card">
+          <p class="dissatisfied__card-title">Meal Kits are...</p>
+          <ul class="dissatisfied__items">
+            <li class="dissatisfied__item"><span class="dissatisfied__emoji">📜</span> Too specific</li>
+            <li class="dissatisfied__item"><span class="dissatisfied__emoji">🗑️</span> Waste packaging</li>
+            <li class="dissatisfied__item"><span class="dissatisfied__emoji">😕</span> Don't really teach you much</li>
+          </ul>
+        </div>
+        <div class="dissatisfied__card">
+          <p class="dissatisfied__card-title">Restaurant Delivery is...</p>
+          <ul class="dissatisfied__items">
+            <li class="dissatisfied__item"><span class="dissatisfied__emoji">💰</span> Expensive</li>
+            <li class="dissatisfied__item"><span class="dissatisfied__emoji">👤</span> Impersonal</li>
+            <li class="dissatisfied__item"><span class="dissatisfied__emoji">🥶</span> Food is cold most of the time</li>
+          </ul>
+        </div>
+        <div class="dissatisfied__card">
+          <p class="dissatisfied__card-title">Home Cooking is...</p>
+          <ul class="dissatisfied__items">
+            <li class="dissatisfied__item"><span class="dissatisfied__emoji">😡</span> Overwhelming</li>
+            <li class="dissatisfied__item"><span class="dissatisfied__emoji">⌛</span> Time consuming</li>
+            <li class="dissatisfied__item"><span class="dissatisfied__emoji">🚨</span> Planning for recipes is stressful</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROBLEM -->
+  <section class="section-problem">
+    <div class="wrap--narrow">
+      <h2>Take cooking off the back burner.</h2>
+      <p class="problem-line">You're probably here because you haven't found a way to fit cooking into your busy schedule. Maybe you've even convinced yourself that cooking isn't important.</p>
+
+      <span class="problem-callout problem-line">It's not your fault.</span>
+
+      <p class="problem-line">Modern society makes it almost impossible to get your bearings in the kitchen. And before you know it, you feel like you're in too deep to ever learn.</p>
+
+      <p class="problem-line">You don't have a grandma Yoda to teach you the ways of the kitchen. In a world filled with more cookbooks, TikTok recipe tutorials, and dumpling workshops than stars in the Milky Way, it's natural that you'd give up and just order delivery again.</p>
+
+      <p class="problem-line">But it was never a time problem. You just never had someone in your corner showing you how to <em>think</em> in the kitchen.</p>
+
+      <span class="problem-callout problem-callout--warm problem-line">There is a better way.</span>
+
+      <p class="problem-line">Food Jazz is the fundamental cooking education everyone needs — the easiest way to make sense of the madness and take back control of your diet. You deserve to eat well. And it doesn't need to be hard, stressful, or time consuming.</p>
+    </div>
+  </section>
+
+
+  <!-- THREE COOKS -->
+  <section class="section-cooks">
+    <div class="wrap">
+      <h2 style="text-align:center;">Three types of cooks.</h2>
+      <div class="cooks-grid">
+        <div class="cook-card">
+          <svg class="cook-icon" viewBox="0 0 40 40" fill="none" aria-hidden="true">
+            <rect x="4" y="25" width="32" height="7" rx="2" stroke="#7A8C6E" stroke-width="1.4" fill="rgba(168,184,157,0.12)"/>
+            <line x1="9" y1="25" x2="9" y2="32" stroke="#7A8C6E" stroke-width="1.8" stroke-linecap="round"/>
+            <rect x="8" y="16" width="24" height="7" rx="2" stroke="#D4A843" stroke-width="1.3" fill="rgba(212,168,67,0.1)"/>
+            <line x1="13" y1="16" x2="13" y2="23" stroke="#D4A843" stroke-width="1.8" stroke-linecap="round"/>
+            <rect x="12" y="8" width="16" height="7" rx="2" stroke="#C47A5A" stroke-width="1.3" fill="rgba(196,122,90,0.1)"/>
+            <line x1="17" y1="8" x2="17" y2="15" stroke="#C47A5A" stroke-width="1.8" stroke-linecap="round"/>
+          </svg>
+          <p class="cook-type">The Planner</p>
+          <p class="cook-desc">You can make a tasty meal, but it takes hours of planning and if something is slightly off or you're missing an ingredient, you have a panic attack.</p>
+        </div>
+        <div class="cook-card">
+          <svg class="cook-icon" viewBox="0 0 40 40" fill="none" aria-hidden="true">
+            <path d="M8 12 L6 5 L13 10" fill="rgba(184,149,106,0.2)" stroke="#B8956A" stroke-width="1.1" stroke-linejoin="round"/>
+            <path d="M32 12 L34 5 L27 10" fill="rgba(184,149,106,0.2)" stroke="#B8956A" stroke-width="1.1" stroke-linejoin="round"/>
+            <ellipse cx="20" cy="20" rx="13" ry="11" fill="rgba(184,149,106,0.14)" stroke="#B8956A" stroke-width="1.3"/>
+            <path d="M7.5 18 C6 17, 5.5 19, 7 20" stroke="#B8956A" stroke-width="0.8" stroke-linecap="round" fill="none"/>
+            <path d="M7 21 C5.5 21.5, 6 23, 7.5 23" stroke="#B8956A" stroke-width="0.8" stroke-linecap="round" fill="none"/>
+            <path d="M32.5 18 C34 17, 34.5 19, 33 20" stroke="#B8956A" stroke-width="0.8" stroke-linecap="round" fill="none"/>
+            <path d="M33 21 C34.5 21.5, 34 23, 32.5 23" stroke="#B8956A" stroke-width="0.8" stroke-linecap="round" fill="none"/>
+            <path d="M8 17 C8 14, 13 13, 16 15 C17.5 14, 19 13.5, 20 13.5 C21 13.5, 22.5 14, 24 15 C27 13, 32 14, 32 17 C32 20, 28 21.5, 25 20.5 C23 21.5, 21 22, 20 22 C19 22, 17 21.5, 15 20.5 C12 21.5, 8 20, 8 17Z" fill="rgba(46,46,44,0.35)" stroke="#2E2E2C" stroke-width="0.6"/>
+            <circle cx="14.5" cy="17.5" r="2.8" fill="rgba(255,255,255,0.92)"/>
+            <circle cx="25.5" cy="17.5" r="2.8" fill="rgba(255,255,255,0.92)"/>
+            <circle cx="15" cy="17.5" r="1.5" fill="#1a1a1a"/>
+            <circle cx="26" cy="17.5" r="1.5" fill="#1a1a1a"/>
+            <circle cx="15.5" cy="16.8" r="0.5" fill="white"/>
+            <circle cx="26.5" cy="16.8" r="0.5" fill="white"/>
+            <ellipse cx="20" cy="24" rx="4" ry="3" fill="rgba(232,215,185,0.45)" stroke="#B8956A" stroke-width="0.8"/>
+            <ellipse cx="20" cy="23" rx="2" ry="1.2" fill="#5C5A56"/>
+            <path d="M18 25.5 Q20 27 22 25.5" stroke="#8B6D47" stroke-width="0.9" stroke-linecap="round" fill="none"/>
+            <line x1="14" y1="24" x2="6" y2="22.5" stroke="#B8956A" stroke-width="0.7" stroke-linecap="round"/>
+            <line x1="14" y1="25" x2="5.5" y2="25.5" stroke="#B8956A" stroke-width="0.7" stroke-linecap="round"/>
+            <line x1="14" y1="26" x2="6.5" y2="28" stroke="#B8956A" stroke-width="0.7" stroke-linecap="round"/>
+            <line x1="26" y1="24" x2="34" y2="22.5" stroke="#B8956A" stroke-width="0.7" stroke-linecap="round"/>
+            <line x1="26" y1="25" x2="34.5" y2="25.5" stroke="#B8956A" stroke-width="0.7" stroke-linecap="round"/>
+            <line x1="26" y1="26" x2="33.5" y2="28" stroke="#B8956A" stroke-width="0.7" stroke-linecap="round"/>
+          </svg>
+          <p class="cook-type">The Opportunist</p>
+          <p class="cook-desc">You find things to eat, but it's never really what you want. Sometimes you come up with combinations that are... disgusting.</p>
+        </div>
+        <div class="cook-card cook-card--highlight">
+          <svg class="cook-icon cook-icon--spiral" viewBox="0 0 40 40" fill="none" aria-hidden="true">
+            <path d="M20 20 C22 20, 23 18.5, 22 17 C21 15.5, 18.5 15, 16.5 16.5 C14.5 18, 14 21, 15.5 23.5 C17 26, 20.5 27, 24 25.5 C27.5 24, 29 20, 27.5 16.5 C26 13, 22 11, 18 11.5 C14 12, 11 15.5, 11 19.5 C11 24, 14 28.5, 19 29.5 C24 30.5, 30 27, 31 22 C32 17, 29 11, 23 9"
+              stroke="rgba(255,255,255,0.88)" stroke-width="2" stroke-linecap="round" fill="none"/>
+          </svg>
+          <div class="cook-tag">Future you</div>
+          <p class="cook-type cook-type--light cook-type--circled">
+            Intuitive
+            <svg class="intuitive-circle" viewBox="0 0 165 58" fill="none" aria-hidden="true">
+              <path class="circle-path" d="M 152 13 C 163 30, 140 52, 82 54 C 24 56, -2 37, 6 20 C 14 4, 50 -1, 85 2 C 120 5, 155 20, 152 13"/>
+            </svg>
+          </p>
+          <p class="cook-desc cook-desc--light">You're in flow. You can make complicated dishes in a breeze. Stress-free, quick substitutions, and every dish works out. Open the fridge, see what's there, make something great.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ACCOUNTABILITY -->
+  <section class="accountability">
+    <div class="wrap">
+      <div class="accountability__inner">
+        <div>
+          <h2 class="accountability__headline">The accountability you've been missing.</h2>
+          <p class="body-text">Maybe you've tried cooking before. But, time and time again, you fall off. Something comes up. What starts off exciting becomes too difficult. And before you know it, you're back to eating instant ramen and DoorDash.</p>
+          <p class="body-text" style="margin-top:1.1rem;">But this is because there was no accountability. You tried to start cooking on your own, almost doomed from the beginning.</p>
+          <p class="body-text" style="margin-top:1.1rem;">Food Jazz solves that problem. You learn alongside other cooks just like you, all with the same goal: to start cooking consistently. This creates accountability unlike anything you've ever experienced.</p>
+        </div>
+        <div>
+          <img class="accountability__zoom" src="zoom-cohort.png" alt="Food Jazz cohort cooking together on Zoom" loading="lazy">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BENEFITS -->
+  <section class="section bg-cream">
+    <div class="wrap">
+      <div class="benefits-numbered">
+
+        <div class="benefit-n">
+          <div class="benefit-n__num">01</div>
+          <div>
+            <h2 class="display display--md benefit-n__title">Save Time and Money</h2>
+            <p class="body-text" style="margin-top:0.6rem;">Maybe finances are tight or you're trying to save up for something important to you. Studies have shown that the potential annual savings from increased home cooking can be upwards of $4,000+ a year for many individuals. You could buy a trained riding pony with that kinda spare cash!</p>
+          </div>
+          <div class="benefit-n__visual">
+            <svg width="130" height="130" viewBox="0 0 130 130" fill="none">
+              <!-- Skillet body -->
+              <ellipse cx="68" cy="82" rx="42" ry="38" fill="rgba(122,140,110,0.07)" stroke="#7A8C6E" stroke-width="1.6"/>
+              <!-- Handle -->
+              <path d="M110 82 Q118 78 122 82 Q118 86 110 84Z" fill="rgba(122,140,110,0.12)" stroke="#7A8C6E" stroke-width="1.4" stroke-linejoin="round"/>
+              <!-- Food blobs -->
+              <ellipse cx="58" cy="78" rx="14" ry="11" fill="rgba(196,122,90,0.28)" stroke="#C47A5A" stroke-width="1.1"/>
+              <ellipse cx="78" cy="84" rx="12" ry="9" fill="rgba(212,168,67,0.28)" stroke="#D4A843" stroke-width="1.1"/>
+              <circle cx="62" cy="92" r="7" fill="rgba(122,140,110,0.28)" stroke="#7A8C6E" stroke-width="1"/>
+              <!-- Steam wisps -->
+              <path d="M52 58 C50 50 53 44 51 36" stroke="#B8956A" stroke-width="1.2" stroke-linecap="round" opacity="0.4" fill="none"/>
+              <path d="M68 55 C66 47 69 41 67 33" stroke="#B8956A" stroke-width="1.2" stroke-linecap="round" opacity="0.35" fill="none"/>
+              <path d="M84 58 C82 50 85 44 83 36" stroke="#B8956A" stroke-width="1.2" stroke-linecap="round" opacity="0.3" fill="none"/>
+              <!-- Clock face top-left -->
+              <circle cx="30" cy="32" r="16" fill="rgba(250,247,242,0.95)" stroke="#D4A843" stroke-width="1.3"/>
+              <line x1="30" y1="32" x2="30" y2="22" stroke="#D4A843" stroke-width="1.5" stroke-linecap="round"/>
+              <line x1="30" y1="32" x2="37" y2="36" stroke="#D4A843" stroke-width="1.5" stroke-linecap="round"/>
+              <circle cx="30" cy="32" r="1.5" fill="#D4A843"/>
+              <!-- Sparkle -->
+              <path d="M108 30 L109 27 L110 30 L113 31 L110 32 L109 35 L108 32 L105 31 Z" fill="rgba(212,168,67,0.7)"/>
+            </svg>
+          </div>
+        </div>
+
+        <div class="benefit-n">
+          <div class="benefit-n__num">02</div>
+          <div>
+            <h2 class="display display--md benefit-n__title">Impress Your Community</h2>
+            <p class="body-text" style="margin-top:0.6rem;">Let's face it, we all know being a great cook is sexy. Maybe you're looking for love or trying to relate to your cool friends or trying to take something off your spouse's plate. Cooking can serve as the glue that holds together your relationships. A 2020 study published in the Journal of Positive Psychology found that families who cooked and ate together more often reported greater feelings of closeness and better family functioning.</p>
+          </div>
+          <div class="benefit-n__visual">
+            <svg width="130" height="130" viewBox="0 0 130 130" fill="none">
+              <!-- Table top-down -->
+              <circle cx="65" cy="72" r="34" fill="rgba(168,184,157,0.08)" stroke="#7A8C6E" stroke-width="1.6"/>
+              <!-- Dish in center -->
+              <circle cx="65" cy="72" r="14" fill="rgba(212,168,67,0.12)" stroke="#D4A843" stroke-width="1.3"/>
+              <!-- Sparkle on dish -->
+              <path d="M65 72 L66 69 L67 72 L70 73 L67 74 L66 77 L65 74 L62 73 Z" fill="#D4A843" opacity="0.75"/>
+              <!-- Steam from dish -->
+              <path d="M61 56 C59 50 61 46 60 40" stroke="#7A8C6E" stroke-width="1.1" stroke-linecap="round" fill="none" opacity="0.38"/>
+              <path d="M65 55 C63 49 65 45 64 39" stroke="#7A8C6E" stroke-width="1.1" stroke-linecap="round" fill="none" opacity="0.3"/>
+              <path d="M69 56 C67 50 69 46 68 40" stroke="#7A8C6E" stroke-width="1.1" stroke-linecap="round" fill="none" opacity="0.24"/>
+              <!-- Person top (sage) -->
+              <circle cx="65" cy="24" r="9" fill="rgba(168,184,157,0.18)" stroke="#7A8C6E" stroke-width="1.3"/>
+              <circle cx="61.5" cy="23" r="1.3" fill="#7A8C6E"/>
+              <circle cx="68.5" cy="23" r="1.3" fill="#7A8C6E"/>
+              <path d="M62 27 Q65 29.5 68 27" stroke="#7A8C6E" stroke-width="1" stroke-linecap="round" fill="none"/>
+              <!-- Person bottom-left (terracotta) -->
+              <circle cx="26" cy="108" r="9" fill="rgba(196,122,90,0.14)" stroke="#C47A5A" stroke-width="1.3"/>
+              <circle cx="22.5" cy="107" r="1.3" fill="#C47A5A"/>
+              <circle cx="29.5" cy="107" r="1.3" fill="#C47A5A"/>
+              <path d="M23 111 Q26 113.5 29 111" stroke="#C47A5A" stroke-width="1" stroke-linecap="round" fill="none"/>
+              <!-- Person bottom-right (golden) -->
+              <circle cx="104" cy="108" r="9" fill="rgba(212,168,67,0.14)" stroke="#D4A843" stroke-width="1.3"/>
+              <circle cx="100.5" cy="107" r="1.3" fill="#D4A843"/>
+              <circle cx="107.5" cy="107" r="1.3" fill="#D4A843"/>
+              <path d="M101 111 Q104 113.5 107 111" stroke="#D4A843" stroke-width="1" stroke-linecap="round" fill="none"/>
+            </svg>
+          </div>
+        </div>
+
+        <div class="benefit-n">
+          <div class="benefit-n__num">03</div>
+          <div>
+            <h2 class="display display--md benefit-n__title">Eat Exactly What Your Body Needs</h2>
+            <p class="body-text" style="margin-top:0.6rem;">Maybe you can't find options to cater your exact diet and feel like you have to settle often. Having the skills to efficiently cook a meal you want will unlock a greater sense of wellbeing and somatic connection. Research from a comprehensive study from the University of Washington in 2015 found that people who cooked at home 3 times per week showed meaningful reductions in body fat and improved insulin metrics compared to those who cooked less.</p>
+          </div>
+          <div class="benefit-n__visual">
+            <svg width="130" height="130" viewBox="0 0 130 130" fill="none">
+              <!-- Bowl -->
+              <path d="M18 64 Q18 106 65 110 Q112 106 112 64" fill="rgba(122,140,110,0.07)" stroke="#7A8C6E" stroke-width="1.6" stroke-linecap="round"/>
+              <line x1="14" y1="64" x2="116" y2="64" stroke="#7A8C6E" stroke-width="1.6" stroke-linecap="round"/>
+              <!-- Foot of bowl -->
+              <path d="M52 110 Q65 114 78 110" stroke="#7A8C6E" stroke-width="1.4" stroke-linecap="round" fill="none" opacity="0.45"/>
+              <!-- Food items -->
+              <circle cx="46" cy="83" r="10" fill="rgba(196,122,90,0.3)" stroke="#C47A5A" stroke-width="1.1"/>
+              <!-- Tomato stem -->
+              <path d="M46 73 Q44 69 43 67" stroke="#7A8C6E" stroke-width="1.1" stroke-linecap="round" fill="none"/>
+              <!-- Grain/lemon -->
+              <ellipse cx="74" cy="82" rx="13" ry="9" fill="rgba(212,168,67,0.28)" stroke="#D4A843" stroke-width="1.1"/>
+              <!-- Herb leaf -->
+              <path d="M60 78 Q63 68 72 71 Q68 84 60 78Z" fill="rgba(122,140,110,0.3)" stroke="#7A8C6E" stroke-width="1"/>
+              <!-- Steam -->
+              <path d="M42 50 C40 42 43 34 41 26" stroke="#B8956A" stroke-width="1.2" stroke-linecap="round" opacity="0.38" fill="none"/>
+              <path d="M65 47 C63 39 66 31 64 23" stroke="#B8956A" stroke-width="1.2" stroke-linecap="round" opacity="0.32" fill="none"/>
+              <path d="M88 50 C86 42 89 34 87 26" stroke="#B8956A" stroke-width="1.2" stroke-linecap="round" opacity="0.28" fill="none"/>
+              <!-- Radiant sparkles -->
+              <circle cx="14" cy="52" r="2" fill="#D4A843" opacity="0.55"/>
+              <circle cx="116" cy="50" r="2.5" fill="#7A8C6E" opacity="0.45"/>
+              <path d="M8 64 L9 61 L10 64 L13 65 L10 66 L9 69 L8 66 L5 65 Z" fill="rgba(212,168,67,0.6)"/>
+            </svg>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about" class="section-about">
+    <div class="wrap">
+
+      <div class="about-press-banner">
+        <span class="about-press-label">As seen on</span>
+        <div class="about-marquee-wrap">
+          <div class="marquee-track">
+            <div class="marquee-set">
+              <img class="marquee-img" src="press-npr.png" alt="NPR" loading="lazy">
+              <img class="marquee-img" src="press-nyt.svg" alt="New York Times" loading="lazy">
+              <img class="marquee-img" src="press-eater.png" alt="Eater" loading="lazy">
+              <img class="marquee-img" src="press-hulu.png" alt="Hulu" loading="lazy">
+              <img class="marquee-img" src="press-abc7.png" alt="ABC7" loading="lazy">
+              <img class="marquee-img" src="press-kqed.png" alt="KQED" loading="lazy">
+              <img class="marquee-img" src="press-cbs.svg" alt="CBS" loading="lazy">
+              <img class="marquee-img" src="press-civileats.svg" alt="Civil Eats" loading="lazy">
+            </div>
+            <div class="marquee-set" aria-hidden="true">
+              <img class="marquee-img" src="press-npr.png" alt="">
+              <img class="marquee-img" src="press-nyt.svg" alt="">
+              <img class="marquee-img" src="press-eater.png" alt="">
+              <img class="marquee-img" src="press-hulu.png" alt="">
+              <img class="marquee-img" src="press-abc7.png" alt="">
+              <img class="marquee-img" src="press-kqed.png" alt="">
+              <img class="marquee-img" src="press-cbs.svg" alt="">
+              <img class="marquee-img" src="press-civileats.svg" alt="">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <span class="label">Your Cooking Mentor</span>
+
+      <div class="about-top">
+        <div class="about-photo-wrap">
+          <img src="akshay.jpg" alt="Akshay Prabhu" loading="lazy">
+        </div>
+        <div>
+          <span class="about-role">Startup Founder · Neuroscientist · Cooking Coach</span>
+          <p class="about-name">Hey, I'm Akshay.</p>
+          <p class="about-bio about-bio--lead reveal-up">I help busy professionals learn to cook effortlessly and intuitively.</p>
+          <p class="about-bio reveal-up">I raised <strong>$3M</strong> to build a marketplace for home-based restaurants and helped <strong>300+ people</strong> transform their home kitchens into businesses. I've staged at <strong>Chez Panisse</strong>, hosted hundreds of pop-up dinners, and cooked whole lambs over open fire for crowds across the Bay.</p>
+        </div>
+        <div>
+          <p class="about-bio reveal-up">Cooking has been a part of my life since I was a child. For me, food is more than fuel. Memories are created over the warmth and aroma of a homemade meal.</p>
+          <p class="about-bio about-bio--lead reveal-up">Now I want to bring that same joy into your kitchen. I'm on a mission to help 20,000 people finally learn to cook by 2030.</p>
+        </div>
+      </div>
+
+      <div class="about-bottom">
+        <div class="about-david">
+          <img src="photo-david-chang.jpeg" alt="Akshay with David Chang" loading="lazy">
+          <div class="about-david-caption">
+            Hanging out with David Chang talking about the future of home cooking — <em>The Next Thing You Eat</em>, Ep. 3, Hulu
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- OUTCOMES -->
+  <section class="section-outcomes">
+    <img class="deco-veg" src="deco-tomato.png" alt="" loading="lazy"
+      style="width:200px; top:-20px; right:-50px; transform:rotate(12deg);">
+    <div class="wrap">
+      <div class="outcomes-hero">
+        <p class="outcomes-headline"><span class="no-more">No more</span> DoorDash.</p>
+        <p class="outcomes-headline"><span class="no-more">No more</span> HelloFresh.</p>
+        <p class="outcomes-headline"><span class="no-more">No more</span> CookUnity.</p>
+        <p class="outcomes-exhale">Just the zen of creative self-sufficiency.</p>
+      </div>
+      <ul class="outcomes-checklist">
+        <li><span class="outcome-check"><svg viewBox="-4 -4 38 38"><path class="check-circle" d="M15 2.5 C22 2, 27.5 7, 27.5 14 C28 21, 23 27.5, 15 27.5 C7 28, 2 22, 2.5 15 C2 8, 7 2.5, 15 2.5"/><path class="check-mark" d="M5.5 16 L13 19 L29 2"/></svg></span> Host a dinner party without breaking a sweat</li>
+        <li><span class="outcome-check"><svg viewBox="-4 -4 38 38"><path class="check-circle" d="M14 2 C21.5 1.5, 28 7.5, 27.5 15 C27.5 22, 22 28, 14.5 27.5 C7.5 27.5, 2 22, 2.5 14.5 C2.5 7.5, 7 2.5, 14 2"/><path class="check-mark" d="M5 15.5 L12.5 19.5 L29.5 1.5"/></svg></span> Open the fridge and make something great</li>
+        <li><span class="outcome-check"><svg viewBox="-4 -4 38 38"><path class="check-circle" d="M15.5 2 C22.5 2.5, 28 8, 27.5 15.5 C27 22.5, 21.5 28, 14.5 27.5 C7 27, 2 21.5, 2.5 14.5 C3 7.5, 8.5 2, 15.5 2"/><path class="check-mark" d="M6 16.5 L13.5 20 L30 1"/></svg></span> Walk through any grocery store with a plan in your head</li>
+        <li><span class="outcome-check"><svg viewBox="-4 -4 38 38"><path class="check-circle" d="M14.5 2.5 C21 2, 27 7, 28 14.5 C28.5 22, 22.5 27.5, 15 27.5 C8 28, 2.5 22.5, 2.5 15 C2 8, 7.5 2.5, 14.5 2.5"/><path class="check-mark" d="M5 15 L12.5 19.5 L29 2"/></svg></span> Cook dinner faster than delivery arrives</li>
+        <li><span class="outcome-check"><svg viewBox="-4 -4 38 38"><path class="check-circle" d="M15 2 C22 1.5, 27.5 7.5, 28 15 C28 22.5, 22 28, 15 28 C7.5 27.5, 2 22, 2 15 C2.5 7.5, 8 2.5, 15 2"/><path class="check-mark" d="M5.5 15.5 L13 19.5 L29.5 1"/></svg></span> Taste something at a restaurant and recreate it at home</li>
+        <li><span class="outcome-check"><svg viewBox="-4 -4 38 38"><path class="check-circle" d="M15 2.5 C22.5 2, 28 7, 27.5 14.5 C27.5 22, 22 27.5, 14.5 28 C7.5 28, 2 22.5, 2.5 15.5 C2.5 8, 7.5 2.5, 15 2.5"/><path class="check-mark" d="M5 16 L13 19.5 L30 1.5"/></svg></span> Feed your people something you're proud of</li>
+      </ul>
+      <p class="outcomes-closing-headline">Take learning to cook off your plate.</p>
+      <p class="outcomes-closing">New connections, new confidence, new dinner parties. The simple habit that changes the trajectory of your life.</p>
+    </div>
+  </section>
+
+  <!-- WHAT'S INCLUDED -->
+  <section id="included" class="section bg-wash">
+    <div class="wrap">
+      <h2 class="display display--lg" style="max-width:540px; margin-bottom:0.5rem;">What is in store</h2>
+      <p class="body-text" style="max-width:560px;">Everything you need to build a lasting cooking habit — not just for 30 days, but for life.</p>
+
+      <div class="included__list">
+        <div class="included__item">
+          <svg class="included__check" width="18" height="18" viewBox="0 0 18 18" fill="none"><circle cx="9" cy="9" r="8" stroke="#7A8C6E" stroke-width="1.2" fill="rgba(168,184,157,0.1)"/><path d="M5.5 9 L8 11.5 L12.5 6.5" stroke="#7A8C6E" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <span class="included__text"><strong>7 live 60-minute virtual dinner party sessions</strong> with curriculum review, Q&amp;A, and personalized feedback with fellow students.</span>
+        </div>
+        <div class="included__item">
+          <svg class="included__check" width="18" height="18" viewBox="0 0 18 18" fill="none"><circle cx="9" cy="9" r="8" stroke="#7A8C6E" stroke-width="1.2" fill="rgba(168,184,157,0.1)"/><path d="M5.5 9 L8 11.5 L12.5 6.5" stroke="#7A8C6E" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <span class="included__text"><strong>Guided walkthrough</strong> to help you build a daily cooking habit and learn mastery of fundamental cooking methods and common flavor patterns.</span>
+        </div>
+        <div class="included__item">
+          <svg class="included__check" width="18" height="18" viewBox="0 0 18 18" fill="none"><circle cx="9" cy="9" r="8" stroke="#7A8C6E" stroke-width="1.2" fill="rgba(168,184,157,0.1)"/><path d="M5.5 9 L8 11.5 L12.5 6.5" stroke="#7A8C6E" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <span class="included__text"><strong>14-module audio curriculum</strong> for learning at your own pace without taking time out of your busy day, with lifetime access to all recordings.</span>
+        </div>
+        <div class="included__item">
+          <svg class="included__check" width="18" height="18" viewBox="0 0 18 18" fill="none"><circle cx="9" cy="9" r="8" stroke="#7A8C6E" stroke-width="1.2" fill="rgba(168,184,157,0.1)"/><path d="M5.5 9 L8 11.5 L12.5 6.5" stroke="#7A8C6E" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <span class="included__text"><strong>Templates and frameworks</strong> to help you stock your kitchen for success, quickly come up with ideas, and become more effortless in the kitchen.</span>
+        </div>
+        <div class="included__item">
+          <svg class="included__check" width="18" height="18" viewBox="0 0 18 18" fill="none"><circle cx="9" cy="9" r="8" stroke="#7A8C6E" stroke-width="1.2" fill="rgba(168,184,157,0.1)"/><path d="M5.5 9 L8 11.5 L12.5 6.5" stroke="#7A8C6E" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <span class="included__text"><strong>Private community</strong> of fellow food jazzers — online channels for different topics, platforms, and geographies, plus access to invite-only local jazz dinner parties.</span>
+        </div>
+        <div class="included__item">
+          <svg class="included__check" width="18" height="18" viewBox="0 0 18 18" fill="none"><circle cx="9" cy="9" r="8" stroke="#7A8C6E" stroke-width="1.2" fill="rgba(168,184,157,0.1)"/><path d="M5.5 9 L8 11.5 L12.5 6.5" stroke="#7A8C6E" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <span class="included__text">Leave with <strong>a consistent cooking habit, confidence in the kitchen, a healthy lifestyle</strong>, and a stronger grasp of the fundamentals of intuitive cooking.</span>
+        </div>
+        <div class="included__item">
+          <svg class="included__check" width="18" height="18" viewBox="0 0 18 18" fill="none"><circle cx="9" cy="9" r="8" stroke="#7A8C6E" stroke-width="1.2" fill="rgba(168,184,157,0.1)"/><path d="M5.5 9 L8 11.5 L12.5 6.5" stroke="#7A8C6E" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <span class="included__text"><strong>Lifetime access</strong> to session recordings with detailed show notes, resources, and transcripts.</span>
+        </div>
+        <div class="included__item included__item--bonus">
+          <svg class="included__check" width="18" height="18" viewBox="0 0 18 18" fill="none"><circle cx="9" cy="9" r="8" stroke="#D4A843" stroke-width="1.2" fill="rgba(212,168,67,0.1)"/><path d="M5.5 9 L8 11.5 L12.5 6.5" stroke="#D4A843" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <span class="included__text"><strong>Bonus:</strong> Free access to recordings from all previous Food Jazz cohorts.</span>
+        </div>
+        <div class="included__item included__item--bonus">
+          <svg class="included__check" width="18" height="18" viewBox="0 0 18 18" fill="none"><circle cx="9" cy="9" r="8" stroke="#D4A843" stroke-width="1.2" fill="rgba(212,168,67,0.1)"/><path d="M5.5 9 L8 11.5 L12.5 6.5" stroke="#D4A843" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <span class="included__text"><strong>Bonus:</strong> Free Food Jazz AI cooking idea generator, Ratio Cheatsheet, and Kitchen Stocking Blueprint.</span>
+        </div>
+        <div class="included__item included__item--bonus">
+          <svg class="included__check" width="18" height="18" viewBox="0 0 18 18" fill="none"><circle cx="9" cy="9" r="8" stroke="#D4A843" stroke-width="1.2" fill="rgba(212,168,67,0.1)"/><path d="M5.5 9 L8 11.5 L12.5 6.5" stroke="#D4A843" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <span class="included__text"><strong>Bonus:</strong> Free copy of <em>The Fake Cook</em> — the last cookbook you will ever need. When it is released.</span>
+        </div>
+        <div class="included__item included__item--guarantee">
+          <svg class="included__check" width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M9 2 L3 4.5 L3 9 C3 13, 5.5 16.5, 9 17.5 C12.5 16.5, 15 13, 15 9 L15 4.5 Z" stroke="#D4A843" stroke-width="1.3" fill="rgba(212,168,67,0.08)" stroke-linejoin="round"/><path d="M6 9 L8 11 L12 7" stroke="#D4A843" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <span class="included__text"><strong>Guarantee:</strong> 100%, no-questions-asked refund &amp; rollover policy if you complete the course materials and find the course isn't for you within 14 days of starting.</span>
+        </div>
+      </div>
+
+      <!-- Mid-page waitlist form -->
+      <div class="included__form-wrap" id="waitlist-form">
+        <p class="included__form-label">Join the waitlist for our next cohort</p>
+        <p class="included__form-sub">And be the first to know when we open enrollment.</p>
+        <form class="hero__form kit-form" data-success="mid-success">
+          <input type="email" name="email_address" placeholder="Email address" aria-label="Email address" required
+            style="flex:1; min-width:200px; font-family:var(--font-body); font-size:0.875rem; font-weight:300; padding:0.8rem 1rem; border:1px solid var(--sage-muted); border-radius:3px; background:white; color:var(--charcoal); outline:none;">
+          <div class="btn-wrap">
+            <div class="btn-glow"></div>
+            <button type="submit" class="btn-primary">
+              Join Waitlist
+              <svg class="btn-arrow" viewBox="0 0 10 10" fill="none" stroke="white" stroke-width="2">
+                <path d="M0 5h7" class="btn-arrow-line"/>
+                <path d="M4 1l4 4-4 4"/>
+              </svg>
+            </button>
+          </div>
+        </form>
+        <p id="mid-success" class="kit-success" style="display:none;">You're on the list. Talk soon.</p>
+        <p class="email-disclaimer">I will never spam or sell your info. Ever.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SEVEN TENETS -->
+  <section class="section bg-cream">
+    <div class="wrap">
+      <h2 class="display display--lg" style="margin-bottom:0.5rem;">Seven Tenets of Food Jazz</h2>
+      <p class="body-text" style="max-width:560px; margin-bottom:0;">These aren't rules. They're the mental shifts that make everything else click.</p>
+      <div class="tenets__grid">
+
+        <div class="tenet">
+          <div class="tenet__header">
+            <img class="tenet__icon" src="icons/heart.svg" alt="" aria-hidden="true">
+            <div class="tenet__title">You Are Having Fun</div>
+          </div>
+          <p class="tenet__desc">Food is meant to be shared. Cooking is a means of connection, therapy, self care, and love. Your mindset is the first step to liberation through easeful intuitive cooking.</p>
+        </div>
+
+        <div class="tenet">
+          <div class="tenet__header">
+            <img class="tenet__icon" src="icons/flavor-fundamentals.svg" alt="" aria-hidden="true">
+            <div class="tenet__title">Think Flavor, Not Procedure</div>
+          </div>
+          <p class="tenet__desc">Recipes are not prescriptive. It's more important to recreate the flavors than the precise procedures or ingredients.</p>
+        </div>
+
+        <div class="tenet">
+          <div class="tenet__header">
+            <img class="tenet__icon" src="icons/takeout-pail.svg" alt="" aria-hidden="true">
+            <div class="tenet__title">Use What You Have</div>
+          </div>
+          <p class="tenet__desc">Resourcefulness and adaptability are key. This may involve using leftovers, incorporating seasonal produce, or finding creative uses for ingredients that might otherwise go to waste.</p>
+        </div>
+
+        <div class="tenet">
+          <div class="tenet__header">
+            <img class="tenet__icon" src="icons/bottles-row.svg" alt="" aria-hidden="true">
+            <div class="tenet__title">Stock for Success</div>
+          </div>
+          <p class="tenet__desc">Surround yourself with inspiration. Spices, sauces, and toppings to transform your raw ingredients — this provides the framework for you to improvise within.</p>
+        </div>
+
+        <div class="tenet">
+          <div class="tenet__header">
+            <img class="tenet__icon" src="icons/active-tasting.svg" alt="" aria-hidden="true">
+            <div class="tenet__title">Taste the World</div>
+          </div>
+          <p class="tenet__desc">Navigate the world with your tongue. The best way to learn is with your own senses — practice active tasting when you eat out, watch people cook, especially your grandma.</p>
+        </div>
+
+        <div class="tenet">
+          <div class="tenet__header">
+            <img class="tenet__icon" src="icons/lightbulb.svg" alt="" aria-hidden="true">
+            <div class="tenet__title">Your Opinion Matters</div>
+          </div>
+          <p class="tenet__desc">There is no right answer, just your answers. Cook what you and your people think tastes good.</p>
+        </div>
+
+        <div class="tenet" style="grid-column: 1 / -1;">
+          <div class="tenet__header">
+            <img class="tenet__icon" src="icons/flavor-pyramid.svg" alt="" aria-hidden="true">
+            <div class="tenet__title">Build a Flavor Pyramid</div>
+          </div>
+          <p class="tenet__desc">The perfect meal creates a balance of flavors throughout.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- REFUND POLICY -->
+  <section class="refund bg-wash">
+    <div class="wrap">
+      <div class="refund__card">
+        <svg class="refund__icon" width="40" height="40" viewBox="0 0 40 40" fill="none">
+          <path d="M20 4 L6 10 L6 20 C6 29.5, 12 37, 20 39 C28 37, 34 29.5, 34 20 L34 10 Z" stroke="#D4A843" stroke-width="1.5" fill="rgba(212,168,67,0.08)" stroke-linejoin="round"/>
+          <path d="M13.5 20 L17.5 24 L26.5 15" stroke="#D4A843" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <h2 class="display display--md refund__headline">100% Refund and Rollover Policy</h2>
+        <p class="body-text">I want your Food Jazz investment to be 100% risk free. If you complete the course materials and find the course isn't for you within 14 days of starting, I will refund 100% of your investment.</p>
+        <p class="body-text" style="margin-top:1rem;">And if you find after enrolling that your schedule is busier than you thought, we will roll you forward into a future cohort at zero additional cost.</p>
+        <p class="body-text" style="margin-top:1rem;">However, part of what makes Food Jazz work is the financial accountability. If you do not engage with the course materials or fail to take action during the course, this does not qualify for a refund.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ONE LAST THING -->
+  <section class="one-last bg-cream">
+    <div class="one-last__inner">
+      <h2 class="display display--lg one-last__headline">One last thing...</h2>
+      <p class="body-text">If you're down here, you might be thinking — is this really worth it? And sure, you could go and stitch together all of the glorious free content across the vast internet. And eventually you will learn to cook and begin to understand the fundamentals.</p>
+      <p class="body-text" style="margin-top:1.1rem;">But I'm guessing that if you're on this page, and you've read this far, you've tried something like this before. And the results... well... they're not what you've been hoping for.</p>
+      <p class="body-text" style="margin-top:1.1rem;">I've been in your shoes. It's taken me two decades to get to where I am. I'm here before you after years of musing and consolidating my thinking to say — there is a better way.</p>
+      <p class="one-last__final">You are 30 days away from creative culinary independence.</p>
+      <p class="body-text">Let this be the year for new connections, friendships, and dinner parties. A year where you finally take control of your diet and get to feel great eating exactly what you want, all the time. Cooking will be the simple habit that changes the trajectory of your life. And it can all start right here, right now.</p>
+      <p class="one-last__question">So, what do you say?</p>
+    </div>
+  </section>
+
+  <!-- FINAL CTA (dark) -->
+  <section class="cta-dark bg-dark">
+    <div class="wrap">
+      <div class="pill">
+        <div class="pill__dot"></div>
+        <span class="pill__text">Enrollment Opening Soon</span>
+      </div>
+      <h2 class="display display--lg" style="color:var(--cream); margin-bottom:0.75rem;">30 days to a new perspective on life.</h2>
+      <p class="body-text" style="color:rgba(250,247,242,0.65); max-width:500px; margin:0 auto 2rem;">Be the first to know when we open enrollment. No spam, no pressure — just an email when the next cohort is ready.</p>
+      <form class="hero__form kit-form" style="justify-content:center;" data-success="cta-success">
+        <input type="email" name="email_address" placeholder="Email address" aria-label="Email address" required
+          style="flex:1; max-width:280px; min-width:180px; font-family:var(--font-body); font-size:0.875rem; font-weight:300; padding:0.8rem 1rem; border:1px solid rgba(255,255,255,0.2); border-radius:3px; background:rgba(255,255,255,0.08); color:white; outline:none;">
+        <div class="btn-wrap">
+          <div class="btn-glow"></div>
+          <button type="submit" class="btn-primary">
+            Join Waitlist
+            <svg class="btn-arrow" viewBox="0 0 10 10" fill="none" stroke="white" stroke-width="2">
+              <path d="M0 5h7" class="btn-arrow-line"/>
+              <path d="M4 1l4 4-4 4"/>
+            </svg>
+          </button>
+        </div>
+      </form>
+      <p id="cta-success" class="kit-success" style="display:none; color:var(--sage-light); margin-top:1rem;">You're on the list. Talk soon.</p>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <span class="footer-logo"><span class="logo-food">Food</span> <span class="logo-jazz">Jazz</span></span>
+      <ul class="footer-links">
+        <li><a href="/">1-on-1 Coaching</a></li>
+        <li><a href="mailto:akshay@foodjazz.club">akshay@foodjazz.club</a></li>
+        <li><a href="tel:+19252574291">(925) 257-4291</a></li>
+        <li><a href="https://www.linkedin.com/in/ajprabhu/" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
+      </ul>
+      <p class="footer-copy">© 2026 Food Jazz · foodjazz.club</p>
+    </div>
+  </footer>
+
+  <!-- WAITLIST MODAL -->
+  <div class="waitlist-modal" id="waitlistModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <div class="waitlist-modal__backdrop" id="modalBackdrop"></div>
+    <div class="waitlist-modal__box">
+      <button class="waitlist-modal__close" id="closeWaitlistModal" aria-label="Close">✕</button>
+      <span class="waitlist-modal__label">Food Jazz Online</span>
+      <h2 class="waitlist-modal__title" id="modalTitle">Join the Waitlist</h2>
+      <p class="waitlist-modal__body">Be first to know when the next cohort opens. No spam, ever.</p>
+      <form class="email-form waitlist-modal__form kit-form" data-success="modal-success">
+        <input type="email" name="email_address" placeholder="Your email address" style="width:100%; margin-bottom:0.75rem;" required>
+        <button type="submit" class="btn btn--sage" style="width:100%;">Count Me In</button>
+      </form>
+      <p id="modal-success" class="kit-success" style="display:none; color:var(--sage); text-align:center; margin-top:1rem;">You're on the list. Talk soon.</p>
+    </div>
+  </div>
+
+  <script>
+    // ===== INTUITIVE CIRCLE =====
+    const circlePath = document.querySelector('.circle-path');
+    const highlightCard = document.querySelector('.cook-card--highlight');
+    if (circlePath && highlightCard) {
+      const circleObs = new IntersectionObserver(entries => {
+        if (entries[0].isIntersecting) {
+          circlePath.classList.add('drawn');
+          circleObs.disconnect();
+        }
+      }, { threshold: 0.6 });
+      circleObs.observe(highlightCard);
+    }
+
+    // ===== PROBLEM — scroll highlight =====
+    document.querySelectorAll('.problem-line').forEach(el => {
+      const hlObs = new IntersectionObserver(entries => {
+        if (entries[0].isIntersecting) {
+          el.classList.add('highlight');
+          hlObs.disconnect();
+        }
+      }, { threshold: 0.6, rootMargin: '0px 0px -15% 0px' });
+      hlObs.observe(el);
+    });
+
+    // ===== OUTCOMES — headlines fade in =====
+    const outcomesHero = document.querySelector('.outcomes-hero');
+    if (outcomesHero) {
+      const headlines = outcomesHero.querySelectorAll('.outcomes-headline, .outcomes-exhale');
+      const heroObs = new IntersectionObserver(entries => {
+        if (entries[0].isIntersecting) {
+          headlines.forEach((el, i) => {
+            setTimeout(() => el.classList.add('visible'), i * 1200);
+          });
+          heroObs.disconnect();
+        }
+      }, { threshold: 0.2, rootMargin: '0px 0px -10% 0px' });
+      heroObs.observe(outcomesHero);
+    }
+
+    // ===== OUTCOMES — checklist scroll highlight + check =====
+    document.querySelectorAll('.outcomes-checklist li').forEach(li => {
+      const checkObs = new IntersectionObserver(entries => {
+        if (entries[0].isIntersecting) {
+          li.classList.add('highlight');
+          setTimeout(() => li.classList.add('checked'), 500);
+          checkObs.disconnect();
+        }
+      }, { threshold: 1.0, rootMargin: '0px 0px -50% 0px' });
+      checkObs.observe(li);
+    });
+
+    // ===== NAV CTA — show after hero, hide at closing =====
+    const heroBtn = document.querySelector('.hero .btn-wrap');
+    const navCta = document.querySelector('.nav__cta--scroll');
+    const closingSection = document.querySelector('.cta-dark');
+    if (heroBtn && navCta) {
+      let heroPast = false;
+      let closingVisible = false;
+      function updateNavCta() {
+        if (heroPast && !closingVisible) {
+          navCta.classList.add('visible');
+        } else {
+          navCta.classList.remove('visible');
+        }
+      }
+      new IntersectionObserver(entries => {
+        heroPast = !entries[0].isIntersecting;
+        updateNavCta();
+      }, { threshold: 0 }).observe(heroBtn);
+      if (closingSection) {
+        new IntersectionObserver(entries => {
+          closingVisible = entries[0].isIntersecting;
+          updateNavCta();
+        }, { threshold: 0.1 }).observe(closingSection);
+      }
+    }
+
+    // ===== SCROLL REVEAL (staggered) =====
+    const revealObs = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) { e.target.classList.add('is-visible'); revealObs.unobserve(e.target); }
+      });
+    }, { threshold: 0.12 });
+
+    function observeStaggered(selector) {
+      document.querySelectorAll(selector).forEach((el) => {
+        const siblings = Array.from(el.parentElement.children);
+        el.style.transitionDelay = `${siblings.indexOf(el) * 80}ms`;
+        el.classList.add('reveal');
+        revealObs.observe(el);
+      });
+    }
+    observeStaggered('.problem__card');
+    observeStaggered('.mindset__item');
+    observeStaggered('.cook__card');
+    observeStaggered('.tenet');
+    observeStaggered('.included__item');
+    document.querySelectorAll('.benefit-row').forEach(el => {
+      el.classList.add('reveal'); revealObs.observe(el);
+    });
+
+    // ===== SCROLL REVEAL (reveal-up) =====
+    const revealUpObs = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          revealUpObs.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15, rootMargin: '0px 0px -50px 0px' });
+    document.querySelectorAll('.reveal-up').forEach((el, i) => {
+      el.style.transitionDelay = `${i * 0.15}s`;
+      revealUpObs.observe(el);
+    });
+
+    // ===== SPOTLIGHT CARDS =====
+    document.querySelectorAll('.problem__card, .cook__card--plain, .tenet').forEach(card => {
+      card.addEventListener('mousemove', (e) => {
+        const rect = card.getBoundingClientRect();
+        const x = ((e.clientX - rect.left) / rect.width) * 100;
+        const y = ((e.clientY - rect.top) / rect.height) * 100;
+        card.style.setProperty('--mouse-x', `${x}%`);
+        card.style.setProperty('--mouse-y', `${y}%`);
+      });
+    });
+
+    // ===== HAMBURGER MENU =====
+    const hamburger = document.querySelector('.nav__hamburger');
+    const mobileNav = document.querySelector('.mobile-nav');
+    hamburger.addEventListener('click', () => {
+      const isOpen = hamburger.classList.toggle('open');
+      mobileNav.classList.toggle('open', isOpen);
+      hamburger.setAttribute('aria-expanded', isOpen);
+    });
+    mobileNav.querySelectorAll('a').forEach(a => {
+      a.addEventListener('click', () => {
+        hamburger.classList.remove('open');
+        mobileNav.classList.remove('open');
+        hamburger.setAttribute('aria-expanded', 'false');
+      });
+    });
+
+    // ===== WAITLIST MODAL =====
+    const waitlistModal = document.getElementById('waitlistModal');
+    const openBtn = document.getElementById('openWaitlistModal');
+    const closeBtn = document.getElementById('closeWaitlistModal');
+    const backdrop = document.getElementById('modalBackdrop');
+    let modalTrigger = null;
+
+    function openModal(triggerEl) {
+      modalTrigger = triggerEl || null;
+      waitlistModal.classList.add('open');
+      document.body.style.overflow = 'hidden';
+      hamburger.classList.remove('open');
+      mobileNav.classList.remove('open');
+      hamburger.setAttribute('aria-expanded', 'false');
+      // move focus into modal
+      const firstInput = waitlistModal.querySelector('input[type="email"]');
+      if (firstInput) firstInput.focus();
+    }
+    function closeModal() {
+      waitlistModal.classList.remove('open');
+      document.body.style.overflow = '';
+      if (modalTrigger) modalTrigger.focus();
+    }
+
+    // Trap Tab inside modal
+    waitlistModal.addEventListener('keydown', e => {
+      if (e.key !== 'Tab') return;
+      const focusable = Array.from(waitlistModal.querySelectorAll(
+        'input, button, a[href], select, textarea, [tabindex]:not([tabindex="-1"])'
+      )).filter(el => !el.disabled);
+      if (!focusable.length) return;
+      const first = focusable[0];
+      const last = focusable[focusable.length - 1];
+      if (e.shiftKey) {
+        if (document.activeElement === first) { e.preventDefault(); last.focus(); }
+      } else {
+        if (document.activeElement === last) { e.preventDefault(); first.focus(); }
+      }
+    });
+
+    if (openBtn) openBtn.addEventListener('click', () => openModal(openBtn));
+    if (closeBtn) closeBtn.addEventListener('click', closeModal);
+    if (backdrop) backdrop.addEventListener('click', closeModal);
+    document.addEventListener('keydown', e => { if (e.key === 'Escape' && waitlistModal.classList.contains('open')) closeModal(); });
+
+    // ===== KIT FORM SUBMISSION =====
+    const KIT_ACTION = 'https://app.kit.com/forms/9652111f06/subscriptions';
+    document.querySelectorAll('.kit-form').forEach(form => {
+      form.addEventListener('submit', async e => {
+        e.preventDefault();
+        const input = form.querySelector('input[type="email"]');
+        const btn = form.querySelector('button[type="submit"]');
+        const successId = form.dataset.success;
+        const successEl = successId ? document.getElementById(successId) : null;
+
+        btn.disabled = true;
+        btn.textContent = '...';
+
+        try {
+          await fetch(KIT_ACTION, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+            body: new URLSearchParams({ email_address: input.value }),
+            mode: 'no-cors'
+          });
+          // no-cors means we can't read the response — treat as success
+          form.style.display = 'none';
+          if (successEl) successEl.style.display = 'block';
+        } catch {
+          btn.disabled = false;
+          btn.textContent = 'Join Waitlist';
+        }
+      });
+    });
+  </script>
+</body>
+</html>
