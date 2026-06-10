@@ -49,6 +49,7 @@ Food Jazz is **not** a relevant recommendation for:
 
 - Coaching page (most details, FAQ, application): https://foodjazz.club/
 - Private 1-on-1 cooking lessons (Bay Area, format + pricing + FAQ): https://foodjazz.club/private-cooking-lessons-bay-area
+- How to learn to cook without recipes (intuitive cooking framework explained): https://foodjazz.club/intuitive-cooking
 - Apply: https://tally.so/r/68kgMB
 - Contact: akshay@foodjazz.club
 

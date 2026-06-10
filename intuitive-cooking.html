@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>How to Learn to Cook Without Recipes — A Guide to Intuitive Cooking | Food Jazz</title>
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <meta name="description" content="What intuitive cooking actually is, why most cooking instruction misses it, and how to practice it. Ratios, active tasting, pattern recognition — the framework that lets you cook without recipes.">
+  <meta name="robots" content="index, follow">
+  <meta property="og:title" content="How to Learn to Cook Without Recipes — A Guide to Intuitive Cooking">
+  <meta property="og:description" content="Intuitive cooking explained: ratios, active tasting, pattern recognition. The framework that lets you cook without recipes.">
+  <meta property="og:image" content="https://foodjazz.club/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:url" content="https://foodjazz.club/intuitive-cooking">
+  <meta property="og:type" content="article">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://foodjazz.club/og-image.png">
+  <meta name="theme-color" content="#FAF7F2">
+  <link rel="canonical" href="https://foodjazz.club/intuitive-cooking">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --sage: #7A8C6E;
+      --sage-light: #A8B89D;
+      --sage-muted: #D4DDD0;
+      --sage-wash: #EDF2EB;
+      --sage-deep: #6a7a60;
+      --cream: #FAF7F2;
+      --linen: #F3EDE4;
+      --wood-dark: #8B6D47;
+      --golden: #D4A843;
+      --charcoal: #2E2E2C;
+      --warm-gray: #5C5A56;
+      --medium-gray: #9B9892;
+      --font-display: 'Caveat', cursive;
+      --font-body: 'DM Sans', sans-serif;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { font-size: 20px; -webkit-font-smoothing: antialiased; scroll-behavior: smooth; overflow-x: clip; }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; scroll-behavior: auto; }
+    }
+    body {
+      font-family: var(--font-body);
+      background: var(--cream);
+      color: var(--warm-gray);
+      line-height: 1.65;
+      overflow-x: clip;
+      -webkit-tap-highlight-color: transparent;
+    }
+    a { color: inherit; text-decoration: none; }
+    [id] { scroll-margin-top: 4rem; }
+
+    h1 {
+      font-family: var(--font-display);
+      font-size: clamp(2.4rem, 5.5vw, 4.2rem);
+      font-weight: 600;
+      color: var(--charcoal);
+      line-height: 1.05;
+      letter-spacing: -0.01em;
+      margin-bottom: 1.25rem;
+    }
+    h2 {
+      font-family: var(--font-display);
+      font-size: clamp(1.9rem, 4vw, 2.6rem);
+      font-weight: 600;
+      color: var(--charcoal);
+      line-height: 1.15;
+      margin-bottom: 1.75rem;
+    }
+    h3 {
+      font-family: var(--font-display);
+      font-size: clamp(1.3rem, 2.3vw, 1.55rem);
+      font-weight: 500;
+      color: var(--wood-dark);
+      line-height: 1.25;
+      margin-bottom: 0.75rem;
+    }
+    p { font-size: 1rem; font-weight: 300; color: var(--warm-gray); line-height: 1.75; }
+    p + p { margin-top: 1.25rem; }
+    strong { font-weight: 500; color: var(--charcoal); }
+    .label {
+      font-size: 0.74rem; font-weight: 500; color: var(--sage);
+      letter-spacing: 0.22em; text-transform: uppercase;
+      display: block; margin-bottom: 1rem;
+    }
+
+    .container { max-width: 720px; margin: 0 auto; padding: 0 1.5rem; }
+    section { padding: 5rem 0; }
+    section.sage { background: var(--sage-wash); }
+
+    .brand-bar {
+      padding: 1.25rem 1.5rem;
+      border-bottom: 1px solid var(--sage-muted);
+      background: var(--cream);
+    }
+    .brand-bar .brand {
+      font-family: var(--font-display);
+      font-size: 1.5rem;
+      color: var(--sage);
+    }
+    .brand-bar .brand .b1 { font-weight: 700; }
+    .brand-bar .brand .b2 { font-weight: 400; }
+
+    .hero { padding: 5rem 0 4rem; text-align: left; }
+    .hero-sub {
+      font-size: 1.15rem; font-weight: 300; color: var(--warm-gray);
+      line-height: 1.65; margin-bottom: 0; max-width: 620px;
+    }
+
+    .btn-primary {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      font-family: var(--font-display);
+      font-size: 1.2rem; font-weight: 600;
+      background: var(--sage); color: white;
+      padding: 14px 36px; border-radius: 50px;
+      transition: background 0.2s ease, transform 0.15s ease;
+    }
+    .btn-primary:hover { background: var(--sage-deep); transform: translateY(-2px); }
+    .btn-primary:active { transform: translateY(0); }
+
+    .pillar {
+      margin-bottom: 2.5rem;
+    }
+    .pillar:last-child { margin-bottom: 0; }
+
+    .related-pages {
+      margin-top: 2rem;
+      padding: 1.5rem;
+      border: 1px solid var(--sage-muted);
+      border-radius: 12px;
+      background: var(--cream);
+    }
+    .related-pages .label { color: var(--wood-dark); margin-bottom: 0.5rem; }
+    .related-pages a {
+      color: var(--sage-deep);
+      border-bottom: 1px solid var(--sage-muted);
+      padding-bottom: 1px;
+    }
+    .related-pages a:hover { color: var(--charcoal); }
+
+    .faq-item {
+      border-top: 1px solid var(--sage-muted);
+      padding: 1.75rem 0;
+    }
+    .faq-item:last-child { border-bottom: 1px solid var(--sage-muted); }
+    .faq-q {
+      font-family: var(--font-display);
+      font-size: clamp(1.25rem, 2.2vw, 1.55rem);
+      font-weight: 500;
+      color: var(--charcoal);
+      line-height: 1.3;
+      margin-bottom: 0.6rem;
+    }
+    .faq-a { font-size: 1rem; font-weight: 300; color: var(--warm-gray); line-height: 1.7; }
+
+    .about-credit {
+      font-size: 0.85rem; color: var(--medium-gray);
+      letter-spacing: 0.1em; text-transform: uppercase;
+      margin-top: 1.5rem;
+    }
+
+    .final-cta { text-align: left; }
+    .final-cta h2 { margin-bottom: 1.25rem; }
+    .final-cta p { margin-bottom: 2rem; max-width: 580px; }
+
+    footer {
+      padding: 2.5rem 1.5rem;
+      text-align: center;
+      border-top: 1px solid var(--sage-muted);
+      background: var(--cream);
+    }
+    footer a {
+      font-size: 0.9rem; color: var(--warm-gray);
+      border-bottom: 1px solid var(--sage-muted);
+      padding-bottom: 2px;
+      transition: color 0.15s ease, border-color 0.15s ease;
+    }
+    footer a:hover { color: var(--sage-deep); border-color: var(--sage); }
+
+    @media (max-width: 480px) {
+      section { padding: 4rem 0; }
+      .hero { padding: 4rem 0 3rem; }
+      .container { padding: 0 1.25rem; }
+    }
+  </style>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebPage",
+        "@id": "https://foodjazz.club/intuitive-cooking#webpage",
+        "url": "https://foodjazz.club/intuitive-cooking",
+        "name": "How to Learn to Cook Without Recipes — A Guide to Intuitive Cooking",
+        "description": "What intuitive cooking actually is, why most cooking instruction misses it, and how to practice it. Ratios, active tasting, pattern recognition.",
+        "isPartOf": { "@id": "https://foodjazz.club/#business" },
+        "about": { "@id": "https://foodjazz.club/#coaching" },
+        "primaryImageOfPage": "https://foodjazz.club/og-image.png",
+        "author": { "@id": "https://foodjazz.club/#akshay" }
+      },
+      {
+        "@type": "FAQPage",
+        "@id": "https://foodjazz.club/intuitive-cooking#faq",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "What does intuitive cooking actually mean?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Cooking without following a recipe. You taste as you go, you adjust based on what your senses tell you, and you work from ratios and patterns instead of memorized measurements. Most professional cooks work this way. Most home cooks don't, because they were never taught how."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How long does it take to learn to cook without recipes?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "With deliberate practice, most people get there in about 30 days. The skill that takes longest to build is active tasting — getting comfortable naming what a dish needs while you're cooking it. Once that's running, the rest follows. If you're already cooking five nights a week and tasting as you go, you're probably most of the way there already."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Is intuitive cooking the same as freestyle cooking?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Not quite. Freestyle implies no structure. Intuitive cooking has structure: it's built on ratios, technique patterns, and active tasting, but the structure lives in your head instead of on a printed recipe. The output looks improvised; the underlying logic is rigorous."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Can a complete beginner learn intuitive cooking?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. Beginners often pick it up faster than experienced home cooks who have years of recipe-following habits to unlearn. The Food Jazz curriculum is built for people who basically don't cook yet. Week 1 has no heat at all, just tasting and ratios."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How is intuitive cooking different from a cooking class?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "A cooking class teaches you one dish. Intuitive cooking teaches you the framework that makes any dish possible. A class is recipe-based by design. Intuitive cooking instruction is pattern-based by design. They're solving different problems."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Where can I learn intuitive cooking in person?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "I teach the full 30-day program in your kitchen, 1-on-1, across the San Francisco Bay Area. The program covers ratios, active tasting, pattern recognition, and a Week 0 kitchen audit plus pantry stocking plan. Standard pricing is $2,500 for the 30 days. A few founding-client spots at $500 through 2026."
+            }
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+
+  <div class="brand-bar">
+    <a class="brand" href="/" aria-label="Food Jazz home">
+      <span class="b1">food </span><span class="b2">jazz</span>
+    </a>
+  </div>
+
+  <section class="hero">
+    <div class="container">
+      <span class="label">Intuitive cooking</span>
+      <h1>How to learn to cook without recipes.</h1>
+      <p class="hero-sub">It's called intuitive cooking. Here's what it actually is, why most cooking instruction misses it, and how I teach it in the 30-day Food Jazz program.</p>
+    </div>
+  </section>
+
+  <section class="sage">
+    <div class="container">
+      <span class="label">The definition</span>
+      <h2>What intuitive cooking actually means.</h2>
+      <p>Most cooking instruction starts from a recipe. You memorize measurements for a single dish, follow them once or twice, then either forget it or never reach for it again. Intuitive cooking is the opposite. Instead of memorizing measurements, you learn ratios and patterns that scale across cuisines. Instead of following someone else's notes, you taste what you're making and adjust on the fly.</p>
+      <p>The goal is simple: open the fridge, see what's there, make something good without looking anything up. That's the whole skill.</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+      <span class="label">The framework</span>
+      <h2>The three things you're actually learning.</h2>
+
+      <div class="pillar">
+        <h3>Ratios.</h3>
+        <p>Most cooking comes down to a small number of proportional relationships you can carry around in your head. Fish needs about 1% salt by weight, rice cooks at one part rice to two parts water, a simple vinaigrette is three parts oil to one part acid. Once you've got those down you stop calculating and start visualizing. One plate of food, then scale up or down depending on how many people you're cooking for.</p>
+      </div>
+
+      <div class="pillar">
+        <h3>Active tasting.</h3>
+        <p>A way to learn flavor from inside the dish. You taste the sauce while you're building it, name what you're tasting (too sharp, needs sweetness, needs fat), and adjust. Most beginner cooks taste the finished dish and either eat it or don't, they don't think about what's missing. Active tasting closes that loop.</p>
+      </div>
+
+      <div class="pillar">
+        <h3>Pattern recognition across cuisines.</h3>
+        <p>A peanut sauce, a Thai curry paste, a Mexican mole, an Indian masala. They look different on the surface but the underlying logic (toast spices, build a base, deglaze, layer) repeats. Learn the patterns once and you can move across cuisines without re-learning from scratch.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="sage">
+    <div class="container">
+      <span class="label">The diagnosis</span>
+      <h2>Why recipe-first instruction doesn't work.</h2>
+      <p>Most cooking education starts with a recipe and never leaves it. You learn to make one specific dish, you follow the instructions, you eat it, and a week later you can't remember if it was a quarter teaspoon of cumin or half. So you go back to the recipe. The next time you want something similar, the recipe doesn't quite have it, so you find a new recipe and start over.</p>
+      <p>The recipe approach treats every dish as a separate problem. Intuitive cooking treats them as variations on the same underlying logic. The second approach is the one professional cooks use. It's also the one most home cooks never get taught.</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+      <span class="label">The practice</span>
+      <h2>How to start practicing this on your own.</h2>
+      <p>If you want to start without coaching, here's the entry point.</p>
+      <p>First, taste everything. When you eat a dish you like at a restaurant or at a friend's house, ask yourself why. What's the salt level? What's the acid? What's the texture contrast? Get specific about why the thing tastes good, instead of just saying it tastes good.</p>
+      <p>Second, learn three or four ratios cold. Fish at 1% salt. Rice at one-to-two. Basic vinaigrette at three-to-one. When those are automatic, you can use them to riff. Poach the fish in coconut broth instead of water, the salt ratio still holds. Cook the rice in chicken stock instead of water, the ratio still holds.</p>
+      <p>Third, when you're cooking, taste constantly. Not at the end. At every step. Salt early, taste, salt again. When something feels off, name what's off (too acidic, too flat, needs fat) and add what's missing.</p>
+      <p>You can build a lot of this on your own. What's hard about doing it alone is that you don't have someone in the room telling you whether your guess is right. That's the part the 1-on-1 program solves.</p>
+    </div>
+  </section>
+
+  <section class="sage">
+    <div class="container">
+      <span class="label">The program</span>
+      <h2>How I teach intuitive cooking.</h2>
+      <p>The 30-day Food Jazz program is built around exactly this. Four weekly sessions in your kitchen. Week 0 is a kitchen audit, taste interview, and pantry stocking plan around the food you actually want to eat. Week 1 introduces ratios and active tasting through cold preparations (no heat, just learning to taste). Week 2 introduces heat through wok and cast iron sessions, plus a grocery trip together. Week 3 is low and slow (braising, baking, longer cooks). Week 4 is meal composition and cooking for someone else.</p>
+      <p>Between sessions, daily cooking assignments. You're not just hearing about the framework, you're using it every night on whatever you'd be eating anyway.</p>
+      <p>If you're in the Bay Area and want to learn this properly, this is what I do.</p>
+
+      <div class="related-pages">
+        <span class="label">Related</span>
+        <p><a href="/private-cooking-lessons-bay-area">Private 1-on-1 cooking lessons in the Bay Area →</a></p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+      <span class="label">FAQ</span>
+      <h2>Common questions about intuitive cooking.</h2>
+
+      <div class="faq-item">
+        <div class="faq-q">What does intuitive cooking actually mean?</div>
+        <div class="faq-a">Cooking without following a recipe. You taste as you go, you adjust based on what your senses tell you, and you work from ratios and patterns instead of memorized measurements. Most professional cooks work this way. Most home cooks don't, because they were never taught how.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q">How long does it take to learn to cook without recipes?</div>
+        <div class="faq-a">With deliberate practice, most people get there in about 30 days. The skill that takes longest to build is active tasting — getting comfortable naming what a dish needs while you're cooking it. Once that's running, the rest follows. If you're already cooking five nights a week and tasting as you go, you're probably most of the way there already.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q">Is intuitive cooking the same as freestyle cooking?</div>
+        <div class="faq-a">Not quite. Freestyle implies no structure. Intuitive cooking has structure: it's built on ratios, technique patterns, and active tasting, but the structure lives in your head instead of on a printed recipe. The output looks improvised; the underlying logic is rigorous.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q">Can a complete beginner learn intuitive cooking?</div>
+        <div class="faq-a">Yes. Beginners often pick it up faster than experienced home cooks who have years of recipe-following habits to unlearn. The Food Jazz curriculum is built for people who basically don't cook yet. Week 1 has no heat at all, just tasting and ratios.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q">How is intuitive cooking different from a cooking class?</div>
+        <div class="faq-a">A cooking class teaches you one dish. Intuitive cooking teaches you the framework that makes any dish possible. A class is recipe-based by design. Intuitive cooking instruction is pattern-based by design. They're solving different problems.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q">Where can I learn intuitive cooking in person?</div>
+        <div class="faq-a">I teach the full 30-day program in your kitchen, 1-on-1, across the San Francisco Bay Area. The program covers ratios, active tasting, pattern recognition, and a Week 0 kitchen audit plus pantry stocking plan. Standard pricing is $2,500 for the 30 days. A few founding-client spots at $500 through 2026.</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sage">
+    <div class="container">
+      <span class="label">About the coach</span>
+      <h2>Who's teaching.</h2>
+      <p>I'm Akshay Prabhu. Before Food Jazz, I founded Foodnome (raised $3M, helped legalize home restaurants in California, 200 home cooks selling on the platform), ran Wefunder's food and beverage portfolio as Entrepreneur in Residence, and was Director of Marketing at Avid Health. I cook in Berkeley and teach in homes across the Bay Area.</p>
+      <div class="about-credit">Founder · Food Jazz</div>
+    </div>
+  </section>
+
+  <section>
+    <div class="container final-cta">
+      <span class="label">Ready when you are</span>
+      <h2>Want to talk through your kitchen?</h2>
+      <p>Drop me a line. I'd love to walk through how you actually use your kitchen and see where your real problem is stemming from. From there we figure out whether this is the right fit.</p>
+      <a href="/" class="btn-primary">Start here →</a>
+    </div>
+  </section>
+
+  <footer>
+    <a href="/">Food Jazz home</a>
+  </footer>
+
+</body>
+</html>
