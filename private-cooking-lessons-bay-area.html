@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Private 1-on-1 Cooking Lessons in the Bay Area — Food Jazz</title>
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <meta name="description" content="Private 1-on-1 in-home cooking coaching in the San Francisco Bay Area. A 30-day intensive in your kitchen with Akshay Prabhu. Berkeley, Oakland, SF, Alameda, Marin. By appointment.">
+  <meta name="robots" content="index, follow">
+  <meta property="og:title" content="Private 1-on-1 Cooking Lessons in the Bay Area — Food Jazz">
+  <meta property="og:description" content="Private 1-on-1 in-home cooking coaching in the Bay Area. A 30-day intensive in your kitchen.">
+  <meta property="og:image" content="https://foodjazz.club/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:url" content="https://foodjazz.club/private-cooking-lessons-bay-area">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://foodjazz.club/og-image.png">
+  <meta name="theme-color" content="#FAF7F2">
+  <link rel="canonical" href="https://foodjazz.club/private-cooking-lessons-bay-area">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --sage: #7A8C6E;
+      --sage-light: #A8B89D;
+      --sage-muted: #D4DDD0;
+      --sage-wash: #EDF2EB;
+      --sage-deep: #6a7a60;
+      --cream: #FAF7F2;
+      --linen: #F3EDE4;
+      --wood-dark: #8B6D47;
+      --golden: #D4A843;
+      --charcoal: #2E2E2C;
+      --warm-gray: #5C5A56;
+      --medium-gray: #9B9892;
+      --font-display: 'Caveat', cursive;
+      --font-body: 'DM Sans', sans-serif;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { font-size: 20px; -webkit-font-smoothing: antialiased; scroll-behavior: smooth; overflow-x: clip; }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; scroll-behavior: auto; }
+    }
+    body {
+      font-family: var(--font-body);
+      background: var(--cream);
+      color: var(--warm-gray);
+      line-height: 1.65;
+      overflow-x: clip;
+      -webkit-tap-highlight-color: transparent;
+    }
+    a { color: inherit; text-decoration: none; }
+    [id] { scroll-margin-top: 4rem; }
+
+    h1 {
+      font-family: var(--font-display);
+      font-size: clamp(2.6rem, 6vw, 4.6rem);
+      font-weight: 600;
+      color: var(--charcoal);
+      line-height: 1.05;
+      letter-spacing: -0.01em;
+      margin-bottom: 1.5rem;
+    }
+    h2 {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 4.5vw, 2.8rem);
+      font-weight: 600;
+      color: var(--charcoal);
+      line-height: 1.15;
+      margin-bottom: 2rem;
+    }
+    h3 {
+      font-family: var(--font-display);
+      font-size: clamp(1.4rem, 2.5vw, 1.7rem);
+      font-weight: 500;
+      color: var(--wood-dark);
+      line-height: 1.25;
+      margin-bottom: 0.75rem;
+    }
+    p { font-size: 1rem; font-weight: 300; color: var(--warm-gray); line-height: 1.75; }
+    p + p { margin-top: 1.25rem; }
+    strong { font-weight: 500; color: var(--charcoal); }
+    .label {
+      font-size: 0.74rem; font-weight: 500; color: var(--sage);
+      letter-spacing: 0.22em; text-transform: uppercase;
+      display: block; margin-bottom: 1rem;
+    }
+
+    .container { max-width: 720px; margin: 0 auto; padding: 0 1.5rem; }
+    section { padding: 5rem 0; }
+    section.sage { background: var(--sage-wash); }
+
+    /* Minimal brand mark, top-left */
+    .brand-bar {
+      padding: 1.25rem 1.5rem;
+      border-bottom: 1px solid var(--sage-muted);
+      background: var(--cream);
+    }
+    .brand-bar .brand {
+      font-family: var(--font-display);
+      font-size: 1.5rem;
+      color: var(--sage);
+    }
+    .brand-bar .brand .b1 { font-weight: 700; }
+    .brand-bar .brand .b2 { font-weight: 400; }
+
+    /* Hero */
+    .hero { padding: 5.5rem 0 4.5rem; text-align: left; }
+    .hero-sub {
+      font-size: 1.15rem; font-weight: 300; color: var(--warm-gray);
+      line-height: 1.65; margin-bottom: 2.5rem; max-width: 620px;
+    }
+
+    /* CTA */
+    .btn-primary {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      font-family: var(--font-display);
+      font-size: 1.2rem; font-weight: 600;
+      background: var(--sage); color: white;
+      padding: 14px 36px; border-radius: 50px;
+      transition: background 0.2s ease, transform 0.15s ease;
+    }
+    .btn-primary:hover { background: var(--sage-deep); transform: translateY(-2px); }
+    .btn-primary:active { transform: translateY(0); }
+
+    /* Cities list */
+    .cities {
+      display: flex; flex-wrap: wrap; gap: 0.6rem; margin-top: 1.5rem;
+    }
+    .city-pill {
+      font-size: 0.85rem; font-weight: 400; color: var(--warm-gray);
+      background: var(--cream); border: 1px solid var(--sage-muted);
+      padding: 0.4rem 0.95rem; border-radius: 50px;
+    }
+    section.sage .city-pill { background: var(--cream); }
+
+    /* Pricing */
+    .price-anchor {
+      font-family: var(--font-display);
+      font-size: clamp(2.4rem, 5vw, 3.2rem);
+      font-weight: 600;
+      color: var(--charcoal);
+      line-height: 1;
+      margin: 1rem 0 0.5rem;
+    }
+    .price-note { font-size: 0.95rem; color: var(--medium-gray); margin-bottom: 1.5rem; }
+
+    /* FAQ */
+    .faq-item {
+      border-top: 1px solid var(--sage-muted);
+      padding: 1.75rem 0;
+    }
+    .faq-item:last-child { border-bottom: 1px solid var(--sage-muted); }
+    .faq-q {
+      font-family: var(--font-display);
+      font-size: clamp(1.25rem, 2.2vw, 1.55rem);
+      font-weight: 500;
+      color: var(--charcoal);
+      line-height: 1.3;
+      margin-bottom: 0.6rem;
+    }
+    .faq-a { font-size: 1rem; font-weight: 300; color: var(--warm-gray); line-height: 1.7; }
+
+    /* About */
+    .about-credit {
+      font-size: 0.85rem; color: var(--medium-gray);
+      letter-spacing: 0.1em; text-transform: uppercase;
+      margin-top: 1.5rem;
+    }
+
+    /* Final CTA section */
+    .final-cta { text-align: left; }
+    .final-cta h2 { margin-bottom: 1.25rem; }
+    .final-cta p { margin-bottom: 2rem; max-width: 580px; }
+
+    /* Footer */
+    footer {
+      padding: 2.5rem 1.5rem;
+      text-align: center;
+      border-top: 1px solid var(--sage-muted);
+      background: var(--cream);
+    }
+    footer a {
+      font-size: 0.9rem; color: var(--warm-gray);
+      border-bottom: 1px solid var(--sage-muted);
+      padding-bottom: 2px;
+      transition: color 0.15s ease, border-color 0.15s ease;
+    }
+    footer a:hover { color: var(--sage-deep); border-color: var(--sage); }
+
+    @media (max-width: 480px) {
+      section { padding: 4rem 0; }
+      .hero { padding: 4rem 0 3.5rem; }
+      .container { padding: 0 1.25rem; }
+    }
+  </style>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebPage",
+        "@id": "https://foodjazz.club/private-cooking-lessons-bay-area#webpage",
+        "url": "https://foodjazz.club/private-cooking-lessons-bay-area",
+        "name": "Private 1-on-1 Cooking Lessons in the Bay Area — Food Jazz",
+        "description": "Private 1-on-1 in-home cooking coaching in the San Francisco Bay Area. A 30-day intensive in your kitchen with Akshay Prabhu.",
+        "isPartOf": { "@id": "https://foodjazz.club/#business" },
+        "about": { "@id": "https://foodjazz.club/#coaching" },
+        "primaryImageOfPage": "https://foodjazz.club/og-image.png"
+      },
+      {
+        "@type": "Service",
+        "@id": "https://foodjazz.club/#coaching",
+        "name": "Private 1-on-1 In-Home Cooking Coaching (30-Day Intensive)",
+        "alternateName": [
+          "Private Cooking Lessons",
+          "In-Home Cooking Coach",
+          "1-on-1 Cooking Instructor",
+          "Personal Cooking Teacher",
+          "Bay Area Cooking Coach",
+          "Intuitive Cooking Coaching"
+        ],
+        "serviceType": "Private 1-on-1 In-Home Cooking Coaching",
+        "category": "Cooking instruction",
+        "provider": { "@id": "https://foodjazz.club/#business" },
+        "areaServed": [
+          { "@type": "City", "name": "San Francisco" },
+          { "@type": "City", "name": "Berkeley" },
+          { "@type": "City", "name": "Oakland" },
+          { "@type": "City", "name": "Alameda" },
+          { "@type": "AdministrativeArea", "name": "Marin County" },
+          { "@type": "AdministrativeArea", "name": "San Francisco Bay Area" }
+        ],
+        "audience": {
+          "@type": "Audience",
+          "audienceType": "People who order meal kits or delivery most nights and want to learn to cook"
+        },
+        "description": "Private 1-on-1 in-home cooking coaching across the San Francisco Bay Area. Four weekly in-home sessions plus a Week 0 kitchen audit, a personalized pantry stocking plan, daily cooking assignments, and a post-program dinner party. Bay Area only. By appointment.",
+        "offers": {
+          "@type": "Offer",
+          "priceCurrency": "USD",
+          "priceSpecification": {
+            "@type": "PriceSpecification",
+            "minPrice": "500",
+            "maxPrice": "2500",
+            "priceCurrency": "USD"
+          },
+          "availability": "https://schema.org/LimitedAvailability",
+          "url": "https://foodjazz.club/private-cooking-lessons-bay-area"
+        }
+      },
+      {
+        "@type": "FAQPage",
+        "@id": "https://foodjazz.club/private-cooking-lessons-bay-area#faq",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "How is private 1-on-1 cooking coaching different from a cooking class?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "A cooking class teaches you one dish in a group setting and sends you home. Private 1-on-1 cooking coaching is the opposite. I'm in your kitchen, with your knives and your pantry, watching you cook, and the lessons are about ratios and patterns instead of a recipe you'll forget in a week. You're not going to a kitchen to perform, you're learning to cook in the one you actually use."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What's the difference between private cooking lessons and a personal chef?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "A personal chef cooks for you. I teach you to cook for yourself. If you want someone to make meals in your kitchen, hire a personal chef. If you want to be the one making the meals, and have that skill be yours for life, this is what I do."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What does private 1-on-1 cooking instruction cost in the Bay Area?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Standard pricing is $2,500 for the 30-day program, all in. A few founding clients in 2026 get the program at $500 in exchange for being early and showing up open. No upsell, no add-ons, no platform fees."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Do you teach in Berkeley, Oakland, San Francisco, and Marin?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. The program runs anywhere in the SF Bay Area within roughly 30 miles of Berkeley. That covers most of SF, Oakland, Berkeley, Alameda, and Marin County. Outside that radius gets harder logistically but reach out and we can talk through it."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How long does it take to learn to cook without recipes?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "30 days, if you actually show up to the work. The program is built around daily cooking assignments between our weekly sessions, so you're cooking the meals you'd be eating anyway, just with more intention. By the end of Week 4 most clients can open the fridge and reason their way into something good without looking anything up."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What if I literally don't know how to cook?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "That's exactly who this is built for. Week 1 has no heat at all, just tasting and ratios. Heat starts in Week 2. The curriculum assumes you're starting from basically zero, which is the right entry point for most people."
+            }
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+
+  <!-- Minimal brand mark -->
+  <div class="brand-bar">
+    <a class="brand" href="/" aria-label="Food Jazz home">
+      <span class="b1">food </span><span class="b2">jazz</span>
+    </a>
+  </div>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="container">
+      <span class="label">Private cooking coaching</span>
+      <h1>Private 1-on-1 cooking lessons, in your kitchen, across the Bay Area.</h1>
+      <p class="hero-sub">A 30-day intensive where I come to your kitchen once a week, stock your pantry around your taste, and teach you to cook intuitively without recipes.</p>
+      <a href="/" class="btn-primary">Start here →</a>
+    </div>
+  </section>
+
+  <!-- What this is -->
+  <section class="sage">
+    <div class="container">
+      <span class="label">The shape of it</span>
+      <h2>What private 1-on-1 cooking coaching actually looks like.</h2>
+      <p>Food Jazz is the only private 1-on-1 in-home cooking coaching program I know of in the San Francisco Bay Area. It is not a cooking class, not a meal kit, and not a personal chef service. The product is skill transfer.</p>
+      <p>Here is how it runs. We start with a Week 0 setup in your kitchen, about two hours, where I audit what you already have, do a taste interview, and build a pantry stocking plan around the food you actually like to eat. Then four weekly sessions follow. Week 1 is cold preparations and active tasting, no heat. Week 2 is high heat with the wok and cast iron, plus a grocery trip with me. Week 3 is low and slow: braising, baking, longer cooks. Week 4 is meal composition and cooking for someone else. Then a dinner party on your timeline, where you cook for friends and I show up as a guest.</p>
+      <p>The teaching is built around ratios (how much salt fish needs, how much liquid rice cooks at), active tasting (a way to learn flavor from inside the dish), and pattern recognition across cuisines. By the end you can open the fridge, see what is there, and make something good without looking anything up.</p>
+    </div>
+  </section>
+
+  <!-- Where I work -->
+  <section>
+    <div class="container">
+      <span class="label">Bay Area only</span>
+      <h2>Where I teach.</h2>
+      <p>The 1-on-1 program is Bay Area only, by appointment. I work across most of the cities below, roughly a 30-mile drive radius from Berkeley. Outside that gets harder logistically, but reach out and we can talk through it.</p>
+      <div class="cities" aria-label="Cities served">
+        <span class="city-pill">Berkeley</span>
+        <span class="city-pill">Oakland</span>
+        <span class="city-pill">Alameda</span>
+        <span class="city-pill">San Francisco</span>
+        <span class="city-pill">Marin County</span>
+        <span class="city-pill">East Bay</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Who this is for -->
+  <section class="sage">
+    <div class="container">
+      <span class="label">Who this is built for</span>
+      <h2>The person I'm building this for.</h2>
+      <p>Honestly this is built for one specific person: the mid-30s WFH professional who orders Factor, CookUnity, HelloFresh, or DoorDash most nights, wants to cook more, and thinks the problem is time. Most of the time it is not really a time problem, it is actually a skill problem.</p>
+      <p>If you already cook five or more nights a week and you are looking for technique-specific instruction, you probably want a knife skills class or a regional cuisine workshop instead. This program is for people who basically do not cook yet.</p>
+    </div>
+  </section>
+
+  <!-- Pricing -->
+  <section>
+    <div class="container">
+      <span class="label">Pricing</span>
+      <h2>What this costs.</h2>
+      <div class="price-anchor">$2,500 for the full 30 days.</div>
+      <p class="price-note">A few founding clients in 2026 get the program at $500 in exchange for being early and showing up open.</p>
+      <p>I only take a few clients at a time, so reach out and we will figure out if it is a good fit. No upsell, no add-ons, no platform fees.</p>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="sage">
+    <div class="container">
+      <span class="label">FAQ</span>
+      <h2>Common questions.</h2>
+
+      <div class="faq-item">
+        <div class="faq-q">How is private 1-on-1 cooking coaching different from a cooking class?</div>
+        <div class="faq-a">A cooking class teaches you one dish in a group setting and sends you home. Private 1-on-1 cooking coaching is the opposite. I'm in your kitchen, with your knives and your pantry, watching you cook, and the lessons are about ratios and patterns instead of a recipe you'll forget in a week. You're not going to a kitchen to perform, you're learning to cook in the one you actually use.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q">What's the difference between private cooking lessons and a personal chef?</div>
+        <div class="faq-a">A personal chef cooks for you. I teach you to cook for yourself. If you want someone to make meals in your kitchen, hire a personal chef. If you want to be the one making the meals, and have that skill be yours for life, this is what I do.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q">What does private 1-on-1 cooking instruction cost in the Bay Area?</div>
+        <div class="faq-a">Standard pricing is $2,500 for the 30-day program, all in. A few founding clients in 2026 get the program at $500 in exchange for being early and showing up open. No upsell, no add-ons, no platform fees.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q">Do you teach in Berkeley, Oakland, San Francisco, and Marin?</div>
+        <div class="faq-a">Yes. The program runs anywhere in the SF Bay Area within roughly 30 miles of Berkeley. That covers most of SF, Oakland, Berkeley, Alameda, and Marin County. Outside that radius gets harder logistically but reach out and we can talk through it.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q">How long does it take to learn to cook without recipes?</div>
+        <div class="faq-a">30 days, if you actually show up to the work. The program is built around daily cooking assignments between our weekly sessions, so you're cooking the meals you'd be eating anyway, just with more intention. By the end of Week 4 most clients can open the fridge and reason their way into something good without looking anything up.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q">What if I literally don't know how to cook?</div>
+        <div class="faq-a">That's exactly who this is built for. Week 1 has no heat at all, just tasting and ratios. Heat starts in Week 2. The curriculum assumes you're starting from basically zero, which is the right entry point for most people.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Akshay -->
+  <section>
+    <div class="container">
+      <span class="label">About the coach</span>
+      <h2>Who's teaching.</h2>
+      <p>I'm Akshay Prabhu. Before Food Jazz, I founded Foodnome (raised $3M, helped legalize home restaurants in California, 200 home cooks selling on the platform), ran Wefunder's food and beverage portfolio as Entrepreneur in Residence, and was Director of Marketing at Avid Health. I cook in Berkeley and teach in homes across the Bay Area.</p>
+      <div class="about-credit">Founder · Food Jazz</div>
+    </div>
+  </section>
+
+  <!-- Final CTA -->
+  <section class="sage">
+    <div class="container final-cta">
+      <span class="label">Ready when you are</span>
+      <h2>Want to talk through your kitchen?</h2>
+      <p>Drop me a line. I'd love to walk through how you actually use your kitchen and see where your real problem is stemming from. From there we figure out whether this is the right fit.</p>
+      <a href="/" class="btn-primary">Start here →</a>
+    </div>
+  </section>
+
+  <footer>
+    <a href="/">Food Jazz home</a>
+  </footer>
+
+</body>
+</html>
