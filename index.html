@@ -308,6 +308,54 @@
     }
     .value-desc { font-size: 0.95rem; font-weight: 300; color: var(--warm-gray); line-height: 1.75; }
 
+    /* ===== TESTIMONIAL ===== */
+    .section-testimonial { background: var(--cream); padding: clamp(4.5rem, 10vw, 6.5rem) 0; }
+    .testimonial-wrap { max-width: 720px; margin: 0 auto; padding: 0 2rem; text-align: center; }
+    .testimonial-mark {
+      font-family: var(--font-display); font-size: 5rem; line-height: 1;
+      color: var(--golden); opacity: 0.5; display: block; height: 2.6rem; margin-bottom: 0.6rem;
+    }
+    .testimonial-quote {
+      font-size: clamp(1.55rem, 3.6vw, 2.35rem);
+      font-weight: 400; line-height: 1.4; letter-spacing: -0.01em;
+      color: var(--charcoal); margin: 0 auto 2.25rem;
+    }
+    .testimonial-emph { color: var(--sage-deep); font-weight: 500; }
+    .testimonial-attr { display: inline-flex; align-items: center; gap: 0.85rem; }
+    .testimonial-photo {
+      width: 60px; height: 60px; border-radius: 50%; object-fit: cover;
+      border: 2px solid var(--sage-muted); flex-shrink: 0;
+    }
+    .testimonial-id { text-align: left; }
+    .testimonial-name { font-weight: 600; color: var(--charcoal); font-size: 1rem; line-height: 1.25; margin: 0; }
+    .testimonial-cred { font-size: 0.8rem; color: var(--warm-gray); letter-spacing: 0.01em; margin: 0.15rem 0 0; }
+
+    /* ===== VIDEO TESTIMONIAL ===== */
+    .section-vtestimonial { background: var(--warm-white); padding: clamp(5rem, 11vw, 8rem) 0; }
+    .section-vtestimonial .container { text-align: center; }
+    .section-vtestimonial h2 { margin-bottom: 2.5rem; }
+    .vt-card {
+      position: relative; max-width: 800px; margin: 0 auto;
+      aspect-ratio: 16 / 9; border-radius: 16px; overflow: hidden;
+      background: var(--charcoal);
+      box-shadow: 0 22px 50px -22px rgba(46,46,44,0.38), 0 4px 14px rgba(46,46,44,0.10);
+    }
+    .vt-video { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .vt-play {
+      position: absolute; inset: 0; margin: auto;
+      width: 84px; height: 84px; border-radius: 50%;
+      background: rgba(250,247,242,0.93); border: none; cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 6px 22px rgba(0,0,0,0.28);
+      transition: transform 0.25s ease, background 0.25s ease;
+    }
+    .vt-play:hover { transform: scale(1.07); background: #fff; }
+    .vt-play svg { width: 30px; height: 30px; margin-left: 4px; fill: var(--charcoal); }
+    .vt-card.is-playing .vt-play { display: none; }
+    .vt-byline { margin-top: 1.75rem; }
+    .vt-name { font-weight: 600; color: var(--charcoal); font-size: 1.05rem; margin: 0; }
+    .vt-cred { font-size: 0.85rem; color: var(--warm-gray); letter-spacing: 0.01em; margin: 0.2rem 0 0; }
+
     /* ===== PROBLEM ===== */
     .section-problem { background: var(--charcoal); padding: 9rem 0 7rem; }
     .section-problem h2 {
@@ -1300,6 +1348,21 @@
     </div>
   </section>
 
+  <!-- TESTIMONIAL -->
+  <section class="section-testimonial">
+    <div class="testimonial-wrap">
+      <span class="testimonial-mark" aria-hidden="true">&ldquo;</span>
+      <blockquote class="testimonial-quote">My friends would say I was <span class="testimonial-emph">a Michelin-star chef</span>. Which is crazy.</blockquote>
+      <div class="testimonial-attr">
+        <img class="testimonial-photo" src="davis-clute.webp" alt="Davis Clute" width="60" height="60" loading="lazy">
+        <div class="testimonial-id">
+          <p class="testimonial-name">Davis Clute</p>
+          <p class="testimonial-cred">Founder · Forbes 30 Under 30</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- PROBLEM -->
   <section class="section-problem">
     <div class="container--narrow">
@@ -1627,6 +1690,40 @@
       <p class="outcomes-closing">New connections, new confidence, new dinner parties. The simple habit that changes the trajectory of your life.</p>
     </div>
   </section>
+
+  <!-- VIDEO TESTIMONIAL -->
+  <section class="section-vtestimonial">
+    <div class="container">
+      <h2>A month with Davis.</h2>
+      <div class="vt-card" id="vtCard">
+        <video class="vt-video" id="vtVideo" poster="davis-testimonial-poster.jpg" preload="none" playsinline>
+          <source src="davis-testimonial.mp4" type="video/mp4">
+        </video>
+        <button class="vt-play" type="button" id="vtPlay" aria-label="Play Davis's testimonial">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
+        </button>
+      </div>
+      <div class="vt-byline">
+        <p class="vt-name">Davis Clute</p>
+        <p class="vt-cred">Founder · Forbes 30 Under 30</p>
+      </div>
+    </div>
+  </section>
+  <script>
+    (function () {
+      var card = document.getElementById('vtCard');
+      var video = document.getElementById('vtVideo');
+      var play = document.getElementById('vtPlay');
+      if (!card || !video || !play) return;
+      function start() {
+        card.classList.add('is-playing');
+        video.setAttribute('controls', '');
+        video.play();
+      }
+      play.addEventListener('click', start);
+      video.addEventListener('play', function () { card.classList.add('is-playing'); });
+    })();
+  </script>
 
   <!-- FAQ -->
   <section id="faq" class="section-faq">
