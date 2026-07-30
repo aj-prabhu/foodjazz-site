@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Food Jazz — a guide to throwing a dinner party</title>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <meta property="og:title" content="A guide to throwing a dinner party">
+  <meta property="og:description" content="One page on how to host, from a chef who teaches people to cook.">
+  <meta property="og:image" content="https://foodjazz.club/og-image.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --sage: #7A8C6E;
+      --sage-light: #A8B89D;
+      --sage-muted: #D4DDD0;
+      --sage-wash: #EDF2EB;
+      --sage-deep: #6a7a60;
+      --cream: #FAF7F2;
+      --warm-white: #FEFDFB;
+      --linen: #F3EDE4;
+      --linen-border: #e0d9cf;
+      --golden: #D4A843;
+      --charcoal: #2E2E2C;
+      --warm-gray: #5C5A56;
+      --medium-gray: #9B9892;
+      --font-display: 'Caveat', cursive;
+      --font-body: 'DM Sans', sans-serif;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+
+    html { font-size: 20px; -webkit-text-size-adjust: 100%; }
+
+    body {
+      margin: 0;
+      font-family: var(--font-body);
+      font-weight: 300;
+      font-size: 1rem;
+      line-height: 1.65;
+      color: var(--charcoal);
+      background: var(--cream);
+    }
+
+    .container {
+      width: 100%;
+      max-width: 640px;
+      margin: 0 auto;
+      padding-left: 1.4rem;
+      padding-right: 1.4rem;
+    }
+
+    section { padding: clamp(3.2rem, 11vw, 6.5rem) 0; }
+    section.wash { background: var(--sage-wash); }
+
+    h1, h2 { font-family: var(--font-display); font-weight: 600; line-height: 1.12; margin: 0 0 1rem; }
+    h1 { font-size: clamp(2.4rem, 9vw, 3.6rem); }
+    h2 { font-size: clamp(2rem, 7vw, 2.9rem); }
+    p { margin: 0 0 1.1rem; }
+    p:last-child { margin-bottom: 0; }
+
+    .from {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 7.5vw, 2.7rem);
+      color: var(--sage);
+      line-height: 1.1;
+      margin-bottom: 0.5rem;
+    }
+
+    .lede { font-size: 1.1rem; color: var(--warm-gray); }
+
+    .hero { padding-top: clamp(3rem, 10vw, 5rem); }
+
+    /* ---- gift ---- */
+    .gift {
+      background: var(--warm-white);
+      border: 1px solid var(--linen-border);
+      border-radius: 14px;
+      padding: 1.6rem 1.5rem;
+      margin-top: 1.8rem;
+    }
+    .gift h2 { font-size: clamp(1.7rem, 6vw, 2.2rem); margin-bottom: 0.5rem; }
+
+    .btn {
+      display: inline-block;
+      width: 100%;
+      font-family: var(--font-body);
+      font-size: 1rem;
+      font-weight: 400;
+      padding: 1rem 1.3rem;
+      border-radius: 10px;
+      border: 1px solid var(--sage);
+      background: var(--sage);
+      color: #fff;
+      text-decoration: none;
+      text-align: center;
+      cursor: pointer;
+      transition: background 0.15s ease;
+      margin-top: 1.1rem;
+    }
+    .btn:hover { background: var(--sage-deep); }
+    .btn.secondary { background: transparent; color: var(--sage-deep); }
+    .btn.secondary:hover { background: var(--sage-wash); }
+
+    .fineprint { font-size: 0.82rem; color: var(--medium-gray); margin-top: 0.7rem; text-align: center; }
+
+    /* ---- testimonial ---- */
+    .quote-card {
+      display: flex;
+      gap: 1rem;
+      align-items: flex-start;
+      background: var(--warm-white);
+      border: 1px solid var(--linen-border);
+      border-radius: 14px;
+      padding: 1.4rem 1.3rem;
+      margin-top: 1.6rem;
+    }
+    .quote-card img { width: 56px; height: 56px; border-radius: 50%; object-fit: cover; flex-shrink: 0; }
+    .quote-card blockquote {
+      margin: 0 0 0.3rem;
+      font-family: var(--font-display);
+      font-size: 1.4rem;
+      line-height: 1.2;
+      color: var(--charcoal);
+    }
+    .quote-card .emph { color: var(--sage-deep); }
+    .quote-card .attr { font-size: 0.8rem; color: var(--medium-gray); }
+
+    /* ---- newsletter ---- */
+    #newsletter[hidden] { display: none; }
+    .tally-wrap { margin-top: 1.2rem; }
+    .tally-wrap iframe { width: 100%; border: 0; }
+
+    footer {
+      padding: 2.5rem 0 3.5rem;
+      text-align: center;
+      font-size: 0.85rem;
+      color: var(--medium-gray);
+    }
+    footer a { color: var(--sage-deep); }
+
+    @media (min-width: 700px) {
+      .container { padding-left: 2rem; padding-right: 2rem; }
+      .btn { width: auto; min-width: 300px; }
+      .fineprint { text-align: left; }
+    }
+  </style>
+</head>
+<body>
+
+  <section class="hero">
+    <div class="container">
+      <p class="from" id="from">A friend sent you this.</p>
+      <h1>A guide to throwing a dinner party.</h1>
+      <p class="lede">There is almost no cooking in it. It is the page I give people before they host for the first time and most of it is about everything that is not the food.</p>
+
+      <div class="gift">
+        <h2>Yours, no strings.</h2>
+        <p>One page. Print it and stick it on the fridge.</p>
+        <a class="btn" href="/hosting-a-dinner-party.pdf" download id="giftBtn">Get the guide</a>
+        <p class="fineprint">PDF, opens in a new tab. No email needed.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="wash">
+    <div class="container">
+      <h2>Who made it</h2>
+      <p>I am Akshay. I teach people to cook without recipes so you can open your fridge on a random Tuesday and make something good without looking anything up.</p>
+      <p>Before this I raised about $3M for a food tech company called Foodnome and had 200 cooks selling on the platform. The thing I learned that mattered most is that the economics don't favor outsourcing your diet and you can never get really close to what you actually want to eat. The only way to really do that is to cook it yourself.</p>
+
+      <div class="quote-card">
+        <img src="davis-clute.webp" alt="Davis Clute" width="56" height="56" loading="lazy">
+        <div>
+          <blockquote>My friends would say I was <span class="emph">a Michelin-star chef</span>. Which is crazy.</blockquote>
+          <p class="attr">Davis Clute · Founder, Forbes 30 Under 30</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+      <h2>The thing I actually do</h2>
+      <p>It is a 30 day intensive. I come to your kitchen once a week for a month and give you daily assignments so you are actually building the skills. We fix your pantry first and then we cook together and by the end you are improvising.</p>
+      <p>Most of my clients end up cooking a meal faster than DoorDash could deliver it and it tastes fresher and exactly what their body wants. The whole point is being able to translate what's in your mind to your plate.</p>
+      <p>I take four people at a time and the price goes up every round. That is the only reason there is any rush.</p>
+      <a class="btn" href="https://tally.so/r/68kgMB" id="applyBtn">Tell me about your kitchen</a>
+      <p class="fineprint">A few questions about how you cook now. I read every one and I will tell you honestly if I think I can help.</p>
+    </div>
+  </section>
+
+  <section class="wash" id="newsletter" hidden>
+    <div class="container">
+      <h2>Or just take the free stuff</h2>
+      <p>I make one of these guides every so often and send them out. Ratios, how to think about heat, that kind of thing. No pitch attached.</p>
+      <div class="tally-wrap" id="tallyWrap"></div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <a href="https://foodjazz.club/">foodjazz.club</a>
+    </div>
+  </footer>
+
+<script>
+(function () {
+  // ---- Set this once a Tally email-capture form exists. Empty = section stays hidden.
+  var NEWSLETTER_FORM_ID = '';
+
+  var APPLY_FORM = 'https://tally.so/r/68kgMB';
+
+  var params = new URLSearchParams(window.location.search);
+  var raw = (params.get('from') || '').trim();
+
+  function titleCase(s) {
+    return s.replace(/[^a-zA-Z0-9\s-]/g, '').replace(/\b\w/g, function (c) { return c.toUpperCase(); });
+  }
+
+  var display = raw ? titleCase(raw.split(/[\s-]+/)[0]) : '';
+
+  if (display) {
+    document.getElementById('from').textContent = display + ' sent you this.';
+  }
+
+  // Carry attribution into the application form.
+  if (raw) {
+    document.getElementById('applyBtn').href =
+      APPLY_FORM + '?ref=' + encodeURIComponent(raw.toLowerCase());
+  }
+
+  if (NEWSLETTER_FORM_ID) {
+    var section = document.getElementById('newsletter');
+    var iframe = document.createElement('iframe');
+    iframe.src = 'https://tally.so/embed/' + NEWSLETTER_FORM_ID +
+                 '?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1';
+    iframe.height = '220';
+    iframe.title = 'Newsletter signup';
+    iframe.loading = 'lazy';
+    document.getElementById('tallyWrap').appendChild(iframe);
+    section.hidden = false;
+
+    window.addEventListener('message', function (e) {
+      if (typeof e.data === 'string' && e.data.indexOf('Tally.formPageChanged') > -1) return;
+      try {
+        var d = JSON.parse(e.data);
+        if (d.event === 'Tally.formLoaded' || d.event === 'Tally.formPageChanged') {
+          if (d.payload && d.payload.height) iframe.height = d.payload.height;
+        }
+      } catch (err) {}
+    });
+  }
+})();
+</script>
+</body>
+</html>

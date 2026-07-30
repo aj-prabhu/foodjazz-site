@@ -2,5 +2,9 @@
   "cleanUrls": true,
   "redirects": [
     { "source": "/coach", "destination": "/", "permanent": true }
+  ],
+  "rewrites": [
+    { "source": "/r/:name", "destination": "/r.html?from=:name" },
+    { "source": "/refer/:name", "destination": "/refer.html?name=:name" }
   ]
 }
