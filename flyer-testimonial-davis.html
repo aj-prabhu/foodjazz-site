@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Food Jazz — Davis Testimonial Card</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300;1,9..40,400&display=swap" rel="stylesheet">
+  <style>
+    @page { size: 4.25in 5.5in; margin: 0; }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { font-size: 10px; -webkit-font-smoothing: antialiased; }
+
+    :root {
+      --sage: #7A8C6E;
+      --sage-deep: #5F7156;
+      --sage-light: #A8B89D;
+      --sage-muted: #D4DDD0;
+      --sage-wash: #EDF2EB;
+      --cream: #FAF7F2;
+      --linen: #F3EDE4;
+      --golden: #D4A843;
+      --charcoal: #2E2E2C;
+      --warm-gray: #5C5A56;
+      --medium-gray: #9B9892;
+      --font-display: 'Caveat', cursive;
+      --font-body: 'DM Sans', sans-serif;
+    }
+
+    body {
+      background: #ddd;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 2rem;
+      font-family: var(--font-body);
+    }
+    @media print {
+      body { background: none; padding: 0; }
+      .page { box-shadow: none; }
+    }
+
+    .page {
+      width: 4.25in;
+      height: 5.5in;
+      background: var(--cream);
+      color: var(--warm-gray);
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.18);
+    }
+
+    /* faint corner spiral motif */
+    .bg-spiral {
+      position: absolute;
+      right: -0.7in;
+      bottom: -0.7in;
+      width: 2.6in;
+      height: 2.6in;
+      opacity: 0.06;
+      pointer-events: none;
+    }
+
+    /* ---- top brand row ---- */
+    .brand {
+      padding: 0.3in 0.4in 0 0.4in;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .brand-mark {
+      font-family: var(--font-display);
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--sage);
+      line-height: 1;
+    }
+    .brand-pill {
+      font-size: 0.5rem;
+      font-weight: 500;
+      color: var(--sage);
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      border: 1px solid var(--sage-muted);
+      border-radius: 99px;
+      padding: 0.22rem 0.6rem;
+    }
+
+    .eyebrow {
+      padding: 0.16in 0.4in 0 0.4in;
+      font-size: 0.6rem;
+      font-weight: 600;
+      color: var(--golden);
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+    }
+
+    /* ---- quote block ---- */
+    /* middle = quote + attribution centered as one unit */
+    .middle {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .quote {
+      padding: 0 0.4in 0 0.4in;
+      position: relative;
+    }
+    .quote-mark {
+      font-family: 'Caveat', cursive;
+      font-size: 6rem;
+      line-height: 0.85;
+      color: var(--golden);
+      opacity: 0.9;
+      margin-bottom: -0.06in;
+    }
+    .quote-text {
+      font-family: var(--font-body);
+      font-weight: 300;
+      font-size: 2.5rem;
+      line-height: 1.32;
+      color: var(--charcoal);
+      letter-spacing: -0.01em;
+    }
+    .quote-text .hl {
+      font-weight: 600;
+      color: var(--sage-deep);
+      white-space: nowrap;
+    }
+    .quote-kicker {
+      font-family: var(--font-display);
+      font-size: 3.2rem;
+      font-weight: 700;
+      color: var(--golden);
+      line-height: 1;
+      margin-top: 0.14in;
+    }
+
+    /* ---- attribution ---- */
+    .attrib {
+      padding: 0.1in 0.4in 0.16in 0.4in;
+      display: flex;
+      align-items: center;
+      gap: 0.16in;
+    }
+    .attrib-photo {
+      width: 0.78in;
+      height: 0.78in;
+      border-radius: 50%;
+      border: 2px solid var(--golden);
+      overflow: hidden;
+      flex-shrink: 0;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+    }
+    .attrib-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 42%;
+    }
+    .attrib-name {
+      font-family: var(--font-body);
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: var(--charcoal);
+      line-height: 1.1;
+    }
+    .attrib-cred {
+      font-size: 0.66rem;
+      font-weight: 500;
+      color: var(--sage);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-top: 0.06rem;
+    }
+
+    /* ---- footer CTA band ---- */
+    .footer {
+      background: var(--sage);
+      padding: 0.2in 0.4in;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.2in;
+    }
+    .footer-copy { flex: 1; }
+    .footer-line {
+      font-size: 0.72rem;
+      font-weight: 300;
+      color: rgba(250,247,242,0.92);
+      line-height: 1.4;
+      margin-bottom: 0.07in;
+    }
+    .footer-line strong { font-weight: 500; color: var(--cream); }
+    .footer-url {
+      font-family: var(--font-display);
+      font-size: 2.1rem;
+      font-weight: 700;
+      color: var(--cream);
+      line-height: 0.9;
+    }
+    .footer-qr {
+      background: var(--cream);
+      border-radius: 6px;
+      padding: 0.06in;
+      flex-shrink: 0;
+      text-align: center;
+    }
+    .footer-qr img {
+      width: 0.74in;
+      height: 0.74in;
+      display: block;
+    }
+    .footer-qr span {
+      display: block;
+      font-size: 0.44rem;
+      font-weight: 500;
+      color: var(--sage);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-top: 0.03in;
+    }
+  </style>
+</head>
+<body>
+
+<div class="page">
+
+  <svg class="bg-spiral" viewBox="0 0 270 270" fill="none">
+    <path d="M135 135 C135 112, 157 90, 180 90 C224 90, 246 124, 228 157 C210 192, 164 204, 132 178 C90 148, 100 98, 133 74 C173 44, 234 70, 242 120 C250 172, 208 220, 152 226 C92 232, 42 186, 52 120 C62 52, 126 12, 198 28"
+      stroke="#7A8C6E" stroke-width="2" stroke-linecap="round" fill="none"/>
+  </svg>
+
+  <div class="brand">
+    <span class="brand-mark">Food Jazz</span>
+    <span class="brand-pill">1-on-1 · In Your Kitchen</span>
+  </div>
+
+  <div class="eyebrow">After one month of Food Jazz</div>
+
+  <div class="middle">
+    <div class="quote">
+      <div class="quote-mark">&ldquo;</div>
+      <p class="quote-text">A few things I&rsquo;ve cooked recently, my friends would say I was a <span class="hl">Michelin star chef</span>.</p>
+      <div class="quote-kicker">Which is crazy.</div>
+    </div>
+
+    <div class="attrib">
+      <div class="attrib-photo">
+        <img src="davis-headshot.jpg" alt="Davis Clute">
+      </div>
+      <div>
+        <div class="attrib-name">Davis Clute</div>
+        <div class="attrib-cred">Founder · Forbes 30 Under 30</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <div class="footer-copy">
+      <p class="footer-line">A <strong>30-day, in-home cooking intensive.</strong> Learn to cook without recipes.</p>
+      <div class="footer-url">foodjazz.club</div>
+    </div>
+    <div class="footer-qr">
+      <img src="qr-tally.svg" alt="Scan to apply">
+      <span>Scan to apply</span>
+    </div>
+  </div>
+
+</div>
+
+</body>
+</html>
