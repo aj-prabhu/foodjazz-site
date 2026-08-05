@@ -74,6 +74,26 @@
 
     .hero { padding-top: clamp(3rem, 10vw, 5rem); }
 
+    /* ---- video, first thing on the page ---- */
+    .video-slot {
+      border-radius: 14px;
+      overflow: hidden;
+      background: var(--linen);
+      border: 1px solid var(--linen-border);
+      margin-top: 1.6rem;
+    }
+    .video-slot video { display: block; width: 100%; height: auto; }
+    .video-placeholder {
+      aspect-ratio: 16 / 9;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 1.5rem;
+      color: var(--medium-gray);
+      font-size: 0.85rem;
+    }
+
     /* ---- gift ---- */
     .gift {
       background: var(--warm-white);
@@ -154,12 +174,14 @@
   <section class="hero">
     <div class="container">
       <p class="from" id="from">A friend sent you this.</p>
-      <h1>A guide to throwing a dinner party.</h1>
-      <p class="lede">There is almost no cooking in it. It is the page I give people before they host for the first time and most of it is about everything that is not the food.</p>
+
+      <div class="video-slot" id="videoSlot">
+        <div class="video-placeholder">[ 60 second video goes here ]</div>
+      </div>
 
       <div class="gift">
-        <h2>Yours, no strings.</h2>
-        <p>One page. Print it and stick it on the fridge.</p>
+        <h2>A guide to throwing a dinner party. Yours, no strings.</h2>
+        <p>One page and there's almost no cooking in it. It's what I give people before they host for the first time. Print it and stick it on the fridge.</p>
         <a class="btn" href="/hosting-a-dinner-party.pdf" download id="giftBtn">Get the guide</a>
         <p class="fineprint">PDF, opens in a new tab. No email needed.</p>
       </div>
@@ -169,7 +191,7 @@
   <section class="wash">
     <div class="container">
       <h2>Who made it</h2>
-      <p>I am Akshay. I teach people to cook without recipes so you can open your fridge on a random Tuesday and make something good without looking anything up.</p>
+      <p>I'm Akshay. I teach people to cook without recipes so you can open your fridge on a random Tuesday and make something good without looking anything up.</p>
       <p>Before this I raised about $3M for a food tech company called Foodnome and had 200 cooks selling on the platform. The thing I learned that mattered most is that the economics don't favor outsourcing your diet and you can never get really close to what you actually want to eat. The only way to really do that is to cook it yourself.</p>
 
       <div class="quote-card">
@@ -185,9 +207,9 @@
   <section>
     <div class="container">
       <h2>The thing I actually do</h2>
-      <p>It is a 30 day intensive. I come to your kitchen once a week for a month and give you daily assignments so you are actually building the skills. We fix your pantry first and then we cook together and by the end you are improvising.</p>
+      <p>It's a 30 day intensive. I come to your kitchen once a week for a month and give you daily assignments so you are actually building the skills. We fix your pantry first and then we cook together and by the end you are improvising.</p>
       <p>Most of my clients end up cooking a meal faster than DoorDash could deliver it and it tastes fresher and exactly what their body wants. The whole point is being able to translate what's in your mind to your plate.</p>
-      <p>I take four people at a time and the price goes up every round. That is the only reason there is any rush.</p>
+      <p>I take four people at a time and the price goes up every round. That's the only reason there's any rush. And since a friend sent you, you skip the line for the next open spots. There's a friend rate too. Ask me about it when you reach out.</p>
       <a class="btn" href="https://tally.so/r/68kgMB" id="applyBtn">Tell me about your kitchen</a>
       <p class="fineprint">A few questions about how you cook now. I read every one and I will tell you honestly if I think I can help.</p>
     </div>
@@ -216,6 +238,10 @@
 
   var params = new URLSearchParams(window.location.search);
   var raw = (params.get('from') || '').trim();
+  if (!raw) {
+    var m = window.location.pathname.match(/^\/r\/+([^\/]+)/);
+    if (m) raw = decodeURIComponent(m[1]).trim();
+  }
 
   function titleCase(s) {
     return s.replace(/[^a-zA-Z0-9\s-]/g, '').replace(/\b\w/g, function (c) { return c.toUpperCase(); });

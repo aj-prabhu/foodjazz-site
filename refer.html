@@ -169,7 +169,7 @@
       <div class="video-slot" id="videoSlot">
         <div class="video-placeholder">[ 60 second video goes here ]</div>
       </div>
-      <p class="offer">Send someone my way. If they sign up I come to your place and cook a three course dinner for you and one other person. I bring everything and clean up after.</p>
+      <p class="offer">Send someone my way. If they sign up I come to your place and cook you a three course dinner for two. I bring everything and clean up after.</p>
     </div>
   </section>
 
@@ -177,7 +177,7 @@
     <div class="container">
       <h2>Who to think of</h2>
       <ul class="who">
-        <li>Someone living on Factor or DoorDash who thinks they have a time problem.</li>
+        <li>Someone living on Factor or DoorDash who says they have no time to cook.</li>
         <li>Someone who wants to have people over and never does.</li>
         <li>Someone whose life just changed and is suddenly cooking for themselves.</li>
       </ul>
@@ -188,11 +188,11 @@
   <section>
     <div class="container">
       <h2>The text</h2>
-      <p>Steal this and make it yours. The blank is the important part and the link needs to stay in.</p>
+      <p>Steal this and make it yours. The blank is the important part and the link needs to stay in. Fill it with something they want, not something they lack. The dinner parties they talk about, not the takeout they order.</p>
 
       <div class="tabs" role="tablist">
-        <button class="tab" role="tab" aria-selected="true" data-draft="0">Send them the guide</button>
-        <button class="tab" role="tab" aria-selected="false" data-draft="1">Just say it straight</button>
+        <button class="tab" role="tab" aria-selected="true" data-draft="0">Just say it straight</button>
+        <button class="tab" role="tab" aria-selected="false" data-draft="1">Send them the guide</button>
       </div>
 
       <div class="draft" id="draft"></div>
@@ -211,11 +211,11 @@
       <h2>The small print</h2>
       <div class="terms">
         <ul>
-          <li>I take four people at a time and the price goes up every round. That is the whole reason I am asking friends instead of running ads.</li>
-          <li>It has to be someone I am not already talking to. Text me first if you are not sure.</li>
-          <li>Dinner happens once they have actually started with me and I will reach out to book it.</li>
-          <li>Any night in the six months after works. I book around whatever program I am running so it might not be the week you want.</li>
-          <li>Bay Area is easy. If you are further out we will figure something out.</li>
+          <li>I take four people at a time and the price goes up every round. That's the whole reason I'm asking friends instead of running ads.</li>
+          <li>It has to be someone I'm not already talking to. Text me first if you're not sure.</li>
+          <li>Dinner happens once they've actually started with me and I'll reach out to book it.</li>
+          <li>Any night in the six months after works. I'll book it around whatever program I'm running.</li>
+          <li>Bay Area is easy. If you're further out we'll figure something out.</li>
         </ul>
       </div>
     </div>
@@ -232,6 +232,10 @@
 (function () {
   var params = new URLSearchParams(window.location.search);
   var raw = (params.get('name') || '').trim();
+  if (!raw) {
+    var m = window.location.pathname.match(/^\/refer\/+([^\/]+)/);
+    if (m) raw = decodeURIComponent(m[1]).trim();
+  }
 
   function slugify(s) {
     return s.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
@@ -243,8 +247,8 @@
   document.getElementById('linkOut').textContent = link.replace('https://', '');
 
   var drafts = [
-    'Hey — my friend Akshay is a chef and he put together this guide on throwing a dinner party. Made me think of you because ___\n\n' + link + '\n\nHe also does a 30 day thing where he comes to your kitchen and teaches you to cook without recipes. Full disclosure, if you sign up he comes and cooks me dinner. So I am not exactly neutral here.',
-    'Hey — my friend Akshay teaches people to cook. Not a class, he comes to your kitchen once a week for a month and teaches you to cook without recipes. Thought of you because ___\n\n' + link + '\n\nShould probably say he cooks me dinner if you sign up. Take that however you want.'
+    'Hey — my friend Akshay teaches people to cook. Not a class, he comes to your kitchen once a week for a month and teaches you to cook without recipes. Thought of you because ___\n\n' + link + '\n\nShould probably say he cooks me dinner if you sign up. Take that however you want.',
+    'Hey — my friend Akshay is a chef and he put together this guide on throwing a dinner party. Made me think of you because ___\n\n' + link + '\n\nHe also does a 30 day thing where he comes to your kitchen and teaches you to cook without recipes. Full disclosure, if you sign up he comes and cooks me dinner. So I\'m not exactly neutral here.'
   ];
 
   var current = 0;
