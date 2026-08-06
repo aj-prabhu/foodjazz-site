@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="robots" content="noindex, nofollow">
   <title>Food Jazz — a favor</title>
-  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet">
@@ -57,6 +57,8 @@
 
     /* ---- video, first thing on the page ---- */
     .film { padding-top: clamp(1.2rem, 4vw, 2rem); }
+    .film .container { max-width: 920px; }
+    .film .offer { max-width: 620px; margin-left: auto; margin-right: auto; }
     .video-slot {
       border-radius: 14px;
       overflow: hidden;
@@ -167,8 +169,8 @@
   <section class="film">
     <div class="container">
       <div class="video-slot" id="videoSlot">
-        <video controls playsinline preload="metadata" poster="referral-ask-poster.jpg">
-          <source src="referral-ask.mp4" type="video/mp4">
+        <video controls playsinline preload="metadata" poster="/referral-ask-poster.jpg">
+          <source src="/referral-ask.mp4" type="video/mp4">
         </video>
       </div>
       <p class="offer">Send someone my way. If they sign up I come to your place and cook you a three course dinner for two. I bring everything and clean up after.</p>
