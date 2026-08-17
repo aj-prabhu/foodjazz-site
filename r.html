@@ -176,8 +176,13 @@
       <p class="from" id="from">A friend sent you this.</p>
 
       <div class="video-slot" id="videoSlot">
-        <div class="video-placeholder">[ 60 second video goes here ]</div>
+        <video controls playsinline preload="metadata" poster="/referral-welcome-poster.jpg">
+          <source src="/referral-welcome.mp4" type="video/mp4">
+        </video>
       </div>
+
+      <a class="btn" href="https://tally.so/r/68kgMB" id="applyTop">Tell me about your kitchen</a>
+      <p class="fineprint">A few questions about how you cook now. I read every one.</p>
 
       <div class="gift">
         <h2>A guide to throwing a dinner party. Yours, no strings.</h2>
@@ -192,7 +197,7 @@
     <div class="container">
       <h2>Who made it</h2>
       <p>I'm Akshay. I teach people to cook without recipes so you can open your fridge on a random Tuesday and make something good without looking anything up.</p>
-      <p>Before this I raised about $3M for a food tech company called Foodnome and had 200 cooks selling on the platform. The thing I learned that mattered most is that the economics don't favor outsourcing your diet and you can never get really close to what you actually want to eat. The only way to really do that is to cook it yourself.</p>
+      <p>Before this I helped legalize the sale of home cooked food in California and built a marketplace of home cooks called Foodnome. At its peak we had about 200 cooks selling on the platform. The thing I learned that mattered most is that no company can really know exactly what you're craving. The only way to eat exactly what you want is to cook it yourself.</p>
 
       <div class="quote-card">
         <img src="/davis-clute.webp" alt="Davis Clute" width="56" height="56" loading="lazy">
@@ -253,10 +258,15 @@
     document.getElementById('from').textContent = display + ' sent you this.';
   }
 
-  // Carry attribution into the application form.
+  // Carry attribution into the application form. Both apply buttons: the one
+  // under the video (the video tells them to click it) and the one at the
+  // bottom of the pitch.
   if (raw) {
-    document.getElementById('applyBtn').href =
-      APPLY_FORM + '?ref=' + encodeURIComponent(raw.toLowerCase());
+    var href = APPLY_FORM + '?ref=' + encodeURIComponent(raw.toLowerCase());
+    ['applyTop', 'applyBtn'].forEach(function (id) {
+      var el = document.getElementById(id);
+      if (el) el.href = href;
+    });
   }
 
   if (NEWSLETTER_FORM_ID) {
