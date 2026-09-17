@@ -151,8 +151,45 @@
 
     /* ---- newsletter ---- */
     #newsletter[hidden] { display: none; }
-    .tally-wrap { margin-top: 1.2rem; }
-    .tally-wrap iframe { width: 100%; border: 0; }
+    .signup { margin-top: 1.4rem; display: grid; gap: 0.7rem; }
+    .signup input {
+      width: 100%;
+      padding: 1rem 1.3rem;
+      font-family: var(--font-body);
+      font-size: 1rem;
+      color: var(--charcoal);
+      background: var(--warm-white);
+      border: 1px solid var(--sage-muted);
+      border-radius: 10px;
+      -webkit-appearance: none;
+    }
+    .signup input::placeholder { color: var(--medium-gray); }
+    .signup input:focus-visible {
+      outline: 2px solid var(--sage-deep);
+      outline-offset: 1px;
+      border-color: transparent;
+    }
+    .signup input[aria-invalid="true"] { border-color: #b4553f; }
+    /* The shared .btn carries a top margin for stacked CTAs; inside the grid
+       the gap does that job. */
+    .signup .btn { margin-top: 0; }
+    .signup .btn[disabled] { opacity: 0.6; cursor: default; }
+    .signup-note {
+      min-height: 1.3em;
+      margin: 0;
+      font-size: 0.85rem;
+      color: var(--medium-gray);
+    }
+    .signup-note[data-state="error"] { color: #b4553f; }
+    .visually-hidden {
+      position: absolute;
+      width: 1px; height: 1px;
+      padding: 0; margin: -1px;
+      overflow: hidden;
+      clip: rect(0 0 0 0);
+      white-space: nowrap;
+      border: 0;
+    }
 
     footer {
       padding: 2.5rem 0 3.5rem;
@@ -166,8 +203,15 @@
       .container { padding-left: 2rem; padding-right: 2rem; }
       .btn { width: auto; min-width: 300px; }
       .fineprint { text-align: left; }
+      .signup { grid-template-columns: minmax(0, 1fr) auto; align-items: start; }
+      /* The shared rule above gives .btn a 300px floor, which would shove the
+         field into a sliver on a narrow desktop window. */
+      .signup .btn { min-width: 0; }
+      .signup-note { grid-column: 1 / -1; }
     }
   </style>
+  <script src="/analytics.js"></script>
+  <script defer src="/_vercel/insights/script.js"></script>
 </head>
 <body>
 
@@ -220,11 +264,17 @@
     </div>
   </section>
 
-  <section class="wash" id="newsletter" hidden>
+  <section class="wash" id="newsletter">
     <div class="container">
       <h2>Or just take the free stuff</h2>
       <p>I make one of these guides every so often and send them out. Ratios, how to think about heat, that kind of thing. No pitch attached.</p>
-      <div class="tally-wrap" id="tallyWrap"></div>
+      <form class="signup" id="signup" novalidate>
+        <label class="visually-hidden" for="signupEmail">Your email</label>
+        <input id="signupEmail" name="email_address" type="email" inputmode="email"
+               autocomplete="email" placeholder="you@email.com" required>
+        <button class="btn" type="submit" id="signupBtn">Send them to me</button>
+        <p class="signup-note" id="signupNote" role="status" aria-live="polite"></p>
+      </form>
     </div>
   </section>
 
@@ -236,8 +286,11 @@
 
 <script>
 (function () {
-  // ---- Set this once a Tally email-capture form exists. Empty = section stays hidden.
-  var NEWSLETTER_FORM_ID = '';
+  // The Kit form the capture lands in. Numeric form id, not the embed uid —
+  // the uid is what the embed script uses and this endpoint rejects it with
+  // "Couldn't find a form for this request".
+  var KIT_FORM_ID = '9931700';
+  var KIT_ENDPOINT = 'https://app.kit.com/forms/' + KIT_FORM_ID + '/subscriptions';
 
   var APPLY_FORM = 'https://tally.so/r/68kgMB';
 
@@ -269,27 +322,88 @@
     });
   }
 
-  if (NEWSLETTER_FORM_ID) {
-    var section = document.getElementById('newsletter');
-    var iframe = document.createElement('iframe');
-    iframe.src = 'https://tally.so/embed/' + NEWSLETTER_FORM_ID +
-                 '?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1';
-    iframe.height = '220';
-    iframe.title = 'Newsletter signup';
-    iframe.loading = 'lazy';
-    document.getElementById('tallyWrap').appendChild(iframe);
-    section.hidden = false;
+  // ---- the capture ----
+  //
+  // Hand-rolled rather than Kit's embed script, because this page is a note
+  // from a friend and a third-party widget with its own typography reads as an
+  // ad. Same destination either way: the subscriber lands in Kit.
+  var form = document.getElementById('signup');
+  var emailEl = document.getElementById('signupEmail');
+  var noteEl = document.getElementById('signupNote');
+  var signupBtn = document.getElementById('signupBtn');
 
-    window.addEventListener('message', function (e) {
-      if (typeof e.data === 'string' && e.data.indexOf('Tally.formPageChanged') > -1) return;
-      try {
-        var d = JSON.parse(e.data);
-        if (d.event === 'Tally.formLoaded' || d.event === 'Tally.formPageChanged') {
-          if (d.payload && d.payload.height) iframe.height = d.payload.height;
-        }
-      } catch (err) {}
-    });
+  function say(message, state) {
+    noteEl.textContent = message;
+    if (state) noteEl.setAttribute('data-state', state);
+    else noteEl.removeAttribute('data-state');
   }
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var email = emailEl.value.trim();
+
+    // Deliberately loose. The server is the real validator and a clever regex
+    // here only ever rejects somebody's perfectly good address.
+    if (!email || email.indexOf('@') < 1 || email.indexOf('.') < 0) {
+      emailEl.setAttribute('aria-invalid', 'true');
+      say('That email looks off. Mind checking it?', 'error');
+      emailEl.focus();
+      return;
+    }
+    emailEl.removeAttribute('aria-invalid');
+
+    signupBtn.disabled = true;
+    say('One sec…');
+
+    var payload = { email_address: email };
+    // Who sent them, carried through to Kit so the list knows where a name
+    // came from a year from now.
+    if (raw) payload.fields = { referred_by: raw.toLowerCase() };
+
+    fetch(KIT_ENDPOINT, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+      body: JSON.stringify(payload)
+    })
+      .then(function (res) { return res.json(); })
+      .then(function (data) {
+        // Kit answers 200 either way and puts the verdict in the body, so
+        // checking res.ok alone would call every failure a success.
+        if (!data || data.status === 'failed') {
+          throw new Error('rejected');
+        }
+        // Double opt-in is on for this form (confirmation email yes,
+        // auto-confirm no), so saying "you're on the list" here would be a
+        // lie and they would never hear from him again. Send them to look.
+        form.innerHTML =
+          '<p class="signup-note">Now check your email. There is a confirm link in there.</p>';
+        if (window.fjTrack) window.fjTrack('newsletter_signup');
+      })
+      .catch(function () {
+        signupBtn.disabled = false;
+        say('That did not go through. Try again in a minute?', 'error');
+      });
+  });
+
+  // ---- events ----
+  //
+  // Four points between "opened the link" and "asked to talk", so the funnel
+  // per connector is readable instead of being one pageview number.
+  if (window.fjTrack) {
+    ['applyTop', 'applyBtn'].forEach(function (id) {
+      var el = document.getElementById(id);
+      if (el) el.addEventListener('click', function () { window.fjTrack('apply_click', { where: id }); });
+    });
+
+    var gift = document.getElementById('giftBtn');
+    if (gift) gift.addEventListener('click', function () { window.fjTrack('guide_download'); });
+
+    var video = document.querySelector('video');
+    // `once` because the metric is "did they start it", not how many times
+    // they scrubbed back.
+    if (video) video.addEventListener('play', function () { window.fjTrack('video_play'); }, { once: true });
+  }
+
 })();
 </script>
 </body>

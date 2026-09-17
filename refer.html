@@ -165,6 +165,8 @@
       .container { padding-left: 2rem; padding-right: 2rem; }
     }
   </style>
+  <script src="/analytics.js"></script>
+  <script defer src="/_vercel/insights/script.js"></script>
 </head>
 <body>
 
@@ -297,6 +299,10 @@
     var done = function () {
       copyBtn.textContent = 'Copied. Now go paste it.';
       setTimeout(function () { copyBtn.textContent = 'Copy the text'; }, 2600);
+      // The connector's one real action on this page. Everything downstream —
+      // the friend landing on /r, the guide, the application — is only
+      // attributable if this end of it is counted too.
+      if (window.fjTrack) window.fjTrack('copy_text', { variant: current });
     };
     function fallback() {
       var ta = document.createElement('textarea');
@@ -314,6 +320,11 @@
       fallback();
     }
   });
+
+  var referVideo = document.querySelector('video');
+  if (referVideo && window.fjTrack) {
+    referVideo.addEventListener('play', function () { window.fjTrack('video_play'); }, { once: true });
+  }
 
   var shareBtn = document.getElementById('shareBtn');
   if (navigator.share) {
