@@ -17,6 +17,7 @@
   <meta name="twitter:image" content="https://foodjazz.club/og-photo.jpg">
   <meta name="format-detection" content="telephone=no">
   <meta name="theme-color" content="#FAF7F2">
+  <link rel="preload" as="image" href="/photos/food-jazz-hero-flambe-1920.webp" imagesrcset="/photos/food-jazz-hero-flambe-960.webp 960w, /photos/food-jazz-hero-flambe-1920.webp 1920w" imagesizes="(max-width: 1100px) 100vw, 66vw" fetchpriority="high">
   <link rel="canonical" href="https://foodjazz.club/">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -252,13 +253,43 @@
     }
 
     /* ===== PHOTOS ===== */
-    .hero-photo {
-      position: relative; z-index: 1;
-      max-width: 1000px; margin: 4.5rem auto 0;
-      border-radius: 4px; overflow: hidden;
-      box-shadow: 0 18px 50px -24px rgba(46,46,44,0.35);
+    /* Photo hero: the flambé fills the left and dissolves into cream under the copy */
+    .hero--photo {
+      display: grid; grid-template-columns: 60fr 40fr; align-items: center;
+      min-height: min(84vh, 760px); padding: 0; text-align: left;
     }
-    .hero-photo img { display: block; width: 100%; height: auto; }
+    .hero-media { position: absolute; top: 0; bottom: 0; left: 0; width: 66%; }
+    .hero-media img {
+      display: block; width: 100%; height: 100%;
+      object-fit: cover; object-position: 38% 50%;
+      -webkit-mask-image: linear-gradient(to right, #000 64%, transparent 100%);
+              mask-image: linear-gradient(to right, #000 64%, transparent 100%);
+    }
+    .hero-copy { grid-column: 2; position: relative; z-index: 2; padding: 5rem 3rem 5rem 1.5rem; max-width: 580px; }
+    .hero--photo .hero-breath { display: none; }
+    .hero--photo .hero-eyebrow { justify-content: flex-start; }
+    .hero--photo .hero-eyebrow-rule { display: none; }
+    .hero--photo .morph-static,
+    .hero--photo .morph-text { font-size: clamp(2.4rem, 4vw, 3.6rem); }
+    .hero--photo .morph-container { justify-content: flex-start; height: clamp(3.2rem, 5vw, 4.4rem); }
+    .hero--photo .hero-sub { margin-left: 0; }
+    @media (max-width: 1100px) {
+      .hero.hero--photo { display: block; min-height: 0; padding: 0 0 3.5rem; text-align: center; }
+      .hero-media { position: relative; width: 100%; aspect-ratio: 4 / 3; max-height: 70vh; }
+      .hero-media img {
+        object-position: 35% 50%;
+        -webkit-mask-image: linear-gradient(to bottom, #000 72%, transparent 100%);
+                mask-image: linear-gradient(to bottom, #000 72%, transparent 100%);
+      }
+      .hero-copy { padding: 1.75rem 1.25rem 0; max-width: 640px; margin: 0 auto; }
+      .hero--photo .hero-eyebrow { justify-content: center; }
+      .hero--photo .morph-container { justify-content: center; }
+      .hero--photo .hero-sub { margin-left: auto; }
+      .hero--photo .hero-spiral { display: none; }
+      .hero--photo .morph-static,
+      .hero--photo .morph-text { font-size: clamp(2rem, 8vw, 3.2rem); }
+      .hero--photo .morph-container { height: clamp(3.2rem, 9vw, 4.4rem); }
+    }
     .kitchen-reel {
       margin: 6rem auto 0; max-width: 1000px;
       border-radius: 4px; overflow: hidden; aspect-ratio: 16 / 9;
@@ -962,7 +993,6 @@
       .experience-photo { grid-column: 2; width: 100%; margin-top: 1.1rem; }
 
       /* Photos */
-      .hero-photo { margin-top: 2.75rem; }
       .kitchen-reel { margin-top: 4rem; }
       .closing-photo { padding: 0 1.25rem; margin-bottom: 3.5rem; }
 
@@ -1292,7 +1322,11 @@
   </nav>
 
   <!-- HERO -->
-  <section class="hero">
+  <section class="hero hero--photo">
+
+    <div class="hero-media">
+      <img src="/photos/food-jazz-hero-flambe-1920.webp" srcset="/photos/food-jazz-hero-flambe-960.webp 960w, /photos/food-jazz-hero-flambe-1920.webp 1920w" sizes="(max-width: 1100px) 100vw, 66vw" width="1920" height="1080" alt="Flames rise from a wok as Akshay Prabhu and a home cook work the stove together during an in-home cooking lesson" fetchpriority="high">
+    </div>
 
     <!-- Spiral — top right, bleeds off edge -->
     <svg class="hero-spiral" width="520" height="520" viewBox="0 0 270 270" fill="none" aria-hidden="true">
@@ -1308,33 +1342,32 @@
       <circle cx="100" cy="100" r="96" stroke="#2E2E2C" stroke-width="0.7"/>
     </svg>
 
-    <div class="hero-eyebrow">
-      <span class="hero-eyebrow-rule"></span>
-      <span class="label">1-on-1 · In Your Kitchen · Bay Area</span>
-      <span class="hero-eyebrow-rule"></span>
-    </div>
-    <div class="morph-block">
-      <span class="morph-static">Cooking should feel</span>
-      <div class="morph-container">
-        <span id="morph-text1" class="morph-text"></span>
-        <span id="morph-text2" class="morph-text"></span>
+    <div class="hero-copy">
+      <div class="hero-eyebrow">
+        <span class="hero-eyebrow-rule"></span>
+        <span class="label">1-on-1 · In Your Kitchen · Bay Area</span>
+        <span class="hero-eyebrow-rule"></span>
       </div>
+      <div class="morph-block">
+        <span class="morph-static">Cooking should feel</span>
+        <div class="morph-container">
+          <span id="morph-text1" class="morph-text"></span>
+          <span id="morph-text2" class="morph-text"></span>
+        </div>
+      </div>
+      <p class="hero-sub">A 30-day cooking intensive designed to make you an intuitive, effortless cook — forever.</p>
+      <div class="btn-wrap">
+        <div class="btn-glow"></div>
+        <a href="https://tally.so/r/68kgMB" class="btn-primary">
+          Apply Now
+          <svg class="btn-arrow" viewBox="0 0 10 10" fill="none" stroke="white" stroke-width="2">
+            <path d="M0 5h7" class="btn-arrow-line"/>
+            <path d="M4 1l4 4-4 4"/>
+          </svg>
+        </a>
+      </div>
+      <p class="hero-location">San Francisco · Oakland · Berkeley</p>
     </div>
-    <p class="hero-sub">A 30-day cooking intensive designed to make you an intuitive, effortless cook — forever.</p>
-    <div class="btn-wrap">
-      <div class="btn-glow"></div>
-      <a href="https://tally.so/r/68kgMB" class="btn-primary">
-        Apply Now
-        <svg class="btn-arrow" viewBox="0 0 10 10" fill="none" stroke="white" stroke-width="2">
-          <path d="M0 5h7" class="btn-arrow-line"/>
-          <path d="M4 1l4 4-4 4"/>
-        </svg>
-      </a>
-    </div>
-    <p class="hero-location">San Francisco · Oakland · Berkeley</p>
-    <figure class="hero-photo">
-      <img src="/photos/food-jazz-flambe-wok-lesson-1600.webp" srcset="/photos/food-jazz-flambe-wok-lesson-800.webp 800w, /photos/food-jazz-flambe-wok-lesson-1600.webp 1600w" sizes="(max-width: 768px) 100vw, 1000px" width="1600" height="900" alt="Flames rise from a wok as Akshay Prabhu and a home cook work the stove together during an in-home cooking lesson" fetchpriority="high">
-    </figure>
   </section>
 
   <!-- VALUE PROPS -->
