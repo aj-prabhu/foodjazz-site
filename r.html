@@ -231,7 +231,7 @@
       <div class="gift">
         <h2>A guide to throwing a dinner party. Yours, no strings.</h2>
         <p>One page and there's almost no cooking in it. It's what I give people before they host for the first time. Print it and stick it on the fridge.</p>
-        <a class="btn" href="/hosting-a-dinner-party.pdf" download id="giftBtn">Get the guide</a>
+        <a class="btn" href="/hosting-a-dinner-party.pdf" target="_blank" rel="noopener" id="giftBtn">Get the guide</a>
         <p class="fineprint">PDF, opens in a new tab. No email needed.</p>
       </div>
     </div>
@@ -266,7 +266,7 @@
 
   <section class="wash" id="newsletter">
     <div class="container">
-      <h2>Or just take the free stuff</h2>
+      <h2>Want the next one?</h2>
       <p>I make one of these guides every so often and send them out. Ratios, how to think about heat, that kind of thing. No pitch attached.</p>
       <form class="signup" id="signup" novalidate>
         <label class="visually-hidden" for="signupEmail">Your email</label>
@@ -372,11 +372,13 @@
         if (!data || data.status === 'failed') {
           throw new Error('rejected');
         }
-        // Double opt-in is on for this form (confirmation email yes,
-        // auto-confirm no), so saying "you're on the list" here would be a
-        // lie and they would never hear from him again. Send them to look.
+        // Auto-confirm is on for this form as of 2026-09-17, so they are a
+        // live subscriber the moment this returns — no confirm link to chase.
+        // If that is ever switched back, this line has to change with it:
+        // saying they are on the list when a confirmation is still pending
+        // would be a lie, and they would never hear from him again.
         form.innerHTML =
-          '<p class="signup-note">Now check your email. There is a confirm link in there.</p>';
+          '<p class="signup-note">Got it. The next one comes when it is ready.</p>';
         if (window.fjTrack) window.fjTrack('newsletter_signup');
       })
       .catch(function () {
