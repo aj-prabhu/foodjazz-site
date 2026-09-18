@@ -1009,6 +1009,55 @@
       .cook-card { padding: 1.5rem 1rem; }
       .experience-item--finale { padding: 1.5rem 1rem; }
     }
+
+    /* Phone hero: one screen. Blurred photo behind the copy up top,
+       the sharp shot of the stove in the lower left, Apply bottom right. */
+    @media (max-width: 768px) {
+      .hero.hero--photo {
+        display: flex; flex-direction: column; justify-content: flex-start;
+        min-height: calc(100svh - 96px); padding: 0; text-align: left;
+        background: #2b231d; isolation: isolate;
+      }
+      .hero.hero--photo::before {
+        content: ""; position: absolute; inset: -48px; z-index: -2;
+        background: url("/photos/food-jazz-hero-flambe-960.webp") 45% 35% / cover no-repeat;
+        filter: blur(26px) brightness(0.42) saturate(1.15);
+      }
+      /* copy takes what it needs up top; the photo fills the rest of the screen */
+      .hero--photo .hero-media {
+        position: relative; order: 1; flex: 1 1 auto; min-height: 17rem;
+        width: 100%; aspect-ratio: auto; max-height: none;
+        margin-top: -2.5rem; z-index: -1;
+      }
+      .hero--photo .hero-media img {
+        position: absolute; inset: 0;
+        object-position: 50% 45%;
+        -webkit-mask-image: linear-gradient(to bottom, transparent 0%, #000 30%);
+                mask-image: linear-gradient(to bottom, transparent 0%, #000 30%);
+      }
+      .hero--photo .hero-copy { position: static; order: 0; margin: 0; padding: 2rem 1.25rem 0; max-width: none; }
+      .hero--photo .hero-title {
+        color: var(--cream); text-align: left; margin-bottom: 0.9rem;
+        font-size: clamp(2.5rem, 11.5vw, 3.4rem);
+        text-shadow: 0 2px 18px rgba(20,14,10,0.45);
+      }
+      .hero--photo .hero-title span { color: var(--sage-light); }
+      .hero--photo .hero-sub {
+        color: rgba(250,247,242,0.88); text-align: left;
+        margin: 0; max-width: 30ch; font-size: 1rem;
+      }
+      .hero--photo .hero-location {
+        color: rgba(250,247,242,0.6); text-align: left; margin-top: 0.9rem;
+      }
+      .hero--photo .btn-wrap { position: absolute; right: 1.25rem; bottom: 1.5rem; }
+      .hero--photo .btn-primary { width: auto; }
+    }
+    @media (max-width: 768px) and (max-height: 720px) {
+      .hero--photo .hero-copy { padding-top: 1.25rem; }
+      .hero--photo .hero-title { font-size: 2.3rem; margin-bottom: 0.6rem; }
+      .hero--photo .hero-sub { font-size: 0.9rem; }
+      .hero--photo .hero-media { min-height: 14rem; }
+    }
   </style>
 
   <!-- ===== JSON-LD: Person + Service + FAQPage =====
