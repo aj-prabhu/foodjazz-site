@@ -17,7 +17,7 @@
   <meta name="twitter:image" content="https://foodjazz.club/og-photo.jpg">
   <meta name="format-detection" content="telephone=no">
   <meta name="theme-color" content="#FAF7F2">
-  <link rel="preload" as="image" href="/photos/food-jazz-hero-flambe-1920.webp" imagesrcset="/photos/food-jazz-hero-flambe-960.webp 960w, /photos/food-jazz-hero-flambe-1920.webp 1920w" imagesizes="(max-width: 1100px) 100vw, 66vw" fetchpriority="high">
+  <link rel="preload" as="image" href="/photos/food-jazz-hero-flambe-1920.webp" imagesrcset="/photos/food-jazz-hero-flambe-960.webp 960w, /photos/food-jazz-hero-flambe-1920.webp 1920w" imagesizes="(max-width: 900px) 210vw, 66vw" fetchpriority="high">
   <link rel="canonical" href="https://foodjazz.club/">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -129,8 +129,8 @@
     .nav-links a:hover { color: var(--charcoal); }
     .nav-phone { font-weight: 400; letter-spacing: 0.02em; }
     .nav-right { display: flex; align-items: center; gap: 1rem; }
-    .nav-cta { font-size: 0.88rem; background: var(--sage); color: var(--cream) !important; padding: 0.5rem 1.2rem; border-radius: 50px; transition: opacity 0.15s; font-weight: 400; }
-    .nav-cta:hover { opacity: 0.85; }
+    .nav-cta { font-size: 0.88rem; background: var(--sage-deep); color: white !important; padding: 0.5rem 1.2rem; border-radius: 50px; transition: background 0.15s; font-weight: 400; }
+    .nav-cta:hover { background: #5b6a52; }
 
     /* ===== GLOW BUTTON ===== */
     .btn-wrap {
@@ -157,7 +157,7 @@
       font-family: var(--font-display);
       font-size: 1.25rem;
       font-weight: 600;
-      background: var(--sage);
+      background: var(--sage-deep);
       color: white;
       padding: 16px 48px;
       border-radius: 50px;
@@ -166,7 +166,7 @@
       text-decoration: none;
       transition: background 0.2s ease, transform 0.15s ease;
     }
-    .btn-primary:hover { background: var(--sage-deep); transform: translateY(-2px); }
+    .btn-primary:hover { background: #5b6a52; transform: translateY(-2px); }
     .btn-primary:active { transform: translateY(0); }
     .btn-arrow {
       display: inline-block;
@@ -278,22 +278,44 @@
     .hero-title span { color: var(--sage); display: block; }
     .hero--photo .hero-title { margin-left: -0.05em; } /* Caveat side bearing: line the Y up with the eyebrow */
     .hero--photo .hero-sub { margin-left: 0; }
-    @media (max-width: 1100px) {
-      .hero.hero--photo { display: block; min-height: 0; padding: 0 0 3.5rem; text-align: center; }
-      /* Taller crop keeps both faces and the flame big; the copy rises into the fade */
-      .hero-media { position: relative; width: 100%; aspect-ratio: 4 / 5; max-height: 68svh; }
-      .hero-media img {
-        object-position: 45% 50%;
-        -webkit-mask-image: linear-gradient(to bottom, #000 55%, rgba(0,0,0,0.25) 78%, transparent 92%);
-                mask-image: linear-gradient(to bottom, #000 55%, rgba(0,0,0,0.25) 78%, transparent 92%);
+    .hero--photo .hero-location { color: var(--warm-gray); }
+    /* Tablet landscape: same split, tighter, so the button stays on the first screen */
+    @media (max-width: 1100px) and (min-width: 901px) {
+      .hero--photo { grid-template-columns: 54fr 46fr; min-height: min(80vh, 680px); }
+      .hero-media { width: 62%; }
+      .hero-copy { padding: 3.5rem 2rem 3.5rem 1rem; }
+      .hero-title { font-size: clamp(2.4rem, 4.4vw, 3.3rem); }
+    }
+    /* Phones and portrait tablets: copy on cream up top, the photo fills the rest of
+       the first screen and dissolves into the cream at its top edge, the vertical
+       twin of the desktop fade. Content height, never clipped. */
+    @media (max-width: 900px) {
+      .hero.hero--photo {
+        display: flex; flex-direction: column;
+        min-height: calc(100svh - 69px); padding: 0; text-align: left;
       }
-      .hero-copy { position: relative; z-index: 2; padding: 0 1.25rem; max-width: 640px; margin: -3.75rem auto 0; }
-      .hero--photo .hero-eyebrow { justify-content: center; }
-      .hero--photo .hero-sub { margin-left: auto; }
       .hero--photo .hero-spiral { display: none; }
-      .hero-title { font-size: clamp(2.5rem, 11vw, 3.6rem); margin-bottom: 1rem; text-shadow: 0 0 14px var(--cream); }
-      .hero--photo .hero-sub { max-width: 26ch; }
-      .hero--photo .hero-title { margin-left: 0; }
+      .hero--photo .hero-copy {
+        order: 0; position: relative; z-index: 2;
+        margin: 0; padding: 1.6rem 1.5rem 0; max-width: 36rem;
+      }
+      .hero--photo .hero-title {
+        font-size: clamp(2.3rem, 10.5vw, 3.2rem); line-height: 1.02;
+        margin: 0 0 0.8rem; text-shadow: none;
+      }
+      .hero--photo .hero-sub { font-size: 1.05rem; max-width: 30ch; margin: 0 0 1.3rem; }
+      .hero--photo .btn-primary { width: auto; padding: 13px 30px; font-size: 1.1rem; }
+      .hero--photo .hero-location { margin-top: 1rem; text-align: left; }
+      .hero--photo .hero-media {
+        order: 1; position: relative; z-index: 1;
+        flex: 1 1 auto; min-height: 15rem; width: 100%; margin-top: -1rem;
+      }
+      .hero--photo .hero-media img {
+        position: absolute; inset: 0; width: 100%; height: 100%;
+        object-fit: cover; object-position: 42% 40%;
+        -webkit-mask-image: linear-gradient(to bottom, transparent 0%, #000 24%);
+                mask-image: linear-gradient(to bottom, transparent 0%, #000 24%);
+      }
     }
     .kitchen-reel {
       margin: 6rem auto 0; max-width: 1000px;
@@ -844,13 +866,16 @@
       opacity: 0;
       transform: translateY(-6px);
       pointer-events: none;
-      transition: opacity 0.8s ease, transform 0.8s ease;
+      visibility: hidden;
+      transition: opacity 0.8s ease, transform 0.8s ease, visibility 0s linear 0.8s;
       box-shadow: 0 0 12px rgba(212,168,67,0.35), 0 0 4px rgba(212,168,67,0.2);
     }
     .nav-cta-scroll.visible {
       opacity: 1;
       transform: translateY(0);
       pointer-events: auto;
+      visibility: visible;
+      transition: opacity 0.8s ease, transform 0.8s ease, visibility 0s;
     }
 
     /* ===== RESPONSIVE ===== */
@@ -891,7 +916,7 @@
     .mobile-nav.open { display: flex; }
     .mobile-nav li { border-top: 1px solid var(--sage-muted); }
     .mobile-nav a { display: block; padding: 0.9rem 0; font-size: 1rem; color: var(--warm-gray); }
-    .mobile-nav .nav-cta { background: var(--sage); color: var(--cream) !important; font-weight: 500; display: inline-block; padding: 0.6rem 1.2rem; border-radius: 4px; margin-top: 0.5rem; font-size: 0.95rem; }
+    .mobile-nav .nav-cta { background: var(--sage-deep); color: white !important; font-weight: 500; display: inline-block; padding: 0.6rem 1.2rem; border-radius: 4px; margin-top: 0.5rem; font-size: 0.95rem; }
 
     @media (max-width: 768px) {
       /* Layout */
@@ -1010,70 +1035,11 @@
       .experience-item--finale { padding: 1.5rem 1rem; }
     }
 
-    /* Phone hero: one screen split on a loose diagonal. The flambé rises from the
-       bottom left (heads about a third down), the copy fills the top right over a
-       blurred, darkened copy of the same photo. Sizes key off the hero height so
-       the heads land in the same place on tall and short phones. */
+    /* Slimmer bar on phones leaves the hero more of the first screen (~69px tall) */
     @media (max-width: 768px) {
       nav { padding: 0.5rem 0; }
       .nav-logo { font-size: 1.45rem; }
       .nav-cta { padding: 0.4rem 1rem; font-size: 0.82rem; }
-
-      .hero.hero--photo {
-        --hero-h: max(calc(100svh - 58px), 540px);
-        --img-w: calc(var(--hero-h) * 1.32);
-        display: block; height: var(--hero-h); min-height: 0;
-        padding: 0; text-align: left;
-        background: #2b231d; isolation: isolate;
-      }
-      .hero.hero--photo::before {
-        content: ""; position: absolute; inset: -48px; z-index: -2;
-        background: url("/photos/food-jazz-hero-flambe-960.webp") 45% 35% / cover no-repeat;
-        filter: blur(26px) brightness(0.4) saturate(1.15);
-      }
-      .hero--photo .hero-media {
-        position: absolute; inset: 0; width: auto; height: auto;
-        aspect-ratio: auto; max-height: none; margin: 0; z-index: -1; overflow: hidden;
-        -webkit-mask-image: radial-gradient(ellipse 150% 108% at 0% 100%, #000 55%, transparent 78%);
-                mask-image: radial-gradient(ellipse 150% 108% at 0% 100%, #000 55%, transparent 78%);
-      }
-      .hero--photo .hero-media img {
-        position: absolute; bottom: 0; top: auto;
-        width: var(--img-w); height: auto; max-width: none;
-        left: calc(9.5vw - var(--img-w) * 0.359);
-        object-fit: fill; -webkit-mask-image: none; mask-image: none;
-      }
-      .hero--photo .hero-copy {
-        position: static; margin: 0; padding: 1.4rem 1.25rem 0; max-width: none;
-        display: flex; flex-direction: column;
-      }
-      .hero--photo .hero-title { order: 0; }
-      .hero--photo .hero-location { order: 1; }
-      .hero--photo .hero-sub { order: 2; }
-      .hero--photo .btn-wrap { order: 3; }
-      .hero--photo .hero-title {
-        color: var(--cream); text-align: left; margin-bottom: 1rem;
-        font-size: clamp(2.3rem, 10.5vw, 3.2rem); line-height: 1;
-        text-shadow: 0 2px 18px rgba(20,14,10,0.5);
-      }
-      .hero--photo .hero-title span { color: var(--sage-light); }
-      .hero--photo .hero-sub,
-      .hero--photo .btn-wrap { width: 49%; margin-left: auto; margin-right: 0; }
-      .hero--photo .hero-sub {
-        color: rgba(250,247,242,0.9); text-align: left; max-width: none;
-        font-size: 0.95rem; line-height: 1.5; margin-bottom: 1.1rem;
-        text-shadow: 0 1px 10px rgba(20,14,10,0.6);
-      }
-      .hero--photo .btn-wrap { display: flex; justify-content: flex-start; }
-      .hero--photo .btn-primary { width: auto; padding: 12px 24px; font-size: 1.05rem; }
-      .hero--photo .hero-location {
-        color: rgba(250,247,242,0.62); text-align: left; margin: -0.2rem 0 1.4rem;
-        font-size: 0.6rem; letter-spacing: 0.14em; line-height: 1.7;
-      }
-    }
-    @media (max-width: 768px) and (max-height: 720px) {
-      .hero--photo .hero-title { font-size: 2.2rem; margin-bottom: 1.1rem; }
-      .hero--photo .hero-location { display: none; }
     }
   </style>
 
@@ -1350,9 +1316,6 @@
   <!-- HERO -->
   <section class="hero hero--photo">
 
-    <div class="hero-media">
-      <img src="/photos/food-jazz-hero-flambe-1920.webp" srcset="/photos/food-jazz-hero-flambe-960.webp 960w, /photos/food-jazz-hero-flambe-1920.webp 1920w" sizes="(max-width: 1100px) 100vw, 66vw" width="1920" height="1080" alt="Flames rise from a wok as Akshay Prabhu and a home cook work the stove together during an in-home cooking lesson" fetchpriority="high">
-    </div>
 
     <!-- Spiral — top right, bleeds off edge -->
     <svg class="hero-spiral" width="520" height="520" viewBox="0 0 270 270" fill="none" aria-hidden="true">
@@ -1382,6 +1345,10 @@
         </a>
       </div>
       <p class="hero-location">San Francisco · Oakland · Berkeley</p>
+    </div>
+
+    <div class="hero-media">
+      <img src="/photos/food-jazz-hero-flambe-1920.webp" srcset="/photos/food-jazz-hero-flambe-960.webp 960w, /photos/food-jazz-hero-flambe-1920.webp 1920w" sizes="(max-width: 900px) 210vw, 66vw" width="1920" height="1080" alt="Flames rise from a wok as Akshay Prabhu and a home cook work the stove together during an in-home cooking lesson" fetchpriority="high">
     </div>
   </section>
 
@@ -2038,7 +2005,7 @@
         }
       }
       new IntersectionObserver(entries => {
-        heroPast = !entries[0].isIntersecting;
+        heroPast = !entries[0].isIntersecting && entries[0].boundingClientRect.top < 0;
         updateNavCta();
       }, { threshold: 0 }).observe(heroBtn);
 
