@@ -278,18 +278,20 @@
       font-family: var(--font-display); font-weight: 600; color: var(--charcoal);
       font-size: clamp(2.6rem, 4.4vw, 3.9rem); line-height: 1.05; margin-bottom: 1.6rem;
     }
-    .hero-title span { color: var(--sage); }
+    .hero-title span { color: var(--sage); display: block; }
     .hero--photo .hero-title { margin-left: -0.05em; } /* Caveat side bearing: line the Y up with the eyebrow */
     .hero--photo .hero-sub { margin-left: 0; }
     @media (max-width: 1100px) {
       .hero.hero--photo { display: block; min-height: 0; padding: 0 0 3.5rem; text-align: center; }
-      .hero-media { position: relative; width: 100%; aspect-ratio: 4 / 3; max-height: 70vh; }
+      /* Taller crop keeps both faces and the flame big; the copy rises into the fade */
+      .hero-media { position: relative; width: 100%; aspect-ratio: 4 / 5; max-height: 68svh; }
       .hero-media img {
-        object-position: 35% 50%;
-        -webkit-mask-image: linear-gradient(to bottom, #000 72%, transparent 100%);
-                mask-image: linear-gradient(to bottom, #000 72%, transparent 100%);
+        object-position: 45% 50%;
+        -webkit-mask-image: linear-gradient(to bottom, #000 55%, rgba(0,0,0,0.25) 78%, transparent 92%);
+                mask-image: linear-gradient(to bottom, #000 55%, rgba(0,0,0,0.25) 78%, transparent 92%);
       }
-      .hero-copy { padding: 1.75rem 1.25rem 0; max-width: 640px; margin: 0 auto; }
+      .hero-copy { position: relative; z-index: 2; padding: 0 1.25rem; max-width: 640px; margin: -3.75rem auto 0; }
+      .hero--photo .hero-h1 { text-shadow: 0 0 10px var(--cream), 0 0 3px var(--cream); }
       .hero--photo .hero-eyebrow { justify-content: center; }
       .hero--photo .hero-sub { margin-left: auto; }
       .hero--photo .hero-spiral { display: none; }
