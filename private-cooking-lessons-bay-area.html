@@ -9,13 +9,13 @@
   <meta name="robots" content="index, follow">
   <meta property="og:title" content="Private 1-on-1 Cooking Lessons in the Bay Area — Food Jazz">
   <meta property="og:description" content="Private 1-on-1 in-home cooking coaching in the Bay Area. A 30-day intensive in your kitchen.">
-  <meta property="og:image" content="https://foodjazz.club/og-image.png">
+  <meta property="og:image" content="https://foodjazz.club/og-photo.jpg">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <meta property="og:url" content="https://foodjazz.club/private-cooking-lessons-bay-area">
   <meta property="og:type" content="website">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:image" content="https://foodjazz.club/og-image.png">
+  <meta name="twitter:image" content="https://foodjazz.club/og-photo.jpg">
   <meta name="theme-color" content="#FAF7F2">
   <link rel="canonical" href="https://foodjazz.club/private-cooking-lessons-bay-area">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -197,6 +197,32 @@
       .hero { padding: 4rem 0 3.5rem; }
       .container { padding: 0 1.25rem; }
     }
+
+    /* Photos */
+    .page-photo {
+      width: min(1000px, calc(100vw - 3rem));
+      position: relative; left: 50%; transform: translateX(-50%);
+      margin: 3.5rem 0 0;
+    }
+    .page-photo img, .inline-photo img, .photo-row img {
+      display: block; width: 100%; height: auto; border-radius: 4px;
+    }
+    .page-photo img { box-shadow: 0 18px 50px -24px rgba(46,46,44,0.35); }
+    .inline-photo { margin: 2.5rem 0 0; }
+    .photo-row {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 0.75rem; margin-top: 2.5rem;
+    }
+    .photo-row img { aspect-ratio: 4 / 3; object-fit: cover; }
+    @media (max-width: 640px) {
+      .photo-row { grid-template-columns: 1fr 1fr; }
+      .photo-row img:first-child { grid-column: 1 / -1; aspect-ratio: 16 / 9; }
+    }
+    .coach { display: flex; align-items: center; gap: 1.25rem; margin-bottom: 1.75rem; }
+    .coach img {
+      width: 88px; height: 88px; border-radius: 50%;
+      object-fit: cover; flex-shrink: 0;
+    }
   </style>
 
   <script type="application/ld+json">
@@ -211,7 +237,7 @@
         "description": "Private 1-on-1 in-home cooking coaching in the San Francisco Bay Area. A 30-day intensive in your kitchen with Akshay Prabhu.",
         "isPartOf": { "@id": "https://foodjazz.club/#business" },
         "about": { "@id": "https://foodjazz.club/#coaching" },
-        "primaryImageOfPage": "https://foodjazz.club/og-image.png"
+        "primaryImageOfPage": "https://foodjazz.club/photos/food-jazz-cucumber-chop-lesson-1600.webp"
       },
       {
         "@type": "Service",
@@ -330,6 +356,9 @@
       <h1>Private 1-on-1 cooking lessons, in your kitchen, across the Bay Area.</h1>
       <p class="hero-sub">A 30-day intensive where I come to your kitchen once a week, stock your pantry around your taste, and teach you to cook intuitively without recipes.</p>
       <a href="/" class="btn-primary">Start here →</a>
+      <figure class="page-photo">
+        <img src="/photos/food-jazz-cucumber-chop-lesson-1600.webp" srcset="/photos/food-jazz-cucumber-chop-lesson-800.webp 800w, /photos/food-jazz-cucumber-chop-lesson-1600.webp 1600w" sizes="(max-width: 768px) 100vw, 1000px" width="1600" height="900" alt="Akshay Prabhu and a home cook chop cucumber side by side during a private cooking lesson in a home kitchen" fetchpriority="high">
+      </figure>
     </div>
   </section>
 
@@ -342,6 +371,11 @@
       <p>Here is how it runs. We start with a Week 0 setup in your kitchen, about two hours, where I audit what you already have, do a taste interview, and build a pantry stocking plan around the food you actually like to eat. Then four weekly sessions follow. Week 1 is cold preparations and active tasting, no heat. Week 2 is high heat with the wok and cast iron, plus a grocery trip with me. Week 3 is low and slow: braising, baking, longer cooks. Week 4 is meal composition and cooking for someone else. Then a dinner party on your timeline, where you cook for friends and I show up as a guest.</p>
       <p>The teaching is built around ratios (how much salt fish needs, how much liquid rice cooks at), active tasting (a way to learn flavor from inside the dish), and pattern recognition across cuisines. By the end you can open the fridge, see what is there, and make something good without looking anything up.</p>
       <p style="margin-top: 1.5rem; font-size: 0.95rem;">Want the framework in more depth? See <a href="/intuitive-cooking" style="color: var(--sage-deep); border-bottom: 1px solid var(--sage-muted); padding-bottom: 1px;">how to learn to cook without recipes →</a></p>
+      <div class="photo-row">
+        <img src="/photos/food-jazz-wok-toss-lesson-1600.webp" srcset="/photos/food-jazz-wok-toss-lesson-800.webp 800w, /photos/food-jazz-wok-toss-lesson-1600.webp 1600w" sizes="(max-width: 640px) 90vw, 240px" width="1600" height="900" alt="Akshay Prabhu laughs as a home cook tosses vegetables in a wok on a gas stove" loading="lazy" decoding="async">
+        <img src="/photos/food-jazz-ingredients-prepped-1600.webp" srcset="/photos/food-jazz-ingredients-prepped-800.webp 800w, /photos/food-jazz-ingredients-prepped-1600.webp 1600w" sizes="(max-width: 640px) 90vw, 240px" width="1600" height="900" alt="Prepped ingredients in glass bowls on a wooden counter before cooking" loading="lazy" decoding="async">
+        <img src="/photos/food-jazz-dinner-table-story-1600.webp" srcset="/photos/food-jazz-dinner-table-story-800.webp 800w, /photos/food-jazz-dinner-table-story-1600.webp 1600w" sizes="(max-width: 640px) 90vw, 240px" width="1600" height="900" alt="Friends at a candlelit dinner table after cooking together" loading="lazy" decoding="async">
+      </div>
     </div>
   </section>
 
@@ -426,6 +460,9 @@
     <div class="container">
       <span class="label">About the coach</span>
       <h2>Who's teaching.</h2>
+      <div class="coach">
+        <img src="/photos/akshay-prabhu-400.webp" width="88" height="88" alt="Akshay Prabhu, Food Jazz cooking coach" loading="lazy" decoding="async">
+      </div>
       <p>I'm Akshay Prabhu. Before Food Jazz, I founded Foodnome (raised $3M, helped legalize home restaurants in California, 200 home cooks selling on the platform), ran Wefunder's food and beverage portfolio as Entrepreneur in Residence, and was Director of Marketing at Avid Health. I cook in Berkeley and teach in homes across the Bay Area.</p>
       <div class="about-credit">Founder · Food Jazz</div>
     </div>

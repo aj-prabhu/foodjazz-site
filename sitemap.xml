@@ -1,20 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url>
     <loc>https://foodjazz.club/</loc>
-    <lastmod>2026-06-09</lastmod>
+    <lastmod>2026-09-18</lastmod>
+    <image:image><image:loc>https://foodjazz.club/photos/food-jazz-flambe-wok-lesson-1600.webp</image:loc></image:image>
+    <image:image><image:loc>https://foodjazz.club/photos/food-jazz-cucumber-chop-lesson-1600.webp</image:loc></image:image>
+    <image:image><image:loc>https://foodjazz.club/photos/food-jazz-plated-dish-1600.webp</image:loc></image:image>
+    <image:image><image:loc>https://foodjazz.club/photos/food-jazz-seasoning-by-hand-1600.webp</image:loc></image:image>
+    <image:image><image:loc>https://foodjazz.club/photos/food-jazz-dinner-party-table-1600.webp</image:loc></image:image>
+    <image:image><image:loc>https://foodjazz.club/photos/food-jazz-dinner-party-toast-1600.webp</image:loc></image:image>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://foodjazz.club/private-cooking-lessons-bay-area</loc>
-    <lastmod>2026-06-09</lastmod>
+    <lastmod>2026-09-18</lastmod>
+    <image:image><image:loc>https://foodjazz.club/photos/food-jazz-cucumber-chop-lesson-1600.webp</image:loc></image:image>
+    <image:image><image:loc>https://foodjazz.club/photos/food-jazz-ingredients-prepped-1600.webp</image:loc></image:image>
+    <image:image><image:loc>https://foodjazz.club/photos/food-jazz-wok-toss-lesson-1600.webp</image:loc></image:image>
+    <image:image><image:loc>https://foodjazz.club/photos/food-jazz-dinner-table-story-1600.webp</image:loc></image:image>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://foodjazz.club/intuitive-cooking</loc>
-    <lastmod>2026-06-09</lastmod>
+    <lastmod>2026-09-18</lastmod>
+    <image:image><image:loc>https://foodjazz.club/photos/food-jazz-cleaver-lesson-1600.webp</image:loc></image:image>
+    <image:image><image:loc>https://foodjazz.club/photos/food-jazz-ingredients-prepped-1600.webp</image:loc></image:image>
+    <image:image><image:loc>https://foodjazz.club/photos/food-jazz-lemon-into-wok-1600.webp</image:loc></image:image>
+    <image:image><image:loc>https://foodjazz.club/photos/food-jazz-plated-dish-1600.webp</image:loc></image:image>
+    <image:image><image:loc>https://foodjazz.club/photos/food-jazz-chives-lesson-1600.webp</image:loc></image:image>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>

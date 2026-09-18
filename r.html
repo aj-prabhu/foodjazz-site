@@ -8,7 +8,10 @@
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <meta property="og:title" content="A guide to throwing a dinner party">
   <meta property="og:description" content="One page on how to host, from a chef who teaches people to cook.">
-  <meta property="og:image" content="https://foodjazz.club/og-image.png">
+  <meta property="og:image" content="https://foodjazz.club/og-dinner.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet">
@@ -209,6 +212,20 @@
       .signup .btn { min-width: 0; }
       .signup-note { grid-column: 1 / -1; }
     }
+
+    /* Photos */
+    .photo-row {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 0.6rem; margin: 2.25rem 0 0.5rem;
+    }
+    .photo-row img {
+      display: block; width: 100%; height: auto;
+      aspect-ratio: 4 / 3; object-fit: cover; border-radius: 4px;
+    }
+    @media (max-width: 640px) {
+      .photo-row { grid-template-columns: 1fr 1fr; }
+      .photo-row img:first-child { grid-column: 1 / -1; aspect-ratio: 16 / 9; }
+    }
   </style>
   <script src="/analytics.js"></script>
   <script defer src="/_vercel/insights/script.js"></script>
@@ -259,6 +276,11 @@
       <p>It's a 30 day intensive. I come to your kitchen once a week for a month and give you daily assignments so you are actually building the skills. We fix your pantry first and then we cook together and by the end you are improvising.</p>
       <p>Most of my clients end up cooking a meal faster than DoorDash could deliver it and it tastes fresher and exactly what their body wants. The whole point is being able to translate what's in your mind to your plate.</p>
       <p>I take four people at a time and the price goes up every round. That's the only reason there's any rush. And since a friend sent you, you skip the line for the next open spots. There's a friend rate too. Ask me about it when you reach out.</p>
+      <div class="photo-row">
+        <img src="/photos/food-jazz-cleaver-handoff-800.webp" srcset="/photos/food-jazz-cleaver-handoff-800.webp 800w, /photos/food-jazz-cleaver-handoff-1600.webp 1600w" sizes="(max-width: 640px) 90vw, 220px" width="1600" height="900" alt="Akshay Prabhu shows a home cook how to hold a Chinese cleaver" loading="lazy" decoding="async">
+        <img src="/photos/food-jazz-wok-toss-lesson-800.webp" srcset="/photos/food-jazz-wok-toss-lesson-800.webp 800w, /photos/food-jazz-wok-toss-lesson-1600.webp 1600w" sizes="(max-width: 640px) 90vw, 220px" width="1600" height="900" alt="Akshay Prabhu laughs as a home cook tosses vegetables in a wok" loading="lazy" decoding="async">
+        <img src="/photos/food-jazz-dinner-party-cheers-800.webp" srcset="/photos/food-jazz-dinner-party-cheers-800.webp 800w, /photos/food-jazz-dinner-party-cheers-1600.webp 1600w" sizes="(max-width: 640px) 90vw, 220px" width="1600" height="900" alt="Friends clink glasses over a home-cooked dinner" loading="lazy" decoding="async">
+      </div>
       <a class="btn" href="https://tally.so/r/68kgMB" id="applyBtn">Tell me about your kitchen</a>
       <p class="fineprint">A few questions about how you cook now. I read every one and I will tell you honestly if I think I can help.</p>
     </div>
