@@ -269,9 +269,12 @@
     .hero--photo .hero-breath { display: none; }
     .hero--photo .hero-eyebrow { justify-content: flex-start; }
     .hero--photo .hero-eyebrow-rule { display: none; }
-    .hero--photo .morph-static,
-    .hero--photo .morph-text { font-size: clamp(2.4rem, 4vw, 3.6rem); }
-    .hero--photo .morph-container { justify-content: flex-start; height: clamp(3.2rem, 5vw, 4.4rem); }
+    .hero-h1 { font-family: var(--font-body); line-height: 1.6; margin-bottom: 0; }
+    .hero-title {
+      font-family: var(--font-display); font-weight: 600; color: var(--charcoal);
+      font-size: clamp(2.6rem, 4.4vw, 3.9rem); line-height: 1.05; margin-bottom: 1.6rem;
+    }
+    .hero-title span { color: var(--sage); }
     .hero--photo .hero-sub { margin-left: 0; }
     @media (max-width: 1100px) {
       .hero.hero--photo { display: block; min-height: 0; padding: 0 0 3.5rem; text-align: center; }
@@ -283,12 +286,9 @@
       }
       .hero-copy { padding: 1.75rem 1.25rem 0; max-width: 640px; margin: 0 auto; }
       .hero--photo .hero-eyebrow { justify-content: center; }
-      .hero--photo .morph-container { justify-content: center; }
       .hero--photo .hero-sub { margin-left: auto; }
       .hero--photo .hero-spiral { display: none; }
-      .hero--photo .morph-static,
-      .hero--photo .morph-text { font-size: clamp(2rem, 8vw, 3.2rem); }
-      .hero--photo .morph-container { height: clamp(3.2rem, 9vw, 4.4rem); }
+      .hero-title { font-size: clamp(2.4rem, 10vw, 3.4rem); margin-bottom: 1.25rem; }
     }
     .kitchen-reel {
       margin: 6rem auto 0; max-width: 1000px;
@@ -1300,17 +1300,11 @@
     <div class="hero-copy">
       <div class="hero-eyebrow">
         <span class="hero-eyebrow-rule"></span>
-        <span class="label">1-on-1 · In Your Kitchen · Bay Area</span>
+        <h1 class="label hero-h1">Personalized cooking coaching for busy professionals · Bay Area</h1>
         <span class="hero-eyebrow-rule"></span>
       </div>
-      <div class="morph-block">
-        <span class="morph-static">Cooking should feel</span>
-        <div class="morph-container">
-          <span id="morph-text1" class="morph-text"></span>
-          <span id="morph-text2" class="morph-text"></span>
-        </div>
-      </div>
-      <p class="hero-sub">A 30-day cooking intensive designed to make you an intuitive, effortless cook — forever.</p>
+      <p class="hero-title">Your kitchen <span>operating system.</span></p>
+      <p class="hero-sub">30 days in your kitchen with me. We set it up around the food you love and by the end you cook intuitively and without the stress.</p>
       <div class="btn-wrap">
         <div class="btn-glow"></div>
         <a href="https://tally.so/r/68kgMB" class="btn-primary">
@@ -1920,10 +1914,13 @@
     const texts = ["intuitive", "calm", "joyful", "creative", "satisfying", "effortless"];
     const text1 = document.getElementById("morph-text1");
     const text2 = document.getElementById("morph-text2");
+    const hasMorph = !!(text1 && text2);
     const morphTime = 1.5, cooldownTime = 2.5;
     let textIndex = 0, time = new Date(), morph = 0, cooldown = cooldownTime;
-    text1.textContent = texts[0];
-    text2.textContent = texts[1];
+    if (hasMorph) {
+      text1.textContent = texts[0];
+      text2.textContent = texts[1];
+    }
 
     function setMorph(f) {
       text2.style.filter = `blur(${Math.min(8/f - 8, 100)}px)`;
@@ -1958,7 +1955,7 @@
         doMorph();
       } else { doCooldown(); }
     }
-    animateMorph();
+    if (hasMorph) animateMorph();
 
     // ===== NAV CTA — show after hero, hide at closing =====
     const heroBtn = document.querySelector('.hero .btn-wrap');
