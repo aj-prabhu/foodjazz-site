@@ -269,15 +269,12 @@
     .hero--photo .hero-breath { display: none; }
     .hero--photo .hero-eyebrow { justify-content: flex-start; }
     .hero--photo .hero-eyebrow-rule { display: none; }
-    .hero-h1 {
-      font-family: var(--font-body); line-height: 1.6; margin-bottom: 0;
-      letter-spacing: 0.16em; text-wrap: balance;
-    }
-    .hero--photo .hero-eyebrow { margin-bottom: 1.1rem; }
     .hero-title {
       font-family: var(--font-display); font-weight: 600; color: var(--charcoal);
-      font-size: clamp(2.6rem, 4.4vw, 3.9rem); line-height: 1.05; margin-bottom: 1.6rem;
+      font-size: clamp(2.8rem, 4.8vw, 4.4rem); line-height: 1.02; margin-bottom: 1.4rem;
+      text-wrap: balance;
     }
+    .hero--photo .hero-sub { font-size: 1rem; max-width: 36ch; text-wrap: balance; }
     .hero-title span { color: var(--sage); display: block; }
     .hero--photo .hero-title { margin-left: -0.05em; } /* Caveat side bearing: line the Y up with the eyebrow */
     .hero--photo .hero-sub { margin-left: 0; }
@@ -291,11 +288,11 @@
                 mask-image: linear-gradient(to bottom, #000 55%, rgba(0,0,0,0.25) 78%, transparent 92%);
       }
       .hero-copy { position: relative; z-index: 2; padding: 0 1.25rem; max-width: 640px; margin: -3.75rem auto 0; }
-      .hero--photo .hero-h1 { text-shadow: 0 0 10px var(--cream), 0 0 3px var(--cream); }
       .hero--photo .hero-eyebrow { justify-content: center; }
       .hero--photo .hero-sub { margin-left: auto; }
       .hero--photo .hero-spiral { display: none; }
-      .hero-title { font-size: clamp(2.4rem, 10vw, 3.4rem); margin-bottom: 1.25rem; }
+      .hero-title { font-size: clamp(2.5rem, 11vw, 3.6rem); margin-bottom: 1rem; text-shadow: 0 0 14px var(--cream); }
+      .hero--photo .hero-sub { max-width: 26ch; }
       .hero--photo .hero-title { margin-left: 0; }
     }
     .kitchen-reel {
@@ -1306,13 +1303,8 @@
     </svg>
 
     <div class="hero-copy">
-      <div class="hero-eyebrow">
-        <span class="hero-eyebrow-rule"></span>
-        <h1 class="label hero-h1">Cooking coaching for busy professionals</h1>
-        <span class="hero-eyebrow-rule"></span>
-      </div>
-      <p class="hero-title">Your kitchen <span>operating system.</span></p>
-      <p class="hero-sub">30 days in your kitchen with me. We set it up around the food you love and by the end you cook intuitively and without the stress.</p>
+      <h1 class="hero-title">The kitchen operating system <span>for busy professionals.</span></h1>
+      <p class="hero-sub">30 days of 1-on-1 cooking coaching in your own kitchen.</p>
       <div class="btn-wrap">
         <div class="btn-glow"></div>
         <a href="https://tally.so/r/68kgMB" class="btn-primary">
