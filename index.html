@@ -1541,6 +1541,19 @@
       <ul class="experience-list experience-list--photos">
         <li class="experience-item">
           <svg class="experience-icon" viewBox="0 0 24 24" fill="none">
+            <rect x="5" y="3" width="14" height="18" rx="2" stroke="#7A8C6E" stroke-width="1.4" fill="rgba(168,184,157,0.1)"/>
+            <line x1="8.5" y1="8" x2="15.5" y2="8" stroke="#7A8C6E" stroke-width="1.3" stroke-linecap="round"/>
+            <line x1="8.5" y1="11.5" x2="13.5" y2="11.5" stroke="#7A8C6E" stroke-width="1.3" stroke-linecap="round"/>
+            <path d="M12 17.8 C12 17.8, 9.2 16.1, 9.2 14.6 C9.2 13.7, 9.9 13.1, 10.6 13.1 C11.2 13.1, 11.7 13.5, 12 14 C12.3 13.5, 12.8 13.1, 13.4 13.1 C14.1 13.1, 14.8 13.7, 14.8 14.6 C14.8 16.1, 12 17.8, 12 17.8Z" stroke="#D4A843" stroke-width="1.2" fill="rgba(212,168,67,0.18)" stroke-linejoin="round"/>
+          </svg>
+          <div>
+            <h3>A Curriculum Designed for You</h3>
+            <p>Before we cook I go through your kitchen and learn what you love to eat. Then I design the whole month around your diet and preferences.</p>
+          </div>
+          <img class="experience-photo" src="/photos/food-jazz-ingredients-prepped-1600.webp" srcset="/photos/food-jazz-ingredients-prepped-800.webp 800w, /photos/food-jazz-ingredients-prepped-1600.webp 1600w" sizes="(max-width: 768px) 90vw, 240px" width="1600" height="900" alt="Prepped ingredients in glass bowls on a wooden counter before cooking" loading="lazy" decoding="async">
+        </li>
+        <li class="experience-item">
+          <svg class="experience-icon" viewBox="0 0 24 24" fill="none">
             <path d="M3 11 L12 3 L21 11" stroke="#D4A843" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
             <path d="M5 10 L5 20 L19 20 L19 10" stroke="#7A8C6E" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" fill="rgba(168,184,157,0.12)"/>
             <rect x="9" y="14" width="6" height="6" rx="0.5" stroke="#D4A843" stroke-width="1.2" fill="rgba(212,168,67,0.12)"/>
@@ -1910,8 +1923,8 @@
   <!-- CLOSING -->
   <section id="apply" class="section-closing">
     <figure class="closing-photo">
-      <video data-inview-loop muted loop playsinline preload="none" poster="/toast-reel-poster.webp" aria-hidden="true">
-        <source src="/toast-reel.mp4" type="video/mp4">
+      <video data-inview-loop muted loop playsinline preload="none" poster="/toast-reel-clink-poster.webp" aria-hidden="true">
+        <source src="/toast-reel-clink.mp4" type="video/mp4">
       </video>
     </figure>
     <div class="container--narrow">
@@ -2171,7 +2184,29 @@
     }
   }
   </script>
-  <script src="https://www.videoask.com/embed/embed.js"></script>
+  <script>
+    // Load the VideoAsk bubble once the hero is mostly scrolled away, so the page
+    // doesn't open with Akshay's face on screen twice.
+    (function() {
+      var loaded = false;
+      function load() {
+        if (loaded) return;
+        loaded = true;
+        window.removeEventListener('scroll', check);
+        var s = document.createElement('script');
+        s.src = 'https://www.videoask.com/embed/embed.js';
+        s.async = true;
+        document.body.appendChild(s);
+      }
+      function check() {
+        var hero = document.querySelector('.hero');
+        var bottom = hero ? hero.getBoundingClientRect().bottom : 0;
+        if (bottom < window.innerHeight * 0.5) load();
+      }
+      window.addEventListener('scroll', check, { passive: true });
+      check();
+    })();
+  </script>
 
   <!-- Submission confirmation modal -->
   <div class="submit-modal-overlay" id="submitModal">
