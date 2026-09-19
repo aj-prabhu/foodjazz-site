@@ -624,6 +624,9 @@
       line-height: 1.6; font-style: italic;
     }
     .about-bio strong { font-weight: 500; color: var(--charcoal); }
+    @media (min-width: 769px) and (max-width: 960px) {
+      .about-top { grid-template-columns: 220px minmax(0, 1fr); gap: 2.5rem; }
+    }
 
     /* Press banner — full width above bio */
     .about-press-banner {
@@ -1919,8 +1922,8 @@
   <!-- CLOSING -->
   <section id="apply" class="section-closing">
     <figure class="closing-photo">
-      <video data-inview-loop muted loop playsinline preload="none" poster="/toast-reel-clink-poster.webp" aria-hidden="true">
-        <source src="/toast-reel-clink.mp4" type="video/mp4">
+      <video data-inview-loop muted loop playsinline preload="none" poster="/toast-boomerang-poster.webp" aria-hidden="true">
+        <source src="/toast-boomerang.mp4" type="video/mp4">
       </video>
     </figure>
     <div class="container--narrow">
