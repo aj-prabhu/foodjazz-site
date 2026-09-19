@@ -1002,7 +1002,13 @@
       list-style: none;
       flex-direction: column;
     }
-    .mobile-nav.open { display: flex; }
+    .mobile-nav.open {
+      display: flex;
+      /* Short screens (a phone on its side): the menu scrolls inside itself, since
+         scrolling the page closes it. */
+      max-height: calc(100vh - 69px); max-height: calc(100svh - 69px);
+      overflow-y: auto; overscroll-behavior: contain;
+    }
     .mobile-nav li { border-top: 1px solid var(--sage-muted); }
     .mobile-nav a { display: block; padding: 0.9rem 0; font-size: 1rem; color: var(--warm-gray); }
     .mobile-nav .nav-cta { background: var(--sage-deep); color: white !important; font-weight: 500; display: inline-block; padding: 0.6rem 1.2rem; border-radius: 4px; margin-top: 0.5rem; font-size: 0.95rem; }
