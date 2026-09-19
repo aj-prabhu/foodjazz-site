@@ -56,3 +56,19 @@ VERDICT: REVISE
 ### Claude's response
 - All four accepted and folded into PLAN.md: mobile-menu exception in G1 with per-row crops; modal final-state + confetti suppression + visibility assert; dark error colour #E08A72 and an invalid-email capture; stale .vt-play example removed.
 - MAX_ROUNDS=2 reached with VERDICT: REVISE. No disagreement remains; the final revision is NOT re-reviewed by Codex. Flagged to Akshay rather than claimed as approved.
+
+## Act 3 — Build
+
+### Round 1 — Codex build
+Codex (gpt-6-astra, xhigh) built in `codex exec -s workspace-write` inside the `feat/dark-mode` worktree (`--yolo` is blocked by the session classifier; workspace-write was enough). Report: head reconciler (`applyTheme` on load/pageshow/storage/system change), desktop icon switch absolutely positioned off `.nav-right`, phone-menu row, dark token block + re-pinned dual-role surfaces (.section-problem, .vt-card, .vt-play svg, .cook-tag, .cook-card, .cook-card--highlight), SVG attribute overrides, deco/noise opacity, weight 400 body copy, `--accent-text` split (13 lines), theme-color meta on r/refer, signup error #E08A72. Proof 1-3 passed in its sandbox; browser checks not possible there.
+
+### Claude's verdict
+Diff read in full. Proof gates run by Claude:
+- G1 light unchanged: 37 captures of origin/main vs branch with the theme pinned light. Identical except the 17px moon icon box in the desktop nav (769/900/1024/1100/1280/1440, CTA hidden and shown — no reflow), the icon under the modal overlay, the phone menu (new row; existing rows identical, lower rows shifted), and the known video-control-bar strip on /r and /refer (same noise seen between two baseline runs).
+- Harness caveats found and fixed on the way: videos had to be stubbed (IO autoplay made captures non-deterministic); the Mac is in dark mode so the new code correctly followed the system until the harness pinned the choice in storage.
+- G2 dark: full pages at 1440 and 390 for all five pages, FAQ open, modal, signup error — no unreadable text, no stray light surfaces, fades dissolve into the dark base.
+- G3 contrast (computed): body 9.4-11.3, muted 5.8-7.0, accent 8.9-10.7, sage labels 6.8-8.1, h3 7.6-9.0, buttons 4.6, highlight card 5.8, signup error 6.1. The essay's pre-highlight 0.25 text is 2.1:1, same deliberate reveal effect as light.
+- G4 behaviour (headless): stored dark carries to /intuitive-cooking and /r with theme-color #1B1A17; desktop click flips theme, storage, aria-pressed, label, icon and meta; phone-menu click flips back and relabels; no stored choice follows the system; pageshow reconciles.
+- JS off: no selector keys on data-theme="light" and every other addition is either gated on dark, part of the hidden-by-default switch, or a same-value token swap, so no-JS renders the verified light page. (Headless refused screenshots with scripts disabled; proven statically.)
+- One edit by Claude: `.impeccable.md` Theme line still said dark mode was "planned for later".
+Fix rounds used: 0.

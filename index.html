@@ -17,6 +17,86 @@
   <meta name="twitter:image" content="https://foodjazz.club/og-photo.jpg">
   <meta name="format-detection" content="telephone=no">
   <meta name="theme-color" content="#FAF7F2">
+  <script>
+    // Follow the system until a visitor chooses a theme. Reconcile restored pages and tabs too.
+    (function() {
+      var systemTheme = window.matchMedia('(prefers-color-scheme: dark)');
+      var memoryChoice = null;
+      var followingSystem = false;
+
+      function systemChanged() {
+        window.applyTheme();
+      }
+
+      window.applyTheme = function applyTheme(choice) {
+        if (choice === 'light' || choice === 'dark') {
+          memoryChoice = choice;
+          try {
+            localStorage.setItem('fj-theme', choice);
+            if (localStorage.getItem('fj-theme') === choice) memoryChoice = null;
+          } catch (e) { /* Keep the choice for this page when storage is unavailable. */ }
+        }
+
+        var storedChoice = memoryChoice;
+        try {
+          if (!storedChoice) storedChoice = localStorage.getItem('fj-theme');
+        } catch (e) { /* System preference still works without storage. */ }
+        if (storedChoice !== 'light' && storedChoice !== 'dark') storedChoice = null;
+
+        var theme = storedChoice || (systemTheme.matches ? 'dark' : 'light');
+        var dark = theme === 'dark';
+        document.documentElement.dataset.theme = theme;
+
+        var meta = document.querySelector('meta[name="theme-color"]');
+        if (!meta) {
+          meta = document.createElement('meta');
+          meta.name = 'theme-color';
+          document.head.appendChild(meta);
+        }
+        meta.content = dark ? '#1B1A17' : '#FAF7F2';
+
+        document.querySelectorAll('.theme-toggle').forEach(function(button) {
+          button.hidden = false;
+          button.setAttribute('aria-label', dark ? 'Switch to light mode' : 'Switch to dark mode');
+          button.setAttribute('aria-pressed', String(dark));
+          button.querySelectorAll('[data-theme-icon]').forEach(function(icon) {
+            icon.toggleAttribute('hidden', icon.dataset.themeIcon !== theme);
+          });
+          var label = button.querySelector('.theme-toggle-label');
+          if (label) label.textContent = dark ? 'Light mode' : 'Dark mode';
+          var menuItem = button.closest('.theme-menu-item');
+          if (menuItem) menuItem.hidden = false;
+        });
+
+        var followSystem = !storedChoice;
+        if (followSystem !== followingSystem) {
+          if (systemTheme.addEventListener) {
+            systemTheme[followSystem ? 'addEventListener' : 'removeEventListener']('change', systemChanged);
+          } else {
+            systemTheme[followSystem ? 'addListener' : 'removeListener'](systemChanged);
+          }
+          followingSystem = followSystem;
+        }
+      };
+
+      window.applyTheme();
+      window.addEventListener('pageshow', function() { window.applyTheme(); });
+      window.addEventListener('storage', function(event) {
+        if (event.key === 'fj-theme' || event.key === null) {
+          memoryChoice = null;
+          window.applyTheme();
+        }
+      });
+      document.addEventListener('DOMContentLoaded', function() {
+        document.querySelectorAll('.theme-toggle').forEach(function(button) {
+          button.addEventListener('click', function() {
+            window.applyTheme(document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark');
+          });
+        });
+        window.applyTheme();
+      });
+    })();
+  </script>
   <link rel="preload" as="image" href="/photos/food-jazz-hero-flambe-1920.webp" imagesrcset="/photos/food-jazz-hero-flambe-960.webp 960w, /photos/food-jazz-hero-flambe-1920.webp 1920w" imagesizes="(max-width: 900px) 210vw, 66vw" fetchpriority="high">
   <link rel="canonical" href="https://foodjazz.club/">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -24,6 +104,8 @@
   <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300;1,9..40,400&display=swap" rel="stylesheet">
   <style>
     :root {
+      color-scheme: light;
+      --accent-text: var(--sage-deep);
       --sage: #7A8C6E;
       --sage-light: #A8B89D;
       --sage-muted: #D4DDD0;
@@ -337,7 +419,7 @@
     .closing-photo video { display: block; width: 100%; height: auto; aspect-ratio: 16 / 9; object-fit: cover; border-radius: 4px; background: #2b231d; }
 
     /* ===== VALUE PROPS ===== */
-    .section-values { background: var(--sage-wash); padding: 4.5rem 0; }
+    .section-values { background: var(--cream); padding: 4.5rem 0; }
     .values-header { text-align: center; margin-bottom: 4rem; }
     .values-header h2 { margin: 0.5rem 0 1rem; }
     .values-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2.5rem; }
@@ -394,7 +476,7 @@
     .value-desc { font-size: 0.95rem; font-weight: 300; color: var(--warm-gray); line-height: 1.75; }
 
     /* ===== TESTIMONIAL (quote + video) ===== */
-    .section-testimonial { background: var(--cream); padding: clamp(3.5rem, 7vw, 5rem) 0; }
+    .section-testimonial { background: var(--sage-wash); padding: clamp(3.5rem, 7vw, 5rem) 0; }
     .testimonial-grid {
       display: grid; grid-template-columns: 1fr 1.15fr;
       gap: clamp(2.75rem, 5vw, 4.5rem); align-items: center;
@@ -409,7 +491,7 @@
       font-weight: 400; line-height: 1.4; letter-spacing: -0.01em;
       color: var(--charcoal); margin: 0 0 2rem;
     }
-    .testimonial-emph { color: var(--sage-deep); font-weight: 500; }
+    .testimonial-emph { color: var(--accent-text); font-weight: 500; }
     .testimonial-attr { display: inline-flex; align-items: center; gap: 0.85rem; }
     .testimonial-photo {
       width: 60px; height: 60px; border-radius: 50%; object-fit: cover;
@@ -438,7 +520,7 @@
     .vt-card.is-playing .vt-play { display: none; }
     .vt-caption {
       font-family: var(--font-display); font-size: 1.5rem; font-weight: 600;
-      color: var(--sage-deep); margin: 1.1rem 0 0; text-align: center;
+      color: var(--accent-text); margin: 1.1rem 0 0; text-align: center;
       transform: rotate(-1.2deg);
     }
     @media (max-width: 900px) {
@@ -1049,6 +1131,125 @@
       .nav-logo { font-size: 1.45rem; }
       .nav-cta { padding: 0.4rem 1rem; font-size: 0.82rem; }
     }
+
+    /* ===== THEME SWITCH ===== */
+    .nav-right { position: relative; }
+    .theme-toggle {
+      display: inline-flex; align-items: center; justify-content: center;
+      width: 40px; height: 40px; padding: 0;
+      background: none; border: none; border-radius: 50%;
+      color: var(--warm-gray); cursor: pointer;
+    }
+    .nav-right .theme-toggle {
+      position: absolute; right: 100%; top: 50%;
+      transform: translateY(-50%); margin-right: 0.75rem;
+    }
+    .theme-toggle:hover { color: var(--charcoal); }
+    .theme-toggle:focus-visible { outline: 2px solid var(--accent-text); outline-offset: 3px; }
+    .theme-toggle svg { width: 20px; height: 20px; flex-shrink: 0; }
+    .mobile-nav .theme-toggle {
+      width: 100%; height: auto; min-height: 40px;
+      justify-content: flex-start; gap: 0.6rem; padding: 0.9rem 0;
+      font: inherit; font-size: 1rem; text-align: left; border-radius: 0;
+    }
+    .theme-toggle[hidden], .theme-toggle svg[hidden], .theme-menu-item[hidden] { display: none; }
+    @media (max-width: 768px) {
+      .nav-right .theme-toggle { display: none; }
+    }
+
+    /* ===== DARK MODE ===== */
+    :root[data-theme="dark"] {
+      color-scheme: dark;
+      --cream: #1B1A17;
+      --warm-white: #22211D;
+      --sage-wash: #1F231D;
+      --linen: #25231F;
+      --linen-border: #3A3731;
+      --charcoal: #F1EBE1;
+      --warm-gray: #CFC8BC;
+      --medium-gray: #A39D93;
+      --sage: #9DB090;
+      --sage-light: #B9C8AE;
+      --sage-muted: #3A4235;
+      --accent-text: #B9C8AE;
+      --wood: #CBA47A;
+      --wood-dark: #D2AE84;
+    }
+
+    /* Keep light ink on the dark band, and dark ink on the video disc and gold tag. */
+    :root[data-theme="dark"] .section-problem {
+      background: #121210;
+      border-top: 1px solid #2E2C28;
+      border-bottom: 1px solid #2E2C28;
+    }
+    :root[data-theme="dark"] .section-problem strong,
+    :root[data-theme="dark"] .about-hulu-note strong { color: #F3EDE4; }
+    :root[data-theme="dark"] .vt-card {
+      background: #2E2E2C;
+      box-shadow: 0 22px 50px -22px rgba(0,0,0,0.38), 0 4px 14px rgba(0,0,0,0.10);
+    }
+    :root[data-theme="dark"] .vt-play svg,
+    :root[data-theme="dark"] .vt-play:hover svg { fill: #2E2E2C; }
+    :root[data-theme="dark"] .cook-tag { color: #2E2E2C; }
+    :root[data-theme="dark"] .cook-card { background: var(--linen); }
+    :root[data-theme="dark"] .cook-card--highlight { background: #5b6a52; }
+    :root[data-theme="dark"] .outcomes-checklist li { border-color: rgba(185,200,174,0.16); }
+    :root[data-theme="dark"] .submit-modal-overlay { background: rgba(0,0,0,0); }
+    :root[data-theme="dark"] .submit-modal-overlay.active { background: rgba(0,0,0,0.35); }
+
+    /* Presentation attributes yield to these rules; masks and warm accents keep their colours. */
+    :root[data-theme="dark"] svg [stroke="#7A8C6E"] { stroke: #B9C8AE; }
+    :root[data-theme="dark"] svg [fill="#7A8C6E"] { fill: #B9C8AE; }
+    :root[data-theme="dark"] svg [stroke="#2E2E2C"] { stroke: #F1EBE1; }
+    :root[data-theme="dark"] svg [fill="#2E2E2C"] { fill: #F1EBE1; }
+    :root[data-theme="dark"] svg [stroke="#8B6D47"] { stroke: #D2AE84; }
+    :root[data-theme="dark"] svg [fill="#8B6D47"] { fill: #D2AE84; }
+    :root[data-theme="dark"] svg [stroke="#B8956A"] { stroke: #CBA47A; }
+    :root[data-theme="dark"] svg [fill="#B8956A"] { fill: #CBA47A; }
+    :root[data-theme="dark"] svg [stroke="#A8B89D"] { stroke: #B9C8AE; }
+    :root[data-theme="dark"] svg [fill="#A8B89D"] { fill: #B9C8AE; }
+
+    /* Filled icons read as light stickers, the way they look on cream in light mode. */
+    :root[data-theme="dark"] :is(svg.value-icon, svg.experience-icon, svg.cook-icon) [fill^="rgba(168,184,157"] { fill: #EEF1E9; }
+    :root[data-theme="dark"] :is(svg.value-icon, svg.experience-icon, svg.cook-icon) [fill^="rgba(212,168,67,0.1"],
+    :root[data-theme="dark"] :is(svg.value-icon, svg.experience-icon, svg.cook-icon) [fill^="rgba(212,168,67,0.2"] { fill: #F5EAD0; }
+    :root[data-theme="dark"] :is(svg.value-icon, svg.experience-icon, svg.cook-icon) [fill^="rgba(196,122,90"] { fill: #EDCFC2; }
+    :root[data-theme="dark"] :is(svg.value-icon, svg.experience-icon, svg.cook-icon) [fill^="rgba(184,149,106"] { fill: #F1E7DA; }
+    :root[data-theme="dark"] :is(svg.value-icon, svg.experience-icon, svg.cook-icon) [stroke="#7A8C6E"] { stroke: #7A8C6E; }
+    :root[data-theme="dark"] :is(svg.value-icon, svg.experience-icon, svg.cook-icon) [fill="#7A8C6E"] { fill: #7A8C6E; }
+    :root[data-theme="dark"] :is(svg.value-icon, svg.experience-icon, svg.cook-icon) [stroke="#8B6D47"] { stroke: #8B6D47; }
+    :root[data-theme="dark"] :is(svg.value-icon, svg.experience-icon, svg.cook-icon) [fill="#8B6D47"] { fill: #8B6D47; }
+    :root[data-theme="dark"] :is(svg.value-icon, svg.experience-icon, svg.cook-icon) [stroke="#B8956A"] { stroke: #B8956A; }
+    :root[data-theme="dark"] :is(svg.value-icon, svg.experience-icon, svg.cook-icon) [fill="#B8956A"] { fill: #B8956A; }
+    :root[data-theme="dark"] :is(svg.value-icon, svg.experience-icon, svg.cook-icon) [stroke="#A8B89D"] { stroke: #A8B89D; }
+    :root[data-theme="dark"] :is(svg.value-icon, svg.experience-icon, svg.cook-icon) [fill="#A8B89D"] { fill: #A8B89D; }
+    :root[data-theme="dark"] :is(svg.value-icon, svg.experience-icon, svg.cook-icon) [stroke="#2E2E2C"] { stroke: #2E2E2C; }
+
+    :root[data-theme="dark"] .deco-veg { opacity: 0.55; filter: saturate(0.95); }
+    :root[data-theme="dark"] body::after { opacity: 0.014; }
+    :root[data-theme="dark"] .about-press-row img { filter: brightness(0) invert(1); opacity: 0.8; }
+
+    /* Body copy gains weight; display type keeps its existing weight. */
+    :root[data-theme="dark"] p:not([class]),
+    :root[data-theme="dark"] .hero-sub,
+    :root[data-theme="dark"] .value-desc,
+    :root[data-theme="dark"] .testimonial-cred,
+    :root[data-theme="dark"] .section-problem p,
+    :root[data-theme="dark"] .about-bio,
+    :root[data-theme="dark"] .about-david-caption,
+    :root[data-theme="dark"] .about-hulu-note,
+    :root[data-theme="dark"] .faq-a,
+    :root[data-theme="dark"] .faq-cta-sub,
+    :root[data-theme="dark"] .mid-cta-sub,
+    :root[data-theme="dark"] .mid-cta-contact,
+    :root[data-theme="dark"] .cook-desc,
+    :root[data-theme="dark"] .outcomes-closing,
+    :root[data-theme="dark"] .closing-text,
+    :root[data-theme="dark"] .closing-contact,
+    :root[data-theme="dark"] .cta-sub,
+    :root[data-theme="dark"] .cta-location,
+    :root[data-theme="dark"] .footer-copy,
+    :root[data-theme="dark"] .submit-modal-sub { font-weight: 400; }
   </style>
 
   <!-- ===== JSON-LD: Person + Service + FAQPage =====
@@ -1304,6 +1505,10 @@
         <li><a href="#about">About</a></li>
       </ul>
       <div class="nav-right">
+        <button type="button" class="theme-toggle" aria-label="Switch to dark mode" aria-pressed="false" hidden>
+          <svg data-theme-icon="light" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20.8 13A9 9 0 0 1 11 3.2 9 9 0 1 0 20.8 13Z"/></svg>
+          <svg data-theme-icon="dark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true" focusable="false" hidden><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M2 12h2m16 0h2M5 5l1.4 1.4m11.2 11.2L19 19M5 19l1.4-1.4M17.6 6.4 19 5"/></svg>
+        </button>
         <a href="https://tally.so/r/68kgMB" class="nav-cta nav-cta-scroll">Apply Now</a>
         <button class="nav-hamburger" aria-label="Open menu" aria-expanded="false">
           <span class="hamburger-bar"></span>
@@ -1316,6 +1521,13 @@
       <li><a href="#method">How It Works</a></li>
       <li><a href="#faq">FAQ</a></li>
       <li><a href="#about">About</a></li>
+      <li class="theme-menu-item" hidden>
+        <button type="button" class="theme-toggle" aria-label="Switch to dark mode" aria-pressed="false" hidden>
+          <svg data-theme-icon="light" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20.8 13A9 9 0 0 1 11 3.2 9 9 0 1 0 20.8 13Z"/></svg>
+          <svg data-theme-icon="dark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true" focusable="false" hidden><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M2 12h2m16 0h2M5 5l1.4 1.4m11.2 11.2L19 19M5 19l1.4-1.4M17.6 6.4 19 5"/></svg>
+          <span class="theme-toggle-label">Dark mode</span>
+        </button>
+      </li>
       <li><a href="tel:+19252574291">Call or Text: (925) 257-4291</a></li>
       <li><a href="https://tally.so/r/68kgMB" class="nav-cta">Apply Now</a></li>
     </ul>
@@ -1359,6 +1571,49 @@
       <img src="/photos/food-jazz-hero-flambe-1920.webp" srcset="/photos/food-jazz-hero-flambe-960.webp 960w, /photos/food-jazz-hero-flambe-1920.webp 1920w" sizes="(max-width: 900px) 210vw, 66vw" width="1920" height="1080" alt="Flames rise from a wok as Akshay Prabhu and a home cook work the stove together during an in-home cooking lesson" fetchpriority="high">
     </div>
   </section>
+
+  <!-- TESTIMONIAL (quote + video) -->
+  <section class="section-testimonial">
+    <div class="container testimonial-grid">
+      <div class="testimonial-copy">
+        <span class="testimonial-mark" aria-hidden="true">&ldquo;</span>
+        <blockquote class="testimonial-quote">My friends would say I was <span class="testimonial-emph">a Michelin-star chef</span>. Which is crazy.</blockquote>
+        <div class="testimonial-attr">
+          <img class="testimonial-photo" src="davis-clute.webp" alt="Davis Clute" width="60" height="60" loading="lazy">
+          <div class="testimonial-id">
+            <p class="testimonial-name">Davis Clute</p>
+            <p class="testimonial-cred">Founder · Forbes 30 Under 30</p>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-media">
+        <div class="vt-card" id="vtCard">
+          <video class="vt-video" id="vtVideo" poster="davis-testimonial-poster.jpg" preload="none" playsinline>
+            <source src="davis-testimonial.mp4" type="video/mp4">
+          </video>
+          <button class="vt-play" type="button" id="vtPlay" aria-label="Play Davis's testimonial">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
+          </button>
+        </div>
+        <p class="vt-caption">A month with Davis.</p>
+      </div>
+    </div>
+  </section>
+  <script>
+    (function () {
+      var card = document.getElementById('vtCard');
+      var video = document.getElementById('vtVideo');
+      var play = document.getElementById('vtPlay');
+      if (!card || !video || !play) return;
+      function start() {
+        card.classList.add('is-playing');
+        video.setAttribute('controls', '');
+        video.play();
+      }
+      play.addEventListener('click', start);
+      video.addEventListener('play', function () { card.classList.add('is-playing'); });
+    })();
+  </script>
 
   <!-- VALUE PROPS -->
   <section class="section-values">
@@ -1412,49 +1667,6 @@
       </div>
     </div>
   </section>
-
-  <!-- TESTIMONIAL (quote + video) -->
-  <section class="section-testimonial">
-    <div class="container testimonial-grid">
-      <div class="testimonial-copy">
-        <span class="testimonial-mark" aria-hidden="true">&ldquo;</span>
-        <blockquote class="testimonial-quote">My friends would say I was <span class="testimonial-emph">a Michelin-star chef</span>. Which is crazy.</blockquote>
-        <div class="testimonial-attr">
-          <img class="testimonial-photo" src="davis-clute.webp" alt="Davis Clute" width="60" height="60" loading="lazy">
-          <div class="testimonial-id">
-            <p class="testimonial-name">Davis Clute</p>
-            <p class="testimonial-cred">Founder · Forbes 30 Under 30</p>
-          </div>
-        </div>
-      </div>
-      <div class="testimonial-media">
-        <div class="vt-card" id="vtCard">
-          <video class="vt-video" id="vtVideo" poster="davis-testimonial-poster.jpg" preload="none" playsinline>
-            <source src="davis-testimonial.mp4" type="video/mp4">
-          </video>
-          <button class="vt-play" type="button" id="vtPlay" aria-label="Play Davis's testimonial">
-            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
-          </button>
-        </div>
-        <p class="vt-caption">A month with Davis.</p>
-      </div>
-    </div>
-  </section>
-  <script>
-    (function () {
-      var card = document.getElementById('vtCard');
-      var video = document.getElementById('vtVideo');
-      var play = document.getElementById('vtPlay');
-      if (!card || !video || !play) return;
-      function start() {
-        card.classList.add('is-playing');
-        video.setAttribute('controls', '');
-        video.play();
-      }
-      play.addEventListener('click', start);
-      video.addEventListener('play', function () { card.classList.add('is-playing'); });
-    })();
-  </script>
 
   <!-- PROBLEM -->
   <section class="section-problem">

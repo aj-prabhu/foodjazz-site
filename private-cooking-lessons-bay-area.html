@@ -17,6 +17,86 @@
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:image" content="https://foodjazz.club/og-photo.jpg">
   <meta name="theme-color" content="#FAF7F2">
+  <script>
+    // Follow the system until a visitor chooses a theme. Reconcile restored pages and tabs too.
+    (function() {
+      var systemTheme = window.matchMedia('(prefers-color-scheme: dark)');
+      var memoryChoice = null;
+      var followingSystem = false;
+
+      function systemChanged() {
+        window.applyTheme();
+      }
+
+      window.applyTheme = function applyTheme(choice) {
+        if (choice === 'light' || choice === 'dark') {
+          memoryChoice = choice;
+          try {
+            localStorage.setItem('fj-theme', choice);
+            if (localStorage.getItem('fj-theme') === choice) memoryChoice = null;
+          } catch (e) { /* Keep the choice for this page when storage is unavailable. */ }
+        }
+
+        var storedChoice = memoryChoice;
+        try {
+          if (!storedChoice) storedChoice = localStorage.getItem('fj-theme');
+        } catch (e) { /* System preference still works without storage. */ }
+        if (storedChoice !== 'light' && storedChoice !== 'dark') storedChoice = null;
+
+        var theme = storedChoice || (systemTheme.matches ? 'dark' : 'light');
+        var dark = theme === 'dark';
+        document.documentElement.dataset.theme = theme;
+
+        var meta = document.querySelector('meta[name="theme-color"]');
+        if (!meta) {
+          meta = document.createElement('meta');
+          meta.name = 'theme-color';
+          document.head.appendChild(meta);
+        }
+        meta.content = dark ? '#1B1A17' : '#FAF7F2';
+
+        document.querySelectorAll('.theme-toggle').forEach(function(button) {
+          button.hidden = false;
+          button.setAttribute('aria-label', dark ? 'Switch to light mode' : 'Switch to dark mode');
+          button.setAttribute('aria-pressed', String(dark));
+          button.querySelectorAll('[data-theme-icon]').forEach(function(icon) {
+            icon.toggleAttribute('hidden', icon.dataset.themeIcon !== theme);
+          });
+          var label = button.querySelector('.theme-toggle-label');
+          if (label) label.textContent = dark ? 'Light mode' : 'Dark mode';
+          var menuItem = button.closest('.theme-menu-item');
+          if (menuItem) menuItem.hidden = false;
+        });
+
+        var followSystem = !storedChoice;
+        if (followSystem !== followingSystem) {
+          if (systemTheme.addEventListener) {
+            systemTheme[followSystem ? 'addEventListener' : 'removeEventListener']('change', systemChanged);
+          } else {
+            systemTheme[followSystem ? 'addListener' : 'removeListener'](systemChanged);
+          }
+          followingSystem = followSystem;
+        }
+      };
+
+      window.applyTheme();
+      window.addEventListener('pageshow', function() { window.applyTheme(); });
+      window.addEventListener('storage', function(event) {
+        if (event.key === 'fj-theme' || event.key === null) {
+          memoryChoice = null;
+          window.applyTheme();
+        }
+      });
+      document.addEventListener('DOMContentLoaded', function() {
+        document.querySelectorAll('.theme-toggle').forEach(function(button) {
+          button.addEventListener('click', function() {
+            window.applyTheme(document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark');
+          });
+        });
+        window.applyTheme();
+      });
+    })();
+  </script>
   <link rel="canonical" href="https://foodjazz.club/private-cooking-lessons-bay-area">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -24,6 +104,8 @@
 
   <style>
     :root {
+      color-scheme: light;
+      --accent-text: var(--sage-deep);
       --sage: #7A8C6E;
       --sage-light: #A8B89D;
       --sage-muted: #D4DDD0;
@@ -190,7 +272,7 @@
       padding-bottom: 2px;
       transition: color 0.15s ease, border-color 0.15s ease;
     }
-    footer a:hover { color: var(--sage-deep); border-color: var(--sage); }
+    footer a:hover { color: var(--accent-text); border-color: var(--sage); }
 
     @media (max-width: 480px) {
       section { padding: 4rem 0; }
@@ -223,6 +305,32 @@
       width: 88px; height: 88px; border-radius: 50%;
       object-fit: cover; flex-shrink: 0;
     }
+
+    /* ===== DARK MODE ===== */
+    :root[data-theme="dark"] {
+      color-scheme: dark;
+      --cream: #1B1A17;
+      --warm-white: #22211D;
+      --sage-wash: #1F231D;
+      --linen: #25231F;
+      --linen-border: #3A3731;
+      --charcoal: #F1EBE1;
+      --warm-gray: #CFC8BC;
+      --medium-gray: #A39D93;
+      --sage: #9DB090;
+      --sage-light: #B9C8AE;
+      --sage-muted: #3A4235;
+      --accent-text: #B9C8AE;
+      --wood: #CBA47A;
+      --wood-dark: #D2AE84;
+    }
+
+    :root[data-theme="dark"] .btn-primary { background: var(--sage-deep); }
+    :root[data-theme="dark"] .btn-primary:hover { background: #5b6a52; }
+    :root[data-theme="dark"] .page-photo img { box-shadow: 0 18px 50px -24px rgba(0,0,0,0.35); }
+    :root[data-theme="dark"] p,
+    :root[data-theme="dark"] .hero-sub,
+    :root[data-theme="dark"] .faq-a { font-weight: 400; }
   </style>
 
   <script type="application/ld+json">
@@ -370,7 +478,7 @@
       <p>Food Jazz is the only private 1-on-1 in-home cooking coaching program I know of in the San Francisco Bay Area. It is not a cooking class, not a meal kit, and not a personal chef service. The product is skill transfer.</p>
       <p>Here is how it runs. We start with a Week 0 setup in your kitchen, about two hours, where I audit what you already have, do a taste interview, and build a pantry stocking plan around the food you actually like to eat. Then four weekly sessions follow. Week 1 is cold preparations and active tasting, no heat. Week 2 is high heat with the wok and cast iron, plus a grocery trip with me. Week 3 is low and slow: braising, baking, longer cooks. Week 4 is meal composition and cooking for someone else. Then a dinner party on your timeline, where you cook for friends and I show up as a guest.</p>
       <p>The teaching is built around ratios (how much salt fish needs, how much liquid rice cooks at), active tasting (a way to learn flavor from inside the dish), and pattern recognition across cuisines. By the end you can open the fridge, see what is there, and make something good without looking anything up.</p>
-      <p style="margin-top: 1.5rem; font-size: 0.95rem;">Want the framework in more depth? See <a href="/intuitive-cooking" style="color: var(--sage-deep); border-bottom: 1px solid var(--sage-muted); padding-bottom: 1px;">how to learn to cook without recipes →</a></p>
+      <p style="margin-top: 1.5rem; font-size: 0.95rem;">Want the framework in more depth? See <a href="/intuitive-cooking" style="color: var(--accent-text); border-bottom: 1px solid var(--sage-muted); padding-bottom: 1px;">how to learn to cook without recipes →</a></p>
       <div class="photo-row">
         <img src="/photos/food-jazz-wok-toss-lesson-1600.webp" srcset="/photos/food-jazz-wok-toss-lesson-800.webp 800w, /photos/food-jazz-wok-toss-lesson-1600.webp 1600w" sizes="(max-width: 640px) 90vw, 240px" width="1600" height="900" alt="Akshay Prabhu laughs as a home cook tosses vegetables in a wok on a gas stove" loading="lazy" decoding="async">
         <img src="/photos/food-jazz-ingredients-prepped-1600.webp" srcset="/photos/food-jazz-ingredients-prepped-800.webp 800w, /photos/food-jazz-ingredients-prepped-1600.webp 1600w" sizes="(max-width: 640px) 90vw, 240px" width="1600" height="900" alt="Prepped ingredients in glass bowls on a wooden counter before cooking" loading="lazy" decoding="async">

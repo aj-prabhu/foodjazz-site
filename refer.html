@@ -3,6 +3,87 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#FAF7F2">
+  <script>
+    // Follow the system until a visitor chooses a theme. Reconcile restored pages and tabs too.
+    (function() {
+      var systemTheme = window.matchMedia('(prefers-color-scheme: dark)');
+      var memoryChoice = null;
+      var followingSystem = false;
+
+      function systemChanged() {
+        window.applyTheme();
+      }
+
+      window.applyTheme = function applyTheme(choice) {
+        if (choice === 'light' || choice === 'dark') {
+          memoryChoice = choice;
+          try {
+            localStorage.setItem('fj-theme', choice);
+            if (localStorage.getItem('fj-theme') === choice) memoryChoice = null;
+          } catch (e) { /* Keep the choice for this page when storage is unavailable. */ }
+        }
+
+        var storedChoice = memoryChoice;
+        try {
+          if (!storedChoice) storedChoice = localStorage.getItem('fj-theme');
+        } catch (e) { /* System preference still works without storage. */ }
+        if (storedChoice !== 'light' && storedChoice !== 'dark') storedChoice = null;
+
+        var theme = storedChoice || (systemTheme.matches ? 'dark' : 'light');
+        var dark = theme === 'dark';
+        document.documentElement.dataset.theme = theme;
+
+        var meta = document.querySelector('meta[name="theme-color"]');
+        if (!meta) {
+          meta = document.createElement('meta');
+          meta.name = 'theme-color';
+          document.head.appendChild(meta);
+        }
+        meta.content = dark ? '#1B1A17' : '#FAF7F2';
+
+        document.querySelectorAll('.theme-toggle').forEach(function(button) {
+          button.hidden = false;
+          button.setAttribute('aria-label', dark ? 'Switch to light mode' : 'Switch to dark mode');
+          button.setAttribute('aria-pressed', String(dark));
+          button.querySelectorAll('[data-theme-icon]').forEach(function(icon) {
+            icon.toggleAttribute('hidden', icon.dataset.themeIcon !== theme);
+          });
+          var label = button.querySelector('.theme-toggle-label');
+          if (label) label.textContent = dark ? 'Light mode' : 'Dark mode';
+          var menuItem = button.closest('.theme-menu-item');
+          if (menuItem) menuItem.hidden = false;
+        });
+
+        var followSystem = !storedChoice;
+        if (followSystem !== followingSystem) {
+          if (systemTheme.addEventListener) {
+            systemTheme[followSystem ? 'addEventListener' : 'removeEventListener']('change', systemChanged);
+          } else {
+            systemTheme[followSystem ? 'addListener' : 'removeListener'](systemChanged);
+          }
+          followingSystem = followSystem;
+        }
+      };
+
+      window.applyTheme();
+      window.addEventListener('pageshow', function() { window.applyTheme(); });
+      window.addEventListener('storage', function(event) {
+        if (event.key === 'fj-theme' || event.key === null) {
+          memoryChoice = null;
+          window.applyTheme();
+        }
+      });
+      document.addEventListener('DOMContentLoaded', function() {
+        document.querySelectorAll('.theme-toggle').forEach(function(button) {
+          button.addEventListener('click', function() {
+            window.applyTheme(document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark');
+          });
+        });
+        window.applyTheme();
+      });
+    })();
+  </script>
   <meta name="robots" content="noindex, nofollow">
   <title>Food Jazz — a favor</title>
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
@@ -11,6 +92,8 @@
   <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet">
   <style>
     :root {
+      color-scheme: light;
+      --accent-text: var(--sage-deep);
       --sage: #7A8C6E;
       --sage-muted: #D4DDD0;
       --sage-wash: #EDF2EB;
@@ -128,7 +211,7 @@
       font-size: 0.98rem;
       line-height: 1.6;
     }
-    .draft .blank { color: var(--sage-deep); font-weight: 500; }
+    .draft .blank { color: var(--accent-text); font-weight: 500; }
 
     .btn-row { display: flex; gap: 0.7rem; margin-top: 1rem; flex-wrap: wrap; }
     .btn {
@@ -146,12 +229,12 @@
       transition: background 0.15s ease;
     }
     .btn:hover { background: var(--sage-deep); }
-    .btn.secondary { background: transparent; color: var(--sage-deep); }
+    .btn.secondary { background: transparent; color: var(--accent-text); }
     .btn.secondary:hover { background: var(--sage-wash); }
     .btn[hidden] { display: none; }
 
     .link-note { margin-top: 1rem; font-size: 0.8rem; color: var(--medium-gray); word-break: break-all; }
-    .link-note code { font-family: var(--font-body); color: var(--sage-deep); }
+    .link-note code { font-family: var(--font-body); color: var(--accent-text); }
 
     .terms { font-size: 0.88rem; color: var(--warm-gray); }
     .terms ul { margin: 0; padding-left: 1.1rem; }
@@ -159,11 +242,35 @@
     .terms li:last-child { margin-bottom: 0; }
 
     footer { padding: 2rem 0 3rem; text-align: center; font-size: 0.85rem; color: var(--medium-gray); }
-    footer a { color: var(--sage-deep); }
+    footer a { color: var(--accent-text); }
 
     @media (min-width: 700px) {
       .container { padding-left: 2rem; padding-right: 2rem; }
     }
+
+    /* ===== DARK MODE ===== */
+    :root[data-theme="dark"] {
+      color-scheme: dark;
+      --cream: #1B1A17;
+      --warm-white: #22211D;
+      --sage-wash: #1F231D;
+      --linen: #25231F;
+      --linen-border: #3A3731;
+      --charcoal: #F1EBE1;
+      --warm-gray: #CFC8BC;
+      --medium-gray: #A39D93;
+      --sage: #9DB090;
+      --sage-light: #B9C8AE;
+      --sage-muted: #3A4235;
+      --accent-text: #B9C8AE;
+      --wood: #CBA47A;
+      --wood-dark: #D2AE84;
+    }
+
+    :root[data-theme="dark"] body { font-weight: 400; }
+    :root[data-theme="dark"] .btn:not(.secondary) { background: var(--sage-deep); border-color: var(--sage-deep); }
+    :root[data-theme="dark"] .btn:not(.secondary):hover { background: #5b6a52; }
+    :root[data-theme="dark"] .tab[aria-selected="true"] { background: var(--sage-deep); border-color: var(--sage-deep); }
   </style>
   <script src="/analytics.js"></script>
   <script defer src="/_vercel/insights/script.js"></script>
