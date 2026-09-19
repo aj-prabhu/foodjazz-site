@@ -8,15 +8,16 @@
   <meta name="description" content="Private 1-on-1 in-home cooking coaching across the San Francisco Bay Area. A 30-day intensive that teaches you to cook intuitively, without recipes.">
   <meta property="og:title" content="1-on-1 In-Home Cooking Coach in the Bay Area — Food Jazz">
   <meta property="og:description" content="Private 1-on-1 in-home cooking coaching in the Bay Area. 30 days in your kitchen. Cook without recipes, forever.">
-  <meta property="og:image" content="https://foodjazz.club/og-image.png">
+  <meta property="og:image" content="https://foodjazz.club/og-photo.jpg">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <meta property="og:url" content="https://foodjazz.club/">
   <meta property="og:type" content="website">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:image" content="https://foodjazz.club/og-image.png">
+  <meta name="twitter:image" content="https://foodjazz.club/og-photo.jpg">
   <meta name="format-detection" content="telephone=no">
   <meta name="theme-color" content="#FAF7F2">
+  <link rel="preload" as="image" href="/photos/food-jazz-hero-flambe-1920.webp" imagesrcset="/photos/food-jazz-hero-flambe-960.webp 960w, /photos/food-jazz-hero-flambe-1920.webp 1920w" imagesizes="(max-width: 900px) 210vw, 66vw" fetchpriority="high">
   <link rel="canonical" href="https://foodjazz.club/">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -107,7 +108,7 @@
     /* ===== LAYOUT ===== */
     .container { max-width: 1100px; margin: 0 auto; padding: 0 2rem; }
     .container--narrow { max-width: 680px; margin: 0 auto; padding: 0 2rem; }
-    section { padding: 9rem 0; }
+    section { padding: 6rem 0; }
 
     /* ===== NAV ===== */
     nav {
@@ -128,8 +129,8 @@
     .nav-links a:hover { color: var(--charcoal); }
     .nav-phone { font-weight: 400; letter-spacing: 0.02em; }
     .nav-right { display: flex; align-items: center; gap: 1rem; }
-    .nav-cta { font-size: 0.88rem; background: var(--sage); color: var(--cream) !important; padding: 0.5rem 1.2rem; border-radius: 50px; transition: opacity 0.15s; font-weight: 400; }
-    .nav-cta:hover { opacity: 0.85; }
+    .nav-cta { font-size: 0.88rem; background: var(--sage-deep); color: white !important; padding: 0.5rem 1.2rem; border-radius: 50px; transition: background 0.15s; font-weight: 400; }
+    .nav-cta:hover { background: #5b6a52; }
 
     /* ===== GLOW BUTTON ===== */
     .btn-wrap {
@@ -156,7 +157,7 @@
       font-family: var(--font-display);
       font-size: 1.25rem;
       font-weight: 600;
-      background: var(--sage);
+      background: var(--sage-deep);
       color: white;
       padding: 16px 48px;
       border-radius: 50px;
@@ -165,7 +166,7 @@
       text-decoration: none;
       transition: background 0.2s ease, transform 0.15s ease;
     }
-    .btn-primary:hover { background: var(--sage-deep); transform: translateY(-2px); }
+    .btn-primary:hover { background: #5b6a52; transform: translateY(-2px); }
     .btn-primary:active { transform: translateY(0); }
     .btn-arrow {
       display: inline-block;
@@ -251,8 +252,92 @@
       color: var(--medium-gray); letter-spacing: 0.18em; text-transform: uppercase;
     }
 
+    /* ===== PHOTOS ===== */
+    /* Photo hero: the flambé fills the left and dissolves into cream under the copy */
+    .hero--photo {
+      display: grid; grid-template-columns: 44fr 56fr; align-items: center;
+      min-height: min(84vh, 760px); padding: 0; text-align: left;
+    }
+    .hero-media { position: absolute; top: 0; bottom: 0; left: 0; width: 62%; }
+    .hero-media img {
+      display: block; width: 100%; height: 100%;
+      object-fit: cover; object-position: 58% 50%;
+      -webkit-mask-image: linear-gradient(to right, #000 52%, transparent 97%);
+              mask-image: linear-gradient(to right, #000 52%, transparent 97%);
+    }
+    .hero-copy { grid-column: 2; position: relative; z-index: 2; padding: 5rem 2rem 5rem 0.5rem; max-width: 900px; }
+    .hero--photo .hero-breath { display: none; }
+    .hero--photo .hero-eyebrow { justify-content: flex-start; }
+    .hero--photo .hero-eyebrow-rule { display: none; }
+    .hero-title {
+      font-family: var(--font-display); font-weight: 600; color: var(--charcoal);
+      font-size: min(5.4rem, calc((56vw - 52px) / 10)); line-height: 1.02; margin-bottom: 1.4rem;
+      letter-spacing: -0.015em;
+      text-wrap: balance;
+    }
+    .hero--photo .hero-sub { font-size: 1.05rem; max-width: 40ch; text-wrap: balance; }
+    .hero-title span { color: var(--sage); display: block; }
+    .hero--photo .hero-title { margin-left: -0.05em; } /* Caveat side bearing: line the Y up with the eyebrow */
+    .hero--photo .hero-sub { margin-left: 0; }
+    .hero--photo .hero-location { color: var(--warm-gray); }
+    /* Tablet landscape: same split, tighter, so the button stays on the first screen */
+    @media (max-width: 1100px) and (min-width: 901px) {
+      .hero--photo { min-height: min(80vh, 680px); }
+      .hero-copy { padding: 3.5rem 2rem 3.5rem 0.5rem; }
+    }
+    /* Phones and portrait tablets: copy on cream up top, the photo fills the rest of
+       the first screen and dissolves into the cream at its top edge, the vertical
+       twin of the desktop fade. Content height, never clipped. */
+    @media (max-width: 900px) {
+      .hero.hero--photo {
+        display: flex; flex-direction: column;
+        min-height: calc(100svh - 69px); padding: 0; text-align: left;
+      }
+      .hero--photo .hero-spiral { display: none; }
+      .hero--photo .hero-copy {
+        order: 0; position: relative; z-index: 2;
+        margin: 0; padding: 1.6rem 1.1rem 0; max-width: 40rem;
+      }
+      .hero--photo .hero-title {
+        font-size: min(4.4rem, calc((100vw - 44px) / 8.2)); line-height: 1.02;
+        margin: 0 0 0.8rem; text-shadow: none;
+      }
+      .hero--photo .hero-sub { font-size: 1.05rem; max-width: 34ch; margin: 0 0 1.3rem; }
+      .hero--photo .btn-primary { width: auto; padding: 13px 30px; font-size: 1.1rem; }
+      .hero--photo .hero-location { margin-top: 1rem; text-align: left; }
+      .hero--photo .hero-media {
+        order: 1; position: relative; z-index: 1;
+        flex: 1 1 auto; min-height: 15rem; width: 100%; margin-top: -1rem;
+      }
+      .hero--photo .hero-media img {
+        position: absolute; inset: 0; width: 100%; height: 100%;
+        object-fit: cover; object-position: 42% 40%;
+        -webkit-mask-image: linear-gradient(to bottom, transparent 0%, #000 24%);
+                mask-image: linear-gradient(to bottom, transparent 0%, #000 24%);
+      }
+    }
+    /* Portrait tablets have room for each phrase on its own line */
+    @media (min-width: 601px) and (max-width: 900px) {
+      .hero--photo .hero-title { font-size: calc((100vw - 44px) / 10.3); }
+    }
+    .kitchen-reel {
+      margin: 4rem auto 0; max-width: 1000px;
+      border-radius: 4px; overflow: hidden; aspect-ratio: 16 / 9;
+      background: #1f1f1e;
+    }
+    .kitchen-reel video { display: block; width: 100%; height: 100%; object-fit: cover; }
+    .experience-list--photos .experience-item { grid-template-columns: 40px 1fr 240px; }
+    .experience-photo {
+      display: block; width: 240px; height: auto; aspect-ratio: 3 / 2;
+      object-fit: cover; border-radius: 4px;
+    }
+    .closing-photo {
+      max-width: 880px; margin: 0 auto 3.5rem; padding: 0 2rem;
+    }
+    .closing-photo video { display: block; width: 100%; height: auto; aspect-ratio: 16 / 9; object-fit: cover; border-radius: 4px; background: #2b231d; }
+
     /* ===== VALUE PROPS ===== */
-    .section-values { background: var(--sage-wash); padding: 6rem 0; }
+    .section-values { background: var(--sage-wash); padding: 4.5rem 0; }
     .values-header { text-align: center; margin-bottom: 4rem; }
     .values-header h2 { margin: 0.5rem 0 1rem; }
     .values-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2.5rem; }
@@ -309,7 +394,7 @@
     .value-desc { font-size: 0.95rem; font-weight: 300; color: var(--warm-gray); line-height: 1.75; }
 
     /* ===== TESTIMONIAL (quote + video) ===== */
-    .section-testimonial { background: var(--cream); padding: clamp(5rem, 10vw, 7.5rem) 0; }
+    .section-testimonial { background: var(--cream); padding: clamp(3.5rem, 7vw, 5rem) 0; }
     .testimonial-grid {
       display: grid; grid-template-columns: 1fr 1.15fr;
       gap: clamp(2.75rem, 5vw, 4.5rem); align-items: center;
@@ -363,7 +448,7 @@
     }
 
     /* ===== PROBLEM ===== */
-    .section-problem { background: var(--charcoal); padding: 9rem 0 7rem; }
+    .section-problem { background: var(--charcoal); padding: 6rem 0 4.5rem; }
     .section-problem h2 {
       font-size: clamp(2.4rem, 6vw, 3.8rem);
       font-weight: 700;
@@ -407,12 +492,12 @@
     }
 
     /* ===== METHOD ===== */
-    .section-method { background: var(--cream); padding: 9rem 0; }
+    .section-method { background: var(--cream); padding: 6rem 0; }
     .section-method h2 { margin: 0.5rem 0 1.75rem; }
     .section-method p + p { margin-top: 1.1rem; }
 
     /* ===== PROGRAM ===== */
-    .section-experience { background: var(--sage-wash); padding: 7rem 0; }
+    .section-experience { background: var(--sage-wash); padding: 5rem 0; }
     .experience-header { max-width: 580px; margin: 0 auto 4rem; text-align: center; }
     .experience-header h2 { margin: 0.5rem 0 1rem; }
     .experience-list { list-style: none; }
@@ -441,7 +526,7 @@
     .experience-item--finale h3 { color: var(--charcoal); }
 
     /* ===== OUTCOMES ===== */
-    .section-outcomes { background: var(--cream); padding: 10rem 0; }
+    .section-outcomes { background: var(--cream); padding: 6.5rem 0; }
     .outcomes-hero { text-align: center; margin-bottom: 7rem; }
     .outcomes-headline {
       font-family: var(--font-display);
@@ -503,13 +588,14 @@
     }
 
     /* ===== ABOUT ===== */
-    .section-about { background: var(--sage-wash); padding: 6rem 0; }
+    .section-about { background: var(--sage-wash); padding: 4.5rem 0; }
     .about-top {
-      display: grid; grid-template-columns: 200px 1fr 1fr;
-      gap: 4rem; align-items: start; margin-bottom: 4rem;
+      display: grid; grid-template-columns: minmax(220px, 340px) minmax(0, 34rem);
+      justify-content: center; align-items: center;
+      gap: clamp(2.5rem, 6vw, 5rem); margin-bottom: 4rem;
     }
     .about-photo-wrap {
-      width: 185px; height: 238px; border-radius: 4px;
+      width: 100%; aspect-ratio: 4 / 5; border-radius: 4px;
       border: 1.5px solid var(--golden); overflow: hidden;
       box-shadow: 4px 4px 0 rgba(212,168,67,0.2);
     }
@@ -517,27 +603,30 @@
       width: 100%; height: 100%; object-fit: cover;
       object-position: center 8%; display: block;
     }
-    .about-role {
-      display: inline-flex; align-items: center;
-      border: 1px solid var(--sage-muted); border-radius: 99px;
-      padding: 0.25rem 0.75rem; font-size: 0.72rem; font-weight: 500;
-      color: var(--sage); letter-spacing: 0.18em;
-      text-transform: uppercase; margin-bottom: 0.6rem;
-    }
+    .about-text .label { margin-bottom: 0.9rem; }
     .about-name {
-      font-family: var(--font-display); font-size: clamp(2rem, 4vw, 2.8rem);
-      font-weight: 600; color: var(--charcoal); line-height: 1.05; margin-bottom: 1.25rem;
+      font-family: var(--font-display); font-size: clamp(2.4rem, 4.2vw, 3.3rem);
+      font-weight: 600; color: var(--charcoal); line-height: 1.05; margin-bottom: 0.6rem;
+    }
+    .about-role {
+      display: block; font-size: 0.72rem; font-weight: 500;
+      color: var(--warm-gray); letter-spacing: 0.16em; line-height: 1.6;
+      text-transform: uppercase; margin-bottom: 1.6rem;
     }
     .about-bio {
       font-size: 1rem; font-weight: 300;
       color: var(--warm-gray); line-height: 1.8;
     }
     .about-bio + .about-bio { margin-top: 1rem; }
+    .about-bio + .about-bio--lead { margin-top: 1.4rem; }
     .about-bio--lead {
       font-size: 1.25rem; font-weight: 400; color: var(--sage);
       line-height: 1.6; font-style: italic;
     }
     .about-bio strong { font-weight: 500; color: var(--charcoal); }
+    @media (min-width: 769px) and (max-width: 960px) {
+      .about-top { grid-template-columns: 220px minmax(0, 1fr); gap: 2.5rem; }
+    }
 
     /* Press banner — full width above bio */
     .about-press-banner {
@@ -557,20 +646,15 @@
       max-width: 820px;
       margin: 0 auto;
     }
-    .about-david {
-      position: relative; border-radius: 4px; overflow: hidden;
-    }
+    .about-david { position: relative; }
     .about-david img {
       width: 100%; height: 500px; object-fit: cover;
       object-position: center top; border-radius: 4px; display: block;
     }
     .about-david-caption {
-      position: absolute; bottom: 0; left: 0; right: 0;
-      background: linear-gradient(transparent, rgba(46,46,44,0.88));
-      color: rgba(243,237,228,0.9); font-size: 0.78rem; font-weight: 300;
-      padding: 2.5rem 1.2rem 1rem; border-radius: 0 0 4px 4px;
+      margin-top: 0.7rem; text-align: center;
+      color: var(--medium-gray); font-size: 0.72rem; font-weight: 300; line-height: 1.5;
     }
-    .about-david-caption strong { color: var(--linen); font-weight: 500; }
     .about-press-col { display: flex; flex-direction: column; justify-content: flex-start; gap: 2rem; }
     .about-press-label {
       font-size: 0.72rem; font-weight: 500; color: var(--sage);
@@ -594,7 +678,7 @@
     .about-hulu-note strong { color: var(--linen); font-weight: 400; }
 
     /* ===== FAQ ACCORDION ===== */
-    .section-faq { background: var(--sage-wash); padding: 7rem 0; }
+    .section-faq { background: var(--sage-wash); padding: 5rem 0; }
     .section-faq h2 { margin: 0.5rem 0 3rem; }
     .faq-list { list-style: none; }
     .faq-item { border-top: 1px solid var(--sage-muted); }
@@ -627,7 +711,7 @@
     .faq-cta-sub { font-size: 0.85rem; font-weight: 300; color: var(--warm-gray); margin-top: 1.25rem; }
 
     /* ===== MID CTA ===== */
-    .section-mid-cta { background: var(--cream); padding: 6rem 0; text-align: center; }
+    .section-mid-cta { background: var(--cream); padding: 4.5rem 0; text-align: center; }
     .mid-cta-sub {
       font-size: 0.9rem; color: var(--medium-gray); font-weight: 300;
       margin: 1.25rem auto 0; max-width: 460px; line-height: 1.65;
@@ -638,7 +722,7 @@
     .mid-cta-contact a { color: var(--sage); text-decoration: underline; }
 
     /* ===== THREE COOKS ===== */
-    .section-cooks { background: var(--sage-wash); padding: 9rem 0; }
+    .section-cooks { background: var(--sage-wash); padding: 6rem 0; }
     .cooks-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2.5rem; margin-top: 3rem; }
     .cook-card {
       padding: 2rem 1.5rem;
@@ -695,7 +779,7 @@
 
     /* ===== CLOSING SECTION ===== */
     .section-closing {
-      background: var(--cream); padding: 5rem 0; text-align: center;
+      background: var(--cream); padding: 4rem 0; text-align: center;
     }
     .section-closing .btn-glow {
       animation: closing-breathe 4s ease-in-out infinite;
@@ -731,7 +815,7 @@
     .wave-divider svg { display: block; width: 100%; height: 20px; }
 
     /* ===== CTA ===== */
-    .section-cta { background: var(--cream); padding: 9rem 0; text-align: center; }
+    .section-cta { background: var(--cream); padding: 6rem 0; text-align: center; }
     .cta-eyebrow {
       display: flex; align-items: center; justify-content: center;
       gap: 1rem; margin-bottom: 1.25rem;
@@ -769,73 +853,36 @@
       margin-top: 1rem; padding-top: 1rem; border-top: 1px solid var(--sage-muted);
     }
 
-    /* ===== LOGO MARQUEE ===== */
-    .section-press {
-      background: var(--linen);
-      border-top: 1px solid var(--linen-border);
-      border-bottom: 1px solid var(--linen-border);
-      padding: 2rem 0;
-      overflow: clip;
+    /* ===== PRESS ROW (still, like akshayprabhu.net) ===== */
+    .about-press-banner { text-align: center; }
+    .about-press-row {
+      display: flex; flex-wrap: wrap; justify-content: center; align-items: center;
+      gap: 1.1rem 2.25rem;
     }
-    .press-marquee-label {
-      text-align: center;
-      font-size: 0.72rem;
-      font-weight: 500;
-      color: var(--medium-gray);
-      letter-spacing: 0.25em;
-      text-transform: uppercase;
-      margin-bottom: 1.25rem;
-    }
-    .marquee-track {
-      display: flex;
-      width: max-content;
-      animation: marquee 50s linear infinite;
-    }
-    @keyframes marquee {
-      from { transform: translateX(0); }
-      to { transform: translateX(-50%); }
-    }
-    .marquee-set {
-      display: flex;
-      align-items: center;
-      gap: 5rem;
-      padding-right: 5rem;
-    }
-    .marquee-img {
-      height: 26px;
-      width: auto;
-      object-fit: contain;
-      opacity: 0.5;
-      filter: grayscale(100%);
-      flex-shrink: 0;
-    }
-    .marquee-img.invert {
-      filter: grayscale(100%) invert(1) brightness(0.4);
-    }
-    .about-marquee-wrap {
-      overflow: hidden;
-      margin-bottom: 1.5rem;
-      -webkit-mask-image: linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%);
-      mask-image: linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%);
-    }
-    .about-marquee-wrap .marquee-img,
-    .about-marquee-wrap .marquee-img.invert {
+    .about-press-row img {
+      height: 20px; width: auto;
       filter: brightness(0) saturate(100%) invert(56%) sepia(10%) saturate(700%) hue-rotate(70deg) brightness(92%);
-      opacity: 0.5;
+      opacity: 0.75;
     }
+    .about-press-row .press-logo--nyt { height: 17px; }
+    .about-press-row .press-logo--abc7 { height: 28px; }
+    .about-press-row .press-logo--civileats { height: 26px; }
 
     /* ===== NAV CTA SCROLL REVEAL ===== */
     .nav-cta-scroll {
       opacity: 0;
       transform: translateY(-6px);
       pointer-events: none;
-      transition: opacity 0.8s ease, transform 0.8s ease;
+      visibility: hidden;
+      transition: opacity 0.8s ease, transform 0.8s ease, visibility 0s linear 0.8s;
       box-shadow: 0 0 12px rgba(212,168,67,0.35), 0 0 4px rgba(212,168,67,0.2);
     }
     .nav-cta-scroll.visible {
       opacity: 1;
       transform: translateY(0);
       pointer-events: auto;
+      visibility: visible;
+      transition: opacity 0.8s ease, transform 0.8s ease, visibility 0s;
     }
 
     /* ===== RESPONSIVE ===== */
@@ -876,11 +923,13 @@
     .mobile-nav.open { display: flex; }
     .mobile-nav li { border-top: 1px solid var(--sage-muted); }
     .mobile-nav a { display: block; padding: 0.9rem 0; font-size: 1rem; color: var(--warm-gray); }
-    .mobile-nav .nav-cta { background: var(--sage); color: var(--cream) !important; font-weight: 500; display: inline-block; padding: 0.6rem 1.2rem; border-radius: 4px; margin-top: 0.5rem; font-size: 0.95rem; }
+    .mobile-nav .nav-cta { background: var(--sage-deep); color: white !important; font-weight: 500; display: inline-block; padding: 0.6rem 1.2rem; border-radius: 4px; margin-top: 0.5rem; font-size: 0.95rem; }
 
     @media (max-width: 768px) {
       /* Layout */
-      section { padding: 5rem 0; }
+      section,
+      .section-values, .section-testimonial, .section-method, .section-experience,
+      .section-about, .section-faq, .section-mid-cta, .section-cooks, .section-cta { padding: 3.5rem 0; }
       .container, .container--narrow { padding: 0 1.25rem; }
 
       /* Nav */
@@ -910,18 +959,17 @@
       .values-header { margin-bottom: 2.5rem; }
 
       /* Problem section */
-      .section-problem { padding: 6rem 0 5rem; }
+      .section-problem { padding: 4rem 0 3.5rem; }
       .section-problem h2 { font-size: clamp(1.8rem, 6vw, 2.4rem); margin-bottom: 2.5rem; }
       .section-problem p { font-size: 1.05rem; }
       .section-problem p + p { margin-top: 1.75rem; }
 
       /* About / Bio */
       .about-top { grid-template-columns: 1fr; gap: 1.75rem; }
-      .about-photo-wrap { margin: 0 auto; }
+      .about-photo-wrap { margin: 0 auto; width: min(260px, 72%); }
+      .about-text .label, .about-name, .about-role { text-align: center; }
       .about-name { font-size: 2rem; }
-      .section-about .label { text-align: center; }
-      .about-role { display: block; text-align: center; width: fit-content; margin: 0 auto 0.6rem; font-size: 0.65rem; padding: 0.2rem 0.6rem; color: var(--sage); }
-      .section-about .about-top > div { text-align: center; }
+      .about-role { font-size: 0.65rem; margin-bottom: 1.2rem; }
       .about-bio--lead { font-size: 1.1rem; }
       .about-bottom { max-width: 100%; }
       .about-david img { height: auto; max-height: 320px; object-position: center 20%; }
@@ -934,6 +982,12 @@
       .experience-item h3 { font-size: clamp(1.1rem, 3vw, 1.4rem); }
       .experience-item p { font-size: 0.9rem; }
       .experience-item--finale { padding: 1.75rem 1.25rem; }
+      .experience-list--photos .experience-item { grid-template-columns: 32px 1fr; }
+      .experience-photo { grid-column: 2; width: 100%; margin-top: 1.1rem; }
+
+      /* Photos */
+      .kitchen-reel { margin-top: 3rem; }
+      .closing-photo { padding: 0 1.25rem; margin-bottom: 2.5rem; }
 
       /* What You'll Learn */
       .learn-grid { grid-template-columns: 1fr; gap: 1.5rem; }
@@ -946,7 +1000,7 @@
       .cook-card { padding: 1.75rem 1.25rem; }
 
       /* Outcomes */
-      .section-outcomes { padding: 7rem 0; }
+      .section-outcomes { padding: 4.5rem 0; }
       .outcomes-hero { margin-bottom: 5rem; }
       .outcomes-headline { font-size: clamp(1.8rem, 6vw, 2.8rem); }
       .outcomes-headline + .outcomes-headline { margin-top: 2rem; }
@@ -958,14 +1012,14 @@
       .outcomes-closing { font-size: 0.95rem; margin-top: 0.75rem; }
 
       /* FAQ */
-      .section-faq { padding: 5rem 0; }
+      .section-faq { padding: 3.5rem 0; }
       .section-faq h2 { margin-bottom: 2rem; }
       .faq-q { font-size: 1.15rem; }
       .faq-a { font-size: 0.9rem; }
       .faq-cta { margin-top: 3rem; padding-top: 2rem; }
 
       /* Closing */
-      .section-closing { padding: 4rem 0; }
+      .section-closing { padding: 3rem 0; }
       .closing-text { font-size: 0.95rem; }
       .closing-tagline { font-size: clamp(1.6rem, 5vw, 2.2rem); }
       .closing-contact { font-size: 0.8rem; }
@@ -987,6 +1041,13 @@
       .outcomes-headline { font-size: 1.8rem; }
       .cook-card { padding: 1.5rem 1rem; }
       .experience-item--finale { padding: 1.5rem 1rem; }
+    }
+
+    /* Slimmer bar on phones leaves the hero more of the first screen (~69px tall) */
+    @media (max-width: 768px) {
+      nav { padding: 0.5rem 0; }
+      .nav-logo { font-size: 1.45rem; }
+      .nav-cta { padding: 0.4rem 1rem; font-size: 0.82rem; }
     }
   </style>
 
@@ -1027,7 +1088,7 @@
           "Akshay Prabhu Cooking Coach"
         ],
         "url": "https://foodjazz.club",
-        "image": "https://foodjazz.club/og-image.png",
+        "image": "https://foodjazz.club/og-photo.jpg",
         "logo": "https://foodjazz.club/og-image.png",
         "founder": { "@id": "https://foodjazz.club/#akshay" },
         "description": "Food Jazz is a 30-day in-home cooking intensive in the San Francisco Bay Area. Akshay comes to your kitchen once a week, audits your space, stocks your pantry around your taste, and runs daily cooking assignments so you build the skill. By the end you can cook what you want without looking up a recipe. Built for people who order Factor or DoorDash most nights and want to cook instead.",
@@ -1261,7 +1322,8 @@
   </nav>
 
   <!-- HERO -->
-  <section class="hero">
+  <section class="hero hero--photo">
+
 
     <!-- Spiral — top right, bleeds off edge -->
     <svg class="hero-spiral" width="520" height="520" viewBox="0 0 270 270" fill="none" aria-hidden="true">
@@ -1277,30 +1339,25 @@
       <circle cx="100" cy="100" r="96" stroke="#2E2E2C" stroke-width="0.7"/>
     </svg>
 
-    <div class="hero-eyebrow">
-      <span class="hero-eyebrow-rule"></span>
-      <span class="label">1-on-1 · In Your Kitchen · Bay Area</span>
-      <span class="hero-eyebrow-rule"></span>
-    </div>
-    <div class="morph-block">
-      <span class="morph-static">Cooking should feel</span>
-      <div class="morph-container">
-        <span id="morph-text1" class="morph-text"></span>
-        <span id="morph-text2" class="morph-text"></span>
+    <div class="hero-copy">
+      <h1 class="hero-title">The kitchen operating system <span>for busy professionals.</span></h1>
+      <p class="hero-sub">30 days of 1&#8209;on&#8209;1 cooking coaching in your own kitchen. By the end you're an intuitive and effortless cook for life.</p>
+      <div class="btn-wrap">
+        <div class="btn-glow"></div>
+        <a href="https://tally.so/r/68kgMB" class="btn-primary">
+          Apply Now
+          <svg class="btn-arrow" viewBox="0 0 10 10" fill="none" stroke="white" stroke-width="2">
+            <path d="M0 5h7" class="btn-arrow-line"/>
+            <path d="M4 1l4 4-4 4"/>
+          </svg>
+        </a>
       </div>
+      <p class="hero-location">San Francisco · Oakland · Berkeley</p>
     </div>
-    <p class="hero-sub">A 30-day cooking intensive designed to make you an intuitive, effortless cook — forever.</p>
-    <div class="btn-wrap">
-      <div class="btn-glow"></div>
-      <a href="https://tally.so/r/68kgMB" class="btn-primary">
-        Apply Now
-        <svg class="btn-arrow" viewBox="0 0 10 10" fill="none" stroke="white" stroke-width="2">
-          <path d="M0 5h7" class="btn-arrow-line"/>
-          <path d="M4 1l4 4-4 4"/>
-        </svg>
-      </a>
+
+    <div class="hero-media">
+      <img src="/photos/food-jazz-hero-flambe-1920.webp" srcset="/photos/food-jazz-hero-flambe-960.webp 960w, /photos/food-jazz-hero-flambe-1920.webp 1920w" sizes="(max-width: 900px) 210vw, 66vw" width="1920" height="1080" alt="Flames rise from a wok as Akshay Prabhu and a home cook work the stove together during an in-home cooking lesson" fetchpriority="high">
     </div>
-    <p class="hero-location">San Francisco · Oakland · Berkeley</p>
   </section>
 
   <!-- VALUE PROPS -->
@@ -1417,56 +1474,46 @@
 
       <p class="problem-line">Food Jazz is the fundamental cooking education everyone needs — the easiest way to make sense of the madness and take back control of your diet. You deserve to eat well. And it doesn't need to be hard, stressful, or time consuming.</p>
     </div>
+    <div class="container">
+      <div class="kitchen-reel">
+        <video id="kitchenReel" data-inview-loop muted loop playsinline preload="none" poster="/kitchen-reel-one-meal-poster.webp" aria-hidden="true">
+          <source src="/kitchen-reel-one-meal.mp4" type="video/mp4">
+        </video>
+      </div>
+    </div>
   </section>
 
   <!-- ABOUT -->
   <section id="about" class="section-about">
     <div class="container">
 
-      <!-- Press marquee — above bio -->
+      <!-- Press row — above bio -->
       <div class="about-press-banner">
         <span class="about-press-label">As seen on</span>
-        <div class="about-marquee-wrap">
-          <div class="marquee-track">
-            <div class="marquee-set">
-              <img class="marquee-img" src="press-npr.png" alt="NPR" loading="lazy">
-              <img class="marquee-img" src="press-nyt.svg" alt="New York Times" loading="lazy">
-              <img class="marquee-img" src="press-eater.png" alt="Eater" loading="lazy">
-              <img class="marquee-img" src="press-hulu.png" alt="Hulu" loading="lazy">
-              <img class="marquee-img" src="press-abc7.png" alt="ABC7" loading="lazy">
-              <img class="marquee-img" src="press-kqed.png" alt="KQED" loading="lazy">
-              <img class="marquee-img" src="press-cbs.svg" alt="CBS" loading="lazy">
-              <img class="marquee-img" src="press-civileats.svg" alt="Civil Eats" loading="lazy">
-            </div>
-            <div class="marquee-set" aria-hidden="true">
-              <img class="marquee-img" src="press-npr.png" alt="">
-              <img class="marquee-img" src="press-nyt.svg" alt="">
-              <img class="marquee-img" src="press-eater.png" alt="">
-              <img class="marquee-img" src="press-hulu.png" alt="">
-              <img class="marquee-img" src="press-abc7.png" alt="">
-              <img class="marquee-img" src="press-kqed.png" alt="">
-              <img class="marquee-img" src="press-cbs.svg" alt="">
-              <img class="marquee-img" src="press-civileats.svg" alt="">
-            </div>
-          </div>
+        <div class="about-press-row">
+          <img src="press-nyt.svg" alt="New York Times" class="press-logo--nyt" loading="lazy" decoding="async">
+          <img src="press-npr.png" alt="NPR" loading="lazy" decoding="async">
+          <img src="press-kqed.png" alt="KQED" loading="lazy" decoding="async">
+          <img src="press-abc7.png" alt="ABC7" class="press-logo--abc7" loading="lazy" decoding="async">
+          <img src="press-cbs.svg" alt="CBS" loading="lazy" decoding="async">
+          <img src="press-hulu.png" alt="Hulu" loading="lazy" decoding="async">
+          <img src="press-eater.png" alt="Eater" loading="lazy" decoding="async">
+          <img src="press-civileats.svg" alt="Civil Eats" class="press-logo--civileats" loading="lazy" decoding="async">
         </div>
       </div>
-
-      <span class="label">Your Cooking Mentor</span>
 
       <div class="about-top">
         <div class="about-photo-wrap">
           <img src="akshay.jpg" alt="Akshay Prabhu" loading="lazy">
         </div>
-        <div>
-          <span class="about-role">Startup Founder · Neuroscientist · Cooking Coach</span>
+        <div class="about-text">
+          <span class="label">Your Cooking Mentor</span>
           <p class="about-name">Hey, I'm Akshay.</p>
+          <span class="about-role">Startup Founder · Neuroscientist · Cooking Coach</span>
           <p class="about-bio about-bio--lead reveal-up">I help busy professionals learn to cook effortlessly and intuitively.</p>
-          <p class="about-bio reveal-up" style="margin-top: 1rem;">I raised <strong>$3M</strong> to build a marketplace for home-based restaurants and helped <strong>300+ people</strong> transform their home kitchens into businesses. I've staged at <strong>Chez Panisse</strong>, hosted hundreds of pop-up dinners, and cooked whole lambs over open fire for crowds across the Bay.</p>
-        </div>
-        <div>
+          <p class="about-bio reveal-up">I raised <strong>$3M</strong> to build a marketplace for home-based restaurants and helped <strong>300+ people</strong> transform their home kitchens into businesses. I've staged at <strong>Chez Panisse</strong>, hosted hundreds of pop-up dinners, and cooked whole lambs over open fire for crowds across the Bay.</p>
           <p class="about-bio reveal-up">Cooking has been a part of my life since I was a child. For me, food is more than fuel. Memories are created over the warmth and aroma of a homemade meal.</p>
-          <p class="about-bio about-bio--lead reveal-up" style="margin-top: 1rem;">Now I want to bring that same joy into your kitchen. I'm on a mission to help 20,000 people finally learn to cook by 2030.</p>
+          <p class="about-bio about-bio--lead reveal-up">Now I want to bring that same joy into your kitchen.</p>
         </div>
       </div>
 
@@ -1491,7 +1538,20 @@
       <p style="text-align:center; margin-bottom:3rem;">
         <span class="about-role" style="color: var(--sage); border-color: var(--sage-muted);">One-on-one · In your kitchen · Bay Area</span>
       </p>
-      <ul class="experience-list">
+      <ul class="experience-list experience-list--photos">
+        <li class="experience-item">
+          <svg class="experience-icon" viewBox="0 0 24 24" fill="none">
+            <rect x="5" y="3" width="14" height="18" rx="2" stroke="#7A8C6E" stroke-width="1.4" fill="rgba(168,184,157,0.1)"/>
+            <line x1="8.5" y1="8" x2="15.5" y2="8" stroke="#7A8C6E" stroke-width="1.3" stroke-linecap="round"/>
+            <line x1="8.5" y1="11.5" x2="13.5" y2="11.5" stroke="#7A8C6E" stroke-width="1.3" stroke-linecap="round"/>
+            <path d="M12 17.8 C12 17.8, 9.2 16.1, 9.2 14.6 C9.2 13.7, 9.9 13.1, 10.6 13.1 C11.2 13.1, 11.7 13.5, 12 14 C12.3 13.5, 12.8 13.1, 13.4 13.1 C14.1 13.1, 14.8 13.7, 14.8 14.6 C14.8 16.1, 12 17.8, 12 17.8Z" stroke="#D4A843" stroke-width="1.2" fill="rgba(212,168,67,0.18)" stroke-linejoin="round"/>
+          </svg>
+          <div>
+            <h3>A Curriculum Designed for You</h3>
+            <p>Before we cook I go through your kitchen and learn what you love to eat. Then I design the whole month around your diet and preferences.</p>
+          </div>
+          <img class="experience-photo" src="/photos/food-jazz-ingredients-prepped-1600.webp" srcset="/photos/food-jazz-ingredients-prepped-800.webp 800w, /photos/food-jazz-ingredients-prepped-1600.webp 1600w" sizes="(max-width: 768px) 90vw, 240px" width="1600" height="900" alt="Prepped ingredients in glass bowls on a wooden counter before cooking" loading="lazy" decoding="async">
+        </li>
         <li class="experience-item">
           <svg class="experience-icon" viewBox="0 0 24 24" fill="none">
             <path d="M3 11 L12 3 L21 11" stroke="#D4A843" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
@@ -1502,6 +1562,7 @@
             <h3>Weekly Kitchen Sessions</h3>
             <p>I come to your kitchen and help you build intuition in the place where you actually cook.</p>
           </div>
+          <img class="experience-photo" src="/photos/food-jazz-cucumber-chop-lesson-1600.webp" srcset="/photos/food-jazz-cucumber-chop-lesson-800.webp 800w, /photos/food-jazz-cucumber-chop-lesson-1600.webp 1600w" sizes="(max-width: 768px) 90vw, 240px" width="1600" height="900" alt="Akshay Prabhu and a home cook chop cucumber side by side at a kitchen counter" loading="lazy" decoding="async">
         </li>
         <li class="experience-item">
           <svg class="experience-icon" viewBox="0 0 24 24" fill="none">
@@ -1514,6 +1575,7 @@
             <h3>Cook Something Every Day</h3>
             <p>One real meal a day, not from a recipe. That's how the habit actually forms.</p>
           </div>
+          <img class="experience-photo" src="/photos/food-jazz-plated-dish-1600.webp" srcset="/photos/food-jazz-plated-dish-800.webp 800w, /photos/food-jazz-plated-dish-1600.webp 1600w" sizes="(max-width: 768px) 90vw, 240px" width="1600" height="900" alt="Hands finishing a plated stir-fry with fresh herbs next to a glass of white wine" loading="lazy" decoding="async">
         </li>
         <li class="experience-item">
           <svg class="experience-icon" viewBox="0 0 24 24" fill="none">
@@ -1531,6 +1593,7 @@
             <h3>Daily Challenges & Check-ins</h3>
             <p>Structured practice and accountability to lock in what you learn between sessions.</p>
           </div>
+          <img class="experience-photo" src="/photos/food-jazz-seasoning-by-hand-1600.webp" srcset="/photos/food-jazz-seasoning-by-hand-800.webp 800w, /photos/food-jazz-seasoning-by-hand-1600.webp 1600w" sizes="(max-width: 768px) 90vw, 240px" width="1600" height="900" alt="A home cook seasons a pot by hand, salting from the fingers" loading="lazy" decoding="async">
         </li>
         <li class="experience-item experience-item--finale">
           <svg class="experience-icon" viewBox="0 0 24 24" fill="none">
@@ -1541,6 +1604,7 @@
             <h3>Final challenge: host a dinner party</h3>
             <p>After 30 days, your friends and family come over and you cook them a real meal from scratch. A coming out party for the cook you've become.</p>
           </div>
+          <img class="experience-photo" src="/photos/food-jazz-dinner-party-table-1600.webp" srcset="/photos/food-jazz-dinner-party-table-800.webp 800w, /photos/food-jazz-dinner-party-table-1600.webp 1600w" sizes="(max-width: 768px) 90vw, 240px" width="1600" height="900" alt="Friends talking around a candlelit dinner table after cooking together" loading="lazy" decoding="async">
         </li>
       </ul>
     </div>
@@ -1858,6 +1922,11 @@
 
   <!-- CLOSING -->
   <section id="apply" class="section-closing">
+    <figure class="closing-photo">
+      <video data-inview-loop muted loop playsinline preload="none" poster="/toast-boomerang-poster.webp" aria-hidden="true">
+        <source src="/toast-boomerang.mp4" type="video/mp4">
+      </video>
+    </figure>
     <div class="container--narrow">
       <p class="closing-text reveal-up">Sure — you could stitch together all the glorious free content across the vast interwebs. Eventually you'd learn to cook and begin to understand the fundamentals.</p>
       <p class="closing-text reveal-up">But if you're on this page and you've read this far, you've probably tried something like that before. And the results... well... they're not what you've been hoping for.</p>
@@ -1873,7 +1942,6 @@
         </a>
       </div>
       <p class="mid-cta-sub">Tell me about your relationship with food. Takes two minutes.</p>
-      <p class="cta-location">Bay Area · Spring 2026</p>
       <p class="closing-contact">Questions? Call or text <a href="tel:+19252574291">(925) 257-4291</a> · <a href="mailto:akshay@foodjazz.club">akshay@foodjazz.club</a></p>
     </div>
   </section>
@@ -1898,10 +1966,13 @@
     const texts = ["intuitive", "calm", "joyful", "creative", "satisfying", "effortless"];
     const text1 = document.getElementById("morph-text1");
     const text2 = document.getElementById("morph-text2");
+    const hasMorph = !!(text1 && text2);
     const morphTime = 1.5, cooldownTime = 2.5;
     let textIndex = 0, time = new Date(), morph = 0, cooldown = cooldownTime;
-    text1.textContent = texts[0];
-    text2.textContent = texts[1];
+    if (hasMorph) {
+      text1.textContent = texts[0];
+      text2.textContent = texts[1];
+    }
 
     function setMorph(f) {
       text2.style.filter = `blur(${Math.min(8/f - 8, 100)}px)`;
@@ -1936,7 +2007,7 @@
         doMorph();
       } else { doCooldown(); }
     }
-    animateMorph();
+    if (hasMorph) animateMorph();
 
     // ===== NAV CTA — show after hero, hide at closing =====
     const heroBtn = document.querySelector('.hero .btn-wrap');
@@ -1953,7 +2024,7 @@
         }
       }
       new IntersectionObserver(entries => {
-        heroPast = !entries[0].isIntersecting;
+        heroPast = !entries[0].isIntersecting && entries[0].boundingClientRect.top < 0;
         updateNavCta();
       }, { threshold: 0 }).observe(heroBtn);
 
@@ -2112,7 +2183,29 @@
     }
   }
   </script>
-  <script src="https://www.videoask.com/embed/embed.js"></script>
+  <script>
+    // Load the VideoAsk bubble once the hero is mostly scrolled away, so the page
+    // doesn't open with Akshay's face on screen twice.
+    (function() {
+      var loaded = false;
+      function load() {
+        if (loaded) return;
+        loaded = true;
+        window.removeEventListener('scroll', check);
+        var s = document.createElement('script');
+        s.src = 'https://www.videoask.com/embed/embed.js';
+        s.async = true;
+        document.body.appendChild(s);
+      }
+      function check() {
+        var hero = document.querySelector('.hero');
+        var bottom = hero ? hero.getBoundingClientRect().bottom : 0;
+        if (bottom < window.innerHeight * 0.5) load();
+      }
+      window.addEventListener('scroll', check, { passive: true });
+      check();
+    })();
+  </script>
 
   <!-- Submission confirmation modal -->
   <div class="submit-modal-overlay" id="submitModal">
@@ -2330,6 +2423,26 @@
       modal.addEventListener('click', function(e) {
         if (e.target === modal) closeModal();
       });
+    })();
+
+    // ===== SILENT LOOPS (kitchen reel, toast) — play only while on screen =====
+    (function() {
+      var vids = document.querySelectorAll('video[data-inview-loop]');
+      if (!vids.length || !('IntersectionObserver' in window)) return;
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+      var io = new IntersectionObserver(function(entries) {
+        entries.forEach(function(e) {
+          var v = e.target;
+          if (e.isIntersecting) {
+            if (v.preload !== 'auto') { v.preload = 'auto'; }
+            var p = v.play();
+            if (p && p.catch) p.catch(function() {});
+          } else {
+            v.pause();
+          }
+        });
+      }, { threshold: 0.35 });
+      vids.forEach(function(v) { io.observe(v); });
     })();
   </script>
 </body>

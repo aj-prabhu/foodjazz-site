@@ -9,13 +9,13 @@
   <meta name="robots" content="index, follow">
   <meta property="og:title" content="How to Learn to Cook Without Recipes — A Guide to Intuitive Cooking">
   <meta property="og:description" content="Intuitive cooking explained: ratios, active tasting, pattern recognition. The framework that lets you cook without recipes.">
-  <meta property="og:image" content="https://foodjazz.club/og-image.png">
+  <meta property="og:image" content="https://foodjazz.club/og-photo.jpg">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <meta property="og:url" content="https://foodjazz.club/intuitive-cooking">
   <meta property="og:type" content="article">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:image" content="https://foodjazz.club/og-image.png">
+  <meta name="twitter:image" content="https://foodjazz.club/og-photo.jpg">
   <meta name="theme-color" content="#FAF7F2">
   <link rel="canonical" href="https://foodjazz.club/intuitive-cooking">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -188,6 +188,32 @@
       .hero { padding: 4rem 0 3rem; }
       .container { padding: 0 1.25rem; }
     }
+
+    /* Photos */
+    .page-photo {
+      width: min(1000px, calc(100vw - 3rem));
+      position: relative; left: 50%; transform: translateX(-50%);
+      margin: 3.5rem 0 0;
+    }
+    .page-photo img, .inline-photo img, .photo-row img {
+      display: block; width: 100%; height: auto; border-radius: 4px;
+    }
+    .page-photo img { box-shadow: 0 18px 50px -24px rgba(46,46,44,0.35); }
+    .inline-photo { margin: 2.5rem 0 0; }
+    .photo-row {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 0.75rem; margin-top: 2.5rem;
+    }
+    .photo-row img { aspect-ratio: 4 / 3; object-fit: cover; }
+    @media (max-width: 640px) {
+      .photo-row { grid-template-columns: 1fr 1fr; }
+      .photo-row img:first-child { grid-column: 1 / -1; aspect-ratio: 16 / 9; }
+    }
+    .coach { display: flex; align-items: center; gap: 1.25rem; margin-bottom: 1.75rem; }
+    .coach img {
+      width: 88px; height: 88px; border-radius: 50%;
+      object-fit: cover; flex-shrink: 0;
+    }
   </style>
 
   <script type="application/ld+json">
@@ -202,7 +228,7 @@
         "description": "What intuitive cooking actually is, why most cooking instruction misses it, and how to practice it. Ratios, active tasting, pattern recognition.",
         "isPartOf": { "@id": "https://foodjazz.club/#business" },
         "about": { "@id": "https://foodjazz.club/#coaching" },
-        "primaryImageOfPage": "https://foodjazz.club/og-image.png",
+        "primaryImageOfPage": "https://foodjazz.club/photos/food-jazz-cleaver-lesson-1600.webp",
         "author": { "@id": "https://foodjazz.club/#akshay" }
       },
       {
@@ -278,6 +304,9 @@
       <span class="label">Intuitive cooking</span>
       <h1>How to learn to cook without recipes.</h1>
       <p class="hero-sub">It's called intuitive cooking. Here's what it actually is, why most cooking instruction misses it, and how I teach it in the 30-day Food Jazz program.</p>
+      <figure class="page-photo">
+        <img src="/photos/food-jazz-cleaver-lesson-1600.webp" srcset="/photos/food-jazz-cleaver-lesson-800.webp 800w, /photos/food-jazz-cleaver-lesson-1600.webp 1600w" sizes="(max-width: 768px) 100vw, 1000px" width="1600" height="900" alt="Akshay Prabhu hands a Chinese cleaver to a home cook in a sunlit kitchen" fetchpriority="high">
+      </figure>
     </div>
   </section>
 
@@ -308,6 +337,11 @@
       <div class="pillar">
         <h3>Pattern recognition across cuisines.</h3>
         <p>A peanut sauce, a Thai curry paste, a Mexican mole, an Indian masala. They look different on the surface but the underlying logic (toast spices, build a base, deglaze, layer) repeats. Learn the patterns once and you can move across cuisines without re-learning from scratch.</p>
+      </div>
+      <div class="photo-row">
+        <img src="/photos/food-jazz-ingredients-prepped-1600.webp" srcset="/photos/food-jazz-ingredients-prepped-800.webp 800w, /photos/food-jazz-ingredients-prepped-1600.webp 1600w" sizes="(max-width: 640px) 90vw, 240px" width="1600" height="900" alt="Prepped ingredients in glass bowls, measured out before the wok gets hot" loading="lazy" decoding="async">
+        <img src="/photos/food-jazz-lemon-into-wok-1600.webp" srcset="/photos/food-jazz-lemon-into-wok-800.webp 800w, /photos/food-jazz-lemon-into-wok-1600.webp 1600w" sizes="(max-width: 640px) 90vw, 240px" width="1600" height="900" alt="A hand squeezes lemon over a wok to finish a dish before tasting" loading="lazy" decoding="async">
+        <img src="/photos/food-jazz-plated-dish-1600.webp" srcset="/photos/food-jazz-plated-dish-800.webp 800w, /photos/food-jazz-plated-dish-1600.webp 1600w" sizes="(max-width: 640px) 90vw, 240px" width="1600" height="900" alt="Hands finishing a plated stir-fry with fresh herbs" loading="lazy" decoding="async">
       </div>
     </div>
   </section>
@@ -340,6 +374,9 @@
       <p>The 30-day Food Jazz program is built around exactly this. Four weekly sessions in your kitchen. Week 0 is a kitchen audit, taste interview, and pantry stocking plan around the food you actually want to eat. Week 1 introduces ratios and active tasting through cold preparations (no heat, just learning to taste). Week 2 introduces heat through wok and cast iron sessions, plus a grocery trip together. Week 3 is low and slow (braising, baking, longer cooks). Week 4 is meal composition and cooking for someone else.</p>
       <p>Between sessions, daily cooking assignments. You're not just hearing about the framework, you're using it every night on whatever you'd be eating anyway.</p>
       <p>If you're in the Bay Area and want to learn this properly, this is what I do.</p>
+      <figure class="inline-photo">
+        <img src="/photos/food-jazz-chives-lesson-1600.webp" srcset="/photos/food-jazz-chives-lesson-800.webp 800w, /photos/food-jazz-chives-lesson-1600.webp 1600w" sizes="(max-width: 768px) 90vw, 720px" width="1600" height="900" alt="A home cook chops chives with a cleaver at the stove while Akshay Prabhu works at the counter behind him" loading="lazy" decoding="async">
+      </figure>
 
       <div class="related-pages">
         <span class="label">Related</span>
@@ -389,6 +426,9 @@
     <div class="container">
       <span class="label">About the coach</span>
       <h2>Who's teaching.</h2>
+      <div class="coach">
+        <img src="/photos/akshay-prabhu-400.webp" width="88" height="88" alt="Akshay Prabhu, Food Jazz cooking coach" loading="lazy" decoding="async">
+      </div>
       <p>I'm Akshay Prabhu. Before Food Jazz, I founded Foodnome (raised $3M, helped legalize home restaurants in California, 200 home cooks selling on the platform), ran Wefunder's food and beverage portfolio as Entrepreneur in Residence, and was Director of Marketing at Avid Health. I cook in Berkeley and teach in homes across the Bay Area.</p>
       <div class="about-credit">Founder · Food Jazz</div>
     </div>
