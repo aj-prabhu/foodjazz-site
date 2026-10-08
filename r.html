@@ -148,166 +148,144 @@
     p { margin: 0 0 1.1rem; }
     p:last-child { margin-bottom: 0; }
 
-    .from {
-      font-family: var(--font-display);
-      font-size: clamp(2rem, 7.5vw, 2.7rem);
-      color: var(--sage);
-      line-height: 1.1;
-      margin-bottom: 0.5rem;
-    }
-
+    .container.wide { max-width: 960px; }
+    .narrow { max-width: 600px; margin: 0 auto; }
     .lede { font-size: 1.1rem; color: var(--warm-gray); }
+    .hero { padding-top: clamp(3rem, 10vw, 5.5rem); }
+    .hero .btn { margin-top: 1.6rem; }
 
-    .hero { padding-top: clamp(3rem, 10vw, 5rem); }
-
-    /* ---- video, first thing on the page ---- */
     .video-slot {
-      border-radius: 14px;
-      overflow: hidden;
-      background: var(--linen);
-      border: 1px solid var(--linen-border);
-      margin-top: 1.6rem;
+      border-radius: 14px; overflow: hidden;
+      background: var(--linen); border: 1px solid var(--linen-border);
     }
     .video-slot video { display: block; width: 100%; height: auto; }
-    .video-placeholder {
-      aspect-ratio: 16 / 9;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      padding: 1.5rem;
-      color: var(--medium-gray);
-      font-size: 0.85rem;
-    }
-
-    /* ---- gift ---- */
-    .gift {
-      background: var(--warm-white);
-      border: 1px solid var(--linen-border);
-      border-radius: 14px;
-      padding: 1.6rem 1.5rem;
-      margin-top: 1.8rem;
-    }
-    .gift h2 { font-size: clamp(1.7rem, 6vw, 2.2rem); margin-bottom: 0.5rem; }
+    .after-video { margin-top: 1.4rem; }
 
     .btn {
-      display: inline-block;
-      width: 100%;
-      font-family: var(--font-body);
-      font-size: 1rem;
-      font-weight: 400;
-      padding: 1rem 1.3rem;
-      border-radius: 10px;
-      border: 1px solid var(--sage);
-      background: var(--sage);
-      color: #fff;
-      text-decoration: none;
-      text-align: center;
-      cursor: pointer;
-      transition: background 0.15s ease;
-      margin-top: 1.1rem;
+      display: inline-block; width: 100%;
+      font-family: var(--font-body); font-size: 1rem; font-weight: 400;
+      padding: 1rem 1.3rem; border-radius: 10px;
+      border: 1px solid var(--sage); background: var(--sage); color: #fff;
+      text-decoration: none; text-align: center; cursor: pointer;
+      transition: background 0.15s ease; margin-top: 1.1rem;
     }
     .btn:hover { background: var(--sage-deep); }
-    .btn.secondary { background: transparent; color: var(--accent-text); }
-    .btn.secondary:hover { background: var(--sage-wash); }
-
     .fineprint { font-size: 0.82rem; color: var(--medium-gray); margin-top: 0.7rem; text-align: center; }
 
-    /* ---- testimonial ---- */
-    .quote-card {
-      display: flex;
-      gap: 1rem;
-      align-items: flex-start;
-      background: var(--warm-white);
-      border: 1px solid var(--linen-border);
-      border-radius: 14px;
-      padding: 1.4rem 1.3rem;
-      margin-top: 1.6rem;
-    }
-    .quote-card img { width: 56px; height: 56px; border-radius: 50%; object-fit: cover; flex-shrink: 0; }
-    .quote-card blockquote {
-      margin: 0 0 0.3rem;
-      font-family: var(--font-display);
-      font-size: 1.4rem;
-      line-height: 1.2;
-      color: var(--charcoal);
-    }
-    .quote-card .emph { color: var(--accent-text); }
-    .quote-card .attr { font-size: 0.8rem; color: var(--medium-gray); }
-
-    /* ---- newsletter ---- */
-    #newsletter[hidden] { display: none; }
-    .signup { margin-top: 1.4rem; display: grid; gap: 0.7rem; }
-    .signup input {
-      width: 100%;
-      padding: 1rem 1.3rem;
-      font-family: var(--font-body);
-      font-size: 1rem;
-      color: var(--charcoal);
-      background: var(--warm-white);
-      border: 1px solid var(--sage-muted);
-      border-radius: 10px;
-      -webkit-appearance: none;
-    }
-    .signup input::placeholder { color: var(--medium-gray); }
-    .signup input:focus-visible {
-      outline: 2px solid var(--sage-deep);
-      outline-offset: 1px;
-      border-color: transparent;
-    }
-    .signup input[aria-invalid="true"] { border-color: #b4553f; }
-    /* The shared .btn carries a top margin for stacked CTAs; inside the grid
-       the gap does that job. */
-    .signup .btn { margin-top: 0; }
-    .signup .btn[disabled] { opacity: 0.6; cursor: default; }
-    .signup-note {
-      min-height: 1.3em;
-      margin: 0;
-      font-size: 0.85rem;
-      color: var(--medium-gray);
-    }
-    .signup-note[data-state="error"] { color: #b4553f; }
-    .visually-hidden {
-      position: absolute;
-      width: 1px; height: 1px;
-      padding: 0; margin: -1px;
-      overflow: hidden;
-      clip: rect(0 0 0 0);
-      white-space: nowrap;
-      border: 0;
+    /* ---- the call ---- */
+    .call-shot { margin: 1.8rem 0 0; }
+    .call-placeholder {
+      aspect-ratio: 16 / 10; display: flex; align-items: center; justify-content: center;
+      text-align: center; padding: 1.5rem; border-radius: 12px;
+      border: 1.5px dashed var(--sage-muted); color: var(--medium-gray); font-size: 0.85rem;
     }
 
-    footer {
-      padding: 2.5rem 0 3.5rem;
-      text-align: center;
-      font-size: 0.85rem;
-      color: var(--medium-gray);
+    /* ---- proof ---- */
+    .quote { margin: 2.2rem 0 0; }
+    .quote blockquote {
+      margin: 0 0 0.9rem; font-family: var(--font-display); font-weight: 600;
+      font-size: clamp(1.7rem, 6vw, 2.2rem); line-height: 1.15;
     }
+    .quote .emph { color: var(--accent-text); }
+    .quote figcaption { display: flex; align-items: center; gap: 0.75rem; font-size: 0.8rem; color: var(--warm-gray); line-height: 1.4; }
+    .quote figcaption strong { font-weight: 500; color: var(--charcoal); }
+    .quote figcaption img { width: 48px; height: 48px; border-radius: 50%; object-fit: cover; }
+
+    .press { margin-top: 2.4rem; text-align: center; }
+    .press-label { display: block; font-size: 0.66rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--medium-gray); margin-bottom: 0.9rem; }
+    .press-row { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 1rem 1.8rem; }
+    .press-row img {
+      height: 18px; width: auto;
+      filter: brightness(0) saturate(100%) invert(56%) sepia(10%) saturate(700%) hue-rotate(70deg) brightness(92%);
+      opacity: 0.75;
+    }
+    .press-row .press-logo--nyt { height: 15px; }
+    .press-row .press-logo--abc7 { height: 25px; }
+    .press-row .press-logo--civileats { height: 23px; }
+
+    /* ---- booking dialog ---- */
+    .booking {
+      width: min(760px, 100vw); max-width: 100vw; max-height: 92vh;
+      padding: 0; border: 1px solid var(--linen-border); border-radius: 14px;
+      background: var(--warm-white); color: var(--charcoal);
+    }
+    .booking::backdrop { background: rgba(27, 26, 23, 0.55); }
+    .booking-head {
+      position: sticky; top: 0; z-index: 1;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0.8rem 1rem 0.8rem 1.3rem; background: var(--warm-white);
+      border-bottom: 1px solid var(--linen-border);
+    }
+    .booking-title { margin: 0; font-family: var(--font-display); font-weight: 600; font-size: 1.5rem; line-height: 1.1; }
+    .booking-close {
+      width: 44px; height: 44px; border: 0; background: transparent; cursor: pointer;
+      font-size: 1.6rem; line-height: 1; color: var(--warm-gray); border-radius: 8px;
+    }
+    .booking-close:hover { background: var(--sage-wash); }
+    .booking-body { padding: 0.5rem; min-height: 60vh; }
+    .booking-body iframe { width: 100% !important; border: 0; }
+    .booking-wait { padding: 2rem 1rem; text-align: center; color: var(--medium-gray); font-size: 0.9rem; }
+
+    /* The zcal embed follows the visitor's system setting, not this page's
+       switch, and paints a transparent background. So the dialog follows the
+       system too, or white calendar text lands on a cream sheet. */
+    @media (prefers-color-scheme: dark) {
+      .booking, .booking-head { background: #1B1A17; color: #F1EBE1; border-color: #3A3731; }
+      .booking-close { color: #CFC8BC; }
+      .booking-close:hover { background: #1F231D; }
+      .booking-wait { color: #A39D93; }
+    }
+    @media (prefers-color-scheme: light) {
+      .booking, .booking-head { background: #FEFDFB; color: #2E2E2C; border-color: #e0d9cf; }
+      .booking-close { color: #5C5A56; }
+    }
+
+    footer { padding: 2.5rem 0 3.5rem; text-align: center; font-size: 0.85rem; color: var(--medium-gray); }
     footer a { color: var(--accent-text); }
 
     @media (min-width: 700px) {
       .container { padding-left: 2rem; padding-right: 2rem; }
       .btn { width: auto; min-width: 300px; }
       .fineprint { text-align: left; }
-      .signup { grid-template-columns: minmax(0, 1fr) auto; align-items: start; }
-      /* The shared rule above gives .btn a 300px floor, which would shove the
-         field into a sliver on a narrow desktop window. */
-      .signup .btn { min-width: 0; }
-      .signup-note { grid-column: 1 / -1; }
+    }
+    @media (max-width: 699px) {
+      .booking { width: 100vw; height: 100dvh; max-height: 100dvh; margin: 0; border-radius: 0; border: 0; }
     }
 
-    /* Photos */
-    .photo-row {
-      display: grid; grid-template-columns: repeat(3, 1fr);
-      gap: 0.6rem; margin: 2.25rem 0 0.5rem;
+    /* ---- the sample plan: a kitchen sketch plus what changes ---- */
+    .plan { display: grid; grid-template-columns: 1.1fr 1fr; gap: 1.6rem; align-items: center; margin-top: 2rem; }
+    .plan-sketch {
+      margin: 0; padding: 0.6rem;
+      background: var(--warm-white);
+      border: 1px solid var(--linen-border);
+      border-radius: 10px;
+      color: var(--sage);
     }
-    .photo-row img {
-      display: block; width: 100%; height: auto;
-      aspect-ratio: 4 / 3; object-fit: cover; border-radius: 4px;
+    .plan-sketch svg { display: block; width: 100%; height: auto; }
+    .bp-dot { fill: var(--sage-muted); }
+    .bp-line rect, .bp-line circle, .bp-line line, .bp-line path {
+      fill: none; stroke: currentColor; stroke-width: 1.6; stroke-linejoin: round;
     }
-    @media (max-width: 640px) {
-      .photo-row { grid-template-columns: 1fr 1fr; }
-      .photo-row img:first-child { grid-column: 1 / -1; aspect-ratio: 16 / 9; }
+    .bp-label text { font-family: var(--font-display); font-size: 17px; fill: var(--medium-gray); }
+    .bp-pin circle { fill: var(--accent-text); }
+    .bp-pin text { font-family: var(--font-body); font-size: 12px; font-weight: 500; fill: var(--cream); }
+    .bp-walk { fill: none; stroke: var(--golden); stroke-width: 1.8; stroke-dasharray: 5 5; stroke-linecap: round; }
+    .bp-arrow { fill: none; stroke: var(--golden); stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+    .bp-note { font-family: var(--font-display); font-size: 17px; fill: var(--golden); }
+    .bp-stamp { font-family: var(--font-body); font-size: 9px; letter-spacing: 0.22em; fill: var(--medium-gray); }
+    .plan-list { list-style: none; margin: 0; padding: 0; }
+    .plan-list li { display: grid; grid-template-columns: 1.6rem 1fr; gap: 0.75rem; align-items: start; margin-bottom: 1rem; font-size: 0.95rem; }
+    .plan-list li:last-child { margin-bottom: 0; }
+    .plan-list p { margin: 0; }
+    .plan-list strong { font-weight: 500; }
+    .pin {
+      display: inline-flex; align-items: center; justify-content: center;
+      width: 1.35rem; height: 1.35rem; margin-top: 0.12rem; border-radius: 50%;
+      background: var(--accent-text); color: var(--cream);
+      font-size: 0.66rem; font-weight: 500;
+    }
+    @media (max-width: 700px) {
+      .plan { grid-template-columns: 1fr; gap: 1.3rem; }
     }
 
     /* ===== DARK MODE ===== */
@@ -332,9 +310,8 @@
     :root[data-theme="dark"] body { font-weight: 400; }
     :root[data-theme="dark"] .btn:not(.secondary) { background: var(--sage-deep); border-color: var(--sage-deep); }
     :root[data-theme="dark"] .btn:not(.secondary):hover { background: #5b6a52; }
-    :root[data-theme="dark"] .signup input:focus-visible { outline-color: var(--accent-text); }
-    :root[data-theme="dark"] .signup input[aria-invalid="true"] { border-color: #E08A72; }
-    :root[data-theme="dark"] .signup-note[data-state="error"] { color: #E08A72; }
+    :root[data-theme="dark"] .press-row img { filter: brightness(0) invert(1); opacity: 0.8; }
+    :root[data-theme="dark"] .booking::backdrop { background: rgba(0, 0, 0, 0.7); }
   </style>
   <script src="/analytics.js"></script>
   <script defer src="/_vercel/insights/script.js"></script>
@@ -343,190 +320,217 @@
 
   <section class="hero">
     <div class="container">
-      <p class="from" id="from">A friend sent you this.</p>
-
-      <div class="video-slot" id="videoSlot">
-        <video controls playsinline preload="metadata" poster="/referral-welcome-poster.jpg">
-          <source src="/referral-welcome.mp4" type="video/mp4">
-        </video>
-      </div>
-
-      <a class="btn" href="https://zcal.co/akshayprabhu/kitchen" id="bookTop">Book your free kitchen setup plan</a>
-      <p class="fineprint">You show me your kitchen on a video call and I send back a plan built around how you cook. Free and about 30 minutes.</p>
-
-      <div class="gift">
-        <h2>A guide to throwing a dinner party. Yours, no strings.</h2>
-        <p>One page and there's almost no cooking in it. It's what I give people before they host for the first time. Print it and stick it on the fridge.</p>
-        <a class="btn" href="/hosting-a-dinner-party.pdf" target="_blank" rel="noopener" id="giftBtn">Get the guide</a>
-        <p class="fineprint">PDF, opens in a new tab. No email needed.</p>
-      </div>
+      <h1>A free kitchen setup plan from me.</h1>
+      <p class="lede">You show me your kitchen on a 30 minute video call and I send back a step by step plan to make it easier to cook in. It's free and it's yours to keep.</p>
+      <a class="btn book" href="https://zcal.co/i/utLPg0va" data-where="top">Book your free setup plan</a>
+      <p class="fineprint">Join from your phone so you can walk me around.</p>
     </div>
   </section>
 
   <section class="wash">
-    <div class="container">
-      <h2>Who made it</h2>
-      <p>I'm Akshay. I teach people to cook without recipes so you can open your fridge on a random Tuesday and make something good without looking anything up.</p>
-      <p>Before this I helped legalize the sale of home cooked food in California and built a marketplace of home cooks called Foodnome. At its peak we had about 200 cooks selling on the platform. The thing I learned that mattered most is that no company can really know exactly what you're craving. The only way to eat exactly what you want is to cook it yourself.</p>
-
-      <div class="quote-card">
-        <img src="/davis-clute.webp" alt="Davis Clute" width="56" height="56" loading="lazy">
-        <div>
-          <blockquote>My friends would say I was <span class="emph">a Michelin-star chef</span>. Which is crazy.</blockquote>
-          <p class="attr">Davis Clute · Founder, Forbes 30 Under 30</p>
-        </div>
+    <div class="container wide">
+      <div class="narrow">
+        <h2>What you get back</h2>
+        <p>A plan written for your kitchen and the food you actually like to eat. Here's the kind of thing that ends up in one.</p>
+      </div>
+      <div class="plan">
+        <figure class="plan-sketch">
+          <svg viewBox="0 0 420 300" role="img" aria-labelledby="planTitle">
+            <title id="planTitle">A sketch of a kitchen from above with four numbered changes</title>
+            <defs>
+              <marker id="planArrow" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 1 L8 5 L0 9" class="bp-arrow"/></marker>
+              <pattern id="planDots" width="14" height="14" patternUnits="userSpaceOnUse"><circle cx="1.5" cy="1.5" r="1" class="bp-dot"/></pattern>
+            </defs>
+            <rect x="0" y="0" width="420" height="300" fill="url(#planDots)"/>
+            <g class="bp-line">
+              <rect x="20" y="20" width="380" height="260" rx="3"/>
+              <rect x="20" y="20" width="300" height="56"/>
+              <rect x="344" y="20" width="56" height="200"/>
+              <rect x="150" y="28" width="76" height="40" rx="4"/>
+              <circle cx="169" cy="39" r="7"/><circle cx="207" cy="39" r="7"/>
+              <circle cx="169" cy="57" r="7"/><circle cx="207" cy="57" r="7"/>
+              <rect x="352" y="112" width="40" height="56" rx="9"/>
+              <rect x="96" y="33" width="44" height="30" rx="3"/>
+              <rect x="20" y="98" width="34" height="92"/>
+              <line x1="20" y1="121" x2="54" y2="121"/><line x1="20" y1="144" x2="54" y2="144"/><line x1="20" y1="167" x2="54" y2="167"/>
+              <rect x="20" y="206" width="72" height="74"/>
+              <line x1="20" y1="226" x2="92" y2="226"/><line x1="20" y1="246" x2="92" y2="246"/><line x1="20" y1="263" x2="92" y2="263"/>
+              <path d="M246 44 h34 l10 3 l-10 3 h-34 z"/>
+              <rect x="236" y="43" width="12" height="8" rx="2"/>
+              <rect x="222" y="150" width="96" height="58" rx="5"/>
+            </g>
+            <path class="bp-walk" d="M98 222 C 150 196, 128 120, 122 72" marker-end="url(#planArrow)"/>
+            <text class="bp-note" x="134" y="182">a shorter walk</text>
+            <g class="bp-label">
+              <text x="188" y="92" text-anchor="middle">stove</text>
+              <text x="372" y="190" text-anchor="middle">sink</text>
+              <text x="64" y="112" text-anchor="start">pantry</text>
+              <text x="104" y="250" text-anchor="start">fridge</text>
+              <text x="118" y="92" text-anchor="middle">board</text>
+              <text x="270" y="226" text-anchor="middle">table</text>
+            </g>
+            <g class="bp-pin">
+              <circle cx="118" cy="48" r="11"/><text x="118" y="52.5" text-anchor="middle">1</text>
+              <circle cx="37" cy="144" r="11"/><text x="37" y="148.5" text-anchor="middle">2</text>
+              <circle cx="268" cy="68" r="11"/><text x="268" y="72.5" text-anchor="middle">3</text>
+              <circle cx="56" cy="236" r="11"/><text x="56" y="240.5" text-anchor="middle">4</text>
+            </g>
+            <text class="bp-stamp" x="392" y="268" text-anchor="end">SAMPLE PLAN</text>
+          </svg>
+        </figure>
+        <ol class="plan-list">
+          <li><span class="pin" aria-hidden="true">1</span><p><strong>The station.</strong> Knife, board, salt and oil one step from the stove.</p></li>
+          <li><span class="pin" aria-hidden="true">2</span><p><strong>The shelf.</strong> An aromatic, a fat, an acid, a salt, a fresh herb and something already cooked. If those are there you can make dinner.</p></li>
+          <li><span class="pin" aria-hidden="true">3</span><p><strong>The swap.</strong> One sharp knife instead of the block of dull ones.</p></li>
+          <li><span class="pin" aria-hidden="true">4</span><p><strong>The fridge.</strong> One shelf for cooked bases so dinner starts half done.</p></li>
+        </ol>
       </div>
     </div>
   </section>
 
   <section>
     <div class="container">
-      <h2>The thing I actually do</h2>
-      <p>It's a 30 day intensive. I come to your kitchen once a week for a month and give you daily assignments so you are actually building the skills. We fix your pantry first and then we cook together and by the end you are improvising.</p>
-      <p>Most of my clients end up cooking a meal faster than DoorDash could deliver it and it tastes fresher and exactly what their body wants. The whole point is being able to translate what's in your mind to your plate.</p>
-      <p>I take four people at a time and the price goes up every round. That's the only reason there's any rush. And since a friend sent you, you skip the line for the next open spots. There's a friend rate too. Ask me about it on the call.</p>
-      <div class="photo-row">
-        <img src="/photos/food-jazz-cleaver-handoff-800.webp" srcset="/photos/food-jazz-cleaver-handoff-800.webp 800w, /photos/food-jazz-cleaver-handoff-1600.webp 1600w" sizes="(max-width: 640px) 90vw, 220px" width="1600" height="900" alt="Akshay Prabhu shows a home cook how to hold a Chinese cleaver" loading="lazy" decoding="async">
-        <img src="/photos/food-jazz-wok-toss-lesson-800.webp" srcset="/photos/food-jazz-wok-toss-lesson-800.webp 800w, /photos/food-jazz-wok-toss-lesson-1600.webp 1600w" sizes="(max-width: 640px) 90vw, 220px" width="1600" height="900" alt="Akshay Prabhu laughs as a home cook tosses vegetables in a wok" loading="lazy" decoding="async">
-        <img src="/photos/food-jazz-dinner-party-cheers-800.webp" srcset="/photos/food-jazz-dinner-party-cheers-800.webp 800w, /photos/food-jazz-dinner-party-cheers-1600.webp 1600w" sizes="(max-width: 640px) 90vw, 220px" width="1600" height="900" alt="Friends clink glasses over a home-cooked dinner" loading="lazy" decoding="async">
-      </div>
-      <a class="btn" href="https://zcal.co/akshayprabhu/kitchen" id="bookBtn">Book your free kitchen setup plan</a>
-      <p class="fineprint">The plan is yours either way. If the month looks like a fit I'll tell you honestly and if it doesn't I'll tell you that too.</p>
+      <h2>How the call works</h2>
+      <p>You join from your phone and walk me around. I'll ask what you like to eat and what a normal weeknight looks like, and I'll look at how things are set up and what's in the fridge. After the call I write up your plan and send it over.</p>
+      <figure class="call-shot" id="callShot">
+        <div class="call-placeholder">Photo coming: me on a video call walking someone's kitchen</div>
+      </figure>
     </div>
   </section>
 
-  <section class="wash" id="newsletter">
+  <section class="wash">
     <div class="container">
-      <h2>Want the next one?</h2>
-      <p>I make one of these guides every so often and send them out. Ratios, how to think about heat, that kind of thing. No pitch attached.</p>
-      <form class="signup" id="signup" novalidate>
-        <label class="visually-hidden" for="signupEmail">Your email</label>
-        <input id="signupEmail" name="email_address" type="email" inputmode="email"
-               autocomplete="email" placeholder="you@email.com" required>
-        <button class="btn" type="submit" id="signupBtn">Send them to me</button>
-        <p class="signup-note" id="signupNote" role="status" aria-live="polite"></p>
-      </form>
+      <h2>Who I am</h2>
+      <div class="video-slot">
+        <video controls playsinline preload="metadata" poster="/referral-welcome-poster.jpg">
+          <source src="/referral-welcome.mp4" type="video/mp4">
+        </video>
+      </div>
+      <p class="after-video">I'm Akshay. I teach people to cook without recipes so you can open your fridge on a random Tuesday and make something good without looking anything up. Before this I helped legalize the sale of home cooked food in California and built a marketplace of home cooks called Foodnome.</p>
+      <figure class="quote">
+        <blockquote>My friends would say I was <span class="emph">a Michelin-star chef</span>. Which is crazy.</blockquote>
+        <figcaption>
+          <img src="/davis-clute.webp" alt="Davis Clute" width="48" height="48" loading="lazy">
+          <span><strong>Davis Clute</strong><br>Founder · Forbes 30 Under 30</span>
+        </figcaption>
+      </figure>
+      <div class="press">
+        <span class="press-label">As seen on</span>
+        <div class="press-row">
+          <img src="/press-nyt.svg" alt="New York Times" class="press-logo--nyt" loading="lazy" decoding="async">
+          <img src="/press-npr.png" alt="NPR" loading="lazy" decoding="async">
+          <img src="/press-kqed.png" alt="KQED" loading="lazy" decoding="async">
+          <img src="/press-abc7.png" alt="ABC7" class="press-logo--abc7" loading="lazy" decoding="async">
+          <img src="/press-cbs.svg" alt="CBS" loading="lazy" decoding="async">
+          <img src="/press-eater.png" alt="Eater" loading="lazy" decoding="async">
+          <img src="/press-civileats.svg" alt="Civil Eats" class="press-logo--civileats" loading="lazy" decoding="async">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="closing">
+    <div class="container">
+      <h2>Pick a time</h2>
+      <p>Thirty minutes from your kitchen. If you want to go further after that I also run a one month intensive where I come cook with you once a week, and we can talk about it on the call if it sounds like a fit.</p>
+      <a class="btn book" href="https://zcal.co/i/utLPg0va" data-where="bottom">Book your free setup plan</a>
     </div>
   </section>
 
   <footer>
     <div class="container">
+      Questions first? Email <a href="mailto:akshay@foodjazz.club">akshay@foodjazz.club</a><br>
       <a href="https://foodjazz.club/">foodjazz.club</a>
     </div>
   </footer>
 
+  <dialog class="booking" id="booking" aria-labelledby="bookingTitle">
+    <div class="booking-head">
+      <p class="booking-title" id="bookingTitle">Pick a time for your call</p>
+      <button class="booking-close" type="button" id="bookingClose" aria-label="Close">&times;</button>
+    </div>
+    <div class="booking-body" id="bookingBody">
+      <p class="booking-wait" id="bookingWait">Loading the calendar…</p>
+    </div>
+  </dialog>
+
 <script>
 (function () {
-  // The Kit form the capture lands in. Numeric form id, not the embed uid —
-  // the uid is what the embed script uses and this endpoint rejects it with
-  // "Couldn't find a form for this request".
-  var KIT_FORM_ID = '9931700';
-  var KIT_ENDPOINT = 'https://app.kit.com/forms/' + KIT_FORM_ID + '/subscriptions';
+  var BOOK_URL = 'https://zcal.co/i/utLPg0va';
 
-
+  // Who sent them, off the path first (the Vercel rewrite is internal so the
+  // slug never reaches the query string), then ?from= for older links.
   var params = new URLSearchParams(window.location.search);
   var raw = (params.get('from') || '').trim();
   if (!raw) {
     var m = window.location.pathname.match(/^\/r\/+([^\/]+)/);
     if (m) raw = decodeURIComponent(m[1]).trim();
   }
+  var slug = raw.toLowerCase().replace(/[^a-z0-9-]+/g, '');
 
-  function titleCase(s) {
-    return s.replace(/[^a-zA-Z0-9\s-]/g, '').replace(/\b\w/g, function (c) { return c.toUpperCase(); });
+  // a0 pre-fills the invite's first custom question. On zcal that question is
+  // "Who sent you?", so the booking arrives already saying whose dinner it is.
+  // zcal ignores the parameter if the question doesn't exist yet.
+  var bookHref = BOOK_URL + (slug ? '?a0=' + encodeURIComponent(slug) : '');
+  var buttons = document.querySelectorAll('a.book');
+  Array.prototype.forEach.call(buttons, function (a) { a.href = bookHref; });
+
+  // The calendar opens on the page. Without <dialog> support, or if the embed
+  // never shows up, the button is still a plain link to zcal.
+  var dialog = document.getElementById('booking');
+  var body = document.getElementById('bookingBody');
+  var loaded = false;
+
+  function loadCalendar() {
+    if (loaded) return;
+    loaded = true;
+    var widget = document.createElement('div');
+    widget.className = 'zcal-inline-widget';
+    var link = document.createElement('a');
+    link.href = bookHref;
+    link.textContent = 'Open the calendar';
+    widget.appendChild(link);
+    body.appendChild(widget);
+    var s = document.createElement('script');
+    s.async = true;
+    s.src = 'https://static.zcal.co/embed/v1/embed.js';
+    body.appendChild(s);
+    setTimeout(function () {
+      var wait = document.getElementById('bookingWait');
+      if (!body.querySelector('iframe') && wait) {
+        wait.innerHTML = 'The calendar is taking a while. <a href="' + bookHref + '" target="_blank" rel="noopener">Open it in a new tab</a>.';
+      } else if (wait) {
+        wait.remove();
+      }
+    }, 6000);
   }
 
-  var display = raw ? titleCase(raw.split(/[\s-]+/)[0]) : '';
-
-  if (display) {
-    document.getElementById('from').textContent = display + ' sent you this.';
-  }
-
-  // ---- the capture ----
-  //
-  // Hand-rolled rather than Kit's embed script, because this page is a note
-  // from a friend and a third-party widget with its own typography reads as an
-  // ad. Same destination either way: the subscriber lands in Kit.
-  var form = document.getElementById('signup');
-  var emailEl = document.getElementById('signupEmail');
-  var noteEl = document.getElementById('signupNote');
-  var signupBtn = document.getElementById('signupBtn');
-
-  function say(message, state) {
-    noteEl.textContent = message;
-    if (state) noteEl.setAttribute('data-state', state);
-    else noteEl.removeAttribute('data-state');
-  }
-
-  form.addEventListener('submit', function (e) {
-    e.preventDefault();
-    var email = emailEl.value.trim();
-
-    // Deliberately loose. The server is the real validator and a clever regex
-    // here only ever rejects somebody's perfectly good address.
-    if (!email || email.indexOf('@') < 1 || email.indexOf('.') < 0) {
-      emailEl.setAttribute('aria-invalid', 'true');
-      say('That email looks off. Mind checking it?', 'error');
-      emailEl.focus();
-      return;
-    }
-    emailEl.removeAttribute('aria-invalid');
-
-    signupBtn.disabled = true;
-    say('One sec…');
-
-    var payload = { email_address: email };
-    // Who sent them, carried through to Kit so the list knows where a name
-    // came from a year from now.
-    if (raw) payload.fields = { referred_by: raw.toLowerCase() };
-
-    fetch(KIT_ENDPOINT, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
-      body: JSON.stringify(payload)
-    })
-      .then(function (res) { return res.json(); })
-      .then(function (data) {
-        // Kit answers 200 either way and puts the verdict in the body, so
-        // checking res.ok alone would call every failure a success.
-        if (!data || data.status === 'failed') {
-          throw new Error('rejected');
-        }
-        // Auto-confirm is on for this form as of 2026-09-17, so they are a
-        // live subscriber the moment this returns — no confirm link to chase.
-        // If that is ever switched back, this line has to change with it:
-        // saying they are on the list when a confirmation is still pending
-        // would be a lie, and they would never hear from him again.
-        form.innerHTML =
-          '<p class="signup-note">Got it. The next one comes when it is ready.</p>';
-        if (window.fjTrack) window.fjTrack('newsletter_signup');
-      })
-      .catch(function () {
-        signupBtn.disabled = false;
-        say('That did not go through. Try again in a minute?', 'error');
+  if (dialog && typeof dialog.showModal === 'function') {
+    Array.prototype.forEach.call(buttons, function (a) {
+      a.addEventListener('click', function (e) {
+        e.preventDefault();
+        loadCalendar();
+        dialog.showModal();
+        if (window.fjTrack) window.fjTrack('book_click', { where: a.dataset.where });
       });
-  });
-
-  // ---- events ----
-  //
-  // Four points between "opened the link" and "asked to talk", so the funnel
-  // per connector is readable instead of being one pageview number.
-  if (window.fjTrack) {
-    // The slug rides along on every event (analytics.js), so a booking click
-    // is attributable even though zcal never sees who sent them.
-    ['bookTop', 'bookBtn'].forEach(function (id) {
-      var el = document.getElementById(id);
-      if (el) el.addEventListener('click', function () { window.fjTrack('book_click', { where: id }); });
     });
-
-    var gift = document.getElementById('giftBtn');
-    if (gift) gift.addEventListener('click', function () { window.fjTrack('guide_download'); });
-
-    var video = document.querySelector('video');
-    // `once` because the metric is "did they start it", not how many times
-    // they scrubbed back.
-    if (video) video.addEventListener('play', function () { window.fjTrack('video_play'); }, { once: true });
+    document.getElementById('bookingClose').addEventListener('click', function () { dialog.close(); });
+    dialog.addEventListener('click', function (e) { if (e.target === dialog) dialog.close(); });
+    var obs = new MutationObserver(function () {
+      var wait = document.getElementById('bookingWait');
+      if (wait && body.querySelector('iframe')) wait.remove();
+    });
+    obs.observe(body, { childList: true, subtree: true });
+  } else {
+    Array.prototype.forEach.call(buttons, function (a) {
+      a.addEventListener('click', function () {
+        if (window.fjTrack) window.fjTrack('book_click', { where: a.dataset.where });
+      });
+    });
   }
 
+  var video = document.querySelector('video');
+  if (video && window.fjTrack) video.addEventListener('play', function () { window.fjTrack('video_play'); }, { once: true });
 })();
 </script>
 </body>
