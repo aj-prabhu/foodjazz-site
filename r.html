@@ -85,10 +85,10 @@
     })();
   </script>
   <meta name="robots" content="noindex, nofollow">
-  <title>Food Jazz — a guide to throwing a dinner party</title>
+  <title>Food Jazz — a free kitchen setup plan</title>
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
-  <meta property="og:title" content="A guide to throwing a dinner party">
-  <meta property="og:description" content="One page on how to host, from a chef who teaches people to cook.">
+  <meta property="og:title" content="A free kitchen setup plan">
+  <meta property="og:description" content="Show me your kitchen on a video call and I send back a plan built around how you cook.">
   <meta property="og:image" content="https://foodjazz.club/og-dinner.jpg">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
@@ -351,8 +351,8 @@
         </video>
       </div>
 
-      <a class="btn" href="https://tally.so/r/68kgMB" id="applyTop">Tell me about your kitchen</a>
-      <p class="fineprint">A few questions about how you cook now. I read every one.</p>
+      <a class="btn" href="https://zcal.co/akshayprabhu/kitchen" id="bookTop">Book your free kitchen setup plan</a>
+      <p class="fineprint">You show me your kitchen on a video call and I send back a plan built around how you cook. Free and about 30 minutes.</p>
 
       <div class="gift">
         <h2>A guide to throwing a dinner party. Yours, no strings.</h2>
@@ -384,14 +384,14 @@
       <h2>The thing I actually do</h2>
       <p>It's a 30 day intensive. I come to your kitchen once a week for a month and give you daily assignments so you are actually building the skills. We fix your pantry first and then we cook together and by the end you are improvising.</p>
       <p>Most of my clients end up cooking a meal faster than DoorDash could deliver it and it tastes fresher and exactly what their body wants. The whole point is being able to translate what's in your mind to your plate.</p>
-      <p>I take four people at a time and the price goes up every round. That's the only reason there's any rush. And since a friend sent you, you skip the line for the next open spots. There's a friend rate too. Ask me about it when you reach out.</p>
+      <p>I take four people at a time and the price goes up every round. That's the only reason there's any rush. And since a friend sent you, you skip the line for the next open spots. There's a friend rate too. Ask me about it on the call.</p>
       <div class="photo-row">
         <img src="/photos/food-jazz-cleaver-handoff-800.webp" srcset="/photos/food-jazz-cleaver-handoff-800.webp 800w, /photos/food-jazz-cleaver-handoff-1600.webp 1600w" sizes="(max-width: 640px) 90vw, 220px" width="1600" height="900" alt="Akshay Prabhu shows a home cook how to hold a Chinese cleaver" loading="lazy" decoding="async">
         <img src="/photos/food-jazz-wok-toss-lesson-800.webp" srcset="/photos/food-jazz-wok-toss-lesson-800.webp 800w, /photos/food-jazz-wok-toss-lesson-1600.webp 1600w" sizes="(max-width: 640px) 90vw, 220px" width="1600" height="900" alt="Akshay Prabhu laughs as a home cook tosses vegetables in a wok" loading="lazy" decoding="async">
         <img src="/photos/food-jazz-dinner-party-cheers-800.webp" srcset="/photos/food-jazz-dinner-party-cheers-800.webp 800w, /photos/food-jazz-dinner-party-cheers-1600.webp 1600w" sizes="(max-width: 640px) 90vw, 220px" width="1600" height="900" alt="Friends clink glasses over a home-cooked dinner" loading="lazy" decoding="async">
       </div>
-      <a class="btn" href="https://tally.so/r/68kgMB" id="applyBtn">Tell me about your kitchen</a>
-      <p class="fineprint">A few questions about how you cook now. I read every one and I will tell you honestly if I think I can help.</p>
+      <a class="btn" href="https://zcal.co/akshayprabhu/kitchen" id="bookBtn">Book your free kitchen setup plan</a>
+      <p class="fineprint">The plan is yours either way. If the month looks like a fit I'll tell you honestly and if it doesn't I'll tell you that too.</p>
     </div>
   </section>
 
@@ -423,7 +423,6 @@
   var KIT_FORM_ID = '9931700';
   var KIT_ENDPOINT = 'https://app.kit.com/forms/' + KIT_FORM_ID + '/subscriptions';
 
-  var APPLY_FORM = 'https://tally.so/r/68kgMB';
 
   var params = new URLSearchParams(window.location.search);
   var raw = (params.get('from') || '').trim();
@@ -440,17 +439,6 @@
 
   if (display) {
     document.getElementById('from').textContent = display + ' sent you this.';
-  }
-
-  // Carry attribution into the application form. Both apply buttons: the one
-  // under the video (the video tells them to click it) and the one at the
-  // bottom of the pitch.
-  if (raw) {
-    var href = APPLY_FORM + '?ref=' + encodeURIComponent(raw.toLowerCase());
-    ['applyTop', 'applyBtn'].forEach(function (id) {
-      var el = document.getElementById(id);
-      if (el) el.href = href;
-    });
   }
 
   // ---- the capture ----
@@ -523,9 +511,11 @@
   // Four points between "opened the link" and "asked to talk", so the funnel
   // per connector is readable instead of being one pageview number.
   if (window.fjTrack) {
-    ['applyTop', 'applyBtn'].forEach(function (id) {
+    // The slug rides along on every event (analytics.js), so a booking click
+    // is attributable even though zcal never sees who sent them.
+    ['bookTop', 'bookBtn'].forEach(function (id) {
       var el = document.getElementById(id);
-      if (el) el.addEventListener('click', function () { window.fjTrack('apply_click', { where: id }); });
+      if (el) el.addEventListener('click', function () { window.fjTrack('book_click', { where: id }); });
     });
 
     var gift = document.getElementById('giftBtn');
