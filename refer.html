@@ -105,6 +105,7 @@
       --charcoal: #2E2E2C;
       --warm-gray: #5C5A56;
       --medium-gray: #9B9892;
+      --golden: #D4A843;
       --font-display: 'Caveat', cursive;
       --font-body: 'DM Sans', sans-serif;
     }
@@ -136,7 +137,7 @@
 
     h1 { font-family: var(--font-display); font-weight: 600; line-height: 1.08; margin: 0 0 1.2rem; font-size: clamp(2.6rem, 9vw, 4rem); }
     h2 { font-family: var(--font-display); font-weight: 600; line-height: 1.12; margin: 0 0 0.9rem; font-size: clamp(1.9rem, 6.5vw, 2.5rem); }
-    .headline { max-width: 620px; margin: 0 auto; }
+    .headline { max-width: 760px; margin: 0 auto; text-align: center; }
     p { margin: 0 0 1.1rem; }
     p:last-child { margin-bottom: 0; }
 
@@ -166,26 +167,6 @@
       font-size: 1.15rem;
       margin-top: 1.6rem;
     }
-
-    /* ---- who ---- */
-    ul.who { list-style: none; margin: 0.2rem 0 0; padding: 0; }
-    ul.who li {
-      position: relative;
-      padding-left: 1.1rem;
-      margin-bottom: 0.85rem;
-    }
-    ul.who li:last-child { margin-bottom: 0; }
-    ul.who li::before {
-      content: '';
-      position: absolute;
-      left: 0;
-      top: 0.62em;
-      width: 5px;
-      height: 5px;
-      border-radius: 50%;
-      background: var(--sage-muted);
-    }
-    .nudge { margin-top: 1.2rem; color: var(--warm-gray); font-style: italic; }
 
     /* ---- the text ---- */
     .tabs { display: flex; gap: 0.5rem; margin-bottom: 1rem; flex-wrap: wrap; }
@@ -233,13 +214,115 @@
     .btn.secondary:hover { background: var(--sage-wash); }
     .btn[hidden] { display: none; }
 
-    .link-note { margin-top: 1rem; font-size: 0.8rem; color: var(--medium-gray); word-break: break-all; }
+    .link-note { margin-top: 1rem; font-size: 0.8rem; color: var(--medium-gray); overflow-wrap: anywhere; }
     .link-note code { font-family: var(--font-body); color: var(--accent-text); }
 
-    .terms { font-size: 0.88rem; color: var(--warm-gray); }
-    .terms ul { margin: 0; padding-left: 1.1rem; }
-    .terms li { margin-bottom: 0.55rem; }
-    .terms li:last-child { margin-bottom: 0; }
+    /* ---- the trade, right under the video ---- */
+    .trade {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 0.9rem;
+      max-width: 760px; margin: 1.8rem auto 0;
+    }
+    .trade-card {
+      background: var(--warm-white);
+      border: 1px solid var(--linen-border);
+      border-radius: 14px;
+      padding: 1.2rem 1.25rem 1.3rem;
+      font-size: 0.95rem;
+    }
+    .trade-label {
+      font-family: var(--font-display); font-weight: 600;
+      font-size: 1.55rem; line-height: 1.1; color: var(--accent-text);
+      margin-bottom: 0.4rem;
+    }
+
+    /* ---- proof ---- */
+    .quote { margin: 0; text-align: center; }
+    .quote-mark {
+      display: block; font-family: var(--font-display); font-size: 5rem;
+      line-height: 0.6; color: var(--golden); height: 2.2rem;
+    }
+    .quote blockquote {
+      margin: 0 0 1.4rem; font-family: var(--font-display); font-weight: 600;
+      font-size: clamp(2rem, 7vw, 2.9rem); line-height: 1.12;
+    }
+    .quote .emph { color: var(--accent-text); }
+    .quote figcaption {
+      display: inline-flex; align-items: center; gap: 0.8rem;
+      text-align: left; font-size: 0.82rem; color: var(--warm-gray); line-height: 1.4;
+    }
+    .quote figcaption strong { font-weight: 500; color: var(--charcoal); }
+    .quote figcaption img { width: 52px; height: 52px; border-radius: 50%; object-fit: cover; }
+
+    /* ---- photos + dinner, a little wider than the reading column ---- */
+    .container.wide { max-width: 980px; }
+    .photo-row {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 0.6rem; margin-top: 2.2rem;
+    }
+    .photo-row img {
+      display: block; width: 100%; height: auto;
+      aspect-ratio: 4 / 3; object-fit: cover; border-radius: 6px;
+    }
+
+    .dinner-grid {
+      display: grid; grid-template-columns: 1.15fr 1fr; gap: 1.4rem;
+      align-items: center; margin-top: 2.2rem;
+    }
+    .dinner-photo {
+      display: block; width: 100%; height: 100%; min-height: 320px;
+      object-fit: cover; border-radius: 6px;
+    }
+    .menu-card {
+      background: var(--warm-white);
+      border: 1px solid var(--linen-border);
+      outline: 1px solid var(--linen-border); outline-offset: -9px;
+      border-radius: 4px;
+      padding: 2.1rem 1.8rem 1.9rem;
+      text-align: center;
+      box-shadow: 0 14px 30px -18px rgba(46, 46, 44, 0.35);
+    }
+    .menu-eyebrow {
+      font-size: 0.68rem; letter-spacing: 0.18em; text-transform: uppercase;
+      color: var(--medium-gray); margin-bottom: 1.3rem;
+    }
+    .course { padding: 0.95rem 0; border-top: 1px dotted var(--linen-border); }
+    .course:first-of-type { border-top: 0; padding-top: 0; }
+    .course-name {
+      font-family: var(--font-display); font-weight: 600; font-size: 1.45rem;
+      line-height: 1; color: var(--accent-text); margin-bottom: 0.35rem;
+    }
+    .dish { font-size: 0.92rem; line-height: 1.5; }
+    .menu-note {
+      margin-top: 1.1rem; padding-top: 0.9rem; border-top: 1px dotted var(--linen-border);
+      font-size: 0.76rem; color: var(--medium-gray);
+    }
+
+    /* ---- faq ---- */
+    .faq details { border-top: 1px solid var(--sage-muted); }
+    .faq details:last-child { border-bottom: 1px solid var(--sage-muted); }
+    .faq summary {
+      list-style: none; cursor: pointer; position: relative;
+      padding: 1rem 2rem 1rem 0; font-weight: 400;
+    }
+    .faq summary::-webkit-details-marker { display: none; }
+    .faq summary::after {
+      content: '+'; position: absolute; right: 0.2rem; top: 0.85rem;
+      font-size: 1.3rem; line-height: 1; color: var(--accent-text);
+      transition: transform 0.2s ease;
+    }
+    .faq details[open] summary::after { transform: rotate(45deg); }
+    .faq details p { padding: 0 2rem 1.1rem 0; color: var(--warm-gray); font-size: 0.95rem; }
+
+    @media (max-width: 700px) {
+      .trade { grid-template-columns: 1fr; }
+      .dinner-grid { grid-template-columns: 1fr; }
+      .dinner-photo { min-height: 0; aspect-ratio: 4 / 3; height: auto; }
+      .photo-row { grid-template-columns: 1fr 1fr; }
+      .photo-row img:first-child { grid-column: 1 / -1; aspect-ratio: 16 / 9; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .faq summary::after { transition: none; }
+    }
 
     footer { padding: 2rem 0 3rem; text-align: center; font-size: 0.85rem; color: var(--medium-gray); }
     footer a { color: var(--accent-text); }
@@ -271,6 +354,7 @@
     :root[data-theme="dark"] .btn:not(.secondary) { background: var(--sage-deep); border-color: var(--sage-deep); }
     :root[data-theme="dark"] .btn:not(.secondary):hover { background: #5b6a52; }
     :root[data-theme="dark"] .tab[aria-selected="true"] { background: var(--sage-deep); border-color: var(--sage-deep); }
+    :root[data-theme="dark"] .menu-card { box-shadow: 0 14px 30px -18px rgba(0, 0, 0, 0.7); }
   </style>
   <script src="/analytics.js"></script>
   <script defer src="/_vercel/insights/script.js"></script>
@@ -280,70 +364,129 @@
   <section class="film">
     <div class="container">
       <div class="headline">
-        <h1>Send someone my way. I'll cook you dinner.</h1>
+        <h1>Give a friend a free kitchen setup plan from me.</h1>
       </div>
       <div class="video-slot" id="videoSlot">
         <video controls playsinline preload="metadata" poster="/referral-ask-poster.jpg">
           <source src="/referral-ask.mp4" type="video/mp4">
         </video>
       </div>
-      <p class="offer">Your friend gets a free kitchen setup plan from me. If they sign up for the month I come to your place and cook you a private dinner for two. I bring everything and clean up after.</p>
+
+      <div class="trade">
+        <div class="trade-card">
+          <p class="trade-label">For your friend</p>
+          <p>A free kitchen setup plan. They show me their kitchen on a video call and I send back a step by step plan built around how they actually cook. It's theirs to keep either way.</p>
+        </div>
+        <div class="trade-card">
+          <p class="trade-label">For you</p>
+          <p>If they sign up for the month I come to your place and cook you a private dinner for two. That's my thank you.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="wash" id="text">
+    <div class="container">
+      <h2>The text</h2>
+      <p>Steal this and make it yours. The blank is the important part and the link needs to stay in. Fill it with something they want, not something they lack. The dinner parties they talk about, not the takeout they order.</p>
+      <div class="tabs" role="tablist">
+        <button class="tab" role="tab" aria-selected="true" data-draft="0">Short</button>
+        <button class="tab" role="tab" aria-selected="false" data-draft="1">The whole story</button>
+      </div>
+      <div class="draft" id="draft"></div>
+      <div class="btn-row">
+        <button class="btn" id="copyBtn">Copy the text</button>
+        <button class="btn secondary" id="shareBtn" hidden>Share</button>
+      </div>
+      <p class="link-note">Your link is <code id="linkOut">foodjazz.club/r</code>. It tells me who sent them. If they mention your name instead that works fine too.</p>
+    </div>
+  </section>
+
+  <section class="proof">
+    <div class="container">
+      <figure class="quote">
+        <span class="quote-mark" aria-hidden="true">&ldquo;</span>
+        <blockquote>My friends would say I was <span class="emph">a Michelin-star chef</span>. Which is crazy.</blockquote>
+        <figcaption>
+          <img src="/davis-clute.webp" alt="Davis Clute" width="52" height="52" loading="lazy">
+          <span><strong>Davis Clute</strong><br>Founder · Forbes 30 Under 30</span>
+        </figcaption>
+      </figure>
     </div>
   </section>
 
   <section class="wash">
     <div class="container">
       <h2>What Food Jazz is</h2>
-      <p>A one month intensive. I come to your kitchen once a week for a month and teach you to cook without recipes, and by the end you are improvising. It's all about cooking exactly what you want to eat.</p>
-      <p>The month ends with a dinner party for your friends and family. Most people can't picture hosting one when they start and the whole month builds up to it.</p>
+      <p>A one month cooking intensive. I come to your friend's kitchen once a week and teach them to cook without recipes, and I build the whole month around their kitchen and what they actually like to eat and what their life looks like.</p>
+      <p>The month ends with a dinner party for their friends and family. Most people can't picture hosting one when they start and the whole month builds up to it.</p>
+    </div>
+    <div class="container wide">
+      <div class="photo-row">
+        <img src="/photos/food-jazz-cleaver-handoff-800.webp" srcset="/photos/food-jazz-cleaver-handoff-800.webp 800w, /photos/food-jazz-cleaver-handoff-1600.webp 1600w" sizes="(max-width: 640px) 90vw, 300px" width="1600" height="900" alt="Akshay Prabhu shows a home cook how to hold a Chinese cleaver" loading="lazy" decoding="async">
+        <img src="/photos/food-jazz-wok-toss-lesson-800.webp" srcset="/photos/food-jazz-wok-toss-lesson-800.webp 800w, /photos/food-jazz-wok-toss-lesson-1600.webp 1600w" sizes="(max-width: 640px) 45vw, 300px" width="1600" height="900" alt="Akshay Prabhu laughs as a home cook tosses vegetables in a wok" loading="lazy" decoding="async">
+        <img src="/photos/food-jazz-seasoning-by-hand-800.webp" srcset="/photos/food-jazz-seasoning-by-hand-800.webp 800w, /photos/food-jazz-seasoning-by-hand-1600.webp 1600w" sizes="(max-width: 640px) 45vw, 300px" width="1600" height="900" alt="A home cook seasons a dish by hand" loading="lazy" decoding="async">
+      </div>
     </div>
   </section>
 
-  <section>
+  <section class="dinner">
     <div class="container">
-      <h2>Who to think of</h2>
-      <ul class="who">
-        <li>Someone living on Factor or DoorDash who says they have no time to cook.</li>
-        <li>Someone who wants to have people over and never does.</li>
-        <li>Someone whose life just changed and is suddenly cooking for themselves.</li>
-      </ul>
-      <p class="nudge">If a face came to mind, that's the person.</p>
+      <h2>About the dinner</h2>
+      <p>If your friend signs up for the month I come to your place and cook a three course dinner for you and one other person. I bring everything and cook in your kitchen and clean up after. You just have to be home.</p>
+      <p>Once they've started I'll reach out and we pick a night. Any night in the six months after works.</p>
+    </div>
+    <div class="container wide">
+      <div class="dinner-grid">
+        <img class="dinner-photo" src="/photos/food-jazz-dinner-party-table-800.webp" srcset="/photos/food-jazz-dinner-party-table-800.webp 800w, /photos/food-jazz-dinner-party-table-1600.webp 1600w" sizes="(max-width: 700px) 92vw, 460px" width="1600" height="900" alt="A long table set for a home-cooked dinner" loading="lazy" decoding="async">
+        <div class="menu-card" aria-label="A sample menu">
+          <p class="menu-eyebrow">A sample menu</p>
+          <div class="course">
+            <p class="course-name">To start</p>
+            <p class="dish">Crunchy herb salad with nuoc cham and fried shallots</p>
+          </div>
+          <div class="course">
+            <p class="course-name">The main</p>
+            <p class="dish">Black bean steamed fish with ginger scallion rice and wok charred greens</p>
+          </div>
+          <div class="course">
+            <p class="course-name">To finish</p>
+            <p class="dish">Roasted fruit with cardamom cream</p>
+          </div>
+          <p class="menu-note">It changes with the season. Vegetarian is easy.</p>
+        </div>
+      </div>
     </div>
   </section>
 
   <section class="wash">
     <div class="container">
-      <h2>The text</h2>
-      <p>Steal this and make it yours. The blank is the important part and the link needs to stay in. Fill it with something they want, not something they lack. The dinner parties they talk about, not the takeout they order.</p>
-
-      <div class="tabs" role="tablist">
-        <button class="tab" role="tab" aria-selected="true" data-draft="0">Just say it straight</button>
-        <button class="tab" role="tab" aria-selected="false" data-draft="1">Lead with the free plan</button>
-      </div>
-
-      <div class="draft" id="draft"></div>
-
-      <div class="btn-row">
-        <button class="btn" id="copyBtn">Copy the text</button>
-        <button class="btn secondary" id="shareBtn" hidden>Share</button>
-      </div>
-
-      <p class="link-note">Your link is <code id="linkOut">foodjazz.club/r</code>. It tells me who sent them. If they mention your name instead that works fine too.</p>
-    </div>
-  </section>
-
-  <section>
-    <div class="container">
-      <h2>The small print</h2>
-      <div class="terms">
-        <ul>
-          <li>I take four people at a time and the price goes up every round. That's the whole reason I'm asking friends instead of running ads.</li>
-          <li>It has to be someone I'm not already talking to. Text me first if you're not sure.</li>
-          <li>I coach in person in the Bay Area. The setup plan happens over video so anyone anywhere can get one, and if they live further out I'll point them at whatever fits.</li>
-          <li>Dinner happens once they've actually started with me and I'll reach out to book it.</li>
-          <li>Any night in the six months after works. I'll book it around whatever program I'm running.</li>
-          <li>Bay Area is easy. If you're further out we'll figure something out.</li>
-        </ul>
+      <h2>Questions people ask</h2>
+      <div class="faq">
+        <details>
+          <summary>Will my friend get a hard sell?</summary>
+          <p>No. The setup plan is theirs either way. If the month looks like a fit I'll tell them and if it doesn't I'll tell them that too.</p>
+        </details>
+        <details>
+          <summary>What if they don't live in the Bay Area?</summary>
+          <p>Send them anyway. The setup plan happens over video so it works from anywhere. I coach in person in the Bay Area and if they live further out I'll point them at whatever fits.</p>
+        </details>
+        <details>
+          <summary>When do I get my dinner?</summary>
+          <p>Once they've actually started the month I'll reach out to book it. Any night in the six months after works and I'll fit it around whatever I'm teaching.</p>
+        </details>
+        <details>
+          <summary>What if I live far away?</summary>
+          <p>Bay Area is easy. If you're further out we'll figure something out.</p>
+        </details>
+        <details>
+          <summary>Can I send someone you already know?</summary>
+          <p>The dinner is for people I'm not already talking to. Text me first if you're not sure.</p>
+        </details>
+        <details>
+          <summary>Why ask friends?</summary>
+          <p>I take four people at a time and the price goes up every round. That's the whole reason I'm asking friends instead of running ads.</p>
+        </details>
       </div>
     </div>
   </section>
@@ -374,8 +517,8 @@
   document.getElementById('linkOut').textContent = link.replace('https://', '');
 
   var drafts = [
-    'Hey — my friend Akshay teaches people to cook. Not a class, he comes to your kitchen once a week for a month and teaches you to cook without recipes. Thought of you because ___\n\nHe does a free kitchen setup plan where you show him your kitchen on a video call and he sends you back a plan.\n\n' + link + '\n\nShould probably say he cooks me dinner if you sign up. Take that however you want.',
-    'Hey — my friend Akshay is a chef and he does this free thing where you show him your kitchen on a video call and he sends back a plan for setting it up around how you actually cook. Made me think of you because ___\n\n' + link + '\n\nHe also does a month long thing where he comes to your kitchen once a week and teaches you to cook without recipes. Full disclosure, if you sign up he comes and cooks me dinner. So I\'m not exactly neutral here.'
+    'Hey! My friend Akshay does these free kitchen setup plans. You show him your kitchen on a video call and he sends you back a plan built around how you actually cook. Thought of you because ___\n\n' + link,
+    'Hey! My friend Akshay teaches people to cook without recipes. He comes to your kitchen once a week for a month and builds the whole thing around what you like to eat. Thought of you because ___\n\nThe first step is free. You show him your kitchen on a video call and he sends back a plan for setting it up.\n\n' + link + '\n\nFull disclosure, if you sign up for the month he cooks me dinner. So I\'m not exactly neutral here.'
   ];
 
   var current = 0;
