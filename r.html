@@ -223,7 +223,10 @@
     }
     .booking-close:hover { background: var(--sage-wash); }
     .booking-body { padding: 0.5rem; min-height: 60vh; }
-    .booking-body iframe { width: 100% !important; border: 0; }
+    /* color-scheme: light keeps the iframe see-through. When the page runs
+       dark, Chrome paints a white sheet behind a frame whose scheme differs
+       from ours, and zcal's light text vanished on it. */
+    .booking-body iframe { width: 100% !important; border: 0; color-scheme: light; }
     .booking-wait { padding: 2rem 1rem; text-align: center; color: var(--medium-gray); font-size: 0.9rem; }
 
     /* The zcal embed follows the visitor's system setting, not this page's
