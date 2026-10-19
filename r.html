@@ -538,6 +538,31 @@
       .faq summary::after { transition: none; }
     }
 
+    /* ---- online group list (inside the Bay Area answer) ---- */
+    .ol-form { padding: 0 2rem 1.2rem 0; }
+    .ol-row { display: flex; gap: 0.5rem; flex-wrap: wrap; }
+    .ol-row input {
+      flex: 1 1 8rem; min-width: 0;
+      font-family: var(--font-body); font-size: 1rem; color: var(--charcoal);
+      padding: 0.75rem 0.9rem; border: 1px solid var(--sage-muted); border-radius: 10px;
+      background: var(--warm-white);
+    }
+    .ol-row input:focus { outline: none; border-color: var(--sage); box-shadow: 0 0 0 3px rgba(122, 140, 110, 0.2); }
+    .ol-row .btn { width: auto; margin-top: 0; padding: 0.75rem 1.2rem; }
+    .ol-row .btn:disabled { opacity: 0.6; cursor: default; }
+    .ol-trap { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+    .ol-label { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+    .faq details .ol-msg { padding: 0; }
+    .ol-msg { display: none; font-size: 0.92rem; color: var(--warm-gray); margin-top: 0.6rem; }
+    .ol-msg a { color: var(--accent-text); text-decoration: underline; }
+    .ol-form[data-state="done"] .ol-msg--done,
+    .ol-form[data-state="check"] .ol-msg--check,
+    .ol-form[data-state="error"] .ol-msg--error,
+    .ol-form[data-state="invalid"] .ol-msg--invalid { display: block; }
+    .ol-form[data-state="done"] .ol-row,
+    .ol-form[data-state="check"] .ol-row { display: none; }
+    .ol-form[data-state="done"] .ol-msg, .ol-form[data-state="check"] .ol-msg { margin-top: 0; }
+
     /* ===== DARK MODE ===== */
     :root[data-theme="dark"] {
       color-scheme: dark;
@@ -843,6 +868,21 @@
         <details>
           <summary>Do I need to live in the Bay Area?</summary>
           <p>Not for the call. It's on video so it works from anywhere.</p>
+          <p>The month is in person around the Bay. If you're further away I also run it online with a small group, and you can leave your email to hear when the next one opens up.</p>
+          <form class="ol-form" data-online-list="r-faq" novalidate>
+            <label class="ol-label" for="olEmail">Your email</label>
+            <div class="ol-row">
+              <input id="olEmail" type="email" name="email" autocomplete="email" placeholder="Your email" required>
+              <button class="btn" type="submit">Add me</button>
+            </div>
+            <input class="ol-trap" type="text" name="company" tabindex="-1" autocomplete="off" aria-hidden="true">
+            <div aria-live="polite">
+              <p class="ol-msg ol-msg--done">You're on the list. I'll email you when the next group opens up.</p>
+              <p class="ol-msg ol-msg--check">Almost there. Kit needs a quick robot check. <a data-check-link href="#" target="_blank" rel="noopener">Finish signing up</a></p>
+              <p class="ol-msg ol-msg--error">That didn't go through. Try again in a minute.</p>
+              <p class="ol-msg ol-msg--invalid">That email doesn't look right.</p>
+            </div>
+          </form>
         </details>
       </div>
     </div>
@@ -1017,5 +1057,6 @@
   }
 })();
 </script>
+<script src="/online-list.js" defer></script>
 </body>
 </html>
