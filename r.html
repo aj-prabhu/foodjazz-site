@@ -220,6 +220,8 @@
        from ours, and zcal's light text vanished on it. */
     .booking-body iframe { width: 100% !important; border: 0; color-scheme: light; }
     .booking-wait { padding: 2rem 1rem; text-align: center; color: var(--medium-gray); font-size: 0.9rem; }
+    .booking-wait[data-fallback] { padding: 0.6rem 1rem 1.2rem; font-size: 0.8rem; }
+    .booking-wait a { color: var(--accent-text); }
 
     /* The zcal embed follows the visitor's system setting, not this page's
        switch, and paints a transparent background. So the dialog follows the
@@ -559,8 +561,6 @@
       var wait = document.getElementById('bookingWait');
       if (!body.querySelector('iframe') && wait) {
         wait.innerHTML = 'The calendar is taking a while. <a href="' + bookHref + '" target="_blank" rel="noopener">Open it in a new tab</a>.';
-      } else if (wait) {
-        wait.remove();
       }
     }, 6000);
   }
@@ -576,9 +576,16 @@
     });
     document.getElementById('bookingClose').addEventListener('click', function () { dialog.close(); });
     dialog.addEventListener('click', function (e) { if (e.target === dialog) dialog.close(); });
+    // An iframe showing up doesn't mean the calendar inside it loaded, so the
+    // way out stays on the page: the loading line turns into a quiet link
+    // under the calendar instead of disappearing.
     var obs = new MutationObserver(function () {
       var wait = document.getElementById('bookingWait');
-      if (wait && body.querySelector('iframe')) wait.remove();
+      if (wait && body.querySelector('iframe') && !wait.dataset.fallback) {
+        wait.dataset.fallback = '1';
+        wait.innerHTML = 'Calendar not showing? <a href="' + bookHref + '" target="_blank" rel="noopener">Open it in a new tab</a>.';
+        body.appendChild(wait);
+      }
     });
     obs.observe(body, { childList: true, subtree: true });
   } else {
