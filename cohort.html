@@ -1728,33 +1728,42 @@
     if (backdrop) backdrop.addEventListener('click', closeModal);
     document.addEventListener('keydown', e => { if (e.key === 'Escape' && waitlistModal.classList.contains('open')) closeModal(); });
 
-    // ===== KIT FORM SUBMISSION =====
-    const KIT_ACTION = 'https://app.kit.com/forms/9652111f06/subscriptions';
+    // ===== WAITLIST SUBMISSION =====
+    // Goes through /api/subscribe, which adds them in Kit with our key. The
+    // old direct post to Kit's form used no-cors and always showed success,
+    // but Kit quarantined most of those behind a captcha nobody ever saw.
     document.querySelectorAll('.kit-form').forEach(form => {
       form.addEventListener('submit', async e => {
         e.preventDefault();
         const input = form.querySelector('input[type="email"]');
         const btn = form.querySelector('button[type="submit"]');
+        const label = btn.innerHTML;
         const successId = form.dataset.success;
         const successEl = successId ? document.getElementById(successId) : null;
 
         btn.disabled = true;
         btn.textContent = '...';
 
+        let status = 'error';
         try {
-          await fetch(KIT_ACTION, {
+          const res = await fetch('/api/subscribe', {
             method: 'POST',
-            headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-            body: new URLSearchParams({ email_address: input.value }),
-            mode: 'no-cors'
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ email: input.value, source: 'cohort' })
           });
-          // no-cors means we can't read the response — treat as success
+          status = (await res.json()).status;
+        } catch {}
+
+        if (status === 'success') {
           form.style.display = 'none';
           if (successEl) successEl.style.display = 'block';
-        } catch {
-          btn.disabled = false;
-          btn.textContent = 'Join Waitlist';
+          return;
         }
+        btn.disabled = false;
+        btn.innerHTML = label;
+        input.setCustomValidity(status === 'invalid' ? "That email doesn't look right." : "That didn't go through. Try again in a minute.");
+        input.reportValidity();
+        input.addEventListener('input', () => input.setCustomValidity(''), { once: true });
       });
     });
   </script>
