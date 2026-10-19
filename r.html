@@ -172,14 +172,6 @@
     .btn:hover { background: var(--sage-deep); }
     .fineprint { font-size: 0.82rem; color: var(--medium-gray); margin-top: 0.7rem; text-align: center; }
 
-    /* ---- the call ---- */
-    .call-shot { margin: 1.8rem 0 0; }
-    .call-placeholder {
-      aspect-ratio: 16 / 10; display: flex; align-items: center; justify-content: center;
-      text-align: center; padding: 1.5rem; border-radius: 12px;
-      border: 1.5px dashed var(--sage-muted); color: var(--medium-gray); font-size: 0.85rem;
-    }
-
     /* ---- proof ---- */
     .quote { margin: 2.2rem 0 0; }
     .quote blockquote {
@@ -255,6 +247,23 @@
       .booking { width: 100vw; height: 100dvh; max-height: 100dvh; margin: 0; border-radius: 0; border: 0; }
     }
 
+    /* ---- who sent them, and who I am ---- */
+    .gift { margin: 0 0 0.6rem; font-family: var(--font-display); font-weight: 600; font-size: 1.45rem; color: var(--golden); }
+    .intro { display: flex; align-items: center; gap: 0.9rem; margin-top: 1.4rem; }
+    .intro img { width: 64px; height: 64px; border-radius: 50%; object-fit: cover; flex: none; }
+    .intro p { margin: 0; font-size: 0.95rem; color: var(--warm-gray); }
+    .closing-photo { display: block; width: 100%; height: auto; aspect-ratio: 16 / 9; object-fit: cover; border-radius: 12px; margin: 0.4rem 0 1.4rem; }
+
+    /* ---- faq ---- */
+    .faq details { border-top: 1px solid var(--sage-muted); }
+    .faq details:last-child { border-bottom: 1px solid var(--sage-muted); }
+    .faq summary { list-style: none; cursor: pointer; position: relative; padding: 1rem 2rem 1rem 0; font-weight: 400; }
+    .faq summary::-webkit-details-marker { display: none; }
+    .faq summary::after { content: '+'; position: absolute; right: 0.2rem; top: 0.85rem; font-size: 1.3rem; line-height: 1; color: var(--accent-text); transition: transform 0.2s ease; }
+    .faq details[open] summary::after { transform: rotate(45deg); }
+    .faq details p { padding: 0 2rem 1.1rem 0; color: var(--warm-gray); font-size: 0.95rem; }
+    @media (prefers-reduced-motion: reduce) { .faq summary::after { transition: none; } }
+
     /* ---- the sample plan: a kitchen sketch plus what changes ---- */
     .plan { display: grid; grid-template-columns: 1.1fr 1fr; gap: 1.6rem; align-items: center; margin-top: 2rem; }
     .plan-sketch {
@@ -323,10 +332,15 @@
 
   <section class="hero">
     <div class="container">
-      <h1>A free kitchen setup plan from me.</h1>
-      <p class="lede">You show me your kitchen on a video call and I send back a step by step plan to make it way easier to cook in. Free and it takes 30 minutes.</p>
-      <a class="btn book" href="https://zcal.co/i/utLPg0va" data-where="top">Book your free setup plan</a>
-      <p class="fineprint">Join from your phone so you can walk me around.</p>
+      <p class="gift" id="gift" hidden></p>
+      <h1>Open your fridge on a Tuesday and know what to make.</h1>
+      <p class="lede">Show me your kitchen on a free 30 minute video call and I'll send back a plan for what to stock, what to move and what to cook, built around the food you actually like.</p>
+      <div class="intro">
+        <img src="/photos/akshay-prabhu-400.webp" alt="Akshay Prabhu" width="400" height="400">
+        <p>I'm Akshay. I teach people to cook without recipes in their own kitchens around the Bay Area.</p>
+      </div>
+      <a class="btn book" href="https://zcal.co/i/utLPg0va" data-where="top">Pick a time for your free call</a>
+      <p class="fineprint">Join from your phone in your kitchen. No need to tidy up first and the plan is yours either way.</p>
     </div>
   </section>
 
@@ -334,7 +348,7 @@
     <div class="container wide">
       <div class="narrow">
         <h2>What you get back</h2>
-        <p>A plan written for your kitchen and the food you actually like to eat. Here's the kind of thing that ends up in one.</p>
+        <p>A plan written for your kitchen and the food you like to eat. Here's the kind of thing that ends up in one.</p>
       </div>
       <div class="plan">
         <figure class="plan-sketch">
@@ -383,10 +397,13 @@
         </figure>
         <ol class="plan-list">
           <li><span class="pin" aria-hidden="true">1</span><p>Your knife, board, salt and oil all one step from the stove.</p></li>
-          <li><span class="pin" aria-hidden="true">2</span><p>An aromatic, a fat, an acid, a salt, a fresh herb and something already cooked. If those are in the house you can make dinner.</p></li>
+          <li><span class="pin" aria-hidden="true">2</span><p>A short list of things that turn into dinner, like garlic, a good oil, lemons, a fresh herb and some rice you already cooked.</p></li>
           <li><span class="pin" aria-hidden="true">3</span><p>One sharp knife you actually use instead of the whole block of dull ones.</p></li>
-          <li><span class="pin" aria-hidden="true">4</span><p>One fridge shelf for things you already cooked so dinner starts half done.</p></li>
+          <li><span class="pin" aria-hidden="true">4</span><p>A few meals you can make from that list on a normal weeknight.</p></li>
         </ol>
+      </div>
+      <div class="narrow">
+        <a class="btn book" href="https://zcal.co/i/utLPg0va" data-where="plan">Pick a time for your free call</a>
       </div>
     </div>
   </section>
@@ -395,21 +412,19 @@
     <div class="container">
       <h2>How the call works</h2>
       <p>You join from your phone and walk me around. I'll ask what you like to eat and what a normal weeknight looks like and I'll look at how things are set up and what's in the fridge. After the call I write up your plan and send it over.</p>
-      <figure class="call-shot" id="callShot">
-        <div class="call-placeholder">Photo coming: me on a video call walking someone's kitchen</div>
-      </figure>
+      <p>When you book I'll ask for one meal you wish you could make at home and that's where we start.</p>
     </div>
   </section>
 
   <section class="wash">
     <div class="container">
-      <h2>Who I am</h2>
+      <h2>A bit more about me</h2>
       <div class="video-slot">
         <video controls playsinline preload="metadata" poster="/referral-welcome-poster.jpg">
           <source src="/referral-welcome.mp4" type="video/mp4">
         </video>
       </div>
-      <p class="after-video">I'm Akshay. I teach people to cook without recipes so you can open your fridge on a random Tuesday and make something good without looking anything up. Before this I helped legalize the sale of home cooked food in California and built a marketplace of home cooks called Foodnome.</p>
+      <p class="after-video">I teach people to cook without recipes so you can open your fridge on a random Tuesday and make something good without looking anything up. Before this I helped legalize the sale of home cooked food in California and built a marketplace of home cooks called Foodnome.</p>
       <figure class="quote">
         <blockquote>My friends would say I was <span class="emph">a Michelin-star chef</span>. Which is crazy.</blockquote>
         <figcaption>
@@ -418,7 +433,7 @@
         </figcaption>
       </figure>
       <div class="press">
-        <span class="press-label">As seen on</span>
+        <span class="press-label">Foodnome was covered by</span>
         <div class="press-row">
           <img src="/press-nyt.svg" alt="New York Times" class="press-logo--nyt" loading="lazy" decoding="async">
           <img src="/press-npr.png" alt="NPR" loading="lazy" decoding="async">
@@ -432,17 +447,42 @@
     </div>
   </section>
 
-  <section class="closing">
+  <section>
     <div class="container">
-      <h2>Pick a time</h2>
-      <p>If you want to go further after the plan I also run a one month intensive where I come cook with you once a week. We can talk about it on the call if it sounds like a fit.</p>
-      <a class="btn book" href="https://zcal.co/i/utLPg0va" data-where="bottom">Book your free setup plan</a>
+      <h2>Questions</h2>
+      <div class="faq">
+        <details>
+          <summary>Is this a sales call?</summary>
+          <p>No. The call is about your kitchen and you get the plan either way. I also run a paid month where I come cook with you once a week. If it sounds like a fit I'll ask if you want to hear about it and if not that's totally fine.</p>
+        </details>
+        <details>
+          <summary>What does the month cost?</summary>
+          <p>$2,500 for the full month in your kitchen. That includes four sessions, a grocery trip together and daily practice in between. It's in person around the Bay Area. If you live somewhere else I also run an online version.</p>
+        </details>
+        <details>
+          <summary id="whatTheyGet">What does the friend who sent me get?</summary>
+          <p id="whatTheyGetAnswer">If you sign up for the month I cook them dinner as a thank you. The free plan doesn't get them anything.</p>
+        </details>
+        <details>
+          <summary>Do I need to live in the Bay Area?</summary>
+          <p>Not for the call. It's on video so it works from anywhere.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <section class="wash closing">
+    <div class="container">
+      <h2>If you want to go further</h2>
+      <img class="closing-photo" src="/photos/food-jazz-cucumber-chop-lesson-800.webp" srcset="/photos/food-jazz-cucumber-chop-lesson-800.webp 800w, /photos/food-jazz-cucumber-chop-lesson-1600.webp 1600w" sizes="(max-width: 700px) 92vw, 600px" width="1600" height="900" alt="Akshay Prabhu teaching a home cook to chop cucumbers in her kitchen" loading="lazy" decoding="async">
+      <p>The month is me in your kitchen once a week cooking with you. By the end you're cooking without looking anything up and hosting a dinner party for your people. The free call is the first step either way.</p>
+      <a class="btn book" href="https://zcal.co/i/utLPg0va" data-where="bottom">Pick a time for your free call</a>
     </div>
   </section>
 
   <footer>
     <div class="container">
-      If you have questions first email me at <a href="mailto:akshay@foodjazz.club">akshay@foodjazz.club</a><br>
+      Questions first? Email me at <a href="mailto:akshay@foodjazz.club">akshay@foodjazz.club</a><br>
       <a href="https://foodjazz.club/">foodjazz.club</a>
     </div>
   </footer>
@@ -469,12 +509,29 @@
     var m = window.location.pathname.match(/^\/r\/+([^\/]+)/);
     if (m) raw = decodeURIComponent(m[1]).trim();
   }
-  var slug = raw.toLowerCase().replace(/[^a-z0-9-]+/g, '');
+  // Same rule as /refer, so the link a connector copies always matches.
+  var slug = raw.normalize('NFD').replace(/[\u0300-\u036f]/g, '')
+    .toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
 
   // a0 pre-fills the invite's first custom question. On zcal that question is
   // "Who sent you?", so the booking arrives already saying whose dinner it is.
   // zcal ignores the parameter if the question doesn't exist yet.
   var bookHref = BOOK_URL + (slug ? '?a0=' + encodeURIComponent(slug) : '');
+
+  // Their first name, off the slug: davis-clute reads as Davis. The gift line
+  // and the "what do they get" answer use it so the page says who thought of
+  // them. With no slug both keep their generic wording.
+  // Read it off the raw path so José keeps his accent even though the slug drops it.
+  var first = raw.split(/[\s\-_.]+/)[0] || '';
+  if (slug && /^[\p{L}']{2,}$/u.test(first)) {
+    var name = first.charAt(0).toUpperCase() + first.slice(1).toLowerCase();
+    var gift = document.getElementById('gift');
+    gift.textContent = name + ' got you a free kitchen plan';
+    gift.hidden = false;
+    document.getElementById('whatTheyGet').textContent = 'What does ' + name + ' get?';
+    document.getElementById('whatTheyGetAnswer').textContent =
+      'If you sign up for the month I cook ' + name + ' dinner as a thank you. The free plan doesn\'t get them anything.';
+  }
   var buttons = document.querySelectorAll('a.book');
   Array.prototype.forEach.call(buttons, function (a) { a.href = bookHref; });
 
