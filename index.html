@@ -1165,6 +1165,55 @@
       .nav-right .theme-toggle { display: none; }
     }
 
+    /* ===== ONLINE GROUP LIST BANNER ===== */
+    .online-banner { background: var(--sage-wash); border-bottom: 1px solid var(--sage-muted); font-size: 0.8rem; color: var(--charcoal); }
+    .online-banner__inner {
+      position: relative; max-width: 1100px; margin: 0 auto; padding: 0.55rem 2.75rem 0.55rem 2rem;
+      display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 0.35rem 0.8rem; text-align: center;
+    }
+    .online-banner__text { margin: 0; }
+    .online-banner__open, .online-banner__close {
+      font: inherit; background: none; border: 0; cursor: pointer; color: var(--accent-text);
+    }
+    .online-banner__open { text-decoration: underline; text-underline-offset: 3px; padding: 0.3rem 0; }
+    .online-banner__close {
+      position: absolute; right: 0.6rem; top: 50%; transform: translateY(-50%);
+      font-size: 1.2rem; line-height: 1; padding: 0.5rem 0.6rem; color: var(--medium-gray);
+    }
+    .online-banner__close:hover { color: var(--charcoal); }
+    .online-banner .ol-form { display: none; }
+    .online-banner[data-open] .ol-form { display: block; }
+    .online-banner[data-open] .online-banner__open { display: none; }
+    .ol-row { display: flex; gap: 0.4rem; justify-content: center; }
+    .ol-row input {
+      width: 15rem; max-width: 100%; min-width: 0;
+      font-family: var(--font-body); font-size: 16px; color: var(--charcoal);
+      padding: 0.4rem 0.7rem; border: 1px solid var(--sage-muted); border-radius: 50px; background: var(--warm-white);
+    }
+    .ol-row input:focus { outline: none; border-color: var(--sage); box-shadow: 0 0 0 3px rgba(122, 140, 110, 0.2); }
+    .ol-row button {
+      font-family: var(--font-body); font-size: 0.8rem; color: #fff; background: var(--sage-deep);
+      border: 0; border-radius: 50px; padding: 0.4rem 1rem; cursor: pointer;
+    }
+    .ol-row button:hover { background: #5b6a52; }
+    .ol-row button:disabled { opacity: 0.6; cursor: default; }
+    .ol-trap { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+    .ol-label { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+    .ol-msg { display: none; margin: 0.3rem 0 0; }
+    .ol-msg a { color: var(--accent-text); text-decoration: underline; }
+    .ol-form[data-state="done"] .ol-msg--done,
+    .ol-form[data-state="check"] .ol-msg--check,
+    .ol-form[data-state="error"] .ol-msg--error,
+    .ol-form[data-state="invalid"] .ol-msg--invalid { display: block; }
+    .ol-form[data-state="done"] .ol-row,
+    .ol-form[data-state="check"] .ol-row { display: none; }
+    .ol-form[data-state="done"] .ol-msg, .ol-form[data-state="check"] .ol-msg { margin-top: 0; }
+    .online-banner:has(.ol-form[data-state="done"]) .online-banner__text { display: none; }
+    @media (max-width: 600px) {
+      .online-banner__inner { padding: 0.5rem 2.5rem 0.5rem 1rem; }
+      .ol-row input { flex: 1 1 auto; width: auto; }
+    }
+
     /* ===== DARK MODE ===== */
     :root[data-theme="dark"] {
       color-scheme: dark;
@@ -1502,6 +1551,29 @@
       </filter>
     </defs>
   </svg>
+
+  <!-- ONLINE GROUP LIST: shown by online-list.js until they close it or join -->
+  <div class="online-banner" id="onlineBanner" hidden>
+    <div class="online-banner__inner">
+      <p class="online-banner__text">Not in the Bay? Get on the list for the next online group.</p>
+      <button type="button" class="online-banner__open" data-banner-open>Join the list</button>
+      <form class="ol-form" data-online-list="home-banner" novalidate>
+        <label class="ol-label" for="olEmail">Your email</label>
+        <div class="ol-row">
+          <input id="olEmail" type="email" name="email" autocomplete="email" placeholder="Your email" required>
+          <button type="submit">Add me</button>
+        </div>
+        <input class="ol-trap" type="text" name="company" tabindex="-1" autocomplete="off" aria-hidden="true">
+        <div aria-live="polite">
+          <p class="ol-msg ol-msg--done">You're on the list. I'll email you when the next group opens up.</p>
+          <p class="ol-msg ol-msg--check">Almost there. Kit needs a quick robot check. <a data-check-link href="#" target="_blank" rel="noopener">Finish signing up</a></p>
+          <p class="ol-msg ol-msg--error">That didn't go through. Try again in a minute.</p>
+          <p class="ol-msg ol-msg--invalid">That email doesn't look right.</p>
+        </div>
+      </form>
+      <button type="button" class="online-banner__close" data-banner-close aria-label="Close">&times;</button>
+    </div>
+  </div>
 
   <!-- NAV -->
   <nav>
@@ -2665,5 +2737,6 @@
       vids.forEach(function(v) { io.observe(v); });
     })();
   </script>
+<script src="/online-list.js" defer></script>
 </body>
 </html>
