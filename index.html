@@ -878,11 +878,13 @@
     .closing-tagline {
       font-family: var(--font-display); font-size: clamp(2rem, 4vw, 2.8rem);
       font-weight: 600; color: var(--charcoal); margin: 2.5rem auto 3rem;
+      line-height: 1.3;
       opacity: 0; transform: translateY(20px);
       transition: opacity 0.8s ease, transform 0.8s ease;
     }
     .closing-tagline.visible { opacity: 1; transform: translateY(0); }
     .closing-tagline .unlock {
+      display: block;
       color: var(--sage-muted);
       transition: color 0.6s ease;
     }
@@ -1729,7 +1731,7 @@
           <p class="about-name">Hey, I'm Akshay.</p>
           <span class="about-role">Startup Founder · Neuroscientist · Cooking Coach</span>
           <p class="about-bio about-bio--lead reveal-up">I help busy professionals learn to cook effortlessly and intuitively.</p>
-          <p class="about-bio reveal-up">I raised <strong>$3M</strong> to build a marketplace for home-based restaurants and helped <strong>300+ people</strong> transform their home kitchens into businesses. I've staged at <strong>Chez Panisse</strong>, hosted hundreds of pop-up dinners, and cooked whole lambs over open fire for crowds across the Bay.</p>
+          <p class="about-bio reveal-up">I raised <strong>$3M</strong> to build a marketplace for home-based restaurants and helped <strong>300+ people</strong> transform their home kitchens into businesses. I've staged at <strong>Chez Panisse</strong>, <strong>Birdsong</strong> and others, hosted hundreds of pop-up dinners, and cooked whole lambs over open fire for crowds across the Bay.</p>
           <p class="about-bio reveal-up">Cooking has been a part of my life since I was a child. For me, food is more than fuel. Memories are created over the warmth and aroma of a homemade meal.</p>
           <p class="about-bio about-bio--lead reveal-up">Now I want to bring that same joy into your kitchen.</p>
         </div>
