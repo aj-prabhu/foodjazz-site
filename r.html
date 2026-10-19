@@ -150,6 +150,12 @@
 
     .container.wide { max-width: 960px; }
     .narrow { max-width: 600px; margin: 0 auto; }
+    .call-how { display: grid; gap: 1.8rem; justify-items: center; }
+    .call-shot { width: 100%; max-width: 230px; height: auto; }
+    @media (min-width: 760px) {
+      .call-how { grid-template-columns: 260px 1fr; gap: 3rem; align-items: center; justify-items: stretch; }
+      .call-shot { max-width: 260px; }
+    }
     .lede { font-size: 1.1rem; color: var(--warm-gray); }
     .hero { padding-top: clamp(3rem, 10vw, 5.5rem); }
     .hero .btn { margin-top: 1.6rem; }
@@ -411,10 +417,13 @@
   </section>
 
   <section>
-    <div class="container">
-      <h2>How the call works</h2>
-      <p>You join from your phone and walk me around. I'll ask what you like to eat and what a normal weeknight looks like and I'll look at how things are set up and what's in the fridge. After the call I write up your plan and send it over.</p>
-      <p>When you book I'll ask for one meal you wish you could make at home and that's where we start.</p>
+    <div class="container wide call-how">
+      <img class="call-shot" src="/photos/video-call-kitchen.webp" width="384" height="734" loading="lazy" decoding="async" alt="A phone on a video call pointed at a kitchen, with Akshay in the corner">
+      <div>
+        <h2>How the call works</h2>
+        <p>You join from your phone and walk me around. I'll ask what you like to eat and what a normal weeknight looks like and I'll look at how things are set up and what's in the fridge. After the call I write up your plan and send it over.</p>
+        <p>When you book I'll ask for one meal you wish you could make at home and that's where we start.</p>
+      </div>
     </div>
   </section>
 
