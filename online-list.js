@@ -14,10 +14,16 @@
     try { localStorage.setItem(STORE, value); } catch (e) { /* private mode */ }
   }
 
+  // Same order as analytics.js: the path first, then ?from= for older links.
   function referrer() {
     var m = window.location.pathname.match(/^\/r\/+([^\/]+)/);
-    if (!m) return '';
-    try { return decodeURIComponent(m[1]).toLowerCase(); } catch (e) { return ''; }
+    try {
+      if (m) return decodeURIComponent(m[1]).trim().toLowerCase();
+      var q = new URLSearchParams(window.location.search).get('from');
+      return q ? q.trim().toLowerCase() : '';
+    } catch (e) {
+      return '';
+    }
   }
 
   function track(name, source) {
