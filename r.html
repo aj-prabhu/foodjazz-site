@@ -340,7 +340,7 @@
         <p>I'm Akshay. I teach people to cook without recipes in their own kitchens around the Bay Area.</p>
       </div>
       <a class="btn book" href="https://zcal.co/i/utLPg0va" data-where="top">Pick a time for your free call</a>
-      <p class="fineprint">Join from your phone in your kitchen. No need to tidy up first and the plan is yours either way.</p>
+      <p class="fineprint">Join from your phone in your kitchen and no need to tidy up first. If I think my paid month could help I'll ask if you want to hear about it, and the plan is yours either way.</p>
     </div>
   </section>
 
@@ -396,10 +396,10 @@
           </svg>
         </figure>
         <ol class="plan-list">
-          <li><span class="pin" aria-hidden="true">1</span><p>Your knife, board, salt and oil all one step from the stove.</p></li>
-          <li><span class="pin" aria-hidden="true">2</span><p>A short list of things that turn into dinner, like garlic, a good oil, lemons, a fresh herb and some rice you already cooked.</p></li>
-          <li><span class="pin" aria-hidden="true">3</span><p>One sharp knife you actually use instead of the whole block of dull ones.</p></li>
-          <li><span class="pin" aria-hidden="true">4</span><p>A few meals you can make from that list on a normal weeknight.</p></li>
+          <li><span class="pin" aria-hidden="true">1</span><p>A few weeknight meals picked for what you like, like yesterday's rice crisped in a pan with lemon, herbs and a fried egg on top.</p></li>
+          <li><span class="pin" aria-hidden="true">2</span><p>A short list of things to keep around so those meals are always possible, like garlic, a good oil, lemons and a fresh herb.</p></li>
+          <li><span class="pin" aria-hidden="true">3</span><p>Your knife, board, salt and oil all one step from the stove.</p></li>
+          <li><span class="pin" aria-hidden="true">4</span><p>One sharp knife you actually use instead of the whole block of dull ones.</p></li>
         </ol>
       </div>
       <div class="narrow">
@@ -453,7 +453,7 @@
       <div class="faq">
         <details>
           <summary>Is this a sales call?</summary>
-          <p>No. The call is about your kitchen and you get the plan either way. I also run a paid month where I come cook with you once a week. If it sounds like a fit I'll ask if you want to hear about it and if not that's totally fine.</p>
+          <p>The call is about your kitchen and you get the written plan for free. I also run a paid month where I come cook with you once a week. If I think it could help I'll ask if you want to hear about it, and you can say no and still get your plan.</p>
         </details>
         <details>
           <summary>What does the month cost?</summary>
@@ -461,7 +461,7 @@
         </details>
         <details>
           <summary id="whatTheyGet">What does the friend who sent me get?</summary>
-          <p id="whatTheyGetAnswer">If you sign up for the month I cook them dinner as a thank you. The free plan doesn't get them anything.</p>
+          <p id="whatTheyGetAnswer">If you choose the paid month I cook them dinner as a thank you. You don't need to buy anything to get your plan.</p>
         </details>
         <details>
           <summary>Do I need to live in the Bay Area?</summary>
@@ -526,11 +526,11 @@
   if (slug && /^[\p{L}']{2,}$/u.test(first)) {
     var name = first.charAt(0).toUpperCase() + first.slice(1).toLowerCase();
     var gift = document.getElementById('gift');
-    gift.textContent = name + ' got you a free kitchen plan';
+    gift.textContent = name + ' thought you might like this';
     gift.hidden = false;
     document.getElementById('whatTheyGet').textContent = 'What does ' + name + ' get?';
     document.getElementById('whatTheyGetAnswer').textContent =
-      'If you sign up for the month I cook ' + name + ' dinner as a thank you. The free plan doesn\'t get them anything.';
+      'If you choose the paid month I cook ' + name + ' dinner as a thank you. You don\'t need to buy anything to get your plan.';
   }
   var buttons = document.querySelectorAll('a.book');
   Array.prototype.forEach.call(buttons, function (a) { a.href = bookHref; });

@@ -341,10 +341,11 @@
     }
     .narrow { max-width: 620px; margin: 0 auto; }
     .ask { font-size: 1.08rem; }
-    .why { display: block; font-weight: 400; margin: 1.2rem 0 0.4rem; }
-    .why span { font-weight: 300; font-size: 0.8rem; color: var(--medium-gray); margin-left: 0.3rem; }
+    .why-box { margin: 1rem 0 1.1rem; }
+    .why-box summary { cursor: pointer; color: var(--accent-text); font-size: 0.95rem; }
+    .why-box[open] summary { margin-bottom: 0.6rem; }
     .why-input {
-      width: 100%; font: inherit; font-size: 1rem; padding: 0.8rem 0.9rem; margin-bottom: 1.2rem;
+      width: 100%; font: inherit; font-size: 1rem; padding: 0.8rem 0.9rem; margin-bottom: 0;
       border: 1px solid var(--linen-border); border-radius: 10px; background: var(--warm-white); color: var(--charcoal);
     }
     .why-input:focus { outline: 2px solid var(--sage); outline-offset: 1px; }
@@ -426,8 +427,10 @@
     <div class="container">
       <h2>Send them this</h2>
       <p class="ask">Think of someone who's told you they're tired of takeout or wishes they hosted more. Start with one person.</p>
-      <label class="why" for="why">Why them? <span>Optional, it goes into the text</span></label>
-      <input class="why-input" id="why" type="text" maxlength="140" autocomplete="off" placeholder="you said you wanted to cook more this year">
+      <details class="why-box">
+        <summary>Add why you thought of them</summary>
+        <input class="why-input" id="why" type="text" maxlength="140" autocomplete="off" aria-label="Why you thought of them" placeholder="you said you wanted to cook more this year">
+      </details>
       <div class="tabs" role="tablist">
         <button class="tab" role="tab" aria-selected="true" data-draft="0">Short</button>
         <button class="tab" role="tab" aria-selected="false" data-draft="1">The whole story</button>
@@ -506,10 +509,10 @@
           </svg>
         </figure>
         <ol class="plan-list">
-          <li><span class="pin" aria-hidden="true">1</span><p>Your knife, board, salt and oil all one step from the stove.</p></li>
-          <li><span class="pin" aria-hidden="true">2</span><p>A short list of things that turn into dinner, like garlic, a good oil, lemons, a fresh herb and some rice you already cooked.</p></li>
-          <li><span class="pin" aria-hidden="true">3</span><p>One sharp knife you actually use instead of the whole block of dull ones.</p></li>
-          <li><span class="pin" aria-hidden="true">4</span><p>A few meals they can make from that list on a normal weeknight.</p></li>
+          <li><span class="pin" aria-hidden="true">1</span><p>A few weeknight meals picked for what they like, like yesterday's rice crisped in a pan with lemon, herbs and a fried egg on top.</p></li>
+          <li><span class="pin" aria-hidden="true">2</span><p>A short list of things to keep around so those meals are always possible, like garlic, a good oil, lemons and a fresh herb.</p></li>
+          <li><span class="pin" aria-hidden="true">3</span><p>Their knife, board, salt and oil all one step from the stove.</p></li>
+          <li><span class="pin" aria-hidden="true">4</span><p>One sharp knife they actually use instead of the whole block of dull ones.</p></li>
         </ol>
       </div>
     </div>
@@ -631,7 +634,7 @@
   // on it. Everyone else never sees it, so nobody claims a month they didn't do.
   var did = params.get('did') === '1';
   var whyEl = document.getElementById('why');
-  var disclose = 'Full disclosure, if you end up doing his paid month he cooks me dinner. The plan is free either way.';
+  var disclose = 'He cooks me dinner if you end up doing his paid month, but the plan is free either way.';
 
   // The reason is optional. Empty means the sentence drops out, so the text
   // never goes out with a blank in it.
@@ -643,9 +646,9 @@
   function drafts() {
     var b = because();
     return [
-      'Hey! My friend Akshay does these free kitchen setup plans. You show him your kitchen on a video call and he sends back a plan built around how you actually cook.' + b + '\n\n' + link + '\n\n' + disclose,
-      'Hey! My friend Akshay teaches people to cook without recipes. He comes to your kitchen once a week for a month and builds the whole thing around what you like to eat.' + b + '\n\nThe first step is free. You show him your kitchen on a video call and he sends back a plan for setting it up.\n\n' + link + '\n\n' + disclose,
-      'Hey! I did Akshay\'s cooking month and loved it. He comes to your kitchen once a week and teaches you to cook without recipes.' + b + '\n\nThe first step is free. You show him your kitchen on a video call and he sends back a plan for setting it up.\n\n' + link + '\n\n' + disclose
+      'Hey! My friend Akshay does these free kitchen setup plans. You show him your kitchen on a video call and he sends back a plan built around how you actually cook.' + b + ' ' + disclose + '\n\n' + link,
+      'Hey! My friend Akshay teaches people to cook without recipes. He comes to your kitchen once a week for a month and builds the whole thing around what you like to eat.' + b + '\n\nThe first step is free. You show him your kitchen on a video call and he sends back a plan for setting it up. ' + disclose + '\n\n' + link,
+      'Hey! I did Akshay\'s cooking month and loved it. He comes to your kitchen once a week and teaches you to cook without recipes.' + b + '\n\nThe first step is free. You show him your kitchen on a video call and he sends back a plan for setting it up. ' + disclose + '\n\n' + link
     ];
   }
 
