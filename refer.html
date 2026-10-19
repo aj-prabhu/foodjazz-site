@@ -160,6 +160,25 @@
       border: 1px solid var(--linen-border);
     }
     .video-slot video { display: block; width: 100%; height: auto; }
+    .film .video-slot { margin-top: 1.6rem; }
+    .video-slot.live { position: relative; }
+    /* display rules above beat the hidden attribute, so say it again here */
+    .video-slot [hidden] { display: none !important; }
+    .video-slot.live .preview { aspect-ratio: 16 / 9; object-fit: cover; }
+    .play {
+      position: absolute; left: 0.8rem; top: 0.8rem;
+      display: inline-flex; align-items: center; gap: 0.6rem; white-space: nowrap;
+      padding: 0.6rem 1.1rem 0.6rem 0.6rem; border: 0; border-radius: 999px; cursor: pointer;
+      background: rgba(254, 253, 251, 0.94); color: #2E2E2C;
+      font: 400 0.95rem var(--font-body); box-shadow: 0 6px 24px rgba(0, 0, 0, 0.25);
+    }
+    .play:hover { background: #fff; }
+    .play:focus-visible { outline: 3px solid var(--sage); outline-offset: 3px; }
+    .play-icon { display: inline-flex; align-items: center; justify-content: center; width: 2.2rem; height: 2.2rem; border-radius: 50%; background: var(--sage); color: #fff; padding-left: 2px; }
+    .play-time { color: #9B9892; margin-left: 0.3rem; }
+    .later-video { margin-top: 2.4rem; }
+    .later-video h3 { font-family: var(--font-display); font-weight: 600; font-size: 1.7rem; margin: 0 0 0.8rem; }
+    @media (max-width: 480px) { .play { left: 0.5rem; top: 0.5rem; font-size: 0.8rem; padding: 0.4rem 0.8rem 0.4rem 0.4rem; } .play-icon { width: 1.8rem; height: 1.8rem; } }
     .video-placeholder {
       aspect-ratio: 16 / 9;
       display: flex;
@@ -420,6 +439,18 @@
         <h1>Know someone who'd love to cook more?</h1>
         <p class="offer">Send them a free kitchen setup plan from me. If they end up doing the month I'll come cook you a private dinner for two.</p>
       </div>
+      <div class="video-slot live" id="videoSlot">
+        <video class="preview" id="previewVideo" muted loop playsinline autoplay preload="auto" poster="/referral-ask-poster.jpg" aria-hidden="true" tabindex="-1">
+          <source src="/referral-ask-preview.mp4" type="video/mp4">
+        </video>
+        <video class="full" id="fullVideo" controls playsinline preload="none" poster="/referral-ask-poster.jpg" hidden>
+          <source src="/referral-ask.mp4" type="video/mp4">
+        </video>
+        <button class="play" id="playFull" type="button">
+          <span class="play-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22"><path d="M8 5.5v13l11-6.5z" fill="currentColor"/></svg></span>
+          <span class="play-label">Watch why I'm asking <span class="play-time">1:37</span></span>
+        </button>
+      </div>
     </div>
   </section>
 
@@ -443,21 +474,11 @@
         <button class="btn secondary" id="shareBtn" hidden>Share</button>
       </div>
       <p class="link-note">Your link is <code id="linkOut">foodjazz.club/r</code>. It tells me who sent them. If they mention your name instead that works fine too.</p>
+      <div class="later-video" id="laterVideo" hidden><h3>Why I'm asking</h3></div>
     </div>
   </section>
 
   <section>
-    <div class="container">
-      <h2>Why I'm asking</h2>
-      <div class="video-slot" id="videoSlot">
-        <video controls playsinline preload="metadata" poster="/referral-ask-poster.jpg">
-          <source src="/referral-ask.mp4" type="video/mp4">
-        </video>
-      </div>
-    </div>
-  </section>
-
-  <section class="wash">
     <div class="container wide">
       <div class="narrow">
         <h2>What your friend gets</h2>
@@ -518,7 +539,7 @@
     </div>
   </section>
 
-  <section>
+  <section class="wash">
     <div class="container">
       <h2>What Food Jazz is</h2>
       <p>A one month cooking intensive. I come to your friend's kitchen once a week and teach them to cook without recipes, and I build the whole month around their kitchen and what they actually like to eat and what their life looks like.</p>
@@ -542,7 +563,7 @@
     </div>
   </section>
 
-  <section class="wash dinner">
+  <section class="dinner">
     <div class="container">
       <h2>About the dinner</h2>
       <p>If your friend signs up for the month I come to your place and cook a three course dinner for you and one other person. I bring everything and cook in your kitchen and clean up after. It's for the month, not the free plan.</p>
@@ -575,7 +596,7 @@
     </div>
   </section>
 
-  <section>
+  <section class="wash">
     <div class="container">
       <h2>Questions people ask</h2>
       <div class="faq">
@@ -705,9 +726,37 @@
     }
   });
 
-  var referVideo = document.querySelector('video');
-  if (referVideo && window.fjTrack) {
-    referVideo.addEventListener('play', function () { window.fjTrack('video_play'); }, { once: true });
+  // Loom-style: a silent six-second loop of the opening plays on its own and
+  // the button swaps in the full video with sound, from the start. With
+  // reduced motion the loop never starts and the poster stands in.
+  var slot = document.getElementById('videoSlot');
+  var preview = document.getElementById('previewVideo');
+  var full = document.getElementById('fullVideo');
+  var playBtn = document.getElementById('playFull');
+  if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    preview.removeAttribute('autoplay');
+    preview.pause();
+  }
+  playBtn.addEventListener('click', function () {
+    preview.pause();
+    preview.hidden = true;
+    playBtn.hidden = true;
+    full.hidden = false;
+    full.currentTime = 0;
+    var p = full.play();
+    if (p && p.catch) p.catch(function () {});
+    full.focus();
+  });
+  if (window.fjTrack) {
+    full.addEventListener('play', function () { window.fjTrack('video_play'); }, { once: true });
+  }
+
+  // Past clients already know the month, so the text comes first and the
+  // video waits at the bottom of the send box.
+  if (did) {
+    var later = document.getElementById('laterVideo');
+    later.appendChild(slot);
+    later.hidden = false;
   }
 
   // Text it: opens Messages with the draft already in it. Phones only, since
