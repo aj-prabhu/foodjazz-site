@@ -85,10 +85,10 @@
     })();
   </script>
   <meta name="robots" content="noindex, nofollow">
-  <title>Food Jazz — a free kitchen setup plan</title>
+  <title>Food Jazz — a free kitchen blueprint</title>
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
-  <meta property="og:title" content="A free kitchen setup plan">
-  <meta property="og:description" content="Show me your kitchen on a video call and I send back a plan built around how you cook.">
+  <meta property="og:title" content="A free kitchen blueprint">
+  <meta property="og:description" content="Walk me around your kitchen on a video call and I'll send you a blueprint for setting it up.">
   <meta property="og:image" content="https://foodjazz.club/og-dinner.jpg">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
@@ -151,7 +151,25 @@
     .container.wide { max-width: 960px; }
     .narrow { max-width: 600px; margin: 0 auto; }
     .lede { font-size: 1.1rem; color: var(--warm-gray); }
-    .hero { padding-top: clamp(3rem, 10vw, 5.5rem); }
+    .hero {
+      padding-top: clamp(3rem, 10vw, 5.5rem);
+      --grid: rgba(122, 140, 110, 0.13);
+      --grid-major: rgba(122, 140, 110, 0.22);
+      background-color: var(--cream);
+      background-image:
+        linear-gradient(var(--grid-major) 1px, transparent 1px),
+        linear-gradient(90deg, var(--grid-major) 1px, transparent 1px),
+        linear-gradient(var(--grid) 1px, transparent 1px),
+        linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+      background-size: 120px 120px, 120px 120px, 24px 24px, 24px 24px;
+      background-position: center top;
+    }
+    :root[data-theme="dark"] .hero { --grid: rgba(157, 176, 144, 0.07); --grid-major: rgba(157, 176, 144, 0.13); }
+    .label {
+      display: inline-block; margin: 0 0 1rem; padding: 0.3rem 0.7rem;
+      font-size: 0.72rem; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--accent-text); border: 1px solid var(--sage-muted); border-radius: 4px; background: var(--cream);
+    }
     .hero .btn { margin-top: 1.6rem; }
 
     .video-slot {
@@ -299,36 +317,32 @@
   <section class="hero">
     <div class="container">
       <p class="gift" id="gift" hidden></p>
-      <h1>Open your fridge on a Tuesday and know what to make.</h1>
-      <p class="lede">Show me your kitchen on a free 30 minute video call and I'll send you a plan built around the food you actually like.</p>
+      <p class="label">Free kitchen blueprint</p>
+      <h1>Turn your kitchen from chaos into a creative makerspace.</h1>
+      <p class="lede">Most people who say cooking is too hard or that they don't have time usually just don't have the right setup. Walk me around your kitchen on a free 30 minute video call and I'll send you a blueprint for what to stock, what to swap and what to move.</p>
       <div class="intro">
         <img src="/photos/akshay-prabhu-400.webp" alt="Akshay Prabhu" width="400" height="400">
-        <p>I'm Akshay. I teach people to cook without recipes in their own kitchens around the Bay Area.</p>
+        <p>I'm Akshay. Before Food Jazz I helped about 200 home cooks turn their kitchens into mini factories selling food to their neighbors.</p>
       </div>
-      <a class="btn book" href="https://zcal.co/i/utLPg0va" data-where="top">Pick a time for your free call</a>
-      <p class="fineprint">Join from your phone in your kitchen and no need to tidy up first.</p>
+      <a class="btn book" href="https://zcal.co/i/utLPg0va" data-where="top">Book your blueprint call</a>
+      <p class="fineprint">Join from your phone and don't clean up first. I want to see how you really use it.</p>
     </div>
   </section>
 
   <section class="wash">
     <div class="container">
-      <h2>How the call works</h2>
-      <p>When you book I'll ask for one meal you wish you could make at home and that's where we start.</p>
-      <p>On the call you join from your phone and walk me around. I'll ask what you like to eat and what a normal weeknight looks like and I'll look at how things are set up and what's in the fridge.</p>
-      <p>The next day I send you a written plan for your kitchen. It covers what to keep stocked, how to set things up so cooking feels easier and a few meals to start with.</p>
-      <a class="btn book" href="https://zcal.co/i/utLPg0va" data-where="how">Pick a time for your free call</a>
+      <h2>How it works</h2>
+      <p>When you book I'll ask for one meal you wish you could make at home so I know what we're setting your kitchen up for.</p>
+      <p>On the call you walk me around and show me how you normally use your kitchen and what you usually keep stocked. I'll ask what you like to eat and what a normal weeknight looks like.</p>
+      <p>After the call I send you your blueprint. It's a plan for your setup and your stocking built around the food you actually like.</p>
+      <a class="btn book" href="https://zcal.co/i/utLPg0va" data-where="how">Book your blueprint call</a>
     </div>
   </section>
 
   <section>
     <div class="container">
-      <h2>A bit more about me</h2>
-      <div class="video-slot">
-        <video controls playsinline preload="metadata" poster="/referral-welcome-poster.jpg">
-          <source src="/referral-welcome.mp4" type="video/mp4">
-        </video>
-      </div>
-      <p class="after-video">I teach people to cook without recipes so you can open your fridge on a random Tuesday and make something good without looking anything up. Before this I helped legalize the sale of home cooked food in California and built a marketplace of home cooks called Foodnome.</p>
+      <h2>A bit about me</h2>
+      <p>I teach people to cook without recipes in their own kitchens around the Bay Area. Before this I helped legalize the sale of home cooked food in California and built Foodnome, the first marketplace for permitted home restaurants.</p>
       <figure class="quote">
         <blockquote>My friends would say I was <span class="emph">a Michelin-star chef</span>. Which is crazy.</blockquote>
         <figcaption>
@@ -357,7 +371,7 @@
       <div class="faq">
         <details>
           <summary>Is this a sales call?</summary>
-          <p>The call is about your kitchen and you get the written plan for free. I also run a paid month where I come cook with you once a week. If I think it could help I'll ask if you want to hear about it, and you can say no and still get your plan.</p>
+          <p>The call is about your kitchen and the blueprint is yours for free. I also run a paid month where I come cook with you once a week. If I think it could help I'll ask if you want to hear about it, and you can say no and still get your blueprint.</p>
         </details>
         <details>
           <summary>What does the month cost?</summary>
@@ -365,7 +379,7 @@
         </details>
         <details>
           <summary id="whatTheyGet">What does the friend who sent me get?</summary>
-          <p id="whatTheyGetAnswer">If you choose the paid month I cook them dinner as a thank you. You don't need to buy anything to get your plan.</p>
+          <p id="whatTheyGetAnswer">If you choose the paid month I cook them dinner as a thank you. You don't need to buy anything to get your blueprint.</p>
         </details>
         <details>
           <summary>Do I need to live in the Bay Area?</summary>
@@ -377,10 +391,10 @@
 
   <section class="closing">
     <div class="container">
-      <h2>If you want to go further</h2>
+      <h2>After the blueprint</h2>
       <img class="closing-photo" src="/photos/food-jazz-cucumber-chop-lesson-800.webp" srcset="/photos/food-jazz-cucumber-chop-lesson-800.webp 800w, /photos/food-jazz-cucumber-chop-lesson-1600.webp 1600w" sizes="(max-width: 700px) 92vw, 600px" width="1600" height="900" alt="Akshay Prabhu teaching a home cook to chop cucumbers in her kitchen" loading="lazy" decoding="async">
-      <p>The month is me in your kitchen once a week cooking with you. By the end you're cooking without looking anything up and hosting a dinner party for your people. The free call is the first step either way.</p>
-      <a class="btn book" href="https://zcal.co/i/utLPg0va" data-where="bottom">Pick a time for your free call</a>
+      <p>The blueprint gets your kitchen ready. If you want to learn to cook in it without recipes that's what my month is for, and either way the call is the place to start.</p>
+      <a class="btn book" href="https://zcal.co/i/utLPg0va" data-where="bottom">Book your blueprint call</a>
     </div>
   </section>
 
@@ -393,7 +407,7 @@
 
   <dialog class="booking" id="booking" aria-labelledby="bookingTitle">
     <div class="booking-head">
-      <p class="booking-title" id="bookingTitle">Pick a time for your call</p>
+      <p class="booking-title" id="bookingTitle">Pick a time for your blueprint call</p>
       <button class="booking-close" type="button" id="bookingClose" aria-label="Close">&times;</button>
     </div>
     <div class="booking-body" id="bookingBody">
@@ -435,7 +449,7 @@
     gift.hidden = false;
     document.getElementById('whatTheyGet').textContent = 'What does ' + name + ' get?';
     document.getElementById('whatTheyGetAnswer').textContent =
-      'If you choose the paid month I cook ' + name + ' dinner as a thank you. You don\'t need to buy anything to get your plan.';
+      'If you choose the paid month I cook ' + name + ' dinner as a thank you. You don\'t need to buy anything to get your blueprint.';
   }
   var buttons = document.querySelectorAll('a.book');
   Array.prototype.forEach.call(buttons, function (a) { a.href = bookHref; });
