@@ -85,9 +85,9 @@
     })();
   </script>
   <meta name="robots" content="noindex, nofollow">
-  <meta name="description" content="Send a friend a free kitchen setup plan from Akshay.">
+  <meta name="description" content="Send a friend a free kitchen blueprint from Akshay.">
   <meta property="og:title" content="Know someone who'd love to cook more?">
-  <meta property="og:description" content="Send a friend a free kitchen setup plan. If they do the month I cook you dinner.">
+  <meta property="og:description" content="Send a friend a free kitchen blueprint. If they do the month I cook you dinner.">
   <meta property="og:image" content="https://foodjazz.club/og-dinner.jpg">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
@@ -396,7 +396,7 @@
     <div class="container">
       <div class="headline">
         <h1>Know someone who'd love to cook more?</h1>
-        <p class="offer">Send them a free kitchen setup plan from me. If they end up doing the month I'll come cook you a private dinner for two.</p>
+        <p class="offer">Send them a free kitchen blueprint from me. If they end up doing the month I'll come cook you a private dinner for two.</p>
       </div>
       <div class="video-slot live" id="videoSlot">
         <video class="preview" id="previewVideo" muted loop playsinline autoplay preload="auto" poster="/referral-ask-poster.jpg" aria-hidden="true" tabindex="-1">
@@ -440,7 +440,7 @@
   <section>
     <div class="container">
       <h2>What your friend gets</h2>
-      <p>They book a call and show me their kitchen from their phone. The next day I send them a written plan built around how they actually cook, with what to keep stocked, how to set things up so cooking feels easier and a few meals to start with.</p>
+      <p>They book a call and show me their kitchen from their phone. After the call I send them a blueprint for their setup and their stocking built around the food they actually like.</p>
     </div>
   </section>
 
@@ -507,11 +507,11 @@
       <div class="faq">
         <details>
           <summary>Will my friend get a hard sell?</summary>
-          <p>No. The setup plan is theirs either way. If the month looks like a fit I'll tell them and if it doesn't I'll tell them that too.</p>
+          <p>No. The blueprint is theirs either way. If the month looks like a fit I'll tell them and if it doesn't I'll tell them that too.</p>
         </details>
         <details>
           <summary>What if they don't live in the Bay Area?</summary>
-          <p>Send them anyway. The setup plan happens over video so it works from anywhere. I coach in person in the Bay Area and if they live further out I'll point them at whatever fits.</p>
+          <p>Send them anyway. The blueprint call happens over video so it works from anywhere. I coach in person in the Bay Area and if they live further out I'll point them at whatever fits.</p>
         </details>
         <details>
           <summary>What if I live far away?</summary>
@@ -560,7 +560,7 @@
   // on it. Everyone else never sees it, so nobody claims a month they didn't do.
   var did = params.get('did') === '1';
   var whyEl = document.getElementById('why');
-  var disclose = 'He cooks me dinner if you end up doing his paid month, but the plan is free either way.';
+  var disclose = 'He cooks me dinner if you end up doing his paid month, but the blueprint is free either way.';
 
   // The reason is optional. Empty means the sentence drops out, so the text
   // never goes out with a blank in it.
@@ -572,9 +572,9 @@
   function drafts() {
     var b = because();
     return [
-      'Hey! My friend Akshay does these free kitchen setup plans. You show him your kitchen on a video call and he sends back a plan built around how you actually cook.' + b + ' ' + disclose + '\n\n' + link,
-      'Hey! My friend Akshay teaches people to cook without recipes. He comes to your kitchen once a week for a month and builds the whole thing around what you like to eat.' + b + '\n\nThe first step is free. You show him your kitchen on a video call and he sends back a plan for setting it up. ' + disclose + '\n\n' + link,
-      'Hey! I did Akshay\'s cooking month and loved it. He comes to your kitchen once a week and teaches you to cook without recipes.' + b + '\n\nThe first step is free. You show him your kitchen on a video call and he sends back a plan for setting it up. ' + disclose + '\n\n' + link
+      'Hey! My friend Akshay does these free kitchen blueprints. You show him your kitchen on a video call and he sends back a plan for your setup and stocking built around how you actually cook.' + b + ' ' + disclose + '\n\n' + link,
+      'Hey! My friend Akshay teaches people to cook without recipes. He comes to your kitchen once a week for a month and builds the whole thing around what you like to eat.' + b + '\n\nThe first step is free. You show him your kitchen on a video call and he sends back a blueprint for setting it up. ' + disclose + '\n\n' + link,
+      'Hey! I did Akshay\'s cooking month and loved it. He comes to your kitchen once a week and teaches you to cook without recipes.' + b + '\n\nThe first step is free. You show him your kitchen on a video call and he sends back a blueprint for setting it up. ' + disclose + '\n\n' + link
     ];
   }
 
