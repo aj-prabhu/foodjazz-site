@@ -176,6 +176,29 @@
     .hero p { font-weight: 400; }
     .hero .btn { background: var(--sage-deep); border-color: var(--sage-deep); }
     .hero .btn:hover { background: #5b6a52; }
+    .hero-video {
+      position: relative; margin-top: 1.6rem; border-radius: 14px; overflow: hidden;
+      border: 1px solid rgba(185, 200, 174, 0.25); background: #111;
+    }
+    .hero-video img { display: block; width: 100%; height: auto; aspect-ratio: 16 / 9; object-fit: cover; }
+    .hero-video .play {
+      position: absolute; left: 0.8rem; top: 0.8rem;
+      display: inline-flex; align-items: center; gap: 0.6rem; white-space: nowrap;
+      padding: 0.6rem 1.1rem 0.6rem 0.6rem; border-radius: 999px;
+      background: rgba(254, 253, 251, 0.94); color: #2E2E2C;
+      font: 400 0.95rem var(--font-body); box-shadow: 0 6px 24px rgba(0, 0, 0, 0.25);
+    }
+    .hero-video .play-icon { display: inline-flex; align-items: center; justify-content: center; width: 2.2rem; height: 2.2rem; border-radius: 50%; background: #7A8C6E; color: #fff; padding-left: 2px; }
+    .hero-video .play-time { color: #9B9892; margin-left: 0.3rem; }
+    .placeholder-tag {
+      position: absolute; right: 0.6rem; bottom: 0.6rem; padding: 0.25rem 0.6rem; border-radius: 4px;
+      background: #E2BC62; color: #2E2E2C; font-size: 0.7rem; font-weight: 500; letter-spacing: 0.04em;
+    }
+    @media (max-width: 480px) {
+      .hero-video .play { left: 0.5rem; top: 0.5rem; font-size: 0.8rem; padding: 0.4rem 0.8rem 0.4rem 0.4rem; }
+      .hero-video .play-icon { width: 1.8rem; height: 1.8rem; }
+    }
+    .hero .intro { margin-top: 1.8rem; }
     .label {
       display: inline-block; margin: 0 0 1rem; padding: 0.3rem 0.7rem;
       font-size: 0.72rem; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase;
@@ -334,12 +357,19 @@
       <p class="label">Free kitchen blueprint</p>
       <h1>Turn your kitchen from chaos into a creative makerspace.</h1>
       <p class="lede">Most people who say cooking is too hard or that they don't have time usually just don't have the right setup. Walk me around your kitchen on a free 30 minute video call and I'll send you a blueprint built around the food you love.</p>
+      <!-- PLACEHOLDER until the blueprint clip is shot (Studio/Cards/kitchen-walkthrough-offer.md).
+           Swap in the same live loop /refer uses: muted 6s preview, tap for the full clip. -->
+      <div class="hero-video" aria-hidden="true">
+        <img src="/referral-ask-poster.jpg" width="1920" height="1080" alt="">
+        <span class="play"><span class="play-icon"><svg viewBox="0 0 24 24" width="22" height="22"><path d="M8 5.5v13l11-6.5z" fill="currentColor"/></svg></span><span>How the blueprint works <span class="play-time">0:40</span></span></span>
+        <span class="placeholder-tag">Placeholder: new clip Wed</span>
+      </div>
+      <a class="btn book" href="https://zcal.co/i/utLPg0va" data-where="top">Book your blueprint call</a>
+      <p class="fineprint">Join from your phone and don't clean up first. I want to see how you really use it.</p>
       <div class="intro">
         <img src="/photos/akshay-prabhu-400.webp" alt="Akshay Prabhu" width="400" height="400">
         <p>I'm Akshay. Before Food Jazz I helped about 200 home cooks turn their kitchens into mini factories selling food to their neighbors.</p>
       </div>
-      <a class="btn book" href="https://zcal.co/i/utLPg0va" data-where="top">Book your blueprint call</a>
-      <p class="fineprint">Join from your phone and don't clean up first. I want to see how you really use it.</p>
     </div>
   </section>
 
