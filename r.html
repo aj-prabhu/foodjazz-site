@@ -428,7 +428,8 @@
   // Read it off the raw path so José keeps his accent even though the slug drops it.
   var first = raw.split(/[\s\-_.]+/)[0] || '';
   if (slug && /^[\p{L}']{2,}$/u.test(first)) {
-    var name = first.charAt(0).toUpperCase() + first.slice(1).toLowerCase();
+    // Capital after an apostrophe too, so o'brien reads O'Brien.
+    var name = first.toLowerCase().replace(/(^|')(\p{L})/gu, function (m, a, c) { return a + c.toUpperCase(); });
     var gift = document.getElementById('gift');
     gift.textContent = name + ' thought you might like this';
     gift.hidden = false;
