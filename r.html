@@ -151,10 +151,18 @@
     .container.wide { max-width: 960px; }
     .narrow { max-width: 600px; margin: 0 auto; }
     .lede { font-size: 1.1rem; color: var(--warm-gray); }
+    /* The top band is always dark, like a blueprint, whatever theme the page is in. */
     .hero {
       padding-top: clamp(3rem, 10vw, 5.5rem);
-      --grid: rgba(122, 140, 110, 0.13);
-      --grid-major: rgba(122, 140, 110, 0.22);
+      --cream: #1A1D18;
+      --charcoal: #F1EBE1;
+      --warm-gray: #CFC8BC;
+      --medium-gray: #A39D93;
+      --accent-text: #B9C8AE;
+      --sage-muted: rgba(185, 200, 174, 0.35);
+      --grid: rgba(185, 200, 174, 0.07);
+      --grid-major: rgba(185, 200, 174, 0.15);
+      color: var(--charcoal);
       background-color: var(--cream);
       background-image:
         linear-gradient(var(--grid-major) 1px, transparent 1px),
@@ -164,7 +172,10 @@
       background-size: 120px 120px, 120px 120px, 24px 24px, 24px 24px;
       background-position: center top;
     }
-    :root[data-theme="dark"] .hero { --grid: rgba(157, 176, 144, 0.07); --grid-major: rgba(157, 176, 144, 0.13); }
+    .hero .gift { color: #E2BC62; }
+    .hero p { font-weight: 400; }
+    .hero .btn { background: var(--sage-deep); border-color: var(--sage-deep); }
+    .hero .btn:hover { background: #5b6a52; }
     .label {
       display: inline-block; margin: 0 0 1rem; padding: 0.3rem 0.7rem;
       font-size: 0.72rem; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase;
