@@ -456,7 +456,7 @@
     // Capital after an apostrophe too, so o'brien reads O'Brien.
     var name = first.toLowerCase().replace(/(^|')(\p{L})/gu, function (m, a, c) { return a + c.toUpperCase(); });
     var gift = document.getElementById('gift');
-    gift.textContent = name + ' thought you might like this';
+    gift.textContent = 'A gift from ' + name;
     gift.hidden = false;
     document.getElementById('whatTheyGet').textContent = 'What does ' + name + ' get?';
     document.getElementById('whatTheyGetAnswer').textContent =
