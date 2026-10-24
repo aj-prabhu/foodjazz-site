@@ -85,11 +85,19 @@
     })();
   </script>
   <meta name="robots" content="noindex, nofollow">
-  <title>Food Jazz — a favor</title>
+  <meta name="description" content="Send a friend a free kitchen blueprint from Akshay.">
+  <meta property="og:title" content="Know someone who'd love to cook more?">
+  <meta property="og:description" content="Send a friend a free kitchen blueprint. If they do the month I cook you dinner.">
+  <meta property="og:image" content="https://foodjazz.club/og-dinner.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary_large_image">
+  <title>Food Jazz — send a friend a free kitchen plan</title>
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600&family=Cormorant+Garamond:ital,wght@1,500&family=Courier+Prime:ital,wght@0,400;0,700;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet">
   <style>
     :root {
       color-scheme: light;
@@ -102,10 +110,14 @@
       --warm-white: #FEFDFB;
       --linen: #F3EDE4;
       --linen-border: #e0d9cf;
+      --rule: rgba(46, 46, 44, 0.16);
       --charcoal: #2E2E2C;
       --warm-gray: #5C5A56;
-      --medium-gray: #9B9892;
-      --font-display: 'Caveat', cursive;
+      --medium-gray: #8A8781;
+      --golden: #D4A843;
+      --font-type: 'Courier Prime', 'Courier New', monospace;
+      --font-hand: 'Caveat', cursive;
+      --font-serif: 'Cormorant Garamond', Georgia, serif;
       --font-body: 'DM Sans', sans-serif;
     }
 
@@ -121,6 +133,7 @@
       line-height: 1.65;
       color: var(--charcoal);
       background: var(--cream);
+      overflow-x: hidden;
     }
 
     .container {
@@ -131,26 +144,53 @@
       padding-right: 1.4rem;
     }
 
-    section { padding: clamp(2.6rem, 9vw, 4.5rem) 0; }
-    section.wash { background: var(--sage-wash); }
+    section { padding: clamp(2.8rem, 9vw, 5rem) 0; }
+    section.wash { background: var(--warm-white); border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); }
+    section.wash + section, section + section.wash { border-top: 1px solid var(--rule); }
 
-    h1 { font-family: var(--font-display); font-weight: 600; line-height: 1.08; margin: 0 0 1.2rem; font-size: clamp(2.6rem, 9vw, 4rem); }
-    h2 { font-family: var(--font-display); font-weight: 600; line-height: 1.12; margin: 0 0 0.9rem; font-size: clamp(1.9rem, 6.5vw, 2.5rem); }
-    .headline { max-width: 620px; margin: 0 auto; }
+    h1, h2, h3 { font-family: var(--font-type); font-weight: 700; color: var(--charcoal); letter-spacing: -0.01em; }
+    h1 { line-height: 1.15; margin: 0 0 1.3rem; font-size: clamp(1.6rem, 6.6vw, 2.55rem); }
+    h2 { line-height: 1.2; margin: 0 0 1rem; font-size: clamp(1.3rem, 4.6vw, 1.65rem); }
+    .headline { max-width: 760px; margin: 0 auto; text-align: center; }
+    .headline h1, .headline p, .menu-card p, .quote blockquote { text-wrap: balance; }
     p { margin: 0 0 1.1rem; }
     p:last-child { margin-bottom: 0; }
+    a { color: var(--accent-text); }
 
     /* ---- video, first thing on the page ---- */
-    .film { padding-top: clamp(1.2rem, 4vw, 2rem); }
+    .film { padding-top: clamp(2rem, 6vw, 3.6rem); }
     .film .container { max-width: 920px; }
-    .film .offer { max-width: 620px; margin-left: auto; margin-right: auto; }
+    .film .offer { max-width: 600px; margin-left: auto; margin-right: auto; }
+    .refresher {
+      max-width: 520px; margin: 0.9rem auto 0;
+      font-size: 0.86rem; line-height: 1.6; color: var(--warm-gray);
+    }
     .video-slot {
-      border-radius: 14px;
+      border-radius: 4px;
       overflow: hidden;
       background: var(--linen);
       border: 1px solid var(--linen-border);
     }
     .video-slot video { display: block; width: 100%; height: auto; }
+    .film .video-slot { margin-top: 2.2rem; }
+    .video-slot.live { position: relative; }
+    /* display rules above beat the hidden attribute, so say it again here */
+    .video-slot [hidden] { display: none !important; }
+    .video-slot.live .preview { aspect-ratio: 16 / 9; object-fit: cover; }
+    .play {
+      position: absolute; left: 0.8rem; top: 0.8rem;
+      display: inline-flex; align-items: center; gap: 0.6rem; white-space: nowrap;
+      padding: 0.45rem 1rem 0.45rem 0.45rem; border: 0; border-radius: 4px; cursor: pointer;
+      background: rgba(254, 253, 251, 0.95); color: #2E2E2C;
+      font: 700 0.82rem var(--font-type); box-shadow: 0 6px 24px rgba(0, 0, 0, 0.25);
+    }
+    .play:hover { background: #fff; }
+    .play:focus-visible { outline: 3px solid var(--sage); outline-offset: 3px; }
+    .play-icon { display: inline-flex; align-items: center; justify-content: center; width: 2.1rem; height: 2.1rem; border-radius: 3px; background: var(--sage-deep); color: #fff; padding-left: 2px; }
+    .play-time { color: #8A8781; margin-left: 0.3rem; font-weight: 400; }
+    .later-video { margin-top: 2.4rem; }
+    .later-video h3 { font-size: 1.15rem; margin: 0 0 0.8rem; }
+    @media (max-width: 480px) { .play { left: 0.5rem; top: 0.5rem; font-size: 0.7rem; padding: 0.35rem 0.75rem 0.35rem 0.35rem; } .play-icon { width: 1.7rem; height: 1.7rem; } }
     .video-placeholder {
       aspect-ratio: 16 / 9;
       display: flex;
@@ -163,53 +203,41 @@
     }
 
     .offer {
-      font-size: 1.15rem;
-      margin-top: 1.6rem;
+      font-size: 1.12rem;
+      margin-top: 0;
     }
-
-    /* ---- who ---- */
-    ul.who { list-style: none; margin: 0.2rem 0 0; padding: 0; }
-    ul.who li {
-      position: relative;
-      padding-left: 1.1rem;
-      margin-bottom: 0.85rem;
-    }
-    ul.who li:last-child { margin-bottom: 0; }
-    ul.who li::before {
-      content: '';
-      position: absolute;
-      left: 0;
-      top: 0.62em;
-      width: 5px;
-      height: 5px;
-      border-radius: 50%;
-      background: var(--sage-muted);
-    }
-    .nudge { margin-top: 1.2rem; color: var(--warm-gray); font-style: italic; }
 
     /* ---- the text ---- */
-    .tabs { display: flex; gap: 0.5rem; margin-bottom: 1rem; flex-wrap: wrap; }
+    .tabs { display: flex; gap: 1.4rem; margin-bottom: 1rem; flex-wrap: wrap; border-bottom: 1px solid var(--rule); }
     .tab {
-      font-family: var(--font-body);
-      font-size: 0.8rem;
-      padding: 0.45rem 0.9rem;
-      border-radius: 40px;
-      border: 1px solid var(--sage-muted);
+      font-family: var(--font-type);
+      font-weight: 700;
+      font-size: 0.66rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      padding: 0.5rem 0 0.55rem;
+      margin-bottom: -1px;
+      border: 0;
+      border-bottom: 2px solid transparent;
       background: transparent;
       color: var(--warm-gray);
       cursor: pointer;
-      transition: all 0.15s ease;
+      transition: color 0.15s ease, border-color 0.15s ease;
     }
-    .tab[aria-selected="true"] { background: var(--sage); border-color: var(--sage); color: #fff; }
+    .tab:hover { color: var(--charcoal); }
+    .tab[aria-selected="true"] { color: var(--charcoal); border-bottom-color: var(--sage-deep); }
+    .tab[hidden] { display: none; }
+    .tab:focus-visible { outline: 2px solid var(--sage); outline-offset: 2px; }
 
     .draft {
       background: var(--warm-white);
       border: 1px solid var(--linen-border);
-      border-radius: 14px;
+      border-radius: 3px;
       padding: 1.3rem 1.25rem;
       white-space: pre-wrap;
       font-size: 0.98rem;
       line-height: 1.6;
+      box-shadow: 0 1px 0 rgba(46, 46, 44, 0.04), 0 12px 24px -20px rgba(46, 46, 44, 0.35);
     }
     .draft .blank { color: var(--accent-text); font-weight: 500; }
 
@@ -217,32 +245,221 @@
     .btn {
       flex: 1 1 auto;
       min-width: 140px;
-      font-family: var(--font-body);
-      font-size: 0.95rem;
+      font-family: var(--font-type);
+      font-weight: 700;
+      font-size: 0.9rem;
       padding: 0.95rem 1.2rem;
-      border-radius: 10px;
-      border: 1px solid var(--sage);
-      background: var(--sage);
+      border-radius: 3px;
+      border: 1px solid var(--sage-deep);
+      background: var(--sage-deep);
       color: #fff;
       cursor: pointer;
       text-align: center;
       transition: background 0.15s ease;
     }
-    .btn:hover { background: var(--sage-deep); }
+    .btn:hover { background: #5b6a52; }
     .btn.secondary { background: transparent; color: var(--accent-text); }
     .btn.secondary:hover { background: var(--sage-wash); }
     .btn[hidden] { display: none; }
+    .btn:focus-visible { outline: 2px solid var(--sage); outline-offset: 2px; }
 
-    .link-note { margin-top: 1rem; font-size: 0.8rem; color: var(--medium-gray); word-break: break-all; }
-    .link-note code { font-family: var(--font-body); color: var(--accent-text); }
+    .link-note { margin-top: 1rem; font-size: 0.8rem; color: var(--medium-gray); overflow-wrap: anywhere; }
+    .link-note code { font-family: var(--font-type); font-size: 0.85rem; color: var(--accent-text); }
 
-    .terms { font-size: 0.88rem; color: var(--warm-gray); }
-    .terms ul { margin: 0; padding-left: 1.1rem; }
-    .terms li { margin-bottom: 0.55rem; }
-    .terms li:last-child { margin-bottom: 0; }
+    /* ---- what your friend gets ---- */
+    .value {
+      margin: 1.7rem 0 0; padding-top: 1.2rem; border-top: 1px solid var(--rule);
+      font-family: var(--font-type); font-size: 0.9rem; line-height: 1.6; color: var(--charcoal);
+    }
+    .value .src {
+      display: inline-block; margin-top: 0.45rem;
+      font-family: var(--font-body); font-size: 0.7rem; letter-spacing: 0.02em; color: var(--medium-gray);
+    }
+    .value .src:hover { color: var(--accent-text); }
 
-    footer { padding: 2rem 0 3rem; text-align: center; font-size: 0.85rem; color: var(--medium-gray); }
-    footer a { color: var(--accent-text); }
+    .peek {
+      display: block; margin: 2.6rem 0 0;
+      color: inherit; text-decoration: none;
+    }
+    .peek-label {
+      display: block; margin-bottom: 0.6rem;
+      font-family: var(--font-type); font-weight: 700; font-size: 0.62rem;
+      letter-spacing: 0.24em; text-transform: uppercase; color: var(--warm-gray);
+    }
+    .peek-frame {
+      display: block; border: 1px solid rgba(46, 46, 44, 0.55); border-radius: 7px; overflow: hidden;
+      background: var(--warm-white);
+      box-shadow: 0 2px 0 rgba(46, 46, 44, 0.05), 0 22px 40px -26px rgba(46, 46, 44, 0.55);
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+    .peek:hover .peek-frame { transform: translateY(-3px); box-shadow: 0 2px 0 rgba(46, 46, 44, 0.05), 0 30px 46px -26px rgba(46, 46, 44, 0.6); }
+    .peek:focus-visible { outline: none; }
+    .peek:focus-visible .peek-frame { outline: 3px solid var(--sage); outline-offset: 3px; }
+    .peek-bar {
+      display: flex; align-items: center; gap: 0.55rem;
+      padding: 0.5rem 0.6rem; border-bottom: 1px solid rgba(46, 46, 44, 0.55);
+    }
+    .peek-url {
+      flex: 1 1 auto; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+      font-family: var(--font-type); font-size: 0.68rem; color: var(--charcoal);
+      background: var(--cream); border: 1px solid var(--linen-border); border-radius: 3px; padding: 0.18rem 0.55rem;
+    }
+    .peek-go { flex: 0 0 auto; color: var(--accent-text); display: inline-flex; }
+    .peek-page {
+      display: block; padding: 2rem 1.6rem 1.9rem;
+      color: #F1EBE1; background-color: #1A1D18;
+      background-image:
+        linear-gradient(rgba(185, 200, 174, 0.15) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(185, 200, 174, 0.15) 1px, transparent 1px),
+        linear-gradient(rgba(185, 200, 174, 0.07) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(185, 200, 174, 0.07) 1px, transparent 1px);
+      background-size: 80px 80px, 80px 80px, 16px 16px, 16px 16px;
+      background-position: center top;
+    }
+    .peek-gift { display: block; font-family: var(--font-hand); font-weight: 600; font-size: 1.3rem; line-height: 1.1; color: #E2BC62; margin-bottom: 0.35rem; }
+    .peek-title { display: block; font-family: var(--font-type); font-weight: 700; font-size: 1.1rem; line-height: 1.25; }
+    .peek-lines { display: block; margin-top: 1rem; }
+    .peek-lines i { display: block; height: 5px; border-radius: 1px; background: rgba(241, 235, 225, 0.16); margin-top: 0.45rem; }
+    .peek-lines i:nth-child(1) { width: 88%; }
+    .peek-lines i:nth-child(2) { width: 64%; }
+    .peek-btn { display: block; width: 7.5rem; height: 1.35rem; margin-top: 1.1rem; border-radius: 2px; background: #6a7a60; }
+
+    /* ---- proof ---- */
+    .quote { margin: 0; text-align: center; }
+    .quote blockquote {
+      margin: 0 0 1.2rem; font-family: var(--font-type); font-style: italic; font-weight: 400;
+      font-size: clamp(1.2rem, 4.4vw, 1.6rem); line-height: 1.35;
+    }
+    .quote .emph { color: var(--accent-text); font-weight: 700; white-space: nowrap; }
+    .quote figcaption {
+      display: inline-flex; align-items: center; gap: 0.7rem;
+      text-align: left; font-size: 0.8rem; color: var(--warm-gray); line-height: 1.4;
+    }
+    .quote figcaption strong { font-weight: 500; color: var(--charcoal); }
+    .quote figcaption img { width: 44px; height: 44px; border-radius: 50%; object-fit: cover; }
+
+    /* ---- photos + dinner, a little wider than the reading column ---- */
+    .container.wide { max-width: 1000px; }
+    .dinner .container.wide { max-width: 1120px; }
+
+    .collage {
+      display: grid; grid-template-columns: repeat(4, 1fr); grid-template-rows: repeat(2, auto);
+      gap: 0.5rem; margin-top: 2.4rem;
+    }
+    .collage img { display: block; width: 100%; height: 100%; aspect-ratio: 4 / 3; object-fit: cover; border-radius: 2px; }
+    .collage .big { grid-column: span 2; grid-row: span 2; aspect-ratio: auto; }
+
+    .wash .quote { margin: 3rem auto 0; max-width: 620px; padding-top: 2.4rem; border-top: 1px solid var(--rule); }
+
+    /* the dinner: a big warm photo with the menu laid on top of it */
+    .dinner-set {
+      position: relative; margin-top: 2.8rem;
+      display: grid; grid-template-columns: repeat(12, 1fr); align-items: start;
+    }
+    .dinner-photo {
+      grid-column: 1 / 10; grid-row: 1;
+      display: block; width: 100%; height: auto; aspect-ratio: 3 / 2;
+      object-fit: cover; border-radius: 2px;
+      filter: sepia(0.14) saturate(1.12) contrast(1.02);
+      box-shadow: 0 30px 60px -40px rgba(60, 40, 20, 0.6);
+    }
+
+    /* A printed menu on heavy cream stock. Stays cream in dark mode too. */
+    .menu-card {
+      grid-column: 9 / 13; grid-row: 1 / span 2; position: relative; z-index: 1; margin-top: 7rem;
+      color: #2E2A25;
+      background-color: #FBF6EC;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.42 0 0 0 0 0.34 0 0 0 0 0.22 0 0 0 0.11 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+      border-radius: 2px;
+      padding: 2rem 1.8rem 1.9rem;
+      text-align: center;
+      box-shadow:
+        0 1px 1px rgba(70, 50, 30, 0.10),
+        0 8px 16px -8px rgba(70, 50, 30, 0.22),
+        0 34px 60px -30px rgba(70, 50, 30, 0.45);
+    }
+    .menu-card::before {
+      content: ''; position: absolute; inset: 11px; pointer-events: none;
+      border: 1px solid rgba(120, 95, 60, 0.32);
+    }
+    .menu-cake { display: block; width: 108px; height: auto; margin: 0 auto 0.9rem; }
+    .menu-eyebrow {
+      font-family: var(--font-hand); font-weight: 500; font-size: 1.15rem; line-height: 1.1;
+      color: #7A6E60; margin: 0 0 0.3rem;
+    }
+    .menu-answer {
+      font-family: var(--font-serif); font-style: italic; font-weight: 500;
+      font-size: 1.3rem; line-height: 1.25; margin: 0 auto; max-width: 15em; color: #2E2A25;
+    }
+    .menu-rule { display: block; width: 2.6rem; height: 1px; margin: 1.35rem auto; background: rgba(120, 95, 60, 0.45); border: 0; }
+    .course { margin: 0 auto 1.25rem; max-width: 17em; }
+    .course:last-of-type { margin-bottom: 0; }
+    .course-name {
+      font-family: var(--font-type); font-weight: 700; font-size: 0.58rem; line-height: 1;
+      letter-spacing: 0.34em; text-transform: uppercase; color: #6a7a60;
+      margin: 0 0 0.5rem; padding-left: 0.34em;
+    }
+    .dish {
+      font-family: var(--font-serif); font-style: italic; font-weight: 500;
+      font-size: 1.12rem; line-height: 1.3; color: #2E2A25; margin: 0;
+    }
+    .menu-note {
+      margin: 0; font-family: var(--font-type); font-size: 0.62rem; line-height: 1.5;
+      letter-spacing: 0.03em; color: #8A7F72; max-width: 20em; margin: 0 auto;
+    }
+    .after-dinner { grid-column: 1 / 8; grid-row: 2; align-self: start; margin: 2.4rem 0 0; max-width: 27em; }
+
+    /* ---- faq ---- */
+    .faq details { border-top: 1px solid var(--rule); }
+    .faq details:last-child { border-bottom: 1px solid var(--rule); }
+    .faq summary {
+      list-style: none; cursor: pointer; position: relative;
+      padding: 1.05rem 2rem 1.05rem 0; font-family: var(--font-type); font-weight: 700; font-size: 0.9rem; line-height: 1.4;
+    }
+    .faq summary::-webkit-details-marker { display: none; }
+    .faq summary::after {
+      content: '+'; position: absolute; right: 0.2rem; top: 0.95rem;
+      font-family: var(--font-body); font-weight: 300;
+      font-size: 1.3rem; line-height: 1; color: var(--accent-text);
+      transition: transform 0.2s ease;
+    }
+    .faq details[open] summary::after { transform: rotate(45deg); }
+    .faq details p { padding: 0 2rem 1.2rem 0; color: var(--warm-gray); font-size: 0.95rem; }
+
+    @media (max-width: 760px) {
+      .dinner-set { display: block; }
+      .dinner-photo { width: calc(100% + 2.8rem); max-width: none; margin: 0 -1.4rem; border-radius: 0; aspect-ratio: 3 / 2; }
+      .menu-card { margin: 1.8rem auto 0; max-width: 380px; width: calc(100% - 0.6rem); padding: 1.8rem 1.3rem 1.7rem; }
+      .menu-card::before { inset: 9px; }
+      .dish { font-size: 1.06rem; }
+      .course { max-width: none; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .faq summary::after, .tab, .btn, .peek-frame { transition: none; }
+      .peek:hover .peek-frame { transform: none; }
+    }
+
+    .narrow { max-width: 620px; margin: 0 auto; }
+    .ask { font-size: 1.05rem; }
+    .why-box { margin: 1rem 0 1.4rem; }
+    .why-box summary { cursor: pointer; color: var(--accent-text); font-size: 0.92rem; }
+    .why-box[open] summary { margin-bottom: 0.6rem; }
+    .why-input {
+      width: 100%; font: inherit; font-size: 1rem; padding: 0.8rem 0.9rem; margin-bottom: 0;
+      border: 1px solid var(--linen-border); border-radius: 3px; background: var(--warm-white); color: var(--charcoal);
+    }
+    .why-input:focus { outline: 2px solid var(--sage); outline-offset: 1px; }
+    .draft { white-space: pre-line; }
+    .blank-note { margin-top: 0.8rem; font-size: 0.85rem; color: var(--warm-gray); }
+    a.btn { text-decoration: none; display: inline-block; }
+
+    @media (max-width: 700px) {
+      .collage { grid-template-columns: 1fr 1fr; }
+      .collage .big { grid-column: 1 / -1; grid-row: auto; aspect-ratio: 16 / 9; }
+    }
+
+    footer { padding: 2.4rem 0 3rem; text-align: center; font-size: 0.85rem; color: var(--medium-gray); border-top: 1px solid var(--rule); }
+    footer a { color: var(--accent-text); font-family: var(--font-type); }
 
     @media (min-width: 700px) {
       .container { padding-left: 2rem; padding-right: 2rem; }
@@ -256,6 +473,7 @@
       --sage-wash: #1F231D;
       --linen: #25231F;
       --linen-border: #3A3731;
+      --rule: rgba(241, 235, 225, 0.14);
       --charcoal: #F1EBE1;
       --warm-gray: #CFC8BC;
       --medium-gray: #A39D93;
@@ -268,9 +486,9 @@
     }
 
     :root[data-theme="dark"] body { font-weight: 400; }
-    :root[data-theme="dark"] .btn:not(.secondary) { background: var(--sage-deep); border-color: var(--sage-deep); }
     :root[data-theme="dark"] .btn:not(.secondary):hover { background: #5b6a52; }
-    :root[data-theme="dark"] .tab[aria-selected="true"] { background: var(--sage-deep); border-color: var(--sage-deep); }
+    :root[data-theme="dark"] .peek-frame, :root[data-theme="dark"] .peek-bar { border-color: rgba(241, 235, 225, 0.3); }
+    :root[data-theme="dark"] .menu-card { box-shadow: 0 1px 1px rgba(0, 0, 0, 0.3), 0 34px 60px -30px rgba(0, 0, 0, 0.8); }
   </style>
   <script src="/analytics.js"></script>
   <script defer src="/_vercel/insights/script.js"></script>
@@ -280,70 +498,154 @@
   <section class="film">
     <div class="container">
       <div class="headline">
-        <h1>Send someone my way. I'll cook you dinner.</h1>
+        <h1>Know someone who'd love to cook more?</h1>
+        <p class="offer">Send them a free kitchen blueprint from me. If they end up doing the month I'll come cook you a private dinner for two.</p>
+        <p class="refresher">Food Jazz is my one month cooking intensive where I teach people to cook without recipes in their own kitchen.</p>
       </div>
-      <div class="video-slot" id="videoSlot">
-        <video controls playsinline preload="metadata" poster="/referral-ask-poster.jpg">
+      <div class="video-slot live" id="videoSlot">
+        <video class="preview" id="previewVideo" muted loop playsinline autoplay preload="auto" poster="/referral-ask-poster.jpg" aria-hidden="true" tabindex="-1">
+          <source src="/referral-ask-preview.mp4" type="video/mp4">
+        </video>
+        <video class="full" id="fullVideo" controls playsinline preload="none" poster="/referral-ask-poster.jpg" hidden>
           <source src="/referral-ask.mp4" type="video/mp4">
         </video>
+        <button class="play" id="playFull" type="button">
+          <span class="play-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22"><path d="M8 5.5v13l11-6.5z" fill="currentColor"/></svg></span>
+          <span class="play-label">Watch why I'm asking <span class="play-time">1:37</span></span>
+        </button>
       </div>
-      <p class="offer">If they sign up I come to your place and cook you a three course dinner for two. I bring everything and clean up after.</p>
+    </div>
+  </section>
+
+  <section class="wash send" id="text">
+    <div class="container">
+      <h2>Send them this</h2>
+      <p class="ask">Think of someone who's told you they're tired of takeout or wishes they hosted more. Start with one person.</p>
+      <details class="why-box">
+        <summary>Add why you thought of them</summary>
+        <input class="why-input" id="why" type="text" maxlength="140" autocomplete="off" aria-label="Why you thought of them" placeholder="you said you wanted to cook more this year">
+      </details>
+      <div class="tabs" role="tablist">
+        <button class="tab" role="tab" aria-selected="true" data-draft="0">Short</button>
+        <button class="tab" role="tab" aria-selected="false" data-draft="1">The whole story</button>
+        <button class="tab" role="tab" aria-selected="false" data-draft="2" id="didTab" hidden>I did the month</button>
+      </div>
+      <div class="draft" id="draft"></div>
+      <div class="btn-row">
+        <a class="btn" id="smsBtn" href="sms:" hidden>Text it</a>
+        <button class="btn" id="copyBtn">Copy the text</button>
+        <button class="btn secondary" id="shareBtn" hidden>Share</button>
+      </div>
+      <p class="link-note">Your link is <code id="linkOut">foodjazz.club/r</code>. It tells me who sent them. If they mention your name instead that works fine too.</p>
+      <div class="later-video" id="laterVideo" hidden><h3>Why I'm asking</h3></div>
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+      <h2>What your friend gets</h2>
+      <p>A free kitchen blueprint. They book a call and show me their kitchen from their phone, and within a week I send them a plan for their setup and what to keep stocked, built around their kitchen and the food they actually like. I write every one myself.</p>
+      <p class="value">Kitchen organizers charge $100 to $400 for a virtual session like this. I spend about 3 hours on each blueprint and your friend gets it free.<br><a class="src" href="https://www.taskrabbit.com/cost-guides/home-organization" target="_blank" rel="noopener">TaskRabbit 2026</a></p>
+      <a class="peek" id="peek" href="/r" target="_blank" rel="noopener">
+        <span class="peek-label">See the page they'll get</span>
+        <span class="peek-frame">
+          <span class="peek-bar">
+            <span class="peek-url" id="peekUrl">foodjazz.club/r</span>
+            <span class="peek-go" aria-hidden="true"><svg viewBox="0 0 16 16" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3H3v10h10v-3M9 3h4v4M13 3L7 9"/></svg></span>
+          </span>
+          <span class="peek-page" aria-hidden="true">
+            <span class="peek-gift" id="peekGift">A gift for you</span>
+            <span class="peek-title">You just got a free kitchen blueprint!</span>
+            <span class="peek-lines"><i></i><i></i></span>
+            <span class="peek-btn"></span>
+          </span>
+        </span>
+      </a>
     </div>
   </section>
 
   <section class="wash">
     <div class="container">
       <h2>What Food Jazz is</h2>
-      <p>A one month intensive. I come to your kitchen once a week for a month and teach you to cook without recipes, and by the end you are improvising. It's all about cooking exactly what you want to eat.</p>
-      <p>The month ends with a dinner party for your friends and family. Most people can't picture hosting one when they start and the whole month builds up to it.</p>
+      <p>A one month cooking intensive. I come to your friend's kitchen once a week and teach them to cook without recipes, and I build the whole month around their kitchen and what they actually like to eat and what their life looks like.</p>
+      <p>By the end they're cooking without looking anything up and they host a dinner party that makes their friends and family think they're a magician.</p>
+    </div>
+    <div class="container wide">
+      <div class="collage">
+        <img class="big" src="/photos/food-jazz-hero-flambe-960.webp" srcset="/photos/food-jazz-hero-flambe-960.webp 960w, /photos/food-jazz-hero-flambe-1920.webp 1920w" sizes="(max-width: 700px) 92vw, 480px" width="1920" height="1080" alt="Flames rise from a wok as Akshay Prabhu and a home cook work the stove together" loading="lazy" decoding="async">
+        <img src="/photos/food-jazz-akshay-stir-smile-800.webp" srcset="/photos/food-jazz-akshay-stir-smile-800.webp 800w, /photos/food-jazz-akshay-stir-smile-1600.webp 1600w" sizes="(max-width: 700px) 45vw, 240px" width="1600" height="900" alt="Akshay Prabhu smiles while stirring a wok" loading="lazy" decoding="async">
+        <img src="/photos/food-jazz-cleaver-handoff-800.webp" srcset="/photos/food-jazz-cleaver-handoff-800.webp 800w, /photos/food-jazz-cleaver-handoff-1600.webp 1600w" sizes="(max-width: 700px) 45vw, 240px" width="1600" height="900" alt="Akshay Prabhu shows a home cook how to hold a Chinese cleaver" loading="lazy" decoding="async">
+        <img src="/photos/food-jazz-ingredients-prepped-800.webp" srcset="/photos/food-jazz-ingredients-prepped-800.webp 800w, /photos/food-jazz-ingredients-prepped-1600.webp 1600w" sizes="(max-width: 700px) 45vw, 240px" width="1600" height="900" alt="Bowls of prepped ingredients lined up on a counter" loading="lazy" decoding="async">
+        <img src="/photos/food-jazz-dinner-party-cheers-800.webp" srcset="/photos/food-jazz-dinner-party-cheers-800.webp 800w, /photos/food-jazz-dinner-party-cheers-1600.webp 1600w" sizes="(max-width: 700px) 45vw, 240px" width="1600" height="900" alt="Friends clink glasses over a home-cooked dinner" loading="lazy" decoding="async">
+      </div>
+      <figure class="quote">
+        <blockquote>My friends would say I was <span class="emph">a Michelin-star chef</span>. Which is crazy.</blockquote>
+        <figcaption>
+          <img src="/davis-clute.webp" alt="Davis Clute" width="44" height="44" loading="lazy">
+          <span><strong>Davis Clute</strong> · Founder, Forbes 30 Under 30</span>
+        </figcaption>
+      </figure>
     </div>
   </section>
 
-  <section>
+  <section class="dinner">
     <div class="container">
-      <h2>Who to think of</h2>
-      <ul class="who">
-        <li>Someone living on Factor or DoorDash who says they have no time to cook.</li>
-        <li>Someone who wants to have people over and never does.</li>
-        <li>Someone whose life just changed and is suddenly cooking for themselves.</li>
-      </ul>
-      <p class="nudge">If a face came to mind, that's the person.</p>
+      <h2>About the dinner</h2>
+      <p>If your friend signs up for the month I come to your place and cook a three course dinner for you and one other person. I bring everything and cook in your kitchen and clean up after. It's for the month, not the free plan.</p>
+      <p>Before I plan it I'll ask you what you'd order on your birthday and I build the menu from your answer.</p>
+    </div>
+    <div class="container wide">
+      <div class="dinner-set">
+        <img class="dinner-photo" src="/photos/akshay-fish-roast.webp" width="1170" height="780" alt="Akshay Prabhu holding a whole fire roasted fish at camp" loading="lazy" decoding="async">
+        <div class="menu-card" aria-label="A sample menu">
+          <img class="menu-cake" src="/deco-cake.svg" width="248" height="238" alt="" aria-hidden="true">
+          <p class="menu-eyebrow">If your birthday answer was</p>
+          <p class="menu-answer">The mushroom pasta at that little Italian place</p>
+          <hr class="menu-rule">
+          <div class="course">
+            <p class="course-name">To start</p>
+            <p class="dish">Shaved fennel and apple with parmesan and toasted hazelnuts</p>
+          </div>
+          <div class="course">
+            <p class="course-name">The main</p>
+            <p class="dish">Hand cut pappardelle with wild black trumpet mushrooms and brown butter</p>
+          </div>
+          <div class="course">
+            <p class="course-name">To finish</p>
+            <p class="dish">Dark chocolate pot de crème with a birthday candle</p>
+          </div>
+          <hr class="menu-rule">
+          <p class="menu-note">A sample menu. Yours starts from your answer.</p>
+        </div>
+        <p class="after-dinner">Once they've started I'll reach out and we find a night that works for both of us in the six months after.</p>
+      </div>
     </div>
   </section>
 
   <section class="wash">
     <div class="container">
-      <h2>The text</h2>
-      <p>Steal this and make it yours. The blank is the important part and the link needs to stay in. Fill it with something they want, not something they lack. The dinner parties they talk about, not the takeout they order.</p>
-
-      <div class="tabs" role="tablist">
-        <button class="tab" role="tab" aria-selected="true" data-draft="0">Just say it straight</button>
-        <button class="tab" role="tab" aria-selected="false" data-draft="1">Send them the guide</button>
-      </div>
-
-      <div class="draft" id="draft"></div>
-
-      <div class="btn-row">
-        <button class="btn" id="copyBtn">Copy the text</button>
-        <button class="btn secondary" id="shareBtn" hidden>Share</button>
-      </div>
-
-      <p class="link-note">Your link is <code id="linkOut">foodjazz.club/r</code>. It tells me who sent them. If they mention your name instead that works fine too.</p>
-    </div>
-  </section>
-
-  <section>
-    <div class="container">
-      <h2>The small print</h2>
-      <div class="terms">
-        <ul>
-          <li>I take four people at a time and the price goes up every round. That's the whole reason I'm asking friends instead of running ads.</li>
-          <li>It has to be someone I'm not already talking to. Text me first if you're not sure.</li>
-          <li>I coach in person in the Bay Area. If the person you thought of lives somewhere else, send them anyway and I'll point them at whatever fits.</li>
-          <li>Dinner happens once they've actually started with me and I'll reach out to book it.</li>
-          <li>Any night in the six months after works. I'll book it around whatever program I'm running.</li>
-          <li>Bay Area is easy. If you're further out we'll figure something out.</li>
-        </ul>
+      <h2>Questions people ask</h2>
+      <div class="faq">
+        <details>
+          <summary>Will my friend get a hard sell?</summary>
+          <p>No. The blueprint is theirs either way. If the month looks like a fit I'll tell them and if it doesn't I'll tell them that too.</p>
+        </details>
+        <details>
+          <summary>What if they don't live in the Bay Area?</summary>
+          <p>Send them anyway. The blueprint call happens over video so it works from anywhere. I coach in person in the Bay Area and if they live further out I'll point them at whatever fits.</p>
+        </details>
+        <details>
+          <summary>What if I live far away?</summary>
+          <p>The dinner happens at a Bay Area home. If you live further out text me before you send it and we'll agree on a thank you that works.</p>
+        </details>
+        <details>
+          <summary>Can I send someone you already know?</summary>
+          <p>The dinner is for people I'm not already talking to. Text me first if you're not sure.</p>
+        </details>
+        <details>
+          <summary>Why ask friends?</summary>
+          <p>I'd rather meet people through friends than run ads. It's a personal thing and it should start that way.</p>
+        </details>
       </div>
     </div>
   </section>
@@ -365,7 +667,9 @@
   }
 
   function slugify(s) {
-    return s.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+    // Strip accents first so José becomes jose, not jos.
+    return s.normalize('NFD').replace(/[\u0300-\u036f]/g, '')
+      .toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
   }
 
   var slug = slugify(raw);
@@ -373,47 +677,78 @@
 
   document.getElementById('linkOut').textContent = link.replace('https://', '');
 
-  var drafts = [
-    'Hey — my friend Akshay teaches people to cook. Not a class, he comes to your kitchen once a week for a month and teaches you to cook without recipes. Thought of you because ___\n\n' + link + '\n\nShould probably say he cooks me dinner if you sign up. Take that however you want.',
-    'Hey — my friend Akshay is a chef and he put together this guide on throwing a dinner party. Made me think of you because ___\n\n' + link + '\n\nHe also does a 30 day thing where he comes to your kitchen and teaches you to cook without recipes. Full disclosure, if you sign up he comes and cooks me dinner. So I\'m not exactly neutral here.'
-  ];
+  // The preview card opens the friend's own page, and its mock says whose gift
+  // it is the same way /r does: first name off the slug, davis-clute reads Davis.
+  var peek = document.getElementById('peek');
+  peek.href = '/r' + (slug ? '/' + slug : '');
+  document.getElementById('peekUrl').textContent = link.replace('https://', '');
+  var first = raw.split(/[\s\-_.]+/)[0] || '';
+  if (slug && /^[\p{L}']{2,}$/u.test(first)) {
+    var name = first.toLowerCase().replace(/(^|')(\p{L})/gu, function (m, a, c) { return a + c.toUpperCase(); });
+    document.getElementById('peekGift').textContent = 'A gift from ' + name;
+  }
+
+  // ?did=1 on a past client's link adds the "I did the month" text and opens
+  // on it. Everyone else never sees it, so nobody claims a month they didn't do.
+  var did = params.get('did') === '1';
+  var whyEl = document.getElementById('why');
+  var disclose = 'He cooks me dinner if you end up doing his paid month, but the blueprint is free either way.';
+
+  // The reason is optional. Empty means the sentence drops out, so the text
+  // never goes out with a blank in it.
+  function because() {
+    var r = whyEl.value.trim().replace(/[.!\s]+$/, '');
+    return r ? ' Thought of you because ' + r + '.' : '';
+  }
+
+  function drafts() {
+    var b = because();
+    return [
+      'Hey! My friend Akshay does these free kitchen blueprints. You show him your kitchen on a video call and he sends back a plan for your setup and stocking built around how you actually cook.' + b + ' ' + disclose + '\n\n' + link,
+      'Hey! My friend Akshay teaches people to cook without recipes. He comes to your kitchen once a week for a month and builds the whole thing around what you like to eat.' + b + '\n\nThe first step is free. You show him your kitchen on a video call and he sends back a blueprint for setting it up. ' + disclose + '\n\n' + link,
+      'Hey! I did Akshay\'s cooking month and loved it. He comes to your kitchen once a week and teaches you to cook without recipes.' + b + '\n\nThe first step is free. You show him your kitchen on a video call and he sends back a blueprint for setting it up. ' + disclose + '\n\n' + link
+    ];
+  }
 
   var current = 0;
   var draftEl = document.getElementById('draft');
+  var didTab = document.getElementById('didTab');
+  if (did) { didTab.hidden = false; current = 2; }
+
+  function text() { return drafts()[current]; }
 
   function render() {
-    draftEl.innerHTML = drafts[current]
-      .replace(/&/g, '&amp;')
-      .replace(/</g, '&lt;')
-      .replace('___', '<span class="blank">___</span>');
+    draftEl.textContent = text();
+    document.querySelectorAll('.tab').forEach(function (t) {
+      t.setAttribute('aria-selected', parseInt(t.dataset.draft, 10) === current ? 'true' : 'false');
+    });
+    if (window.fjSetSms) window.fjSetSms();
   }
 
   Array.prototype.forEach.call(document.querySelectorAll('.tab'), function (tab) {
     tab.addEventListener('click', function () {
       current = parseInt(tab.dataset.draft, 10);
-      document.querySelectorAll('.tab').forEach(function (t) {
-        t.setAttribute('aria-selected', t === tab ? 'true' : 'false');
-      });
       render();
     });
   });
+  whyEl.addEventListener('input', render);
 
   render();
 
   var copyBtn = document.getElementById('copyBtn');
   copyBtn.addEventListener('click', function () {
-    var text = drafts[current];
+    var t = text();
     var done = function () {
-      copyBtn.textContent = 'Copied. Now go paste it.';
+      copyBtn.textContent = 'Copied. Paste it in a text to them.';
       setTimeout(function () { copyBtn.textContent = 'Copy the text'; }, 2600);
       // The connector's one real action on this page. Everything downstream —
-      // the friend landing on /r, the guide, the application — is only
+      // the friend landing on /r, the guide, the setup-plan booking — is only
       // attributable if this end of it is counted too.
       if (window.fjTrack) window.fjTrack('copy_text', { variant: current });
     };
     function fallback() {
       var ta = document.createElement('textarea');
-      ta.value = text;
+      ta.value = t;
       ta.style.position = 'fixed';
       ta.style.opacity = '0';
       document.body.appendChild(ta);
@@ -422,22 +757,67 @@
       document.body.removeChild(ta);
     }
     if (navigator.clipboard && window.isSecureContext) {
-      navigator.clipboard.writeText(text).then(done).catch(fallback);
+      navigator.clipboard.writeText(t).then(done).catch(fallback);
     } else {
       fallback();
     }
   });
 
-  var referVideo = document.querySelector('video');
-  if (referVideo && window.fjTrack) {
-    referVideo.addEventListener('play', function () { window.fjTrack('video_play'); }, { once: true });
+  // Loom-style: a silent six-second loop of the opening plays on its own and
+  // the button swaps in the full video with sound, from the start. With
+  // reduced motion the loop never starts and the poster stands in.
+  var slot = document.getElementById('videoSlot');
+  var preview = document.getElementById('previewVideo');
+  var full = document.getElementById('fullVideo');
+  var playBtn = document.getElementById('playFull');
+  if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    preview.removeAttribute('autoplay');
+    preview.pause();
+  }
+  playBtn.addEventListener('click', function () {
+    preview.pause();
+    preview.hidden = true;
+    playBtn.hidden = true;
+    full.hidden = false;
+    full.currentTime = 0;
+    var p = full.play();
+    if (p && p.catch) p.catch(function () {});
+    full.focus();
+  });
+  if (window.fjTrack) {
+    full.addEventListener('play', function () { window.fjTrack('video_play'); }, { once: true });
+  }
+
+  // Past clients already know the month, so the text comes first and the
+  // video waits at the bottom of the send box.
+  if (did) {
+    var later = document.getElementById('laterVideo');
+    later.appendChild(slot);
+    later.hidden = false;
+  }
+
+  // Text it: opens Messages with the draft already in it. Phones only, since
+  // sms: does nothing useful on a laptop. iOS wants &body, Android ?body.
+  var smsBtn = document.getElementById('smsBtn');
+  var coarse = window.matchMedia && window.matchMedia('(pointer: coarse)').matches;
+  if (smsBtn && coarse) {
+    var ios = /iPhone|iPad|iPod/.test(navigator.userAgent);
+    window.fjSetSms = function () {
+      smsBtn.href = 'sms:' + (ios ? '&' : '?') + 'body=' + encodeURIComponent(text());
+    };
+    window.fjSetSms();
+    smsBtn.hidden = false;
+    copyBtn.classList.add('secondary');
+    smsBtn.addEventListener('click', function () {
+      if (window.fjTrack) window.fjTrack('text_it', { variant: current });
+    });
   }
 
   var shareBtn = document.getElementById('shareBtn');
   if (navigator.share) {
     shareBtn.hidden = false;
     shareBtn.addEventListener('click', function () {
-      navigator.share({ text: drafts[current] }).catch(function () {});
+      navigator.share({ text: text() }).catch(function () {});
     });
   }
 })();
