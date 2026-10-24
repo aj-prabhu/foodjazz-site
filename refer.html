@@ -97,7 +97,7 @@
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600&family=Cormorant+Garamond:ital,wght@1,500&family=Courier+Prime:ital,wght@0,400;0,700;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet">
   <style>
     :root {
       color-scheme: light;
@@ -110,11 +110,14 @@
       --warm-white: #FEFDFB;
       --linen: #F3EDE4;
       --linen-border: #e0d9cf;
+      --rule: rgba(46, 46, 44, 0.16);
       --charcoal: #2E2E2C;
       --warm-gray: #5C5A56;
-      --medium-gray: #9B9892;
+      --medium-gray: #8A8781;
       --golden: #D4A843;
-      --font-display: 'Caveat', cursive;
+      --font-type: 'Courier Prime', 'Courier New', monospace;
+      --font-hand: 'Caveat', cursive;
+      --font-serif: 'Cormorant Garamond', Georgia, serif;
       --font-body: 'DM Sans', sans-serif;
     }
 
@@ -130,6 +133,7 @@
       line-height: 1.65;
       color: var(--charcoal);
       background: var(--cream);
+      overflow-x: hidden;
     }
 
     .container {
@@ -140,27 +144,35 @@
       padding-right: 1.4rem;
     }
 
-    section { padding: clamp(2.6rem, 9vw, 4.5rem) 0; }
-    section.wash { background: var(--sage-wash); }
+    section { padding: clamp(2.8rem, 9vw, 5rem) 0; }
+    section.wash { background: var(--warm-white); border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); }
+    section.wash + section, section + section.wash { border-top: 1px solid var(--rule); }
 
-    h1 { font-family: var(--font-display); font-weight: 600; line-height: 1.08; margin: 0 0 1.2rem; font-size: clamp(2.6rem, 9vw, 4rem); }
-    h2 { font-family: var(--font-display); font-weight: 600; line-height: 1.12; margin: 0 0 0.9rem; font-size: clamp(1.9rem, 6.5vw, 2.5rem); }
+    h1, h2, h3 { font-family: var(--font-type); font-weight: 700; color: var(--charcoal); letter-spacing: -0.01em; }
+    h1 { line-height: 1.15; margin: 0 0 1.3rem; font-size: clamp(1.6rem, 6.6vw, 2.55rem); }
+    h2 { line-height: 1.2; margin: 0 0 1rem; font-size: clamp(1.3rem, 4.6vw, 1.65rem); }
     .headline { max-width: 760px; margin: 0 auto; text-align: center; }
+    .headline h1, .headline p, .menu-card p, .quote blockquote { text-wrap: balance; }
     p { margin: 0 0 1.1rem; }
     p:last-child { margin-bottom: 0; }
+    a { color: var(--accent-text); }
 
     /* ---- video, first thing on the page ---- */
-    .film { padding-top: clamp(1.2rem, 4vw, 2rem); }
+    .film { padding-top: clamp(2rem, 6vw, 3.6rem); }
     .film .container { max-width: 920px; }
-    .film .offer { max-width: 620px; margin-left: auto; margin-right: auto; }
+    .film .offer { max-width: 600px; margin-left: auto; margin-right: auto; }
+    .refresher {
+      max-width: 520px; margin: 0.9rem auto 0;
+      font-size: 0.86rem; line-height: 1.6; color: var(--warm-gray);
+    }
     .video-slot {
-      border-radius: 14px;
+      border-radius: 4px;
       overflow: hidden;
       background: var(--linen);
       border: 1px solid var(--linen-border);
     }
     .video-slot video { display: block; width: 100%; height: auto; }
-    .film .video-slot { margin-top: 1.6rem; }
+    .film .video-slot { margin-top: 2.2rem; }
     .video-slot.live { position: relative; }
     /* display rules above beat the hidden attribute, so say it again here */
     .video-slot [hidden] { display: none !important; }
@@ -168,17 +180,17 @@
     .play {
       position: absolute; left: 0.8rem; top: 0.8rem;
       display: inline-flex; align-items: center; gap: 0.6rem; white-space: nowrap;
-      padding: 0.6rem 1.1rem 0.6rem 0.6rem; border: 0; border-radius: 999px; cursor: pointer;
-      background: rgba(254, 253, 251, 0.94); color: #2E2E2C;
-      font: 400 0.95rem var(--font-body); box-shadow: 0 6px 24px rgba(0, 0, 0, 0.25);
+      padding: 0.45rem 1rem 0.45rem 0.45rem; border: 0; border-radius: 4px; cursor: pointer;
+      background: rgba(254, 253, 251, 0.95); color: #2E2E2C;
+      font: 700 0.82rem var(--font-type); box-shadow: 0 6px 24px rgba(0, 0, 0, 0.25);
     }
     .play:hover { background: #fff; }
     .play:focus-visible { outline: 3px solid var(--sage); outline-offset: 3px; }
-    .play-icon { display: inline-flex; align-items: center; justify-content: center; width: 2.2rem; height: 2.2rem; border-radius: 50%; background: var(--sage); color: #fff; padding-left: 2px; }
-    .play-time { color: #9B9892; margin-left: 0.3rem; }
+    .play-icon { display: inline-flex; align-items: center; justify-content: center; width: 2.1rem; height: 2.1rem; border-radius: 3px; background: var(--sage-deep); color: #fff; padding-left: 2px; }
+    .play-time { color: #8A8781; margin-left: 0.3rem; font-weight: 400; }
     .later-video { margin-top: 2.4rem; }
-    .later-video h3 { font-family: var(--font-display); font-weight: 600; font-size: 1.7rem; margin: 0 0 0.8rem; }
-    @media (max-width: 480px) { .play { left: 0.5rem; top: 0.5rem; font-size: 0.8rem; padding: 0.4rem 0.8rem 0.4rem 0.4rem; } .play-icon { width: 1.8rem; height: 1.8rem; } }
+    .later-video h3 { font-size: 1.15rem; margin: 0 0 0.8rem; }
+    @media (max-width: 480px) { .play { left: 0.5rem; top: 0.5rem; font-size: 0.7rem; padding: 0.35rem 0.75rem 0.35rem 0.35rem; } .play-icon { width: 1.7rem; height: 1.7rem; } }
     .video-placeholder {
       aspect-ratio: 16 / 9;
       display: flex;
@@ -191,33 +203,41 @@
     }
 
     .offer {
-      font-size: 1.15rem;
-      margin-top: 1.6rem;
+      font-size: 1.12rem;
+      margin-top: 0;
     }
 
     /* ---- the text ---- */
-    .tabs { display: flex; gap: 0.5rem; margin-bottom: 1rem; flex-wrap: wrap; }
+    .tabs { display: flex; gap: 1.4rem; margin-bottom: 1rem; flex-wrap: wrap; border-bottom: 1px solid var(--rule); }
     .tab {
-      font-family: var(--font-body);
-      font-size: 0.8rem;
-      padding: 0.45rem 0.9rem;
-      border-radius: 40px;
-      border: 1px solid var(--sage-muted);
+      font-family: var(--font-type);
+      font-weight: 700;
+      font-size: 0.66rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      padding: 0.5rem 0 0.55rem;
+      margin-bottom: -1px;
+      border: 0;
+      border-bottom: 2px solid transparent;
       background: transparent;
       color: var(--warm-gray);
       cursor: pointer;
-      transition: all 0.15s ease;
+      transition: color 0.15s ease, border-color 0.15s ease;
     }
-    .tab[aria-selected="true"] { background: var(--sage); border-color: var(--sage); color: #fff; }
+    .tab:hover { color: var(--charcoal); }
+    .tab[aria-selected="true"] { color: var(--charcoal); border-bottom-color: var(--sage-deep); }
+    .tab[hidden] { display: none; }
+    .tab:focus-visible { outline: 2px solid var(--sage); outline-offset: 2px; }
 
     .draft {
       background: var(--warm-white);
       border: 1px solid var(--linen-border);
-      border-radius: 14px;
+      border-radius: 3px;
       padding: 1.3rem 1.25rem;
       white-space: pre-wrap;
       font-size: 0.98rem;
       line-height: 1.6;
+      box-shadow: 0 1px 0 rgba(46, 46, 44, 0.04), 0 12px 24px -20px rgba(46, 46, 44, 0.35);
     }
     .draft .blank { color: var(--accent-text); font-weight: 500; }
 
@@ -225,138 +245,221 @@
     .btn {
       flex: 1 1 auto;
       min-width: 140px;
-      font-family: var(--font-body);
-      font-size: 0.95rem;
+      font-family: var(--font-type);
+      font-weight: 700;
+      font-size: 0.9rem;
       padding: 0.95rem 1.2rem;
-      border-radius: 10px;
-      border: 1px solid var(--sage);
-      background: var(--sage);
+      border-radius: 3px;
+      border: 1px solid var(--sage-deep);
+      background: var(--sage-deep);
       color: #fff;
       cursor: pointer;
       text-align: center;
       transition: background 0.15s ease;
     }
-    .btn:hover { background: var(--sage-deep); }
+    .btn:hover { background: #5b6a52; }
     .btn.secondary { background: transparent; color: var(--accent-text); }
     .btn.secondary:hover { background: var(--sage-wash); }
     .btn[hidden] { display: none; }
+    .btn:focus-visible { outline: 2px solid var(--sage); outline-offset: 2px; }
 
     .link-note { margin-top: 1rem; font-size: 0.8rem; color: var(--medium-gray); overflow-wrap: anywhere; }
-    .link-note code { font-family: var(--font-body); color: var(--accent-text); }
+    .link-note code { font-family: var(--font-type); font-size: 0.85rem; color: var(--accent-text); }
+
+    /* ---- what your friend gets ---- */
+    .value {
+      margin: 1.7rem 0 0; padding-top: 1.2rem; border-top: 1px solid var(--rule);
+      font-family: var(--font-type); font-size: 0.9rem; line-height: 1.6; color: var(--charcoal);
+    }
+    .value .src {
+      display: inline-block; margin-top: 0.45rem;
+      font-family: var(--font-body); font-size: 0.7rem; letter-spacing: 0.02em; color: var(--medium-gray);
+    }
+    .value .src:hover { color: var(--accent-text); }
+
+    .peek {
+      display: block; margin: 2.6rem 0 0;
+      color: inherit; text-decoration: none;
+    }
+    .peek-label {
+      display: block; margin-bottom: 0.6rem;
+      font-family: var(--font-type); font-weight: 700; font-size: 0.62rem;
+      letter-spacing: 0.24em; text-transform: uppercase; color: var(--warm-gray);
+    }
+    .peek-frame {
+      display: block; border: 1px solid rgba(46, 46, 44, 0.55); border-radius: 7px; overflow: hidden;
+      background: var(--warm-white);
+      box-shadow: 0 2px 0 rgba(46, 46, 44, 0.05), 0 22px 40px -26px rgba(46, 46, 44, 0.55);
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+    .peek:hover .peek-frame { transform: translateY(-3px); box-shadow: 0 2px 0 rgba(46, 46, 44, 0.05), 0 30px 46px -26px rgba(46, 46, 44, 0.6); }
+    .peek:focus-visible { outline: none; }
+    .peek:focus-visible .peek-frame { outline: 3px solid var(--sage); outline-offset: 3px; }
+    .peek-bar {
+      display: flex; align-items: center; gap: 0.55rem;
+      padding: 0.5rem 0.6rem; border-bottom: 1px solid rgba(46, 46, 44, 0.55);
+    }
+    .peek-url {
+      flex: 1 1 auto; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+      font-family: var(--font-type); font-size: 0.68rem; color: var(--charcoal);
+      background: var(--cream); border: 1px solid var(--linen-border); border-radius: 3px; padding: 0.18rem 0.55rem;
+    }
+    .peek-go { flex: 0 0 auto; color: var(--accent-text); display: inline-flex; }
+    .peek-page {
+      display: block; padding: 2rem 1.6rem 1.9rem;
+      color: #F1EBE1; background-color: #1A1D18;
+      background-image:
+        linear-gradient(rgba(185, 200, 174, 0.15) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(185, 200, 174, 0.15) 1px, transparent 1px),
+        linear-gradient(rgba(185, 200, 174, 0.07) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(185, 200, 174, 0.07) 1px, transparent 1px);
+      background-size: 80px 80px, 80px 80px, 16px 16px, 16px 16px;
+      background-position: center top;
+    }
+    .peek-gift { display: block; font-family: var(--font-hand); font-weight: 600; font-size: 1.3rem; line-height: 1.1; color: #E2BC62; margin-bottom: 0.35rem; }
+    .peek-title { display: block; font-family: var(--font-type); font-weight: 700; font-size: 1.1rem; line-height: 1.25; }
+    .peek-lines { display: block; margin-top: 1rem; }
+    .peek-lines i { display: block; height: 5px; border-radius: 1px; background: rgba(241, 235, 225, 0.16); margin-top: 0.45rem; }
+    .peek-lines i:nth-child(1) { width: 88%; }
+    .peek-lines i:nth-child(2) { width: 64%; }
+    .peek-btn { display: block; width: 7.5rem; height: 1.35rem; margin-top: 1.1rem; border-radius: 2px; background: #6a7a60; }
 
     /* ---- proof ---- */
     .quote { margin: 0; text-align: center; }
     .quote blockquote {
-      margin: 0 0 1.4rem; font-family: var(--font-display); font-weight: 600;
-      font-size: clamp(2rem, 7vw, 2.9rem); line-height: 1.12;
+      margin: 0 0 1.2rem; font-family: var(--font-type); font-style: italic; font-weight: 400;
+      font-size: clamp(1.2rem, 4.4vw, 1.6rem); line-height: 1.35;
     }
-    .quote .emph { color: var(--accent-text); }
+    .quote .emph { color: var(--accent-text); font-weight: 700; white-space: nowrap; }
     .quote figcaption {
-      display: inline-flex; align-items: center; gap: 0.8rem;
-      text-align: left; font-size: 0.82rem; color: var(--warm-gray); line-height: 1.4;
+      display: inline-flex; align-items: center; gap: 0.7rem;
+      text-align: left; font-size: 0.8rem; color: var(--warm-gray); line-height: 1.4;
     }
     .quote figcaption strong { font-weight: 500; color: var(--charcoal); }
-    .quote figcaption img { width: 52px; height: 52px; border-radius: 50%; object-fit: cover; }
+    .quote figcaption img { width: 44px; height: 44px; border-radius: 50%; object-fit: cover; }
 
     /* ---- photos + dinner, a little wider than the reading column ---- */
-    .container.wide { max-width: 980px; }
+    .container.wide { max-width: 1000px; }
+    .dinner .container.wide { max-width: 1120px; }
 
-    .dinner-grid {
-      display: grid; grid-template-columns: 1.15fr 1fr; gap: 1.4rem;
-      align-items: center; margin-top: 2.2rem;
+    .collage {
+      display: grid; grid-template-columns: repeat(4, 1fr); grid-template-rows: repeat(2, auto);
+      gap: 0.5rem; margin-top: 2.4rem;
+    }
+    .collage img { display: block; width: 100%; height: 100%; aspect-ratio: 4 / 3; object-fit: cover; border-radius: 2px; }
+    .collage .big { grid-column: span 2; grid-row: span 2; aspect-ratio: auto; }
+
+    .wash .quote { margin: 3rem auto 0; max-width: 620px; padding-top: 2.4rem; border-top: 1px solid var(--rule); }
+
+    /* the dinner: a big warm photo with the menu laid on top of it */
+    .dinner-set {
+      position: relative; margin-top: 2.8rem;
+      display: grid; grid-template-columns: repeat(12, 1fr); align-items: start;
     }
     .dinner-photo {
-      display: block; width: 100%; height: 100%; min-height: 320px;
-      object-fit: cover; border-radius: 6px;
-    }
-    .menu-card {
-      background: var(--warm-white);
-      border: 1px solid var(--linen-border);
-      outline: 1px solid var(--linen-border); outline-offset: -9px;
-      border-radius: 4px;
-      padding: 2.1rem 1.8rem 1.9rem;
-      text-align: center;
-      box-shadow: 0 14px 30px -18px rgba(46, 46, 44, 0.35);
-    }
-    .menu-eyebrow {
-      font-size: 0.68rem; letter-spacing: 0.18em; text-transform: uppercase;
-      color: var(--medium-gray); margin-bottom: 1.3rem;
-    }
-    .course { padding: 0.95rem 0; border-top: 1px dotted var(--linen-border); }
-    .course:first-of-type { border-top: 0; padding-top: 0; }
-    .course-name {
-      font-family: var(--font-display); font-weight: 600; font-size: 1.45rem;
-      line-height: 1; color: var(--accent-text); margin-bottom: 0.35rem;
-    }
-    .dish { font-size: 0.92rem; line-height: 1.5; }
-    .menu-note {
-      margin-top: 1.1rem; padding-top: 0.9rem; border-top: 1px dotted var(--linen-border);
-      font-size: 0.76rem; color: var(--medium-gray);
+      grid-column: 1 / 10; grid-row: 1;
+      display: block; width: 100%; height: auto; aspect-ratio: 3 / 2;
+      object-fit: cover; border-radius: 2px;
+      filter: sepia(0.14) saturate(1.12) contrast(1.02);
+      box-shadow: 0 30px 60px -40px rgba(60, 40, 20, 0.6);
     }
 
+    /* A printed menu on heavy cream stock. Stays cream in dark mode too. */
+    .menu-card {
+      grid-column: 9 / 13; grid-row: 1 / span 2; position: relative; z-index: 1; margin-top: 7rem;
+      color: #2E2A25;
+      background-color: #FBF6EC;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.42 0 0 0 0 0.34 0 0 0 0 0.22 0 0 0 0.11 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+      border-radius: 2px;
+      padding: 2rem 1.8rem 1.9rem;
+      text-align: center;
+      box-shadow:
+        0 1px 1px rgba(70, 50, 30, 0.10),
+        0 8px 16px -8px rgba(70, 50, 30, 0.22),
+        0 34px 60px -30px rgba(70, 50, 30, 0.45);
+    }
+    .menu-card::before {
+      content: ''; position: absolute; inset: 11px; pointer-events: none;
+      border: 1px solid rgba(120, 95, 60, 0.32);
+    }
+    .menu-cake { display: block; width: 108px; height: auto; margin: 0 auto 0.9rem; }
+    .menu-eyebrow {
+      font-family: var(--font-hand); font-weight: 500; font-size: 1.15rem; line-height: 1.1;
+      color: #7A6E60; margin: 0 0 0.3rem;
+    }
+    .menu-answer {
+      font-family: var(--font-serif); font-style: italic; font-weight: 500;
+      font-size: 1.3rem; line-height: 1.25; margin: 0 auto; max-width: 15em; color: #2E2A25;
+    }
+    .menu-rule { display: block; width: 2.6rem; height: 1px; margin: 1.35rem auto; background: rgba(120, 95, 60, 0.45); border: 0; }
+    .course { margin: 0 auto 1.25rem; max-width: 17em; }
+    .course:last-of-type { margin-bottom: 0; }
+    .course-name {
+      font-family: var(--font-type); font-weight: 700; font-size: 0.58rem; line-height: 1;
+      letter-spacing: 0.34em; text-transform: uppercase; color: #6a7a60;
+      margin: 0 0 0.5rem; padding-left: 0.34em;
+    }
+    .dish {
+      font-family: var(--font-serif); font-style: italic; font-weight: 500;
+      font-size: 1.12rem; line-height: 1.3; color: #2E2A25; margin: 0;
+    }
+    .menu-note {
+      margin: 0; font-family: var(--font-type); font-size: 0.62rem; line-height: 1.5;
+      letter-spacing: 0.03em; color: #8A7F72; max-width: 20em; margin: 0 auto;
+    }
+    .after-dinner { grid-column: 1 / 8; grid-row: 2; align-self: start; margin: 2.4rem 0 0; max-width: 27em; }
+
     /* ---- faq ---- */
-    .faq details { border-top: 1px solid var(--sage-muted); }
-    .faq details:last-child { border-bottom: 1px solid var(--sage-muted); }
+    .faq details { border-top: 1px solid var(--rule); }
+    .faq details:last-child { border-bottom: 1px solid var(--rule); }
     .faq summary {
       list-style: none; cursor: pointer; position: relative;
-      padding: 1rem 2rem 1rem 0; font-weight: 400;
+      padding: 1.05rem 2rem 1.05rem 0; font-family: var(--font-type); font-weight: 700; font-size: 0.9rem; line-height: 1.4;
     }
     .faq summary::-webkit-details-marker { display: none; }
     .faq summary::after {
-      content: '+'; position: absolute; right: 0.2rem; top: 0.85rem;
+      content: '+'; position: absolute; right: 0.2rem; top: 0.95rem;
+      font-family: var(--font-body); font-weight: 300;
       font-size: 1.3rem; line-height: 1; color: var(--accent-text);
       transition: transform 0.2s ease;
     }
     .faq details[open] summary::after { transform: rotate(45deg); }
-    .faq details p { padding: 0 2rem 1.1rem 0; color: var(--warm-gray); font-size: 0.95rem; }
+    .faq details p { padding: 0 2rem 1.2rem 0; color: var(--warm-gray); font-size: 0.95rem; }
 
-    @media (max-width: 700px) {
-      .dinner-grid { grid-template-columns: 1fr; }
-      .dinner-photo { min-height: 0; aspect-ratio: 4 / 3; height: auto; }
+    @media (max-width: 760px) {
+      .dinner-set { display: block; }
+      .dinner-photo { width: calc(100% + 2.8rem); max-width: none; margin: 0 -1.4rem; border-radius: 0; aspect-ratio: 3 / 2; }
+      .menu-card { margin: 1.8rem auto 0; max-width: 380px; width: calc(100% - 0.6rem); padding: 1.8rem 1.3rem 1.7rem; }
+      .menu-card::before { inset: 9px; }
+      .dish { font-size: 1.06rem; }
+      .course { max-width: none; }
     }
     @media (prefers-reduced-motion: reduce) {
-      .faq summary::after { transition: none; }
+      .faq summary::after, .tab, .btn, .peek-frame { transition: none; }
+      .peek:hover .peek-frame { transform: none; }
     }
 
     .narrow { max-width: 620px; margin: 0 auto; }
-    .ask { font-size: 1.08rem; }
-    .why-box { margin: 1rem 0 1.1rem; }
-    .why-box summary { cursor: pointer; color: var(--accent-text); font-size: 0.95rem; }
+    .ask { font-size: 1.05rem; }
+    .why-box { margin: 1rem 0 1.4rem; }
+    .why-box summary { cursor: pointer; color: var(--accent-text); font-size: 0.92rem; }
     .why-box[open] summary { margin-bottom: 0.6rem; }
     .why-input {
       width: 100%; font: inherit; font-size: 1rem; padding: 0.8rem 0.9rem; margin-bottom: 0;
-      border: 1px solid var(--linen-border); border-radius: 10px; background: var(--warm-white); color: var(--charcoal);
+      border: 1px solid var(--linen-border); border-radius: 3px; background: var(--warm-white); color: var(--charcoal);
     }
     .why-input:focus { outline: 2px solid var(--sage); outline-offset: 1px; }
     .draft { white-space: pre-line; }
     .blank-note { margin-top: 0.8rem; font-size: 0.85rem; color: var(--warm-gray); }
     a.btn { text-decoration: none; display: inline-block; }
 
-    .collage {
-      display: grid; grid-template-columns: repeat(4, 1fr); grid-template-rows: repeat(2, auto);
-      gap: 0.6rem; margin-top: 2.2rem;
-    }
-    .collage img { display: block; width: 100%; height: 100%; aspect-ratio: 4 / 3; object-fit: cover; border-radius: 6px; }
-    .collage .big { grid-column: span 2; grid-row: span 2; aspect-ratio: auto; }
-
-    .wash .quote { margin: 2.4rem auto 0; max-width: 620px; text-align: center; }
-    .wash .quote blockquote { font-size: clamp(1.7rem, 5.5vw, 2.3rem); margin-bottom: 0.9rem; }
-    .wash .quote figcaption { display: inline-flex; align-items: center; gap: 0.7rem; font-size: 0.8rem; }
-    .wash .quote figcaption img { width: 44px; height: 44px; }
-
-    .menu-answer {
-      font-family: var(--font-display); font-weight: 600; font-size: 1.6rem; line-height: 1.15;
-      margin: -0.6rem 0 1.2rem; color: var(--charcoal);
-    }
-    .after-dinner { margin-top: 2rem; }
-
     @media (max-width: 700px) {
       .collage { grid-template-columns: 1fr 1fr; }
       .collage .big { grid-column: 1 / -1; grid-row: auto; aspect-ratio: 16 / 9; }
     }
 
-    footer { padding: 2rem 0 3rem; text-align: center; font-size: 0.85rem; color: var(--medium-gray); }
-    footer a { color: var(--accent-text); }
+    footer { padding: 2.4rem 0 3rem; text-align: center; font-size: 0.85rem; color: var(--medium-gray); border-top: 1px solid var(--rule); }
+    footer a { color: var(--accent-text); font-family: var(--font-type); }
 
     @media (min-width: 700px) {
       .container { padding-left: 2rem; padding-right: 2rem; }
@@ -370,6 +473,7 @@
       --sage-wash: #1F231D;
       --linen: #25231F;
       --linen-border: #3A3731;
+      --rule: rgba(241, 235, 225, 0.14);
       --charcoal: #F1EBE1;
       --warm-gray: #CFC8BC;
       --medium-gray: #A39D93;
@@ -382,10 +486,9 @@
     }
 
     :root[data-theme="dark"] body { font-weight: 400; }
-    :root[data-theme="dark"] .btn:not(.secondary) { background: var(--sage-deep); border-color: var(--sage-deep); }
     :root[data-theme="dark"] .btn:not(.secondary):hover { background: #5b6a52; }
-    :root[data-theme="dark"] .tab[aria-selected="true"] { background: var(--sage-deep); border-color: var(--sage-deep); }
-    :root[data-theme="dark"] .menu-card { box-shadow: 0 14px 30px -18px rgba(0, 0, 0, 0.7); }
+    :root[data-theme="dark"] .peek-frame, :root[data-theme="dark"] .peek-bar { border-color: rgba(241, 235, 225, 0.3); }
+    :root[data-theme="dark"] .menu-card { box-shadow: 0 1px 1px rgba(0, 0, 0, 0.3), 0 34px 60px -30px rgba(0, 0, 0, 0.8); }
   </style>
   <script src="/analytics.js"></script>
   <script defer src="/_vercel/insights/script.js"></script>
@@ -397,6 +500,7 @@
       <div class="headline">
         <h1>Know someone who'd love to cook more?</h1>
         <p class="offer">Send them a free kitchen blueprint from me. If they end up doing the month I'll come cook you a private dinner for two.</p>
+        <p class="refresher">Food Jazz is my one month cooking intensive where I teach people to cook without recipes in their own kitchen.</p>
       </div>
       <div class="video-slot live" id="videoSlot">
         <video class="preview" id="previewVideo" muted loop playsinline autoplay preload="auto" poster="/referral-ask-poster.jpg" aria-hidden="true" tabindex="-1">
@@ -440,7 +544,23 @@
   <section>
     <div class="container">
       <h2>What your friend gets</h2>
-      <p>They book a call and show me their kitchen from their phone. After the call I send them a blueprint for their setup and their stocking built around the food they actually like.</p>
+      <p>A free kitchen blueprint. They book a call and show me their kitchen from their phone, and within a week I send them a plan for their setup and what to keep stocked, built around their kitchen and the food they actually like. I write every one myself.</p>
+      <p class="value">Kitchen organizers charge $100 to $400 for a virtual session like this. I spend about 3 hours on each blueprint and your friend gets it free.<br><a class="src" href="https://www.taskrabbit.com/cost-guides/home-organization" target="_blank" rel="noopener">TaskRabbit 2026</a></p>
+      <a class="peek" id="peek" href="/r" target="_blank" rel="noopener">
+        <span class="peek-label">See the page they'll get</span>
+        <span class="peek-frame">
+          <span class="peek-bar">
+            <span class="peek-url" id="peekUrl">foodjazz.club/r</span>
+            <span class="peek-go" aria-hidden="true"><svg viewBox="0 0 16 16" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3H3v10h10v-3M9 3h4v4M13 3L7 9"/></svg></span>
+          </span>
+          <span class="peek-page" aria-hidden="true">
+            <span class="peek-gift" id="peekGift">A gift for you</span>
+            <span class="peek-title">You just got a free kitchen blueprint!</span>
+            <span class="peek-lines"><i></i><i></i></span>
+            <span class="peek-btn"></span>
+          </span>
+        </span>
+      </a>
     </div>
   </section>
 
@@ -475,29 +595,30 @@
       <p>Before I plan it I'll ask you what you'd order on your birthday and I build the menu from your answer.</p>
     </div>
     <div class="container wide">
-      <div class="dinner-grid">
-        <img class="dinner-photo" src="/photos/food-jazz-akshay-at-the-wok-800.webp" srcset="/photos/food-jazz-akshay-at-the-wok-800.webp 800w, /photos/food-jazz-akshay-at-the-wok-1600.webp 1600w" sizes="(max-width: 700px) 92vw, 460px" width="1600" height="900" alt="Akshay Prabhu cooking at a wok in a home kitchen" loading="lazy" decoding="async">
+      <div class="dinner-set">
+        <img class="dinner-photo" src="/photos/akshay-fish-roast.webp" width="1170" height="780" alt="Akshay Prabhu holding a whole fire roasted fish at camp" loading="lazy" decoding="async">
         <div class="menu-card" aria-label="A sample menu">
-          <p class="menu-eyebrow">If your answer was</p>
-          <p class="menu-answer">Pad see ew from the Thai place by my old apartment</p>
+          <img class="menu-cake" src="/deco-cake.svg" width="248" height="238" alt="" aria-hidden="true">
+          <p class="menu-eyebrow">If your birthday answer was</p>
+          <p class="menu-answer">The mushroom pasta at that little Italian place</p>
+          <hr class="menu-rule">
           <div class="course">
             <p class="course-name">To start</p>
-            <p class="dish">Smashed cucumber salad with lime and chili and peanuts</p>
+            <p class="dish">Shaved fennel and apple with parmesan and toasted hazelnuts</p>
           </div>
           <div class="course">
             <p class="course-name">The main</p>
-            <p class="dish">Wok charred wide noodles with gai lan and sweet soy</p>
+            <p class="dish">Hand cut pappardelle with wild black trumpet mushrooms and brown butter</p>
           </div>
           <div class="course">
             <p class="course-name">To finish</p>
-            <p class="dish">Coconut sticky rice with mango</p>
+            <p class="dish">Dark chocolate pot de crème with a birthday candle</p>
           </div>
-          <p class="menu-note">This one is just a sample.</p>
+          <hr class="menu-rule">
+          <p class="menu-note">A sample menu. Yours starts from your answer.</p>
         </div>
+        <p class="after-dinner">Once they've started I'll reach out and we find a night that works for both of us in the six months after.</p>
       </div>
-    </div>
-    <div class="container">
-      <p class="after-dinner">Once they've started I'll reach out and we find a night that works for both of us in the six months after.</p>
     </div>
   </section>
 
@@ -555,6 +676,17 @@
   var link = 'https://foodjazz.club/r' + (slug ? '/' + slug : '');
 
   document.getElementById('linkOut').textContent = link.replace('https://', '');
+
+  // The preview card opens the friend's own page, and its mock says whose gift
+  // it is the same way /r does: first name off the slug, davis-clute reads Davis.
+  var peek = document.getElementById('peek');
+  peek.href = '/r' + (slug ? '/' + slug : '');
+  document.getElementById('peekUrl').textContent = link.replace('https://', '');
+  var first = raw.split(/[\s\-_.]+/)[0] || '';
+  if (slug && /^[\p{L}']{2,}$/u.test(first)) {
+    var name = first.toLowerCase().replace(/(^|')(\p{L})/gu, function (m, a, c) { return a + c.toUpperCase(); });
+    document.getElementById('peekGift').textContent = 'A gift from ' + name;
+  }
 
   // ?did=1 on a past client's link adds the "I did the month" text and opens
   // on it. Everyone else never sees it, so nobody claims a month they didn't do.

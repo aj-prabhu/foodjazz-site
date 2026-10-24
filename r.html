@@ -95,7 +95,7 @@
   <meta name="twitter:card" content="summary_large_image">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600;700&family=Courier+Prime:ital,wght@0,400;0,700;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet">
   <style>
     :root {
       color-scheme: light;
@@ -112,9 +112,17 @@
       --golden: #D4A843;
       --charcoal: #2E2E2C;
       --warm-gray: #5C5A56;
-      --medium-gray: #9B9892;
-      --font-display: 'Caveat', cursive;
+      --medium-gray: #8A8781;
+      --rule: #D9D2C6;
+      --font-hand: 'Caveat', cursive;
+      --font-type: 'Courier Prime', 'Courier New', monospace;
       --font-body: 'DM Sans', sans-serif;
+      /* The sample sheet is always paper, whatever theme the page is in. */
+      --paper: #FDFCF8;
+      --ink: #23272A;
+      --ink-soft: #5A5F62;
+      --pencil: #4F6E46;
+      --stamp: #B4533A;
     }
 
     *, *::before, *::after { box-sizing: border-box; }
@@ -129,37 +137,76 @@
       line-height: 1.65;
       color: var(--charcoal);
       background: var(--cream);
+      overflow-x: hidden;
     }
 
     .container {
       width: 100%;
-      max-width: 640px;
+      max-width: 720px;
       margin: 0 auto;
-      padding-left: 1.4rem;
-      padding-right: 1.4rem;
+      padding-left: 16px;
+      padding-right: 16px;
+    }
+    .container.wide { max-width: 1040px; }
+
+    section { padding: clamp(3rem, 9vw, 4.6rem) 0; }
+    /* Thin rules between the paper sections, inside the column. */
+    .why ~ section:not(.closing) { padding-top: 0; }
+    .why ~ section:not(.closing) > .container > :first-child { margin-top: 0; }
+    .why ~ section:not(.closing) > .container { border-top: 1px solid var(--rule); padding-top: clamp(3rem, 9vw, 4.6rem); }
+    @media (max-width: 699px) {
+      .why ~ section:not(.closing) > .container { border-top: 0; background: linear-gradient(var(--rule), var(--rule)) 16px 0 / calc(100% - 32px) 1px no-repeat; }
+    }
+    @media (min-width: 700px) {
+      .why ~ section:not(.closing) > .container { border-top: 0; background: linear-gradient(var(--rule), var(--rule)) 2rem 0 / calc(100% - 4rem) 1px no-repeat; }
     }
 
-    section { padding: clamp(3.2rem, 11vw, 6.5rem) 0; }
-    section.wash { background: var(--sage-wash); }
-
-    h1, h2 { font-family: var(--font-display); font-weight: 600; line-height: 1.12; margin: 0 0 1rem; }
-    h1 { font-size: clamp(2.4rem, 9vw, 3.6rem); }
-    h2 { font-size: clamp(2rem, 7vw, 2.9rem); }
+    h1, h2, h3 { font-family: var(--font-type); font-weight: 700; margin: 0; }
+    h1 { font-size: clamp(1.45rem, 7vw, 2.55rem); line-height: 1.12; letter-spacing: -0.01em; }
+    h2 { font-size: clamp(1.25rem, 5.2vw, 1.75rem); line-height: 1.22; letter-spacing: -0.01em; margin-bottom: 1.2rem; }
+    h3 { font-size: 0.85rem; line-height: 1.3; letter-spacing: 0.04em; margin-bottom: 0.4rem; }
     p { margin: 0 0 1.1rem; }
     p:last-child { margin-bottom: 0; }
+    a { color: var(--accent-text); }
 
-    .container.wide { max-width: 960px; }
-    .narrow { max-width: 600px; margin: 0 auto; }
-    .lede { font-size: 1.1rem; color: var(--warm-gray); }
-    /* The top band is always dark, like a blueprint, whatever theme the page is in. */
+    .btn {
+      display: inline-block; width: 100%;
+      font-family: var(--font-type); font-size: 0.85rem; font-weight: 700;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      padding: 1.05rem 1.5rem; border-radius: 3px;
+      border: 1px solid var(--sage-deep); background: var(--sage-deep); color: #fff;
+      text-decoration: none; text-align: center; cursor: pointer;
+      transition: background 0.15s ease, transform 0.15s ease;
+      margin-top: 1.6rem;
+    }
+    .btn:hover { background: #5b6a52; }
+    .btn:active { transform: translateY(1px); }
+    .btn:focus-visible { outline: 2px solid var(--golden); outline-offset: 3px; }
+
+    .note {
+      font-family: var(--font-type); font-size: 0.7rem; line-height: 1.55;
+      letter-spacing: 0.02em; color: var(--medium-gray);
+    }
+
+    /* ---- the strip at the very top ---- */
+    .banner {
+      background: var(--paper); color: var(--ink);
+      border-bottom: 1px solid #CFC7B8;
+      font-family: var(--font-type); font-size: 0.62rem; line-height: 1.4;
+      letter-spacing: 0.16em; text-transform: uppercase;
+      text-align: center; padding: 0.55rem 16px;
+    }
+    .banner a { color: var(--stamp); font-weight: 700; text-decoration: underline; text-underline-offset: 3px; margin-left: 0.6em; white-space: nowrap; }
+    .banner a:hover { color: #93402B; }
+
+    /* ---- hero: a dark blueprint table with the gift laid on it ---- */
     .hero {
-      padding-top: clamp(2rem, 6vw, 3.5rem);
+      position: relative; overflow: hidden;
+      padding: clamp(1.6rem, 5vw, 4rem) 0 clamp(3rem, 8vw, 5.5rem);
       --cream: #1A1D18;
       --charcoal: #F1EBE1;
       --warm-gray: #CFC8BC;
       --medium-gray: #A39D93;
-      --accent-text: #B9C8AE;
-      --sage-muted: rgba(185, 200, 174, 0.35);
       --grid: rgba(185, 200, 174, 0.07);
       --grid-major: rgba(185, 200, 174, 0.15);
       color: var(--charcoal);
@@ -172,40 +219,166 @@
       background-size: 120px 120px, 120px 120px, 24px 24px, 24px 24px;
       background-position: center top;
     }
-    .hero .gift { color: #E2BC62; }
-    .hero p { font-weight: 400; }
-    .hero .btn { background: var(--sage-deep); border-color: var(--sage-deep); }
-    .hero .btn:hover { background: #5b6a52; }
-    /* ---- the corner video: a selfie-sized card, silent loop, tap for full screen ---- */
-    .vbox {
-      position: fixed; right: 16px; bottom: 16px; z-index: 50;
-      width: 104px; height: 168px; border-radius: 16px; overflow: hidden;
-      box-shadow: 0 12px 34px rgba(0, 0, 0, 0.38); border: 2px solid rgba(254, 253, 251, 0.9);
-      animation: vbox-in 0.5s ease 1s both;
-      transition: opacity 0.2s ease, transform 0.2s ease;
+    .hero::before {
+      content: ''; position: absolute; inset: 0; pointer-events: none;
+      background: radial-gradient(ellipse 60% 55% at 72% 52%, rgba(226, 188, 98, 0.13), transparent 70%);
     }
-    .vbox[hidden] { display: none; }
-    .vbox-play { display: block; width: 100%; height: 100%; padding: 0; border: 0; cursor: pointer; background: #111; position: relative; }
-    .vbox-play img, .vbox-play video { width: 100%; height: 100%; object-fit: cover; object-position: 50% 35%; display: block; }
-    .vbox-play::after { content: ''; position: absolute; inset: 55% 0 0; background: linear-gradient(transparent, rgba(0, 0, 0, 0.65)); }
-    .vbox-caption {
-      position: absolute; left: 8px; right: 8px; bottom: 8px; z-index: 1;
-      color: #fff; font: 500 0.72rem/1.25 var(--font-body); text-align: left;
+    @media (max-width: 979px) { .hero::before { background: radial-gradient(ellipse 90% 40% at 50% 78%, rgba(226, 188, 98, 0.12), transparent 70%); } }
+    .hero .container { position: relative; max-width: 1180px; }
+    .hero-grid { display: grid; gap: 1.4rem; }
+    .hero-copy { position: relative; z-index: 2; }
+    .hero h1 { margin-top: 1.1rem; }
+    .hero .sub { margin: 1rem 0 0; font-size: 0.92rem; font-weight: 400; color: var(--warm-gray); max-width: 30em; }
+    .hero .btn { background: #D9E4CF; border-color: #D9E4CF; color: #1A1D18; }
+    .hero .btn:hover { background: #F1EBE1; border-color: #F1EBE1; }
+    .hero .note { margin-top: 0.8rem; color: #B5AEA2; }
+
+    /* the gift tag */
+    .tag {
+      position: relative; display: inline-block;
+      margin: 0.3rem 0 0 2.2rem; transform: rotate(-3deg); transform-origin: left center;
     }
-    .vbox-close {
-      position: absolute; right: 5px; top: 5px; z-index: 2; width: 26px; height: 26px; padding: 0;
-      border: 0; border-radius: 50%; cursor: pointer;
-      background: rgba(27, 26, 23, 0.7); color: #F1EBE1; font-size: 0.95rem; line-height: 26px;
+    .tag-string { position: absolute; left: -2.4rem; top: 50%; width: 2.9rem; height: 2rem; margin-top: -1.55rem; overflow: visible; }
+    .gift {
+      position: relative; margin: 0;
+      font-family: var(--font-hand); font-weight: 700; font-size: 1.45rem; line-height: 1;
+      color: #2B2620; background: #EBDDBC;
+      padding: 0.42rem 1.1rem 0.48rem 1.75rem;
+      clip-path: polygon(0.85rem 0, 100% 0, 100% 100%, 0.85rem 100%, 0 50%);
+      box-shadow: inset 0 0 0 1px rgba(0,0,0,0.06);
+    }
+    .gift::before {
+      content: ''; position: absolute; left: 0.62rem; top: 50%; width: 0.42rem; height: 0.42rem; margin-top: -0.21rem;
+      border-radius: 50%; background: #1A1D18; box-shadow: 0 0 0 2px #CDBB91;
+    }
+
+    /* ---- the sample blueprint sheet ---- */
+    .sheet-wrap { position: relative; margin-top: 2.2rem; }
+    .sheet {
+      position: relative; margin: 0;
+      background-color: var(--paper);
+      background-image:
+        linear-gradient(rgba(60, 96, 120, 0.07) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(60, 96, 120, 0.07) 1px, transparent 1px);
+      background-size: 14px 14px;
+      color: var(--ink);
+      padding: 10px;
+      border-radius: 2px;
+      box-shadow: 0 1px 0 rgba(255,255,255,0.4) inset, 0 26px 60px -18px rgba(0, 0, 0, 0.7), 0 4px 14px rgba(0, 0, 0, 0.35);
+      transform: rotate(-0.8deg);
+    }
+    .sheet-frame { border: 1.5px solid var(--ink); padding: 14px 14px 16px; position: relative; }
+    .sheet-frame::before { content: ''; position: absolute; inset: 3px; border: 0.5px solid rgba(35, 39, 42, 0.35); pointer-events: none; }
+
+    .tb { position: relative; display: inline-grid; border: 1.5px solid var(--ink); background: var(--paper); }
+    .tb-title { white-space: nowrap; font-family: var(--font-type); font-weight: 700; font-size: 0.8rem; letter-spacing: 0.16em; padding: 0.42rem 0.7rem 0.3rem; border-bottom: 1px solid var(--ink); line-height: 1.2; }
+    .tb-by { white-space: nowrap; font-family: var(--font-type); font-size: 0.6rem; letter-spacing: 0.06em; padding: 0.3rem 0.7rem 0.32rem; color: var(--ink-soft); line-height: 1.2; }
+    .stamp {
+      position: absolute; right: -0.6rem; bottom: -1.1rem;
+      font-family: var(--font-type); font-weight: 700; font-size: 0.85rem; letter-spacing: 0.24em; line-height: 1;
+      color: var(--stamp); border: 2px solid var(--stamp); padding: 0.32rem 0.3rem 0.28rem 0.55rem; border-radius: 3px;
+      transform: rotate(-9deg); opacity: 0.88; mix-blend-mode: multiply;
+      box-shadow: inset 0 0 0 2px var(--paper), inset 0 0 0 3px var(--stamp);
+    }
+
+    .plan { display: block; width: 100%; height: auto; margin: 14px 0 6px; overflow: visible; }
+    .plan .hand { font-family: var(--font-hand); font-weight: 600; fill: var(--pencil); }
+
+    .sheet-boxes { display: grid; grid-template-columns: 1fr 1fr; grid-template-areas: 'pantry knife' 'moves moves'; gap: 10px; margin-top: 8px; }
+    .box { border: 1px solid var(--ink); padding: 0.5rem 0.6rem 0.55rem; background: var(--paper); }
+    .box h4 { margin: 0 0 0.35rem; white-space: nowrap; font-family: var(--font-type); font-weight: 700; font-size: 0.56rem; letter-spacing: 0.1em; padding-bottom: 0.3rem; border-bottom: 1px solid var(--ink); }
+    .box ul { list-style: none; margin: 0; padding: 0; }
+    .box li { font-family: var(--font-type); font-size: 0.6rem; line-height: 1.35; padding: 0.16rem 0; }
+    .pantry { grid-area: pantry; }
+    .knife { grid-area: knife; }
+    .moves { grid-area: moves; }
+    .pantry li { display: flex; align-items: center; gap: 0.4rem; }
+    .cb { position: relative; flex: none; width: 0.55rem; height: 0.55rem; border: 1px solid var(--ink); }
+    .cb svg { position: absolute; left: -0.08rem; top: -0.3rem; width: 0.9rem; height: 0.9rem; overflow: visible; }
+    .moves li { padding-left: 0.85rem; position: relative; }
+    .moves li::before { content: ''; position: absolute; left: 0.1rem; top: 0.62em; width: 0.4rem; height: 1px; background: var(--ink); }
+    .knife table { width: 100%; border-collapse: collapse; }
+    .knife td { font-family: var(--font-type); font-size: 0.66rem; padding: 0.22rem 0.1rem; border-bottom: 1px dotted rgba(35, 39, 42, 0.45); position: relative; }
+    .knife tr:last-child td { border-bottom: 0; }
+    .knife td.price { text-align: right; font-weight: 700; width: 3.2em; }
+    .knife td.tier { width: auto; }
+    .knife .tier i { display: inline-block; width: 0.42rem; height: 0.42rem; border: 1px solid var(--ink); border-radius: 50%; margin-right: 0.18rem; vertical-align: -0.02rem; }
+    .knife .tier i.on { background: var(--ink); }
+    .knife .circled { position: absolute; right: -0.35rem; top: 50%; width: 3.4em; height: 2.1em; margin-top: -1.05em; overflow: visible; pointer-events: none; }
+
+    /* the selfie card, Akshay holding up the sheet */
+    .vcard {
+      position: absolute; z-index: 3; right: -6px; top: -64px;
+      width: 96px; aspect-ratio: 9 / 15; padding: 0; border: 3px solid #FEFDFB; border-radius: 14px;
+      overflow: hidden; cursor: pointer; background: #111;
+      box-shadow: 0 16px 34px -8px rgba(0, 0, 0, 0.6), 0 2px 6px rgba(0,0,0,0.3);
+      transform: rotate(3deg);
+      transition: transform 0.2s ease;
+    }
+    .vcard:hover { transform: rotate(1deg) scale(1.03); }
+    .vcard:focus-visible { outline: 2px solid var(--golden); outline-offset: 3px; }
+    .vcard img, .vcard video { width: 100%; height: 100%; object-fit: cover; object-position: 50% 38%; display: block; }
+    .vcard::after { content: ''; position: absolute; inset: 50% 0 0; background: linear-gradient(transparent, rgba(0, 0, 0, 0.72)); }
+    .vcard-play {
+      position: absolute; left: 50%; top: 42%; z-index: 1; width: 34px; height: 34px; margin: -17px 0 0 -17px;
+      border-radius: 50%; background: rgba(254, 253, 251, 0.92); display: grid; place-items: center;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.35);
+    }
+    .vcard-play svg { width: 12px; height: 12px; margin-left: 2px; }
+    .vcard-caption {
+      position: absolute; left: 8px; right: 6px; bottom: 7px; z-index: 1;
+      color: #fff; font: 700 0.6rem/1.2 var(--font-type); letter-spacing: 0.02em; text-align: left;
+    }
+
+    @media (max-width: 699px) {
+      .banner { font-size: 0.56rem; letter-spacing: 0.07em; padding-left: 8px; padding-right: 8px; }
+      .banner a { margin-left: 0.5em; }
+      .hero .sub { font-size: 0.85rem; }
+      .hero .btn { margin-top: 1.2rem; }
+      .sheet-wrap { margin-top: 0.3rem; }
+      .tb-title { font-size: 0.66rem; letter-spacing: 0.12em; }
+      .tb-by { font-size: 0.54rem; }
+      .stamp { font-size: 0.7rem; letter-spacing: 0.18em; }
+      .vcard { top: 22px; right: -4px; width: 92px; }
     }
     @media (min-width: 700px) {
-      .vbox { width: 150px; height: 240px; right: 24px; bottom: 24px; }
-      .vbox-caption { font-size: 0.85rem; left: 10px; bottom: 10px; }
+      .container { padding-left: 2rem; padding-right: 2rem; }
+      .btn { width: auto; min-width: 300px; }
+      .sheet { padding: 14px; }
+      .sheet-frame { padding: 20px 22px 22px; }
+      .sheet-boxes { grid-template-columns: 1.1fr 1.15fr 0.9fr; grid-template-areas: 'pantry moves knife'; gap: 10px; }
+      .tb-title { font-size: 0.9rem; }
+      .tb-by { font-size: 0.66rem; }
+      .box li { font-size: 0.6rem; }
+      .box h4 { font-size: 0.56rem; }
+      .vcard { width: 144px; right: -38px; top: -26px; border-radius: 18px; border-width: 4px; }
+      .vcard-play { width: 46px; height: 46px; margin: -23px 0 0 -23px; }
+      .vcard-play svg { width: 15px; height: 15px; }
+      .vcard-caption { font-size: 0.72rem; left: 11px; bottom: 10px; }
     }
-    @keyframes vbox-in { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
-    @media (prefers-reduced-motion: reduce) { .vbox { animation: none; } }
-    /* Steps aside while a booking button is underneath it, so it never covers one. */
-    .vbox.tucked { opacity: 0; transform: translateY(18px); pointer-events: none; }
-    /* Full screen when tapped. */
+    @media (min-width: 980px) {
+      .hero-grid { grid-template-columns: minmax(0, 0.92fr) minmax(0, 1.08fr); gap: 3.6rem; align-items: center; }
+      .hero .note { letter-spacing: 0; font-size: 0.64rem; }
+      .hero .sub { font-size: 0.98rem; }
+      .sheet-wrap { margin-top: 0; margin-right: 34px; }
+    }
+
+    /* the sheet settles onto the table, then Akshay pops in */
+    @keyframes sheet-in { from { opacity: 0; transform: translateY(26px) rotate(1.5deg); } to { opacity: 1; transform: rotate(-0.8deg); } }
+    @keyframes card-in { from { opacity: 0; transform: translateY(14px) rotate(8deg) scale(0.92); } to { opacity: 1; transform: rotate(3deg); } }
+    .sheet { animation: sheet-in 0.7s cubic-bezier(.2,.8,.2,1) 0.1s both; }
+    .vcard { animation: card-in 0.5s cubic-bezier(.2,.8,.2,1) 0.75s both; }
+
+    /* confetti, the homepage pattern */
+    .confetti-container { position: fixed; inset: 0; pointer-events: none; z-index: 10000; overflow: hidden; }
+    .confetti-piece { position: absolute; top: -10px; width: 8px; height: 14px; border-radius: 1px; animation: confetti-fall linear forwards; }
+    @keyframes confetti-fall {
+      0% { transform: translateY(0) rotate(0deg) scale(1); opacity: 1; }
+      70% { opacity: 1; }
+      100% { transform: translateY(100vh) rotate(var(--rot, 720deg)) scale(0.3); opacity: 0; }
+    }
+
+    /* Full screen when the video card is tapped. */
     .clip { width: 100vw; height: 100dvh; max-width: 100vw; max-height: 100dvh; margin: 0; padding: 0; border: 0; background: #000; }
     .clip::backdrop { background: #000; }
     .clip img, .clip video { width: 100%; height: 100%; object-fit: contain; display: block; }
@@ -213,47 +386,67 @@
       position: absolute; right: 14px; top: 14px; width: 44px; height: 44px; border: 0; border-radius: 50%;
       background: rgba(254, 253, 251, 0.18); color: #fff; font-size: 1.4rem; cursor: pointer;
     }
-    .clip-note { position: absolute; left: 14px; bottom: 14px; padding: 0.3rem 0.7rem; border-radius: 4px; background: #E2BC62; color: #2E2E2C; font-size: 0.8rem; font-weight: 500; }
-    body { padding-bottom: 0; }
-    @media (max-width: 699px) { footer { padding-bottom: 10rem; } }
-    .label {
-      display: inline-block; margin: 0 0 1rem; padding: 0.3rem 0.7rem;
-      font-size: 0.72rem; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase;
-      color: var(--accent-text); border: 1px solid var(--sage-muted); border-radius: 4px; background: var(--cream);
-    }
-    .hero .btn { margin-top: 1.6rem; }
+    .clip-note { position: absolute; left: 14px; bottom: 14px; padding: 0.3rem 0.7rem; border-radius: 3px; background: #E2BC62; color: #2E2E2C; font: 700 0.7rem/1.3 var(--font-type); }
 
-    .video-slot {
-      border-radius: 14px; overflow: hidden;
-      background: var(--linen); border: 1px solid var(--linen-border);
-    }
-    .video-slot video { display: block; width: 100%; height: auto; }
-    .after-video { margin-top: 1.4rem; }
+    /* ---- why it matters ---- */
+    .why p { font-size: 1rem; }
+    .footnote { font-size: 0.66rem; margin-top: 2rem; padding-top: 0.9rem; border-top: 1px solid var(--rule); max-width: 34em; }
+    .footnote a { white-space: nowrap; }
 
-    .btn {
-      display: inline-block; width: 100%;
-      font-family: var(--font-body); font-size: 1rem; font-weight: 400;
-      padding: 1rem 1.3rem; border-radius: 10px;
-      border: 1px solid var(--sage); background: var(--sage); color: #fff;
-      text-decoration: none; text-align: center; cursor: pointer;
-      transition: background 0.15s ease; margin-top: 1.1rem;
+    /* ---- what's in it ---- */
+    .parts { display: grid; gap: 0; margin-top: 2.2rem; border-top: 1px solid var(--charcoal); }
+    .part { padding: 1.2rem 0 1.3rem; border-bottom: 1px solid var(--rule); }
+    .part:last-child { border-bottom: 0; }
+    .part h3 { text-transform: uppercase; letter-spacing: 0.14em; font-size: 0.72rem; }
+    .part p { font-size: 0.9rem; color: var(--warm-gray); margin: 0; }
+    @media (min-width: 700px) {
+      .parts { grid-template-columns: 1fr 1fr; column-gap: 2.6rem; }
+      .part:nth-last-child(2) { border-bottom: 0; }
     }
-    .btn:hover { background: var(--sage-deep); }
-    .fineprint { font-size: 0.82rem; color: var(--medium-gray); margin-top: 0.7rem; text-align: center; }
+    .value { margin-top: 2.4rem; padding-top: 1.1rem; border-top: 1px solid var(--charcoal); font-family: var(--font-type); font-size: 0.85rem; line-height: 1.6; color: var(--charcoal); }
+    .value a { font-size: 0.7rem; color: var(--medium-gray); white-space: nowrap; margin-left: 0.3em; }
 
-    /* ---- proof ---- */
-    .quote { margin: 2.2rem 0 0; }
+    /* ---- how it works ---- */
+    .steps { border-top: 1px solid var(--charcoal); }
+    .step { display: grid; gap: 0.3rem; padding: 1.1rem 0 1.2rem; border-bottom: 1px solid var(--rule); }
+    .step h3 { text-transform: uppercase; letter-spacing: 0.14em; font-size: 0.7rem; color: var(--accent-text); margin: 0; }
+    .step p { margin: 0; font-size: 0.92rem; }
+    .how .btn { margin-top: 2rem; }
+
+    .callshot { margin: 2.2rem 0 0; }
+    .call-frame {
+      position: relative; aspect-ratio: 16 / 9; border-radius: 10px; overflow: hidden;
+      background: #2A2B28; padding: 6px;
+      box-shadow: 0 18px 40px -20px rgba(0,0,0,0.45);
+    }
+    .call-main {
+      width: 100%; height: 100%; border-radius: 6px;
+      background: linear-gradient(160deg, #C9C2B6 0%, #B5AEA2 55%, #A39C90 100%);
+    }
+    .call-self {
+      position: absolute; right: 14px; bottom: 14px; width: 26%; aspect-ratio: 4 / 3;
+      object-fit: cover; object-position: 50% 22%; border-radius: 5px; border: 2px solid #2A2B28;
+      background: #6E6A63;
+    }
+    .call-tag { position: absolute; left: 14px; top: 14px; padding: 0.22rem 0.5rem; border-radius: 3px; background: #E2BC62; color: #2E2E2C; font: 700 0.58rem/1.3 var(--font-type); letter-spacing: 0.02em; }
+
+    /* ---- about ---- */
+    .figure250 { display: flex; align-items: baseline; gap: 1rem; margin: 2rem 0 0; padding: 1rem 0 1.1rem; border-top: 1px solid var(--charcoal); border-bottom: 1px solid var(--rule); }
+    .figure250 b { font-family: var(--font-type); font-weight: 700; font-size: clamp(3.2rem, 15vw, 4.6rem); line-height: 0.9; letter-spacing: -0.04em; color: var(--accent-text); }
+    .figure250 span { font-family: var(--font-type); font-size: 0.78rem; line-height: 1.35; letter-spacing: 0.04em; max-width: 12em; }
+
+    .quote { margin: 2.6rem 0 0; }
     .quote blockquote {
-      margin: 0 0 0.9rem; font-family: var(--font-display); font-weight: 600;
-      font-size: clamp(1.7rem, 6vw, 2.2rem); line-height: 1.15;
+      margin: 0 0 1rem; font-family: var(--font-type); font-style: italic; font-weight: 400;
+      font-size: clamp(1.1rem, 4.6vw, 1.45rem); line-height: 1.35;
     }
-    .quote .emph { color: var(--accent-text); }
+    .quote .emph { color: var(--accent-text); font-weight: 700; }
     .quote figcaption { display: flex; align-items: center; gap: 0.75rem; font-size: 0.8rem; color: var(--warm-gray); line-height: 1.4; }
     .quote figcaption strong { font-weight: 500; color: var(--charcoal); }
     .quote figcaption img { width: 48px; height: 48px; border-radius: 50%; object-fit: cover; }
 
-    .press { margin-top: 2.4rem; text-align: center; }
-    .press-label { display: block; font-size: 0.66rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--medium-gray); margin-bottom: 0.9rem; }
+    .press { margin-top: 2.6rem; padding-top: 1.4rem; border-top: 1px solid var(--rule); text-align: center; }
+    .press-label { display: block; font-family: var(--font-type); font-size: 0.62rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--medium-gray); margin-bottom: 1rem; }
     .press-row { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 1rem 1.8rem; }
     .press-row img {
       height: 18px; width: auto;
@@ -264,10 +457,36 @@
     .press-row .press-logo--abc7 { height: 25px; }
     .press-row .press-logo--civileats { height: 23px; }
 
+    /* ---- faq ---- */
+    .faq { border-top: 1px solid var(--charcoal); }
+    .faq details { border-bottom: 1px solid var(--rule); }
+    .faq summary { list-style: none; cursor: pointer; position: relative; padding: 1rem 2rem 1rem 0; font-weight: 400; }
+    .faq summary::-webkit-details-marker { display: none; }
+    .faq summary::after { content: '+'; position: absolute; right: 0.2rem; top: 0.85rem; font-family: var(--font-type); font-size: 1.2rem; line-height: 1; color: var(--accent-text); transition: transform 0.2s ease; }
+    .faq details[open] summary::after { transform: rotate(45deg); }
+    .faq details p { padding: 0 2rem 1.2rem 0; color: var(--warm-gray); font-size: 0.92rem; }
+
+    /* ---- closing: back onto the blueprint table ---- */
+    .closing {
+      --cream: #1A1D18; --charcoal: #F1EBE1; --warm-gray: #CFC8BC;
+      color: var(--charcoal); background-color: #1A1D18; text-align: center;
+      background-image:
+        linear-gradient(rgba(185, 200, 174, 0.15) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(185, 200, 174, 0.15) 1px, transparent 1px),
+        linear-gradient(rgba(185, 200, 174, 0.07) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(185, 200, 174, 0.07) 1px, transparent 1px);
+      background-size: 120px 120px, 120px 120px, 24px 24px, 24px 24px;
+      background-position: center top;
+    }
+    .closing h2 { font-size: clamp(1.25rem, 6.2vw, 2.3rem); }
+    .closing p { color: var(--warm-gray); font-weight: 400; max-width: 26em; margin-left: auto; margin-right: auto; }
+    .closing .btn { background: #D9E4CF; border-color: #D9E4CF; color: #1A1D18; }
+    .closing .btn:hover { background: #F1EBE1; border-color: #F1EBE1; }
+
     /* ---- booking dialog ---- */
     .booking {
       width: min(760px, 100vw); max-width: 100vw; max-height: 92vh;
-      padding: 0; border: 1px solid var(--linen-border); border-radius: 14px;
+      padding: 0; border: 1px solid var(--linen-border); border-radius: 6px;
       background: var(--warm-white); color: var(--charcoal);
     }
     .booking::backdrop { background: rgba(27, 26, 23, 0.55); }
@@ -277,7 +496,7 @@
       padding: 0.8rem 1rem 0.8rem 1.3rem; background: var(--warm-white);
       border-bottom: 1px solid var(--linen-border);
     }
-    .booking-title { margin: 0; font-family: var(--font-display); font-weight: 600; font-size: 1.5rem; line-height: 1.1; }
+    .booking-title { margin: 0; font-family: var(--font-type); font-weight: 700; font-size: 0.95rem; line-height: 1.25; }
     .booking-close {
       width: 44px; height: 44px; border: 0; background: transparent; cursor: pointer;
       font-size: 1.6rem; line-height: 1; color: var(--warm-gray); border-radius: 8px;
@@ -305,38 +524,19 @@
       .booking, .booking-head { background: #FEFDFB; color: #2E2E2C; border-color: #e0d9cf; }
       .booking-close { color: #5C5A56; }
     }
-
-    footer { padding: 2.5rem 0 3.5rem; text-align: center; font-size: 0.85rem; color: var(--medium-gray); }
-    footer a { color: var(--accent-text); }
-
-    @media (min-width: 700px) {
-      .container { padding-left: 2rem; padding-right: 2rem; }
-      .btn { width: auto; min-width: 300px; }
-      .fineprint { text-align: left; }
-    }
     @media (max-width: 699px) {
       .booking { width: 100vw; height: 100dvh; max-height: 100dvh; margin: 0; border-radius: 0; border: 0; }
     }
 
-    /* ---- who sent them, and who I am ---- */
-    .gift { margin: 0 0 0.6rem; font-family: var(--font-display); font-weight: 600; font-size: 1.45rem; color: var(--golden); }
-    .intro { display: flex; align-items: center; gap: 0.9rem; margin-top: 1.4rem; }
-    .intro img { width: 64px; height: 64px; border-radius: 50%; object-fit: cover; flex: none; }
-    .intro p { margin: 0; font-size: 0.95rem; color: var(--warm-gray); }
-    .closing-photo { display: block; width: 100%; height: auto; aspect-ratio: 16 / 9; object-fit: cover; border-radius: 12px; margin: 0.4rem 0 1.4rem; }
+    footer { padding: 2.5rem 0 3.5rem; text-align: center; font-size: 0.85rem; color: var(--medium-gray); }
+    footer a { color: var(--accent-text); }
 
-    /* ---- faq ---- */
-    .parts { margin-top: 1.6rem; }
-    .parts h3 { font-family: var(--font-display); font-weight: 600; font-size: 1.7rem; line-height: 1.1; margin: 1.4rem 0 0.3rem; color: var(--accent-text); }
-    .parts h3:first-child { margin-top: 0; }
-    .faq details { border-top: 1px solid var(--sage-muted); }
-    .faq details:last-child { border-bottom: 1px solid var(--sage-muted); }
-    .faq summary { list-style: none; cursor: pointer; position: relative; padding: 1rem 2rem 1rem 0; font-weight: 400; }
-    .faq summary::-webkit-details-marker { display: none; }
-    .faq summary::after { content: '+'; position: absolute; right: 0.2rem; top: 0.85rem; font-size: 1.3rem; line-height: 1; color: var(--accent-text); transition: transform 0.2s ease; }
-    .faq details[open] summary::after { transform: rotate(45deg); }
-    .faq details p { padding: 0 2rem 1.1rem 0; color: var(--warm-gray); font-size: 0.95rem; }
-    @media (prefers-reduced-motion: reduce) { .faq summary::after { transition: none; } }
+    @media (prefers-reduced-motion: reduce) {
+      .sheet, .vcard { animation: none; }
+      .vcard, .btn { transition: none; }
+      .confetti-piece { animation: none; display: none; }
+      .faq summary::after { transition: none; }
+    }
 
     /* ===== DARK MODE ===== */
     :root[data-theme="dark"] {
@@ -349,72 +549,239 @@
       --charcoal: #F1EBE1;
       --warm-gray: #CFC8BC;
       --medium-gray: #A39D93;
+      --rule: #3A3731;
       --sage: #9DB090;
       --sage-light: #B9C8AE;
       --sage-muted: #3A4235;
       --accent-text: #B9C8AE;
-      --wood: #CBA47A;
-      --wood-dark: #D2AE84;
     }
-
     :root[data-theme="dark"] body { font-weight: 400; }
-    :root[data-theme="dark"] .btn:not(.secondary) { background: var(--sage-deep); border-color: var(--sage-deep); }
-    :root[data-theme="dark"] .btn:not(.secondary):hover { background: #5b6a52; }
     :root[data-theme="dark"] .press-row img { filter: brightness(0) invert(1); opacity: 0.8; }
     :root[data-theme="dark"] .booking::backdrop { background: rgba(0, 0, 0, 0.7); }
+    :root[data-theme="dark"] .closing { background-color: #121411; }
   </style>
   <script src="/analytics.js"></script>
   <script defer src="/_vercel/insights/script.js"></script>
 </head>
 <body>
 
+  <div class="banner">Only 4 blueprint spots a week <a class="book" href="https://zcal.co/i/utLPg0va" data-where="banner">Claim yours</a></div>
+
   <section class="hero">
     <div class="container">
-      <p class="gift" id="gift" hidden></p>
-      <p class="label">Free kitchen blueprint</p>
-      <h1>Turn your kitchen from chaos into a creative makerspace.</h1>
-      <p class="lede">Cooking feels hard without the right setup. Show me your kitchen on a free 30 minute video call and I'll send you a blueprint.</p>
-      <a class="btn book" href="https://zcal.co/i/utLPg0va" data-where="top">Book your blueprint call</a>
-      <p class="fineprint">Join from your phone and don't clean up first. I want to see how you really use it.</p>
-      <p class="cred">I'm Akshay. Before Food Jazz I helped 250 home cooks turn their kitchens into mini factories selling food to their neighbors.</p>
-    </div>
-  </section>
+      <div class="hero-grid">
+        <div class="hero-copy">
+          <div class="tag">
+            <svg class="tag-string" viewBox="0 0 58 40" aria-hidden="true"><path d="M56 31 C 40 33, 30 20, 18 22 S 2 34, 4 12" fill="none" stroke="#CDBB91" stroke-width="1.6" stroke-linecap="round"/></svg>
+            <p class="gift" id="gift">A gift for you</p>
+          </div>
+          <h1>You just got a free kitchen blueprint!</h1>
+          <p class="sub">It's a plan for how to set up your kitchen and what to keep stocked, built around your space and the food you love. I write every one myself.</p>
+          <a class="btn book" href="https://zcal.co/i/utLPg0va" data-where="top">Claim your blueprint</a>
+          <p class="note">Free · 30 minute video call · in your inbox within a week</p>
+        </div>
 
-  <section class="wash">
-    <div class="container">
-      <h2>Why your setup matters</h2>
-      <p>I believe the way your kitchen is set up changes how you feel in it. If you have to hunt for a pan or fight a dull knife then cooking feels like a chore and DoorDash wins.</p>
-      <p>I believe small changes make the biggest difference, like a good knife and a board that stays out and the things you reach for most sitting right where your hand expects them. When your kitchen flows it feels calm and kind of fun to be in, and you end up cooking way more without trying harder.</p>
-    </div>
-  </section>
+        <div class="sheet-wrap">
+          <figure class="sheet" aria-label="A sample kitchen blueprint">
+            <div class="sheet-frame">
+              <div class="tb">
+                <div class="tb-title">KITCHEN BLUEPRINT</div>
+                <div class="tb-by">Written by Akshay Prabhu</div>
+                <span class="stamp">SAMPLE</span>
+              </div>
 
-  <section>
-    <div class="container">
-      <h2>What's in your blueprint</h2>
-      <p>I write every blueprint myself from what I see on our call, so it's about your kitchen and nobody else's.</p>
-      <div class="parts">
-        <h3>Your setup</h3>
-        <p>Which tools are worth keeping out and which can go in a drawer, and where everything should live so you can get from the fridge to the board to the stove without hunting.</p>
-        <h3>Your pantry</h3>
-        <p>A short list built on the food you like, with what to keep stocked and how to store it so it lasts.</p>
-        <h3>Your best moves</h3>
-        <p>The few things that will pay off most in your kitchen, like freezing stock in small portions or which sauces are worth making instead of buying.</p>
+              <svg class="plan" viewBox="0 0 480 290" aria-hidden="true">
+                <defs>
+                  <pattern id="hatch" width="5" height="5" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+                    <line x1="0" y1="0" x2="0" y2="5" stroke="#23272A" stroke-width="0.7" opacity="0.45"/>
+                  </pattern>
+                  <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+                    <path d="M1 1 L9 5 L1 9" fill="none" stroke="#4F6E46" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+                  </marker>
+                </defs>
+                <g fill="none" stroke="#23272A" stroke-linejoin="round">
+                  <!-- walls -->
+                  <path d="M10 10 H470 V280 H10 Z M20 20 V270 H460 V20 Z" fill="url(#hatch)" fill-rule="evenodd" stroke-width="1.6"/>
+                  <!-- window over the sink -->
+                  <rect x="104" y="9" width="70" height="12" fill="#FDFCF8" stroke-width="1.2"/>
+                  <line x1="104" y1="15" x2="174" y2="15" stroke-width="0.9"/>
+                  <!-- doorway, top right -->
+                  <rect x="372" y="9" width="72" height="12" fill="#FDFCF8" stroke="none"/>
+                  <line x1="372" y1="9" x2="372" y2="21" stroke-width="1.6"/>
+                  <line x1="444" y1="9" x2="444" y2="21" stroke-width="1.6"/>
+                  <line x1="444" y1="20" x2="444" y2="88" stroke-width="1.4"/>
+                  <path d="M444 88 A 68 68 0 0 1 376 20" stroke-width="0.8" stroke-dasharray="3 3"/>
+
+                  <!-- counter run along the top wall -->
+                  <rect x="20" y="20" width="320" height="52" fill="#F1EEE6" stroke-width="1.4"/>
+                  <!-- fridge -->
+                  <rect x="22" y="22" width="60" height="62" fill="#FDFCF8" stroke-width="1.6"/>
+                  <line x1="22" y1="76" x2="82" y2="76" stroke-width="0.9"/>
+                  <path d="M82 84 A 60 60 0 0 1 22 144" stroke-width="0.8" stroke-dasharray="3 3"/>
+                  <line x1="22" y1="84" x2="22" y2="144" stroke-width="0.9" stroke-dasharray="3 3"/>
+                  <!-- sink, two basins -->
+                  <rect x="106" y="27" width="31" height="36" rx="5" fill="#FDFCF8" stroke-width="1.2"/>
+                  <rect x="141" y="27" width="31" height="36" rx="5" fill="#FDFCF8" stroke-width="1.2"/>
+                  <circle cx="121.5" cy="46" r="2" stroke-width="0.9"/>
+                  <circle cx="156.5" cy="46" r="2" stroke-width="0.9"/>
+                  <line x1="139" y1="22" x2="139" y2="29" stroke-width="1.4"/>
+                  <!-- board and knife -->
+                  <rect x="184" y="28" width="46" height="34" rx="4" fill="#FDFCF8" stroke-width="1.2"/>
+                  <circle cx="223" cy="35" r="2" stroke-width="0.9"/>
+                  <path d="M192 54 L216 40 L219 42 L196 56 Z" fill="#23272A" stroke-width="0.6"/>
+                  <!-- stove -->
+                  <rect x="240" y="22" width="62" height="48" fill="#FDFCF8" stroke-width="1.6"/>
+                  <circle cx="256" cy="36" r="9" stroke-width="1.1"/><circle cx="256" cy="36" r="4" stroke-width="0.8"/>
+                  <circle cx="286" cy="36" r="9" stroke-width="1.1"/><circle cx="286" cy="36" r="4" stroke-width="0.8"/>
+                  <circle cx="256" cy="58" r="8" stroke-width="1.1"/><circle cx="256" cy="58" r="3.5" stroke-width="0.8"/>
+                  <circle cx="286" cy="58" r="8" stroke-width="1.1"/><circle cx="286" cy="58" r="3.5" stroke-width="0.8"/>
+                  <!-- oil and salt -->
+                  <circle cx="314" cy="34" r="5.5" fill="#FDFCF8" stroke-width="1.2"/>
+                  <circle cx="314" cy="34" r="2" stroke-width="0.8"/>
+                  <rect x="308" y="47" width="14" height="12" rx="3" fill="#FDFCF8" stroke-width="1.2"/>
+                  <circle cx="329" cy="40" r="4" fill="#FDFCF8" stroke-width="1"/>
+
+                  <!-- counter run along the right wall -->
+                  <rect x="408" y="124" width="52" height="146" fill="#F1EEE6" stroke-width="1.4"/>
+                  <!-- the air fryer that leaves the counter -->
+                  <rect x="416" y="160" width="36" height="36" rx="6" fill="#FDFCF8" stroke-width="1.1" stroke-dasharray="3 2.5"/>
+                  <circle cx="434" cy="178" r="9" stroke-width="0.9" stroke-dasharray="3 2.5"/>
+                </g>
+
+                <!-- pencil notes -->
+                <g fill="none" stroke="#4F6E46" stroke-width="1.5" stroke-linecap="round">
+                  <path d="M415 157 L455 199" />
+                  <path d="M207 97 C 205 86, 206 76, 207 66" marker-end="url(#arrow)"/>
+                  <path d="M326 160 C 340 140, 336 100, 320 72" marker-end="url(#arrow)"/>
+                  <path d="M352 232 C 380 230, 400 218, 412 199" marker-end="url(#arrow)"/>
+                </g>
+                <text class="hand" x="138" y="120" font-size="28">knife and board</text>
+                <text class="hand" x="138" y="146" font-size="28">live here</text>
+                <text class="hand" x="176" y="178" font-size="28">oil and salt</text>
+                <text class="hand" x="176" y="204" font-size="28">next to the stove</text>
+                <text class="hand" x="214" y="238" font-size="28">air fryer</text>
+                <text class="hand" x="214" y="264" font-size="28">off the counter</text>
+
+                <!-- dimension line, for the drafting feel -->
+                <g stroke="#23272A" stroke-width="0.7" opacity="0.55">
+                  <line x1="20" y1="287" x2="460" y2="287"/>
+                  <line x1="20" y1="283" x2="20" y2="290"/>
+                  <line x1="460" y1="283" x2="460" y2="290"/>
+                  <line x1="240" y1="284" x2="240" y2="290"/>
+                </g>
+              </svg>
+
+              <div class="sheet-boxes">
+                <div class="box pantry">
+                  <h4>YOUR PANTRY</h4>
+                  <ul>
+                    <li><span class="cb"><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M1.5 6.5 L4.6 9.6 L11 1.2" fill="none" stroke="#4F6E46" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></span>chili crisp</li>
+                    <li><span class="cb"><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M1.5 6.2 L4.4 9.4 L10.6 1.6" fill="none" stroke="#4F6E46" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></span>good olive oil</li>
+                    <li><span class="cb"></span>lemons</li>
+                    <li><span class="cb"><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M1.8 6.8 L4.7 9.5 L11.2 1.8" fill="none" stroke="#4F6E46" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></span>parmesan</li>
+                    <li><span class="cb"></span>frozen stock</li>
+                  </ul>
+                </div>
+                <div class="box moves">
+                  <h4>BEST MOVES</h4>
+                  <ul>
+                    <li>Freeze stock in ice cube trays</li>
+                    <li>Make your vinaigrette and buy your dumplings</li>
+                  </ul>
+                </div>
+                <div class="box knife">
+                  <h4>A GOOD KNIFE</h4>
+                  <table>
+                    <tr><td class="tier"><i class="on"></i><i></i><i></i></td><td class="price">$40</td></tr>
+                    <tr><td class="tier"><i class="on"></i><i class="on"></i><i></i></td><td class="price">$90<svg class="circled" viewBox="0 0 60 30" aria-hidden="true"><path d="M8 17 C 6 7, 30 3, 47 6 C 60 9, 58 23, 40 26 C 24 28, 6 26, 5 16 C 4 11, 12 6, 22 5" fill="none" stroke="#4F6E46" stroke-width="1.6" stroke-linecap="round"/></svg></td></tr>
+                    <tr><td class="tier"><i class="on"></i><i class="on"></i><i class="on"></i></td><td class="price">$180</td></tr>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </figure>
+
+          <!-- PLACEHOLDER until the blueprint clip is shot (Studio/Cards/kitchen-walkthrough-offer.md).
+               Then: a muted 6s loop goes inside .vcard in place of the img, and the full
+               vertical clip with sound goes in dialog#clip. -->
+          <button class="vcard" id="vcard" type="button" aria-label="Watch a short video from Akshay">
+            <img src="/referral-ask-poster.jpg" alt="">
+            <span class="vcard-play" aria-hidden="true"><svg viewBox="0 0 12 14"><path d="M0 0 L12 7 L0 14 Z" fill="#23272A"/></svg></span>
+            <span class="vcard-caption">Hi, I'm Akshay</span>
+          </button>
+        </div>
       </div>
     </div>
   </section>
 
-  <section class="wash">
+  <section class="why">
     <div class="container">
-      <h2>How it works</h2>
-      <p>When you book I'll ask for one meal you wish you could make at home so I know what we're setting your kitchen up for. On the call you walk me around and show me how you normally use your kitchen and what you usually keep stocked. Your blueprint lands in your inbox within a week.</p>
-      <a class="btn book" href="https://zcal.co/i/utLPg0va" data-where="how">Book your blueprint call</a>
+      <h2>Most people can cook. It's everything around the cooking that wears them out.</h2>
+      <p>I believe the way your kitchen is set up changes how you feel in it. If you have to hunt for a pan or fight a dull knife then cooking feels like a chore and DoorDash wins. When your kitchen flows it feels like a creative maker space and you end up cooking way more without trying harder.</p>
+      <p class="note footnote">In a study of almost 5,000 US adults people who kept healthy food out where they could see it were about 1.5 times as likely to eat enough fruit and vegetables. <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC8169424/" target="_blank" rel="noopener">Kegler et al. 2021</a></p>
     </div>
   </section>
 
-  <section>
+  <section class="whats-in">
     <div class="container">
-      <h2>A bit about me</h2>
-      <p>I teach people to cook without recipes in their own kitchens around the Bay Area. Before this I helped legalize the sale of home cooked food in California and built Foodnome, the first marketplace for permitted home restaurants.</p>
+      <h2>Built for your kitchen and nobody else's</h2>
+      <p>I write every blueprint myself from what I see on our call. It's built around your space and what you need and the food you actually like to eat.</p>
+      <div class="parts">
+        <div class="part">
+          <h3>Your setup</h3>
+          <p>What to keep out and what can go in a drawer, and where everything should live so you can get from the fridge to the board to the stove without hunting.</p>
+        </div>
+        <div class="part">
+          <h3>Your pantry</h3>
+          <p>A stocking plan built on the food you like, with what to keep on hand and how to store it so it lasts.</p>
+        </div>
+        <div class="part">
+          <h3>Your best moves</h3>
+          <p>The few changes that pay off most in your kitchen, like freezing stock in small portions or which sauces are worth making instead of buying.</p>
+        </div>
+        <div class="part">
+          <h3>Any budget</h3>
+          <p>If something is worth buying I'll give you options at a few price points and tell you which ones actually make a difference.</p>
+        </div>
+      </div>
+      <p class="value" id="valueLine">Kitchen organizers charge $100 to $400 for a virtual session like this. I spend about 3 hours on each blueprint and it covers what to stock and cook, not just where things go. <a href="https://www.taskrabbit.com/cost-guides/home-organization" target="_blank" rel="noopener">TaskRabbit 2026</a></p>
+    </div>
+  </section>
+
+  <section class="how">
+    <div class="container">
+      <h2>How it works</h2>
+      <div class="steps">
+        <div class="step">
+          <h3>You book</h3>
+          <p>Pick a time and tell me one meal you wish you could make at home so I know what we're setting your kitchen up for.</p>
+        </div>
+        <div class="step">
+          <h3>We get on a call</h3>
+          <p>You walk me around your kitchen from your phone for 30 minutes and show me how you normally use it. Don't clean up first. I want to see your normal flow.</p>
+        </div>
+        <div class="step">
+          <h3>I write your blueprint</h3>
+          <p>It lands in your inbox within a week.</p>
+        </div>
+      </div>
+      <!-- PLACEHOLDER: drop the real call screenshot in here (big tile = their kitchen, small tile = Akshay). -->
+      <figure class="callshot" id="callShot">
+        <div class="call-frame">
+          <div class="call-main"></div>
+          <img class="call-self" src="/akshay.jpg" alt="" loading="lazy" decoding="async">
+          <span class="call-tag">Placeholder: real call screenshot coming</span>
+        </div>
+      </figure>
+      <a class="btn book" href="https://zcal.co/i/utLPg0va" data-where="how">Claim your blueprint</a>
+    </div>
+  </section>
+
+  <section class="about">
+    <div class="container">
+      <h2>Who's writing it</h2>
+      <p>I'm Akshay. Before Food Jazz I helped 250+ home cooks turn their kitchens into mini factories selling food to their neighbors. I helped legalize the sale of home cooked food in California and built Foodnome, the first marketplace for permitted home restaurants. Now I teach people to cook without recipes in their own kitchens around the Bay Area.</p>
+      <p class="figure250"><b>250+</b><span>home kitchens set up to sell food</span></p>
       <figure class="quote">
         <blockquote>My friends would say I was <span class="emph">a Michelin-star chef</span>. Which is crazy.</blockquote>
         <figcaption>
@@ -437,17 +804,25 @@
     </div>
   </section>
 
-  <section class="wash">
+  <section class="questions">
     <div class="container">
       <h2>Questions</h2>
       <div class="faq">
         <details>
-          <summary>Will you make me buy a bunch of stuff?</summary>
-          <p>No. Most of the blueprint is moving things around and using what you already have. If something is worth buying I'll give you a few options at different prices and tell you which ones actually make a difference, and I don't get a cut of anything I recommend.</p>
+          <summary>How long does it take?</summary>
+          <p>The call is 30 minutes and your blueprint lands in your inbox within a week.</p>
+        </details>
+        <details>
+          <summary>Does it cost anything?</summary>
+          <p>No. The call and the blueprint are free and you don't need to buy anything after.</p>
         </details>
         <details>
           <summary>What's the catch?</summary>
-          <p>I only do a few of these a week and some people hire me after and most don't. If I think my paid month could help I'll ask if you want to hear about it, and the blueprint is yours either way.</p>
+          <p>I only do 4 of these a week. Some people hire me after and most don't. If I think my paid month could help I'll ask if you want to hear about it, and the blueprint is yours either way.</p>
+        </details>
+        <details>
+          <summary>Will you make me buy a bunch of stuff?</summary>
+          <p>No. Most of the blueprint is moving things around and using what you already have. If something is worth buying I'll give you a few options at different prices and tell you which ones actually make a difference, and I don't get a cut of anything I recommend.</p>
         </details>
         <details>
           <summary>My kitchen is tiny or a mess</summary>
@@ -475,10 +850,9 @@
 
   <section class="closing">
     <div class="container">
-      <h2>After the blueprint</h2>
-      <img class="closing-photo" src="/photos/food-jazz-cucumber-chop-lesson-800.webp" srcset="/photos/food-jazz-cucumber-chop-lesson-800.webp 800w, /photos/food-jazz-cucumber-chop-lesson-1600.webp 1600w" sizes="(max-width: 700px) 92vw, 600px" width="1600" height="900" alt="Akshay Prabhu teaching a home cook to chop cucumbers in her kitchen" loading="lazy" decoding="async">
-      <p>The blueprint gets your kitchen ready. If you want to learn to cook in it without recipes that's what my month is for, and either way the call is the place to start.</p>
-      <a class="btn book" href="https://zcal.co/i/utLPg0va" data-where="bottom">Book your blueprint call</a>
+      <h2>Claim your blueprint</h2>
+      <p>I only do 4 of these a week. Grab a time and I'll see you in the kitchen.</p>
+      <a class="btn book" href="https://zcal.co/i/utLPg0va" data-where="bottom">Claim your blueprint</a>
     </div>
   </section>
 
@@ -489,18 +863,11 @@
     </div>
   </footer>
 
-  <!-- PLACEHOLDER until the blueprint clip is shot (Studio/Cards/kitchen-walkthrough-offer.md).
-       Then: a muted 6s loop inside .vbox-play, and the full vertical clip with sound in the dialog. -->
-  <div class="vbox" id="vbox">
-    <button class="vbox-play" id="vboxPlay" type="button" aria-label="Watch a short video from Akshay">
-      <img src="/referral-ask-poster.jpg" alt="">
-      <span class="vbox-caption">Hi, I'm Akshay</span>
-    </button>
-    <button class="vbox-close" id="vboxClose" type="button" aria-label="Hide the video">&times;</button>
-  </div>
+  <div class="confetti-container" id="confettiContainer" aria-hidden="true"></div>
+
   <dialog class="clip" id="clip" aria-label="Video from Akshay">
     <img src="/referral-ask-poster.jpg" width="1920" height="1080" alt="">
-    <span class="clip-note">Placeholder: new clip Wed</span>
+    <span class="clip-note">Placeholder: new clip coming</span>
     <button class="clip-close" id="clipClose" type="button" aria-label="Close">&times;</button>
   </dialog>
 
@@ -527,7 +894,7 @@
     if (m) raw = decodeURIComponent(m[1]).trim();
   }
   // Same rule as /refer, so the link a connector copies always matches.
-  var slug = raw.normalize('NFD').replace(/[\u0300-\u036f]/g, '')
+  var slug = raw.normalize('NFD').replace(/[̀-ͯ]/g, '')
     .toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
 
   // a0 pre-fills the invite's first custom question. On zcal that question is
@@ -535,7 +902,7 @@
   // zcal ignores the parameter if the question doesn't exist yet.
   var bookHref = BOOK_URL + (slug ? '?a0=' + encodeURIComponent(slug) : '');
 
-  // Their first name, off the slug: davis-clute reads as Davis. The gift line
+  // Their first name, off the slug: davis-clute reads as Davis. The gift tag
   // and the "what do they get" answer use it so the page says who thought of
   // them. With no slug both keep their generic wording.
   // Read it off the raw path so José keeps his accent even though the slug drops it.
@@ -543,9 +910,7 @@
   if (slug && /^[\p{L}']{2,}$/u.test(first)) {
     // Capital after an apostrophe too, so o'brien reads O'Brien.
     var name = first.toLowerCase().replace(/(^|')(\p{L})/gu, function (m, a, c) { return a + c.toUpperCase(); });
-    var gift = document.getElementById('gift');
-    gift.textContent = 'A gift from ' + name;
-    gift.hidden = false;
+    document.getElementById('gift').textContent = 'A gift from ' + name;
     document.getElementById('whatTheyGet').textContent = 'What does ' + name + ' get?';
     document.getElementById('whatTheyGetAnswer').textContent =
       'If you choose the paid month I cook ' + name + ' dinner as a thank you. You don\'t need to buy anything to get your blueprint.';
@@ -612,44 +977,44 @@
     });
   }
 
-  // Corner video. Closing it hides it for the rest of the visit, and it steps
-  // aside while the calendar is open.
-  var vbox = document.getElementById('vbox');
+  // The video card in the hero opens the full screen clip.
   var clip = document.getElementById('clip');
-  function closedByUser() { try { return sessionStorage.getItem('fj-vbox') === 'closed'; } catch (e) { return false; } }
-  if (closedByUser()) vbox.hidden = true;
-  document.getElementById('vboxClose').addEventListener('click', function () {
-    vbox.hidden = true;
-    try { sessionStorage.setItem('fj-vbox', 'closed'); } catch (e) {}
-  });
-  document.getElementById('vboxPlay').addEventListener('click', function () {
+  document.getElementById('vcard').addEventListener('click', function () {
     if (typeof clip.showModal === 'function') clip.showModal();
     if (window.fjTrack) window.fjTrack('video_open');
   });
   document.getElementById('clipClose').addEventListener('click', function () { clip.close(); });
 
-  var bookButtons = document.querySelectorAll('a.book');
-  var tuckQueued = false;
-  function tuck() {
-    tuckQueued = false;
-    var b = vbox.getBoundingClientRect();
-    var under = Array.prototype.some.call(bookButtons, function (a) {
-      var r = a.getBoundingClientRect();
-      return r.bottom > b.top - 16 && r.top < window.innerHeight && r.right > b.left - 12;
-    });
-    vbox.classList.toggle('tucked', under);
-  }
-  function queueTuck() { if (!tuckQueued) { tuckQueued = true; requestAnimationFrame(tuck); } }
-  window.addEventListener('scroll', queueTuck, { passive: true });
-  window.addEventListener('resize', queueTuck);
-  setTimeout(tuck, 50);
-  // Out of the way while the calendar is open.
-  if (dialog) {
-    new MutationObserver(function () { vbox.hidden = dialog.open || closedByUser(); }).observe(dialog, { attributes: true, attributeFilter: ['open'] });
-  }
-
   var video = document.querySelector('video');
   if (video && window.fjTrack) video.addEventListener('play', function () { window.fjTrack('video_play'); }, { once: true });
+
+  // A little celebration the first time the page opens in a visit.
+  function launchConfetti() {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    var container = document.getElementById('confettiContainer');
+    var colors = ['#7A8C6E', '#A8B89D', '#D4A843', '#EBDDBC', '#B4533A', '#D9E4CF', '#FDFCF8'];
+    for (var i = 0; i < 70; i++) {
+      var p = document.createElement('div');
+      p.className = 'confetti-piece';
+      p.style.left = (6 + Math.random() * 88) + '%';
+      p.style.background = colors[Math.floor(Math.random() * colors.length)];
+      p.style.animationDuration = (2.6 + Math.random() * 2.2) + 's';
+      p.style.animationDelay = (Math.random() * 0.9) + 's';
+      p.style.width = (5 + Math.random() * 7) + 'px';
+      p.style.height = (8 + Math.random() * 10) + 'px';
+      p.style.setProperty('--rot', (400 + Math.random() * 600) + 'deg');
+      p.style.opacity = (0.75 + Math.random() * 0.25);
+      if (Math.random() > 0.5) p.style.borderRadius = '50%';
+      container.appendChild(p);
+      p.addEventListener('animationend', function () { this.remove(); });
+    }
+  }
+  var celebrated = false;
+  try { celebrated = sessionStorage.getItem('fj-r-confetti') === '1'; } catch (e) {}
+  if (!celebrated) {
+    try { sessionStorage.setItem('fj-r-confetti', '1'); } catch (e) {}
+    setTimeout(launchConfetti, 350);
+  }
 })();
 </script>
 </body>
