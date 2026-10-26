@@ -255,6 +255,7 @@
     .share-link { margin-top: 0.9rem; }
     .skip { display: inline-block; margin-top: 0.9rem; font-size: 0.9rem; color: var(--accent-text); text-underline-offset: 3px; }
     .skip[hidden] { display: none; }
+    .facts { margin-top: 0.9rem; font-size: 0.9rem; color: var(--warm-gray); }
 
     .btn-row { display: flex; gap: 0.7rem; margin-top: 1rem; flex-wrap: wrap; }
     .btn {
@@ -539,7 +540,7 @@
   <section class="wash send" id="text">
     <div class="container">
       <h2>Send your friends this gift</h2>
-      <p class="ask">It's a custom kitchen blueprint I spend about 3 hours writing for their kitchen, and it's theirs whether or not they ever hire me. Start with one friend who's told you they're tired of takeout or wishes they hosted more, then send it to more.</p>
+      <p class="ask">It's a custom kitchen blueprint I spend about 3 hours writing for their kitchen, and it's theirs whether or not they ever hire me. Send it to anyone who's told you they're tired of takeout or wishes they hosted more, even if they only want the free plan.</p>
       <div class="phone">
         <label class="to-line" for="fname"><span>To:</span><input class="to-input" id="fname" type="text" maxlength="30" autocomplete="off" placeholder="your friend's first name"></label>
         <button class="bubble" id="bubble" type="button" aria-label="Copy the message">
@@ -560,6 +561,7 @@
         <button class="btn" id="copyBtn">Copy the message</button>
         <button class="btn secondary" id="copyLinkBtn" type="button">Copy just my link</button>
       </div>
+      <p class="facts">The coaching month is optional and $2,500. I'll ask before I bring it up.</p>
       <button class="text-link share-link" id="shareBtn" type="button" hidden>Send it another way</button>
       <p class="link-note">The link in it (<code id="linkOut">foodjazz.club/r</code>) tells me it came from you.</p>
       <div class="later-video" id="laterVideo" hidden><h3>Why I'm asking</h3></div>
@@ -641,6 +643,10 @@
     <div class="container">
       <h2>Questions people ask</h2>
       <div class="faq">
+        <details>
+          <summary>Do I have to take the dinner?</summary>
+          <p>Not at all. If you'd rather skip it just tell me, and you can copy just your link and write your own text.</p>
+        </details>
         <details>
           <summary>Will my friend get a hard sell?</summary>
           <p>No. I'll ask before I bring up my paid month and the blueprint is theirs either way. If the month looks like a fit I'll tell them and if it doesn't I'll tell them that too.</p>

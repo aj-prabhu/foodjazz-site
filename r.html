@@ -574,7 +574,7 @@
 </head>
 <body>
 
-  <div class="banner">Only 4 blueprint spots a week <a class="book" href="https://zcal.co/i/utLPg0va" data-where="banner">Claim yours</a></div>
+  <div class="banner">Only 4 blueprint spots a week <a class="book" href="https://zcal.co/i/utLPg0va" data-where="banner">Book yours</a></div>
 
   <section class="hero">
     <div class="container">
@@ -588,7 +588,7 @@
           <p class="sub">It's a plan for how to set up your kitchen and what to keep stocked, built around your space and the food you love. I write every one myself.</p>
           <a class="btn book" href="https://zcal.co/i/utLPg0va" data-where="top">Book my free blueprint call</a>
           <p class="note">Free · anywhere · 30 minute video call · in your inbox within a week</p>
-          <p class="nopitch">Nothing to buy. I'll ask before I bring up my paid month and the blueprint is yours either way.</p>
+          <p class="nopitch">Nothing to buy. I'll ask before I bring up my paid month and the blueprint is yours either way. <span id="nopitchDinner">If you ever sign up I cook your friend dinner as a thank you.</span></p>
         </div>
 
         <div class="sheet-wrap">
@@ -952,6 +952,7 @@
     // Capital after an apostrophe too, so o'brien reads O'Brien.
     var name = first.toLowerCase().replace(/(^|')(\p{L})/gu, function (m, a, c) { return a + c.toUpperCase(); });
     document.getElementById('gift').textContent = 'A gift from ' + name;
+    document.getElementById('nopitchDinner').textContent = 'If you ever sign up I cook ' + name + ' dinner as a thank you.';
     document.getElementById('whatTheyGet').textContent = 'What does ' + name + ' get?';
     document.getElementById('whatTheyGetAnswer').textContent =
       'If you choose the paid month I cook ' + name + ' dinner as a thank you. You don\'t need to buy anything to get your blueprint.';
