@@ -432,9 +432,15 @@
 
     /* ---- about ---- */
     .about-photo { display: block; width: 100%; height: auto; margin: 1.8rem 0 0; border-radius: 4px; }
-    .figure250 { display: flex; align-items: baseline; gap: 1rem; margin: 2rem 0 0; padding: 1rem 0 1.1rem; border-top: 1px solid var(--charcoal); border-bottom: 1px solid var(--rule); }
-    .figure250 b { font-family: var(--font-type); font-weight: 700; font-size: clamp(3.2rem, 15vw, 4.6rem); line-height: 0.9; letter-spacing: -0.04em; color: var(--accent-text); }
-    .figure250 span { font-family: var(--font-type); font-size: 0.78rem; line-height: 1.35; letter-spacing: 0.04em; max-width: 12em; }
+    .arrow-head { display: flex; flex-wrap: wrap; align-items: center; column-gap: 0.55rem; row-gap: 0.1rem; }
+    .arrow-head span { white-space: nowrap; }
+    .hand-arrow { width: 2.4em; height: 1.05em; flex: none; color: var(--accent-text); }
+    .proof { display: grid; gap: 1.6rem; margin-top: 2.4rem; align-items: center; }
+    .proof .quote { margin: 0; }
+    .davis-video { margin: 0; }
+    .davis-video video { display: block; width: 100%; height: auto; aspect-ratio: 16 / 9; border-radius: 6px; background: #2E2E2C; }
+    .davis-video figcaption { margin-top: 0.5rem; font-family: var(--font-type); font-size: 0.75rem; color: var(--warm-gray); }
+    @media (min-width: 760px) { .proof { grid-template-columns: 1fr 1.1fr; } }
 
     .quote { margin: 2.6rem 0 0; }
     .quote blockquote {
@@ -781,17 +787,24 @@
 
   <section class="about">
     <div class="container">
-      <h2>Who's writing it</h2>
-      <p>I'm Akshay. Before Food Jazz I helped 250+ home cooks turn their kitchens into mini factories selling food to their neighbors. I helped legalize the sale of home cooked food in California and built Foodnome, the first marketplace for permitted home restaurants. Now I teach people to cook without recipes in their own kitchens around the Bay Area.</p>
+      <h2 class="arrow-head" aria-label="I've turned 250+ home cooks into home restaurants"><span>250+ home cooks</span><svg class="hand-arrow" viewBox="0 0 64 28" aria-hidden="true"><path d="M3 17c11-6 26-9 50-3" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/><path d="M44 6c4 3 8 6 10 8-4 2-8 5-11 8" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span>home restaurants</span></h2>
+      <p>I'm Akshay. I helped legalize home restaurants in California and built Foodnome, the first marketplace for them. For six years I helped home cooks set up their kitchens to run like a restaurant's, and together they sold $2M in food to 50,000+ customers. Now I teach people to cook without recipes in their own kitchens around the Bay Area.</p>
       <img class="about-photo" src="/photos/food-jazz-wok-toss-lesson-800.webp" srcset="/photos/food-jazz-wok-toss-lesson-800.webp 800w, /photos/food-jazz-wok-toss-lesson-1600.webp 1600w" sizes="(max-width: 700px) 92vw, 640px" width="1600" height="900" alt="Akshay Prabhu coaching a home cook at the wok in his kitchen" loading="lazy" decoding="async">
-      <p class="figure250"><b>250+</b><span>home kitchens set up to sell food</span></p>
-      <figure class="quote">
-        <blockquote>My friends would say I was <span class="emph">a Michelin-star chef</span>. Which is crazy.</blockquote>
-        <figcaption>
-          <img src="/davis-clute.webp" alt="Davis Clute" width="48" height="48" loading="lazy">
-          <span><strong>Davis Clute</strong><br>Founder · Forbes 30 Under 30</span>
-        </figcaption>
-      </figure>
+      <div class="proof">
+        <figure class="quote">
+          <blockquote>My friends would say I was <span class="emph">a Michelin-star chef</span>. Which is crazy.</blockquote>
+          <figcaption>
+            <img src="/davis-clute.webp" alt="Davis Clute" width="48" height="48" loading="lazy">
+            <span><strong>Davis Clute</strong><br>Founder · Forbes 30 Under 30</span>
+          </figcaption>
+        </figure>
+        <figure class="davis-video">
+          <video controls preload="none" playsinline poster="/davis-testimonial-poster.jpg" width="1920" height="1080">
+            <source src="/davis-testimonial.mp4" type="video/mp4">
+          </video>
+          <figcaption>A month with Davis.</figcaption>
+        </figure>
+      </div>
       <div class="press">
         <span class="press-label">As seen on</span>
         <div class="press-row">
