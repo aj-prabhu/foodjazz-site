@@ -443,7 +443,9 @@
     .call-tag { position: absolute; left: 14px; top: 14px; padding: 0.22rem 0.5rem; border-radius: 3px; background: #E2BC62; color: #2E2E2C; font: 700 0.58rem/1.3 var(--font-type); letter-spacing: 0.02em; }
 
     /* ---- about ---- */
-    .about-photo { display: block; width: 100%; height: auto; margin: 1.8rem 0 0; border-radius: 4px; }
+    .about-photo { display: block; width: 100%; height: auto; margin: 1.8rem 0 1.8rem; border-radius: 4px; }
+    @media (min-width: 760px) { .about-photo { width: min(960px, calc(100vw - 4rem)); max-width: none; position: relative; left: 50%; transform: translateX(-50%); } }
+    .about .press { margin: 0 0 2.6rem; padding: 0 0 1.6rem; border-top: 0; border-bottom: 1px solid var(--rule); }
     .arrow-head { display: flex; flex-wrap: wrap; align-items: center; column-gap: 0.55rem; row-gap: 0.1rem; }
     .arrow-head span { white-space: nowrap; }
     .hand-arrow { width: 2.4em; height: 1.05em; flex: none; color: var(--accent-text); }
@@ -773,17 +775,28 @@
         <li><span class="n tick" aria-hidden="true"><svg viewBox="0 0 20 20" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 10.5l4.2 4.2L16.5 5"/></svg></span><div><h3>Your pantry</h3><p>What to keep stocked based on how you eat and the food you like, so you can improvise on any night.</p></div></li>
         <li><span class="n tick" aria-hidden="true"><svg viewBox="0 0 20 20" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 10.5l4.2 4.2L16.5 5"/></svg></span><div><h3>Your best moves</h3><p>The few changes that pay off most, from what to make ahead to which tools are actually worth buying.</p></div></li>
       </ul>
-      <p class="value" id="valueLine">Kitchen organizers charge $100 to $400 for a virtual session like this. I spend about 3 hours on each blueprint and it covers what to stock and cook, not just where things go. <a href="https://www.taskrabbit.com/cost-guides/home-organization" target="_blank" rel="noopener">TaskRabbit 2026</a></p>
     </div>
   </section>
 
 
   <section class="about">
     <div class="container">
+      <div class="press">
+        <span class="press-label">As seen on</span>
+        <div class="press-row">
+          <img src="/press-nyt.svg" alt="New York Times" class="press-logo--nyt" loading="lazy" decoding="async">
+          <img src="/press-npr.png" alt="NPR" loading="lazy" decoding="async">
+          <img src="/press-kqed.png" alt="KQED" loading="lazy" decoding="async">
+          <img src="/press-abc7.png" alt="ABC7" class="press-logo--abc7" loading="lazy" decoding="async">
+          <img src="/press-cbs.svg" alt="CBS" loading="lazy" decoding="async">
+          <img src="/press-eater.png" alt="Eater" loading="lazy" decoding="async">
+          <img src="/press-civileats.svg" alt="Civil Eats" class="press-logo--civileats" loading="lazy" decoding="async">
+        </div>
+      </div>
       <h2 class="arrow-head" aria-label="I've turned 250+ home cooks into home restaurants"><span>250+ home cooks</span><svg class="hand-arrow" viewBox="0 0 64 28" aria-hidden="true"><path d="M3 17c11-6 26-9 50-3" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/><path d="M44 6c4 3 8 6 10 8-4 2-8 5-11 8" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span>home restaurants</span></h2>
-      <p>I'm Akshay. Before Food Jazz I helped plan out and organize 250+ home kitchens and turned home cooks into well oiled businesses. I helped legalize home restaurants in California and built Foodnome, the first marketplace for them, and those cooks sold $2M in food to 50,000+ customers.</p>
-      <p>Now I bring that same rigor to everyday kitchens like yours. I know what it takes to set up a home kitchen that runs well and that's what goes into your blueprint.</p>
-      <img class="about-photo" src="/photos/food-jazz-wok-toss-lesson-800.webp" srcset="/photos/food-jazz-wok-toss-lesson-800.webp 800w, /photos/food-jazz-wok-toss-lesson-1600.webp 1600w" sizes="(max-width: 700px) 92vw, 640px" width="1600" height="900" alt="Akshay Prabhu coaching a home cook at the wok in his kitchen" loading="lazy" decoding="async">
+      <img class="about-photo" src="/photos/food-jazz-wok-toss-lesson-800.webp" srcset="/photos/food-jazz-wok-toss-lesson-800.webp 800w, /photos/food-jazz-wok-toss-lesson-1600.webp 1600w" sizes="(max-width: 700px) 92vw, 960px" width="1600" height="900" alt="Akshay Prabhu coaching a home cook at the wok in his kitchen" loading="lazy" decoding="async">
+      <p>I'm Akshay. I'm a food tech founder and as CEO of Foodnome I helped plan out and organize 250+ home kitchens, turning home cooks' passion for cooking into real businesses. Now I'm bringing that same level of detail and professionalism to everyday home cooking.</p>
+      <p>I created Food Jazz, a one month cooking intensive, and I'm on a mission to give busy professionals an operating system for their home kitchen.</p>
       <div class="proof">
         <figure class="quote">
           <blockquote>My friends would say I was <span class="emph">a Michelin-star chef</span>. Which is crazy.</blockquote>
@@ -798,18 +811,6 @@
           </video>
           <figcaption>A month with Davis.</figcaption>
         </figure>
-      </div>
-      <div class="press">
-        <span class="press-label">As seen on</span>
-        <div class="press-row">
-          <img src="/press-nyt.svg" alt="New York Times" class="press-logo--nyt" loading="lazy" decoding="async">
-          <img src="/press-npr.png" alt="NPR" loading="lazy" decoding="async">
-          <img src="/press-kqed.png" alt="KQED" loading="lazy" decoding="async">
-          <img src="/press-abc7.png" alt="ABC7" class="press-logo--abc7" loading="lazy" decoding="async">
-          <img src="/press-cbs.svg" alt="CBS" loading="lazy" decoding="async">
-          <img src="/press-eater.png" alt="Eater" loading="lazy" decoding="async">
-          <img src="/press-civileats.svg" alt="Civil Eats" class="press-logo--civileats" loading="lazy" decoding="async">
-        </div>
       </div>
     </div>
   </section>
