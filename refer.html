@@ -167,7 +167,9 @@
       border: 1px solid var(--linen-border);
     }
     .video-slot video { display: block; width: 100%; height: auto; }
-    .film .video-slot { margin-top: 2.2rem; }
+    .film .video-slot { margin: 1.6rem auto 0; max-width: 560px; }
+    @media (min-width: 900px) { .film { padding-top: 2.4rem; } .film .headline { max-width: 900px; } .film .headline h1 { margin-bottom: 0.9rem; } }
+    .film .later-video .video-slot { max-width: none; }
     .video-slot.live { position: relative; }
     /* display rules above beat the hidden attribute, so say it again here */
     .video-slot [hidden] { display: none !important; }
@@ -190,6 +192,10 @@
     .play-label { font: 400 0.78rem/1.3 var(--font-type); color: rgba(255, 255, 255, 0.85); }
     @media (max-width: 480px) { .play-card { gap: 0.2rem; padding: 0.55rem 0.9rem 0.5rem; } .play-icon svg { width: 22px; height: 22px; } .play-big { font-size: 0.95rem; } .play-label { font-size: 0.6rem; } .play-label .long { display: none; } }
     @media (prefers-reduced-motion: reduce) { .play-card { transition: none; } .play:hover .play-card { transform: none; } }
+    .hero-cta { max-width: 420px; margin: 1.5rem auto 0; text-align: center; }
+    .hero-cta .btn { display: block; width: 100%; }
+    .read-link { display: inline-block; margin-top: 0.35rem; padding: 0.6rem 0; font-size: 0.92rem; color: var(--accent-text); text-underline-offset: 3px; }
+    @media (prefers-reduced-motion: no-preference) { html { scroll-behavior: smooth; } }
     .later-video { margin-top: 2.4rem; }
     .later-video h3 { font-size: 1.15rem; margin: 0 0 0.8rem; }
     @media (max-width: 480px) { .play { left: 0.5rem; top: 0.5rem; max-width: calc(100% - 1rem); font-size: 0.7rem; padding: 0.35rem 0.75rem 0.35rem 0.35rem; } .play-icon { width: 1.7rem; height: 1.7rem; } }
@@ -480,6 +486,7 @@
     <div class="container">
       <div class="headline">
         <h1>Help me spread the love of cooking and I'll make you dinner!</h1>
+        <p class="offer">Send your friends a free kitchen blueprint. If one of them does my month the dinner's on me.</p>
       </div>
       <div class="video-slot live" id="videoSlot">
         <video class="preview" id="previewVideo" muted loop playsinline autoplay preload="auto" poster="/referral-ask-poster.jpg" aria-hidden="true" tabindex="-1">
@@ -495,6 +502,10 @@
             <span class="play-label"><span class="long">How the gift and the dinner work · </span>1:37</span>
           </span>
         </button>
+      </div>
+      <div class="hero-cta">
+        <button class="btn" id="heroCopy" type="button">Copy the text</button>
+        <a class="read-link" href="#text">Read or edit the text first</a>
       </div>
     </div>
   </section>
@@ -728,9 +739,15 @@
   var copyBtn = document.getElementById('copyBtn');
   var bubble = document.getElementById('bubble');
   var hint = document.getElementById('bubbleHint');
-  function copyIt() {
+  var heroCopy = document.getElementById('heroCopy');
+  function copyIt(e) {
     var t = text();
+    var where = e && e.currentTarget === heroCopy ? 'hero' : 'box';
     var done = function () {
+      if (where === 'hero') {
+        heroCopy.textContent = 'Copied. Paste it in a text to a friend.';
+        setTimeout(function () { heroCopy.textContent = 'Copy the text'; }, 2600);
+      }
       copyBtn.textContent = 'Copied. Paste it in a text to them.';
       hint.textContent = 'Copied. Change the name for your next friend';
       bubble.classList.add('copied');
@@ -742,7 +759,7 @@
       // The connector's one real action on this page. Everything downstream —
       // the friend landing on /r, the guide, the setup-plan booking — is only
       // attributable if this end of it is counted too.
-      if (window.fjTrack) window.fjTrack('copy_text', { variant: current });
+      if (window.fjTrack) window.fjTrack('copy_text', { variant: current, where: where });
     };
     function fallback() {
       var ta = document.createElement('textarea');
@@ -761,6 +778,7 @@
     }
   }
   copyBtn.addEventListener('click', copyIt);
+  heroCopy.addEventListener('click', copyIt);
 
   // For people who'd rather write their own text: just the link.
   var copyLinkBtn = document.getElementById('copyLinkBtn');
