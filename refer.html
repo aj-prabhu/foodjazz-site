@@ -196,6 +196,30 @@
     .hero-cta .btn { display: block; width: 100%; }
     .read-link { display: inline-block; margin-top: 0.35rem; padding: 0.6rem 0; font-size: 0.92rem; color: var(--accent-text); text-underline-offset: 3px; }
     @media (prefers-reduced-motion: no-preference) { html { scroll-behavior: smooth; } }
+    /* thank-you pop-up after copying the text */
+    .thanks {
+      width: min(92vw, 420px); padding: 1.6rem 1.5rem 1.2rem; border: 1px solid var(--linen-border); border-radius: 12px;
+      background: var(--warm-white); color: var(--charcoal); box-shadow: 0 30px 60px -20px rgba(0, 0, 0, 0.45);
+    }
+    .thanks::backdrop { background: rgba(28, 27, 24, 0.45); }
+    .thanks-x { position: absolute; top: 0.6rem; right: 0.6rem; width: 44px; height: 44px; display: grid; place-items: center; border: 0; background: none; color: var(--warm-gray); cursor: pointer; }
+    .thanks-title { margin: 0 2rem 0.9rem 0; font: 700 1.3rem/1.25 var(--font-type); }
+    .thanks-lede { margin: 0 0 0.6rem; }
+    .who { list-style: none; margin: 0 0 1.4rem; padding: 0; display: grid; gap: 0.5rem; }
+    .who li { position: relative; padding-left: 1.3rem; line-height: 1.45; }
+    .who li::before { content: ''; position: absolute; left: 0.15rem; top: 0.62em; width: 0.5rem; height: 1px; background: var(--accent-text); }
+    .thanks .btn { display: block; width: 100%; }
+    .thanks .btn + .btn { margin-top: 0.6rem; }
+    .thanks .btn[hidden] { display: none; }
+    .thanks-next { display: block; margin: 0.6rem auto 0; }
+    .confetti-container { position: fixed; inset: 0; pointer-events: none; overflow: hidden; }
+    .confetti-piece { position: absolute; top: -10px; width: 8px; height: 14px; border-radius: 1px; animation: confetti-fall linear forwards; }
+    @keyframes confetti-fall {
+      0% { transform: translateY(0) rotate(0deg) scale(1); opacity: 1; }
+      70% { opacity: 1; }
+      100% { transform: translateY(100vh) rotate(var(--rot, 720deg)) scale(0.3); opacity: 0; }
+    }
+    @media (prefers-reduced-motion: reduce) { .confetti-piece { display: none; } }
     .later-video { margin-top: 2.4rem; }
     .later-video h3 { font-size: 1.15rem; margin: 0 0 0.8rem; }
     @media (max-width: 480px) { .play { left: 0.5rem; top: 0.5rem; max-width: calc(100% - 1rem); font-size: 0.7rem; padding: 0.35rem 0.75rem 0.35rem 0.35rem; } .play-icon { width: 1.7rem; height: 1.7rem; } }
@@ -644,6 +668,24 @@
     </div>
   </section>
 
+  <dialog class="thanks" id="thanks" aria-labelledby="thanksTitle">
+    <div class="confetti-container" id="confettiContainer" aria-hidden="true"></div>
+    <button class="thanks-x" id="thanksX" type="button" aria-label="Close">
+      <svg viewBox="0 0 16 16" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M3.5 3.5l9 9M12.5 3.5l-9 9"/></svg>
+    </button>
+    <p class="thanks-title" id="thanksTitle">Copied! Thanks for the help.</p>
+    <p class="thanks-lede">Paste it in a text to a friend who&hellip;</p>
+    <ul class="who">
+      <li>lives on DoorDash or Factor</li>
+      <li>just moved into a new place</li>
+      <li>keeps saying they want to host more</li>
+      <li>is starting over after a big life change</li>
+    </ul>
+    <a class="btn" id="thanksSms" href="sms:" hidden>Open Messages</a>
+    <button class="btn" id="thanksDone" type="button">Done</button>
+    <button class="text-link thanks-next" id="thanksNext" type="button">Add a name for the next friend</button>
+  </dialog>
+
   <footer>
     <div class="container">
       Not sure if someone is a fit? Just text me.<br>
@@ -760,6 +802,7 @@
       // the friend landing on /r, the guide, the setup-plan booking — is only
       // attributable if this end of it is counted too.
       if (window.fjTrack) window.fjTrack('copy_text', { variant: current, where: where });
+      openThanks();
     };
     function fallback() {
       var ta = document.createElement('textarea');
@@ -777,6 +820,59 @@
       fallback();
     }
   }
+  // After a copy: a small thank-you with who to send it to. Confetti once a
+  // visit. On phones the main button opens Messages with the text in it.
+  var thanks = document.getElementById('thanks');
+  var thanksSms = document.getElementById('thanksSms');
+  var thanksDone = document.getElementById('thanksDone');
+  var celebrated = false;
+  function launchConfetti() {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    var container = document.getElementById('confettiContainer');
+    var colors = ['#7A8C6E', '#A8B89D', '#D4A843', '#EBDDBC', '#B4533A', '#D9E4CF', '#FDFCF8'];
+    for (var i = 0; i < 70; i++) {
+      var p = document.createElement('div');
+      p.className = 'confetti-piece';
+      p.style.left = (6 + Math.random() * 88) + '%';
+      p.style.background = colors[Math.floor(Math.random() * colors.length)];
+      p.style.animationDuration = (2.6 + Math.random() * 2.2) + 's';
+      p.style.animationDelay = (Math.random() * 0.6) + 's';
+      p.style.width = (5 + Math.random() * 7) + 'px';
+      p.style.height = (8 + Math.random() * 10) + 'px';
+      p.style.setProperty('--rot', (400 + Math.random() * 600) + 'deg');
+      if (Math.random() > 0.5) p.style.borderRadius = '50%';
+      container.appendChild(p);
+      p.addEventListener('animationend', function () { this.remove(); });
+    }
+  }
+  function openThanks() {
+    if (!thanks || typeof thanks.showModal !== 'function' || thanks.open) return;
+    var phone = window.matchMedia && window.matchMedia('(pointer: coarse)').matches;
+    if (phone) {
+      var ios = /iPhone|iPad|iPod/.test(navigator.userAgent);
+      thanksSms.href = 'sms:' + (ios ? '&' : '?') + 'body=' + encodeURIComponent(text());
+      thanksSms.hidden = false;
+      thanksDone.className = 'btn secondary';
+    }
+    thanks.showModal();
+    if (!celebrated) { celebrated = true; launchConfetti(); }
+  }
+  function closeThanks() { if (thanks.open) thanks.close(); }
+  document.getElementById('thanksX').addEventListener('click', closeThanks);
+  thanksDone.addEventListener('click', closeThanks);
+  thanks.addEventListener('click', function (e) {
+    var r = thanks.getBoundingClientRect();
+    if (e.clientX < r.left || e.clientX > r.right || e.clientY < r.top || e.clientY > r.bottom) closeThanks();
+  });
+  thanksSms.addEventListener('click', function () { if (window.fjTrack) window.fjTrack('text_it', { variant: current, where: 'thanks' }); });
+  document.getElementById('thanksNext').addEventListener('click', function () {
+    closeThanks();
+    fnameEl.value = '';
+    render();
+    document.querySelector('.phone').scrollIntoView({ block: 'center' });
+    fnameEl.focus({ preventScroll: true });
+  });
+
   copyBtn.addEventListener('click', copyIt);
   heroCopy.addEventListener('click', copyIt);
 
