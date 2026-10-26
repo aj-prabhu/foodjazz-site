@@ -242,7 +242,6 @@
       background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 14' preserveAspectRatio='none'%3E%3Cpath d='M3 9c30-6 70-8 104-5s60 4 90-2' fill='none' stroke='%23D9785E' stroke-width='3' stroke-linecap='round'/%3E%3C/svg%3E") no-repeat center / 100% 100%;
     }
     .hero .note { margin-top: 0.8rem; color: #B5AEA2; }
-    .hero .nopitch { margin-top: 0.5rem; font-size: 0.86rem; line-height: 1.5; color: #D9D2C6; max-width: 34em; }
 
     /* the gift tag */
     .tag {
@@ -598,8 +597,7 @@
           <h1><span class="h1-a">You just got a</span> <span class="h1-b"><span class="uline">free</span> custom kitchen blueprint!</span></h1>
           <p class="sub">It's a plan for how to set up your kitchen and what to keep stocked, built around your space and the food you love. I write every one myself.</p>
           <a class="btn book" href="https://zcal.co/i/utLPg0va" data-where="top">Book my free blueprint call</a>
-          <p class="note">Free · anywhere · 30 minute video call · in your inbox within a week</p>
-          <p class="nopitch">Nothing to buy. I'll ask before I bring up my paid month and the blueprint is yours either way. <span id="nopitchDinner">If you ever sign up I cook your friend dinner as a thank you.</span></p>
+          <p class="note">30 minute video call · in your inbox within a week</p>
         </div>
 
         <div class="sheet-wrap">
@@ -956,7 +954,6 @@
     // Capital after an apostrophe too, so o'brien reads O'Brien.
     var name = first.toLowerCase().replace(/(^|')(\p{L})/gu, function (m, a, c) { return a + c.toUpperCase(); });
     document.getElementById('gift').textContent = 'A gift from ' + name;
-    document.getElementById('nopitchDinner').textContent = 'If you ever sign up I cook ' + name + ' dinner as a thank you.';
     document.getElementById('whatTheyGet').textContent = 'What does ' + name + ' get?';
     document.getElementById('whatTheyGetAnswer').textContent =
       'If you choose the paid month I cook ' + name + ' dinner as a thank you. You don\'t need to buy anything to get your blueprint.';
