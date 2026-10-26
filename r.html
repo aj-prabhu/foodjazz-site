@@ -329,15 +329,15 @@
     .vcard:focus-visible { outline: 2px solid var(--golden); outline-offset: 3px; }
     .vcard img, .vcard video { width: 100%; height: 100%; object-fit: cover; object-position: 50% 38%; display: block; }
     .vcard::after { content: ''; position: absolute; inset: 50% 0 0; background: linear-gradient(transparent, rgba(0, 0, 0, 0.72)); }
-    .vcard-play {
-      position: absolute; left: 50%; top: 42%; z-index: 1; width: 34px; height: 34px; margin: -17px 0 0 -17px;
-      border-radius: 50%; background: rgba(254, 253, 251, 0.92); display: grid; place-items: center;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.35);
-    }
-    .vcard-play svg { width: 12px; height: 12px; margin-left: 2px; }
     .vcard-caption {
-      position: absolute; left: 8px; right: 6px; bottom: 7px; z-index: 1;
-      color: #fff; font: 700 0.6rem/1.2 var(--font-type); letter-spacing: 0.02em; text-align: left;
+      position: absolute; left: 8px; right: 6px; bottom: 30px; z-index: 1;
+      color: #fff; font: 700 0.62rem/1.2 var(--font-type); letter-spacing: 0.02em; text-align: left;
+    }
+    .vcard-hear {
+      position: absolute; left: 6px; right: 6px; bottom: 6px; z-index: 1;
+      display: flex; align-items: center; justify-content: center; gap: 0.3rem; padding: 0.3rem 0.2rem;
+      border-radius: 999px; background: rgba(254, 253, 251, 0.92); color: #23272A;
+      font: 700 0.58rem/1 var(--font-type); white-space: nowrap;
     }
 
     @media (max-width: 699px) {
@@ -345,11 +345,13 @@
       .banner a { margin-left: 0.5em; }
       .hero .sub { font-size: 0.85rem; }
       .hero .btn { margin-top: 1.2rem; }
-      .sheet-wrap { margin-top: 0.3rem; }
+      .sheet-wrap { margin-top: 1.4rem; }
       .tb-title { font-size: 0.66rem; letter-spacing: 0.12em; }
       .tb-by { font-size: 0.6rem; }
       .stamp { font-size: 0.7rem; letter-spacing: 0.18em; }
-      .vcard { top: -34px; right: -4px; width: 76px; }
+      .vcard { top: -92px; right: -2px; width: 106px; }
+      .vcard-caption { display: none; }
+      .hero .note { max-width: calc(100% - 126px); }
     }
     @media (min-width: 700px) {
       .container { padding-left: 2rem; padding-right: 2rem; }
@@ -361,10 +363,10 @@
       .tb-by { font-size: 0.66rem; }
       .box li { font-size: 0.6rem; }
       .box h4 { font-size: 0.56rem; }
-      .vcard { width: 144px; right: -38px; top: -26px; border-radius: 18px; border-width: 4px; }
-      .vcard-play { width: 46px; height: 46px; margin: -23px 0 0 -23px; }
-      .vcard-play svg { width: 15px; height: 15px; }
-      .vcard-caption { font-size: 0.72rem; left: 11px; bottom: 10px; }
+      .vcard { width: 178px; right: -44px; top: -40px; border-radius: 18px; border-width: 4px; }
+      .vcard-caption { font-size: 0.78rem; left: 12px; bottom: 44px; }
+      .vcard-hear { left: 10px; right: 10px; bottom: 10px; padding: 0.45rem 0.3rem; font-size: 0.72rem; }
+      .vcard-hear svg { width: 16px; height: 16px; }
     }
     @media (min-width: 980px) {
       .hero-grid { grid-template-columns: minmax(0, 0.92fr) minmax(0, 1.08fr); gap: 3.6rem; align-items: center; }
@@ -399,9 +401,7 @@
     .clip-note { position: absolute; left: 14px; bottom: 14px; padding: 0.3rem 0.7rem; border-radius: 3px; background: #E2BC62; color: #2E2E2C; font: 700 0.7rem/1.3 var(--font-type); }
 
     /* ---- why it matters ---- */
-    .why p:not(.footnote) { font-size: 1rem; }
-    .footnote { font-size: 0.66rem; margin-top: 2rem; padding-top: 0.9rem; border-top: 1px solid var(--rule); max-width: 34em; }
-    .footnote a { white-space: nowrap; }
+    .why p { font-size: 1rem; }
 
     /* ---- what's in it ---- */
     .parts { display: grid; gap: 0; margin-top: 2.2rem; border-top: 1px solid var(--charcoal); }
@@ -721,12 +721,15 @@
           </figure>
 
           <!-- PLACEHOLDER until the blueprint clip is shot (Studio/Cards/kitchen-walkthrough-offer.md).
-               Then: a muted 6s loop goes inside .vcard in place of the img, and the full
-               vertical clip with sound goes in dialog#clip. -->
-          <button class="vcard" id="vcard" type="button" aria-label="Watch a short video from Akshay">
-            <img src="/referral-ask-poster.jpg" alt="">
-            <span class="vcard-play" aria-hidden="true"><svg viewBox="0 0 12 14"><path d="M0 0 L12 7 L0 14 Z" fill="#23272A"/></svg></span>
+               For now the loop is the opening of the /refer video. Then: swap the
+               loop for the new clip's first seconds, and the full vertical clip with
+               sound goes in dialog#clip. -->
+          <button class="vcard" id="vcard" type="button" aria-label="Play the video from Akshay with sound">
+            <video id="vcardLoop" muted loop playsinline autoplay preload="auto" poster="/referral-ask-poster.jpg" aria-hidden="true" tabindex="-1">
+              <source src="/referral-ask-preview.mp4" type="video/mp4">
+            </video>
             <span class="vcard-caption">Hi, I'm Akshay</span>
+            <span class="vcard-hear"><svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z" fill="currentColor"/><path d="M15.5 9a4 4 0 0 1 0 6M18.2 6.5a7.5 7.5 0 0 1 0 11"/></svg>Tap to hear</span>
           </button>
         </div>
       </div>
@@ -758,7 +761,6 @@
       <h2>Your kitchen's flow might be why you cook less</h2>
       <p>I believe the way your kitchen is set up changes how you feel in it. If you have to hunt for a pan or fight a dull knife then cooking feels like a chore and DoorDash wins. That's not on you since most kitchens were never set up for how busy people actually cook.</p>
       <p>When your kitchen flows it feels like a creative maker space and you end up cooking way more without trying harder.</p>
-      <p class="note footnote">In a study of almost 5,000 US adults people who kept healthy food out where they could see it were about 1.5 times as likely to eat enough fruit and vegetables. <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC8169424/" target="_blank" rel="noopener">Kegler et al. 2021</a></p>
     </div>
   </section>
 
@@ -1027,8 +1029,14 @@
     if (window.fjTrack) window.fjTrack('video_open');
   });
   document.getElementById('clipClose').addEventListener('click', function () { clip.close(); });
+  // The card's loop plays silently; with reduced motion it holds on the poster.
+  var vcardLoop = document.getElementById('vcardLoop');
+  if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    vcardLoop.removeAttribute('autoplay');
+    vcardLoop.pause();
+  }
 
-  var video = document.querySelector('video');
+  var video = clip.querySelector('video');
   if (video && window.fjTrack) video.addEventListener('play', function () { window.fjTrack('video_play'); }, { once: true });
 
   // A little celebration the first time the page opens in a visit.
