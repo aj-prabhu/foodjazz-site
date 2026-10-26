@@ -234,6 +234,13 @@
     .hero .btn { background: #D9E4CF; border-color: #D9E4CF; color: #1A1D18; }
     .hero .btn:hover { background: #F1EBE1; border-color: #F1EBE1; }
     :root[data-theme="dark"] .hero { border-bottom: 1px solid var(--rule); }
+    .hero h1 .h1-a, .hero h1 .h1-b { display: block; }
+    .hero h1 .h1-b { color: #C9D8BC; margin-top: 0.1em; }
+    .uline { position: relative; white-space: nowrap; }
+    .uline::after {
+      content: ''; position: absolute; left: -4%; right: -6%; bottom: -0.18em; height: 0.32em;
+      background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 14' preserveAspectRatio='none'%3E%3Cpath d='M3 9c30-6 70-8 104-5s60 4 90-2' fill='none' stroke='%23D9785E' stroke-width='3' stroke-linecap='round'/%3E%3C/svg%3E") no-repeat center / 100% 100%;
+    }
     .hero .note { margin-top: 0.8rem; color: #B5AEA2; }
     .hero .nopitch { margin-top: 0.5rem; font-size: 0.86rem; line-height: 1.5; color: #D9D2C6; max-width: 34em; }
 
@@ -588,7 +595,7 @@
             <svg class="tag-string" viewBox="0 0 58 40" aria-hidden="true"><path d="M56 31 C 40 33, 30 20, 18 22 S 2 34, 4 12" fill="none" stroke="#CDBB91" stroke-width="1.6" stroke-linecap="round"/></svg>
             <p class="gift" id="gift">A gift for you</p>
           </div>
-          <h1>You just got a free custom kitchen blueprint!</h1>
+          <h1><span class="h1-a">You just got a</span> <span class="h1-b"><span class="uline">free</span> custom kitchen blueprint!</span></h1>
           <p class="sub">It's a plan for how to set up your kitchen and what to keep stocked, built around your space and the food you love. I write every one myself.</p>
           <a class="btn book" href="https://zcal.co/i/utLPg0va" data-where="top">Book my free blueprint call</a>
           <p class="note">Free · anywhere · 30 minute video call · in your inbox within a week</p>
