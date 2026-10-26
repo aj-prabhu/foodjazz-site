@@ -409,10 +409,11 @@
     .value a { font-size: 0.7rem; color: var(--medium-gray); white-space: nowrap; margin-left: 0.3em; }
 
     /* ---- how it works ---- */
-    .steps { border-top: 1px solid var(--charcoal); }
-    .step { display: grid; gap: 0.3rem; padding: 1.1rem 0 1.2rem; border-bottom: 1px solid var(--rule); }
-    .step h3 { text-transform: uppercase; letter-spacing: 0.14em; font-size: 0.7rem; color: var(--accent-text); margin: 0; }
-    .step p { margin: 0; font-size: 0.92rem; }
+    .steps { list-style: none; margin: 1.4rem 0 0; padding: 0; display: grid; gap: 1.1rem; }
+    .steps li { display: grid; grid-template-columns: 2.2rem 1fr; align-items: baseline; }
+    .steps .n { font-family: var(--font-type); font-weight: 700; font-size: 1.6rem; line-height: 1; color: var(--accent-text); }
+    .steps p { margin: 0; }
+    .steps b { font-weight: 600; }
     .how .btn { margin-top: 2rem; }
 
     .callshot { margin: 2.2rem 0 0; }
@@ -727,20 +728,11 @@
   <section class="how">
     <div class="container">
       <h2>How it works</h2>
-      <div class="steps">
-        <div class="step">
-          <h3>You book</h3>
-          <p>Pick a time and tell me one meal you wish you could make at home so I know what we're setting your kitchen up for.</p>
-        </div>
-        <div class="step">
-          <h3>We get on a call</h3>
-          <p>You walk me around your kitchen from your phone for 30 minutes and show me how you normally use it. Don't clean up first. I want to see your normal flow.</p>
-        </div>
-        <div class="step">
-          <h3>I write your blueprint</h3>
-          <p>It lands in your inbox within a week.</p>
-        </div>
-      </div>
+      <ol class="steps">
+        <li><span class="n" aria-hidden="true">1</span><p><b>Book a time</b> and tell me one meal you wish you could make at home.</p></li>
+        <li><span class="n" aria-hidden="true">2</span><p><b>Walk me around your kitchen</b> on a 30 minute video call. Don't clean up first since I want to see your normal flow.</p></li>
+        <li><span class="n" aria-hidden="true">3</span><p><b>Get your blueprint</b> in your inbox within a week.</p></li>
+      </ol>
       <!-- PLACEHOLDER: drop the real call screenshot in here (big tile = their kitchen, small tile = Akshay). -->
       <figure class="callshot" id="callShot">
         <div class="call-frame">
