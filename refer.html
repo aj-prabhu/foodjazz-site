@@ -220,6 +220,13 @@
       100% { transform: translateY(100vh) rotate(var(--rot, 720deg)) scale(0.3); opacity: 0; }
     }
     @media (prefers-reduced-motion: reduce) { .confetti-piece { display: none; } }
+    .film h1 .h1-a, .film h1 .h1-b { display: block; }
+    .film h1 .h1-b { color: var(--accent-text); margin-top: 0.15em; }
+    .uline { position: relative; white-space: nowrap; }
+    .uline::after {
+      content: ''; position: absolute; left: -2%; right: -4%; bottom: -0.2em; height: 0.32em;
+      background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 14' preserveAspectRatio='none'%3E%3Cpath d='M3 9c30-6 70-8 104-5s60 4 90-2' fill='none' stroke='%23B4533A' stroke-width='3' stroke-linecap='round'/%3E%3C/svg%3E") no-repeat center / 100% 100%;
+    }
     .later-video { margin-top: 2.4rem; }
     .later-video h3 { font-size: 1.15rem; margin: 0 0 0.8rem; }
     @media (max-width: 480px) { .play { left: 0.5rem; top: 0.5rem; max-width: calc(100% - 1rem); font-size: 0.7rem; padding: 0.35rem 0.75rem 0.35rem 0.35rem; } .play-icon { width: 1.7rem; height: 1.7rem; } }
@@ -509,7 +516,7 @@
   <section class="film">
     <div class="container">
       <div class="headline">
-        <h1>Help me spread the love of cooking and I'll make you dinner!</h1>
+        <h1><span class="h1-a">Help me spread the love of cooking</span> <span class="h1-b">and I'll make you <span class="uline">dinner!</span></span></h1>
         <p class="offer">Send your friends a free kitchen blueprint. If one of them signs up for my month of cooking lessons the dinner's on me.</p>
       </div>
       <div class="video-slot live" id="videoSlot">
