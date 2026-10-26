@@ -105,7 +105,7 @@
       --sage: #7A8C6E;
       --sage-muted: #D4DDD0;
       --sage-wash: #EDF2EB;
-      --sage-deep: #6a7a60;
+      --sage-deep: #5F6E56;
       --cream: #FAF7F2;
       --warm-white: #FEFDFB;
       --linen: #F3EDE4;
@@ -113,7 +113,7 @@
       --rule: rgba(46, 46, 44, 0.16);
       --charcoal: #2E2E2C;
       --warm-gray: #5C5A56;
-      --medium-gray: #8A8781;
+      --medium-gray: #6F6C66;
       --golden: #D4A843;
       --font-type: 'Courier Prime', 'Courier New', monospace;
       --font-hand: 'Caveat', cursive;
@@ -146,7 +146,6 @@
 
     section { padding: clamp(2.8rem, 9vw, 5rem) 0; }
     section.wash { background: var(--warm-white); border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); }
-    section.wash + section, section + section.wash { border-top: 1px solid var(--rule); }
 
     h1, h2, h3 { font-family: var(--font-type); font-weight: 700; color: var(--charcoal); letter-spacing: -0.01em; }
     h1 { line-height: 1.15; margin: 0 0 1.3rem; font-size: clamp(1.6rem, 6.6vw, 2.55rem); }
@@ -183,7 +182,7 @@
     .play:hover { background: #fff; }
     .play:focus-visible { outline: 3px solid var(--sage); outline-offset: 3px; }
     .play-icon { display: inline-flex; align-items: center; justify-content: center; width: 2.1rem; height: 2.1rem; border-radius: 3px; background: var(--sage-deep); color: #fff; padding-left: 2px; }
-    .play-time { color: #8A8781; margin-left: 0.3rem; font-weight: 400; white-space: nowrap; }
+    .play-time { color: #6F6C66; margin-left: 0.3rem; font-weight: 400; white-space: nowrap; }
     .later-video { margin-top: 2.4rem; }
     .later-video h3 { font-size: 1.15rem; margin: 0 0 0.8rem; }
     @media (max-width: 480px) { .play { left: 0.5rem; top: 0.5rem; max-width: calc(100% - 1rem); font-size: 0.7rem; padding: 0.35rem 0.75rem 0.35rem 0.35rem; } .play-icon { width: 1.7rem; height: 1.7rem; } }
@@ -231,10 +230,11 @@
       color: #fff; background: var(--sage-deep);
       border: 0; border-radius: 18px 18px 4px 18px;
       padding: 0.85rem 1rem 0.9rem;
-      white-space: pre-line; overflow-wrap: break-word; cursor: copy;
+      white-space: normal; overflow-wrap: break-word; cursor: copy;
       transition: background 0.15s ease, transform 0.15s ease;
     }
-    .bubble:hover { background: #5b6a52; }
+    .bubble-text { display: block; white-space: pre-line; }
+    .bubble:hover { background: #4f5d47; }
     .bubble:active { transform: scale(0.99); }
     .bubble:focus-visible { outline: 2px solid var(--sage); outline-offset: 3px; }
     .bubble.copied { background: #4a5843; }
@@ -253,6 +253,9 @@
     }
     .text-link[hidden] { display: none; }
     .share-link { margin-top: 0.9rem; }
+    .text-link, .skip { padding: 0.65rem 0; }
+    .why-box summary { padding: 0.65rem 0; }
+    @media (max-width: 480px) { .bubble { font-size: 0.88rem; line-height: 1.45; max-width: 100%; } }
     .skip { display: inline-block; margin-top: 0.9rem; font-size: 0.9rem; color: var(--accent-text); text-underline-offset: 3px; }
     .skip[hidden] { display: none; }
     .facts { margin-top: 0.9rem; font-size: 0.9rem; color: var(--warm-gray); }
@@ -273,7 +276,7 @@
       text-align: center;
       transition: background 0.15s ease;
     }
-    .btn:hover { background: #5b6a52; }
+    .btn:hover { background: #4f5d47; }
     .btn.secondary { background: transparent; color: var(--accent-text); }
     .btn.secondary:hover { background: var(--sage-wash); }
     .btn[hidden] { display: none; }
@@ -298,52 +301,6 @@
     }
     .value .src:hover { color: var(--accent-text); }
 
-    .peek {
-      display: block; margin: 2.6rem 0 0;
-      color: inherit; text-decoration: none;
-    }
-    .peek-label {
-      display: block; margin-bottom: 0.6rem;
-      font-family: var(--font-type); font-weight: 700; font-size: 0.62rem;
-      letter-spacing: 0.24em; text-transform: uppercase; color: var(--warm-gray);
-    }
-    .peek-frame {
-      display: block; border: 1px solid rgba(46, 46, 44, 0.55); border-radius: 7px; overflow: hidden;
-      background: var(--warm-white);
-      box-shadow: 0 2px 0 rgba(46, 46, 44, 0.05), 0 22px 40px -26px rgba(46, 46, 44, 0.55);
-      transition: transform 0.25s ease, box-shadow 0.25s ease;
-    }
-    .peek:hover .peek-frame { transform: translateY(-3px); box-shadow: 0 2px 0 rgba(46, 46, 44, 0.05), 0 30px 46px -26px rgba(46, 46, 44, 0.6); }
-    .peek:focus-visible { outline: none; }
-    .peek:focus-visible .peek-frame { outline: 3px solid var(--sage); outline-offset: 3px; }
-    .peek-bar {
-      display: flex; align-items: center; gap: 0.55rem;
-      padding: 0.5rem 0.6rem; border-bottom: 1px solid rgba(46, 46, 44, 0.55);
-    }
-    .peek-url {
-      flex: 1 1 auto; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
-      font-family: var(--font-type); font-size: 0.68rem; color: var(--charcoal);
-      background: var(--cream); border: 1px solid var(--linen-border); border-radius: 3px; padding: 0.18rem 0.55rem;
-    }
-    .peek-go { flex: 0 0 auto; color: var(--accent-text); display: inline-flex; }
-    .peek-page {
-      display: block; padding: 2rem 1.6rem 1.9rem;
-      color: #F1EBE1; background-color: #1A1D18;
-      background-image:
-        linear-gradient(rgba(185, 200, 174, 0.15) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(185, 200, 174, 0.15) 1px, transparent 1px),
-        linear-gradient(rgba(185, 200, 174, 0.07) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(185, 200, 174, 0.07) 1px, transparent 1px);
-      background-size: 80px 80px, 80px 80px, 16px 16px, 16px 16px;
-      background-position: center top;
-    }
-    .peek-gift { display: block; font-family: var(--font-hand); font-weight: 600; font-size: 1.3rem; line-height: 1.1; color: #E2BC62; margin-bottom: 0.35rem; }
-    .peek-title { display: block; font-family: var(--font-type); font-weight: 700; font-size: 1.1rem; line-height: 1.25; }
-    .peek-lines { display: block; margin-top: 1rem; }
-    .peek-lines i { display: block; height: 5px; border-radius: 1px; background: rgba(241, 235, 225, 0.16); margin-top: 0.45rem; }
-    .peek-lines i:nth-child(1) { width: 88%; }
-    .peek-lines i:nth-child(2) { width: 64%; }
-    .peek-btn { display: block; width: 7.5rem; height: 1.35rem; margin-top: 1.1rem; border-radius: 2px; background: #6a7a60; }
 
     /* ---- proof ---- */
     .quote { margin: 0; text-align: center; }
@@ -375,7 +332,7 @@
     /* the dinner: a big warm photo with the menu laid on top of it */
     .dinner-set {
       position: relative; margin-top: 2.8rem;
-      display: grid; grid-template-columns: repeat(12, 1fr); align-items: start;
+      display: grid; grid-template-columns: repeat(12, 1fr); grid-template-rows: auto 1fr; align-items: start;
     }
     .dinner-photo {
       grid-column: 1 / 10; grid-row: 1;
@@ -416,7 +373,7 @@
     .course { margin: 0 auto 1.25rem; max-width: 17em; }
     .course:last-of-type { margin-bottom: 0; }
     .course-name {
-      font-family: var(--font-type); font-weight: 700; font-size: 0.58rem; line-height: 1;
+      font-family: var(--font-type); font-weight: 700; font-size: 0.62rem; line-height: 1;
       letter-spacing: 0.34em; text-transform: uppercase; color: #6a7a60;
       margin: 0 0 0.5rem; padding-left: 0.34em;
     }
@@ -426,7 +383,7 @@
     }
     .menu-note {
       margin: 0; font-family: var(--font-type); font-size: 0.62rem; line-height: 1.5;
-      letter-spacing: 0.03em; color: #8A7F72; max-width: 20em; margin: 0 auto;
+      letter-spacing: 0.03em; color: #6E6457; max-width: 20em; margin: 0 auto;
     }
     .after-dinner { grid-column: 1 / 8; grid-row: 2; align-self: start; margin: 2.4rem 0 0; max-width: 27em; }
 
@@ -456,8 +413,7 @@
       .course { max-width: none; }
     }
     @media (prefers-reduced-motion: reduce) {
-      .faq summary::after, .bubble, .btn, .peek-frame { transition: none; }
-      .peek:hover .peek-frame { transform: none; }
+      .faq summary::after, .bubble, .btn { transition: none; }
     }
 
     .narrow { max-width: 620px; margin: 0 auto; }
@@ -508,7 +464,6 @@
 
     :root[data-theme="dark"] body { font-weight: 400; }
     :root[data-theme="dark"] .btn:not(.secondary):hover { background: #5b6a52; }
-    :root[data-theme="dark"] .peek-frame, :root[data-theme="dark"] .peek-bar { border-color: rgba(241, 235, 225, 0.3); }
     :root[data-theme="dark"] .menu-card { box-shadow: 0 1px 1px rgba(0, 0, 0, 0.3), 0 34px 60px -30px rgba(0, 0, 0, 0.8); }
   </style>
   <script src="/analytics.js"></script>
@@ -543,11 +498,11 @@
       <p class="ask">It's a custom kitchen blueprint I spend about 3 hours writing for their kitchen, and it's theirs whether or not they ever hire me. Send it to anyone who's told you they're tired of takeout or wishes they hosted more, even if they only want the free plan.</p>
       <div class="phone">
         <label class="to-line" for="fname"><span>To:</span><input class="to-input" id="fname" type="text" maxlength="30" autocomplete="off" placeholder="your friend's first name"></label>
-        <button class="bubble" id="bubble" type="button" aria-label="Copy the message">
+        <button class="bubble" id="bubble" type="button" aria-describedby="bubbleHint">
           <span class="bubble-text" id="draft"></span>
           <span class="bubble-copy" aria-hidden="true"><svg viewBox="0 0 16 16" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"><rect x="5.5" y="5.5" width="8" height="8" rx="1.5"/><path d="M10.5 3.5v-.5A1.5 1.5 0 0 0 9 1.5H3A1.5 1.5 0 0 0 1.5 3v6A1.5 1.5 0 0 0 3 10.5h.5"/></svg></span>
         </button>
-        <p class="bubble-hint" id="bubbleHint">Tap the message to copy it</p>
+        <p class="bubble-hint" id="bubbleHint" aria-live="polite">Tap the message to copy it</p>
       </div>
       <div class="msg-tools">
         <button class="text-link" id="swapDraft" type="button">Try the longer version</button>

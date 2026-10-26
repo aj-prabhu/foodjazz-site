@@ -104,7 +104,7 @@
       --sage-light: #A8B89D;
       --sage-muted: #D4DDD0;
       --sage-wash: #EDF2EB;
-      --sage-deep: #6a7a60;
+      --sage-deep: #5F6E56;
       --cream: #FAF7F2;
       --warm-white: #FEFDFB;
       --linen: #F3EDE4;
@@ -112,7 +112,7 @@
       --golden: #D4A843;
       --charcoal: #2E2E2C;
       --warm-gray: #5C5A56;
-      --medium-gray: #8A8781;
+      --medium-gray: #6F6C66;
       --rule: #D9D2C6;
       --font-hand: 'Caveat', cursive;
       --font-type: 'Courier Prime', 'Courier New', monospace;
@@ -151,14 +151,14 @@
 
     section { padding: clamp(3rem, 9vw, 4.6rem) 0; }
     /* Thin rules between the paper sections, inside the column. */
-    .why ~ section:not(.closing) { padding-top: 0; }
-    .why ~ section:not(.closing) > .container > :first-child { margin-top: 0; }
-    .why ~ section:not(.closing) > .container { border-top: 1px solid var(--rule); padding-top: clamp(3rem, 9vw, 4.6rem); }
+    .how ~ section:not(.closing) { padding-top: 0; }
+    .how ~ section:not(.closing) > .container > :first-child { margin-top: 0; }
+    .how ~ section:not(.closing) > .container { border-top: 1px solid var(--rule); padding-top: clamp(3rem, 9vw, 4.6rem); }
     @media (max-width: 699px) {
-      .why ~ section:not(.closing) > .container { border-top: 0; background: linear-gradient(var(--rule), var(--rule)) 16px 0 / calc(100% - 32px) 1px no-repeat; }
+      .how ~ section:not(.closing) > .container { border-top: 0; background: linear-gradient(var(--rule), var(--rule)) 16px 0 / calc(100% - 32px) 1px no-repeat; }
     }
     @media (min-width: 700px) {
-      .why ~ section:not(.closing) > .container { border-top: 0; background: linear-gradient(var(--rule), var(--rule)) 2rem 0 / calc(100% - 4rem) 1px no-repeat; }
+      .how ~ section:not(.closing) > .container { border-top: 0; background: linear-gradient(var(--rule), var(--rule)) 2rem 0 / calc(100% - 4rem) 1px no-repeat; }
     }
 
     h1, h2, h3 { font-family: var(--font-type); font-weight: 700; margin: 0; }
@@ -179,7 +179,7 @@
       transition: background 0.15s ease, transform 0.15s ease;
       margin-top: 1.6rem;
     }
-    .btn:hover { background: #5b6a52; }
+    .btn:hover { background: #4f5d47; }
     .btn:active { transform: translateY(1px); }
     .btn:focus-visible { outline: 2px solid var(--golden); outline-offset: 3px; }
     @media (max-width: 440px) { .btn { letter-spacing: 0.05em; padding-left: 0.9rem; padding-right: 0.9rem; } }
@@ -199,6 +199,7 @@
     }
     .banner a { color: var(--stamp); font-weight: 700; text-decoration: underline; text-underline-offset: 3px; margin-left: 0.6em; white-space: nowrap; }
     .banner a:hover { color: #93402B; }
+    .banner a { display: inline-block; padding: 0.8rem 0.3rem; margin: -0.8rem 0; }
 
     /* ---- hero: a dark blueprint table with the gift laid on it ---- */
     .hero {
@@ -232,6 +233,7 @@
     .hero .sub { margin: 1rem 0 0; font-size: 0.92rem; font-weight: 400; color: var(--warm-gray); max-width: 30em; }
     .hero .btn { background: #D9E4CF; border-color: #D9E4CF; color: #1A1D18; }
     .hero .btn:hover { background: #F1EBE1; border-color: #F1EBE1; }
+    :root[data-theme="dark"] .hero { border-bottom: 1px solid var(--rule); }
     .hero .note { margin-top: 0.8rem; color: #B5AEA2; }
     .hero .nopitch { margin-top: 0.5rem; font-size: 0.86rem; line-height: 1.5; color: #D9D2C6; max-width: 34em; }
 
@@ -286,7 +288,7 @@
     .plan { display: block; width: 100%; height: auto; margin: 14px 0 6px; overflow: visible; }
     .plan .hand { font-family: var(--font-hand); font-weight: 600; fill: var(--pencil); }
 
-    .sheet-boxes { display: grid; grid-template-columns: 1fr 1fr; grid-template-areas: 'pantry knife' 'moves moves'; gap: 10px; margin-top: 8px; }
+    .sheet-boxes { display: grid; grid-template-columns: 1.2fr 1fr; grid-template-areas: 'pantry knife' 'moves moves'; gap: 10px; margin-top: 8px; }
     .box { border: 1px solid var(--ink); padding: 0.5rem 0.6rem 0.55rem; background: var(--paper); }
     .box h4 { margin: 0 0 0.35rem; white-space: nowrap; font-family: var(--font-type); font-weight: 700; font-size: 0.56rem; letter-spacing: 0.1em; padding-bottom: 0.3rem; border-bottom: 1px solid var(--ink); }
     .box ul { list-style: none; margin: 0; padding: 0; }
@@ -333,22 +335,22 @@
     }
 
     @media (max-width: 699px) {
-      .banner { font-size: 0.56rem; letter-spacing: 0.07em; padding-left: 8px; padding-right: 8px; }
+      .banner { font-size: 0.6rem; letter-spacing: 0.07em; padding-left: 8px; padding-right: 8px; }
       .banner a { margin-left: 0.5em; }
       .hero .sub { font-size: 0.85rem; }
       .hero .btn { margin-top: 1.2rem; }
       .sheet-wrap { margin-top: 0.3rem; }
       .tb-title { font-size: 0.66rem; letter-spacing: 0.12em; }
-      .tb-by { font-size: 0.54rem; }
+      .tb-by { font-size: 0.6rem; }
       .stamp { font-size: 0.7rem; letter-spacing: 0.18em; }
-      .vcard { top: 22px; right: -4px; width: 92px; }
+      .vcard { top: -34px; right: -4px; width: 76px; }
     }
     @media (min-width: 700px) {
       .container { padding-left: 2rem; padding-right: 2rem; }
       .btn { width: auto; min-width: 300px; }
       .sheet { padding: 14px; }
       .sheet-frame { padding: 20px 22px 22px; }
-      .sheet-boxes { grid-template-columns: 1.1fr 1.15fr 0.9fr; grid-template-areas: 'pantry moves knife'; gap: 10px; }
+      .sheet-boxes { grid-template-columns: 1fr 1.4fr 0.85fr; grid-template-areas: 'pantry moves knife'; gap: 10px; }
       .tb-title { font-size: 0.9rem; }
       .tb-by { font-size: 0.66rem; }
       .box li { font-size: 0.6rem; }
@@ -391,7 +393,7 @@
     .clip-note { position: absolute; left: 14px; bottom: 14px; padding: 0.3rem 0.7rem; border-radius: 3px; background: #E2BC62; color: #2E2E2C; font: 700 0.7rem/1.3 var(--font-type); }
 
     /* ---- why it matters ---- */
-    .why p { font-size: 1rem; }
+    .why p:not(.footnote) { font-size: 1rem; }
     .footnote { font-size: 0.66rem; margin-top: 2rem; padding-top: 0.9rem; border-top: 1px solid var(--rule); max-width: 34em; }
     .footnote a { white-space: nowrap; }
 
@@ -577,6 +579,7 @@
 
   <div class="banner">Only 4 blueprint spots a week <a class="book" href="https://zcal.co/i/utLPg0va" data-where="banner">Book yours</a></div>
 
+  <main>
   <section class="hero">
     <div class="container">
       <div class="hero-grid">
@@ -888,6 +891,8 @@
       <a class="btn book" href="https://zcal.co/i/utLPg0va" data-where="bottom">Book my free blueprint call</a>
     </div>
   </section>
+
+  </main>
 
   <footer>
     <div class="container">
