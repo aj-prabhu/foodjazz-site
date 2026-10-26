@@ -86,14 +86,14 @@
   </script>
   <meta name="robots" content="noindex, nofollow">
   <meta name="description" content="Send a friend a free kitchen blueprint from Akshay.">
-  <meta property="og:title" content="Know someone who'd love to cook more?">
+  <meta property="og:title" content="Help me spread the love of cooking and I'll make you dinner!">
   <meta property="og:description" content="Send a friend a free kitchen blueprint. If they do the month I cook you dinner.">
   <meta property="og:image" content="https://foodjazz.club/og-dinner.jpg">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <meta property="og:type" content="website">
   <meta name="twitter:card" content="summary_large_image">
-  <title>Food Jazz — send a friend a free kitchen plan</title>
+  <title>Food Jazz · send a friend a free kitchen blueprint</title>
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -161,10 +161,6 @@
     .film { padding-top: clamp(2rem, 6vw, 3.6rem); }
     .film .container { max-width: 920px; }
     .film .offer { max-width: 600px; margin-left: auto; margin-right: auto; }
-    .refresher {
-      max-width: 520px; margin: 0.9rem auto 0;
-      font-size: 0.86rem; line-height: 1.6; color: var(--warm-gray);
-    }
     .video-slot {
       border-radius: 4px;
       overflow: hidden;
@@ -208,38 +204,55 @@
     }
 
     /* ---- the text ---- */
-    .tabs { display: flex; gap: 1.4rem; margin-bottom: 1rem; flex-wrap: wrap; border-bottom: 1px solid var(--rule); }
-    .tab {
-      font-family: var(--font-type);
-      font-weight: 700;
-      font-size: 0.66rem;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-      padding: 0.5rem 0 0.55rem;
-      margin-bottom: -1px;
-      border: 0;
-      border-bottom: 2px solid transparent;
-      background: transparent;
-      color: var(--warm-gray);
-      cursor: pointer;
-      transition: color 0.15s ease, border-color 0.15s ease;
-    }
-    .tab:hover { color: var(--charcoal); }
-    .tab[aria-selected="true"] { color: var(--charcoal); border-bottom-color: var(--sage-deep); }
-    .tab[hidden] { display: none; }
-    .tab:focus-visible { outline: 2px solid var(--sage); outline-offset: 2px; }
-
-    .draft {
+    .phone {
+      max-width: 520px;
       background: var(--warm-white);
       border: 1px solid var(--linen-border);
-      border-radius: 3px;
-      padding: 1.3rem 1.25rem;
-      white-space: pre-wrap;
-      font-size: 0.98rem;
-      line-height: 1.6;
-      box-shadow: 0 1px 0 rgba(46, 46, 44, 0.04), 0 12px 24px -20px rgba(46, 46, 44, 0.35);
+      border-radius: 18px;
+      padding: 0 0.8rem 0.9rem;
+      box-shadow: 0 1px 0 rgba(46, 46, 44, 0.04), 0 18px 36px -24px rgba(46, 46, 44, 0.45);
     }
-    .draft .blank { color: var(--accent-text); font-weight: 500; }
+    .to-line {
+      display: flex; align-items: center; gap: 0.5rem;
+      padding: 0.85rem 0.1rem 0.75rem; margin-bottom: 1rem;
+      border-bottom: 1px solid var(--rule);
+      font-size: 0.92rem; color: var(--warm-gray);
+    }
+    .to-input {
+      flex: 1; min-width: 0; font: inherit; font-size: 1rem; color: var(--charcoal);
+      border: 0; background: transparent; padding: 0.15rem 0;
+    }
+    .to-input:focus { outline: none; }
+    .to-input::placeholder { color: var(--accent-text); opacity: 0.75; }
+    .to-line:focus-within { border-bottom-color: var(--sage-deep); }
+    .bubble {
+      position: relative; display: block; margin: 0.5rem 0 0 auto; max-width: 94%;
+      text-align: left; font: inherit; font-size: 0.97rem; line-height: 1.5;
+      color: #fff; background: var(--sage-deep);
+      border: 0; border-radius: 18px 18px 4px 18px;
+      padding: 0.85rem 1rem 0.9rem;
+      white-space: pre-line; overflow-wrap: break-word; cursor: copy;
+      transition: background 0.15s ease, transform 0.15s ease;
+    }
+    .bubble:hover { background: #5b6a52; }
+    .bubble:active { transform: scale(0.99); }
+    .bubble:focus-visible { outline: 2px solid var(--sage); outline-offset: 3px; }
+    .bubble.copied { background: #4a5843; }
+    .bubble-copy {
+      position: absolute; top: -11px; right: -9px;
+      display: grid; place-items: center; width: 30px; height: 30px;
+      border-radius: 50%; background: #fff; color: #4a5843;
+      border: 1px solid rgba(46, 46, 44, 0.12); box-shadow: 0 2px 6px -2px rgba(46, 46, 44, 0.35);
+    }
+    .bubble-hint { margin: 0.45rem 0 0; text-align: right; font-family: var(--font-type); font-size: 0.72rem; letter-spacing: 0.04em; color: var(--warm-gray); }
+    .msg-tools { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.4rem 1.4rem; margin: 1rem 0 0.4rem; }
+    .text-link {
+      font: inherit; font-size: 0.92rem; color: var(--accent-text);
+      background: none; border: 0; padding: 0; cursor: pointer;
+      text-decoration: underline; text-underline-offset: 3px; text-decoration-thickness: 1px;
+    }
+    .text-link[hidden] { display: none; }
+    .share-link { margin-top: 0.9rem; }
 
     .btn-row { display: flex; gap: 0.7rem; margin-top: 1rem; flex-wrap: wrap; }
     .btn {
@@ -435,13 +448,14 @@
       .course { max-width: none; }
     }
     @media (prefers-reduced-motion: reduce) {
-      .faq summary::after, .tab, .btn, .peek-frame { transition: none; }
+      .faq summary::after, .bubble, .btn, .peek-frame { transition: none; }
       .peek:hover .peek-frame { transform: none; }
     }
 
     .narrow { max-width: 620px; margin: 0 auto; }
     .ask { font-size: 1.05rem; }
-    .why-box { margin: 1rem 0 1.4rem; }
+    .why-box { margin: 0; }
+    .why-box[open] { flex-basis: 100%; }
     .why-box summary { cursor: pointer; color: var(--accent-text); font-size: 0.92rem; }
     .why-box[open] summary { margin-bottom: 0.6rem; }
     .why-input {
@@ -449,7 +463,6 @@
       border: 1px solid var(--linen-border); border-radius: 3px; background: var(--warm-white); color: var(--charcoal);
     }
     .why-input:focus { outline: 2px solid var(--sage); outline-offset: 1px; }
-    .draft { white-space: pre-line; }
     .blank-note { margin-top: 0.8rem; font-size: 0.85rem; color: var(--warm-gray); }
     a.btn { text-decoration: none; display: inline-block; }
 
@@ -498,9 +511,8 @@
   <section class="film">
     <div class="container">
       <div class="headline">
-        <h1>Know someone who'd love to cook more?</h1>
-        <p class="offer">Send them a free kitchen blueprint from me. If they end up doing the month I'll come cook you a private dinner for two.</p>
-        <p class="refresher">Food Jazz is my one month cooking intensive where I teach people to cook without recipes in their own kitchen.</p>
+        <h1>Help me spread the love of cooking and I'll make you dinner!</h1>
+        <p class="offer">Send a friend a free kitchen blueprint. If they do the month I'll cook you a three course dinner at your place.</p>
       </div>
       <div class="video-slot live" id="videoSlot">
         <video class="preview" id="previewVideo" muted loop playsinline autoplay preload="auto" poster="/referral-ask-poster.jpg" aria-hidden="true" tabindex="-1">
@@ -519,32 +531,37 @@
 
   <section class="wash send" id="text">
     <div class="container">
-      <h2>Send them this</h2>
-      <p class="ask">Think of someone who's told you they're tired of takeout or wishes they hosted more. Start with one person.</p>
-      <details class="why-box">
-        <summary>Add why you thought of them</summary>
-        <input class="why-input" id="why" type="text" maxlength="140" autocomplete="off" aria-label="Why you thought of them" placeholder="you said you wanted to cook more this year">
-      </details>
-      <div class="tabs" role="tablist">
-        <button class="tab" role="tab" aria-selected="true" data-draft="0">Short</button>
-        <button class="tab" role="tab" aria-selected="false" data-draft="1">The whole story</button>
-        <button class="tab" role="tab" aria-selected="false" data-draft="2" id="didTab" hidden>I did the month</button>
+      <h2>Text one friend a free custom kitchen blueprint</h2>
+      <p class="ask">Think of someone who's told you they're tired of takeout or wishes they hosted more.</p>
+      <div class="phone">
+        <label class="to-line" for="fname"><span>To:</span><input class="to-input" id="fname" type="text" maxlength="30" autocomplete="off" placeholder="your friend's first name"></label>
+        <button class="bubble" id="bubble" type="button" aria-label="Copy the message">
+          <span class="bubble-text" id="draft"></span>
+          <span class="bubble-copy" aria-hidden="true"><svg viewBox="0 0 16 16" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"><rect x="5.5" y="5.5" width="8" height="8" rx="1.5"/><path d="M10.5 3.5v-.5A1.5 1.5 0 0 0 9 1.5H3A1.5 1.5 0 0 0 1.5 3v6A1.5 1.5 0 0 0 3 10.5h.5"/></svg></span>
+        </button>
+        <p class="bubble-hint" id="bubbleHint">Tap the message to copy it</p>
       </div>
-      <div class="draft" id="draft"></div>
+      <div class="msg-tools">
+        <button class="text-link" id="swapDraft" type="button">Try the longer version</button>
+        <details class="why-box">
+          <summary>Add why you thought of them</summary>
+          <input class="why-input" id="why" type="text" maxlength="140" autocomplete="off" aria-label="Why you thought of them" placeholder="you said you wanted to cook more this year">
+        </details>
+      </div>
       <div class="btn-row">
         <a class="btn" id="smsBtn" href="sms:" hidden>Text it</a>
-        <button class="btn" id="copyBtn">Copy the text</button>
-        <button class="btn secondary" id="shareBtn" hidden>Share</button>
+        <button class="btn" id="copyBtn">Copy the message</button>
       </div>
-      <p class="link-note">Your link is <code id="linkOut">foodjazz.club/r</code>. It tells me who sent them. If they mention your name instead that works fine too.</p>
+      <button class="text-link share-link" id="shareBtn" type="button" hidden>Send it another way</button>
+      <p class="link-note">The link in it (<code id="linkOut">foodjazz.club/r</code>) tells me it came from you.</p>
       <div class="later-video" id="laterVideo" hidden><h3>Why I'm asking</h3></div>
     </div>
   </section>
 
   <section>
     <div class="container">
-      <h2>What your friend gets</h2>
-      <p>A free kitchen blueprint. They book a call and show me their kitchen from their phone, and within a week I send them a plan for their setup and what to keep stocked, built around their kitchen and the food they actually like. I write every one myself.</p>
+      <h2>Your friend gets a free custom kitchen blueprint</h2>
+      <p>They book a call and show me their kitchen from their phone, and within a week I send them a plan for their setup and what to keep stocked, built around their kitchen and the food they actually like. I write every one myself.</p>
       <p class="value">Kitchen organizers charge $100 to $400 for a virtual session like this. I spend about 3 hours on each blueprint and your friend gets it free.<br><a class="src" href="https://www.taskrabbit.com/cost-guides/home-organization" target="_blank" rel="noopener">TaskRabbit 2026</a></p>
       <a class="peek" id="peek" href="/r" target="_blank" rel="noopener">
         <span class="peek-label">See the page they'll get</span>
@@ -555,7 +572,7 @@
           </span>
           <span class="peek-page" aria-hidden="true">
             <span class="peek-gift" id="peekGift">A gift for you</span>
-            <span class="peek-title">You just got a free kitchen blueprint!</span>
+            <span class="peek-title">You just got a free custom kitchen blueprint!</span>
             <span class="peek-lines"><i></i><i></i></span>
             <span class="peek-btn"></span>
           </span>
@@ -566,14 +583,14 @@
 
   <section class="wash">
     <div class="container">
-      <h2>What Food Jazz is</h2>
+      <h2>Food Jazz is the kitchen operating system for busy professionals</h2>
       <p>A one month cooking intensive. I come to your friend's kitchen once a week and teach them to cook without recipes, and I build the whole month around their kitchen and what they actually like to eat and what their life looks like.</p>
       <p>By the end they're cooking without looking anything up and they host a dinner party that makes their friends and family think they're a magician.</p>
     </div>
     <div class="container wide">
       <div class="collage">
         <img class="big" src="/photos/food-jazz-hero-flambe-960.webp" srcset="/photos/food-jazz-hero-flambe-960.webp 960w, /photos/food-jazz-hero-flambe-1920.webp 1920w" sizes="(max-width: 700px) 92vw, 480px" width="1920" height="1080" alt="Flames rise from a wok as Akshay Prabhu and a home cook work the stove together" loading="lazy" decoding="async">
-        <img src="/photos/food-jazz-akshay-stir-smile-800.webp" srcset="/photos/food-jazz-akshay-stir-smile-800.webp 800w, /photos/food-jazz-akshay-stir-smile-1600.webp 1600w" sizes="(max-width: 700px) 45vw, 240px" width="1600" height="900" alt="Akshay Prabhu smiles while stirring a wok" loading="lazy" decoding="async">
+        <img src="/photos/food-jazz-plated-dish-800.webp" srcset="/photos/food-jazz-plated-dish-800.webp 800w, /photos/food-jazz-plated-dish-1600.webp 1600w" sizes="(max-width: 700px) 45vw, 240px" width="1600" height="900" alt="A finished dish being seasoned by hand next to a glass of wine" loading="lazy" decoding="async">
         <img src="/photos/food-jazz-cleaver-handoff-800.webp" srcset="/photos/food-jazz-cleaver-handoff-800.webp 800w, /photos/food-jazz-cleaver-handoff-1600.webp 1600w" sizes="(max-width: 700px) 45vw, 240px" width="1600" height="900" alt="Akshay Prabhu shows a home cook how to hold a Chinese cleaver" loading="lazy" decoding="async">
         <img src="/photos/food-jazz-ingredients-prepped-800.webp" srcset="/photos/food-jazz-ingredients-prepped-800.webp 800w, /photos/food-jazz-ingredients-prepped-1600.webp 1600w" sizes="(max-width: 700px) 45vw, 240px" width="1600" height="900" alt="Bowls of prepped ingredients lined up on a counter" loading="lazy" decoding="async">
         <img src="/photos/food-jazz-dinner-party-cheers-800.webp" srcset="/photos/food-jazz-dinner-party-cheers-800.webp 800w, /photos/food-jazz-dinner-party-cheers-1600.webp 1600w" sizes="(max-width: 700px) 45vw, 240px" width="1600" height="900" alt="Friends clink glasses over a home-cooked dinner" loading="lazy" decoding="async">
@@ -590,7 +607,7 @@
 
   <section class="dinner">
     <div class="container">
-      <h2>About the dinner</h2>
+      <h2>If they sign up I'll make you your dream birthday dinner</h2>
       <p>If your friend signs up for the month I come to your place and cook a three course dinner for you and one other person. I bring everything and cook in your kitchen and clean up after. It's for the month, not the free plan.</p>
       <p>Before I plan it I'll ask you what you'd order on your birthday and I build the menu from your answer.</p>
     </div>
@@ -701,46 +718,61 @@
     return r ? ' Thought of you because ' + r + '.' : '';
   }
 
+  // Their first name goes after the Hey. Empty means a plain "Hey!".
+  var fnameEl = document.getElementById('fname');
+  function hey() {
+    var n = fnameEl.value.trim().split(/\s+/)[0] || '';
+    return 'Hey' + (n ? ' ' + n.charAt(0).toUpperCase() + n.slice(1) : '') + '!';
+  }
+
   function drafts() {
     var b = because();
+    var h = hey();
     return [
-      'Hey! My friend Akshay does these free kitchen blueprints. You show him your kitchen on a video call and he sends back a plan for your setup and stocking built around how you actually cook.' + b + ' ' + disclose + '\n\n' + link,
-      'Hey! My friend Akshay teaches people to cook without recipes. He comes to your kitchen once a week for a month and builds the whole thing around what you like to eat.' + b + '\n\nThe first step is free. You show him your kitchen on a video call and he sends back a blueprint for setting it up. ' + disclose + '\n\n' + link,
-      'Hey! I did Akshay\'s cooking month and loved it. He comes to your kitchen once a week and teaches you to cook without recipes.' + b + '\n\nThe first step is free. You show him your kitchen on a video call and he sends back a blueprint for setting it up. ' + disclose + '\n\n' + link
+      h + ' My friend Akshay does these free kitchen blueprints. You show him your kitchen on a video call and he sends back a plan for your setup and stocking built around how you actually cook.' + b + ' ' + disclose + '\n\n' + link,
+      h + ' My friend Akshay teaches people to cook without recipes. He comes to your kitchen once a week for a month and builds the whole thing around what you like to eat.' + b + '\n\nThe first step is free. You show him your kitchen on a video call and he sends back a blueprint for setting it up. ' + disclose + '\n\n' + link,
+      h + ' I did Akshay\'s cooking month and loved it. He comes to your kitchen once a week and teaches you to cook without recipes.' + b + '\n\nThe first step is free. You show him your kitchen on a video call and he sends back a blueprint for setting it up. ' + disclose + '\n\n' + link
     ];
   }
 
-  var current = 0;
+  // One message at a time. The link swaps between the short one (or the
+  // "I did the month" one on ?did=1) and the longer story.
+  var base = did ? 2 : 0;
+  var current = base;
   var draftEl = document.getElementById('draft');
-  var didTab = document.getElementById('didTab');
-  if (did) { didTab.hidden = false; current = 2; }
+  var swapBtn = document.getElementById('swapDraft');
 
   function text() { return drafts()[current]; }
 
   function render() {
     draftEl.textContent = text();
-    document.querySelectorAll('.tab').forEach(function (t) {
-      t.setAttribute('aria-selected', parseInt(t.dataset.draft, 10) === current ? 'true' : 'false');
-    });
+    swapBtn.textContent = current === 1 ? 'Back to the short version' : 'Try the longer version';
     if (window.fjSetSms) window.fjSetSms();
   }
 
-  Array.prototype.forEach.call(document.querySelectorAll('.tab'), function (tab) {
-    tab.addEventListener('click', function () {
-      current = parseInt(tab.dataset.draft, 10);
-      render();
-    });
+  swapBtn.addEventListener('click', function () {
+    current = current === 1 ? base : 1;
+    render();
   });
   whyEl.addEventListener('input', render);
+  fnameEl.addEventListener('input', render);
 
   render();
 
   var copyBtn = document.getElementById('copyBtn');
-  copyBtn.addEventListener('click', function () {
+  var bubble = document.getElementById('bubble');
+  var hint = document.getElementById('bubbleHint');
+  function copyIt() {
     var t = text();
     var done = function () {
       copyBtn.textContent = 'Copied. Paste it in a text to them.';
-      setTimeout(function () { copyBtn.textContent = 'Copy the text'; }, 2600);
+      hint.textContent = 'Copied';
+      bubble.classList.add('copied');
+      setTimeout(function () {
+        copyBtn.textContent = 'Copy the message';
+        hint.textContent = 'Tap the message to copy it';
+        bubble.classList.remove('copied');
+      }, 2600);
       // The connector's one real action on this page. Everything downstream —
       // the friend landing on /r, the guide, the setup-plan booking — is only
       // attributable if this end of it is counted too.
@@ -761,7 +793,9 @@
     } else {
       fallback();
     }
-  });
+  }
+  copyBtn.addEventListener('click', copyIt);
+  bubble.addEventListener('click', copyIt);
 
   // Loom-style: a silent six-second loop of the opening plays on its own and
   // the button swaps in the full video with sound, from the start. With
