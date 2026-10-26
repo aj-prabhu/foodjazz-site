@@ -253,11 +253,9 @@
     }
     .text-link[hidden] { display: none; }
     .share-link { margin-top: 0.9rem; }
-    .text-link, .skip { padding: 0.65rem 0; }
+    .text-link { padding: 0.65rem 0; }
     .why-box summary { padding: 0.65rem 0; }
     @media (max-width: 480px) { .bubble { font-size: 0.88rem; line-height: 1.45; max-width: 100%; } }
-    .skip { display: inline-block; margin-top: 0.9rem; font-size: 0.9rem; color: var(--accent-text); text-underline-offset: 3px; }
-    .skip[hidden] { display: none; }
     .facts { margin-top: 0.9rem; font-size: 0.9rem; color: var(--warm-gray); }
 
     .btn-row { display: flex; gap: 0.7rem; margin-top: 1rem; flex-wrap: wrap; }
@@ -360,7 +358,7 @@
       content: ''; position: absolute; inset: 11px; pointer-events: none;
       border: 1px solid rgba(120, 95, 60, 0.32);
     }
-    .menu-cake { display: block; width: 108px; height: auto; margin: 0 auto 0.9rem; }
+    .menu-cake { display: block; width: 84px; height: auto; margin: 0 auto 1rem; }
     .menu-eyebrow {
       font-family: var(--font-hand); font-weight: 500; font-size: 1.15rem; line-height: 1.1;
       color: #7A6E60; margin: 0 0 0.3rem;
@@ -475,7 +473,6 @@
     <div class="container">
       <div class="headline">
         <h1>Help me spread the love of cooking and I'll make you dinner!</h1>
-        <a class="skip" id="skipLink" href="#text">Skip the video and get the text</a>
       </div>
       <div class="video-slot live" id="videoSlot">
         <video class="preview" id="previewVideo" muted loop playsinline autoplay preload="auto" poster="/referral-ask-poster.jpg" aria-hidden="true" tabindex="-1">
@@ -570,7 +567,7 @@
       <div class="dinner-set">
         <img class="dinner-photo" src="/photos/akshay-fish-roast.webp" width="1170" height="780" alt="Akshay Prabhu holding a whole fire roasted fish at camp" loading="lazy" decoding="async">
         <div class="menu-card" aria-label="A sample menu">
-          <img class="menu-cake" src="/deco-cake.svg" width="248" height="238" alt="" aria-hidden="true">
+          <img class="menu-cake" src="/deco-cake-line.svg" width="120" height="116" alt="" aria-hidden="true">
           <p class="menu-eyebrow">If your birthday answer was</p>
           <p class="menu-answer">The mushroom pasta at that little Italian place</p>
           <hr class="menu-rule">
@@ -806,7 +803,6 @@
   // Past clients already know the month, so the text comes first and the
   // video waits at the bottom of the send box.
   if (did) {
-    document.getElementById('skipLink').hidden = true;
     var later = document.getElementById('laterVideo');
     later.appendChild(slot);
     later.hidden = false;
