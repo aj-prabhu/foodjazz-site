@@ -443,9 +443,35 @@
     .call-tag { position: absolute; left: 14px; top: 14px; padding: 0.22rem 0.5rem; border-radius: 3px; background: #E2BC62; color: #2E2E2C; font: 700 0.58rem/1.3 var(--font-type); letter-spacing: 0.02em; }
 
     /* ---- about ---- */
-    .about-photo { display: block; width: 100%; height: auto; margin: 1.8rem 0 1.8rem; border-radius: 4px; }
-    @media (min-width: 760px) { .about-photo { width: min(960px, calc(100vw - 4rem)); max-width: none; position: relative; left: 50%; transform: translateX(-50%); } }
-    .about .press { margin: 0 0 2.6rem; padding: 0 0 1.6rem; border-top: 0; border-bottom: 1px solid var(--rule); }
+    .about-wrap { max-width: 1040px; }
+    .about-grid { display: grid; gap: 1.3rem; grid-template-areas: 'head' 'media' 'text'; }
+    .about-grid .arrow-head { grid-area: head; margin: 0; }
+    .about-media { grid-area: media; }
+    .about-photo { display: block; width: 100%; height: auto; border-radius: 6px; }
+    .about-text { grid-area: text; }
+    .about-text p { margin: 0 0 1rem; }
+    .about-text p:last-child { margin-bottom: 0; }
+    .about .about-press { margin: 0.9rem 0 0; padding: 0; border: 0; text-align: left; }
+    .about .about-press .press-label { margin-bottom: 0.6rem; }
+    .about .about-press .press-row { justify-content: flex-start; gap: 0.7rem 1.3rem; }
+    .about .about-press .press-row img { height: 15px; }
+    .about .about-press .press-row .press-logo--nyt { height: 13px; }
+    .about .about-press .press-row .press-logo--abc7 { height: 20px; }
+    .about .about-press .press-row .press-logo--civileats { height: 19px; }
+    @media (min-width: 700px) {
+      .about-media { position: relative; border-radius: 6px; overflow: hidden; }
+      .about-photo { border-radius: 0; }
+      .about .about-press { position: absolute; left: 0; right: 0; bottom: 0; margin: 0; padding: 3.2rem 1.1rem 0.9rem; background: linear-gradient(rgba(18, 17, 15, 0), rgba(18, 17, 15, 0.82)); }
+      .about .about-press .press-label { color: rgba(255, 255, 255, 0.78); }
+      .about .about-press .press-row img { filter: brightness(0) invert(1); opacity: 0.9; }
+    }
+    @media (min-width: 900px) {
+      .about-grid { grid-template-columns: 1.15fr 1fr; grid-template-areas: 'media head' 'media text'; grid-template-rows: auto 1fr; column-gap: 2.8rem; row-gap: 1.1rem; align-items: start; }
+      .about-grid .arrow-head { align-self: end; }
+      .about-media { align-self: stretch; min-height: 420px; }
+      .about-photo { height: 100%; object-fit: cover; object-position: 38% center; }
+    }
+    .proof { max-width: 900px; margin-left: auto; margin-right: auto; }
     .arrow-head { display: flex; flex-wrap: wrap; align-items: center; column-gap: 0.55rem; row-gap: 0.1rem; }
     .arrow-head span { white-space: nowrap; }
     .hand-arrow { width: 2.4em; height: 1.05em; flex: none; color: var(--accent-text); }
@@ -458,7 +484,7 @@
 
     .quote { margin: 2.6rem 0 0; }
     .quote blockquote {
-      margin: 0 0 1rem; font-family: var(--font-type); font-style: italic; font-weight: 400;
+      margin: 0 0 1rem; text-indent: -0.45em; font-family: var(--font-type); font-style: italic; font-weight: 400;
       font-size: clamp(1.1rem, 4.6vw, 1.45rem); line-height: 1.35;
     }
     .quote .emph { color: var(--accent-text); font-weight: 700; }
@@ -780,26 +806,32 @@
 
 
   <section class="about">
-    <div class="container">
-      <div class="press">
-        <span class="press-label">As seen on</span>
-        <div class="press-row">
-          <img src="/press-nyt.svg" alt="New York Times" class="press-logo--nyt" loading="lazy" decoding="async">
-          <img src="/press-npr.png" alt="NPR" loading="lazy" decoding="async">
-          <img src="/press-kqed.png" alt="KQED" loading="lazy" decoding="async">
-          <img src="/press-abc7.png" alt="ABC7" class="press-logo--abc7" loading="lazy" decoding="async">
-          <img src="/press-cbs.svg" alt="CBS" loading="lazy" decoding="async">
-          <img src="/press-eater.png" alt="Eater" loading="lazy" decoding="async">
-          <img src="/press-civileats.svg" alt="Civil Eats" class="press-logo--civileats" loading="lazy" decoding="async">
+    <div class="container about-wrap">
+      <div class="about-grid">
+        <h2 class="arrow-head" aria-label="I've turned 250+ home cooks into home restaurants"><span>250+ home cooks</span><svg class="hand-arrow" viewBox="0 0 64 28" aria-hidden="true"><path d="M3 17c11-6 26-9 50-3" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/><path d="M44 6c4 3 8 6 10 8-4 2-8 5-11 8" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span>home restaurants</span></h2>
+        <div class="about-media">
+          <img class="about-photo" src="/photos/food-jazz-wok-toss-lesson-800.webp" srcset="/photos/food-jazz-wok-toss-lesson-800.webp 800w, /photos/food-jazz-wok-toss-lesson-1600.webp 1600w" sizes="(max-width: 900px) 92vw, 540px" width="1600" height="900" alt="Akshay Prabhu coaching a home cook at the wok in his kitchen" loading="lazy" decoding="async">
+          <div class="press about-press">
+            <span class="press-label">As seen on</span>
+            <div class="press-row">
+              <img src="/press-nyt.svg" alt="New York Times" class="press-logo--nyt" loading="lazy" decoding="async">
+              <img src="/press-npr.png" alt="NPR" loading="lazy" decoding="async">
+              <img src="/press-kqed.png" alt="KQED" loading="lazy" decoding="async">
+              <img src="/press-abc7.png" alt="ABC7" class="press-logo--abc7" loading="lazy" decoding="async">
+              <img src="/press-cbs.svg" alt="CBS" loading="lazy" decoding="async">
+              <img src="/press-eater.png" alt="Eater" loading="lazy" decoding="async">
+              <img src="/press-civileats.svg" alt="Civil Eats" class="press-logo--civileats" loading="lazy" decoding="async">
+            </div>
+          </div>
+        </div>
+        <div class="about-text">
+          <p>I'm Akshay. I'm a food tech founder and as CEO of Foodnome I helped plan out and organize 250+ home kitchens, turning home cooks' passion for cooking into real businesses. Now I'm bringing that same level of detail and professionalism to everyday home cooking.</p>
+          <p>I created Food Jazz, a one month cooking intensive, and I'm on a mission to give busy professionals an operating system for their home kitchen.</p>
         </div>
       </div>
-      <h2 class="arrow-head" aria-label="I've turned 250+ home cooks into home restaurants"><span>250+ home cooks</span><svg class="hand-arrow" viewBox="0 0 64 28" aria-hidden="true"><path d="M3 17c11-6 26-9 50-3" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/><path d="M44 6c4 3 8 6 10 8-4 2-8 5-11 8" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span>home restaurants</span></h2>
-      <img class="about-photo" src="/photos/food-jazz-wok-toss-lesson-800.webp" srcset="/photos/food-jazz-wok-toss-lesson-800.webp 800w, /photos/food-jazz-wok-toss-lesson-1600.webp 1600w" sizes="(max-width: 700px) 92vw, 960px" width="1600" height="900" alt="Akshay Prabhu coaching a home cook at the wok in his kitchen" loading="lazy" decoding="async">
-      <p>I'm Akshay. I'm a food tech founder and as CEO of Foodnome I helped plan out and organize 250+ home kitchens, turning home cooks' passion for cooking into real businesses. Now I'm bringing that same level of detail and professionalism to everyday home cooking.</p>
-      <p>I created Food Jazz, a one month cooking intensive, and I'm on a mission to give busy professionals an operating system for their home kitchen.</p>
       <div class="proof">
         <figure class="quote">
-          <blockquote>My friends would say I was <span class="emph">a Michelin-star chef</span>. Which is crazy.</blockquote>
+          <blockquote>&ldquo;My friends would say I was <span class="emph">a Michelin-star chef</span>. Which is crazy.&rdquo;</blockquote>
           <figcaption>
             <img src="/davis-clute.webp" alt="Davis Clute" width="48" height="48" loading="lazy">
             <span><strong>Davis Clute</strong><br>Founder · Forbes 30 Under 30</span>
