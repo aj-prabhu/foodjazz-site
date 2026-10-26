@@ -253,6 +253,8 @@
     }
     .text-link[hidden] { display: none; }
     .share-link { margin-top: 0.9rem; }
+    .skip { display: inline-block; margin-top: 0.9rem; font-size: 0.9rem; color: var(--accent-text); text-underline-offset: 3px; }
+    .skip[hidden] { display: none; }
 
     .btn-row { display: flex; gap: 0.7rem; margin-top: 1rem; flex-wrap: wrap; }
     .btn {
@@ -517,6 +519,7 @@
     <div class="container">
       <div class="headline">
         <h1>Help me spread the love of cooking and I'll make you dinner!</h1>
+        <a class="skip" id="skipLink" href="#text">Skip the video and get the text</a>
       </div>
       <div class="video-slot live" id="videoSlot">
         <video class="preview" id="previewVideo" muted loop playsinline autoplay preload="auto" poster="/referral-ask-poster.jpg" aria-hidden="true" tabindex="-1">
@@ -536,7 +539,7 @@
   <section class="wash send" id="text">
     <div class="container">
       <h2>Send your friends this gift</h2>
-      <p class="ask">It's a custom kitchen blueprint I spend about 3 hours writing for their kitchen, and it's theirs whether or not they ever hire me. Send it to everyone who's told you they're tired of takeout or wishes they hosted more.</p>
+      <p class="ask">It's a custom kitchen blueprint I spend about 3 hours writing for their kitchen, and it's theirs whether or not they ever hire me. Start with one friend who's told you they're tired of takeout or wishes they hosted more, then send it to more.</p>
       <div class="phone">
         <label class="to-line" for="fname"><span>To:</span><input class="to-input" id="fname" type="text" maxlength="30" autocomplete="off" placeholder="your friend's first name"></label>
         <button class="bubble" id="bubble" type="button" aria-label="Copy the message">
@@ -555,6 +558,7 @@
       <div class="btn-row">
         <a class="btn" id="smsBtn" href="sms:" hidden>Text it</a>
         <button class="btn" id="copyBtn">Copy the message</button>
+        <button class="btn secondary" id="copyLinkBtn" type="button">Copy just my link</button>
       </div>
       <button class="text-link share-link" id="shareBtn" type="button" hidden>Send it another way</button>
       <p class="link-note">The link in it (<code id="linkOut">foodjazz.club/r</code>) tells me it came from you.</p>
@@ -568,7 +572,7 @@
       <p>They book a call and show me their kitchen from their phone, and within a week I send them a plan for their setup and what to keep stocked, built around their kitchen and the food they actually like. I write every one myself.</p>
       <p class="value">Kitchen organizers charge $100 to $400 for a virtual session like this. I spend about 3 hours on each blueprint and your friend gets it free.<br><a class="src" href="https://www.taskrabbit.com/cost-guides/home-organization" target="_blank" rel="noopener">TaskRabbit 2026</a></p>
       <figure class="sample">
-        <img src="/photos/blueprint-sample.webp" width="1042" height="1202" alt="A sample kitchen blueprint with a floor plan and notes, a pantry list, best moves and knife options at three prices" loading="lazy" decoding="async">
+        <img src="/photos/blueprint-sample.webp" width="1042" height="1300" alt="A sample kitchen blueprint with a floor plan and notes, a pantry list, best moves and knife options at three prices" loading="lazy" decoding="async">
         <figcaption>A sample blueprint</figcaption>
       </figure>
       <a class="peek-link" id="peek" href="/r" target="_blank" rel="noopener">See the exact page they'll get <span id="peekUrl">foodjazz.club/r</span> <svg viewBox="0 0 16 16" width="13" height="13" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 3H3v10h10v-3M9 3h4v4M13 3L7 9"/></svg></a>
@@ -578,7 +582,7 @@
   <section class="wash">
     <div class="container">
       <h2>Food Jazz is the kitchen operating system for busy professionals</h2>
-      <p>A one month cooking intensive. I come to your friend's kitchen once a week and teach them to cook without recipes, and I build the whole month around their kitchen and what they actually like to eat and what their life looks like.</p>
+      <p>A one month cooking intensive for $2,500. I come to your friend's kitchen once a week and teach them to cook without recipes, and I build the whole month around their kitchen and what they actually like to eat and what their life looks like.</p>
       <p>By the end they're cooking without looking anything up and they host a dinner party that makes their friends and family think they're a magician.</p>
     </div>
     <div class="container wide">
@@ -602,7 +606,7 @@
   <section class="dinner">
     <div class="container">
       <h2>If they sign up I'll make you your dream birthday dinner</h2>
-      <p>If your friend signs up for the month I come to your place and cook a three course dinner for you and one other person. I bring everything and cook in your kitchen and clean up after. It's for the month, not the free plan.</p>
+      <p>If your friend signs up for the month I come to your place and cook a three course dinner for you and one other person. I bring everything and cook in your kitchen and clean up after. The dinner is a thank you for the paid month, so a friend who only gets the free blueprint doesn't count. If two friends do the month you get two dinners.</p>
       <p>Before I plan it I'll ask you what you'd order on your birthday and I build the menu from your answer.</p>
     </div>
     <div class="container wide">
@@ -639,7 +643,7 @@
       <div class="faq">
         <details>
           <summary>Will my friend get a hard sell?</summary>
-          <p>No. The blueprint is theirs either way. If the month looks like a fit I'll tell them and if it doesn't I'll tell them that too.</p>
+          <p>No. I'll ask before I bring up my paid month and the blueprint is theirs either way. If the month looks like a fit I'll tell them and if it doesn't I'll tell them that too.</p>
         </details>
         <details>
           <summary>What if they don't live in the Bay Area?</summary>
@@ -718,9 +722,9 @@
     var b = because();
     var h = hey();
     return [
-      h + ' My friend Akshay does these free kitchen blueprints. You show him your kitchen on a video call and he sends back a plan for your setup and stocking built around how you actually cook.' + b + ' ' + disclose + '\n\n' + link,
-      h + ' My friend Akshay teaches people to cook without recipes. He comes to your kitchen once a week for a month and builds the whole thing around what you like to eat.' + b + '\n\nThe first step is free. You show him your kitchen on a video call and he sends back a blueprint for setting it up. ' + disclose + '\n\n' + link,
-      h + ' I did Akshay\'s cooking month and loved it. He comes to your kitchen once a week and teaches you to cook without recipes.' + b + '\n\nThe first step is free. You show him your kitchen on a video call and he sends back a blueprint for setting it up. ' + disclose + '\n\n' + link
+      h + ' My friend Akshay does free kitchen blueprints. You show him your kitchen on a 30 minute video call and within a week he sends you a plan for your setup and what to keep stocked, built around how you actually cook.' + b + ' ' + disclose + '\n\n' + link,
+      h + ' My friend Akshay teaches people to cook without recipes. He comes to your kitchen once a week for a month and builds the whole thing around what you like to eat.' + b + '\n\nHe also does free kitchen blueprints. You show him your kitchen on a 30 minute video call and within a week he sends you a plan for setting it up. ' + disclose + '\n\n' + link,
+      h + ' I did Akshay\'s cooking month and loved it. He comes to your kitchen once a week and teaches you to cook without recipes.' + b + '\n\nHe also does free kitchen blueprints. You show him your kitchen on a 30 minute video call and within a week he sends you a plan for setting it up. ' + disclose + '\n\n' + link
     ];
   }
 
@@ -730,11 +734,16 @@
   var current = base;
   var draftEl = document.getElementById('draft');
   var swapBtn = document.getElementById('swapDraft');
+  // Past clients keep their own "I did the month" text. The longer version
+  // would drop the one line that makes their friend listen.
+  if (did) swapBtn.hidden = true;
 
   function text() { return drafts()[current]; }
 
   function render() {
+    // A break point after the domain so the link wraps at the slash, not mid-word.
     draftEl.textContent = text();
+    draftEl.innerHTML = draftEl.innerHTML.replace('foodjazz.club/', 'foodjazz.club/<wbr>');
     swapBtn.textContent = current === 1 ? 'Back to the short version' : 'Try the longer version';
     if (window.fjSetSms) window.fjSetSms();
   }
@@ -784,6 +793,28 @@
     }
   }
   copyBtn.addEventListener('click', copyIt);
+
+  // For people who'd rather write their own text: just the link.
+  var copyLinkBtn = document.getElementById('copyLinkBtn');
+  copyLinkBtn.addEventListener('click', function () {
+    var done = function () {
+      copyLinkBtn.textContent = 'Link copied';
+      setTimeout(function () { copyLinkBtn.textContent = 'Copy just my link'; }, 2600);
+      if (window.fjTrack) window.fjTrack('copy_link');
+    };
+    function fallback() {
+      var ta = document.createElement('textarea');
+      ta.value = link; ta.style.position = 'fixed'; ta.style.opacity = '0';
+      document.body.appendChild(ta); ta.select();
+      try { document.execCommand('copy'); done(); } catch (e) {}
+      document.body.removeChild(ta);
+    }
+    if (navigator.clipboard && window.isSecureContext) {
+      navigator.clipboard.writeText(link).then(done).catch(fallback);
+    } else {
+      fallback();
+    }
+  });
   bubble.addEventListener('click', copyIt);
 
   // Loom-style: a silent six-second loop of the opening plays on its own and
@@ -814,6 +845,7 @@
   // Past clients already know the month, so the text comes first and the
   // video waits at the bottom of the send box.
   if (did) {
+    document.getElementById('skipLink').hidden = true;
     var later = document.getElementById('laterVideo');
     later.appendChild(slot);
     later.hidden = false;

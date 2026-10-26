@@ -232,6 +232,7 @@
     .hero .btn { background: #D9E4CF; border-color: #D9E4CF; color: #1A1D18; }
     .hero .btn:hover { background: #F1EBE1; border-color: #F1EBE1; }
     .hero .note { margin-top: 0.8rem; color: #B5AEA2; }
+    .hero .nopitch { margin-top: 0.5rem; font-size: 0.86rem; line-height: 1.5; color: #D9D2C6; max-width: 34em; }
 
     /* the gift tag */
     .tag {
@@ -585,7 +586,8 @@
           <h1>You just got a free custom kitchen blueprint!</h1>
           <p class="sub">It's a plan for how to set up your kitchen and what to keep stocked, built around your space and the food you love. I write every one myself.</p>
           <a class="btn book" href="https://zcal.co/i/utLPg0va" data-where="top">Claim your blueprint</a>
-          <p class="note">Free · 30 minute video call · in your inbox within a week</p>
+          <p class="note">Free · anywhere · 30 minute video call · in your inbox within a week</p>
+          <p class="nopitch">Nothing to buy. I'll ask before I bring up my paid month and the blueprint is yours either way.</p>
         </div>
 
         <div class="sheet-wrap">
@@ -697,7 +699,7 @@
                   </ul>
                 </div>
                 <div class="box knife">
-                  <h4>A GOOD KNIFE</h4>
+                  <h4>IF YOU NEED A KNIFE</h4>
                   <table>
                     <tr><td class="tier"><i class="on"></i><i></i><i></i></td><td class="price">$40</td></tr>
                     <tr><td class="tier"><i class="on"></i><i class="on"></i><i></i></td><td class="price">$90<svg class="circled" viewBox="0 0 60 30" aria-hidden="true"><path d="M8 17 C 6 7, 30 3, 47 6 C 60 9, 58 23, 40 26 C 24 28, 6 26, 5 16 C 4 11, 12 6, 22 5" fill="none" stroke="#4F6E46" stroke-width="1.6" stroke-linecap="round"/></svg></td></tr>
@@ -718,6 +720,35 @@
           </button>
         </div>
       </div>
+    </div>
+  </section>
+
+  <section class="how">
+    <div class="container">
+      <h2>How it works</h2>
+      <div class="steps">
+        <div class="step">
+          <h3>You book</h3>
+          <p>Pick a time and tell me one meal you wish you could make at home so I know what we're setting your kitchen up for.</p>
+        </div>
+        <div class="step">
+          <h3>We get on a call</h3>
+          <p>You walk me around your kitchen from your phone for 30 minutes and show me how you normally use it. Don't clean up first. I want to see your normal flow.</p>
+        </div>
+        <div class="step">
+          <h3>I write your blueprint</h3>
+          <p>It lands in your inbox within a week.</p>
+        </div>
+      </div>
+      <!-- PLACEHOLDER: drop the real call screenshot in here (big tile = their kitchen, small tile = Akshay). -->
+      <figure class="callshot" id="callShot">
+        <div class="call-frame">
+          <div class="call-main"></div>
+          <img class="call-self" src="/akshay.jpg" alt="" loading="lazy" decoding="async">
+          <span class="call-tag">Placeholder: real call screenshot coming</span>
+        </div>
+      </figure>
+      <a class="btn book" href="https://zcal.co/i/utLPg0va" data-where="how">Claim your blueprint</a>
     </div>
   </section>
 
@@ -756,34 +787,6 @@
     </div>
   </section>
 
-  <section class="how">
-    <div class="container">
-      <h2>How it works</h2>
-      <div class="steps">
-        <div class="step">
-          <h3>You book</h3>
-          <p>Pick a time and tell me one meal you wish you could make at home so I know what we're setting your kitchen up for.</p>
-        </div>
-        <div class="step">
-          <h3>We get on a call</h3>
-          <p>You walk me around your kitchen from your phone for 30 minutes and show me how you normally use it. Don't clean up first. I want to see your normal flow.</p>
-        </div>
-        <div class="step">
-          <h3>I write your blueprint</h3>
-          <p>It lands in your inbox within a week.</p>
-        </div>
-      </div>
-      <!-- PLACEHOLDER: drop the real call screenshot in here (big tile = their kitchen, small tile = Akshay). -->
-      <figure class="callshot" id="callShot">
-        <div class="call-frame">
-          <div class="call-main"></div>
-          <img class="call-self" src="/akshay.jpg" alt="" loading="lazy" decoding="async">
-          <span class="call-tag">Placeholder: real call screenshot coming</span>
-        </div>
-      </figure>
-      <a class="btn book" href="https://zcal.co/i/utLPg0va" data-where="how">Claim your blueprint</a>
-    </div>
-  </section>
 
   <section class="about">
     <div class="container">
@@ -830,6 +833,10 @@
           <p>The call is 30 minutes and your blueprint lands in your inbox within a week.</p>
         </details>
         <details>
+          <summary>What does the blueprint look like?</summary>
+          <p>It's a written plan for your kitchen and I might add a short video walking you through it. The sample above shows the kinds of things it covers.</p>
+        </details>
+        <details>
           <summary>Does it cost anything?</summary>
           <p>No. The call and the blueprint are free and you don't need to buy anything after.</p>
         </details>
@@ -863,7 +870,7 @@
         </details>
         <details>
           <summary>What does the month cost?</summary>
-          <p>$2,500 for the full month in your kitchen. That includes four sessions, a grocery trip together and daily practice in between. It's in person around the Bay Area. If you live somewhere else I also run an online version.</p>
+          <p>$2,500 for the full month in your kitchen. That includes four sessions, a grocery trip together and daily practice in between. It's in person around the Bay Area. If you live somewhere else there's an online group version starting in March.</p>
         </details>
         <details>
           <summary id="whatTheyGet">What does the friend who sent me get?</summary>
