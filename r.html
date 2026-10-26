@@ -422,6 +422,7 @@
     .steps .n { font-family: var(--font-type); font-weight: 700; font-size: 1.6rem; line-height: 1; color: var(--accent-text); }
     .steps h3 { font-size: 1.05rem; line-height: 1.3; margin: 0 0 0.2rem; }
     .steps p { margin: 0; color: var(--warm-gray); }
+    .steps .tick { color: var(--accent-text); line-height: 0; transform: translateY(2px); }
     .how .btn { margin-top: 2rem; }
 
     .callshot { margin: 2.2rem 0 0; }
@@ -766,26 +767,12 @@
 
   <section class="whats-in">
     <div class="container">
-      <h2>I write every blueprint from what I see in your kitchen</h2>
-      <p>It's built around your space and what you need and the food you actually like to eat.</p>
-      <div class="parts">
-        <div class="part">
-          <h3>Your setup</h3>
-          <p>What to keep out and what can go in a drawer, and where everything should live so you can get from the fridge to the board to the stove without hunting.</p>
-        </div>
-        <div class="part">
-          <h3>Your pantry</h3>
-          <p>A stocking plan built on the food you like, with what to keep on hand and how to store it so it lasts.</p>
-        </div>
-        <div class="part">
-          <h3>Your best moves</h3>
-          <p>The few changes that pay off most in your kitchen, like freezing stock in small portions or which sauces are worth making instead of buying.</p>
-        </div>
-        <div class="part">
-          <h3>Any budget</h3>
-          <p>If something is worth buying I'll give you options at a few price points and tell you which ones actually make a difference.</p>
-        </div>
-      </div>
+      <h2>What's in your custom blueprint</h2>
+      <ul class="steps">
+        <li><span class="n tick" aria-hidden="true"><svg viewBox="0 0 20 20" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 10.5l4.2 4.2L16.5 5"/></svg></span><div><h3>Your setup</h3><p>Where everything should live so your kitchen flows like a creative makerspace with no wasted movement. Any size or shape.</p></div></li>
+        <li><span class="n tick" aria-hidden="true"><svg viewBox="0 0 20 20" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 10.5l4.2 4.2L16.5 5"/></svg></span><div><h3>Your pantry</h3><p>What to keep stocked based on how you eat and the food you like, so you can improvise on any night.</p></div></li>
+        <li><span class="n tick" aria-hidden="true"><svg viewBox="0 0 20 20" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 10.5l4.2 4.2L16.5 5"/></svg></span><div><h3>Your best moves</h3><p>The few changes that pay off most, from what to make ahead to which tools are actually worth buying.</p></div></li>
+      </ul>
       <p class="value" id="valueLine">Kitchen organizers charge $100 to $400 for a virtual session like this. I spend about 3 hours on each blueprint and it covers what to stock and cook, not just where things go. <a href="https://www.taskrabbit.com/cost-guides/home-organization" target="_blank" rel="noopener">TaskRabbit 2026</a></p>
     </div>
   </section>
