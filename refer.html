@@ -175,7 +175,7 @@
     .video-slot.live .preview { aspect-ratio: 16 / 9; object-fit: cover; }
     .play {
       position: absolute; left: 0.8rem; top: 0.8rem;
-      display: inline-flex; align-items: center; gap: 0.6rem; white-space: nowrap;
+      display: inline-flex; align-items: center; gap: 0.6rem; max-width: calc(100% - 1.6rem); text-align: left;
       padding: 0.45rem 1rem 0.45rem 0.45rem; border: 0; border-radius: 4px; cursor: pointer;
       background: rgba(254, 253, 251, 0.95); color: #2E2E2C;
       font: 700 0.82rem var(--font-type); box-shadow: 0 6px 24px rgba(0, 0, 0, 0.25);
@@ -183,10 +183,10 @@
     .play:hover { background: #fff; }
     .play:focus-visible { outline: 3px solid var(--sage); outline-offset: 3px; }
     .play-icon { display: inline-flex; align-items: center; justify-content: center; width: 2.1rem; height: 2.1rem; border-radius: 3px; background: var(--sage-deep); color: #fff; padding-left: 2px; }
-    .play-time { color: #8A8781; margin-left: 0.3rem; font-weight: 400; }
+    .play-time { color: #8A8781; margin-left: 0.3rem; font-weight: 400; white-space: nowrap; }
     .later-video { margin-top: 2.4rem; }
     .later-video h3 { font-size: 1.15rem; margin: 0 0 0.8rem; }
-    @media (max-width: 480px) { .play { left: 0.5rem; top: 0.5rem; font-size: 0.7rem; padding: 0.35rem 0.75rem 0.35rem 0.35rem; } .play-icon { width: 1.7rem; height: 1.7rem; } }
+    @media (max-width: 480px) { .play { left: 0.5rem; top: 0.5rem; max-width: calc(100% - 1rem); font-size: 0.7rem; padding: 0.35rem 0.75rem 0.35rem 0.35rem; } .play-icon { width: 1.7rem; height: 1.7rem; } }
     .video-placeholder {
       aspect-ratio: 16 / 9;
       display: flex;
@@ -280,6 +280,11 @@
     .link-note code { font-family: var(--font-type); font-size: 0.85rem; color: var(--accent-text); }
 
     /* ---- what your friend gets ---- */
+    .sample { margin: 2rem auto 0; max-width: 460px; }
+    .sample img { display: block; width: 100%; height: auto; border-radius: 3px; transform: rotate(-1.2deg); box-shadow: 0 2px 0 rgba(46, 46, 44, 0.05), 0 24px 44px -22px rgba(46, 46, 44, 0.5); }
+    .sample figcaption { margin-top: 1rem; text-align: center; font-family: var(--font-type); font-size: 0.66rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--warm-gray); }
+    .peek-link { display: block; margin-top: 1.4rem; text-align: center; font-size: 0.92rem; color: var(--accent-text); text-underline-offset: 3px; overflow-wrap: anywhere; }
+    .peek-link span { font-family: var(--font-type); font-size: 0.85rem; }
     .value {
       margin: 1.7rem 0 0; padding-top: 1.2rem; border-top: 1px solid var(--rule);
       font-family: var(--font-type); font-size: 0.9rem; line-height: 1.6; color: var(--charcoal);
@@ -512,7 +517,6 @@
     <div class="container">
       <div class="headline">
         <h1>Help me spread the love of cooking and I'll make you dinner!</h1>
-        <p class="offer">Send your friends a free kitchen blueprint. If one of them does the month I'll cook you a three course dinner at your place.</p>
       </div>
       <div class="video-slot live" id="videoSlot">
         <video class="preview" id="previewVideo" muted loop playsinline autoplay preload="auto" poster="/referral-ask-poster.jpg" aria-hidden="true" tabindex="-1">
@@ -523,7 +527,7 @@
         </video>
         <button class="play" id="playFull" type="button">
           <span class="play-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22"><path d="M8 5.5v13l11-6.5z" fill="currentColor"/></svg></span>
-          <span class="play-label">Watch why I'm asking <span class="play-time">1:37</span></span>
+          <span class="play-label">How the gift and the dinner work <span class="play-time">1:37</span></span>
         </button>
       </div>
     </div>
@@ -531,8 +535,8 @@
 
   <section class="wash send" id="text">
     <div class="container">
-      <h2>Gift your friends a free custom kitchen blueprint</h2>
-      <p class="ask">Each one is about 3 hours of my time written for their kitchen, and it's theirs whether or not they ever hire me. Send it to everyone who's told you they're tired of takeout or wishes they hosted more.</p>
+      <h2>Send your friends this gift</h2>
+      <p class="ask">It's a custom kitchen blueprint I spend about 3 hours writing for their kitchen, and it's theirs whether or not they ever hire me. Send it to everyone who's told you they're tired of takeout or wishes they hosted more.</p>
       <div class="phone">
         <label class="to-line" for="fname"><span>To:</span><input class="to-input" id="fname" type="text" maxlength="30" autocomplete="off" placeholder="your friend's first name"></label>
         <button class="bubble" id="bubble" type="button" aria-label="Copy the message">
@@ -563,21 +567,11 @@
       <h2>Your friend gets a free custom kitchen blueprint</h2>
       <p>They book a call and show me their kitchen from their phone, and within a week I send them a plan for their setup and what to keep stocked, built around their kitchen and the food they actually like. I write every one myself.</p>
       <p class="value">Kitchen organizers charge $100 to $400 for a virtual session like this. I spend about 3 hours on each blueprint and your friend gets it free.<br><a class="src" href="https://www.taskrabbit.com/cost-guides/home-organization" target="_blank" rel="noopener">TaskRabbit 2026</a></p>
-      <a class="peek" id="peek" href="/r" target="_blank" rel="noopener">
-        <span class="peek-label">See the page they'll get</span>
-        <span class="peek-frame">
-          <span class="peek-bar">
-            <span class="peek-url" id="peekUrl">foodjazz.club/r</span>
-            <span class="peek-go" aria-hidden="true"><svg viewBox="0 0 16 16" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3H3v10h10v-3M9 3h4v4M13 3L7 9"/></svg></span>
-          </span>
-          <span class="peek-page" aria-hidden="true">
-            <span class="peek-gift" id="peekGift">A gift for you</span>
-            <span class="peek-title">You just got a free custom kitchen blueprint!</span>
-            <span class="peek-lines"><i></i><i></i></span>
-            <span class="peek-btn"></span>
-          </span>
-        </span>
-      </a>
+      <figure class="sample">
+        <img src="/photos/blueprint-sample.webp" width="1042" height="1202" alt="A sample kitchen blueprint with a floor plan and notes, a pantry list, best moves and knife options at three prices" loading="lazy" decoding="async">
+        <figcaption>A sample blueprint</figcaption>
+      </figure>
+      <a class="peek-link" id="peek" href="/r" target="_blank" rel="noopener">See the exact page they'll get <span id="peekUrl">foodjazz.club/r</span> <svg viewBox="0 0 16 16" width="13" height="13" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 3H3v10h10v-3M9 3h4v4M13 3L7 9"/></svg></a>
     </div>
   </section>
 
@@ -699,11 +693,6 @@
   var peek = document.getElementById('peek');
   peek.href = '/r' + (slug ? '/' + slug : '');
   document.getElementById('peekUrl').textContent = link.replace('https://', '');
-  var first = raw.split(/[\s\-_.]+/)[0] || '';
-  if (slug && /^[\p{L}']{2,}$/u.test(first)) {
-    var name = first.toLowerCase().replace(/(^|')(\p{L})/gu, function (m, a, c) { return a + c.toUpperCase(); });
-    document.getElementById('peekGift').textContent = 'A gift from ' + name;
-  }
 
   // ?did=1 on a past client's link adds the "I did the month" text and opens
   // on it. Everyone else never sees it, so nobody claims a month they didn't do.
