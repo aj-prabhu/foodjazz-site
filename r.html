@@ -402,6 +402,26 @@
 
     /* ---- why it matters ---- */
     .why p { font-size: 1rem; }
+    .flow-card {
+      margin: 2rem 0; padding: 1rem 0.9rem 0.6rem; display: grid; grid-template-columns: 1fr 1fr; gap: 0.9rem;
+      background: var(--paper); border-radius: 3px; transform: rotate(-0.8deg);
+      background-image: linear-gradient(rgba(35, 39, 42, 0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(35, 39, 42, 0.05) 1px, transparent 1px);
+      background-size: 14px 14px;
+      box-shadow: 0 2px 0 rgba(46, 46, 44, 0.05), 0 24px 44px -24px rgba(46, 46, 44, 0.5);
+    }
+    .flow-plan { display: block; width: 100%; height: auto; overflow: visible; }
+    .flow-plan .fl-title { font: 700 19px var(--font-type); letter-spacing: 0.12em; fill: var(--ink); }
+    .flow-plan .fl-wall { fill: none; stroke: var(--ink); stroke-width: 2.4; }
+    .flow-plan .fl-counter { fill: rgba(35, 39, 42, 0.06); stroke: var(--ink); stroke-width: 1.2; }
+    .flow-plan .fl-thing { fill: var(--paper); stroke: var(--ink); stroke-width: 1.3; }
+    .flow-plan .fl-board { fill: rgba(79, 110, 70, 0.18); stroke: var(--pencil); stroke-width: 1.6; }
+    .flow-plan .fl-tag { font: 400 15px var(--font-type); fill: var(--ink-soft); }
+    .flow-plan .fl-path { fill: none; stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; }
+    .flow-plan .fl-messy { stroke: var(--stamp); stroke-dasharray: 2 7; }
+    .flow-plan .fl-clean { stroke: var(--pencil); }
+    .flow-plan .fl-note { font: 700 27px var(--font-hand); fill: var(--pencil); }
+    .flow-plan .fl-note-messy { fill: var(--stamp); }
+    @media (min-width: 700px) { .flow-card { padding: 1.4rem 1.4rem 0.8rem; gap: 1.6rem; } }
 
     /* ---- what's in it ---- */
     .parts { display: grid; gap: 0; margin-top: 2.2rem; border-top: 1px solid var(--charcoal); }
@@ -774,7 +794,7 @@
       <ol class="steps">
         <li><span class="n" aria-hidden="true">1</span><div><h3>Book a call</h3><p>Tell me how you cook now and how you'd like to be eating.</p></div></li>
         <li><span class="n" aria-hidden="true">2</span><div><h3>Show me your kitchen</h3><p>A 30 minute video call from your phone. Don't clean up first since I want to see your normal flow.</p></div></li>
-        <li><span class="n" aria-hidden="true">3</span><div><h3>Get your blueprint</h3><p>It lands in your inbox within a week.</p></div></li>
+        <li><span class="n" aria-hidden="true">3</span><div><h3>Get your blueprint</h3><p>I write it myself from what I saw on our call so it's personal to your kitchen and the food you like. It lands in your inbox within a week.</p></div></li>
       </ol>
       <!-- PLACEHOLDER: drop the real call screenshot in here (big tile = their kitchen, small tile = Akshay). -->
       <figure class="callshot" id="callShot">
@@ -790,8 +810,32 @@
 
   <section class="why">
     <div class="container">
-      <h2>Your kitchen's flow might be why you cook less</h2>
+      <h2>Your kitchen's <span class="uline">flow</span> might be why you cook less</h2>
       <p>I believe the way your kitchen is set up changes how you feel in it. If you have to hunt for a pan or fight a dull knife then cooking feels like a chore and DoorDash wins. That's not on you since most kitchens were never set up for how busy people actually cook.</p>
+      <figure class="flow-card">
+        <svg class="flow-plan" viewBox="0 0 300 240" role="img" aria-label="A CHORE: a tangled path around the kitchen, where is the pan">
+          <text class="fl-title" x="12" y="20">A CHORE</text>
+          <rect class="fl-wall" x="12" y="34" width="276" height="196" rx="2"/>
+          <rect class="fl-counter" x="12" y="34" width="276" height="40"/>
+          <rect class="fl-thing" x="22" y="146" width="58" height="72" rx="3"/><text class="fl-tag" x="51" y="187" text-anchor="middle">fridge</text>
+          <rect class="fl-thing" x="212" y="40" width="64" height="28" rx="2"/><circle class="fl-thing" cx="228" cy="54" r="7"/><circle class="fl-thing" cx="260" cy="54" r="7"/>
+          <rect class="fl-thing" x="112" y="40" width="54" height="28" rx="10"/>
+          <rect class="fl-thing" x="188" y="178" width="60" height="30" rx="2"/><text class="fl-tag" x="218" y="198" text-anchor="middle">board</text>
+          <path class="fl-path fl-messy" d="M66 146 C 110 96, 150 214, 196 178 S 130 120, 110 150 S 170 96, 196 120 S 250 140, 238 74"/>
+          <text class="fl-note fl-note-messy" x="150" y="112" text-anchor="middle">where's the pan?</text>
+        </svg>
+        <svg class="flow-plan" viewBox="0 0 300 240" role="img" aria-label="A FLOW: one smooth path from the fridge to the board to the stove">
+          <text class="fl-title" x="12" y="20">A FLOW</text>
+          <rect class="fl-wall" x="12" y="34" width="276" height="196" rx="2"/>
+          <rect class="fl-counter" x="12" y="34" width="276" height="40"/>
+          <rect class="fl-thing" x="22" y="146" width="58" height="72" rx="3"/><text class="fl-tag" x="51" y="187" text-anchor="middle">fridge</text>
+          <rect class="fl-thing" x="212" y="40" width="64" height="28" rx="2"/><circle class="fl-thing" cx="228" cy="54" r="7"/><circle class="fl-thing" cx="260" cy="54" r="7"/>
+          <rect class="fl-thing" x="112" y="40" width="54" height="28" rx="10"/>
+          <rect class="fl-board" x="178" y="44" width="30" height="20" rx="2"/>
+          <path class="fl-path fl-clean" d="M80 150 C 110 120, 150 92, 190 72 S 222 66, 236 72"/>
+          <text class="fl-note" x="178" y="206" text-anchor="middle">fridge, board, stove</text>
+        </svg>
+      </figure>
       <p>When your kitchen flows it feels like a creative maker space and you end up cooking way more without trying harder.</p>
     </div>
   </section>
