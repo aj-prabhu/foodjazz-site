@@ -458,25 +458,39 @@
     .about-text { grid-area: text; }
     .about-text p { margin: 0 0 1rem; }
     .about-text p:last-child { margin-bottom: 0; }
-    .about .about-press { margin: 0.9rem 0 0; padding: 0; border: 0; text-align: left; }
-    .about .about-press .press-label { margin-bottom: 0.6rem; }
-    .about .about-press .press-row { justify-content: flex-start; gap: 0.7rem 1.3rem; }
-    .about .about-press .press-row img { height: 15px; }
-    .about .about-press .press-row .press-logo--nyt { height: 13px; }
-    .about .about-press .press-row .press-logo--abc7 { height: 20px; }
-    .about .about-press .press-row .press-logo--civileats { height: 19px; }
+    /* Press sits in a sage band fixed to the bottom of the photo. */
+    .about-media { display: flex; flex-direction: column; border-radius: 6px; overflow: hidden; }
+    .about-photo { border-radius: 0; }
+    .about .about-press { margin: 0; padding: 0.95rem 1.1rem 1.05rem; border: 0; text-align: left; background: var(--sage-deep); }
+    .about .about-press .press-label { margin-bottom: 0.7rem; color: rgba(255, 255, 255, 0.82); }
+    .about .about-press .press-row { display: grid; grid-template-columns: repeat(4, auto); justify-content: space-between; align-items: center; gap: 0.9rem 0.8rem; }
+    .about .about-press .press-row img { height: 18px; filter: brightness(0) invert(1); opacity: 1; }
+    .about .about-press .press-row .press-logo--nyt { height: 15px; }
+    .about .about-press .press-row .press-logo--abc7 { height: 28px; }
+    .about .about-press .press-row .press-logo--civileats { height: 22px; }
+    .about .about-press .press-row .press-logo--hulu { height: 16px; }
+    @media (max-width: 374px) {
+      .about .about-press .press-row { gap: 0.8rem 0.5rem; }
+      .about .about-press .press-row img { height: 14px; }
+      .about .about-press .press-row .press-logo--nyt { height: 12px; }
+      .about .about-press .press-row .press-logo--abc7 { height: 22px; }
+      .about .about-press .press-row .press-logo--civileats { height: 17px; }
+      .about .about-press .press-row .press-logo--hulu { height: 13px; }
+    }
     @media (min-width: 700px) {
-      .about-media { position: relative; border-radius: 6px; overflow: hidden; }
-      .about-photo { border-radius: 0; }
-      .about .about-press { position: absolute; left: 0; right: 0; bottom: 0; margin: 0; padding: 3.2rem 1.1rem 0.9rem; background: linear-gradient(rgba(18, 17, 15, 0), rgba(18, 17, 15, 0.82)); }
-      .about .about-press .press-label { color: rgba(255, 255, 255, 0.78); }
-      .about .about-press .press-row img { filter: brightness(0) invert(1); opacity: 0.9; }
+      .about .about-press { padding: 1.1rem 1.4rem 1.2rem; }
+      .about .about-press .press-row { gap: 1rem 1.2rem; }
+      .about .about-press .press-row img { height: 20px; }
+      .about .about-press .press-row .press-logo--nyt { height: 16px; }
+      .about .about-press .press-row .press-logo--abc7 { height: 30px; }
+      .about .about-press .press-row .press-logo--civileats { height: 24px; }
+      .about .about-press .press-row .press-logo--hulu { height: 18px; }
     }
     @media (min-width: 900px) {
       .about-grid { grid-template-columns: 1.15fr 1fr; grid-template-areas: 'media head' 'media text'; grid-template-rows: auto 1fr; column-gap: 2.8rem; row-gap: 1.1rem; align-items: start; }
       .about-head { align-self: end; }
       .about-media { align-self: stretch; min-height: 420px; }
-      .about-photo { height: 100%; object-fit: cover; object-position: 38% center; }
+      .about-photo { flex: 1; min-height: 0; height: auto; object-fit: cover; object-position: 38% center; }
     }
     .proof { max-width: 900px; margin-left: auto; margin-right: auto; }
     .arrow-head { display: flex; flex-wrap: wrap; align-items: center; column-gap: 0.55rem; row-gap: 0.1rem; }
@@ -830,6 +844,7 @@
               <img src="/press-kqed.png" alt="KQED" loading="lazy" decoding="async">
               <img src="/press-abc7.png" alt="ABC7" class="press-logo--abc7" loading="lazy" decoding="async">
               <img src="/press-cbs.svg" alt="CBS" loading="lazy" decoding="async">
+              <img src="/press-hulu.png" alt="Hulu" class="press-logo--hulu" loading="lazy" decoding="async">
               <img src="/press-eater.png" alt="Eater" loading="lazy" decoding="async">
               <img src="/press-civileats.svg" alt="Civil Eats" class="press-logo--civileats" loading="lazy" decoding="async">
             </div>
