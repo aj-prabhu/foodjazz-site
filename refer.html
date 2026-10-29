@@ -535,7 +535,7 @@
         </button>
       </div>
       <div class="hero-cta">
-        <button class="btn" id="heroCopy" type="button">Copy the link to send</button>
+        <button class="btn" id="heroCopy" type="button">Copy the link</button>
         <a class="read-link" href="#text">Read it or add their name first</a>
       </div>
     </div>
@@ -795,7 +795,7 @@
     var done = function () {
       if (where === 'hero') {
         heroCopy.textContent = 'Copied. Paste it in a text to a friend.';
-        setTimeout(function () { heroCopy.textContent = 'Copy the link to send'; }, 2600);
+        setTimeout(function () { heroCopy.textContent = 'Copy the link'; }, 2600);
       }
       copyBtn.textContent = 'Copied. Paste it in a text to them.';
       hint.textContent = 'Copied. Change the name for your next friend';
