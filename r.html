@@ -394,17 +394,18 @@
 
     /* ---- why it matters ---- */
     .why p { font-size: 1rem; }
-    /* The Food Jazz spiral, drawn in once when the section scrolls into view. */
+    /* The Food Jazz spiral beside the why copy. */
     .why { position: relative; overflow: clip; }
     .why > .container { position: relative; }
     .why-spiral {
       position: absolute; right: -150px; top: 50%; width: 340px; height: 340px; transform: translateY(-50%) rotate(-12deg);
       pointer-events: none; opacity: 0.16;
     }
-    .why-spiral path { stroke: var(--sage); stroke-width: 3.2; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 1; stroke-dashoffset: 0; }
-    .why-spiral.is-waiting path { stroke-dashoffset: 1; }
-    .why-spiral.is-drawn path { transition: stroke-dashoffset 2.4s cubic-bezier(.45, .05, .25, 1); stroke-dashoffset: 0; }
-    @media (max-width: 699px) { .why-spiral { width: 220px; height: 220px; right: -60px; top: 2.2rem; transform: rotate(-12deg); opacity: 0.2; } }
+    .why-spiral path { stroke: var(--sage); stroke-width: 3.2; stroke-linecap: round; stroke-linejoin: round; }
+    @media (max-width: 699px) {
+      .why { padding-bottom: 8.5rem; }
+      .why-spiral { width: 170px; height: 170px; right: 14px; top: auto; bottom: 1.4rem; transform: rotate(-12deg); opacity: 0.32; }
+    }
     @media (min-width: 1100px) { .why-spiral { right: auto; left: calc(50% + 350px); width: 360px; height: 360px; opacity: 0.3; } }
 
     /* ---- what's in it ---- */
@@ -807,7 +808,7 @@
   </section>
 
   <section class="why wash">
-    <svg class="why-spiral" viewBox="0 0 100 100" fill="none" aria-hidden="true"><path pathLength="1" d="M 78,18 C 98,36 92,70 66,82 C 40,94 12,74 10,50 C 8,26 28,8 54,12 C 76,16 88,34 78,52 C 70,68 52,74 38,62 C 26,52 28,38 40,34 C 50,31 60,36 58,46 C 56,53 48,56 42,52"/></svg>
+    <svg class="why-spiral" viewBox="0 0 100 100" fill="none" aria-hidden="true"><path d="M 78,18 C 98,36 92,70 66,82 C 40,94 12,74 10,50 C 8,26 28,8 54,12 C 76,16 88,34 78,52 C 70,68 52,74 38,62 C 26,52 28,38 40,34 C 50,31 60,36 58,46 C 56,53 48,56 42,52"/></svg>
     <div class="container">
       <h2>Your kitchen's <span class="uline">flow</span> might be why you cook less</h2>
       <p>I believe the way your kitchen is set up changes how you feel in it. If you have to hunt for a pan or fight a dull knife then cooking feels like a chore and DoorDash wins. That's not on you since most kitchens were never set up for how busy people actually cook.</p>
@@ -1113,20 +1114,6 @@
     setTimeout(launchConfetti, 350);
   }
 })();
-</script>
-<script>
-  (function () {
-    var sp = document.querySelector('.why-spiral');
-    if (!sp || !('IntersectionObserver' in window)) return;
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-    sp.classList.add('is-waiting');
-    var io = new IntersectionObserver(function (entries) {
-      if (!entries[0].isIntersecting) return;
-      sp.classList.add('is-drawn');
-      io.disconnect();
-    }, { threshold: 0.35 });
-    io.observe(sp);
-  })();
 </script>
 </body>
 </html>
