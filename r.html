@@ -385,12 +385,16 @@
     /* Full screen when the video card is tapped. */
     .clip { width: 100vw; height: 100dvh; max-width: 100vw; max-height: 100dvh; margin: 0; padding: 0; border: 0; background: #000; }
     .clip::backdrop { background: #000; }
-    .clip img, .clip video { width: 100%; height: 100%; object-fit: contain; display: block; }
+    .clip[open] { display: flex; flex-direction: column; }
+    .clip img, .clip video { flex: 1; min-height: 0; width: 100%; object-fit: contain; display: block; }
+    /* The video says "the button below", so the button sits under it, outside the captions. */
+    .clip-cta { flex: none; display: flex; justify-content: center; padding: 14px 16px calc(18px + env(safe-area-inset-bottom)); }
+    .clip-cta .btn { margin-top: 0; max-width: 420px; }
     .clip-close {
       position: absolute; right: 14px; top: 14px; width: 44px; height: 44px; border: 0; border-radius: 50%;
       background: rgba(254, 253, 251, 0.18); color: #fff; font-size: 1.4rem; cursor: pointer;
     }
-    .clip-note { position: absolute; left: 14px; bottom: 14px; padding: 0.3rem 0.7rem; border-radius: 3px; background: #E2BC62; color: #2E2E2C; font: 700 0.7rem/1.3 var(--font-type); }
+    .clip-note { position: absolute; left: 14px; top: 22px; padding: 0.3rem 0.7rem; border-radius: 3px; background: #E2BC62; color: #2E2E2C; font: 700 0.7rem/1.3 var(--font-type); }
 
     /* ---- why it matters ---- */
     .why p { font-size: 1rem; }
@@ -981,7 +985,8 @@
   <dialog class="clip" id="clip" aria-label="Video from Akshay">
     <img src="/referral-ask-poster.jpg" width="1920" height="1080" alt="">
     <span class="clip-note">Placeholder: new clip coming</span>
-    <button class="clip-close" id="clipClose" type="button" aria-label="Close">&times;</button>
+    <div class="clip-cta"><a class="btn book" href="https://zcal.co/i/utLPg0va" data-where="clip">Book my free blueprint call</a></div>
+    <button class="clip-close" id="clipClose" type="button" autofocus aria-label="Close">&times;</button>
   </dialog>
 
   <dialog class="booking" id="booking" aria-labelledby="bookingTitle">
@@ -1063,6 +1068,9 @@
     Array.prototype.forEach.call(buttons, function (a) {
       a.addEventListener('click', function (e) {
         e.preventDefault();
+        // From the full screen video, swap it for the calendar.
+        var playing = document.getElementById('clip');
+        if (playing && playing.open) playing.close();
         loadCalendar();
         dialog.showModal();
         if (window.fjTrack) window.fjTrack('book_click', { where: a.dataset.where });
