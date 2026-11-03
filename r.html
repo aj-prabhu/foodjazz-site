@@ -448,31 +448,6 @@
       object-fit: cover; object-position: 50% 30%;
       background: linear-gradient(170deg, #C9C2B6 0%, #B5AEA2 55%, #A39C90 100%);
     }
-    /* Call UI drawn on top of the screen, sized off the phone's width (cqw) so it scales with it. */
-    .call-frame { container-type: inline-size; }
-    .call-self {
-      position: absolute; right: 6cqw; bottom: 25cqw; width: 34cqw; aspect-ratio: 3 / 4;
-      object-fit: cover; object-position: 50% 22%; border-radius: 4.5cqw;
-      background: #6E6A63; box-shadow: 0 1cqw 4cqw rgba(0,0,0,0.35);
-    }
-    .call-ui { position: absolute; inset: 5px; pointer-events: none; color: #fff; font-family: Roboto, "Helvetica Neue", Arial, sans-serif; }
-    .call-ui svg { width: 46%; height: 46%; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
-    .cu-status { position: absolute; left: 7cqw; right: 6cqw; top: 3.2cqw; display: flex; align-items: center; justify-content: space-between; font-size: 3.6cqw; font-weight: 500; text-shadow: 0 0 2px rgba(0,0,0,0.4); }
-    .cu-status .ic { display: flex; gap: 1.2cqw; align-items: center; }
-    .cu-status .ic svg { width: 3.6cqw; height: 3.6cqw; fill: #fff; stroke: none; }
-    .cu-cam { position: absolute; left: 50%; top: 2.6cqw; width: 4.6cqw; height: 4.6cqw; margin-left: -2.3cqw; border-radius: 50%; background: #000; }
-    .cu-top { position: absolute; left: 3.5cqw; right: 3.5cqw; top: 10cqw; display: flex; align-items: center; gap: 2cqw; }
-    .cu-btn { flex: none; width: 11cqw; height: 11cqw; border-radius: 50%; background: rgba(32,33,36,0.62); display: flex; align-items: center; justify-content: center; }
-    .cu-name { display: flex; align-items: center; gap: 2cqw; height: 11cqw; padding: 0 1.3cqw; border-radius: 6cqw; background: rgba(32,33,36,0.62); font-size: 4cqw; font-weight: 500; }
-    .cu-av { width: 8.4cqw; height: 8.4cqw; border-radius: 50%; background: #7B9E89; display: flex; align-items: center; justify-content: center; font-size: 4.4cqw; font-weight: 500; }
-    .cu-sp { flex: 1; }
-    .cu-selfbtns { position: absolute; right: calc(6cqw - 5px); bottom: calc(25cqw - 5px); width: 34cqw; display: flex; justify-content: space-between; padding: 0 2cqw 2cqw; }
-    .cu-selfbtns .cu-btn { width: 8.5cqw; height: 8.5cqw; background: rgba(32,33,36,0.7); }
-    .cu-bar { position: absolute; left: 3.5cqw; right: 3.5cqw; bottom: 4cqw; height: 16cqw; border-radius: 8cqw; background: rgba(32,33,36,0.88); display: flex; align-items: center; justify-content: space-between; padding: 0 2.6cqw; }
-    .cu-bar .cu-btn { width: 13cqw; height: 13cqw; background: #3C4043; }
-    .cu-bar .cu-div { width: 1px; height: 7cqw; background: rgba(255,255,255,0.25); }
-    .cu-bar .cu-end { width: 17cqw; height: 11cqw; border-radius: 6cqw; background: #EA4335; }
-    .cu-bar .cu-end svg { fill: #fff; stroke: none; width: 52%; }
     @media (max-width: 559px) {
       .how .steps { gap: 1rem; }
       .how .steps li { grid-template-columns: 1.6rem 1fr; }
@@ -835,34 +810,10 @@
         <li><span class="n" aria-hidden="true">2</span><div><h3>Show me your kitchen</h3><p>A 30 minute video call from your phone. Don't clean up first since I want to see your normal flow.</p></div></li>
         <li><span class="n" aria-hidden="true">3</span><div><h3>Get your blueprint</h3><p>I write it myself from what I saw on our call so it's personal to your kitchen and the food you like. It lands in your inbox within a week.</p></div></li>
       </ol>
-      <!-- The call: Isaac's kitchen full screen (staged with a friend, his OK), Akshay in the small tile. -->
+      <!-- The call: one baked image (friend's kitchen, Akshay's tile, call controls) so phones can't reflow or font-boost the UI. Source: 03 clips/kitchen-walkthrough-offer/2026-11-02_fake-call_screen.png -->
       <figure class="callshot" id="callShot">
         <div class="call-frame">
-          <img class="call-main" src="/call-kitchen.jpg" alt="A blueprint call: someone showing Akshay their fridge on a phone video call" loading="lazy" decoding="async">
-          <img class="call-self" src="/call-akshay.jpg" alt="" loading="lazy" decoding="async">
-          <div class="call-ui" aria-hidden="true">
-            <div class="cu-status"><span>3:30</span><span class="ic"><svg viewBox="0 0 24 24"><path d="M12 20 1 8.5a16 16 0 0 1 22 0z"/></svg><svg viewBox="0 0 24 24"><path d="M2 22h20V2z"/></svg><svg viewBox="0 0 24 24"><path d="M9 2h6v2h2v18H7V4h2z"/></svg></span></div>
-            <div class="cu-cam"></div>
-            <div class="cu-top">
-              <span class="cu-btn"><svg viewBox="0 0 24 24"><path d="M19 12H5M11 6l-6 6 6 6"/></svg></span>
-              <span class="cu-name"><span class="cu-av">I</span></span>
-              <span class="cu-sp"></span>
-              <span class="cu-btn"><svg viewBox="0 0 24 24"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4zM16 9a4 4 0 0 1 0 6"/></svg></span>
-              <span class="cu-btn"><svg viewBox="0 0 24 24"><path d="M20 11a8 8 0 0 0-14.5-4.5M4 13a8 8 0 0 0 14.5 4.5M5.5 3v3.5H9M18.5 21v-3.5H15"/><circle cx="12" cy="12" r="2.5"/></svg></span>
-            </div>
-            <div class="cu-selfbtns">
-              <span class="cu-btn"><svg viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="2"/><circle cx="12" cy="10" r="2.5"/><path d="M7.5 17a5 5 0 0 1 9 0"/></svg></span>
-              <span class="cu-btn"><svg viewBox="0 0 24 24"><path d="M20 11a8 8 0 0 0-14.5-4.5M4 13a8 8 0 0 0 14.5 4.5M5.5 3v3.5H9M18.5 21v-3.5H15"/></svg></span>
-            </div>
-            <div class="cu-bar">
-              <span class="cu-btn"><svg viewBox="0 0 24 24"><rect x="3" y="6" width="13" height="12" rx="2"/><path d="M16 10.5 21 7v10l-5-3.5"/></svg></span>
-              <span class="cu-btn"><svg viewBox="0 0 24 24"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5.5 11a6.5 6.5 0 0 0 13 0M12 17.5V21"/></svg></span>
-              <span class="cu-btn"><svg viewBox="0 0 24 24"><path d="M8 13V5.5a1.5 1.5 0 0 1 3 0V11M11 10V4a1.5 1.5 0 0 1 3 0v7M14 10.5V5.5a1.5 1.5 0 0 1 3 0V14a7 7 0 0 1-7 7 6 6 0 0 1-5-3l-2.5-4.5a1.5 1.5 0 0 1 2.5-1.5L8 15"/></svg></span>
-              <span class="cu-btn"><svg viewBox="0 0 24 24" style="fill:currentColor;stroke:none"><circle cx="12" cy="5" r="1.8"/><circle cx="12" cy="12" r="1.8"/><circle cx="12" cy="19" r="1.8"/></svg></span>
-              <span class="cu-div"></span>
-              <span class="cu-btn cu-end"><svg viewBox="0 0 24 24"><path d="M2.5 14.5c5.5-5 13.5-5 19 0l-2.3 2.6-4-1.3v-3a10 10 0 0 0-6.4 0v3l-4 1.3z"/></svg></span>
-            </div>
-          </div>
+          <img class="call-main" src="/call-screen.jpg" width="720" height="1520" alt="A blueprint call: someone showing Akshay their fridge on a phone video call" loading="lazy" decoding="async">
         </div>
       </figure>
       </div>
