@@ -597,19 +597,15 @@
     .booking-wait[data-fallback] { padding: 0.6rem 1rem 1.2rem; font-size: 0.8rem; }
     .booking-wait a { color: var(--accent-text); }
 
-    /* The zcal embed follows the visitor's system setting, not this page's
-       switch, and paints a transparent background. So the dialog follows the
-       system too, or white calendar text lands on a cream sheet. */
-    @media (prefers-color-scheme: dark) {
-      .booking, .booking-head { background: #1B1A17; color: #F1EBE1; border-color: #3A3731; }
-      .booking-close { color: #CFC8BC; }
-      .booking-close:hover { background: #1F231D; }
-      .booking-wait { color: #A39D93; }
-    }
-    @media (prefers-color-scheme: light) {
-      .booking, .booking-head { background: #FEFDFB; color: #2E2E2C; border-color: #e0d9cf; }
-      .booking-close { color: #5C5A56; }
-    }
+    /* zcal draws its calendar in white text on a see-through background,
+       whatever the visitor's system or this page's switch says (checked
+       2026-11-05: white text with the system in light mode). So the dialog
+       is always dark, or the calendar vanishes on a light sheet. */
+    .booking, .booking-head { background: #1B1A17; color: #F1EBE1; border-color: #3A3731; }
+    .booking-close { color: #CFC8BC; }
+    .booking-close:hover { background: #2A2823; }
+    .booking-wait { color: #A39D93; }
+    .booking-wait a { color: #B9C8AE; }
     @media (max-width: 699px) {
       .booking { width: 100vw; height: 100dvh; max-height: 100dvh; margin: 0; border-radius: 0; border: 0; }
     }
