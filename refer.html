@@ -741,7 +741,10 @@
   });
   document.getElementById('shareX').addEventListener('click', closeShare);
   document.getElementById('shareDone').addEventListener('click', closeShare);
+  // Only a click on the dim backdrop closes it. A button pressed with Enter
+  // or Space fires a click at (0, 0), which would read as outside.
   share.addEventListener('click', function (e) {
+    if (e.target !== share) return;
     var r = share.getBoundingClientRect();
     if (e.clientX < r.left || e.clientX > r.right || e.clientY < r.top || e.clientY > r.bottom) closeShare();
   });
