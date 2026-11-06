@@ -691,6 +691,7 @@
   // Once they type in the text it's theirs, so going back to fix the name
   // doesn't wipe their edits.
   var edited = false;
+  var lastGreeting = '';
   var celebrated = false;
 
   function first() {
@@ -719,8 +720,13 @@
     share.scrollTop = 0;
     if (n === 2) {
       // Their edits stay, but a changed name still reaches the greeting.
+      // Only the exact greeting we wrote gets swapped, so a line they rewrote
+      // is never touched.
       if (!edited) msgEl.value = draft();
-      else msgEl.value = msgEl.value.replace(/^Hey( [^!\n]*)?!/, greeting());
+      else if (msgEl.value.indexOf(lastGreeting) === 0) {
+        msgEl.value = greeting() + msgEl.value.slice(lastGreeting.length);
+      }
+      lastGreeting = greeting();
       setSms();
     }
     // Focus follows the step so keyboards and screen readers don't get lost.
