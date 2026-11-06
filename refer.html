@@ -204,6 +204,7 @@
     .share-x { position: absolute; top: 0.6rem; right: 0.6rem; width: 44px; height: 44px; display: grid; place-items: center; border: 0; background: none; color: var(--warm-gray); cursor: pointer; }
     .step[hidden] { display: none; }
     .step-count { margin: 0 0 0.4rem; font-family: var(--font-type); font-size: 0.68rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--warm-gray); }
+    .share-title:focus { outline: none; }
     .share-title { margin: 0 2rem 0.9rem 0; font: 700 1.3rem/1.25 var(--font-type); }
     .share-lede { margin: 0 0 0.6rem; }
     .who { list-style: none; margin: 0 0 1.4rem; padding: 0; display: grid; gap: 0.5rem; }
@@ -610,7 +611,7 @@
     </button>
     <div class="step" data-step="1">
       <p class="step-count">1 of 2</p>
-      <h2 class="share-title" id="shareTitle1">Who comes to mind?</h2>
+      <h2 class="share-title" id="shareTitle1" tabindex="-1">Who comes to mind?</h2>
       <p class="share-lede">Someone who&hellip;</p>
       <ul class="who">
         <li>lives on DoorDash or Factor</li>
@@ -624,7 +625,7 @@
     </div>
     <div class="step" data-step="2" hidden>
       <p class="step-count">2 of 2</p>
-      <h2 class="share-title">Make it sound like you</h2>
+      <h2 class="share-title" tabindex="-1">Make it sound like you</h2>
       <textarea class="msg" id="msg" aria-label="Your text to them"></textarea>
       <a class="btn" id="smsBtn" href="sms:" hidden>Open Messages</a>
       <button class="btn" id="copyBtn" type="button">Copy the text</button>
@@ -636,7 +637,7 @@
       <p class="link-note">The link (<code id="linkOut">foodjazz.club/r</code>) tells me it came from you.</p>
     </div>
     <div class="step" data-step="3" hidden>
-      <h2 class="share-title">Thanks for the help!</h2>
+      <h2 class="share-title" tabindex="-1">Thanks for the help!</h2>
       <p class="sent-line" id="sentLine">Paste it in a text to them.</p>
       <button class="btn" id="shareAgain" type="button">Share with another friend</button>
       <button class="btn secondary" id="shareDone" type="button">Done</button>
@@ -696,8 +697,9 @@
     var n = fnameEl.value.trim().split(/\s+/)[0] || '';
     return n ? n.charAt(0).toUpperCase() + n.slice(1) : '';
   }
+  function greeting() { return 'Hey' + (first() ? ' ' + first() : '') + '!'; }
   function draft() {
-    var hey = 'Hey' + (first() ? ' ' + first() : '') + '!';
+    var hey = greeting();
     if (did) {
       return hey + ' I thought of you. I did Akshay\'s cooking month and loved it. He comes to your kitchen once a week and teaches you to cook without recipes.\n\nHe also does free kitchen blueprints. You show him your kitchen on a 30 minute video call and within a week he sends you a plan for setting it up.\n\n' + link;
     }
@@ -716,18 +718,25 @@
     Array.prototype.forEach.call(steps, function (s) { s.hidden = s.dataset.step !== String(n); });
     share.scrollTop = 0;
     if (n === 2) {
+      // Their edits stay, but a changed name still reaches the greeting.
       if (!edited) msgEl.value = draft();
+      else msgEl.value = msgEl.value.replace(/^Hey( [^!\n]*)?!/, greeting());
       setSms();
     }
-    // On a laptop the cursor waits in the name box. On a phone that would
-    // throw the keyboard over the list, so it waits for a tap.
+    // Focus follows the step so keyboards and screen readers don't get lost.
+    // On a laptop step 1 starts in the name box. On a phone that would throw
+    // the keyboard over the list, so it starts on the title.
+    var current = share.querySelector('.step[data-step="' + n + '"]');
     if (n === 1 && !phone) fnameEl.focus();
+    else current.querySelector('.share-title').focus();
   }
   function openShare(e) {
     where = e.currentTarget.dataset.where || 'hero';
-    go(1);
+    // Open first: showModal moves focus to the close button, then go() puts it
+    // where step 1 wants it.
     if (typeof share.showModal === 'function') share.showModal();
     else share.setAttribute('open', '');
+    go(1);
     if (window.fjTrack) window.fjTrack('share_open', { where: where });
   }
   function closeShare() {
