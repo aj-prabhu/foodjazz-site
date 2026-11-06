@@ -170,7 +170,6 @@
     .video-slot video { display: block; width: 100%; height: auto; }
     .film .video-slot { margin: 1.6rem auto 0; max-width: 560px; }
     @media (min-width: 900px) { .film { padding-top: 2.4rem; } .film .headline { max-width: 900px; } .film .headline h1 { margin-bottom: 0.9rem; } }
-    .film .later-video .video-slot { max-width: none; }
     .video-slot.live { position: relative; }
     /* display rules above beat the hidden attribute, so say it again here */
     .video-slot [hidden] { display: none !important; }
@@ -195,24 +194,36 @@
     @media (prefers-reduced-motion: reduce) { .play-card { transition: none; } .play:hover .play-card { transform: none; } }
     .hero-cta { max-width: 420px; margin: 1.5rem auto 0; text-align: center; }
     .hero-cta .btn { display: block; width: 100%; }
-    .read-link { display: inline-block; margin-top: 0.35rem; padding: 0.6rem 0; font-size: 0.92rem; color: var(--accent-text); text-underline-offset: 3px; }
     @media (prefers-reduced-motion: no-preference) { html { scroll-behavior: smooth; } }
-    /* thank-you pop-up after copying the text */
-    .thanks {
-      width: min(92vw, 420px); padding: 1.6rem 1.5rem 1.2rem; border: 1px solid var(--linen-border); border-radius: 12px;
+    /* ---- the share pop-up: who to send it to, then the text, then thanks ---- */
+    .share {
+      width: min(94vw, 460px); max-height: 92dvh; padding: 1.6rem 1.5rem 1.3rem; border: 1px solid var(--linen-border); border-radius: 12px;
       background: var(--warm-white); color: var(--charcoal); box-shadow: 0 30px 60px -20px rgba(0, 0, 0, 0.45);
     }
-    .thanks::backdrop { background: rgba(28, 27, 24, 0.45); }
-    .thanks-x { position: absolute; top: 0.6rem; right: 0.6rem; width: 44px; height: 44px; display: grid; place-items: center; border: 0; background: none; color: var(--warm-gray); cursor: pointer; }
-    .thanks-title { margin: 0 2rem 0.9rem 0; font: 700 1.3rem/1.25 var(--font-type); }
-    .thanks-lede { margin: 0 0 0.6rem; }
+    .share::backdrop { background: rgba(28, 27, 24, 0.45); }
+    .share-x { position: absolute; top: 0.6rem; right: 0.6rem; width: 44px; height: 44px; display: grid; place-items: center; border: 0; background: none; color: var(--warm-gray); cursor: pointer; }
+    .step[hidden] { display: none; }
+    .step-count { margin: 0 0 0.4rem; font-family: var(--font-type); font-size: 0.68rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--warm-gray); }
+    .share-title:focus { outline: none; }
+    .share-title { margin: 0 2rem 0.9rem 0; font: 700 1.3rem/1.25 var(--font-type); }
+    .share-lede { margin: 0 0 0.6rem; }
     .who { list-style: none; margin: 0 0 1.4rem; padding: 0; display: grid; gap: 0.5rem; }
     .who li { position: relative; padding-left: 1.3rem; line-height: 1.45; }
     .who li::before { content: ''; position: absolute; left: 0.15rem; top: 0.62em; width: 0.5rem; height: 1px; background: var(--accent-text); }
-    .thanks .btn { display: block; width: 100%; }
-    .thanks .btn + .btn { margin-top: 0.6rem; }
-    .thanks .btn[hidden] { display: none; }
-    .thanks-next { display: block; margin: 0.6rem auto 0; }
+    .name-label { display: block; margin: 0 0 0.35rem; font-size: 0.9rem; color: var(--warm-gray); }
+    .name-input, .msg {
+      display: block; width: 100%; font: inherit; font-size: 1rem; color: var(--charcoal);
+      background: var(--cream); border: 1px solid var(--linen-border); border-radius: 8px; padding: 0.7rem 0.8rem;
+    }
+    .name-input:focus, .msg:focus { outline: 2px solid var(--sage); outline-offset: 1px; }
+    .msg { min-height: 14rem; line-height: 1.5; resize: vertical; }
+    .share .btn { display: block; width: 100%; margin-top: 0.7rem; }
+    .share .btn[hidden] { display: none; }
+    .step-links { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 0 1.2rem; margin-top: 0.3rem; }
+    .share .link-note { margin: 0.2rem 0 0; }
+    .sent-line { margin: 0 0 1rem; }
+    .share-cta { margin-top: 2rem; text-align: center; }
+    .share-cta .btn { display: inline-block; width: 100%; max-width: 420px; }
     .confetti-container { position: fixed; inset: 0; pointer-events: none; overflow: hidden; }
     .confetti-piece { position: absolute; top: -10px; width: 8px; height: 14px; border-radius: 1px; animation: confetti-fall linear forwards; }
     @keyframes confetti-fall {
@@ -228,8 +239,6 @@
       content: ''; position: absolute; left: -2%; right: -4%; bottom: -0.2em; height: 0.32em;
       background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 14' preserveAspectRatio='none'%3E%3Cpath d='M3 9c30-6 70-8 104-5s60 4 90-2' fill='none' stroke='%23B4533A' stroke-width='3' stroke-linecap='round'/%3E%3C/svg%3E") no-repeat center / 100% 100%;
     }
-    .later-video { margin-top: 2.4rem; }
-    .later-video h3 { font-size: 1.15rem; margin: 0 0 0.8rem; }
     @media (max-width: 480px) { .play { left: 0.5rem; top: 0.5rem; max-width: calc(100% - 1rem); font-size: 0.7rem; padding: 0.35rem 0.75rem 0.35rem 0.35rem; } .play-icon { width: 1.7rem; height: 1.7rem; } }
     .video-placeholder {
       aspect-ratio: 16 / 9;
@@ -247,63 +256,14 @@
       margin-top: 0;
     }
 
-    /* ---- the text ---- */
-    .phone {
-      max-width: 520px;
-      background: var(--warm-white);
-      border: 1px solid var(--linen-border);
-      border-radius: 18px;
-      padding: 0 0.8rem 0.9rem;
-      box-shadow: 0 1px 0 rgba(46, 46, 44, 0.04), 0 18px 36px -24px rgba(46, 46, 44, 0.45);
-    }
-    .to-line {
-      display: flex; align-items: center; gap: 0.5rem;
-      padding: 0.85rem 0.1rem 0.75rem; margin-bottom: 1rem;
-      border-bottom: 1px solid var(--rule);
-      font-size: 0.92rem; color: var(--warm-gray);
-    }
-    .to-input {
-      flex: 1; min-width: 0; font: inherit; font-size: 1rem; color: var(--charcoal);
-      border: 0; background: transparent; padding: 0.15rem 0;
-    }
-    .to-input:focus { outline: none; }
-    .to-input::placeholder { color: var(--accent-text); opacity: 0.75; }
-    .to-line:focus-within { border-bottom-color: var(--sage-deep); }
-    .bubble {
-      position: relative; display: block; margin: 0.5rem 0 0 auto; max-width: 94%;
-      text-align: left; font: inherit; font-size: 0.97rem; line-height: 1.5;
-      color: #fff; background: var(--sage-deep);
-      border: 0; border-radius: 18px 18px 4px 18px;
-      padding: 0.85rem 1rem 0.9rem;
-      white-space: normal; overflow-wrap: break-word; cursor: copy;
-      transition: background 0.15s ease, transform 0.15s ease;
-    }
-    .bubble-text { display: block; white-space: pre-line; }
-    .bubble:hover { background: #4f5d47; }
-    .bubble:active { transform: scale(0.99); }
-    .bubble:focus-visible { outline: 2px solid var(--sage); outline-offset: 3px; }
-    .bubble.copied { background: #4a5843; }
-    .bubble-copy {
-      position: absolute; top: -11px; right: -9px;
-      display: grid; place-items: center; width: 30px; height: 30px;
-      border-radius: 50%; background: #fff; color: #4a5843;
-      border: 1px solid rgba(46, 46, 44, 0.12); box-shadow: 0 2px 6px -2px rgba(46, 46, 44, 0.35);
-    }
-    .bubble-hint { margin: 0.45rem 0 0; text-align: right; font-family: var(--font-type); font-size: 0.72rem; letter-spacing: 0.04em; color: var(--warm-gray); }
-    .msg-tools { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.4rem 1.4rem; margin: 1rem 0 0.4rem; }
     .text-link {
       font: inherit; font-size: 0.92rem; color: var(--accent-text);
       background: none; border: 0; padding: 0; cursor: pointer;
       text-decoration: underline; text-underline-offset: 3px; text-decoration-thickness: 1px;
     }
     .text-link[hidden] { display: none; }
-    .share-link { margin-top: 0.9rem; }
     .text-link { padding: 0.65rem 0; }
-    .why-box summary { padding: 0.65rem 0; }
-    @media (max-width: 480px) { .bubble { font-size: 0.88rem; line-height: 1.45; max-width: 100%; } }
-    .facts { margin-top: 0.9rem; font-size: 0.9rem; color: var(--warm-gray); }
 
-    .btn-row { display: flex; gap: 0.7rem; margin-top: 1rem; flex-wrap: wrap; }
     .btn {
       flex: 1 1 auto;
       min-width: 140px;
@@ -370,24 +330,24 @@
     .collage img { display: block; width: 100%; height: 100%; aspect-ratio: 4 / 3; object-fit: cover; border-radius: 2px; }
     .collage .big { grid-column: span 2; grid-row: span 2; aspect-ratio: auto; }
 
-    .wash .quote { margin: 3rem auto 0; max-width: 620px; padding-top: 2.4rem; border-top: 1px solid var(--rule); }
+    .container.wide .quote { margin: 3rem auto 0; max-width: 620px; padding-top: 2.4rem; border-top: 1px solid var(--rule); }
 
     /* the dinner: a big warm photo with the menu laid on top of it */
     .dinner-set {
-      position: relative; margin-top: 2.8rem;
-      display: grid; grid-template-columns: repeat(12, 1fr); grid-template-rows: auto 1fr; align-items: start;
+      position: relative; margin: 2.8rem auto 0; max-width: 860px;
+      display: grid; grid-template-columns: 1fr 1fr; gap: 1.6rem; align-items: center;
     }
     .dinner-photo {
-      grid-column: 1 / 10; grid-row: 1;
-      display: block; width: 100%; height: auto; aspect-ratio: 3 / 2;
-      object-fit: cover; border-radius: 2px;
+      grid-column: 1; grid-row: 1;
+      display: block; width: 100%; height: auto; aspect-ratio: 3 / 4;
+      object-fit: cover; object-position: 50% 40%; border-radius: 2px;
       filter: sepia(0.14) saturate(1.12) contrast(1.02);
       box-shadow: 0 30px 60px -40px rgba(60, 40, 20, 0.6);
     }
 
     /* A printed menu on heavy cream stock. Stays cream in dark mode too. */
     .menu-card {
-      grid-column: 9 / 13; grid-row: 1 / span 2; position: relative; z-index: 1; margin-top: 7rem;
+      grid-column: 2; grid-row: 1; position: relative; z-index: 1;
       color: #2E2A25;
       background-color: #FBF6EC;
       background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.42 0 0 0 0 0.34 0 0 0 0 0.22 0 0 0 0.11 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
@@ -428,7 +388,6 @@
       margin: 0; font-family: var(--font-type); font-size: 0.62rem; line-height: 1.5;
       letter-spacing: 0.03em; color: #6E6457; max-width: 20em; margin: 0 auto;
     }
-    .after-dinner { grid-column: 1 / 8; grid-row: 2; align-self: start; margin: 2.4rem 0 0; max-width: 27em; }
 
     /* ---- faq ---- */
     .faq details { border-top: 1px solid var(--rule); }
@@ -449,14 +408,14 @@
 
     @media (max-width: 760px) {
       .dinner-set { display: block; }
-      .dinner-photo { width: calc(100% + 2.8rem); max-width: none; margin: 0 -1.4rem; border-radius: 0; aspect-ratio: 3 / 2; }
+      .dinner-photo { width: calc(100% + 2.8rem); max-width: none; margin: 0 -1.4rem; border-radius: 0; aspect-ratio: 4 / 5; object-position: 50% 35%; }
       .menu-card { margin: 1.8rem auto 0; max-width: 380px; width: calc(100% - 0.6rem); padding: 1.8rem 1.3rem 1.7rem; }
       .menu-card::before { inset: 9px; }
       .dish { font-size: 1.06rem; }
       .course { max-width: none; }
     }
     @media (prefers-reduced-motion: reduce) {
-      .faq summary::after, .bubble, .btn { transition: none; }
+      .faq summary::after, .btn { transition: none; }
     }
 
     .narrow { max-width: 620px; margin: 0 auto; }
@@ -536,56 +495,25 @@
         </button>
       </div>
       <div class="hero-cta">
-        <button class="btn" id="heroCopy" type="button">Copy the message</button>
-        <a class="read-link" href="#text">Read it or add their name first</a>
+        <button class="btn share-open" type="button" data-where="hero">Share the blueprint</button>
       </div>
-    </div>
-  </section>
-
-  <section class="wash send" id="text">
-    <div class="container">
-      <h2>Send your friends this gift</h2>
-      <p class="ask">It's a custom kitchen blueprint I spend about 3 hours writing for their kitchen, and it's theirs whether or not they ever hire me. Send it to anyone who's told you they're tired of takeout or wishes they hosted more, even if they only want the free plan.</p>
-      <div class="phone">
-        <label class="to-line" for="fname"><span>To:</span><input class="to-input" id="fname" type="text" maxlength="30" autocomplete="off" placeholder="your friend's first name"></label>
-        <button class="bubble" id="bubble" type="button" aria-describedby="bubbleHint">
-          <span class="bubble-text" id="draft"></span>
-          <span class="bubble-copy" aria-hidden="true"><svg viewBox="0 0 16 16" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"><rect x="5.5" y="5.5" width="8" height="8" rx="1.5"/><path d="M10.5 3.5v-.5A1.5 1.5 0 0 0 9 1.5H3A1.5 1.5 0 0 0 1.5 3v6A1.5 1.5 0 0 0 3 10.5h.5"/></svg></span>
-        </button>
-        <p class="bubble-hint" id="bubbleHint" aria-live="polite">Tap the message to copy it</p>
-      </div>
-      <div class="msg-tools">
-        <button class="text-link" id="swapDraft" type="button">Try the longer version</button>
-        <details class="why-box">
-          <summary>Add why you thought of them</summary>
-          <input class="why-input" id="why" type="text" maxlength="140" autocomplete="off" aria-label="Why you thought of them" placeholder="you said you wanted to cook more this year">
-        </details>
-      </div>
-      <div class="btn-row">
-        <a class="btn" id="smsBtn" href="sms:" hidden>Text it</a>
-        <button class="btn" id="copyBtn">Copy the message</button>
-        <button class="btn secondary" id="copyLinkBtn" type="button">Copy just my link</button>
-      </div>
-      <p class="facts">The month of cooking lessons is optional. I'll ask before I bring it up.</p>
-      <button class="text-link share-link" id="shareBtn" type="button" hidden>Send it another way</button>
-      <p class="link-note">The link in it (<code id="linkOut">foodjazz.club/r</code>) tells me it came from you.</p>
-      <div class="later-video" id="laterVideo" hidden><h3>Why I'm asking</h3></div>
-    </div>
-  </section>
-
-  <section>
-    <div class="container">
-      <h2>Your friend gets a free custom kitchen blueprint</h2>
-      <p>They book a call and show me their kitchen from their phone, and within a week I send them a written plan for their setup and what to keep stocked, built around their kitchen and the food they actually like. I write every one myself.</p>
-      <figure class="sample">
-        <img src="/photos/blueprint-sample.webp" width="1042" height="1300" alt="A sketch of a kitchen blueprint with a floor plan and notes, a pantry list, best moves and knife options at three prices" loading="lazy" decoding="async">
-        <figcaption>A sketch of what goes in it</figcaption>
-      </figure>
-      <a class="peek-link" id="peek" href="/r" target="_blank" rel="noopener">See the exact page they'll get <span id="peekUrl">foodjazz.club/r</span> <svg viewBox="0 0 16 16" width="13" height="13" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 3H3v10h10v-3M9 3h4v4M13 3L7 9"/></svg></a>
     </div>
   </section>
 
   <section class="wash">
+    <div class="container">
+      <h2>Your friend gets a free custom kitchen blueprint</h2>
+      <p>They show me their kitchen on a 30 minute video call and then I spend about three hours writing their blueprint. It's a plan for how to set up their kitchen and what to keep stocked, built around the food they wish they were cooking. It's theirs to keep whether or not they ever do the month with me.</p>
+      <figure class="sample">
+        <img src="/photos/blueprint-sample.webp" width="1042" height="1300" alt="A sketch of a kitchen blueprint with a floor plan and notes, a pantry list, best moves and knife options at three prices" loading="lazy" decoding="async">
+        <figcaption>A sketch of what goes in it</figcaption>
+      </figure>
+      <div class="share-cta"><button class="btn share-open" type="button" data-where="blueprint">Share the blueprint</button></div>
+      <a class="peek-link" id="peek" href="/r" target="_blank" rel="noopener">See the exact page they'll get <span id="peekUrl">foodjazz.club/r</span> <svg viewBox="0 0 16 16" width="13" height="13" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 3H3v10h10v-3M9 3h4v4M13 3L7 9"/></svg></a>
+    </div>
+  </section>
+
+  <section>
     <div class="container">
       <h2>Food Jazz is the kitchen operating system for busy professionals</h2>
       <p>A one month cooking intensive. I come to your friend's kitchen once a week and teach them to cook without recipes, and I build the whole month around their kitchen and what they actually like to eat and what their life looks like.</p>
@@ -610,41 +538,40 @@
     </div>
   </section>
 
-  <section class="dinner">
+  <section class="dinner wash">
     <div class="container">
       <h2>If they sign up I'll make you your dream birthday dinner</h2>
       <p>If your friend signs up for the month I come to your place and cook a three course dinner for you and one other person. I bring everything and cook in your kitchen and clean up after. The dinner is a thank you for the paid month, so a friend who only gets the free blueprint doesn't count. If two friends do the month you get two dinners.</p>
-      <p>Before I plan it I'll ask you what you'd order on your birthday and I build the menu from your answer.</p>
+      <p>Before I plan it I'll ask you what you'd order on your birthday and I build the menu from your answer. Once they've started I'll reach out and we find a night that works for both of us in the six months after.</p>
     </div>
     <div class="container wide">
       <div class="dinner-set">
-        <img class="dinner-photo" src="/photos/akshay-fish-roast.webp" width="1170" height="780" alt="Akshay Prabhu holding a whole fire roasted fish at camp" loading="lazy" decoding="async">
+        <img class="dinner-photo" src="/photos/food-jazz-akshay-paella-800.webp" srcset="/photos/food-jazz-akshay-paella-800.webp 800w, /photos/food-jazz-akshay-paella-1600.webp 1600w" sizes="(max-width: 760px) 100vw, 470px" width="1600" height="2125" alt="Akshay Prabhu holding a big pan of seafood paella outside" loading="lazy" decoding="async">
         <div class="menu-card" aria-label="A sample menu">
           <img class="menu-cake" src="/deco-cake-line.svg" width="120" height="116" alt="" aria-hidden="true">
           <p class="menu-eyebrow">If your birthday answer was</p>
-          <p class="menu-answer">The mushroom pasta at that little Italian place</p>
+          <p class="menu-answer">Paella cooked outside over a fire</p>
           <hr class="menu-rule">
           <div class="course">
             <p class="course-name">To start</p>
-            <p class="dish">Shaved fennel and apple with parmesan and toasted hazelnuts</p>
+            <p class="dish">Pan con tomate and blistered padrón peppers with flaky salt</p>
           </div>
           <div class="course">
             <p class="course-name">The main</p>
-            <p class="dish">Hand cut pappardelle with wild black trumpet mushrooms and brown butter</p>
+            <p class="dish">Seafood paella with shrimp, scallops and charred asparagus</p>
           </div>
           <div class="course">
             <p class="course-name">To finish</p>
-            <p class="dish">Dark chocolate pot de crème with flaky salt</p>
+            <p class="dish">Burnt Basque cheesecake</p>
           </div>
           <hr class="menu-rule">
           <p class="menu-note">This is just an example and I'd build yours around your answer.</p>
         </div>
-        <p class="after-dinner">Once they've started I'll reach out and we find a night that works for both of us in the six months after.</p>
       </div>
     </div>
   </section>
 
-  <section class="wash">
+  <section>
     <div class="container">
       <h2>Questions people ask</h2>
       <div class="faq">
@@ -673,25 +600,48 @@
           <p>I'd way rather meet people through friends than run ads. I end up cooking in their kitchen every week so it's nice when we already have someone in common.</p>
         </details>
       </div>
+      <div class="share-cta"><button class="btn share-open" type="button" data-where="faq">Share the blueprint</button></div>
     </div>
   </section>
 
-  <dialog class="thanks" id="thanks" aria-labelledby="thanksTitle">
+  <dialog class="share" id="share" aria-labelledby="shareTitle1">
     <div class="confetti-container" id="confettiContainer" aria-hidden="true"></div>
-    <button class="thanks-x" id="thanksX" type="button" aria-label="Close">
+    <button class="share-x" id="shareX" type="button" aria-label="Close">
       <svg viewBox="0 0 16 16" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M3.5 3.5l9 9M12.5 3.5l-9 9"/></svg>
     </button>
-    <p class="thanks-title" id="thanksTitle">Copied! Thanks for the help.</p>
-    <p class="thanks-lede">Paste it in a text to a friend who&hellip;</p>
-    <ul class="who">
-      <li>lives on DoorDash or Factor</li>
-      <li>just moved into a new place</li>
-      <li>keeps saying they want to host more</li>
-      <li>is starting over after a big life change</li>
-    </ul>
-    <a class="btn" id="thanksSms" href="sms:" hidden>Open Messages</a>
-    <button class="btn" id="thanksDone" type="button">Done</button>
-    <button class="text-link thanks-next" id="thanksNext" type="button">Add a name for the next friend</button>
+    <div class="step" data-step="1">
+      <p class="step-count">1 of 2</p>
+      <h2 class="share-title" id="shareTitle1" tabindex="-1">Who comes to mind?</h2>
+      <p class="share-lede">Someone who&hellip;</p>
+      <ul class="who">
+        <li>lives on DoorDash or Factor</li>
+        <li>just moved into a new place</li>
+        <li>keeps saying they want to host more</li>
+        <li>is starting over after a big life change</li>
+      </ul>
+      <label class="name-label" for="fname">Their first name</label>
+      <input class="name-input" id="fname" type="text" maxlength="30" autocomplete="off" autocapitalize="words" enterkeyhint="next" placeholder="Sam">
+      <button class="btn" id="toText" type="button">Next</button>
+    </div>
+    <div class="step" data-step="2" hidden>
+      <p class="step-count">2 of 2</p>
+      <h2 class="share-title" tabindex="-1">Make it sound like you</h2>
+      <textarea class="msg" id="msg" aria-label="Your text to them"></textarea>
+      <a class="btn" id="smsBtn" href="sms:" hidden>Open Messages</a>
+      <button class="btn" id="copyBtn" type="button">Copy the text</button>
+      <div class="step-links">
+        <button class="text-link" id="backBtn" type="button">Back</button>
+        <button class="text-link" id="copyLinkBtn" type="button">Copy just my link</button>
+        <button class="text-link" id="nativeShare" type="button" hidden>Send it another way</button>
+      </div>
+      <p class="link-note">The link (<code id="linkOut">foodjazz.club/r</code>) tells me it came from you.</p>
+    </div>
+    <div class="step" data-step="3" hidden>
+      <h2 class="share-title" tabindex="-1">Thanks for the help!</h2>
+      <p class="sent-line" id="sentLine">Paste it in a text to them.</p>
+      <button class="btn" id="shareAgain" type="button">Share with another friend</button>
+      <button class="btn secondary" id="shareDone" type="button">Done</button>
+    </div>
   </dialog>
 
   <footer>
@@ -709,131 +659,116 @@
     var m = window.location.pathname.match(/^\/refer\/+([^\/]+)/);
     if (m) raw = decodeURIComponent(m[1]).trim();
   }
-
   function slugify(s) {
     // Strip accents first so José becomes jose, not jos.
-    return s.normalize('NFD').replace(/[\u0300-\u036f]/g, '')
+    return s.normalize('NFD').replace(/[̀-ͯ]/g, '')
       .toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
   }
-
   var slug = slugify(raw);
   var link = 'https://foodjazz.club/r' + (slug ? '/' + slug : '');
-
   document.getElementById('linkOut').textContent = link.replace('https://', '');
-
   // The preview card opens the friend's own page, and its mock says whose gift
   // it is the same way /r does: first name off the slug, davis-clute reads Davis.
   var peek = document.getElementById('peek');
   peek.href = '/r' + (slug ? '/' + slug : '');
   document.getElementById('peekUrl').textContent = link.replace('https://', '');
-
-  // ?did=1 on a past client's link adds the "I did the month" text and opens
-  // on it. Everyone else never sees it, so nobody claims a month they didn't do.
+  // ?did=1 on a past client's link swaps in the "I did the month" text.
+  // Everyone else never sees it, so nobody claims a month they didn't do.
   var did = params.get('did') === '1';
-  var whyEl = document.getElementById('why');
-  var disclose = 'He cooks me dinner if you end up doing his paid month, but the blueprint is free either way.';
 
-  // The reason is optional. Empty means the sentence drops out, so the text
-  // never goes out with a blank in it.
-  function because() {
-    var r = whyEl.value.trim().replace(/[.!\s]+$/, '');
-    return r ? ' Thought of you because ' + r + '.' : '';
-  }
-
-  // Their first name goes after the Hey. Empty means a plain "Hey!".
+  // The share pop-up: who to send it to, then the text to edit, then thanks.
+  var share = document.getElementById('share');
+  var steps = share.querySelectorAll('.step');
   var fnameEl = document.getElementById('fname');
-  function hey() {
-    var n = fnameEl.value.trim().split(/\s+/)[0] || '';
-    return 'Hey' + (n ? ' ' + n.charAt(0).toUpperCase() + n.slice(1) : '') + '!';
-  }
-
-  function drafts() {
-    var b = because();
-    var h = hey();
-    return [
-      h + ' My friend Akshay does free kitchen blueprints. You show him your kitchen on a 30 minute video call and within a week he sends you a plan for your setup and what to keep stocked, built around how you actually cook.' + b + ' ' + disclose + '\n\n' + link,
-      h + ' My friend Akshay teaches people to cook without recipes. He comes to your kitchen once a week for a month and builds the whole thing around what you like to eat.' + b + '\n\nHe also does free kitchen blueprints. You show him your kitchen on a 30 minute video call and within a week he sends you a plan for setting it up. ' + disclose + '\n\n' + link,
-      h + ' I did Akshay\'s cooking month and loved it. He comes to your kitchen once a week and teaches you to cook without recipes.' + b + '\n\nHe also does free kitchen blueprints. You show him your kitchen on a 30 minute video call and within a week he sends you a plan for setting it up. ' + disclose + '\n\n' + link
-    ];
-  }
-
-  // One message at a time. The link swaps between the short one (or the
-  // "I did the month" one on ?did=1) and the longer story.
-  var base = did ? 2 : 0;
-  var current = base;
-  var draftEl = document.getElementById('draft');
-  var swapBtn = document.getElementById('swapDraft');
-  // Past clients keep their own "I did the month" text. The longer version
-  // would drop the one line that makes their friend listen.
-  if (did) swapBtn.hidden = true;
-
-  function text() { return drafts()[current]; }
-
-  function render() {
-    // A break point after the domain so the link wraps at the slash, not mid-word.
-    draftEl.textContent = text();
-    draftEl.innerHTML = draftEl.innerHTML.replace('foodjazz.club/', 'foodjazz.club/<wbr>');
-    swapBtn.textContent = current === 1 ? 'Back to the short version' : 'Try the longer version';
-    if (window.fjSetSms) window.fjSetSms();
-  }
-
-  swapBtn.addEventListener('click', function () {
-    current = current === 1 ? base : 1;
-    render();
-  });
-  whyEl.addEventListener('input', render);
-  fnameEl.addEventListener('input', render);
-
-  render();
-
+  var msgEl = document.getElementById('msg');
+  var smsBtn = document.getElementById('smsBtn');
   var copyBtn = document.getElementById('copyBtn');
-  var bubble = document.getElementById('bubble');
-  var hint = document.getElementById('bubbleHint');
-  var heroCopy = document.getElementById('heroCopy');
-  function copyIt(e) {
-    var t = text();
-    var where = e && e.currentTarget === heroCopy ? 'hero' : 'box';
-    var done = function () {
-      if (where === 'hero') {
-        heroCopy.textContent = 'Copied. Paste it in a text to a friend.';
-        setTimeout(function () { heroCopy.textContent = 'Copy the message'; }, 2600);
-      }
-      copyBtn.textContent = 'Copied. Paste it in a text to them.';
-      hint.textContent = 'Copied. Change the name for your next friend';
-      bubble.classList.add('copied');
-      setTimeout(function () {
-        copyBtn.textContent = 'Copy the message';
-        hint.textContent = 'Tap the message to copy it';
-        bubble.classList.remove('copied');
-      }, 2600);
-      // The connector's one real action on this page. Everything downstream —
-      // the friend landing on /r, the guide, the setup-plan booking — is only
-      // attributable if this end of it is counted too.
-      if (window.fjTrack) window.fjTrack('copy_text', { variant: current, where: where });
-      openThanks();
-    };
-    function fallback() {
-      var ta = document.createElement('textarea');
-      ta.value = t;
-      ta.style.position = 'fixed';
-      ta.style.opacity = '0';
-      document.body.appendChild(ta);
-      ta.select();
-      try { document.execCommand('copy'); done(); } catch (e) {}
-      document.body.removeChild(ta);
-    }
-    if (navigator.clipboard && window.isSecureContext) {
-      navigator.clipboard.writeText(t).then(done).catch(fallback);
-    } else {
-      fallback();
-    }
-  }
-  // After a copy: a small thank-you with who to send it to. Confetti once a
-  // visit. On phones the main button opens Messages with the text in it.
-  var thanks = document.getElementById('thanks');
-  var thanksSms = document.getElementById('thanksSms');
-  var thanksDone = document.getElementById('thanksDone');
+  var copyLinkBtn = document.getElementById('copyLinkBtn');
+  var sentLine = document.getElementById('sentLine');
+  var phone = window.matchMedia && window.matchMedia('(pointer: coarse)').matches;
+  var ios = /iPhone|iPad|iPod/.test(navigator.userAgent);
+  var where = 'hero';
+  // Once they type in the text it's theirs, so going back to fix the name
+  // doesn't wipe their edits.
+  var edited = false;
+  var lastGreeting = '';
   var celebrated = false;
+
+  function first() {
+    var n = fnameEl.value.trim().split(/\s+/)[0] || '';
+    return n ? n.charAt(0).toUpperCase() + n.slice(1) : '';
+  }
+  function greeting() { return 'Hey' + (first() ? ' ' + first() : '') + '!'; }
+  function draft() {
+    var hey = greeting();
+    if (did) {
+      return hey + ' I thought of you. I did Akshay\'s cooking month and loved it. He comes to your kitchen once a week and teaches you to cook without recipes.\n\nHe also does free kitchen blueprints. You show him your kitchen on a 30 minute video call and within a week he sends you a plan for setting it up.\n\n' + link;
+    }
+    return hey + ' I thought of you when my friend Akshay told me about this. He does free kitchen blueprints. You show him your kitchen on a 30 minute video call and within a week he sends you a plan for your setup and what to keep stocked, built around how you want to cook.\n\n' + link;
+  }
+  // Messages with the text already in it. Phones only, since sms: does
+  // nothing useful on a laptop. iOS wants &body, Android ?body.
+  function setSms() {
+    smsBtn.href = 'sms:' + (ios ? '&' : '?') + 'body=' + encodeURIComponent(msgEl.value);
+  }
+  if (phone) {
+    smsBtn.hidden = false;
+    copyBtn.className = 'btn secondary';
+  }
+  function go(n) {
+    Array.prototype.forEach.call(steps, function (s) { s.hidden = s.dataset.step !== String(n); });
+    share.scrollTop = 0;
+    if (n === 2) {
+      // Their edits stay, but a changed name still reaches the greeting.
+      // Only the exact greeting we wrote gets swapped, so a line they rewrote
+      // is never touched.
+      if (!edited) msgEl.value = draft();
+      else if (msgEl.value.indexOf(lastGreeting) === 0) {
+        msgEl.value = greeting() + msgEl.value.slice(lastGreeting.length);
+      }
+      lastGreeting = greeting();
+      setSms();
+    }
+    // Focus follows the step so keyboards and screen readers don't get lost.
+    // On a laptop step 1 starts in the name box. On a phone that would throw
+    // the keyboard over the list, so it starts on the title.
+    var current = share.querySelector('.step[data-step="' + n + '"]');
+    if (n === 1 && !phone) fnameEl.focus();
+    else current.querySelector('.share-title').focus();
+  }
+  function openShare(e) {
+    where = e.currentTarget.dataset.where || 'hero';
+    // Open first: showModal moves focus to the close button, then go() puts it
+    // where step 1 wants it.
+    if (typeof share.showModal === 'function') share.showModal();
+    else share.setAttribute('open', '');
+    go(1);
+    if (window.fjTrack) window.fjTrack('share_open', { where: where });
+  }
+  function closeShare() {
+    if (typeof share.close === 'function') share.close();
+    else share.removeAttribute('open');
+  }
+  Array.prototype.forEach.call(document.querySelectorAll('.share-open'), function (b) {
+    b.addEventListener('click', openShare);
+  });
+  document.getElementById('shareX').addEventListener('click', closeShare);
+  document.getElementById('shareDone').addEventListener('click', closeShare);
+  // Only a click on the dim backdrop closes it. A button pressed with Enter
+  // or Space fires a click at (0, 0), which would read as outside.
+  share.addEventListener('click', function (e) {
+    if (e.target !== share) return;
+    var r = share.getBoundingClientRect();
+    if (e.clientX < r.left || e.clientX > r.right || e.clientY < r.top || e.clientY > r.bottom) closeShare();
+  });
+
+  document.getElementById('toText').addEventListener('click', function () { go(2); });
+  fnameEl.addEventListener('keydown', function (e) {
+    if (e.key === 'Enter') { e.preventDefault(); go(2); }
+  });
+  document.getElementById('backBtn').addEventListener('click', function () { go(1); });
+  msgEl.addEventListener('input', function () { edited = true; setSms(); });
+
   function launchConfetti() {
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
     var container = document.getElementById('confettiContainer');
@@ -853,59 +788,63 @@
       p.addEventListener('animationend', function () { this.remove(); });
     }
   }
-  function openThanks() {
-    if (!thanks || typeof thanks.showModal !== 'function' || thanks.open) return;
-    var phone = window.matchMedia && window.matchMedia('(pointer: coarse)').matches;
-    if (phone) {
-      var ios = /iPhone|iPad|iPod/.test(navigator.userAgent);
-      thanksSms.href = 'sms:' + (ios ? '&' : '?') + 'body=' + encodeURIComponent(text());
-      thanksSms.hidden = false;
-      thanksDone.className = 'btn secondary';
-    }
-    thanks.showModal();
+  function thanks(line) {
+    sentLine.textContent = line;
+    go(3);
     if (!celebrated) { celebrated = true; launchConfetti(); }
   }
-  function closeThanks() { if (thanks.open) thanks.close(); }
-  document.getElementById('thanksX').addEventListener('click', closeThanks);
-  thanksDone.addEventListener('click', closeThanks);
-  thanks.addEventListener('click', function (e) {
-    var r = thanks.getBoundingClientRect();
-    if (e.clientX < r.left || e.clientX > r.right || e.clientY < r.top || e.clientY > r.bottom) closeThanks();
-  });
-  thanksSms.addEventListener('click', function () { if (window.fjTrack) window.fjTrack('text_it', { variant: current, where: 'thanks' }); });
-  document.getElementById('thanksNext').addEventListener('click', function () {
-    closeThanks();
-    fnameEl.value = '';
-    render();
-    document.querySelector('.phone').scrollIntoView({ block: 'center' });
-    fnameEl.focus({ preventScroll: true });
-  });
-
-  copyBtn.addEventListener('click', copyIt);
-  heroCopy.addEventListener('click', copyIt);
-
-  // For people who'd rather write their own text: just the link.
-  var copyLinkBtn = document.getElementById('copyLinkBtn');
-  copyLinkBtn.addEventListener('click', function () {
-    var done = function () {
-      copyLinkBtn.textContent = 'Link copied';
-      setTimeout(function () { copyLinkBtn.textContent = 'Copy just my link'; }, 2600);
-      if (window.fjTrack) window.fjTrack('copy_link');
-    };
+  function copy(t, done) {
     function fallback() {
       var ta = document.createElement('textarea');
-      ta.value = link; ta.style.position = 'fixed'; ta.style.opacity = '0';
-      document.body.appendChild(ta); ta.select();
+      ta.value = t;
+      ta.style.position = 'fixed';
+      ta.style.opacity = '0';
+      share.appendChild(ta);
+      ta.select();
       try { document.execCommand('copy'); done(); } catch (e) {}
-      document.body.removeChild(ta);
+      share.removeChild(ta);
     }
     if (navigator.clipboard && window.isSecureContext) {
-      navigator.clipboard.writeText(link).then(done).catch(fallback);
+      navigator.clipboard.writeText(t).then(done).catch(fallback);
     } else {
       fallback();
     }
+  }
+  // The connector's one real action on this page. Everything downstream (the
+  // friend landing on /r, the booking) is only attributable if this end of it
+  // is counted too.
+  copyBtn.addEventListener('click', function () {
+    copy(msgEl.value, function () {
+      if (window.fjTrack) window.fjTrack('copy_text', { where: where, edited: edited });
+      thanks('Copied. Paste it in a text to ' + (first() || 'them') + '.');
+    });
   });
-  bubble.addEventListener('click', copyIt);
+  smsBtn.addEventListener('click', function () {
+    if (window.fjTrack) window.fjTrack('text_it', { where: where, edited: edited });
+    // Messages opens over the page, so the thanks is waiting when they come back.
+    setTimeout(function () { thanks('Hit send in Messages and you\'re done.'); }, 400);
+  });
+  copyLinkBtn.addEventListener('click', function () {
+    copy(link, function () {
+      copyLinkBtn.textContent = 'Link copied';
+      setTimeout(function () { copyLinkBtn.textContent = 'Copy just my link'; }, 2600);
+      if (window.fjTrack) window.fjTrack('copy_link', { where: where });
+    });
+  });
+  var nativeShare = document.getElementById('nativeShare');
+  if (navigator.share) {
+    nativeShare.hidden = false;
+    nativeShare.addEventListener('click', function () {
+      navigator.share({ text: msgEl.value }).then(function () {
+        thanks('Thanks for sending it.');
+      }).catch(function () {});
+    });
+  }
+  document.getElementById('shareAgain').addEventListener('click', function () {
+    fnameEl.value = '';
+    edited = false;
+    go(1);
+  });
 
   // Loom-style: a silent six-second loop of the opening plays on its own and
   // the button swaps in the full video with sound, from the start. With
@@ -932,38 +871,6 @@
     full.addEventListener('play', function () { window.fjTrack('video_play'); }, { once: true });
   }
 
-  // Past clients already know the month, so the text comes first and the
-  // video waits at the bottom of the send box.
-  if (did) {
-    var later = document.getElementById('laterVideo');
-    later.appendChild(slot);
-    later.hidden = false;
-  }
-
-  // Text it: opens Messages with the draft already in it. Phones only, since
-  // sms: does nothing useful on a laptop. iOS wants &body, Android ?body.
-  var smsBtn = document.getElementById('smsBtn');
-  var coarse = window.matchMedia && window.matchMedia('(pointer: coarse)').matches;
-  if (smsBtn && coarse) {
-    var ios = /iPhone|iPad|iPod/.test(navigator.userAgent);
-    window.fjSetSms = function () {
-      smsBtn.href = 'sms:' + (ios ? '&' : '?') + 'body=' + encodeURIComponent(text());
-    };
-    window.fjSetSms();
-    smsBtn.hidden = false;
-    copyBtn.classList.add('secondary');
-    smsBtn.addEventListener('click', function () {
-      if (window.fjTrack) window.fjTrack('text_it', { variant: current });
-    });
-  }
-
-  var shareBtn = document.getElementById('shareBtn');
-  if (navigator.share) {
-    shareBtn.hidden = false;
-    shareBtn.addEventListener('click', function () {
-      navigator.share({ text: text() }).catch(function () {});
-    });
-  }
 })();
 </script>
 </body>
